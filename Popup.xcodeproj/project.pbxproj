@@ -14,17 +14,6 @@
 		94E0FC4E1BD7FCBE00A3C537 /* EventMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94E0FC4D1BD7FCBE00A3C537 /* EventMonitor.swift */; };
 		E98398AE20260E9D00C977C3 /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = E98398AC20260E9D00C977C3 /* Configuration.swift */; };
 		E98398AF20260E9D00C977C3 /* Configurations.swift in Sources */ = {isa = PBXBuildFile; fileRef = E98398AD20260E9D00C977C3 /* Configurations.swift */; };
-		E98398B1202610AE00C977C3 /* ArgumentsOneConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = E98398B0202610AE00C977C3 /* ArgumentsOneConfiguration.swift */; };
-		E98398B82026112F00C977C3 /* PersistentStorageConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = E98398B22026112E00C977C3 /* PersistentStorageConfiguration.swift */; };
-		E98398B92026112F00C977C3 /* OutputProcess.swift in Sources */ = {isa = PBXBuildFile; fileRef = E98398B32026112F00C977C3 /* OutputProcess.swift */; };
-		E98398BA2026112F00C977C3 /* SingleTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = E98398B42026112F00C977C3 /* SingleTask.swift */; };
-		E98398BB2026112F00C977C3 /* PersistentStorageScheduling.swift in Sources */ = {isa = PBXBuildFile; fileRef = E98398B52026112F00C977C3 /* PersistentStorageScheduling.swift */; };
-		E98398BC2026112F00C977C3 /* PersistentStorageAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = E98398B62026112F00C977C3 /* PersistentStorageAPI.swift */; };
-		E98398BD2026112F00C977C3 /* PersistentStorageUserconfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = E98398B72026112F00C977C3 /* PersistentStorageUserconfiguration.swift */; };
-		E98398BF2026118200C977C3 /* Readwritefiles.swift in Sources */ = {isa = PBXBuildFile; fileRef = E98398BE2026118200C977C3 /* Readwritefiles.swift */; };
-		E98398C1202611B300C977C3 /* Profiles.swift in Sources */ = {isa = PBXBuildFile; fileRef = E98398C0202611B300C977C3 /* Profiles.swift */; };
-		E98398C4202611CE00C977C3 /* Fileerrors.swift in Sources */ = {isa = PBXBuildFile; fileRef = E98398C2202611CD00C977C3 /* Fileerrors.swift */; };
-		E98398C5202611CE00C977C3 /* Files.swift in Sources */ = {isa = PBXBuildFile; fileRef = E98398C3202611CE00C977C3 /* Files.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,17 +26,6 @@
 		94E0FC4D1BD7FCBE00A3C537 /* EventMonitor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventMonitor.swift; sourceTree = "<group>"; };
 		E98398AC20260E9D00C977C3 /* Configuration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Configuration.swift; sourceTree = "<group>"; };
 		E98398AD20260E9D00C977C3 /* Configurations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Configurations.swift; sourceTree = "<group>"; };
-		E98398B0202610AE00C977C3 /* ArgumentsOneConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ArgumentsOneConfiguration.swift; path = ../../RsyncOSX/Source/RsyncOSX/ArgumentsOneConfiguration.swift; sourceTree = "<group>"; };
-		E98398B22026112E00C977C3 /* PersistentStorageConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PersistentStorageConfiguration.swift; path = ../../RsyncOSX/Source/RsyncOSX/PersistentStorageConfiguration.swift; sourceTree = "<group>"; };
-		E98398B32026112F00C977C3 /* OutputProcess.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = OutputProcess.swift; path = ../../RsyncOSX/Source/RsyncOSX/OutputProcess.swift; sourceTree = "<group>"; };
-		E98398B42026112F00C977C3 /* SingleTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SingleTask.swift; path = ../../RsyncOSX/Source/RsyncOSX/SingleTask.swift; sourceTree = "<group>"; };
-		E98398B52026112F00C977C3 /* PersistentStorageScheduling.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PersistentStorageScheduling.swift; path = ../../RsyncOSX/Source/RsyncOSX/PersistentStorageScheduling.swift; sourceTree = "<group>"; };
-		E98398B62026112F00C977C3 /* PersistentStorageAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PersistentStorageAPI.swift; path = ../../RsyncOSX/Source/RsyncOSX/PersistentStorageAPI.swift; sourceTree = "<group>"; };
-		E98398B72026112F00C977C3 /* PersistentStorageUserconfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PersistentStorageUserconfiguration.swift; path = ../../RsyncOSX/Source/RsyncOSX/PersistentStorageUserconfiguration.swift; sourceTree = "<group>"; };
-		E98398BE2026118200C977C3 /* Readwritefiles.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Readwritefiles.swift; path = ../../RsyncOSX/Source/RsyncOSX/Readwritefiles.swift; sourceTree = "<group>"; };
-		E98398C0202611B300C977C3 /* Profiles.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Profiles.swift; path = ../../RsyncOSX/Source/RsyncOSX/Profiles.swift; sourceTree = "<group>"; };
-		E98398C2202611CD00C977C3 /* Fileerrors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Fileerrors.swift; path = ../../RsyncOSX/Source/RsyncOSX/Fileerrors.swift; sourceTree = "<group>"; };
-		E98398C3202611CE00C977C3 /* Files.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Files.swift; path = ../../RsyncOSX/Source/RsyncOSX/Files.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,19 +72,8 @@
 		E98398A720260D0300C977C3 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				E98398C0202611B300C977C3 /* Profiles.swift */,
-				E98398C2202611CD00C977C3 /* Fileerrors.swift */,
-				E98398C3202611CE00C977C3 /* Files.swift */,
 				E98398AC20260E9D00C977C3 /* Configuration.swift */,
 				E98398AD20260E9D00C977C3 /* Configurations.swift */,
-				E98398B32026112F00C977C3 /* OutputProcess.swift */,
-				E98398B62026112F00C977C3 /* PersistentStorageAPI.swift */,
-				E98398B22026112E00C977C3 /* PersistentStorageConfiguration.swift */,
-				E98398BE2026118200C977C3 /* Readwritefiles.swift */,
-				E98398B52026112F00C977C3 /* PersistentStorageScheduling.swift */,
-				E98398B72026112F00C977C3 /* PersistentStorageUserconfiguration.swift */,
-				E98398B42026112F00C977C3 /* SingleTask.swift */,
-				E98398B0202610AE00C977C3 /* ArgumentsOneConfiguration.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -183,22 +150,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E98398C4202611CE00C977C3 /* Fileerrors.swift in Sources */,
-				E98398BD2026112F00C977C3 /* PersistentStorageUserconfiguration.swift in Sources */,
 				94E0FC4E1BD7FCBE00A3C537 /* EventMonitor.swift in Sources */,
 				E98398AF20260E9D00C977C3 /* Configurations.swift in Sources */,
-				E98398BB2026112F00C977C3 /* PersistentStorageScheduling.swift in Sources */,
-				E98398B82026112F00C977C3 /* PersistentStorageConfiguration.swift in Sources */,
-				E98398B1202610AE00C977C3 /* ArgumentsOneConfiguration.swift in Sources */,
 				94E0FC411BD7FC3600A3C537 /* ViewController.swift in Sources */,
-				E98398BF2026118200C977C3 /* Readwritefiles.swift in Sources */,
-				E98398C5202611CE00C977C3 /* Files.swift in Sources */,
-				E98398BC2026112F00C977C3 /* PersistentStorageAPI.swift in Sources */,
 				E98398AE20260E9D00C977C3 /* Configuration.swift in Sources */,
-				E98398B92026112F00C977C3 /* OutputProcess.swift in Sources */,
-				E98398C1202611B300C977C3 /* Profiles.swift in Sources */,
 				94E0FC3F1BD7FC3600A3C537 /* AppDelegate.swift in Sources */,
-				E98398BA2026112F00C977C3 /* SingleTask.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

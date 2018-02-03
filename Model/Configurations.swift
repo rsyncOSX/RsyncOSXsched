@@ -37,8 +37,6 @@ class Configurations {
     private var argumentAllConfigurations: NSMutableArray?
     // Datasource for NSTableViews
     private var configurationsDataSource: [NSMutableDictionary]?
-    // Object for batchQueue data and operations
-    private var batchQueue: BatchTaskWorkQueu?
     // backup list from remote info view
     var quickbackuplist: [Int]?
     // Estimated backup list, all backups
@@ -143,11 +141,6 @@ class Configurations {
         return data
     }
 
-    /// Function returns all Configurations marked for backup.
-    /// - returns : array of Configurations
-    func getConfigurationsBatch() -> [Configuration] {
-        return self.configurations!.filter({return ($0.task == "backup" || $0.task == "snapshot" ) && ($0.batch == "yes")})
-    }
 
     /// Function computes arguments for rsync, either arguments for
     /// real runn or arguments for --dry-run for Configuration at selected index
@@ -187,11 +180,6 @@ class Configurations {
         self.storageapi!.saveConfigFromMemory()
     }
 
-    /// Function destroys reference to object holding data and
-    /// methods for executing batch work
-    func deleteBatchData() {
-        self.batchQueue = nil
-    }
 
     /// Function is updating Configurations in memory (by record) and
     /// then saves updated Configurations from memory to persistent store
@@ -210,24 +198,6 @@ class Configurations {
         let index = self.getIndex(hiddenID)
         self.configurations!.remove(at: index)
         self.storageapi!.saveConfigFromMemory()
-    }
-
-
-    /// Function is getting the number of rows batchDataQueue
-    /// - returns : the number of rows
-    func batchQueuecount() -> Int {
-        return self.batchQueue?.getbatchDataQueuecount() ?? 0
-    }
-
-    /// Function is getting the updated batch data queue
-    /// - returns : reference to the batch data queue
-    func getupdatedbatchQueue() -> [NSMutableDictionary]? {
-        return self.batchQueue?.getupdatedBatchdata()
-    }
-
-    // Add new configurations
-    func addNewConfigurations(_ dict: NSMutableDictionary) {
-        self.storageapi!.addandsaveNewConfigurations(dict: dict)
     }
 
     func getIndex(_ hiddenID: Int) -> Int {
