@@ -9,11 +9,12 @@
 import Cocoa
 
 class ViewController: NSViewController {
+    
+    var configurations: Configurations?
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
-
-		// Do any additional setup after loading the view.
+        self.configurations = Configurations(profile: nil)
 	}
 
 	override var representedObject: Any? {

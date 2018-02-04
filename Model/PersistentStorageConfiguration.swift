@@ -214,8 +214,6 @@ final class PersistentStorageConfiguration: Readwritefiles {
     init (profile: String?, configurations: Configurations?) {
         super.init(task: .configuration, profile: profile, configurations: configurations)
         self.configurations = configurations
-        if self.configurations == nil {
-            self.configurationsAsNSDict = self.getDatafromfile()
-        }
+        self.configurationsAsNSDict = self.getDatafromfile()
     }
 }

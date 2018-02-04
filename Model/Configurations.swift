@@ -264,7 +264,7 @@ class Configurations {
                 "offsiteCatalogCellID": self.configurations![i].offsiteCatalog,
                 "offsiteServerCellID": self.configurations![i].offsiteServer,
                 "backupIDCellID": self.configurations![i].backupID,
-                "runDateCellID": self.configurations![i].dateRun!,
+                "runDateCellID": self.configurations![i].dateRun ?? "",
                 "daysID": self.configurations![i].dayssincelastbackup ?? ""
             ]
             data.append(row)
