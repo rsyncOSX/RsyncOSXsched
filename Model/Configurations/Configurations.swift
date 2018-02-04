@@ -39,10 +39,6 @@ class Configurations {
     private var argumentAllConfigurations: NSMutableArray?
     // Datasource for NSTableViews
     private var configurationsDataSource: [NSMutableDictionary]?
-    // backup list from remote info view
-    var quickbackuplist: [Int]?
-    // Estimated backup list, all backups
-    var estimatedlist: [NSMutableDictionary]?
 
     /// Function for getting the profile
     func getProfile() -> String? {
@@ -85,65 +81,6 @@ class Configurations {
         return self.configurationsDataSource
     }
 
-    /// Function for getting all Configurations marked as backup (not restore)
-    /// - parameter none: none
-    /// - returns : Array of NSDictionary
-    func getConfigurationsDataSourcecountBackup() -> [NSMutableDictionary]? {
-        let configurations: [Configuration] = self.configurations!.filter({return ($0.task == "backup" || $0.task == "snapshot")})
-        var row =  NSMutableDictionary()
-        var data = [NSMutableDictionary]()
-        for i in 0 ..< configurations.count {
-            row = [
-                "taskCellID": configurations[i].task,
-                "hiddenID": configurations[i].hiddenID,
-                "localCatalogCellID": configurations[i].localCatalog,
-                "offsiteCatalogCellID": configurations[i].offsiteCatalog,
-                "offsiteServerCellID": configurations[i].offsiteServer,
-                "backupIDCellID": configurations[i].backupID,
-                "runDateCellID": configurations[i].dateRun!,
-                "daysID": configurations[i].dayssincelastbackup ?? "",
-                "markdays": configurations[i].markdays,
-                "selectCellID": 0
-            ]
-            if (row.value(forKey: "offsiteServerCellID") as? String)?.isEmpty == true {
-                row.setValue("localhost", forKey: "offsiteServerCellID")
-            }
-            if self.quickbackuplist != nil {
-                let quickbackup = self.quickbackuplist!.filter({$0 == configurations[i].hiddenID})
-                if quickbackup.count > 0 {
-                    row.setValue(1, forKey: "selectCellID")
-                }
-            }
-            data.append(row)
-        }
-        return data
-    }
-
-    func getConfigurationsDataSourcecountBackupSnapshot() -> [NSDictionary]? {
-        var configurations: [Configuration] = self.configurations!.filter({return ($0.task == "backup" || $0.task == "snapshot" )})
-        var data = [NSDictionary]()
-        for i in 0 ..< configurations.count {
-            if configurations[i].offsiteServer.isEmpty == true {
-                configurations[i].offsiteServer = "localhost"
-            }
-            let row: NSDictionary = [
-                "taskCellID": configurations[i].task,
-                "hiddenID": configurations[i].hiddenID,
-                "localCatalogCellID": configurations[i].localCatalog,
-                "offsiteCatalogCellID": configurations[i].offsiteCatalog,
-                "offsiteServerCellID": configurations[i].offsiteServer,
-                "backupIDCellID": configurations[i].backupID,
-                "runDateCellID": configurations[i].dateRun!,
-                "daysID": configurations[i].dayssincelastbackup ?? "",
-                "markdays": configurations[i].markdays,
-                "selectCellID": 0
-            ]
-            data.append(row)
-        }
-        return data
-    }
-
-
     /// Function computes arguments for rsync, either arguments for
     /// real runn or arguments for --dry-run for Configuration at selected index
     /// - parameter index: index of Configuration
@@ -157,13 +94,6 @@ class Configurations {
         case .argdryRun:
             return allarguments.argdryRun!
         }
-    }
-
-    /// Function is adding new Configurations to existing in memory.
-    /// - parameter dict : new record configuration
-    func appendconfigurationstomemory (dict: NSDictionary) {
-        let config = Configuration(dictionary: dict)
-        self.configurations!.append(config)
     }
 
     /// Function sets currentDate on Configuration when executed on task
@@ -192,16 +122,6 @@ class Configurations {
         self.storageapi!.saveConfigFromMemory()
     }
 
-    /// Function deletes Configuration in memory at hiddenID and
-    /// then saves updated Configurations from memory to persistent store.
-    /// Function computes index by hiddenID.
-    /// - parameter hiddenID: hiddenID which is unique for every Configuration
-    func deleteConfigurationsByhiddenID (hiddenID: Int) {
-        let index = self.getIndex(hiddenID)
-        self.configurations!.remove(at: index)
-        self.storageapi!.saveConfigFromMemory()
-    }
-
     func getIndex(_ hiddenID: Int) -> Int {
         var index: Int = -1
         loop: for i in 0 ..< self.configurations!.count where self.configurations![i].hiddenID == hiddenID {
@@ -213,16 +133,6 @@ class Configurations {
 
     func gethiddenID (index: Int) -> Int {
         return self.configurations![index].hiddenID
-    }
-
-    func removecompressparameter(index: Int, delete: Bool) {
-        guard self.configurations != nil else { return }
-        guard index < self.configurations!.count  else { return }
-        if delete {
-            self.configurations![index].parameter3 = ""
-        } else {
-            self.configurations![index].parameter3 = "--compress"
-        }
     }
 
     private func increasesnapshotnum(index: Int) {

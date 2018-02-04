@@ -96,6 +96,8 @@
 		E93A7EF92026EA5300D61258 /* Configurations */ = {
 			isa = PBXGroup;
 			children = (
+				E9F54D7A2026D7D400A664CF /* RsyncParametersProcess.swift */,
+				E9F54D742026D5D500A664CF /* ArgumentsOneConfiguration.swift */,
 				E98398AD20260E9D00C977C3 /* Configurations.swift */,
 				E98398AC20260E9D00C977C3 /* Configuration.swift */,
 			);
@@ -112,20 +114,58 @@
 			path = Storage;
 			sourceTree = "<group>";
 		};
+		E93A7EFB2026ECB100D61258 /* Output */ = {
+			isa = PBXGroup;
+			children = (
+				E9F54D7E2026DA8A00A664CF /* OutputProcess.swift */,
+			);
+			path = Output;
+			sourceTree = "<group>";
+		};
+		E93A7EFC2026ECC800D61258 /* Fileoperations */ = {
+			isa = PBXGroup;
+			children = (
+				E9F54D862026DCC800A664CF /* Profiles.swift */,
+				E9F54D882026DCCF00A664CF /* Files.swift */,
+				E9F54D842026DC5D00A664CF /* Readwritefiles.swift */,
+			);
+			path = Fileoperations;
+			sourceTree = "<group>";
+		};
+		E93A7EFD2026ED0000D61258 /* Tools */ = {
+			isa = PBXGroup;
+			children = (
+				E9F54D762026D61F00A664CF /* Tools.swift */,
+			);
+			path = Tools;
+			sourceTree = "<group>";
+		};
+		E93A7EFE2026ED3100D61258 /* Reference */ = {
+			isa = PBXGroup;
+			children = (
+				E9F54D782026D68D00A664CF /* ViewControllerReference.swift */,
+			);
+			path = Reference;
+			sourceTree = "<group>";
+		};
+		E93A7EFF2026ED4300D61258 /* Operations */ = {
+			isa = PBXGroup;
+			children = (
+				E9F54D7C2026D83500A664CF /* CompleteScheduledOperation.swift */,
+			);
+			path = Operations;
+			sourceTree = "<group>";
+		};
 		E98398A720260D0300C977C3 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				E93A7EFF2026ED4300D61258 /* Operations */,
+				E93A7EFE2026ED3100D61258 /* Reference */,
+				E93A7EFD2026ED0000D61258 /* Tools */,
+				E93A7EFC2026ECC800D61258 /* Fileoperations */,
+				E93A7EFB2026ECB100D61258 /* Output */,
 				E93A7EFA2026EA7C00D61258 /* Storage */,
 				E93A7EF92026EA5300D61258 /* Configurations */,
-				E9F54D7E2026DA8A00A664CF /* OutputProcess.swift */,
-				E9F54D742026D5D500A664CF /* ArgumentsOneConfiguration.swift */,
-				E9F54D842026DC5D00A664CF /* Readwritefiles.swift */,
-				E9F54D882026DCCF00A664CF /* Files.swift */,
-				E9F54D862026DCC800A664CF /* Profiles.swift */,
-				E9F54D7A2026D7D400A664CF /* RsyncParametersProcess.swift */,
-				E9F54D762026D61F00A664CF /* Tools.swift */,
-				E9F54D782026D68D00A664CF /* ViewControllerReference.swift */,
-				E9F54D7C2026D83500A664CF /* CompleteScheduledOperation.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
