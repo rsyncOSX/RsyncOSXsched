@@ -62,9 +62,9 @@ class Readwritefiles {
         } else {
             // no profile
             self.filename = docuDir + ViewControllerReference.shared.configpath +
-                Tools(configurations: self.configurations!).getMacSerialNumber()! + self.name!
+                Tools(configurations: self.configurations).getMacSerialNumber()! + self.name!
             self.filepath = ViewControllerReference.shared.configpath +
-                Tools(configurations: self.configurations!).getMacSerialNumber()! + "/"
+                Tools(configurations: self.configurations).getMacSerialNumber()! + "/"
         }
     }
 

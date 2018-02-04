@@ -56,20 +56,17 @@ protocol UpdateProgress: class {
 class ViewController: NSViewController, Coloractivetask {
     
     @IBOutlet weak var mainTableView: NSTableView!
-    weak var configurations: Configurations?
-    weak var schedules: Schedules?
+    var configurations: Configurations?
+    var schedules: Schedules?
     var schedulessortedandexpanded: ScheduleSortedAndExpand?
-    
-    var profile = "RsyncOSXtest"
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
         self.mainTableView.delegate = self
         self.mainTableView.dataSource = self
-        self.configurations = Configurations(profile: self.profile)
-        self.schedules = Schedules(profile: self.profile, configuration: self.configurations)
-        self.schedulessortedandexpanded = ScheduleSortedAndExpand(schedules: self.schedules, configurations: self.configurations)
-        self.startfirstcheduledtask()
+        self.configurations = ViewControllerReference.shared.loaddata?.configurations
+        self.schedules = ViewControllerReference.shared.loaddata?.schedules
+        self.schedulessortedandexpanded = ViewControllerReference.shared.loaddata?.schedulessortedandexpanded
         ViewControllerReference.shared.viewControllermain = self
 	}
     
@@ -195,3 +192,12 @@ extension ViewController: RsyncError {
         //
     }
 }
+
+extension ViewController: Fileerror {
+    func fileerror(errorstr: String, errortype: Fileerrortype) {
+        //
+    }
+    
+    
+}
+

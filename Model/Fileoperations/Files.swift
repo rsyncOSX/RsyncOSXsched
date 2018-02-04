@@ -9,12 +9,38 @@
 
 import Foundation
 
+enum Fileerrortype {
+    case openlogfile
+    case writelogfile
+    case profilecreatedirectory
+    case profiledeletedirectory
+}
+
+// Protocol for reporting file errors
+protocol Fileerror: class {
+    func fileerror(errorstr: String, errortype: Fileerrortype)
+}
+
+protocol Reportfileerror {
+    weak var errorDelegate: Fileerror? { get }
+}
+
+extension Reportfileerror {
+    weak var errorDelegate: Fileerror? {
+        return ViewControllerReference.shared.viewControllermain as? ViewController
+    }
+    
+    func error(error: String, errortype: Fileerrortype) {
+        self.errorDelegate?.fileerror(errorstr: error, errortype: errortype)
+    }
+}
+
 enum Root {
     case profileRoot
     case sshRoot
 }
 
-class Files {
+class Files: Reportfileerror {
 
     var root: Root?
     var rootpath: String?
@@ -103,22 +129,6 @@ class Files {
         return array
     }
 
-    // Func that creates directory if not created
-    func createDirectory() {
-        let fileManager = FileManager.default
-        if let path = self.rootpath {
-            // Profile root
-            if fileManager.fileExists(atPath: path) == false {
-                do {
-                    try fileManager.createDirectory(atPath: path, withIntermediateDirectories: true, attributes: nil)
-                } catch let e {
-                    let error = e as NSError
-                    // self.error(error: error.description, errortype: .profilecreatedirectory)
-                }
-            }
-        }
-    }
-
     // Function for getting fileURLs for a given path
     func getfileURLs (path: String) -> [URL]? {
         let fileManager = FileManager.default
@@ -128,7 +138,7 @@ class Files {
                 return files
             } catch let e {
                 let error = e as NSError
-                // self.error(error: error.description, errortype: .profilecreatedirectory)
+                self.error(error: error.description, errortype: .profilecreatedirectory)
                 return nil
             }
         } else {

@@ -75,7 +75,7 @@ final class PersistentStorageAPI {
     // USERCONFIG
 
     func getUserconfiguration (readfromstorage: Bool) -> [NSDictionary]? {
-        let store = PersistentStorageUserconfiguration(readfromstorage: readfromstorage, configurations: self.configurations!)
+        let store = PersistentStorageUserconfiguration(readfromstorage: readfromstorage, configurations: self.configurations)
         return store.readUserconfigurationsFromPermanentStore()
     }
 

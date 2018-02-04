@@ -19,7 +19,6 @@ class ViewControllerReference {
         }
         return Singleton.instance
     }
-
     // Reference to waiting tasks, required for cancel task
     var timerTaskWaiting: Timer?
     var dispatchTaskWaiting: DispatchWorkItem?
@@ -58,4 +57,6 @@ class ViewControllerReference {
     var rsyncversionshort: String?
     // Reference to main View
     var viewControllermain: NSViewController?
+    // Load data
+    var loaddata: LoadData?
 }
