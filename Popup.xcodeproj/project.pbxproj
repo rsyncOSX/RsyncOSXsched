@@ -93,16 +93,32 @@
 			path = Popup;
 			sourceTree = "<group>";
 		};
+		E93A7EF92026EA5300D61258 /* Configurations */ = {
+			isa = PBXGroup;
+			children = (
+				E98398AD20260E9D00C977C3 /* Configurations.swift */,
+				E98398AC20260E9D00C977C3 /* Configuration.swift */,
+			);
+			path = Configurations;
+			sourceTree = "<group>";
+		};
+		E93A7EFA2026EA7C00D61258 /* Storage */ = {
+			isa = PBXGroup;
+			children = (
+				E9F54D8A2026DED600A664CF /* PersistentStorageUserconfiguration.swift */,
+				E9F54D822026DBD600A664CF /* PersistentStorageConfiguration.swift */,
+				E9F54D802026DAFD00A664CF /* PersistentStorageAPI.swift */,
+			);
+			path = Storage;
+			sourceTree = "<group>";
+		};
 		E98398A720260D0300C977C3 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				E98398AC20260E9D00C977C3 /* Configuration.swift */,
-				E98398AD20260E9D00C977C3 /* Configurations.swift */,
+				E93A7EFA2026EA7C00D61258 /* Storage */,
+				E93A7EF92026EA5300D61258 /* Configurations */,
 				E9F54D7E2026DA8A00A664CF /* OutputProcess.swift */,
 				E9F54D742026D5D500A664CF /* ArgumentsOneConfiguration.swift */,
-				E9F54D802026DAFD00A664CF /* PersistentStorageAPI.swift */,
-				E9F54D822026DBD600A664CF /* PersistentStorageConfiguration.swift */,
-				E9F54D8A2026DED600A664CF /* PersistentStorageUserconfiguration.swift */,
 				E9F54D842026DC5D00A664CF /* Readwritefiles.swift */,
 				E9F54D882026DCCF00A664CF /* Files.swift */,
 				E9F54D862026DCC800A664CF /* Profiles.swift */,
