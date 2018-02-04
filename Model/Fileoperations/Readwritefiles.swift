@@ -47,13 +47,9 @@ class Readwritefiles {
     private func setnameandpath() {
         let paths = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true) as NSArray
         let docuDir = (paths.firstObject as? String)!
-        // let profilePath = Profiles(configurations: self.configurations!)
-        // profilePath.createDirectory()
         if self.useProfile {
             // Use profile
             if let profile = self.profile {
-                // let profilePath = Profiles(configurations: self.configurations!)
-                // profilePath.createDirectory()
                 self.filepath = ViewControllerReference.shared.configpath +
                     Tools(configurations: self.configurations!).getMacSerialNumber()! + "/" + profile + "/"
                 self.filename = docuDir + ViewControllerReference.shared.configpath +

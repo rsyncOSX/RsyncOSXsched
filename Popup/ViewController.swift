@@ -11,13 +11,17 @@ import Cocoa
 class ViewController: NSViewController {
     
     var configurations: Configurations?
-    var schedule: Schedules?
+    var schedules: Schedules?
+    var schedulessortedandexpanded: ScheduleSortedAndExpand?
+    
     var profile = "RsyncOSXtest"
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
         ViewControllerReference.shared.viewControllermain = self
         self.configurations = Configurations(profile: self.profile)
+        self.schedules = Schedules(profile: self.profile, configuration: self.configurations)
+        self.schedulessortedandexpanded = ScheduleSortedAndExpand(schedules: self.schedules, configurations: self.configurations)
 	}
 
 	override var representedObject: Any? {

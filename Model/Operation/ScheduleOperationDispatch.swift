@@ -12,10 +12,11 @@ class ScheduleOperationDispatch: SecondsBeforeStart {
    
     private var pendingRequestWorkItem: DispatchWorkItem?
     private var configurations: Configurations?
+    private var schedules: Schedules?
 
     private func dispatchtask(_ seconds: Int) {
         let scheduledtask = DispatchWorkItem { [weak self] in
-            _ = ExecuteTaskDispatch(configurations: self?.configurations)
+            _ = ExecuteTaskDispatch(configurations: self?.configurations, schedules: self?.schedules)
         }
         self.pendingRequestWorkItem = scheduledtask
         DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(seconds), execute: scheduledtask)
@@ -23,13 +24,12 @@ class ScheduleOperationDispatch: SecondsBeforeStart {
 
     init(schedules: Schedules?, configurations: Configurations?) {
         self.configurations = configurations
-        if schedules != nil {
-            let seconds = self.secondsbeforestart(schedules: schedules, configurations: configurations)
-            guard seconds > 0 else { return }
-            self.dispatchtask(Int(seconds))
-            // Set reference to schedule for later cancel if any
-            ViewControllerReference.shared.dispatchTaskWaiting = self.pendingRequestWorkItem
-        }
+        self.schedules = schedules
+        let seconds = self.secondsbeforestart(schedules: schedules, configurations: configurations)
+        guard seconds > 0 else { return }
+        self.dispatchtask(Int(seconds))
+        // Set reference to schedule for later cancel if any
+        ViewControllerReference.shared.dispatchTaskWaiting = self.pendingRequestWorkItem
     }
 
 }

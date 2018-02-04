@@ -19,6 +19,7 @@ class ExecuteTaskDispatch: SetScheduledTask {
     var arguments: [String]?
     var config: Configuration?
     private var configurations: Configurations?
+    private var schedules: Schedules?
 
     private func executeTaskDispatch() {
         // Get the first job of the queue
@@ -38,7 +39,7 @@ class ExecuteTaskDispatch: SetScheduledTask {
                 if hiddenID >= 0 && config != nil {
                     arguments = RsyncParametersProcess().argumentsRsync(config!, dryRun: false, forDisplay: false)
                     // Setting reference to finalize the job, finalize job is done when rsynctask ends (in process termination)
-                    ViewControllerReference.shared.completeoperation = CompleteScheduledOperation(dict: dict, configurations: self.configurations!)
+                    ViewControllerReference.shared.completeoperation = CompleteScheduledOperation(dict: dict, configurations: self.configurations!, schedules: self.schedules)
                     globalMainQueue.async(execute: {
                         if self.arguments != nil {
                             weak var sendprocess: Sendprocessreference?
@@ -54,8 +55,9 @@ class ExecuteTaskDispatch: SetScheduledTask {
         }
     }
 
-    init (configurations: Configurations?) {
+    init (configurations: Configurations?, schedules: Schedules?) {
         self.configurations = configurations
+        self.schedules = schedules
         self.executeTaskDispatch()
     }
 }

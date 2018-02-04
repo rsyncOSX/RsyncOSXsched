@@ -21,8 +21,9 @@ final class CompleteScheduledOperation {
     private var schedule: String?
     private var index: Int?
     private var configurations: Configurations?
+    private var schedules: Schedules?
 
-    /*
+    
     // Function for finalizing the Scheduled job
     // The Operation object sets reference to the completeScheduledOperation in self.schedules!.operation
     // This function is executed when rsyn process terminates
@@ -30,27 +31,24 @@ final class CompleteScheduledOperation {
         // Write result to Schedule
         let datestring = self.dateformatter!.string(from: date!)
         let dateStartstring = self.dateformatter!.string(from: dateStart!)
-        let number = Numbers(outputprocess: outputprocess)
+        let number = Numbers(outputprocess: outputprocess, configurations: self.configurations)
         let numberstring = number.stats(numberOfFiles: nil, sizeOfFiles: nil)
         self.schedules!.addresultschedule(self.hiddenID!, dateStart: dateStartstring, result: numberstring, date: datestring, schedule: schedule!)
         // Writing timestamp to configuration
         self.configurations!.setCurrentDateonConfigurationQuickbackup(self.index!, outputprocess: outputprocess)
-        self.scheduleJob?.completed()
-        self.startTimerDelegate = ViewControllerReference.shared.getvcref(viewcontroller: .vctabschedule) as? ViewControllertabSchedule
-        self.startTimerDelegate?.startTimerNextJob()
+        // self.scheduleJob?.completed()
         // Reset reference til scheduled job
         self.schedules!.scheduledTasks = nil
-        self.schedulesDelegate?.reloadschedulesobject()
     }
-    */
 
-    init (dict: NSDictionary, configurations: Configurations) {
+    init (dict: NSDictionary, configurations: Configurations, schedules: Schedules?) {
         self.date = dict.value(forKey: "start") as? Date
         self.dateStart = dict.value(forKey: "dateStart") as? Date
         self.dateformatter = Tools(configurations: configurations).setDateformat()
         self.hiddenID = (dict.value(forKey: "hiddenID") as? Int)!
         self.schedule = dict.value(forKey: "schedule") as? String
         self.configurations = configurations
+        self.schedules = schedules
         self.index = self.configurations!.getIndex(hiddenID!)
     }
 }

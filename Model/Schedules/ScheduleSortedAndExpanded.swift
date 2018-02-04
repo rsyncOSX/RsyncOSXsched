@@ -177,11 +177,9 @@ class ScheduleSortedAndExpand {
     init (schedules: Schedules?, configurations: Configurations?) {
         self.configurations = configurations
         // Getting the Schedule and expanding all the jobs
-        if schedules != nil {
-            self.scheduleConfiguration = schedules!.getSchedule()
-            self.setallscheduledtasksNSDictionary()
-            self.sortAndExpandScheduleTasks()
-        }
+        self.scheduleConfiguration = schedules!.getSchedule()
+        self.setallscheduledtasksNSDictionary()
+        self.sortAndExpandScheduleTasks()
         self.tools = Tools(configurations: configurations)
     }
 }
