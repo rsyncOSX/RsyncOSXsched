@@ -22,7 +22,6 @@ extension Delay {
     }
 }
 
-
 protocol ErrorOutput: class {
     func erroroutput()
 }
@@ -38,13 +37,12 @@ enum ProcessTermination {
 class ProcessCmd: Delay {
     
     private var configurations: Configurations?
-
     // Number of calculated files to be copied
     var calculatedNumberOfFiles: Int = 0
     // Variable for reference to Process
     var processReference: Process?
     // Message to calling class
-    // weak var updateDelegate: UpdateProgress?
+    weak var updateDelegate: UpdateProgress?
     // Observer
     weak var notifications: NSObjectProtocol?
     // Command to be executed, normally rsync
@@ -84,7 +82,7 @@ class ProcessCmd: Delay {
                         outputprocess!.addlinefromoutput(str as String)
                         self.calculatedNumberOfFiles = outputprocess!.count()
                         // Send message about files
-                        // self.updateDelegate?.fileHandler()
+                        self.updateDelegate?.fileHandler()
                         if self.termination {
                             self.possibleerrorDelegate?.erroroutput()
                         }
@@ -98,7 +96,7 @@ class ProcessCmd: Delay {
                             object: task, queue: nil) { _ -> Void in
             self.delayWithSeconds(0.5) {
                 self.termination = true
-                // self.updateDelegate?.processTermination()
+                self.updateDelegate?.processTermination()
             }
             NotificationCenter.default.removeObserver(self.notifications as Any)
         }
@@ -121,6 +119,6 @@ class ProcessCmd: Delay {
         self.command = command
         self.arguments = arguments
         self.configurations = configurations
-        // self.possibleerrorDelegate = ViewControllerReference.shared.getvcref(viewcontroller: .vctabmain) as? ViewControllertabMain
+        self.possibleerrorDelegate = ViewControllerReference.shared.viewControllermain as? ViewController
     }
 }

@@ -46,6 +46,13 @@ extension Coloractivetask {
     }
 }
 
+// Protocol for either completion of work or update progress when Process discovers a
+// process termination and when filehandler discover data
+protocol UpdateProgress: class {
+    func processTermination()
+    func fileHandler()
+}
+
 class ViewController: NSViewController, Coloractivetask {
     
     @IBOutlet weak var mainTableView: NSTableView!
@@ -165,5 +172,23 @@ extension ViewController: Sendprocessreference {
     func sendoutputprocessreference(outputprocess: OutputProcess?) {
         //
     }
+}
+
+extension ViewController: UpdateProgress {
+    func processTermination() {
+        //
+    }
+    
+    func fileHandler() {
+        //
+    }
+}
+
+extension ViewController: ErrorOutput {
+    func erroroutput() {
+        //
+    }
+    
+    
 }
 
