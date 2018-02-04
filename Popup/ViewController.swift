@@ -7,26 +7,70 @@
 //
 
 import Cocoa
+import Foundation
 
-class ViewController: NSViewController {
+protocol Attributedestring: class {
+    func attributedstring(str: String, color: NSColor, align: NSTextAlignment) -> NSMutableAttributedString
+}
+
+extension Attributedestring {
+    func attributedstring(str: String, color: NSColor, align: NSTextAlignment) -> NSMutableAttributedString {
+        let attributedString = NSMutableAttributedString(string: str)
+        let range = (str as NSString).range(of: str)
+        attributedString.addAttribute(NSAttributedStringKey.foregroundColor, value: color, range: range)
+        attributedString.setAlignment(align, range: range)
+        return attributedString
+    }
+}
+
+protocol Coloractivetask {
+    var colorindex: Int? { get }
+}
+
+extension Coloractivetask {
     
+    var colorindex: Int? {
+        return self.color()
+    }
+    
+    func color() -> Int? {
+        if let dict: NSDictionary = ViewControllerReference.shared.scheduledTask {
+            if let hiddenID: Int = dict.value(forKey: "hiddenID") as? Int {
+                return hiddenID
+            } else {
+                return nil
+            }
+        } else {
+            return nil
+        }
+    }
+}
+
+class ViewController: NSViewController, Coloractivetask {
+    
+    @IBOutlet weak var mainTableView: NSTableView!
     weak var configurations: Configurations?
     weak var schedules: Schedules?
-    weak var schedulessortedandexpanded: ScheduleSortedAndExpand?
+    var schedulessortedandexpanded: ScheduleSortedAndExpand?
     
     var profile = "RsyncOSXtest"
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
+        self.mainTableView.delegate = self
+        self.mainTableView.dataSource = self
+        self.configurations = Configurations(profile: self.profile)
+        self.schedules = Schedules(profile: self.profile, configuration: self.configurations)
+        self.schedulessortedandexpanded = ScheduleSortedAndExpand(schedules: self.schedules, configurations: self.configurations)
+        self.startfirstcheduledtask()
         ViewControllerReference.shared.viewControllermain = self
 	}
     
     override func viewDidAppear() {
         super.viewDidAppear()
-        self.configurations = Configurations(profile: self.profile)
-        self.schedules = Schedules(profile: self.profile, configuration: self.configurations)
-        self.schedulessortedandexpanded = ScheduleSortedAndExpand(schedules: self.schedules, configurations: self.configurations)
-        self.startfirstcheduledtask()
+        globalMainQueue.async(execute: { () -> Void in
+            self.mainTableView.reloadData()
+        })
     }
 
 	override var representedObject: Any? {
@@ -40,6 +84,56 @@ class ViewController: NSViewController {
 	}
 
 }
+
+extension ViewController: NSTableViewDataSource {
+    // Delegate for size of table
+    func numberOfRows(in tableView: NSTableView) -> Int {
+        return self.configurations?.getConfigurationsDataSourcecountBackup()?.count ?? 0
+    }
+}
+
+extension ViewController: NSTableViewDelegate, Attributedestring {
+    
+    func tableView(_ tableView: NSTableView, objectValueFor tableColumn: NSTableColumn?, row: Int) -> Any? {
+        guard row < self.configurations!.getConfigurationsDataSourcecountBackup()!.count  else { return nil }
+        let object: NSDictionary = self.configurations!.getConfigurationsDataSourcecountBackup()![row]
+        var number: Int?
+        var taskintime: String?
+        let hiddenID: Int = (object.value(forKey: "hiddenID") as? Int)!
+        switch tableColumn!.identifier.rawValue {
+        case "numberCellID" :
+            if self.schedulessortedandexpanded != nil {
+                number = self.schedulessortedandexpanded!.countscheduledtasks(hiddenID).0
+            }
+            if number ?? 0 > 0 {
+                let returnstr = String(number!)
+                if let color = self.colorindex, color == hiddenID {
+                    return self.attributedstring(str: returnstr, color: NSColor.red, align: .center)
+                } else {
+                    return returnstr
+                }
+            }
+        case "batchCellID" :
+            return object[tableColumn!.identifier] as? Int!
+        case "offsiteServerCellID":
+            if (object[tableColumn!.identifier] as? String)!.isEmpty {
+                return "localhost"
+            } else {
+                return object[tableColumn!.identifier] as? String
+            }
+        case "inCellID":
+            if self.schedulessortedandexpanded != nil {
+                taskintime = self.schedulessortedandexpanded!.sortandcountscheduledonetask(hiddenID)
+                return taskintime ?? ""
+            }
+        default:
+            return object[tableColumn!.identifier] as? String
+        }
+        return nil
+    }
+    
+}
+
 
 extension ViewController: StartNextTask {
     func startfirstcheduledtask() {

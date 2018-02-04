@@ -168,6 +168,34 @@ class Configurations {
         }
     }
     
+    /// Function for getting all Configurations marked as backup (not restore)
+    /// - parameter none: none
+    /// - returns : Array of NSDictionary
+    func getConfigurationsDataSourcecountBackup() -> [NSMutableDictionary]? {
+        let configurations: [Configuration] = self.configurations!.filter({return ($0.task == "backup" || $0.task == "snapshot")})
+        var row =  NSMutableDictionary()
+        var data = [NSMutableDictionary]()
+        for i in 0 ..< configurations.count {
+            row = [
+                "taskCellID": configurations[i].task,
+                "hiddenID": configurations[i].hiddenID,
+                "localCatalogCellID": configurations[i].localCatalog,
+                "offsiteCatalogCellID": configurations[i].offsiteCatalog,
+                "offsiteServerCellID": configurations[i].offsiteServer,
+                "backupIDCellID": configurations[i].backupID,
+                "runDateCellID": configurations[i].dateRun ?? "",
+                "daysID": configurations[i].dayssincelastbackup ?? "",
+                "markdays": configurations[i].markdays,
+                "selectCellID": 0
+            ]
+            if (row.value(forKey: "offsiteServerCellID") as? String)?.isEmpty == true {
+                row.setValue("localhost", forKey: "offsiteServerCellID")
+            }
+            data.append(row)
+        }
+        return data
+    }
+
     /// Function is reading all Configurations into memory from permanent store and
     /// prepare all arguments for rsync. All configurations are stored in the private
     /// variable within object.
