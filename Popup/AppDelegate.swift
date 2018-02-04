@@ -25,6 +25,14 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
 
 	func applicationDidFinishLaunching(_ aNotification: Notification) {
+        
+        var storage: PersistentStorageAPI?
+        // Insert code here to initialize your application
+        // Read user configuration
+        storage = PersistentStorageAPI(profile: nil, configurations: nil, schedules: nil)
+        if let userConfiguration =  storage?.getUserconfiguration(readfromstorage: true) {
+            _ = Userconfiguration(userconfigRsyncOSX: userConfiguration)
+        }
 		
 		if let button = self.statusItem.button {
 			button.image = NSImage(named: NSImage.Name(rawValue: "StatusBarButtonImage"))
