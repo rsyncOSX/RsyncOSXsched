@@ -120,7 +120,7 @@ class Schedules: ScheduleWriteLoggData {
         self.configurations = configuration
         super.init(configurations: configuration)
         self.profile = profile
-        self.storageapi = PersistentStorageAPI(profile: self.profile, configurations: configuration)
+        self.storageapi = PersistentStorageAPI(profile: self.profile, configurations: configuration, schedules: self)
         self.readschedules()
     }
 }

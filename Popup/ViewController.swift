@@ -14,6 +14,7 @@ class ViewController: NSViewController {
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
+        ViewControllerReference.shared.viewControllermain = self
         self.configurations = Configurations(profile: nil)
 	}
 
@@ -27,5 +28,32 @@ class ViewController: NSViewController {
 		NSApp.terminate(self)
 	}
 
+}
+
+extension ViewController: ScheduledTaskWorking {
+    func start() {
+        //
+    }
+    
+    func completed() {
+        //
+    }
+    
+    func notifyScheduledTask(config: Configuration?) {
+        //
+    }
+
+}
+
+extension ViewController: Sendprocessreference {
+    func sendprocessreference(process: Process?) {
+        //
+    }
+    
+    func sendoutputprocessreference(outputprocess: OutputProcess?) {
+        //
+    }
+    
+    
 }
 

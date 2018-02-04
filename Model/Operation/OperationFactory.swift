@@ -21,6 +21,25 @@ protocol SecondsBeforeStart {
     func secondsbeforestart(schedules: Schedules?, configurations: Configurations?) -> Double
 }
 
+protocol SetScheduledTask {
+    weak var scheduleJob: ScheduledTaskWorking? { get }
+}
+
+extension SetScheduledTask {
+    weak var scheduleJob: ScheduledTaskWorking? {
+        return ViewControllerReference.shared.viewControllermain as? ViewController
+    }
+    
+    func notify(config: Configuration?) {
+        self.scheduleJob?.notifyScheduledTask(config: config)
+    }
+}
+
+protocol Sendprocessreference: class {
+    func sendprocessreference(process: Process?)
+    func sendoutputprocessreference(outputprocess: OutputProcess?)
+}
+
 extension SecondsBeforeStart {
         
     // Calculation of time to a spesific date
@@ -49,11 +68,6 @@ extension SecondsBeforeStart {
         return secondsToWait ?? 0
     }
 
-}
-
-protocol Sendprocessreference: class {
-    func sendprocessreference(process: Process?)
-    func sendoutputprocessreference(outputprocess: OutputProcess?)
 }
 
 class OperationFactory {

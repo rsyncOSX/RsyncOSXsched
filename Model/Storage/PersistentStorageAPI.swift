@@ -77,7 +77,7 @@ final class PersistentStorageAPI {
     // StoreAPI : API to class persistentStorescheduling.
     // Readig schedules only (not sorted and expanden)
     // Sorted and expanded are only stored in memory
-    func getScheduleonly () -> [ConfigurationSchedule] {
+    func getScheduleonly() -> [ConfigurationSchedule] {
         let read = PersistentStorageScheduling(profile: self.profile, schedules: self.schedules, configurations: self.configurations)
         if read.readSchedulesFromPermanentStore() != nil {
             var schedule = [ConfigurationSchedule]()

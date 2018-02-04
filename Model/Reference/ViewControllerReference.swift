@@ -56,29 +56,6 @@ class ViewControllerReference {
     var rsyncversionstring: String?
     // rsync short version
     var rsyncversionshort: String?
-
     // Reference to main View
-    private var viewControllertabMain: NSViewController?
-    // Reference to Copy files
-    private var viewControllerCopyFiles: NSViewController?
-    // Reference to the New tasks
-    private var viewControllerNewConfigurations: NSViewController?
-    // Reference to the  Schedule
-    private var viewControllertabSchedule: NSViewController?
-    // Which profile to use, if default nil
-    private var viewControllerLoggData: NSViewController?
-    // Reference to Ssh view
-    private var viewControllerSsh: NSViewController?
-    // Reference to About
-    private var viewControllerAbout: NSViewController?
-    //  Refereence to batchview
-    private var viewControllerBatch: NSViewController?
-    // ProgressView single task
-    private var viewControllerProgressView: NSViewController?
-    // Quick batch
-    private var viewControllerQuickBatch: NSViewController?
-    // Remote info
-    private var viewControllerRemoteInfo: NSViewController?
-    // Snapshot
-    private var viewControllerSnapshot: NSViewController?
+    var viewControllermain: NSViewController?
 }

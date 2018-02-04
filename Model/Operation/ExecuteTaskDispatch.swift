@@ -13,7 +13,7 @@ import Foundation
 // is set in the static object. The finalize object is invoked
 // when the job discover (observs) the termination of the process.
 
-class ExecuteTaskDispatch {
+class ExecuteTaskDispatch: SetScheduledTask {
 
     let outputprocess = OutputProcess()
     var arguments: [String]?
@@ -24,7 +24,7 @@ class ExecuteTaskDispatch {
         // Get the first job of the queue
         if let dict: NSDictionary = ViewControllerReference.shared.scheduledTask {
             if let hiddenID: Int = dict.value(forKey: "hiddenID") as? Int {
-                let getconfigurations: [Configuration]? = configurations?.getConfigurations()
+                let getconfigurations: [Configuration]? = self.configurations?.getConfigurations()
                 guard getconfigurations != nil else { return }
                 let configArray = getconfigurations!.filter({return ($0.hiddenID == hiddenID)})
                 guard configArray.count > 0 else {
@@ -38,12 +38,12 @@ class ExecuteTaskDispatch {
                 if hiddenID >= 0 && config != nil {
                     arguments = RsyncParametersProcess().argumentsRsync(config!, dryRun: false, forDisplay: false)
                     // Setting reference to finalize the job, finalize job is done when rsynctask ends (in process termination)
-                    ViewControllerReference.shared.completeoperation = CompleteScheduledOperation(dict: dict, configurations: self.configurations)
+                    ViewControllerReference.shared.completeoperation = CompleteScheduledOperation(dict: dict, configurations: self.configurations!)
                     globalMainQueue.async(execute: {
                         if self.arguments != nil {
                             weak var sendprocess: Sendprocessreference?
-                            sendprocess = ViewControllerReference.shared.getvcref(viewcontroller: .vctabmain) as? ViewControllertabMain
-                            let process = RsyncScheduled(arguments: self.arguments)
+                            sendprocess = ViewControllerReference.shared.viewControllermain as? ViewController
+                            let process = RsyncScheduled(arguments: self.arguments, configuration: self.configurations)
                             process.executeProcess(outputprocess: self.outputprocess)
                             sendprocess?.sendprocessreference(process: process.getProcess())
                             sendprocess?.sendoutputprocessreference(outputprocess: self.outputprocess)

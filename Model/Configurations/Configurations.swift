@@ -214,7 +214,7 @@ class Configurations {
         self.argumentAllConfigurations = nil
         self.configurationsDataSource = nil
         self.profile = profile
-        self.storageapi = PersistentStorageAPI(profile: self.profile, configurations: self)
+        self.storageapi = PersistentStorageAPI(profile: self.profile, configurations: self, schedules: nil)
         self.readconfigurations()
     }
 }
