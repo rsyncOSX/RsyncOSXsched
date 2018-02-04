@@ -39,7 +39,6 @@ final class PersistentStorageAPI {
         save.saveconfigInMemoryToPersistentStore()
     }
 
-
     // SCHEDULE
     
     // Saving Schedules from memory to persistent store
@@ -70,24 +69,6 @@ final class PersistentStorageAPI {
             return schedule
         } else {
             return nil
-        }
-    }
-
-    // Reading and writing scheduling data and results of executions.
-    // StoreAPI : API to class persistentStorescheduling.
-    // Readig schedules only (not sorted and expanden)
-    // Sorted and expanded are only stored in memory
-    func getScheduleonly() -> [ConfigurationSchedule] {
-        let read = PersistentStorageScheduling(profile: self.profile, schedules: self.schedules, configurations: self.configurations)
-        if read.readSchedulesFromPermanentStore() != nil {
-            var schedule = [ConfigurationSchedule]()
-            for dict in read.readSchedulesFromPermanentStore()! {
-                let conf = ConfigurationSchedule(dictionary: dict, log: nil)
-                schedule.append(conf)
-            }
-            return schedule
-        } else {
-            return []
         }
     }
     

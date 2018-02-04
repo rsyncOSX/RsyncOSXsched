@@ -188,7 +188,10 @@ extension ViewController: ErrorOutput {
     func erroroutput() {
         //
     }
-    
-    
 }
 
+extension ViewController: RsyncError {
+    func rsyncerror() {
+        //
+    }
+}
