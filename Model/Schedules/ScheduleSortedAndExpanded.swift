@@ -182,6 +182,6 @@ class ScheduleSortedAndExpand {
             self.setallscheduledtasksNSDictionary()
             self.sortAndExpandScheduleTasks()
         }
-        self.tools = Tools(configurations: configurations!)
+        self.tools = Tools(configurations: configurations)
     }
 }

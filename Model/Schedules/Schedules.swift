@@ -10,13 +10,6 @@
 import Foundation
 import Cocoa
 
-// Protocol for returning object configurations data
-protocol GetSchedulesObject: class {
-    func getschedulesobject() -> Schedules?
-    func createschedulesobject(profile: String?) -> Schedules?
-    func reloadschedulesobject()
-}
-
 class Schedules: ScheduleWriteLoggData {
 
     var scheduledTasks: NSDictionary?
@@ -28,49 +21,6 @@ class Schedules: ScheduleWriteLoggData {
     func getSchedule() -> [ConfigurationSchedule] {
         return self.schedules ?? []
     }
-
-    /// Function reads all Schedule data for one task by hiddenID
-    /// - parameter hiddenID : hiddenID for task
-    /// - returns : array of Schedules sorted after startDate
-    func readscheduleonetask (_ hiddenID: Int?) -> [NSMutableDictionary]? {
-        guard hiddenID != nil else { return nil }
-        var row: NSMutableDictionary
-        var data = [NSMutableDictionary]()
-        for i in 0 ..< self.schedules!.count {
-            if self.schedules![i].hiddenID == hiddenID {
-                row = [
-                    "dateStart": self.schedules![i].dateStart,
-                    "stopCellID": 0,
-                    "deleteCellID": 0,
-                    "dateStop": "",
-                    "schedule": self.schedules![i].schedule,
-                    "hiddenID": schedules![i].hiddenID,
-                    "numberoflogs": String(schedules![i].logrecords.count)
-                ]
-                if self.schedules![i].dateStop == nil {
-                    row.setValue("no stop date", forKey: "dateStop")
-                } else {
-                    row.setValue(self.schedules![i].dateStop, forKey: "dateStop")
-                }
-                if self.schedules![i].schedule == "stopped" {
-                    row.setValue(1, forKey: "stopCellID")
-                }
-                data.append(row)
-            }
-            // Sorting schedule after dateStart, last startdate on top
-            data.sort { (sched1, sched2) -> Bool in
-                let dateformatter = Tools(configurations: self.configurations!).setDateformat()
-                if dateformatter.date(from: (sched1.value(forKey: "dateStart") as? String)!)! >
-                    dateformatter.date(from: (sched2.value(forKey: "dateStart") as? String)!)! {
-                    return true
-                } else {
-                    return false
-                }
-            }
-        }
-        return data
-    }
-
 
     // Check if hiddenID is in Scheduled tasks
     func hiddenIDinSchedule(_ hiddenID: Int) -> Bool {

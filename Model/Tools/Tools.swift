@@ -68,60 +68,6 @@ final class Tools {
         return dateformatter
     }
 
-    // Getting the structure for test connection
-    func gettestAllremoteserverConnections() -> [Bool]? {
-        return self.indexBoolremoteserverOff
-    }
-
-    // Function to verify full rsyncpath
-    func verifyrsyncpath() {
-        let fileManager = FileManager.default
-        let path: String?
-        // If not in /usr/bin or /usr/local/bin
-        // rsyncPath is set if none of the above
-        if let rsyncPath = ViewControllerReference.shared.rsyncPath {
-            path = rsyncPath + ViewControllerReference.shared.rsync
-        } else if ViewControllerReference.shared.rsyncVer3 {
-            path = "/usr/local/bin/" + ViewControllerReference.shared.rsync
-        } else {
-            path = "/usr/bin/" + ViewControllerReference.shared.rsync
-        }
-        guard ViewControllerReference.shared.rsyncVer3 == true else {
-            ViewControllerReference.shared.norsync = false
-            self.verifyrsyncDelegate?.verifyrsync()
-            return
-        }
-        if fileManager.fileExists(atPath: path!) == false {
-            ViewControllerReference.shared.norsync = true
-        } else {
-            ViewControllerReference.shared.norsync = false
-        }
-        self.verifyrsyncDelegate?.verifyrsync()
-    }
-
-    // Display the correct command to execute
-    // Used for displaying the commands only
-    func rsyncpathtodisplay(index: Int, dryRun: Bool) -> String {
-        var str: String?
-        let config = self.configurations!.getargumentAllConfigurations()[index] as? ArgumentsOneConfiguration
-        if dryRun {
-            str = self.rsyncpath() + " "
-            if let count = config?.argdryRunDisplay?.count {
-                for i in 0 ..< count {
-                    str = str! + (config?.argdryRunDisplay![i])!
-                }
-            }
-        } else {
-            str = self.rsyncpath() + " "
-            if let count = config?.argDisplay?.count {
-                for i in 0 ..< count {
-                    str = str! + (config?.argDisplay![i])!
-                }
-            }
-        }
-        return str!
-    }
-
     /// Function returns the correct path for rsync
     /// according to configuration set by user or
     /// default value.
@@ -243,7 +189,7 @@ final class Tools {
         return result ?? ""
     }
 
-    init(configurations: Configurations) {
+    init(configurations: Configurations?) {
         self.configurations = configurations
     }
 }

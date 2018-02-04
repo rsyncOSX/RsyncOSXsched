@@ -11,11 +11,13 @@ import Cocoa
 class ViewController: NSViewController {
     
     var configurations: Configurations?
+    var schedule: Schedules?
+    var profile = "RsyncOSXtest"
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
         ViewControllerReference.shared.viewControllermain = self
-        self.configurations = Configurations(profile: nil)
+        self.configurations = Configurations(profile: self.profile)
 	}
 
 	override var representedObject: Any? {
