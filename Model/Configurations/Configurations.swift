@@ -22,6 +22,14 @@ enum ArgumentsRsync {
     case argdryRun
 }
 
+// Enum which resource to return
+enum ResourceInConfiguration {
+    case remoteCatalog
+    case localCatalog
+    case offsiteServer
+    case task
+}
+
 class Configurations {
 
     // Storage API
@@ -141,6 +149,25 @@ class Configurations {
         self.configurations![index].snapshotnum  = num + 1
     }
 
+    func getResourceConfiguration(_ hiddenID: Int, resource: ResourceInConfiguration) -> String {
+        var result = self.configurations!.filter({return ($0.hiddenID == hiddenID)})
+        guard result.count > 0 else { return "" }
+        switch resource {
+        case .localCatalog:
+            return result[0].localCatalog
+        case .remoteCatalog:
+            return result[0].offsiteCatalog
+        case .offsiteServer:
+            if result[0].offsiteServer.isEmpty {
+                return "localhost"
+            } else {
+                return result[0].offsiteServer
+            }
+        case .task:
+            return result[0].task
+        }
+    }
+    
     /// Function is reading all Configurations into memory from permanent store and
     /// prepare all arguments for rsync. All configurations are stored in the private
     /// variable within object.

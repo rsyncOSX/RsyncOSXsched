@@ -12,6 +12,7 @@ final class PersistentStorageAPI {
 
     var profile: String?
     private var configurations: Configurations?
+    private var schedules: Schedules?
 
     // CONFIGURATIONS
 
@@ -40,19 +41,19 @@ final class PersistentStorageAPI {
 
 
     // SCHEDULE
-    /*
+    
     // Saving Schedules from memory to persistent store
     func saveScheduleFromMemory() {
-        let store = PersistentStorageScheduling(profile: self.profile)
+        let store = PersistentStorageScheduling(profile: self.profile, schedules: self.schedules, configurations: self.configurations)
         store.savescheduleInMemoryToPersistentStore()
         // Kick off next task
-        self.startnexttask()
+        // self.startnexttask()
     }
 
     // Read schedules and history
     // If no Schedule from persistent store return nil
     func getScheduleandhistory () -> [ConfigurationSchedule]? {
-        let read = PersistentStorageScheduling(profile: self.profile)
+        let read = PersistentStorageScheduling(profile: self.profile, schedules: self.schedules, configurations: self.configurations)
         var schedule = [ConfigurationSchedule]()
         // Either read from persistent store or
         // return Schedule already in memory
@@ -77,7 +78,7 @@ final class PersistentStorageAPI {
     // Readig schedules only (not sorted and expanden)
     // Sorted and expanded are only stored in memory
     func getScheduleonly () -> [ConfigurationSchedule] {
-        let read = PersistentStorageScheduling(profile: self.profile)
+        let read = PersistentStorageScheduling(profile: self.profile, schedules: self.schedules, configurations: self.configurations)
         if read.readSchedulesFromPermanentStore() != nil {
             var schedule = [ConfigurationSchedule]()
             for dict in read.readSchedulesFromPermanentStore()! {
@@ -89,7 +90,7 @@ final class PersistentStorageAPI {
             return []
         }
     }
-    */
+    
     // USERCONFIG
 
     func getUserconfiguration (readfromstorage: Bool) -> [NSDictionary]? {
@@ -97,8 +98,9 @@ final class PersistentStorageAPI {
         return store.readUserconfigurationsFromPermanentStore()
     }
 
-    init(profile: String?, configurations: Configurations?) {
+    init(profile: String?, configurations: Configurations?, schedules: Schedules?) {
         self.profile = profile
         self.configurations = configurations
+        self.schedules = schedules
     }
 }
