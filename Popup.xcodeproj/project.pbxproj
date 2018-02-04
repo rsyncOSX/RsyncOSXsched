@@ -14,6 +14,11 @@
 		94E0FC4E1BD7FCBE00A3C537 /* EventMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94E0FC4D1BD7FCBE00A3C537 /* EventMonitor.swift */; };
 		E98398AE20260E9D00C977C3 /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = E98398AC20260E9D00C977C3 /* Configuration.swift */; };
 		E98398AF20260E9D00C977C3 /* Configurations.swift in Sources */ = {isa = PBXBuildFile; fileRef = E98398AD20260E9D00C977C3 /* Configurations.swift */; };
+		E9F54D752026D5D500A664CF /* ArgumentsOneConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9F54D742026D5D500A664CF /* ArgumentsOneConfiguration.swift */; };
+		E9F54D772026D62000A664CF /* Tools.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9F54D762026D61F00A664CF /* Tools.swift */; };
+		E9F54D792026D68D00A664CF /* ViewControllerReference.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9F54D782026D68D00A664CF /* ViewControllerReference.swift */; };
+		E9F54D7B2026D7D400A664CF /* RsyncParametersProcess.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9F54D7A2026D7D400A664CF /* RsyncParametersProcess.swift */; };
+		E9F54D7D2026D83500A664CF /* CompleteScheduledOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9F54D7C2026D83500A664CF /* CompleteScheduledOperation.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +31,11 @@
 		94E0FC4D1BD7FCBE00A3C537 /* EventMonitor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventMonitor.swift; sourceTree = "<group>"; };
 		E98398AC20260E9D00C977C3 /* Configuration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Configuration.swift; sourceTree = "<group>"; };
 		E98398AD20260E9D00C977C3 /* Configurations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Configurations.swift; sourceTree = "<group>"; };
+		E9F54D742026D5D500A664CF /* ArgumentsOneConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArgumentsOneConfiguration.swift; sourceTree = "<group>"; };
+		E9F54D762026D61F00A664CF /* Tools.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tools.swift; sourceTree = "<group>"; };
+		E9F54D782026D68D00A664CF /* ViewControllerReference.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewControllerReference.swift; sourceTree = "<group>"; };
+		E9F54D7A2026D7D400A664CF /* RsyncParametersProcess.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RsyncParametersProcess.swift; sourceTree = "<group>"; };
+		E9F54D7C2026D83500A664CF /* CompleteScheduledOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CompleteScheduledOperation.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,6 +84,11 @@
 			children = (
 				E98398AC20260E9D00C977C3 /* Configuration.swift */,
 				E98398AD20260E9D00C977C3 /* Configurations.swift */,
+				E9F54D742026D5D500A664CF /* ArgumentsOneConfiguration.swift */,
+				E9F54D7A2026D7D400A664CF /* RsyncParametersProcess.swift */,
+				E9F54D762026D61F00A664CF /* Tools.swift */,
+				E9F54D782026D68D00A664CF /* ViewControllerReference.swift */,
+				E9F54D7C2026D83500A664CF /* CompleteScheduledOperation.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -152,8 +167,13 @@
 			files = (
 				94E0FC4E1BD7FCBE00A3C537 /* EventMonitor.swift in Sources */,
 				E98398AF20260E9D00C977C3 /* Configurations.swift in Sources */,
+				E9F54D7B2026D7D400A664CF /* RsyncParametersProcess.swift in Sources */,
+				E9F54D752026D5D500A664CF /* ArgumentsOneConfiguration.swift in Sources */,
 				94E0FC411BD7FC3600A3C537 /* ViewController.swift in Sources */,
+				E9F54D772026D62000A664CF /* Tools.swift in Sources */,
+				E9F54D7D2026D83500A664CF /* CompleteScheduledOperation.swift in Sources */,
 				E98398AE20260E9D00C977C3 /* Configuration.swift in Sources */,
+				E9F54D792026D68D00A664CF /* ViewControllerReference.swift in Sources */,
 				94E0FC3F1BD7FC3600A3C537 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
