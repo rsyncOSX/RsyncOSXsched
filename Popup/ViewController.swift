@@ -10,9 +10,9 @@ import Cocoa
 
 class ViewController: NSViewController {
     
-    var configurations: Configurations?
-    var schedules: Schedules?
-    var schedulessortedandexpanded: ScheduleSortedAndExpand?
+    weak var configurations: Configurations?
+    weak var schedules: Schedules?
+    weak var schedulessortedandexpanded: ScheduleSortedAndExpand?
     
     var profile = "RsyncOSXtest"
 
