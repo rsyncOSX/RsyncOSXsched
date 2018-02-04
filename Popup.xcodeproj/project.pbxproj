@@ -19,6 +19,13 @@
 		E9F54D792026D68D00A664CF /* ViewControllerReference.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9F54D782026D68D00A664CF /* ViewControllerReference.swift */; };
 		E9F54D7B2026D7D400A664CF /* RsyncParametersProcess.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9F54D7A2026D7D400A664CF /* RsyncParametersProcess.swift */; };
 		E9F54D7D2026D83500A664CF /* CompleteScheduledOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9F54D7C2026D83500A664CF /* CompleteScheduledOperation.swift */; };
+		E9F54D7F2026DA8B00A664CF /* OutputProcess.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9F54D7E2026DA8A00A664CF /* OutputProcess.swift */; };
+		E9F54D812026DAFD00A664CF /* PersistentStorageAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9F54D802026DAFD00A664CF /* PersistentStorageAPI.swift */; };
+		E9F54D832026DBD700A664CF /* PersistentStorageConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9F54D822026DBD600A664CF /* PersistentStorageConfiguration.swift */; };
+		E9F54D852026DC5D00A664CF /* Readwritefiles.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9F54D842026DC5D00A664CF /* Readwritefiles.swift */; };
+		E9F54D872026DCC800A664CF /* Profiles.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9F54D862026DCC800A664CF /* Profiles.swift */; };
+		E9F54D892026DCCF00A664CF /* Files.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9F54D882026DCCF00A664CF /* Files.swift */; };
+		E9F54D8B2026DED600A664CF /* PersistentStorageUserconfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9F54D8A2026DED600A664CF /* PersistentStorageUserconfiguration.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +43,13 @@
 		E9F54D782026D68D00A664CF /* ViewControllerReference.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewControllerReference.swift; sourceTree = "<group>"; };
 		E9F54D7A2026D7D400A664CF /* RsyncParametersProcess.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RsyncParametersProcess.swift; sourceTree = "<group>"; };
 		E9F54D7C2026D83500A664CF /* CompleteScheduledOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CompleteScheduledOperation.swift; sourceTree = "<group>"; };
+		E9F54D7E2026DA8A00A664CF /* OutputProcess.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OutputProcess.swift; sourceTree = "<group>"; };
+		E9F54D802026DAFD00A664CF /* PersistentStorageAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersistentStorageAPI.swift; sourceTree = "<group>"; };
+		E9F54D822026DBD600A664CF /* PersistentStorageConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersistentStorageConfiguration.swift; sourceTree = "<group>"; };
+		E9F54D842026DC5D00A664CF /* Readwritefiles.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Readwritefiles.swift; sourceTree = "<group>"; };
+		E9F54D862026DCC800A664CF /* Profiles.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Profiles.swift; sourceTree = "<group>"; };
+		E9F54D882026DCCF00A664CF /* Files.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Files.swift; sourceTree = "<group>"; };
+		E9F54D8A2026DED600A664CF /* PersistentStorageUserconfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersistentStorageUserconfiguration.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,7 +98,14 @@
 			children = (
 				E98398AC20260E9D00C977C3 /* Configuration.swift */,
 				E98398AD20260E9D00C977C3 /* Configurations.swift */,
+				E9F54D7E2026DA8A00A664CF /* OutputProcess.swift */,
 				E9F54D742026D5D500A664CF /* ArgumentsOneConfiguration.swift */,
+				E9F54D802026DAFD00A664CF /* PersistentStorageAPI.swift */,
+				E9F54D822026DBD600A664CF /* PersistentStorageConfiguration.swift */,
+				E9F54D8A2026DED600A664CF /* PersistentStorageUserconfiguration.swift */,
+				E9F54D842026DC5D00A664CF /* Readwritefiles.swift */,
+				E9F54D882026DCCF00A664CF /* Files.swift */,
+				E9F54D862026DCC800A664CF /* Profiles.swift */,
 				E9F54D7A2026D7D400A664CF /* RsyncParametersProcess.swift */,
 				E9F54D762026D61F00A664CF /* Tools.swift */,
 				E9F54D782026D68D00A664CF /* ViewControllerReference.swift */,
@@ -168,13 +189,20 @@
 				94E0FC4E1BD7FCBE00A3C537 /* EventMonitor.swift in Sources */,
 				E98398AF20260E9D00C977C3 /* Configurations.swift in Sources */,
 				E9F54D7B2026D7D400A664CF /* RsyncParametersProcess.swift in Sources */,
+				E9F54D852026DC5D00A664CF /* Readwritefiles.swift in Sources */,
 				E9F54D752026D5D500A664CF /* ArgumentsOneConfiguration.swift in Sources */,
+				E9F54D8B2026DED600A664CF /* PersistentStorageUserconfiguration.swift in Sources */,
 				94E0FC411BD7FC3600A3C537 /* ViewController.swift in Sources */,
+				E9F54D812026DAFD00A664CF /* PersistentStorageAPI.swift in Sources */,
 				E9F54D772026D62000A664CF /* Tools.swift in Sources */,
+				E9F54D7F2026DA8B00A664CF /* OutputProcess.swift in Sources */,
+				E9F54D892026DCCF00A664CF /* Files.swift in Sources */,
+				E9F54D872026DCC800A664CF /* Profiles.swift in Sources */,
 				E9F54D7D2026D83500A664CF /* CompleteScheduledOperation.swift in Sources */,
 				E98398AE20260E9D00C977C3 /* Configuration.swift in Sources */,
 				E9F54D792026D68D00A664CF /* ViewControllerReference.swift in Sources */,
 				94E0FC3F1BD7FC3600A3C537 /* AppDelegate.swift in Sources */,
+				E9F54D832026DBD700A664CF /* PersistentStorageConfiguration.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

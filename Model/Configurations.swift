@@ -16,20 +16,22 @@
 import Foundation
 import Cocoa
 
+// Used to select argument
+enum ArgumentsRsync {
+    case arg
+    case argdryRun
+}
+
 class Configurations {
 
     // Storage API
     var storageapi: PersistentStorageAPI?
     // reference to Process, used for kill in executing task
     var process: Process?
-    // Kind of Operation method. eiher Timer or DispatchWork
-    var operation: OperationObject = .dispatch
     private var profile: String?
     // Notify about scheduled process
     // Only allowed to notity by modal window when in main view
     var allowNotifyinMain: Bool = true
-    // Reference to singletask object
-    var singleTask: SingleTask?
     // The main structure storing all Configurations for tasks
     private var configurations: [Configuration]?
     // Array to store argumenst for all tasks.
@@ -174,7 +176,7 @@ class Configurations {
             self.increasesnapshotnum(index: index)
         }
         let currendate = Date()
-        let dateformatter = Tools().setDateformat()
+        let dateformatter = Tools(configurations: self).setDateformat()
         self.configurations![index].dateRun = dateformatter.string(from: currendate)
         // Saving updated configuration in memory to persistent store
         self.storageapi!.saveConfigFromMemory()
@@ -270,12 +272,12 @@ class Configurations {
         self.configurationsDataSource = data
     }
 
-    init(profile: String?, viewcontroller: NSViewController) {
+    init(profile: String?) {
         self.configurations = nil
         self.argumentAllConfigurations = nil
         self.configurationsDataSource = nil
         self.profile = profile
-        self.storageapi = PersistentStorageAPI(profile: self.profile)
+        self.storageapi = PersistentStorageAPI(profile: self.profile, configurations: self)
         self.readconfigurations()
     }
 }
