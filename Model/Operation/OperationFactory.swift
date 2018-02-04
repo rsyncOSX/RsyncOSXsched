@@ -40,6 +40,12 @@ protocol Sendprocessreference: class {
     func sendoutputprocessreference(outputprocess: OutputProcess?)
 }
 
+// Protocol for starting next scheduled job
+protocol StartNextTask: class {
+    // func startanyscheduledtask()
+    func startfirstcheduledtask()
+}
+
 extension SecondsBeforeStart {
         
     // Calculation of time to a spesific date
@@ -74,7 +80,7 @@ class OperationFactory {
 
     var operationDispatch: ScheduleOperationDispatch?
 
-    init(configurations: Configurations, schedules: Schedules?) {
+    init(configurations: Configurations?, schedules: Schedules?) {
         self.operationDispatch = ScheduleOperationDispatch(schedules: schedules, configurations: configurations)
     }
 

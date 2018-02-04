@@ -19,10 +19,15 @@ class ViewController: NSViewController {
 	override func viewDidLoad() {
 		super.viewDidLoad()
         ViewControllerReference.shared.viewControllermain = self
+	}
+    
+    override func viewDidAppear() {
+        super.viewDidAppear()
         self.configurations = Configurations(profile: self.profile)
         self.schedules = Schedules(profile: self.profile, configuration: self.configurations)
         self.schedulessortedandexpanded = ScheduleSortedAndExpand(schedules: self.schedules, configurations: self.configurations)
-	}
+        self.startfirstcheduledtask()
+    }
 
 	override var representedObject: Any? {
 		didSet {
@@ -34,6 +39,14 @@ class ViewController: NSViewController {
 		NSApp.terminate(self)
 	}
 
+}
+
+extension ViewController: StartNextTask {
+    func startfirstcheduledtask() {
+        // Cancel any schedeuled tasks first
+        ViewControllerReference.shared.dispatchTaskWaiting?.cancel()
+        _ = OperationFactory(configurations: self.configurations, schedules: self.schedules)
+    }
 }
 
 extension ViewController: ScheduledTaskWorking {
@@ -48,7 +61,6 @@ extension ViewController: ScheduledTaskWorking {
     func notifyScheduledTask(config: Configuration?) {
         //
     }
-
 }
 
 extension ViewController: Sendprocessreference {
@@ -59,7 +71,5 @@ extension ViewController: Sendprocessreference {
     func sendoutputprocessreference(outputprocess: OutputProcess?) {
         //
     }
-    
-    
 }
 
