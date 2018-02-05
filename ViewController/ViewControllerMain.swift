@@ -53,7 +53,7 @@ protocol UpdateProgress: class {
     func fileHandler()
 }
 
-class ViewController: NSViewController, Coloractivetask {
+class ViewControllerMain: NSViewController, Coloractivetask {
     
     @IBOutlet weak var mainTableView: NSTableView!
     var configurations: Configurations?
@@ -95,14 +95,14 @@ class ViewController: NSViewController, Coloractivetask {
     
 }
 
-extension ViewController: NSTableViewDataSource {
+extension ViewControllerMain: NSTableViewDataSource {
     // Delegate for size of table
     func numberOfRows(in tableView: NSTableView) -> Int {
         return self.configurations?.getConfigurationsDataSourcecountBackup()?.count ?? 0
     }
 }
 
-extension ViewController: NSTableViewDelegate, Attributedestring {
+extension ViewControllerMain: NSTableViewDelegate, Attributedestring {
     
     func tableView(_ tableView: NSTableView, objectValueFor tableColumn: NSTableColumn?, row: Int) -> Any? {
         guard row < self.configurations!.getConfigurationsDataSourcecountBackup()!.count  else { return nil }
@@ -145,7 +145,7 @@ extension ViewController: NSTableViewDelegate, Attributedestring {
 }
 
 
-extension ViewController: StartNextTask {
+extension ViewControllerMain: StartNextTask {
     func startfirstcheduledtask() {
         // Cancel any schedeuled tasks first
         ViewControllerReference.shared.dispatchTaskWaiting?.cancel()
@@ -154,7 +154,7 @@ extension ViewController: StartNextTask {
     }
 }
 
-extension ViewController: ScheduledTaskWorking {
+extension ViewControllerMain: ScheduledTaskWorking {
     func start() {
         //
     }
@@ -168,7 +168,7 @@ extension ViewController: ScheduledTaskWorking {
     }
 }
 
-extension ViewController: Sendprocessreference {
+extension ViewControllerMain: Sendprocessreference {
     func sendprocessreference(process: Process?) {
         ViewControllerReference.shared.process = process
     }
@@ -178,7 +178,7 @@ extension ViewController: Sendprocessreference {
     }
 }
 
-extension ViewController: UpdateProgress {
+extension ViewControllerMain: UpdateProgress {
     func processTermination() {
         //
     }
@@ -188,19 +188,19 @@ extension ViewController: UpdateProgress {
     }
 }
 
-extension ViewController: ErrorOutput {
+extension ViewControllerMain: ErrorOutput {
     func erroroutput() {
         //
     }
 }
 
-extension ViewController: RsyncError {
+extension ViewControllerMain: RsyncError {
     func rsyncerror() {
         //
     }
 }
 
-extension ViewController: Fileerror {
+extension ViewControllerMain: Fileerror {
     func fileerror(errorstr: String, errortype: Fileerrortype) {
         //
     }

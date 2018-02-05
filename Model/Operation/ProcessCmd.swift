@@ -119,6 +119,6 @@ class ProcessCmd: Delay {
         self.command = command
         self.arguments = arguments
         self.configurations = configurations
-        self.possibleerrorDelegate = ViewControllerReference.shared.viewControllermain as? ViewController
+        self.possibleerrorDelegate = ViewControllerReference.shared.viewControllermain as? ViewControllerMain
     }
 }

@@ -28,10 +28,7 @@ class ExecuteTaskDispatch: SetScheduledTask {
                 let getconfigurations: [Configuration]? = configurations?.getConfigurations()
                 guard getconfigurations != nil else { return }
                 let configArray = getconfigurations!.filter({return ($0.hiddenID == hiddenID)})
-                guard configArray.count > 0 else {
-                    // self.notify(config: nil)
-                    return
-                }
+                guard configArray.count > 0 else { return }
                 config = configArray[0]
                 // Inform and notify
                 self.scheduleJob?.start()
@@ -43,7 +40,7 @@ class ExecuteTaskDispatch: SetScheduledTask {
                     globalMainQueue.async(execute: {
                         if self.arguments != nil {
                             weak var sendprocess: Sendprocessreference?
-                            sendprocess = ViewControllerReference.shared.viewControllermain as? ViewController
+                            sendprocess = ViewControllerReference.shared.viewControllermain as? ViewControllerMain
                             let process = RsyncScheduled(arguments: self.arguments, configuration: configurations)
                             process.executeProcess(outputprocess: self.outputprocess)
                             sendprocess?.sendprocessreference(process: process.getProcess())

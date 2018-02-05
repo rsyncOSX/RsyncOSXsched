@@ -648,10 +648,10 @@
             </objects>
             <point key="canvasLocation" x="-5" y="-346"/>
         </scene>
-        <!--View Controller-->
+        <!--View Controller Main-->
         <scene sceneID="hIz-AP-VOD">
             <objects>
-                <viewController storyboardIdentifier="ViewControllerId" id="XfG-lQ-9wD" customClass="ViewController" customModule="RsyncOSXsched" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ViewControllerId" id="XfG-lQ-9wD" customClass="ViewControllerMain" customModule="RsyncOSXsched" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="m2S-Jp-Qdl">
                         <rect key="frame" x="0.0" y="0.0" width="856" height="399"/>
                         <autoresizingMask key="autoresizingMask"/>

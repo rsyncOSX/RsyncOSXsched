@@ -50,7 +50,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         if let userConfiguration =  storage?.getUserconfiguration(readfromstorage: true) {
             _ = Userconfiguration(userconfigRsyncOSX: userConfiguration)
         }
-		
 		if let button = self.statusItem.button {
 			button.image = NSImage(named: NSImage.Name(rawValue: "StatusBarButtonImage"))
 			button.action = #selector(AppDelegate.togglePopover(_:))

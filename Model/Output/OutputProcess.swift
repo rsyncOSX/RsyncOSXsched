@@ -76,7 +76,7 @@ final class OutputProcess {
                 out.append(self.output![i])
                 let error = self.output![i].contains("rsync error:")
                 if error {
-                    self.errorDelegate = ViewControllerReference.shared.viewControllermain as? ViewController
+                    self.errorDelegate = ViewControllerReference.shared.viewControllermain as? ViewControllerMain
                     self.errorDelegate?.rsyncerror()
                 }
             }

@@ -27,7 +27,7 @@ protocol SetScheduledTask {
 
 extension SetScheduledTask {
     weak var scheduleJob: ScheduledTaskWorking? {
-        return ViewControllerReference.shared.viewControllermain as? ViewController
+        return ViewControllerReference.shared.viewControllermain as? ViewControllerMain
     }
     
     func notify(config: Configuration?) {

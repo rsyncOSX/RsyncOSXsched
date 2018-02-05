@@ -27,7 +27,7 @@ protocol Reportfileerror {
 
 extension Reportfileerror {
     weak var errorDelegate: Fileerror? {
-        return ViewControllerReference.shared.viewControllermain as? ViewController
+        return ViewControllerReference.shared.viewControllermain as? ViewControllerMain
     }
     
     func error(error: String, errortype: Fileerrortype) {
