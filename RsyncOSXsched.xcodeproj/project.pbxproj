@@ -91,6 +91,7 @@
 			isa = PBXGroup;
 			children = (
 				E95AB5602028506000D77CDE /* RsyncOSXsched */,
+				E97983B3202878B9003ADB25 /* ViewController */,
 				E98398A720260D0300C977C3 /* Model */,
 				94E0FC3D1BD7FC3600A3C537 /* Popup */,
 				94E0FC3C1BD7FC3600A3C537 /* Products */,
@@ -108,7 +109,6 @@
 		94E0FC3D1BD7FC3600A3C537 /* Popup */ = {
 			isa = PBXGroup;
 			children = (
-				94E0FC471BD7FC3600A3C537 /* Info.plist */,
 			);
 			path = Popup;
 			sourceTree = "<group>";
@@ -212,13 +212,21 @@
 		E95AB5602028506000D77CDE /* RsyncOSXsched */ = {
 			isa = PBXGroup;
 			children = (
-				94E0FC401BD7FC3600A3C537 /* ViewController.swift */,
+				94E0FC471BD7FC3600A3C537 /* Info.plist */,
 				94E0FC441BD7FC3600A3C537 /* Main.storyboard */,
 				94E0FC421BD7FC3600A3C537 /* Assets.xcassets */,
-				94E0FC4D1BD7FCBE00A3C537 /* EventMonitor.swift */,
-				94E0FC3E1BD7FC3600A3C537 /* AppDelegate.swift */,
 			);
 			path = RsyncOSXsched;
+			sourceTree = "<group>";
+		};
+		E97983B3202878B9003ADB25 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				94E0FC4D1BD7FCBE00A3C537 /* EventMonitor.swift */,
+				94E0FC3E1BD7FC3600A3C537 /* AppDelegate.swift */,
+				94E0FC401BD7FC3600A3C537 /* ViewController.swift */,
+			);
+			path = ViewController;
 			sourceTree = "<group>";
 		};
 		E98398A720260D0300C977C3 /* Model */ = {
