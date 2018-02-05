@@ -93,7 +93,6 @@
 				E95AB5602028506000D77CDE /* RsyncOSXsched */,
 				E97983B3202878B9003ADB25 /* ViewController */,
 				E98398A720260D0300C977C3 /* Model */,
-				94E0FC3D1BD7FC3600A3C537 /* Popup */,
 				94E0FC3C1BD7FC3600A3C537 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -104,13 +103,6 @@
 				94E0FC3B1BD7FC3600A3C537 /* RsyncOSXsched.app */,
 			);
 			name = Products;
-			sourceTree = "<group>";
-		};
-		94E0FC3D1BD7FC3600A3C537 /* Popup */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Popup;
 			sourceTree = "<group>";
 		};
 		E91C5DBA2026F80C00FE7E76 /* Schedules */ = {
@@ -469,7 +461,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = 93M47F4H9T;
-				INFOPLIST_FILE = Popup/Info.plist;
+				INFOPLIST_FILE = RsyncOSXsched/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = no.blogspot.RsyncOSX;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -487,7 +479,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = 93M47F4H9T;
-				INFOPLIST_FILE = Popup/Info.plist;
+				INFOPLIST_FILE = RsyncOSXsched/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = no.blogspot.RsyncOSX;
 				PRODUCT_NAME = "$(TARGET_NAME)";
