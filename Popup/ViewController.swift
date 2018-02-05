@@ -59,6 +59,7 @@ class ViewController: NSViewController, Coloractivetask {
     var configurations: Configurations?
     var schedules: Schedules?
     var schedulessortedandexpanded: ScheduleSortedAndExpand?
+    private var outputprocess: OutputProcess?
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
@@ -144,6 +145,7 @@ extension ViewController: StartNextTask {
         // Cancel any schedeuled tasks first
         ViewControllerReference.shared.dispatchTaskWaiting?.cancel()
         _ = OperationFactory(configurations: self.configurations, schedules: self.schedules)
+        ViewControllerReference.shared.scheduledTask = self.schedulessortedandexpanded?.allscheduledtasks()
     }
 }
 
@@ -163,11 +165,11 @@ extension ViewController: ScheduledTaskWorking {
 
 extension ViewController: Sendprocessreference {
     func sendprocessreference(process: Process?) {
-        //
+        ViewControllerReference.shared.process = process
     }
     
     func sendoutputprocessreference(outputprocess: OutputProcess?) {
-        //
+        self.outputprocess = outputprocess
     }
 }
 

@@ -19,13 +19,12 @@ class ViewControllerReference {
         }
         return Singleton.instance
     }
+    // Proess reference
+    var process: Process?
     // Reference to waiting tasks, required for cancel task
-    var timerTaskWaiting: Timer?
     var dispatchTaskWaiting: DispatchWorkItem?
     // Temporary storage of the first scheduled task
     var scheduledTask: NSDictionary?
-    // Download URL if new version is avaliable
-    var URLnewVersion: String?
     // True if version 3.2.1 of rsync in /usr/local/bin
     var rsyncVer3: Bool = false
     // Optional path to rsync
@@ -48,14 +47,6 @@ class ViewControllerReference {
     var minimumlogging: Bool = false
     var fulllogging: Bool = false
     var logname: String = "rsynclog"
-    var fileURL: URL?
-    // Mark number of days since last backup
-    var marknumberofdayssince: Double = 5
-    // rsync version string
-    var rsyncversionstring: String?
-    // rsync short version
-    var rsyncversionshort: String?
-    // Reference to main View
     var viewControllermain: NSViewController?
     // Load data
     var loaddata: LoadData?
