@@ -12,7 +12,6 @@ final class PersistentStorageUserconfiguration: Readwritefiles {
 
     /// Variable holds all configuration data
     private var userconfiguration: [NSDictionary]?
-    private var configurations: Configurations?
 
     /// Function reads configurations from permanent store
     /// - returns : array of NSDictonarys, return might be nil
@@ -20,9 +19,8 @@ final class PersistentStorageUserconfiguration: Readwritefiles {
         return self.userconfiguration
     }
 
-    init (readfromstorage: Bool, configurations: Configurations?) {
-        super.init(task: .userconfig, profile: nil, configurations: configurations)
-        self.configurations = configurations
+    init (readfromstorage: Bool) {
+        super.init(task: .userconfig, profile: nil)
         if readfromstorage {
             self.userconfiguration = self.getDatafromfile()
         }

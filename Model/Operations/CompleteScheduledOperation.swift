@@ -11,7 +11,7 @@ import Foundation
 
 // Class for completion of Operation objects when Process object termination.
 // The object does also kicks of next scheduled job by setting new waiter time.
-final class CompleteScheduledOperation: SetScheduledTask {
+final class CompleteScheduledOperation: SetScheduledTask, SetConfigurations, SetSchedules {
 
     // weak var startTimerDelegate: StartTimer?
     private var date: Date?
@@ -20,9 +20,6 @@ final class CompleteScheduledOperation: SetScheduledTask {
     private var hiddenID: Int?
     private var schedule: String?
     private var index: Int?
-    private var configurations: Configurations?
-    private var schedules: Schedules?
-
     
     // Function for finalizing the Scheduled job
     // The Operation object sets reference to the completeScheduledOperation in self.schedules!.operation
@@ -31,7 +28,7 @@ final class CompleteScheduledOperation: SetScheduledTask {
         // Write result to Schedule
         let datestring = self.dateformatter!.string(from: date!)
         let dateStartstring = self.dateformatter!.string(from: dateStart!)
-        let number = Numbers(outputprocess: outputprocess, configurations: self.configurations)
+        let number = Numbers(outputprocess: outputprocess)
         let numberstring = number.stats(numberOfFiles: nil, sizeOfFiles: nil)
         self.schedules!.addresultschedule(self.hiddenID!, dateStart: dateStartstring, result: numberstring, date: datestring, schedule: schedule!)
         // Writing timestamp to configuration
@@ -44,11 +41,9 @@ final class CompleteScheduledOperation: SetScheduledTask {
     init (dict: NSDictionary) {
         self.date = dict.value(forKey: "start") as? Date
         self.dateStart = dict.value(forKey: "dateStart") as? Date
-        self.dateformatter = Tools(configurations: configurations).setDateformat()
+        self.dateformatter = Tools().setDateformat()
         self.hiddenID = (dict.value(forKey: "hiddenID") as? Int)!
         self.schedule = dict.value(forKey: "schedule") as? String
-        self.configurations = ViewControllerReference.shared.loaddata?.configurations
-        self.schedules = ViewControllerReference.shared.loaddata?.schedules
         self.index = self.configurations!.getIndex(hiddenID!)
     }
 }

@@ -40,18 +40,17 @@ enum Root {
     case sshRoot
 }
 
-class Files: Reportfileerror {
+class Files: Reportfileerror, SetConfigurations {
 
     var root: Root?
     var rootpath: String?
-    private var configurations: Configurations?
 
     private func setrootpath() {
         switch self.root! {
         case .profileRoot:
             let paths = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true) as NSArray
             let docuDir = (paths.firstObject as? String)!
-            let profilePath = docuDir + ViewControllerReference.shared.configpath + Tools(configurations: self.configurations!).getMacSerialNumber()!
+            let profilePath = docuDir + ViewControllerReference.shared.configpath + Tools().getMacSerialNumber()!
             self.rootpath = profilePath
         case .sshRoot:
             self.rootpath = NSHomeDirectory() + "/.ssh/"
@@ -156,8 +155,7 @@ class Files: Reportfileerror {
         }
     }
 
-    init (root: Root, configurations: Configurations?) {
-        self.configurations = configurations
+    init (root: Root) {
         self.root = root
         self.setrootpath()
     }

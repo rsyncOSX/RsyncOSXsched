@@ -21,7 +21,7 @@ enum WhatToReadWrite {
     case none
 }
 
-class Readwritefiles {
+class Readwritefiles: SetConfigurations {
 
     // Name set for schedule, configuration or config
     private var name: String?
@@ -41,8 +41,6 @@ class Readwritefiles {
     private var filepath: String?
     // Set which file to read
     private var filename: String?
-    
-    private var configurations: Configurations?
 
     private func setnameandpath() {
         let paths = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true) as NSArray
@@ -50,21 +48,16 @@ class Readwritefiles {
         if self.useProfile {
             // Use profile
             if let profile = self.profile {
-                self.filepath = ViewControllerReference.shared.configpath +
-                    Tools(configurations: self.configurations!).getMacSerialNumber()! + "/" + profile + "/"
-                self.filename = docuDir + ViewControllerReference.shared.configpath +
-                    Tools(configurations: self.configurations!).getMacSerialNumber()! + "/" + profile + self.name!
+                self.filepath = ViewControllerReference.shared.configpath + Tools().getMacSerialNumber()! + "/" + profile + "/"
+                self.filename = docuDir + ViewControllerReference.shared.configpath + Tools().getMacSerialNumber()! + "/" + profile + self.name!
             } else {
                 // If profile not set use no profile
-                self.filename = docuDir +  ViewControllerReference.shared.configpath +
-                    Tools(configurations: self.configurations!).getMacSerialNumber()! + self.name!
+                self.filename = docuDir +  ViewControllerReference.shared.configpath + Tools().getMacSerialNumber()! + self.name!
             }
         } else {
             // no profile
-            self.filename = docuDir + ViewControllerReference.shared.configpath +
-                Tools(configurations: self.configurations).getMacSerialNumber()! + self.name!
-            self.filepath = ViewControllerReference.shared.configpath +
-                Tools(configurations: self.configurations).getMacSerialNumber()! + "/"
+            self.filename = docuDir + ViewControllerReference.shared.configpath + Tools().getMacSerialNumber()! + self.name!
+            self.filepath = ViewControllerReference.shared.configpath + Tools().getMacSerialNumber()! + "/"
         }
     }
 
@@ -120,8 +113,7 @@ class Readwritefiles {
         }
     }
 
-    init(task: WhatToReadWrite, profile: String?, configurations: Configurations?) {
-        self.configurations = configurations
+    init(task: WhatToReadWrite, profile: String?) {
         if profile != nil {
             self.profile = profile
             self.useProfile = true

@@ -48,6 +48,4 @@ class ViewControllerReference {
     var fulllogging: Bool = false
     var logname: String = "rsynclog"
     var viewControllermain: NSViewController?
-    // Load data
-    var loaddata: LoadData?
 }

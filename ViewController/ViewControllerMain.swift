@@ -53,6 +53,44 @@ protocol UpdateProgress: class {
     func fileHandler()
 }
 
+// Protocol for returning object Configurations
+protocol GetConfigurationsObject: class {
+    func getconfigurationsobject() -> Configurations?
+}
+
+protocol SetConfigurations {
+    weak var configurationsDelegate: GetConfigurationsObject? { get }
+    var configurations: Configurations? { get }
+}
+
+extension SetConfigurations {
+    weak var configurationsDelegate: GetConfigurationsObject? {
+        return ViewControllerReference.shared.viewControllermain as? ViewControllerMain
+    }
+    var configurations: Configurations? {
+        return self.configurationsDelegate?.getconfigurationsobject()
+    }
+}
+
+// Protocol for returning object configurations data
+protocol GetSchedulesObject: class {
+    func getschedulesobject() -> Schedules?
+}
+
+protocol SetSchedules {
+    weak var schedulesDelegate: GetSchedulesObject? {get}
+    var schedules: Schedules? {get}
+}
+
+extension SetSchedules {
+    weak var schedulesDelegate: GetSchedulesObject? {
+        return ViewControllerReference.shared.viewControllermain as? ViewControllerMain
+    }
+    var schedules: Schedules? {
+        return self.schedulesDelegate?.getschedulesobject()
+    }
+}
+
 class ViewControllerMain: NSViewController, Coloractivetask {
     
     @IBOutlet weak var mainTableView: NSTableView!
@@ -60,15 +98,18 @@ class ViewControllerMain: NSViewController, Coloractivetask {
     var schedules: Schedules?
     var schedulessortedandexpanded: ScheduleSortedAndExpand?
     private var outputprocess: OutputProcess?
+    var profile = "RsyncOSXlite"
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
         self.mainTableView.delegate = self
         self.mainTableView.dataSource = self
-        self.configurations = ViewControllerReference.shared.loaddata?.configurations
-        self.schedules = ViewControllerReference.shared.loaddata?.schedules
-        self.schedulessortedandexpanded = ViewControllerReference.shared.loaddata?.schedulessortedandexpanded
         ViewControllerReference.shared.viewControllermain = self
+        self.configurations = Configurations(profile: self.profile)
+        self.schedules = Schedules(profile: self.profile)
+        self.schedulessortedandexpanded = ScheduleSortedAndExpand()
+        _ = OperationFactory()
+        ViewControllerReference.shared.scheduledTask = self.schedulessortedandexpanded?.allscheduledtasks()
 	}
     
     override func viewDidAppear() {
@@ -91,6 +132,22 @@ class ViewControllerMain: NSViewController, Coloractivetask {
     @IBAction func openRsyncOSX(_ sender: NSButton) {
         NSWorkspace.shared.open(URL(fileURLWithPath: "/Volumes/Home/thomas/Applications/RsyncOSX.app"))
         NSApp.terminate(self)
+    }
+
+    
+    @IBAction func reload(_ sender: NSButton) {
+        self.reloaddata()
+    }
+    
+    private func reloaddata() {
+        self.configurations = Configurations(profile: self.profile)
+        self.schedules = Schedules(profile: self.profile)
+        self.schedulessortedandexpanded = ScheduleSortedAndExpand()
+        _ = OperationFactory()
+        ViewControllerReference.shared.scheduledTask = self.schedulessortedandexpanded?.allscheduledtasks()
+        globalMainQueue.async(execute: { () -> Void in
+            self.mainTableView.reloadData()
+        })
     }
     
 }
@@ -149,7 +206,7 @@ extension ViewControllerMain: StartNextTask {
     func startfirstcheduledtask() {
         // Cancel any schedeuled tasks first
         ViewControllerReference.shared.dispatchTaskWaiting?.cancel()
-        _ = OperationFactory(configurations: self.configurations, schedules: self.schedules)
+        _ = OperationFactory()
         ViewControllerReference.shared.scheduledTask = self.schedulessortedandexpanded?.allscheduledtasks()
     }
 }
@@ -180,7 +237,8 @@ extension ViewControllerMain: Sendprocessreference {
 
 extension ViewControllerMain: UpdateProgress {
     func processTermination() {
-        //
+        ViewControllerReference.shared.completeoperation!.finalizeScheduledJob(outputprocess: self.outputprocess)
+        self.reloaddata()
     }
     
     func fileHandler() {
@@ -203,6 +261,18 @@ extension ViewControllerMain: RsyncError {
 extension ViewControllerMain: Fileerror {
     func fileerror(errorstr: String, errortype: Fileerrortype) {
         //
+    }
+}
+
+extension ViewControllerMain: GetConfigurationsObject {
+    func getconfigurationsobject() -> Configurations? {
+        return self.configurations
+    }
+}
+
+extension ViewControllerMain: GetSchedulesObject {
+    func getschedulesobject() -> Schedules? {
+        return self.schedules
     }
     
     

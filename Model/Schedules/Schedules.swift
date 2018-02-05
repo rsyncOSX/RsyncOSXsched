@@ -14,7 +14,6 @@ class Schedules: ScheduleWriteLoggData {
 
     var scheduledTasks: NSDictionary?
     var profile: String?
-    private var configurations: Configurations?
 
     // Return reference to Schedule data
     // self.Schedule is privat data
@@ -66,11 +65,10 @@ class Schedules: ScheduleWriteLoggData {
         self.schedules = data
     }
 
-    init(profile: String?, configuration: Configurations?) {
-        self.configurations = configuration
-        super.init(configurations: configuration)
+    init(profile: String?) {
+        super.init()
         self.profile = profile
-        self.storageapi = PersistentStorageAPI(profile: self.profile, configurations: configuration, schedules: self)
+        self.storageapi = PersistentStorageAPI(profile: self.profile)
         self.readschedules()
     }
 }

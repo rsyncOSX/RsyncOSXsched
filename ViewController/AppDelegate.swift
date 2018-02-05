@@ -9,28 +9,12 @@
 import Cocoa
 
 
-class LoadData {
-    var profile = "RsyncOSXlite"
-    var configurations: Configurations?
-    var schedules: Schedules?
-    var schedulessortedandexpanded: ScheduleSortedAndExpand?
-    
-    init() {
-        self.configurations = Configurations(profile: self.profile)
-        self.schedules = Schedules(profile: self.profile, configuration: self.configurations)
-        self.schedulessortedandexpanded = ScheduleSortedAndExpand(schedules: self.schedules, configurations: self.configurations)
-        _ = OperationFactory(configurations: self.configurations, schedules: self.schedules)
-        ViewControllerReference.shared.scheduledTask = self.schedulessortedandexpanded?.allscheduledtasks()
-    }
-}
-
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
 
 	let statusItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.squareLength)
 	let popover = NSPopover()
 	var eventMonitor: EventMonitor?
-    var loaddata: LoadData?
     
     var storyboard: NSStoryboard? {
         return NSStoryboard(name: NSStoryboard.Name(rawValue: "Main"), bundle: nil)
@@ -46,7 +30,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         var storage: PersistentStorageAPI?
         // Insert code here to initialize your application
         // Read user configuration
-        storage = PersistentStorageAPI(profile: nil, configurations: nil, schedules: nil)
+        storage = PersistentStorageAPI(profile: nil)
         if let userConfiguration =  storage?.getUserconfiguration(readfromstorage: true) {
             _ = Userconfiguration(userconfigRsyncOSX: userConfiguration)
         }
@@ -63,8 +47,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 			}
 		}
 		self.eventMonitor?.start()
-        self.loaddata = LoadData()
-        ViewControllerReference.shared.loaddata = self.loaddata
+        self.togglePopover(nil)
 	}
 
 	func applicationWillTerminate(_ aNotification: Notification) {

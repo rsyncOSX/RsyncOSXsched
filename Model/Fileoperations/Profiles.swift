@@ -33,7 +33,7 @@ class Profiles: Files {
         return false
     }
 
-    init (configurations: Configurations?) {
-        super.init(root: .profileRoot, configurations: configurations)
+    init () {
+        super.init(root: .profileRoot)
     }
 }

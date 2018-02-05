@@ -13,12 +13,9 @@
 
 import Foundation
 
-final class PersistentStorageScheduling: Readwritefiles {
+final class PersistentStorageScheduling: Readwritefiles, SetSchedules {
 
     private var schedulesasDict: [NSDictionary]?
-    private var schedules: Schedules?
-    private var configurations: Configurations?
-
     /// Function reads schedules from permanent store
     /// - returns : array of NSDictonarys, return might be nil if schedule is already in memory
     func readSchedulesFromPermanentStore() -> [NSDictionary]? {
@@ -85,10 +82,8 @@ final class PersistentStorageScheduling: Readwritefiles {
         }
     }
 
-    init (profile: String?, schedules: Schedules?, configurations: Configurations?) {
-        super.init(task: .schedule, profile: profile, configurations: configurations)
-        self.configurations = configurations
-        self.schedules = schedules
+    init (profile: String?) {
+        super.init(task: .schedule, profile: profile)
         self.schedulesasDict = self.getDatafromfile()
     }
 }

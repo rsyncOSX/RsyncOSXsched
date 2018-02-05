@@ -21,9 +21,8 @@ enum EnumNumbers {
     case delete
 }
 
-final class Numbers {
+final class Numbers: SetConfigurations {
 
-    private var configurations: Configurations?
     // Second last String in Array rsync output of how much in what time
     private var resultRsync: String?
     // calculated number of files
@@ -184,8 +183,7 @@ final class Numbers {
         }
     }
 
-    init (outputprocess: OutputProcess?, configurations: Configurations?) {
-        self.configurations = configurations
+    init (outputprocess: OutputProcess?) {
         self.output = outputprocess!.trimoutput(trim: .two)
         // Getting the summarized output from output.
         if self.output!.count > 2 {

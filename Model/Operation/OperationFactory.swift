@@ -17,9 +17,7 @@ protocol ScheduledTaskWorking: class {
     func notifyScheduledTask(config: Configuration?)
 }
 
-protocol SecondsBeforeStart {
-    func secondsbeforestart(schedules: Schedules?, configurations: Configurations?) -> Double
-}
+
 
 protocol SetScheduledTask {
     weak var scheduleJob: ScheduledTaskWorking? { get }
@@ -46,6 +44,10 @@ protocol StartNextTask: class {
     func startfirstcheduledtask()
 }
 
+protocol SecondsBeforeStart {
+    func secondsbeforestart() -> Double
+}
+
 extension SecondsBeforeStart {
         
     // Calculation of time to a spesific date
@@ -64,9 +66,9 @@ extension SecondsBeforeStart {
         }
     }
 
-    func secondsbeforestart(schedules: Schedules?, configurations: Configurations?) -> Double {
+    func secondsbeforestart() -> Double {
         var secondsToWait: Double?
-        let scheduledJobs = ScheduleSortedAndExpand(schedules: schedules, configurations: configurations)
+        let scheduledJobs = ScheduleSortedAndExpand()
         if let dict = scheduledJobs.allscheduledtasks() {
             let dateStart: Date = (dict.value(forKey: "start") as? Date)!
             secondsToWait = self.timeDoubleSeconds(dateStart, enddate: nil)
@@ -80,8 +82,8 @@ class OperationFactory {
 
     var operationDispatch: ScheduleOperationDispatch?
 
-    init(configurations: Configurations?, schedules: Schedules?) {
-        self.operationDispatch = ScheduleOperationDispatch(schedules: schedules, configurations: configurations)
+    init() {
+        self.operationDispatch = ScheduleOperationDispatch()
     }
 
 }

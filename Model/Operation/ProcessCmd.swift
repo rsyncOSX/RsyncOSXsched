@@ -34,9 +34,8 @@ enum ProcessTermination {
     case remoteinfotask
 }
 
-class ProcessCmd: Delay {
-    
-    private var configurations: Configurations?
+class ProcessCmd: Delay, SetConfigurations {
+
     // Number of calculated files to be copied
     var calculatedNumberOfFiles: Int = 0
     // Variable for reference to Process
@@ -63,7 +62,7 @@ class ProcessCmd: Delay {
         if let command = self.command {
             task.launchPath = command
         } else {
-            task.launchPath = Tools(configurations: self.configurations!).rsyncpath()
+            task.launchPath = Tools().rsyncpath()
         }
         task.arguments = self.arguments
         // Pipe for reading output from Process
@@ -115,10 +114,9 @@ class ProcessCmd: Delay {
         self.processReference!.terminate()
     }
 
-    init(command: String?, arguments: [String]?, configurations: Configurations?) {
+    init(command: String?, arguments: [String]?) {
         self.command = command
         self.arguments = arguments
-        self.configurations = configurations
         self.possibleerrorDelegate = ViewControllerReference.shared.viewControllermain as? ViewControllerMain
     }
 }
