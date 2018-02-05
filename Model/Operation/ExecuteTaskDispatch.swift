@@ -21,7 +21,6 @@ class ExecuteTaskDispatch: SetScheduledTask {
 
     private func executeTaskDispatch() {
         let configurations: Configurations? = ViewControllerReference.shared.loaddata?.configurations
-        let schedules: Schedules? = ViewControllerReference.shared.loaddata?.schedules
         // Get the first job of the queue
         if let dict: NSDictionary = ViewControllerReference.shared.scheduledTask {
             if let hiddenID: Int = dict.value(forKey: "hiddenID") as? Int {
@@ -36,7 +35,7 @@ class ExecuteTaskDispatch: SetScheduledTask {
                 if hiddenID >= 0 && config != nil {
                     arguments = RsyncParametersProcess().argumentsRsync(config!, dryRun: false, forDisplay: false)
                     // Setting reference to finalize the job, finalize job is done when rsynctask ends (in process termination)
-                    ViewControllerReference.shared.completeoperation = CompleteScheduledOperation(dict: dict, configurations: configurations!, schedules:schedules)
+                    ViewControllerReference.shared.completeoperation = CompleteScheduledOperation(dict: dict)
                     globalMainQueue.async(execute: {
                         if self.arguments != nil {
                             weak var sendprocess: Sendprocessreference?

@@ -41,14 +41,14 @@ final class CompleteScheduledOperation: SetScheduledTask {
         self.schedules!.scheduledTasks = nil
     }
 
-    init (dict: NSDictionary, configurations: Configurations, schedules: Schedules?) {
+    init (dict: NSDictionary) {
         self.date = dict.value(forKey: "start") as? Date
         self.dateStart = dict.value(forKey: "dateStart") as? Date
         self.dateformatter = Tools(configurations: configurations).setDateformat()
         self.hiddenID = (dict.value(forKey: "hiddenID") as? Int)!
         self.schedule = dict.value(forKey: "schedule") as? String
-        self.configurations = configurations
-        self.schedules = schedules
+        self.configurations = ViewControllerReference.shared.loaddata?.configurations
+        self.schedules = ViewControllerReference.shared.loaddata?.schedules
         self.index = self.configurations!.getIndex(hiddenID!)
     }
 }
