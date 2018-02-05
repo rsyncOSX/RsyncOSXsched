@@ -49,13 +49,12 @@ protocol Verifyrsync: class {
     func verifyrsync()
 }
 
-final class Tools {
+final class Tools: SetConfigurations {
 
     private var indexBoolremoteserverOff: [Bool]?
     weak var testconnectionsDelegate: Connections?
     private var macSerialNumber: String?
     weak var verifyrsyncDelegate: Verifyrsync?
-    private var configurations: Configurations?
 
     // Setting date format
     func setDateformat() -> DateFormatter {
@@ -189,7 +188,4 @@ final class Tools {
         return result ?? ""
     }
 
-    init(configurations: Configurations?) {
-        self.configurations = configurations
-    }
 }

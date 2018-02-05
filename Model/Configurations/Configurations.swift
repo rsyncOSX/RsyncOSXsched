@@ -114,7 +114,7 @@ class Configurations {
             self.increasesnapshotnum(index: index)
         }
         let currendate = Date()
-        let dateformatter = Tools(configurations: self).setDateformat()
+        let dateformatter = Tools().setDateformat()
         self.configurations![index].dateRun = dateformatter.string(from: currendate)
         // Saving updated configuration in memory to persistent store
         self.storageapi!.saveConfigFromMemory()
@@ -242,7 +242,7 @@ class Configurations {
         self.argumentAllConfigurations = nil
         self.configurationsDataSource = nil
         self.profile = profile
-        self.storageapi = PersistentStorageAPI(profile: self.profile, configurations: self, schedules: nil)
+        self.storageapi = PersistentStorageAPI(profile: self.profile)
         self.readconfigurations()
     }
 }

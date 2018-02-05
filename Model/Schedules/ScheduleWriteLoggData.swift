@@ -9,11 +9,10 @@
 import Foundation
 import Cocoa
 
-class ScheduleWriteLoggData {
+class ScheduleWriteLoggData: SetConfigurations {
 
     var storageapi: PersistentStorageAPI?
     var schedules: [ConfigurationSchedule]?
-    private var configurations: Configurations?
 
     /// Function adds results of task to file (via memory). Memory are
     /// saved after changed. Used in either single tasks or batch.
@@ -24,7 +23,7 @@ class ScheduleWriteLoggData {
         if ViewControllerReference.shared.detailedlogging {
             // Set the current date
             let currendate = Date()
-            let dateformatter = Tools(configurations: self.configurations!).setDateformat()
+            let dateformatter = Tools().setDateformat()
             let date = dateformatter.string(from: currendate)
             let config = self.getconfig(hiddenID: hiddenID)
             var resultannotaded: String?
@@ -126,8 +125,7 @@ class ScheduleWriteLoggData {
         return self.configurations!.getConfigurations()[index]
     }
 
-    init(configurations: Configurations?) {
-        self.configurations = configurations
+    init() {
         self.schedules = [ConfigurationSchedule]()
     }
 }

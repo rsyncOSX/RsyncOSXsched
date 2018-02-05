@@ -10,8 +10,8 @@
 import Foundation
 
 final class RsyncScheduled: ProcessCmd {
-    init (arguments: [String]?, configuration: Configurations?) {
-        super.init(command: nil, arguments: arguments, configurations: configuration)
+    init (arguments: [String]?) {
+        super.init(command: nil, arguments: arguments)
         self.updateDelegate = ViewControllerReference.shared.viewControllermain as? ViewControllerMain
     }
 }

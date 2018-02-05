@@ -9,7 +9,7 @@
 import Foundation
 
 class ScheduleOperationDispatch: SecondsBeforeStart {
-   
+
     private var pendingRequestWorkItem: DispatchWorkItem?
 
     private func dispatchtask(_ seconds: Int) {
@@ -20,8 +20,8 @@ class ScheduleOperationDispatch: SecondsBeforeStart {
         DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(seconds), execute: scheduledtask)
     }
 
-    init(schedules: Schedules?, configurations: Configurations?) {
-        let seconds = self.secondsbeforestart(schedules: schedules, configurations: configurations)
+    init() {
+        let seconds = self.secondsbeforestart()
         guard seconds > 0 else { return }
         self.dispatchtask(Int(seconds))
         // Set reference to schedule for later cancel if any

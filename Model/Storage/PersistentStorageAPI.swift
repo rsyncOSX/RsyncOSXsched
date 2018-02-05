@@ -8,17 +8,15 @@
 
 import Foundation
 
-final class PersistentStorageAPI {
+final class PersistentStorageAPI: SetConfigurations, SetSchedules {
 
     var profile: String?
-    private var configurations: Configurations?
-    private var schedules: Schedules?
 
     // CONFIGURATIONS
 
     // Read configurations from persisten store
     func getConfigurations() -> [Configuration]? {
-        let read = PersistentStorageConfiguration(profile: self.profile, configurations: self.configurations!)
+        let read = PersistentStorageConfiguration(profile: self.profile)
         // Either read from persistent store or
         // return Configurations already in memory
         if read.readConfigurationsFromPermanentStore() != nil {
@@ -35,7 +33,7 @@ final class PersistentStorageAPI {
 
     // Saving configuration from memory to persistent store
     func saveConfigFromMemory() {
-        let save = PersistentStorageConfiguration(profile: self.profile, configurations: self.configurations!)
+        let save = PersistentStorageConfiguration(profile: self.profile)
         save.saveconfigInMemoryToPersistentStore()
     }
 
@@ -43,7 +41,7 @@ final class PersistentStorageAPI {
     
     // Saving Schedules from memory to persistent store
     func saveScheduleFromMemory() {
-        let store = PersistentStorageScheduling(profile: self.profile, schedules: self.schedules, configurations: self.configurations)
+        let store = PersistentStorageScheduling(profile: self.profile)
         store.savescheduleInMemoryToPersistentStore()
         // Kick off next task
         // self.startnexttask()
@@ -52,7 +50,7 @@ final class PersistentStorageAPI {
     // Read schedules and history
     // If no Schedule from persistent store return nil
     func getScheduleandhistory () -> [ConfigurationSchedule]? {
-        let read = PersistentStorageScheduling(profile: self.profile, schedules: self.schedules, configurations: self.configurations)
+        let read = PersistentStorageScheduling(profile: self.profile)
         var schedule = [ConfigurationSchedule]()
         // Either read from persistent store or
         // return Schedule already in memory
@@ -75,13 +73,11 @@ final class PersistentStorageAPI {
     // USERCONFIG
 
     func getUserconfiguration (readfromstorage: Bool) -> [NSDictionary]? {
-        let store = PersistentStorageUserconfiguration(readfromstorage: readfromstorage, configurations: self.configurations)
+        let store = PersistentStorageUserconfiguration(readfromstorage: readfromstorage)
         return store.readUserconfigurationsFromPermanentStore()
     }
 
-    init(profile: String?, configurations: Configurations?, schedules: Schedules?) {
+    init(profile: String?) {
         self.profile = profile
-        self.configurations = configurations
-        self.schedules = schedules
     }
 }

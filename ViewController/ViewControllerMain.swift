@@ -53,6 +53,44 @@ protocol UpdateProgress: class {
     func fileHandler()
 }
 
+// Protocol for returning object Configurations
+protocol GetConfigurationsObject: class {
+    func getconfigurationsobject() -> Configurations?
+}
+
+protocol SetConfigurations {
+    weak var configurationsDelegate: GetConfigurationsObject? { get }
+    var configurations: Configurations? { get }
+}
+
+extension SetConfigurations {
+    weak var configurationsDelegate: GetConfigurationsObject? {
+        return ViewControllerReference.shared.viewControllermain as? ViewControllerMain
+    }
+    var configurations: Configurations? {
+        return self.configurationsDelegate?.getconfigurationsobject()
+    }
+}
+
+// Protocol for returning object configurations data
+protocol GetSchedulesObject: class {
+    func getschedulesobject() -> Schedules?
+}
+
+protocol SetSchedules {
+    weak var schedulesDelegate: GetSchedulesObject? {get}
+    var schedules: Schedules? {get}
+}
+
+extension SetSchedules {
+    weak var schedulesDelegate: GetSchedulesObject? {
+        return ViewControllerReference.shared.viewControllermain as? ViewControllerMain
+    }
+    var schedules: Schedules? {
+        return self.schedulesDelegate?.getschedulesobject()
+    }
+}
+
 class ViewControllerMain: NSViewController, Coloractivetask {
     
     @IBOutlet weak var mainTableView: NSTableView!
@@ -149,7 +187,7 @@ extension ViewControllerMain: StartNextTask {
     func startfirstcheduledtask() {
         // Cancel any schedeuled tasks first
         ViewControllerReference.shared.dispatchTaskWaiting?.cancel()
-        _ = OperationFactory(configurations: self.configurations, schedules: self.schedules)
+        _ = OperationFactory()
         ViewControllerReference.shared.scheduledTask = self.schedulessortedandexpanded?.allscheduledtasks()
     }
 }
@@ -180,7 +218,15 @@ extension ViewControllerMain: Sendprocessreference {
 
 extension ViewControllerMain: UpdateProgress {
     func processTermination() {
-        //
+        ViewControllerReference.shared.completeoperation!.finalizeScheduledJob(outputprocess: self.outputprocess)
+        ViewControllerReference.shared.loaddata = nil
+        ViewControllerReference.shared.loaddata = LoadData()
+        self.configurations = ViewControllerReference.shared.loaddata?.configurations
+        self.schedules = ViewControllerReference.shared.loaddata?.schedules
+        self.schedulessortedandexpanded = ViewControllerReference.shared.loaddata?.schedulessortedandexpanded
+        globalMainQueue.async(execute: { () -> Void in
+            self.mainTableView.reloadData()
+        })
     }
     
     func fileHandler() {
@@ -203,6 +249,18 @@ extension ViewControllerMain: RsyncError {
 extension ViewControllerMain: Fileerror {
     func fileerror(errorstr: String, errortype: Fileerrortype) {
         //
+    }
+}
+
+extension ViewControllerMain: GetConfigurationsObject {
+    func getconfigurationsobject() -> Configurations? {
+        return self.configurations
+    }
+}
+
+extension ViewControllerMain: GetSchedulesObject {
+    func getschedulesobject() -> Schedules? {
+        return self.schedules
     }
     
     

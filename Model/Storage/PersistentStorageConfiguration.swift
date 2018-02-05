@@ -13,7 +13,6 @@ final class PersistentStorageConfiguration: Readwritefiles {
 
     /// Variable holds all configuration data from persisten storage
     private var configurationsAsNSDict: [NSDictionary]?
-    private var configurations: Configurations?
 
     /// Function reads configurations from permanent store
     /// - returns : array of NSDictonarys, return might be nil if configuration is already in memory
@@ -113,9 +112,8 @@ final class PersistentStorageConfiguration: Readwritefiles {
         }
     }
 
-    init (profile: String?, configurations: Configurations?) {
-        super.init(task: .configuration, profile: profile, configurations: configurations)
-        self.configurations = configurations
+    init (profile: String?) {
+        super.init(task: .configuration, profile: profile)
         self.configurationsAsNSDict = self.getDatafromfile()
     }
 }

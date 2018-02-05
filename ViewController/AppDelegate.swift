@@ -17,9 +17,9 @@ class LoadData {
     
     init() {
         self.configurations = Configurations(profile: self.profile)
-        self.schedules = Schedules(profile: self.profile, configuration: self.configurations)
-        self.schedulessortedandexpanded = ScheduleSortedAndExpand(schedules: self.schedules, configurations: self.configurations)
-        _ = OperationFactory(configurations: self.configurations, schedules: self.schedules)
+        self.schedules = Schedules(profile: self.profile)
+        self.schedulessortedandexpanded = ScheduleSortedAndExpand()
+        _ = OperationFactory()
         ViewControllerReference.shared.scheduledTask = self.schedulessortedandexpanded?.allscheduledtasks()
     }
 }
@@ -46,7 +46,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         var storage: PersistentStorageAPI?
         // Insert code here to initialize your application
         // Read user configuration
-        storage = PersistentStorageAPI(profile: nil, configurations: nil, schedules: nil)
+        storage = PersistentStorageAPI(profile: nil)
         if let userConfiguration =  storage?.getUserconfiguration(readfromstorage: true) {
             _ = Userconfiguration(userconfigRsyncOSX: userConfiguration)
         }

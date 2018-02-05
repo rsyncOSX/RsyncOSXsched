@@ -9,7 +9,7 @@
 import Foundation
 import Cocoa
 
-class ScheduleSortedAndExpand {
+class ScheduleSortedAndExpand: SetConfigurations, SetSchedules {
 
     // Reference to main View
     private var vctabmain: NSViewController?
@@ -19,7 +19,6 @@ class ScheduleSortedAndExpand {
     private var sortedschedules: [NSDictionary]?
     private var scheduleInProgress: Bool = false
     private var tools: Tools?
-    private var configurations: Configurations?
 
     // First job to execute.Job is first element in 
     func allscheduledtasks() -> NSDictionary? {
@@ -86,7 +85,7 @@ class ScheduleSortedAndExpand {
 
     // Expanding and sorting Scheduledata
     private func sortAndExpandScheduleTasks() {
-        let dateformatter = Tools(configurations: self.configurations!).setDateformat()
+        let dateformatter = Tools().setDateformat()
         for i in 0 ..< self.schedulesNSDictionary!.count {
             let dict = self.schedulesNSDictionary![i]
             let dateStop: Date = dateformatter.date(from: (dict.value(forKey: "dateStop") as? String)!)!
@@ -174,12 +173,12 @@ class ScheduleSortedAndExpand {
         self.schedulesNSDictionary = data
     }
 
-    init (schedules: Schedules?, configurations: Configurations?) {
-        self.configurations = configurations
+    init () {
+        guard self.schedules != nil  else { return }
         // Getting the Schedule and expanding all the jobs
-        self.scheduleConfiguration = schedules!.getSchedule()
+        self.scheduleConfiguration = self.schedules!.getSchedule()
         self.setallscheduledtasksNSDictionary()
         self.sortAndExpandScheduleTasks()
-        self.tools = Tools(configurations: configurations)
+        self.tools = Tools()
     }
 }

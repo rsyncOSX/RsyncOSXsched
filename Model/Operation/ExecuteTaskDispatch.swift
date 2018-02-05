@@ -40,7 +40,7 @@ class ExecuteTaskDispatch: SetScheduledTask {
                         if self.arguments != nil {
                             weak var sendprocess: Sendprocessreference?
                             sendprocess = ViewControllerReference.shared.viewControllermain as? ViewControllerMain
-                            let process = RsyncScheduled(arguments: self.arguments, configuration: configurations)
+                            let process = RsyncScheduled(arguments: self.arguments)
                             process.executeProcess(outputprocess: self.outputprocess)
                             sendprocess?.sendprocessreference(process: process.getProcess())
                             sendprocess?.sendoutputprocessreference(outputprocess: self.outputprocess)
