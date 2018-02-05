@@ -41,7 +41,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		94E0FC3B1BD7FC3600A3C537 /* Popup.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Popup.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		94E0FC3B1BD7FC3600A3C537 /* RsyncOSXsched.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RsyncOSXsched.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		94E0FC3E1BD7FC3600A3C537 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		94E0FC401BD7FC3600A3C537 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		94E0FC421BD7FC3600A3C537 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -91,7 +91,7 @@
 			isa = PBXGroup;
 			children = (
 				E98398A720260D0300C977C3 /* Model */,
-				94E0FC3D1BD7FC3600A3C537 /* Popup */,
+				94E0FC3D1BD7FC3600A3C537 /* RsyncOSXsched */,
 				94E0FC3C1BD7FC3600A3C537 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -99,12 +99,12 @@
 		94E0FC3C1BD7FC3600A3C537 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				94E0FC3B1BD7FC3600A3C537 /* Popup.app */,
+				94E0FC3B1BD7FC3600A3C537 /* RsyncOSXsched.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		94E0FC3D1BD7FC3600A3C537 /* Popup */ = {
+		94E0FC3D1BD7FC3600A3C537 /* RsyncOSXsched */ = {
 			isa = PBXGroup;
 			children = (
 				94E0FC3E1BD7FC3600A3C537 /* AppDelegate.swift */,
@@ -114,7 +114,7 @@
 				94E0FC441BD7FC3600A3C537 /* Main.storyboard */,
 				94E0FC421BD7FC3600A3C537 /* Assets.xcassets */,
 			);
-			path = Popup;
+			path = RsyncOSXsched;
 			sourceTree = "<group>";
 		};
 		E91C5DBA2026F80C00FE7E76 /* Schedules */ = {
@@ -233,9 +233,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		94E0FC3A1BD7FC3600A3C537 /* Popup */ = {
+		94E0FC3A1BD7FC3600A3C537 /* RsyncOSXsched */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 94E0FC4A1BD7FC3600A3C537 /* Build configuration list for PBXNativeTarget "Popup" */;
+			buildConfigurationList = 94E0FC4A1BD7FC3600A3C537 /* Build configuration list for PBXNativeTarget "RsyncOSXsched" */;
 			buildPhases = (
 				94E0FC371BD7FC3600A3C537 /* Sources */,
 				94E0FC381BD7FC3600A3C537 /* Frameworks */,
@@ -245,9 +245,9 @@
 			);
 			dependencies = (
 			);
-			name = Popup;
+			name = RsyncOSXsched;
 			productName = Popup;
-			productReference = 94E0FC3B1BD7FC3600A3C537 /* Popup.app */;
+			productReference = 94E0FC3B1BD7FC3600A3C537 /* RsyncOSXsched.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -267,7 +267,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 94E0FC361BD7FC3600A3C537 /* Build configuration list for PBXProject "Popup" */;
+			buildConfigurationList = 94E0FC361BD7FC3600A3C537 /* Build configuration list for PBXProject "RsyncOSXsched" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -280,7 +280,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				94E0FC3A1BD7FC3600A3C537 /* Popup */,
+				94E0FC3A1BD7FC3600A3C537 /* RsyncOSXsched */,
 			);
 		};
 /* End PBXProject section */
@@ -484,7 +484,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		94E0FC361BD7FC3600A3C537 /* Build configuration list for PBXProject "Popup" */ = {
+		94E0FC361BD7FC3600A3C537 /* Build configuration list for PBXProject "RsyncOSXsched" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				94E0FC481BD7FC3600A3C537 /* Debug */,
@@ -493,7 +493,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		94E0FC4A1BD7FC3600A3C537 /* Build configuration list for PBXNativeTarget "Popup" */ = {
+		94E0FC4A1BD7FC3600A3C537 /* Build configuration list for PBXNativeTarget "RsyncOSXsched" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				94E0FC4B1BD7FC3600A3C537 /* Debug */,
