@@ -20,7 +20,6 @@ class LoadData {
         self.schedules = Schedules(profile: self.profile, configuration: self.configurations)
         self.schedulessortedandexpanded = ScheduleSortedAndExpand(schedules: self.schedules, configurations: self.configurations)
         _ = OperationFactory(configurations: self.configurations, schedules: self.schedules)
-        print("loading data")
     }
 }
 

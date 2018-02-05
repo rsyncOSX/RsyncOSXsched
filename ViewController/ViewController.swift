@@ -87,7 +87,12 @@ class ViewController: NSViewController, Coloractivetask {
 	@IBAction func closeButtonAction(_ sender: NSButton) {
 		NSApp.terminate(self)
 	}
-
+    
+    @IBAction func openRsyncOSX(_ sender: NSButton) {
+        NSWorkspace.shared.open(URL(fileURLWithPath: "/Volumes/Home/thomas/Applications/RsyncOSX.app"))
+        NSApp.terminate(self)
+    }
+    
 }
 
 extension ViewController: NSTableViewDataSource {

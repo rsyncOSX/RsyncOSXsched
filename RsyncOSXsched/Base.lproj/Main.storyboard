@@ -786,7 +786,18 @@
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
                                 <connections>
-                                    <action selector="closeButtonAction:" target="XfG-lQ-9wD" id="TGO-3t-fwW"/>
+                                    <action selector="closeButtonAction:" target="XfG-lQ-9wD" id="Hgf-Ia-P2i"/>
+                                </connections>
+                            </button>
+                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5nF-vB-oIM">
+                                <rect key="frame" x="14" y="13" width="93" height="32"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <buttonCell key="cell" type="push" title="RsyncOSX" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="gkG-rF-JAe">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="openRsyncOSX:" target="XfG-lQ-9wD" id="89Z-4V-B8Q"/>
                                 </connections>
                             </button>
                         </subviews>
