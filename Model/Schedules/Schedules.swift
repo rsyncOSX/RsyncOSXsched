@@ -14,7 +14,6 @@ class Schedules: ScheduleWriteLoggData {
 
     var scheduledTasks: NSDictionary?
     var profile: String?
-    private var configurations: Configurations?
 
     // Return reference to Schedule data
     // self.Schedule is privat data

@@ -98,15 +98,18 @@ class ViewControllerMain: NSViewController, Coloractivetask {
     var schedules: Schedules?
     var schedulessortedandexpanded: ScheduleSortedAndExpand?
     private var outputprocess: OutputProcess?
+    var profile = "RsyncOSXlite"
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
         self.mainTableView.delegate = self
         self.mainTableView.dataSource = self
-        self.configurations = ViewControllerReference.shared.loaddata?.configurations
-        self.schedules = ViewControllerReference.shared.loaddata?.schedules
-        self.schedulessortedandexpanded = ViewControllerReference.shared.loaddata?.schedulessortedandexpanded
         ViewControllerReference.shared.viewControllermain = self
+        self.configurations = Configurations(profile: self.profile)
+        self.schedules = Schedules(profile: self.profile)
+        self.schedulessortedandexpanded = ScheduleSortedAndExpand()
+        _ = OperationFactory()
+        ViewControllerReference.shared.scheduledTask = self.schedulessortedandexpanded?.allscheduledtasks()
 	}
     
     override func viewDidAppear() {
@@ -129,6 +132,22 @@ class ViewControllerMain: NSViewController, Coloractivetask {
     @IBAction func openRsyncOSX(_ sender: NSButton) {
         NSWorkspace.shared.open(URL(fileURLWithPath: "/Volumes/Home/thomas/Applications/RsyncOSX.app"))
         NSApp.terminate(self)
+    }
+
+    
+    @IBAction func reload(_ sender: NSButton) {
+        self.reloaddata()
+    }
+    
+    private func reloaddata() {
+        self.configurations = Configurations(profile: self.profile)
+        self.schedules = Schedules(profile: self.profile)
+        self.schedulessortedandexpanded = ScheduleSortedAndExpand()
+        _ = OperationFactory()
+        ViewControllerReference.shared.scheduledTask = self.schedulessortedandexpanded?.allscheduledtasks()
+        globalMainQueue.async(execute: { () -> Void in
+            self.mainTableView.reloadData()
+        })
     }
     
 }
@@ -219,14 +238,7 @@ extension ViewControllerMain: Sendprocessreference {
 extension ViewControllerMain: UpdateProgress {
     func processTermination() {
         ViewControllerReference.shared.completeoperation!.finalizeScheduledJob(outputprocess: self.outputprocess)
-        ViewControllerReference.shared.loaddata = nil
-        ViewControllerReference.shared.loaddata = LoadData()
-        self.configurations = ViewControllerReference.shared.loaddata?.configurations
-        self.schedules = ViewControllerReference.shared.loaddata?.schedules
-        self.schedulessortedandexpanded = ViewControllerReference.shared.loaddata?.schedulessortedandexpanded
-        globalMainQueue.async(execute: { () -> Void in
-            self.mainTableView.reloadData()
-        })
+        self.reloaddata()
     }
     
     func fileHandler() {

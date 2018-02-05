@@ -51,7 +51,7 @@ final class PersistentStorageConfiguration: Readwritefiles {
             "parameter5": config.parameter5,
             "parameter6": config.parameter6,
             "dryrun": config.dryrun,
-            "dateRun": config.dateRun!,
+            "dateRun": config.dateRun ?? "",
             "hiddenID": config.hiddenID]
         // All parameters parameter8 - parameter14 are set
         config.parameter8 = self.checkparameter(param: config.parameter8)
