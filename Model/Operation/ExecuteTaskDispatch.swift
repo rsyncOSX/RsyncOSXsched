@@ -30,7 +30,6 @@ class ExecuteTaskDispatch: SetScheduledTask, SetConfigurations {
                 config = configArray[0]
                 // Inform and notify
                 self.scheduleJob?.start()
-                self.notify(config: config)
                 if hiddenID >= 0 && config != nil {
                     arguments = RsyncParametersProcess().argumentsRsync(config!, dryRun: false, forDisplay: false)
                     // Setting reference to finalize the job, finalize job is done when rsynctask ends (in process termination)

@@ -10,7 +10,7 @@ import Cocoa
 import Foundation
 
 
-class ViewControllerMain: NSViewController, Coloractivetask {
+class ViewControllerMain: NSViewController, Coloractivetask, Delay {
     
     @IBOutlet weak var mainTableView: NSTableView!
     var configurations: Configurations?
@@ -58,7 +58,6 @@ class ViewControllerMain: NSViewController, Coloractivetask {
     }
     
     private func reloaddata() {
-        // Cancel any previous tasks
         self.configurations = Configurations(profile: self.profile)
         self.schedules = Schedules(profile: self.profile)
         self.sortedandexpanded = ScheduleSortedAndExpand()
@@ -66,6 +65,13 @@ class ViewControllerMain: NSViewController, Coloractivetask {
             self.mainTableView.reloadData()
         })
         self.startfirstcheduledtask()
+    }
+    
+    func startfirstcheduledtask() {
+        print("cancel")
+        ViewControllerReference.shared.dispatchTaskWaiting?.cancel()
+        ViewControllerReference.shared.dispatchTaskWaiting = nil
+        _ = OperationFactory()
     }
     
 }
@@ -220,25 +226,10 @@ extension SetSortedAndExpanded {
     }
 }
 
-// Startnexttask
-extension ViewControllerMain: StartNextTask {
-    func startfirstcheduledtask() {
-         ViewControllerReference.shared.dispatchTaskWaiting?.cancel()
-        _ = OperationFactory()
-    }
-}
 
 extension ViewControllerMain: ScheduledTaskWorking {
     func start() {
-        //
-    }
-    
-    func completed() {
-        //
-    }
-    
-    func notifyScheduledTask(config: Configuration?) {
-        //
+        // Start progress bar
     }
 }
 
@@ -263,23 +254,7 @@ extension ViewControllerMain: UpdateProgress {
     }
 }
 
-extension ViewControllerMain: ErrorOutput {
-    func erroroutput() {
-        //
-    }
-}
 
-extension ViewControllerMain: RsyncError {
-    func rsyncerror() {
-        //
-    }
-}
-
-extension ViewControllerMain: Fileerror {
-    func fileerror(errorstr: String, errortype: Fileerrortype) {
-        //
-    }
-}
 
 extension ViewControllerMain: GetConfigurationsObject {
     func getconfigurationsobject() -> Configurations? {
@@ -297,7 +272,23 @@ extension ViewControllerMain: GetSortedandExpandedObject {
     func getsortedandexpandeobject() -> ScheduleSortedAndExpand? {
         return self.sortedandexpanded
     }
-    
-    
+}
+
+extension ViewControllerMain: ErrorOutput {
+    func erroroutput() {
+        //
+    }
+}
+
+extension ViewControllerMain: RsyncError {
+    func rsyncerror() {
+        //
+    }
+}
+
+extension ViewControllerMain: Fileerror {
+    func fileerror(errorstr: String, errortype: Fileerrortype) {
+        //
+    }
 }
 

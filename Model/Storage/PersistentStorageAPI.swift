@@ -43,8 +43,6 @@ final class PersistentStorageAPI: SetConfigurations, SetSchedules {
     func saveScheduleFromMemory() {
         let store = PersistentStorageScheduling(profile: self.profile)
         store.savescheduleInMemoryToPersistentStore()
-        // Kick off next task
-        // self.startnexttask()
     }
 
     // Read schedules and history
