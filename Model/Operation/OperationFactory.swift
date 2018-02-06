@@ -13,8 +13,6 @@ import Foundation
 // is going on
 protocol ScheduledTaskWorking: class {
     func start()
-    func completed()
-    func notifyScheduledTask(config: Configuration?)
 }
 
 
@@ -26,10 +24,6 @@ protocol SetScheduledTask {
 extension SetScheduledTask {
     weak var scheduleJob: ScheduledTaskWorking? {
         return ViewControllerReference.shared.viewControllermain as? ViewControllerMain
-    }
-    
-    func notify(config: Configuration?) {
-        self.scheduleJob?.notifyScheduledTask(config: config)
     }
 }
 

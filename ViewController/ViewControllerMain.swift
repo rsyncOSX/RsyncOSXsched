@@ -10,7 +10,7 @@ import Cocoa
 import Foundation
 
 
-class ViewControllerMain: NSViewController, Coloractivetask {
+class ViewControllerMain: NSViewController, Coloractivetask, Delay {
     
     @IBOutlet weak var mainTableView: NSTableView!
     var configurations: Configurations?
@@ -27,11 +27,11 @@ class ViewControllerMain: NSViewController, Coloractivetask {
         self.configurations = Configurations(profile: self.profile)
         self.schedules = Schedules(profile: self.profile)
         self.sortedandexpanded = ScheduleSortedAndExpand()
-        _ = OperationFactory()
 	}
     
     override func viewDidAppear() {
         super.viewDidAppear()
+        self.startfirstcheduledtask()
         globalMainQueue.async(execute: { () -> Void in
             self.mainTableView.reloadData()
         })
@@ -61,10 +61,16 @@ class ViewControllerMain: NSViewController, Coloractivetask {
         self.configurations = Configurations(profile: self.profile)
         self.schedules = Schedules(profile: self.profile)
         self.sortedandexpanded = ScheduleSortedAndExpand()
-        _ = OperationFactory()
         globalMainQueue.async(execute: { () -> Void in
             self.mainTableView.reloadData()
         })
+        self.startfirstcheduledtask()
+    }
+    
+    func startfirstcheduledtask() {
+        ViewControllerReference.shared.dispatchTaskWaiting?.cancel()
+        ViewControllerReference.shared.dispatchTaskWaiting = nil
+        _ = OperationFactory()
     }
     
 }
@@ -219,24 +225,10 @@ extension SetSortedAndExpanded {
     }
 }
 
-// Startnexttask
-extension ViewControllerMain: StartNextTask {
-    func startfirstcheduledtask() {
-        _ = OperationFactory()
-    }
-}
 
 extension ViewControllerMain: ScheduledTaskWorking {
     func start() {
-        //
-    }
-    
-    func completed() {
-        //
-    }
-    
-    func notifyScheduledTask(config: Configuration?) {
-        //
+        // Start progress bar
     }
 }
 
@@ -261,23 +253,7 @@ extension ViewControllerMain: UpdateProgress {
     }
 }
 
-extension ViewControllerMain: ErrorOutput {
-    func erroroutput() {
-        //
-    }
-}
 
-extension ViewControllerMain: RsyncError {
-    func rsyncerror() {
-        //
-    }
-}
-
-extension ViewControllerMain: Fileerror {
-    func fileerror(errorstr: String, errortype: Fileerrortype) {
-        //
-    }
-}
 
 extension ViewControllerMain: GetConfigurationsObject {
     func getconfigurationsobject() -> Configurations? {
@@ -295,7 +271,23 @@ extension ViewControllerMain: GetSortedandExpandedObject {
     func getsortedandexpandeobject() -> ScheduleSortedAndExpand? {
         return self.sortedandexpanded
     }
-    
-    
+}
+
+extension ViewControllerMain: ErrorOutput {
+    func erroroutput() {
+        //
+    }
+}
+
+extension ViewControllerMain: RsyncError {
+    func rsyncerror() {
+        //
+    }
+}
+
+extension ViewControllerMain: Fileerror {
+    func fileerror(errorstr: String, errortype: Fileerrortype) {
+        //
+    }
 }
 

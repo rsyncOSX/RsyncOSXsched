@@ -23,6 +23,7 @@ class ExecuteTaskDispatch: SetScheduledTask, SetConfigurations {
         // Get the first job of the queue
         if let dict: NSDictionary = ViewControllerReference.shared.scheduledTask {
             if let hiddenID: Int = dict.value(forKey: "hiddenID") as? Int {
+                print("executing")
                 let getconfigurations: [Configuration]? = configurations?.getConfigurations()
                 guard getconfigurations != nil else { return }
                 let configArray = getconfigurations!.filter({return ($0.hiddenID == hiddenID)})
@@ -30,7 +31,6 @@ class ExecuteTaskDispatch: SetScheduledTask, SetConfigurations {
                 config = configArray[0]
                 // Inform and notify
                 self.scheduleJob?.start()
-                self.notify(config: config)
                 if hiddenID >= 0 && config != nil {
                     arguments = RsyncParametersProcess().argumentsRsync(config!, dryRun: false, forDisplay: false)
                     // Setting reference to finalize the job, finalize job is done when rsynctask ends (in process termination)

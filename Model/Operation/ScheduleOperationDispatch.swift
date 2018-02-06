@@ -25,8 +25,6 @@ class ScheduleOperationDispatch: SecondsBeforeStart, SetSortedAndExpanded {
         guard seconds > 0 else { return }
         self.dispatchtask(Int(seconds))
         ViewControllerReference.shared.scheduledTask = self.sortedandexpanded?.allscheduledtasks()
-        // Cancel any previous tasks
-        ViewControllerReference.shared.dispatchTaskWaiting?.cancel()
         // Set reference to schedule for later cancel if any
         ViewControllerReference.shared.dispatchTaskWaiting = self.pendingRequestWorkItem
     }
