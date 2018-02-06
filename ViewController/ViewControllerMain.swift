@@ -13,24 +13,27 @@ import Foundation
 class ViewControllerMain: NSViewController, Coloractivetask, Delay {
     
     @IBOutlet weak var mainTableView: NSTableView!
+    @IBOutlet weak var profile: NSTextField!
+    @IBOutlet weak var progress: NSProgressIndicator!
     var configurations: Configurations?
     var schedules: Schedules?
     var sortedandexpanded: ScheduleSortedAndExpand?
     private var outputprocess: OutputProcess?
-    var profile = "RsyncOSXlite"
+    var profilename: String? = "RsyncOSXlite"
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
         self.mainTableView.delegate = self
         self.mainTableView.dataSource = self
         ViewControllerReference.shared.viewControllermain = self
-        self.configurations = Configurations(profile: self.profile)
-        self.schedules = Schedules(profile: self.profile)
+        self.configurations = Configurations(profile: self.profilename)
+        self.schedules = Schedules(profile: self.profilename)
         self.sortedandexpanded = ScheduleSortedAndExpand()
 	}
     
     override func viewDidAppear() {
         super.viewDidAppear()
+        self.profile.stringValue = self.profilename ?? ""
         self.startfirstcheduledtask()
         globalMainQueue.async(execute: { () -> Void in
             self.mainTableView.reloadData()
@@ -54,12 +57,17 @@ class ViewControllerMain: NSViewController, Coloractivetask, Delay {
 
     
     @IBAction func reload(_ sender: NSButton) {
+        if self.profile.stringValue.isEmpty == true {
+            self.profilename = nil
+        } else {
+            self.profilename = self.profile.stringValue
+        }
         self.reloaddata()
     }
     
     private func reloaddata() {
-        self.configurations = Configurations(profile: self.profile)
-        self.schedules = Schedules(profile: self.profile)
+        self.configurations = Configurations(profile: self.profilename)
+        self.schedules = Schedules(profile: self.profilename)
         self.sortedandexpanded = ScheduleSortedAndExpand()
         globalMainQueue.async(execute: { () -> Void in
             self.mainTableView.reloadData()
@@ -228,7 +236,7 @@ extension SetSortedAndExpanded {
 
 extension ViewControllerMain: ScheduledTaskWorking {
     func start() {
-        // Start progress bar
+        self.progress.startAnimation(nil)
     }
 }
 
@@ -245,6 +253,7 @@ extension ViewControllerMain: Sendprocessreference {
 extension ViewControllerMain: UpdateProgress {
     func processTermination() {
         ViewControllerReference.shared.completeoperation!.finalizeScheduledJob(outputprocess: self.outputprocess)
+        self.progress.stopAnimation(nil)
         self.reloaddata()
     }
     
