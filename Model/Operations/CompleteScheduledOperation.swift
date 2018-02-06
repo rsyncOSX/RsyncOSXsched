@@ -33,7 +33,6 @@ final class CompleteScheduledOperation: SetScheduledTask, SetConfigurations, Set
         self.schedules!.addresultschedule(self.hiddenID!, dateStart: dateStartstring, result: numberstring, date: datestring, schedule: schedule!)
         // Writing timestamp to configuration
         self.configurations!.setCurrentDateonConfigurationQuickbackup(self.index!, outputprocess: outputprocess)
-        self.scheduleJob?.completed()
         // Reset reference til scheduled job
         self.schedules!.scheduledTasks = nil
     }

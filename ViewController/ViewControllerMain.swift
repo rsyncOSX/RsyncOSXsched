@@ -27,11 +27,11 @@ class ViewControllerMain: NSViewController, Coloractivetask {
         self.configurations = Configurations(profile: self.profile)
         self.schedules = Schedules(profile: self.profile)
         self.sortedandexpanded = ScheduleSortedAndExpand()
-        _ = OperationFactory()
 	}
     
     override func viewDidAppear() {
         super.viewDidAppear()
+        self.startfirstcheduledtask()
         globalMainQueue.async(execute: { () -> Void in
             self.mainTableView.reloadData()
         })
@@ -59,14 +59,13 @@ class ViewControllerMain: NSViewController, Coloractivetask {
     
     private func reloaddata() {
         // Cancel any previous tasks
-        ViewControllerReference.shared.dispatchTaskWaiting?.cancel()
         self.configurations = Configurations(profile: self.profile)
         self.schedules = Schedules(profile: self.profile)
         self.sortedandexpanded = ScheduleSortedAndExpand()
-        _ = OperationFactory()
         globalMainQueue.async(execute: { () -> Void in
             self.mainTableView.reloadData()
         })
+        self.startfirstcheduledtask()
     }
     
 }
@@ -224,6 +223,7 @@ extension SetSortedAndExpanded {
 // Startnexttask
 extension ViewControllerMain: StartNextTask {
     func startfirstcheduledtask() {
+         ViewControllerReference.shared.dispatchTaskWaiting?.cancel()
         _ = OperationFactory()
     }
 }
