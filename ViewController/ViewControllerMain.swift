@@ -9,6 +9,115 @@
 import Cocoa
 import Foundation
 
+
+class ViewControllerMain: NSViewController, Coloractivetask {
+    
+    @IBOutlet weak var mainTableView: NSTableView!
+    var configurations: Configurations?
+    var schedules: Schedules?
+    var sortedandexpanded: ScheduleSortedAndExpand?
+    private var outputprocess: OutputProcess?
+    var profile = "RsyncOSXlite"
+
+	override func viewDidLoad() {
+		super.viewDidLoad()
+        self.mainTableView.delegate = self
+        self.mainTableView.dataSource = self
+        ViewControllerReference.shared.viewControllermain = self
+        self.configurations = Configurations(profile: self.profile)
+        self.schedules = Schedules(profile: self.profile)
+        self.sortedandexpanded = ScheduleSortedAndExpand()
+        _ = OperationFactory()
+	}
+    
+    override func viewDidAppear() {
+        super.viewDidAppear()
+        globalMainQueue.async(execute: { () -> Void in
+            self.mainTableView.reloadData()
+        })
+    }
+
+	override var representedObject: Any? {
+		didSet {
+		// Update the view, if already loaded.
+		}
+	}
+
+	@IBAction func closeButtonAction(_ sender: NSButton) {
+		NSApp.terminate(self)
+	}
+    
+    @IBAction func openRsyncOSX(_ sender: NSButton) {
+        NSWorkspace.shared.open(URL(fileURLWithPath: "/Volumes/Home/thomas/Applications/RsyncOSX.app"))
+        NSApp.terminate(self)
+    }
+
+    
+    @IBAction func reload(_ sender: NSButton) {
+        self.reloaddata()
+    }
+    
+    private func reloaddata() {
+        self.configurations = Configurations(profile: self.profile)
+        self.schedules = Schedules(profile: self.profile)
+        self.sortedandexpanded = ScheduleSortedAndExpand()
+        _ = OperationFactory()
+        globalMainQueue.async(execute: { () -> Void in
+            self.mainTableView.reloadData()
+        })
+    }
+    
+}
+
+extension ViewControllerMain: NSTableViewDataSource {
+    // Delegate for size of table
+    func numberOfRows(in tableView: NSTableView) -> Int {
+        return self.configurations?.getConfigurationsDataSourcecountBackup()?.count ?? 0
+    }
+}
+
+extension ViewControllerMain: NSTableViewDelegate, Attributedestring {
+    
+    func tableView(_ tableView: NSTableView, objectValueFor tableColumn: NSTableColumn?, row: Int) -> Any? {
+        guard row < self.configurations!.getConfigurationsDataSourcecountBackup()!.count  else { return nil }
+        let object: NSDictionary = self.configurations!.getConfigurationsDataSourcecountBackup()![row]
+        var number: Int?
+        var taskintime: String?
+        let hiddenID: Int = (object.value(forKey: "hiddenID") as? Int)!
+        switch tableColumn!.identifier.rawValue {
+        case "numberCellID" :
+            if self.sortedandexpanded != nil {
+                number = self.sortedandexpanded!.countscheduledtasks(hiddenID).0
+            }
+            if number ?? 0 > 0 {
+                let returnstr = String(number!)
+                if let color = self.colorindex, color == hiddenID {
+                    return self.attributedstring(str: returnstr, color: NSColor.red, align: .center)
+                } else {
+                    return returnstr
+                }
+            }
+        case "batchCellID" :
+            return object[tableColumn!.identifier] as? Int!
+        case "offsiteServerCellID":
+            if (object[tableColumn!.identifier] as? String)!.isEmpty {
+                return "localhost"
+            } else {
+                return object[tableColumn!.identifier] as? String
+            }
+        case "inCellID":
+            if self.sortedandexpanded != nil {
+                taskintime = self.sortedandexpanded!.sortandcountscheduledonetask(hiddenID)
+                return taskintime ?? ""
+            }
+        default:
+            return object[tableColumn!.identifier] as? String
+        }
+        return nil
+    }
+    
+}
+
 protocol Attributedestring: class {
     func attributedstring(str: String, color: NSColor, align: NSTextAlignment) -> NSMutableAttributedString
 }
@@ -78,11 +187,11 @@ protocol GetSchedulesObject: class {
 }
 
 protocol SetSchedules {
-    weak var schedulesDelegate: GetSchedulesObject? {get}
-    var schedules: Schedules? {get}
+    weak var schedulesDelegate: GetSchedulesObject? { get }
+    var schedules: Schedules? { get }
 }
 
-extension SetSchedules {
+extension SetSchedules{
     weak var schedulesDelegate: GetSchedulesObject? {
         return ViewControllerReference.shared.viewControllermain as? ViewControllerMain
     }
@@ -91,123 +200,29 @@ extension SetSchedules {
     }
 }
 
-class ViewControllerMain: NSViewController, Coloractivetask {
-    
-    @IBOutlet weak var mainTableView: NSTableView!
-    var configurations: Configurations?
-    var schedules: Schedules?
-    var schedulessortedandexpanded: ScheduleSortedAndExpand?
-    private var outputprocess: OutputProcess?
-    var profile = "RsyncOSXlite"
-
-	override func viewDidLoad() {
-		super.viewDidLoad()
-        self.mainTableView.delegate = self
-        self.mainTableView.dataSource = self
-        ViewControllerReference.shared.viewControllermain = self
-        self.configurations = Configurations(profile: self.profile)
-        self.schedules = Schedules(profile: self.profile)
-        self.schedulessortedandexpanded = ScheduleSortedAndExpand()
-        _ = OperationFactory()
-        ViewControllerReference.shared.scheduledTask = self.schedulessortedandexpanded?.allscheduledtasks()
-	}
-    
-    override func viewDidAppear() {
-        super.viewDidAppear()
-        globalMainQueue.async(execute: { () -> Void in
-            self.mainTableView.reloadData()
-        })
-    }
-
-	override var representedObject: Any? {
-		didSet {
-		// Update the view, if already loaded.
-		}
-	}
-
-	@IBAction func closeButtonAction(_ sender: NSButton) {
-		NSApp.terminate(self)
-	}
-    
-    @IBAction func openRsyncOSX(_ sender: NSButton) {
-        NSWorkspace.shared.open(URL(fileURLWithPath: "/Volumes/Home/thomas/Applications/RsyncOSX.app"))
-        NSApp.terminate(self)
-    }
-
-    
-    @IBAction func reload(_ sender: NSButton) {
-        self.reloaddata()
-    }
-    
-    private func reloaddata() {
-        self.configurations = Configurations(profile: self.profile)
-        self.schedules = Schedules(profile: self.profile)
-        self.schedulessortedandexpanded = ScheduleSortedAndExpand()
-        _ = OperationFactory()
-        ViewControllerReference.shared.scheduledTask = self.schedulessortedandexpanded?.allscheduledtasks()
-        globalMainQueue.async(execute: { () -> Void in
-            self.mainTableView.reloadData()
-        })
-    }
-    
+// Protocol for returning object sorted and expanded
+protocol GetSortedandExpandedObject: class {
+    func getsortedandexpandeobject() -> ScheduleSortedAndExpand?
 }
 
-extension ViewControllerMain: NSTableViewDataSource {
-    // Delegate for size of table
-    func numberOfRows(in tableView: NSTableView) -> Int {
-        return self.configurations?.getConfigurationsDataSourcecountBackup()?.count ?? 0
+protocol SetSortedAndExpanded {
+    weak var sortedandexpandedDelegate: GetSortedandExpandedObject? { get }
+    var sortedandexpanded: ScheduleSortedAndExpand? { get }
+}
+
+extension SetSortedAndExpanded {
+    weak var sortedandexpandedDelegate: GetSortedandExpandedObject? {
+        return ViewControllerReference.shared.viewControllermain as? ViewControllerMain
+    }
+    var sortedandexpanded: ScheduleSortedAndExpand? {
+        return self.sortedandexpandedDelegate?.getsortedandexpandeobject()
     }
 }
 
-extension ViewControllerMain: NSTableViewDelegate, Attributedestring {
-    
-    func tableView(_ tableView: NSTableView, objectValueFor tableColumn: NSTableColumn?, row: Int) -> Any? {
-        guard row < self.configurations!.getConfigurationsDataSourcecountBackup()!.count  else { return nil }
-        let object: NSDictionary = self.configurations!.getConfigurationsDataSourcecountBackup()![row]
-        var number: Int?
-        var taskintime: String?
-        let hiddenID: Int = (object.value(forKey: "hiddenID") as? Int)!
-        switch tableColumn!.identifier.rawValue {
-        case "numberCellID" :
-            if self.schedulessortedandexpanded != nil {
-                number = self.schedulessortedandexpanded!.countscheduledtasks(hiddenID).0
-            }
-            if number ?? 0 > 0 {
-                let returnstr = String(number!)
-                if let color = self.colorindex, color == hiddenID {
-                    return self.attributedstring(str: returnstr, color: NSColor.red, align: .center)
-                } else {
-                    return returnstr
-                }
-            }
-        case "batchCellID" :
-            return object[tableColumn!.identifier] as? Int!
-        case "offsiteServerCellID":
-            if (object[tableColumn!.identifier] as? String)!.isEmpty {
-                return "localhost"
-            } else {
-                return object[tableColumn!.identifier] as? String
-            }
-        case "inCellID":
-            if self.schedulessortedandexpanded != nil {
-                taskintime = self.schedulessortedandexpanded!.sortandcountscheduledonetask(hiddenID)
-                return taskintime ?? ""
-            }
-        default:
-            return object[tableColumn!.identifier] as? String
-        }
-        return nil
-    }
-    
-}
-
-
+// Startnexttask
 extension ViewControllerMain: StartNextTask {
     func startfirstcheduledtask() {
-        // Cancel any schedeuled tasks first
-        ViewControllerReference.shared.dispatchTaskWaiting?.cancel()
         _ = OperationFactory()
-        ViewControllerReference.shared.scheduledTask = self.schedulessortedandexpanded?.allscheduledtasks()
     }
 }
 
@@ -273,6 +288,12 @@ extension ViewControllerMain: GetConfigurationsObject {
 extension ViewControllerMain: GetSchedulesObject {
     func getschedulesobject() -> Schedules? {
         return self.schedules
+    }
+}
+
+extension ViewControllerMain: GetSortedandExpandedObject {
+    func getsortedandexpandeobject() -> ScheduleSortedAndExpand? {
+        return self.sortedandexpanded
     }
     
     
