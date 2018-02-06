@@ -62,16 +62,8 @@ class ViewControllerMain: NSViewController, Coloractivetask, Delay {
         } else {
             self.profilename = self.profile.stringValue
         }
-        self.reloaddata()
-    }
-    
-    private func reloaddata() {
-        self.configurations = Configurations(profile: self.profilename)
-        self.schedules = Schedules(profile: self.profilename)
-        self.sortedandexpanded = ScheduleSortedAndExpand()
-        globalMainQueue.async(execute: { () -> Void in
-            self.mainTableView.reloadData()
-        })
+        self.createandreloadconfigurations()
+        self.createandreloadschedules()
         self.startfirstcheduledtask()
     }
     
@@ -79,6 +71,40 @@ class ViewControllerMain: NSViewController, Coloractivetask, Delay {
         ViewControllerReference.shared.dispatchTaskWaiting?.cancel()
         ViewControllerReference.shared.dispatchTaskWaiting = nil
         _ = OperationFactory()
+    }
+    
+    func createandreloadschedules() {
+        guard self.configurations != nil else {
+            self.schedules = Schedules(profile: nil)
+            return
+        }
+        if let profile = self.profilename {
+            self.schedules = nil
+            self.schedules = Schedules(profile: profile)
+        } else {
+            self.schedules = nil
+            self.schedules = Schedules(profile: nil)
+        }
+        self.sortedandexpanded = ScheduleSortedAndExpand()
+        self.schedules?.scheduledTasks = self.sortedandexpanded?.firstscheduledtask()
+        ViewControllerReference.shared.scheduledTask = self.sortedandexpanded?.firstscheduledtask()
+    }
+    
+    func createandreloadconfigurations() {
+        guard self.configurations != nil else {
+            self.configurations = Configurations(profile: nil)
+            return
+        }
+        if let profile = self.profilename {
+            self.configurations = nil
+            self.configurations = Configurations(profile: profile)
+        } else {
+            self.configurations = nil
+            self.configurations = Configurations(profile: nil)
+        }
+        globalMainQueue.async(execute: { () -> Void in
+            self.mainTableView.reloadData()
+        })
     }
     
 }
@@ -179,6 +205,7 @@ protocol UpdateProgress: class {
 // Protocol for returning object Configurations
 protocol GetConfigurationsObject: class {
     func getconfigurationsobject() -> Configurations?
+    func createandreloadconfigurations()
 }
 
 protocol SetConfigurations {
@@ -198,6 +225,7 @@ extension SetConfigurations {
 // Protocol for returning object configurations data
 protocol GetSchedulesObject: class {
     func getschedulesobject() -> Schedules?
+    func createandreloadschedules()
 }
 
 protocol SetSchedules {
@@ -254,7 +282,7 @@ extension ViewControllerMain: UpdateProgress {
     func processTermination() {
         ViewControllerReference.shared.completeoperation!.finalizeScheduledJob(outputprocess: self.outputprocess)
         self.progress.stopAnimation(nil)
-        self.reloaddata()
+        self.startfirstcheduledtask()
     }
     
     func fileHandler() {

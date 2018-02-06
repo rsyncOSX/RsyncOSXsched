@@ -77,8 +77,7 @@ final class PersistentStorageScheduling: Readwritefiles, SetSchedules {
     // Schedule is [NSDictionary]
     private func writeToStore (_ array: [NSDictionary]) {
         if self.writeDatatoPersistentStorage(array, task: .schedule) {
-            // self.schedulesDelegate?.reloadschedulesobject()
-            // self.readloggdataDelegate?.readloggdata()
+            self.schedulesDelegate?.createandreloadschedules()
         }
     }
 
