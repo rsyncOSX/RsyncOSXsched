@@ -13,7 +13,6 @@ class ScheduleOperationDispatch: SecondsBeforeStart, SetSortedAndExpanded {
     private var pendingRequestWorkItem: DispatchWorkItem?
 
     private func dispatchtask(_ seconds: Int) {
-        print("Dispatch task")
         let scheduledtask = DispatchWorkItem { [weak self] in
             _ = ExecuteTaskDispatch()
         }

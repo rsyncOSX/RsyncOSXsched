@@ -68,7 +68,6 @@ class ViewControllerMain: NSViewController, Coloractivetask, Delay {
     }
     
     func startfirstcheduledtask() {
-        print("cancel")
         ViewControllerReference.shared.dispatchTaskWaiting?.cancel()
         ViewControllerReference.shared.dispatchTaskWaiting = nil
         _ = OperationFactory()
