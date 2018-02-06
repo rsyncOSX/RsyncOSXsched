@@ -13,13 +13,19 @@ import Foundation
 class ViewControllerMain: NSViewController, Coloractivetask, Delay {
     
     @IBOutlet weak var mainTableView: NSTableView!
-    @IBOutlet weak var profile: NSTextField!
     @IBOutlet weak var progress: NSProgressIndicator!
+    @IBOutlet weak var profilescombobox: NSComboBox!
+    @IBOutlet weak var profileinfo: NSTextField!
+    
     var configurations: Configurations?
     var schedules: Schedules?
     var sortedandexpanded: ScheduleSortedAndExpand?
     private var outputprocess: OutputProcess?
-    var profilename: String? = "RsyncOSXlite"
+    var profilename: String?
+    
+    private var profilesArray: [String]?
+    private var profile: Profiles?
+    private var useprofile: String?
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
@@ -33,8 +39,8 @@ class ViewControllerMain: NSViewController, Coloractivetask, Delay {
     
     override func viewDidAppear() {
         super.viewDidAppear()
-        self.profile.stringValue = self.profilename ?? ""
         self.startfirstcheduledtask()
+        self.setprofiles()
         globalMainQueue.async(execute: { () -> Void in
             self.mainTableView.reloadData()
         })
@@ -55,13 +61,18 @@ class ViewControllerMain: NSViewController, Coloractivetask, Delay {
         NSApp.terminate(self)
     }
 
-    
-    @IBAction func reload(_ sender: NSButton) {
-        if self.profile.stringValue.isEmpty == true {
+    @IBAction func selectprofile(_ sender: NSComboBox) {
+        guard self.profilesArray != nil else { return }
+        guard self.profilescombobox.indexOfSelectedItem > -1 else {
+            self.profileinfo.stringValue = "Profile: default"
             self.profilename = nil
-        } else {
-            self.profilename = self.profile.stringValue
+            self.createandreloadconfigurations()
+            self.createandreloadschedules()
+            self.startfirstcheduledtask()
+            return
         }
+        self.profilename = self.profilesArray![self.profilescombobox.indexOfSelectedItem]
+        self.profileinfo.stringValue = "Profile: " + self.profilename!
         self.createandreloadconfigurations()
         self.createandreloadschedules()
         self.startfirstcheduledtask()
@@ -105,6 +116,15 @@ class ViewControllerMain: NSViewController, Coloractivetask, Delay {
         globalMainQueue.async(execute: { () -> Void in
             self.mainTableView.reloadData()
         })
+    }
+    
+    private func setprofiles() {
+        self.profile = nil
+        self.profile = Profiles()
+        self.profilesArray = self.profile!.getDirectorysStrings()
+        self.profilescombobox.removeAllItems()
+        guard self.profilesArray != nil else { return }
+        self.profilescombobox.addItems(withObjectValues: (self.profilesArray!))
     }
     
 }
