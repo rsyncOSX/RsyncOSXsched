@@ -57,6 +57,11 @@ struct Configuration {
         if let snapshotnum = dictionary.object(forKey: "snapshotnum") as? Int {
             self.snapshotnum = snapshotnum
         }
+        if let dateRun = dictionary.object(forKey: "dateRun") {
+            self.dateRun = dateRun as? String
+        } else {
+            self.dateRun = ""
+        }
         // Parameters 8 - 14 is user selected, as well as ssh port.
         if let parameter8 = dictionary.object(forKey: "parameter8") {
             self.parameter8 = parameter8 as? String
