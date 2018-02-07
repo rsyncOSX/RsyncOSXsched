@@ -48,4 +48,9 @@ class ViewControllerReference {
     var fulllogging: Bool = false
     var logname: String = "rsynclog"
     var viewControllermain: NSViewController?
+    // Paths
+    var pathrsyncosx: String?
+    var pathrsyncosxsched: String?
+    let namersyncosx: String = "RsyncOSX.app"
+    let namersyncosssched: String = "RsyncOSXsched.app"
 }
