@@ -16,6 +16,7 @@ class ViewControllerMain: NSViewController, Coloractivetask, Delay {
     @IBOutlet weak var progress: NSProgressIndicator!
     @IBOutlet weak var profilescombobox: NSComboBox!
     @IBOutlet weak var profileinfo: NSTextField!
+    @IBOutlet weak var rsyncosxbutton: NSButton!
     
     var configurations: Configurations?
     var schedules: Schedules?
@@ -41,6 +42,11 @@ class ViewControllerMain: NSViewController, Coloractivetask, Delay {
         super.viewDidAppear()
         self.startfirstcheduledtask()
         self.setprofiles()
+        if ViewControllerReference.shared.pathrsyncosx != nil {
+            self.rsyncosxbutton.isEnabled = true
+        } else {
+            self.rsyncosxbutton.isEnabled = false
+        }
         globalMainQueue.async(execute: { () -> Void in
             self.mainTableView.reloadData()
         })
@@ -57,7 +63,8 @@ class ViewControllerMain: NSViewController, Coloractivetask, Delay {
 	}
     
     @IBAction func openRsyncOSX(_ sender: NSButton) {
-        NSWorkspace.shared.open(URL(fileURLWithPath: "/Volumes/Home/thomas/Applications/RsyncOSX.app"))
+        let pathtorsyncosxapp: String = ViewControllerReference.shared.pathrsyncosx! + "/" + ViewControllerReference.shared.namersyncosx
+        NSWorkspace.shared.open(URL(fileURLWithPath: pathtorsyncosxapp))
         NSApp.terminate(self)
     }
 

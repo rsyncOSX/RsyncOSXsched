@@ -51,6 +51,6 @@ class ViewControllerReference {
     // Paths
     var pathrsyncosx: String?
     var pathrsyncosxsched: String?
-    var namersyncosx = "RsyncOSX.app"
-    var namersyncosssched = "RsyncOSXsched.app"
+    let namersyncosx: String = "RsyncOSX.app"
+    let namersyncosssched: String = "RsyncOSXsched.app"
 }

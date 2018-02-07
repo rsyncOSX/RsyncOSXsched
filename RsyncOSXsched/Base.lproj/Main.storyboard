@@ -834,7 +834,7 @@
                                 <rect key="frame" x="18" y="380" width="372" height="17"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Profile : default" id="xUm-lB-wAP">
-                                    <font key="font" metaFont="system" size="12"/>
+                                    <font key="font" metaFont="cellTitle"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
@@ -847,6 +847,7 @@
                         <outlet property="profilename" destination="Dbt-F1-zrn" id="nTE-CR-MKs"/>
                         <outlet property="profilescombobox" destination="1fS-UE-vUd" id="IEq-WQ-EqQ"/>
                         <outlet property="progress" destination="OyE-6j-Ril" id="CnQ-3c-LNN"/>
+                        <outlet property="rsyncosxbutton" destination="5nF-vB-oIM" id="fUM-D4-GXS"/>
                     </connections>
                 </viewController>
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
