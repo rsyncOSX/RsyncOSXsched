@@ -42,14 +42,22 @@ class ViewControllerMain: NSViewController, Coloractivetask, Delay {
         super.viewDidAppear()
         self.startfirstcheduledtask()
         self.setprofiles()
+        self.checkforrunning()
+        globalMainQueue.async(execute: { () -> Void in
+            self.mainTableView.reloadData()
+        })
+    }
+    
+    private func checkforrunning() {
+        guard Running().rsyncOSXisrunning == false else {
+            self.rsyncosxbutton.isEnabled = false
+            return
+        }
         if ViewControllerReference.shared.pathrsyncosx != nil {
             self.rsyncosxbutton.isEnabled = true
         } else {
             self.rsyncosxbutton.isEnabled = false
         }
-        globalMainQueue.async(execute: { () -> Void in
-            self.mainTableView.reloadData()
-        })
     }
 
 	override var representedObject: Any? {
