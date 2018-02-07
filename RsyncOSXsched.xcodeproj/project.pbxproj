@@ -467,7 +467,7 @@
 				DEVELOPMENT_TEAM = 93M47F4H9T;
 				INFOPLIST_FILE = RsyncOSXsched/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = no.blogspot.RsyncOSX;
+				PRODUCT_BUNDLE_IDENTIFIER = no.blogspot.RsyncOSXsched;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
@@ -485,7 +485,7 @@
 				DEVELOPMENT_TEAM = 93M47F4H9T;
 				INFOPLIST_FILE = RsyncOSXsched/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = no.blogspot.RsyncOSX;
+				PRODUCT_BUNDLE_IDENTIFIER = no.blogspot.RsyncOSXsched;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
