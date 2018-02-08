@@ -116,7 +116,7 @@ extension SetSortedAndExpanded {
 extension ViewControllerMain: ScheduledTaskWorking {
     func start() {
         self.progress.startAnimation(nil)
-        self.statuslight.image = #imageLiteral(resourceName: "yellow")
+        self.statuslight.image = #imageLiteral(resourceName: "green")
     }
 }
 
@@ -241,7 +241,6 @@ extension SecondsBeforeStart {
 
 enum status {
     case red
-    case yellow
     case green
 }
 

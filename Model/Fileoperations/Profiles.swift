@@ -23,7 +23,7 @@ class Profiles: Files {
                     return true
                 } catch let e {
                     let error = e as NSError
-                    // self.error(error: error.description, errortype: .profilecreatedirectory)
+                    self.error(error: error.description, errortype: .profilecreatedirectory)
                     return false
                 }
             } else {

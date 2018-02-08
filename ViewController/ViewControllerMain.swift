@@ -198,8 +198,6 @@ extension ViewControllerMain: Updatestatuslight {
         switch color {
         case .red:
             self.statuslight.image = #imageLiteral(resourceName: "red")
-        case .yellow:
-            self.statuslight.image = #imageLiteral(resourceName: "yellow")
         case .green:
             self.statuslight.image = #imageLiteral(resourceName: "green")
         }

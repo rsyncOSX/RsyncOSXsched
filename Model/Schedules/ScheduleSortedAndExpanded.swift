@@ -29,7 +29,7 @@ class ScheduleSortedAndExpand: SetSchedules {
         }
         guard self.sortedschedules!.count > 0 else {
             ViewControllerReference.shared.scheduledTask = nil
-            self.statuslightDelegate?.updatestatuslight(color: .yellow)
+            self.statuslightDelegate?.updatestatuslight(color: .red)
             return nil
         }
         self.statuslightDelegate?.updatestatuslight(color: .green)
