@@ -23,10 +23,13 @@ class ScheduleSortedAndExpand: SetSchedules {
 
     // First job to execute.Job is first element in 
     func firstscheduledtask() -> NSDictionary? {
-        guard self.sortedschedules != nil else { return nil}
+        guard self.sortedschedules != nil else {
+            self.statuslightDelegate?.updatestatuslight(color: .red)
+            return nil
+        }
         guard self.sortedschedules!.count > 0 else {
             ViewControllerReference.shared.scheduledTask = nil
-            self.statuslightDelegate?.updatestatuslight(color: .red)
+            self.statuslightDelegate?.updatestatuslight(color: .yellow)
             return nil
         }
         self.statuslightDelegate?.updatestatuslight(color: .green)
