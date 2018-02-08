@@ -17,6 +17,7 @@ class ViewControllerMain: NSViewController, Coloractivetask, Delay {
     @IBOutlet weak var profilescombobox: NSComboBox!
     @IBOutlet weak var profileinfo: NSTextField!
     @IBOutlet weak var rsyncosxbutton: NSButton!
+    @IBOutlet weak var statuslight: NSImageView!
     
     var configurations: Configurations?
     var schedules: Schedules?
@@ -189,6 +190,19 @@ extension ViewControllerMain: NSTableViewDelegate, Attributedestring {
             return object[tableColumn!.identifier] as? String
         }
         return nil
+    }
+}
+
+extension ViewControllerMain: Updatestatuslight {
+    func updatestatuslight(color: status) {
+        switch color {
+        case .red:
+            self.statuslight.image = #imageLiteral(resourceName: "red")
+        case .yellow:
+            self.statuslight.image = #imageLiteral(resourceName: "yellow")
+        case .green:
+            self.statuslight.image = #imageLiteral(resourceName: "green")
+        }
     }
 }
 
