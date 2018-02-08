@@ -4,10 +4,15 @@ Initial listing v0.0.1, it compiles and executes but still need some more testin
 
 The menu app can be started from RsyncOSX and RsyncOSX from the menu app.
 
-Adding tasks in RsyncOSX:
-![](screenshots/num1.png)
-![](screenshots/num2.png)
-Start the menu app for executing scheduled tasks. The menu app reads the configuration files created and updated from RsyncOSX.
-![](screenshots/num3.png)
-The main view in RsyncOSX. 
-![](screenshots/num4.png)
+Adding info about where RsyncOSX and RsyncOSXsched are installed. The paths are used for activating the apps either within RsyncOSX or RsyncOSXsched.
+![](screenshots/sched1.png)
+Adding scheduled for tasks (in profile `Schedules`) in RsyncOSX. After adding tasks either keep RsyncOSX running or select main menu and select the button `Menuapp`.
+![](screenshots/sched2.png)
+![](screenshots/sched3.png)
+Selecting the `Menuapp` quits RsyncOSX and starts the menu application. The default profile is selected when i starts. There are no active schedules in the `default` profile. Selecting profile `Schedules` (the menu app reads any profile created within RsyncOSX).
+![](screenshots/sched4.png)
+![](screenshots/sched5.png)
+The status light is green indicating there is an active task waiting for execution. In the example there was only schedules of type `once`. After all three was executed there were not any scheduled tasks waiting.
+![](screenshots/sched6.png)
+Opening RsyncOSX and checking the logs for result of executed tasks.
+![](screenshots/sched7.png)
