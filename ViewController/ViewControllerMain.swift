@@ -66,7 +66,13 @@ class ViewControllerMain: NSViewController, Coloractivetask, Delay {
 		// Update the view, if already loaded.
 		}
 	}
-
+    
+    @IBAction func abort(_ sender: NSButton) {
+        ViewControllerReference.shared.process?.terminate()
+        self.progress.stopAnimation(nil)
+        self.reload()
+    }
+    
 	@IBAction func closeButtonAction(_ sender: NSButton) {
 		NSApp.terminate(self)
 	}
@@ -78,6 +84,10 @@ class ViewControllerMain: NSViewController, Coloractivetask, Delay {
     }
 
     @IBAction func selectprofile(_ sender: NSComboBox) {
+        self.reload()
+    }
+    
+    private func reload() {
         guard self.profilesArray != nil else { return }
         guard self.profilescombobox.indexOfSelectedItem > -1 else {
             self.profileinfo.stringValue = "Profile: default"
@@ -198,8 +208,6 @@ extension ViewControllerMain: Updatestatuslight {
         switch color {
         case .red:
             self.statuslight.image = #imageLiteral(resourceName: "red")
-        case .yellow:
-            self.statuslight.image = #imageLiteral(resourceName: "yellow")
         case .green:
             self.statuslight.image = #imageLiteral(resourceName: "green")
         }

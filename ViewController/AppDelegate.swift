@@ -26,7 +26,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
 
 	func applicationDidFinishLaunching(_ aNotification: Notification) {
-        
         var storage: PersistentStorageAPI?
         // Insert code here to initialize your application
         // Read user configuration
@@ -35,7 +34,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             _ = Userconfiguration(userconfigRsyncOSX: userConfiguration)
         }
 		if let button = self.statusItem.button {
-			button.image = NSImage(named: NSImage.Name(rawValue: "StatusBarButtonImage"))
+			button.image = NSImage(named: NSImage.Name(rawValue: "MenubarButton"))
 			button.action = #selector(AppDelegate.togglePopover(_:))
 		}
 		self.popover.contentViewController = self.mainViewController
