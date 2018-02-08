@@ -44,7 +44,6 @@ class ViewControllerMain: NSViewController, Coloractivetask, Delay {
         self.startfirstcheduledtask()
         self.setprofiles()
         self.checkforrunning()
-        self.statuslight.image = #imageLiteral(resourceName: "yellow")
         globalMainQueue.async(execute: { () -> Void in
             self.mainTableView.reloadData()
         })
