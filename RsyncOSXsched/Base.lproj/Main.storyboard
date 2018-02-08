@@ -657,14 +657,14 @@
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <scrollView fixedFrame="YES" borderType="groove" autohidesScrollers="YES" horizontalLineScroll="19" horizontalPageScroll="10" verticalLineScroll="19" verticalPageScroll="10" usesPredominantAxisScrolling="NO" scrollerKnobStyle="dark" translatesAutoresizingMaskIntoConstraints="NO" id="JH9-xF-5Du">
-                                <rect key="frame" x="20" y="61" width="816" height="318"/>
+                                <rect key="frame" x="20" y="106" width="816" height="273"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <clipView key="contentView" ambiguous="YES" id="Rph-Qa-2ob">
-                                    <rect key="frame" x="2" y="2" width="812" height="314"/>
+                                    <rect key="frame" x="2" y="2" width="812" height="269"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnSelection="YES" multipleSelection="NO" autosaveColumns="NO" headerView="EMc-mu-O8N" id="MTy-21-e8o">
-                                            <rect key="frame" x="0.0" y="0.0" width="812" height="291"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="812" height="246"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <size key="intercellSpacing" width="3" height="2"/>
                                             <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -748,7 +748,7 @@
                                                     </textFieldCell>
                                                     <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                                 </tableColumn>
-                                                <tableColumn identifier="backupIDCellID" width="87" minWidth="10" maxWidth="3.4028234663852886e+38" id="IC7-e5-YBh" userLabel="ID">
+                                                <tableColumn identifier="backupIDCellID" width="88" minWidth="10" maxWidth="3.4028234663852886e+38" id="IC7-e5-YBh" userLabel="ID">
                                                     <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="ID">
                                                         <font key="font" metaFont="smallSystem"/>
                                                         <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -839,6 +839,20 @@
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hDY-aj-umI">
+                                <rect key="frame" x="18" y="61" width="102" height="17"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Status next task" id="7YM-08-OZC">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="QZT-xW-DCA">
+                                <rect key="frame" x="155" y="58" width="20" height="20"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="yellow" id="hvR-qc-H5B"/>
+                            </imageView>
                         </subviews>
                     </view>
                     <connections>
@@ -848,6 +862,7 @@
                         <outlet property="profilescombobox" destination="1fS-UE-vUd" id="IEq-WQ-EqQ"/>
                         <outlet property="progress" destination="OyE-6j-Ril" id="CnQ-3c-LNN"/>
                         <outlet property="rsyncosxbutton" destination="5nF-vB-oIM" id="fUM-D4-GXS"/>
+                        <outlet property="statuslight" destination="QZT-xW-DCA" id="HLR-59-DPK"/>
                     </connections>
                 </viewController>
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
@@ -855,4 +870,7 @@
             <point key="canvasLocation" x="182" y="-70.5"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="yellow" width="256" height="256"/>
+    </resources>
 </document>

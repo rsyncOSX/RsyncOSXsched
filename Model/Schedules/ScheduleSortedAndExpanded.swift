@@ -19,14 +19,17 @@ class ScheduleSortedAndExpand: SetSchedules {
     private var sortedschedules: [NSDictionary]?
     private var scheduleInProgress: Bool = false
     private var tools: Tools?
+    weak var statuslightDelegate: Updatestatuslight?
 
     // First job to execute.Job is first element in 
     func firstscheduledtask() -> NSDictionary? {
         guard self.sortedschedules != nil else { return nil}
         guard self.sortedschedules!.count > 0 else {
             ViewControllerReference.shared.scheduledTask = nil
+            self.statuslightDelegate?.updatestatuslight(color: .red)
             return nil
         }
+        self.statuslightDelegate?.updatestatuslight(color: .green)
         return self.sortedschedules![0]
     }
 
@@ -180,5 +183,6 @@ class ScheduleSortedAndExpand: SetSchedules {
         self.setallscheduledtasksNSDictionary()
         self.sortAndExpandScheduleTasks()
         self.tools = Tools()
+        self.statuslightDelegate = ViewControllerReference.shared.viewControllermain as? ViewControllerMain
     }
 }
