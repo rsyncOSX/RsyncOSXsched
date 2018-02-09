@@ -187,5 +187,49 @@ final class Tools: SetConfigurations {
         }
         return result ?? ""
     }
+    
+    // Test for TCP connection
+    func testTCPconnection (_ addr: String, port: Int, timeout: Int) -> (Bool, String) {
+        var connectionOK: Bool = false
+        var str: String = ""
+        let client: TCPClient = TCPClient(addr: addr, port: port)
+        let (success, errmsg) = client.connect(timeout: timeout)
+        connectionOK = success
+        if connectionOK {
+            str = "connection OK"
+        } else {
+            str = errmsg
+        }
+        return (connectionOK, str)
+    }
+    
+    // Testing all remote servers.
+    // Adding connection true or false in array[bool]
+    // Do the check in background que, reload table in global main queue
+    func testAllremoteserverConnections () {
+        self.indexBoolremoteserverOff = nil
+        self.indexBoolremoteserverOff = [Bool]()
+        guard self.configurations!.configurationsDataSourcecount() > 0 else { return }
+        globalDefaultQueue.async(execute: { () -> Void in
+            var port: Int = 22
+            for i in 0 ..< self.configurations!.configurationsDataSourcecount() {
+                if let record = self.configurations!.getargumentAllConfigurations()[i] as? ArgumentsOneConfiguration {
+                    if record.config!.offsiteServer.isEmpty == false {
+                        if let sshport: Int = record.config!.sshport { port = sshport }
+                        let (success, _) = self.testTCPconnection(record.config!.offsiteServer, port: port, timeout: 1)
+                        if success {
+                            self.indexBoolremoteserverOff!.append(false)
+                        } else {
+                            // self.remoteserverOff = true
+                            self.indexBoolremoteserverOff!.append(true)
+                        }
+                    } else {
+                        self.indexBoolremoteserverOff!.append(false)
+                    }
+                }
+            }
+        })
+    }
+
 
 }
