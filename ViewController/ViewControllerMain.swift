@@ -39,13 +39,13 @@ class ViewControllerMain: NSViewController, Coloractivetask, Delay {
         self.configurations = Configurations(profile: self.profilename)
         self.schedules = Schedules(profile: self.profilename)
         self.sortedandexpanded = ScheduleSortedAndExpand()
+        self.startfirstcheduledtask()
         self.tools = Tools()
         self.tools?.testAllremoteserverConnections()
 	}
     
     override func viewDidAppear() {
         super.viewDidAppear()
-        self.startfirstcheduledtask()
         self.setprofiles()
         self.checkforrunning()
         self.info(num: -1)
@@ -240,8 +240,6 @@ extension ViewControllerMain: Updatestatustcpconnections {
     func updatestatustcpconnections() {
         self.info(num: 1)
     }
-    
-    
 }
 
 

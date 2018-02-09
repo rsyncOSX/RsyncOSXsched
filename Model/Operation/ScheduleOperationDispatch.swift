@@ -21,12 +21,18 @@ class ScheduleOperationDispatch: SecondsBeforeStart, SetSortedAndExpanded {
     }
 
     init() {
+        weak var updatestatuslightDelegate: Updatestatuslight?
+        updatestatuslightDelegate = ViewControllerReference.shared.viewControllermain as? ViewControllerMain
         let seconds = self.secondsbeforestart()
-        guard seconds > 0 else { return }
+        guard seconds > 0 else {
+            updatestatuslightDelegate?.updatestatuslight(color: .red)
+            return
+        }
         self.dispatchtask(Int(seconds))
         ViewControllerReference.shared.scheduledTask = self.sortedandexpanded?.firstscheduledtask()
         // Set reference to schedule for later cancel if any
         ViewControllerReference.shared.dispatchTaskWaiting = self.pendingRequestWorkItem
+        updatestatuslightDelegate?.updatestatuslight(color: .green)
     }
 
 }
