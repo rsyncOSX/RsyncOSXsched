@@ -18,12 +18,14 @@ class ViewControllerMain: NSViewController, Coloractivetask, Delay {
     @IBOutlet weak var profileinfo: NSTextField!
     @IBOutlet weak var rsyncosxbutton: NSButton!
     @IBOutlet weak var statuslight: NSImageView!
+    @IBOutlet weak var info: NSTextField!
     
     var configurations: Configurations?
     var schedules: Schedules?
     var sortedandexpanded: ScheduleSortedAndExpand?
     var outputprocess: OutputProcess?
     var profilename: String?
+    var tools: Tools?
     
     private var profilesArray: [String]?
     private var profile: Profiles?
@@ -37,6 +39,8 @@ class ViewControllerMain: NSViewController, Coloractivetask, Delay {
         self.configurations = Configurations(profile: self.profilename)
         self.schedules = Schedules(profile: self.profilename)
         self.sortedandexpanded = ScheduleSortedAndExpand()
+        self.tools = Tools()
+        self.tools?.testAllremoteserverConnections()
 	}
     
     override func viewDidAppear() {
@@ -44,6 +48,7 @@ class ViewControllerMain: NSViewController, Coloractivetask, Delay {
         self.startfirstcheduledtask()
         self.setprofiles()
         self.checkforrunning()
+        self.info(num: -1)
         globalMainQueue.async(execute: { () -> Void in
             self.mainTableView.reloadData()
         })
@@ -84,10 +89,12 @@ class ViewControllerMain: NSViewController, Coloractivetask, Delay {
     }
 
     @IBAction func selectprofile(_ sender: NSComboBox) {
+        self.tools = nil
         self.reload()
     }
     
     private func reload() {
+        self.info(num: -1)
         guard self.profilesArray != nil else { return }
         guard self.profilescombobox.indexOfSelectedItem > -1 else {
             self.profileinfo.stringValue = "Profile: default"
@@ -102,6 +109,10 @@ class ViewControllerMain: NSViewController, Coloractivetask, Delay {
         self.createandreloadconfigurations()
         self.createandreloadschedules()
         self.startfirstcheduledtask()
+        if self.tools == nil {
+            self.tools = Tools()
+            self.tools?.testAllremoteserverConnections()
+        }
     }
     
     func startfirstcheduledtask() {
@@ -151,6 +162,17 @@ class ViewControllerMain: NSViewController, Coloractivetask, Delay {
         self.profilescombobox.removeAllItems()
         guard self.profilesArray != nil else { return }
         self.profilescombobox.addItems(withObjectValues: (self.profilesArray!))
+    }
+    
+    private func info (num: Int) {
+        globalMainQueue.async(execute: { () -> Void in
+            switch num {
+            case 1:
+                self.info.stringValue = "One or more remote sites not avaliable...."
+            default:
+                self.info.stringValue = ""
+            }
+        })
     }
     
 }
@@ -212,6 +234,14 @@ extension ViewControllerMain: Updatestatuslight {
             self.statuslight.image = #imageLiteral(resourceName: "green")
         }
     }
+}
+
+extension ViewControllerMain: Updatestatustcpconnections {
+    func updatestatustcpconnections() {
+        self.info(num: 1)
+    }
+    
+    
 }
 
 

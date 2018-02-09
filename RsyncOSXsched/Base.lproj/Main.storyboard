@@ -864,9 +864,19 @@
                                     <action selector="abort:" target="XfG-lQ-9wD" id="Y4S-o8-dEq"/>
                                 </connections>
                             </button>
+                            <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0Eq-qC-I3h">
+                                <rect key="frame" x="289" y="19" width="355" height="22"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="center" bezelStyle="round" id="Dns-EB-plw">
+                                    <font key="font" metaFont="smallSystem"/>
+                                    <color key="textColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="backgroundColor" name="gridColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
                         </subviews>
                     </view>
                     <connections>
+                        <outlet property="info" destination="0Eq-qC-I3h" id="sq9-j7-IdR"/>
                         <outlet property="mainTableView" destination="MTy-21-e8o" id="XBS-bX-0ZG"/>
                         <outlet property="profileinfo" destination="Dbt-F1-zrn" id="xzC-yR-JAu"/>
                         <outlet property="profilename" destination="Dbt-F1-zrn" id="nTE-CR-MKs"/>

@@ -12,6 +12,11 @@
 		94E0FC431BD7FC3600A3C537 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 94E0FC421BD7FC3600A3C537 /* Assets.xcassets */; };
 		94E0FC461BD7FC3600A3C537 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 94E0FC441BD7FC3600A3C537 /* Main.storyboard */; };
 		94E0FC4E1BD7FCBE00A3C537 /* EventMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94E0FC4D1BD7FCBE00A3C537 /* EventMonitor.swift */; };
+		E90BFDC8202D989D004AE4EC /* ytcpsocket.c in Sources */ = {isa = PBXBuildFile; fileRef = E90BFDC3202D989D004AE4EC /* ytcpsocket.c */; };
+		E90BFDC9202D989D004AE4EC /* yudpsocket.swift in Sources */ = {isa = PBXBuildFile; fileRef = E90BFDC4202D989D004AE4EC /* yudpsocket.swift */; };
+		E90BFDCA202D989D004AE4EC /* yudpsocket.c in Sources */ = {isa = PBXBuildFile; fileRef = E90BFDC5202D989D004AE4EC /* yudpsocket.c */; };
+		E90BFDCB202D989D004AE4EC /* ytcpsocket.swift in Sources */ = {isa = PBXBuildFile; fileRef = E90BFDC6202D989D004AE4EC /* ytcpsocket.swift */; };
+		E90BFDCC202D989D004AE4EC /* ysocket.swift in Sources */ = {isa = PBXBuildFile; fileRef = E90BFDC7202D989D004AE4EC /* ysocket.swift */; };
 		E91C5DBF2026F8FA00FE7E76 /* ScheduleSortedAndExpanded.swift in Sources */ = {isa = PBXBuildFile; fileRef = E91C5DBB2026F8F900FE7E76 /* ScheduleSortedAndExpanded.swift */; };
 		E91C5DC02026F8FA00FE7E76 /* Schedules.swift in Sources */ = {isa = PBXBuildFile; fileRef = E91C5DBC2026F8F900FE7E76 /* Schedules.swift */; };
 		E91C5DC12026F8FA00FE7E76 /* ScheduleWriteLoggData.swift in Sources */ = {isa = PBXBuildFile; fileRef = E91C5DBD2026F8F900FE7E76 /* ScheduleWriteLoggData.swift */; };
@@ -50,6 +55,12 @@
 		94E0FC451BD7FC3600A3C537 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		94E0FC471BD7FC3600A3C537 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		94E0FC4D1BD7FCBE00A3C537 /* EventMonitor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventMonitor.swift; sourceTree = "<group>"; };
+		E90BFDC2202D989C004AE4EC /* RsyncOSXsched-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "RsyncOSXsched-Bridging-Header.h"; sourceTree = "<group>"; };
+		E90BFDC3202D989D004AE4EC /* ytcpsocket.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = ytcpsocket.c; path = Model/ydpsoket/ytcpsocket.c; sourceTree = SOURCE_ROOT; };
+		E90BFDC4202D989D004AE4EC /* yudpsocket.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = yudpsocket.swift; path = Model/ydpsoket/yudpsocket.swift; sourceTree = SOURCE_ROOT; };
+		E90BFDC5202D989D004AE4EC /* yudpsocket.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = yudpsocket.c; path = Model/ydpsoket/yudpsocket.c; sourceTree = SOURCE_ROOT; };
+		E90BFDC6202D989D004AE4EC /* ytcpsocket.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ytcpsocket.swift; path = Model/ydpsoket/ytcpsocket.swift; sourceTree = SOURCE_ROOT; };
+		E90BFDC7202D989D004AE4EC /* ysocket.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ysocket.swift; path = Model/ydpsoket/ysocket.swift; sourceTree = SOURCE_ROOT; };
 		E91C5DBB2026F8F900FE7E76 /* ScheduleSortedAndExpanded.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScheduleSortedAndExpanded.swift; sourceTree = "<group>"; };
 		E91C5DBC2026F8F900FE7E76 /* Schedules.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Schedules.swift; sourceTree = "<group>"; };
 		E91C5DBD2026F8F900FE7E76 /* ScheduleWriteLoggData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScheduleWriteLoggData.swift; sourceTree = "<group>"; };
@@ -107,6 +118,20 @@
 				94E0FC3B1BD7FC3600A3C537 /* RsyncOSXsched.app */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		E90BFDC1202D9858004AE4EC /* ydpsocket */ = {
+			isa = PBXGroup;
+			children = (
+				E90BFDC7202D989D004AE4EC /* ysocket.swift */,
+				E90BFDC3202D989D004AE4EC /* ytcpsocket.c */,
+				E90BFDC6202D989D004AE4EC /* ytcpsocket.swift */,
+				E90BFDC5202D989D004AE4EC /* yudpsocket.c */,
+				E90BFDC4202D989D004AE4EC /* yudpsocket.swift */,
+				E90BFDC2202D989C004AE4EC /* RsyncOSXsched-Bridging-Header.h */,
+			);
+			name = ydpsocket;
+			path = "New Group";
 			sourceTree = "<group>";
 		};
 		E91C5DBA2026F80C00FE7E76 /* Schedules */ = {
@@ -230,6 +255,7 @@
 		E98398A720260D0300C977C3 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				E90BFDC1202D9858004AE4EC /* ydpsocket */,
 				E946CDBB20279A3C005BF6E9 /* User */,
 				E91C5DC32026FACF00FE7E76 /* Operation */,
 				E91C5DBA2026F80C00FE7E76 /* Schedules */,
@@ -276,7 +302,7 @@
 					94E0FC3A1BD7FC3600A3C537 = {
 						CreatedOnToolsVersion = 7.0.1;
 						DevelopmentTeam = 93M47F4H9T;
-						LastSwiftMigration = 0900;
+						LastSwiftMigration = 0920;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -322,6 +348,7 @@
 				94E0FC4E1BD7FCBE00A3C537 /* EventMonitor.swift in Sources */,
 				E91C5DC22026F8FA00FE7E76 /* ScheduleOperationDispatch.swift in Sources */,
 				E98398AF20260E9D00C977C3 /* Configurations.swift in Sources */,
+				E90BFDC8202D989D004AE4EC /* ytcpsocket.c in Sources */,
 				E9F54D7B2026D7D400A664CF /* RsyncParametersProcess.swift in Sources */,
 				E91C5DC12026F8FA00FE7E76 /* ScheduleWriteLoggData.swift in Sources */,
 				E9A63066202B4DE900F1FFF1 /* Running.swift in Sources */,
@@ -334,6 +361,7 @@
 				E91C5DCB2026FE4200FE7E76 /* PersistentStorageScheduling.swift in Sources */,
 				94E0FC411BD7FC3600A3C537 /* ViewControllerMain.swift in Sources */,
 				E9F54D812026DAFD00A664CF /* PersistentStorageAPI.swift in Sources */,
+				E90BFDCB202D989D004AE4EC /* ytcpsocket.swift in Sources */,
 				E98BB14B202763B40078DF8E /* Numbers.swift in Sources */,
 				E9F54D772026D62000A664CF /* Tools.swift in Sources */,
 				E9F54D7F2026DA8B00A664CF /* OutputProcess.swift in Sources */,
@@ -341,7 +369,10 @@
 				E9F54D892026DCCF00A664CF /* Files.swift in Sources */,
 				E9F54D872026DCC800A664CF /* Profiles.swift in Sources */,
 				E91C5DC52026FAFB00FE7E76 /* ExecuteTaskDispatch.swift in Sources */,
+				E90BFDCA202D989D004AE4EC /* yudpsocket.c in Sources */,
 				E9F54D7D2026D83500A664CF /* CompleteScheduledOperation.swift in Sources */,
+				E90BFDC9202D989D004AE4EC /* yudpsocket.swift in Sources */,
+				E90BFDCC202D989D004AE4EC /* ysocket.swift in Sources */,
 				E9E4E989202AD26300C8724B /* Extensions.swift in Sources */,
 				E98398AE20260E9D00C977C3 /* Configuration.swift in Sources */,
 				E9F54D792026D68D00A664CF /* ViewControllerReference.swift in Sources */,
@@ -465,6 +496,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
@@ -474,6 +506,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = no.blogspot.RsyncOSXsched;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "Model/New Group/RsyncOSXsched-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
 				SWIFT_VERSION = 4.0;
 			};
@@ -483,6 +517,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
@@ -492,6 +527,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = no.blogspot.RsyncOSXsched;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "Model/New Group/RsyncOSXsched-Bridging-Header.h";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
 				SWIFT_VERSION = 4.0;
 			};

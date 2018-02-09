@@ -247,3 +247,7 @@ enum status {
 protocol Updatestatuslight: class {
     func updatestatuslight(color: status)
 }
+
+protocol Updatestatustcpconnections: class {
+    func updatestatustcpconnections()
+}
