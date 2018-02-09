@@ -1,10 +1,10 @@
 ## RsyncOSXsched
 
-Initial listing v0.0.1, it compiles and executes but still need some more testing before released as alpha or beta. This will be the menu app (popover) for executing scheduled tasks RsyncOSX. The idea is add scheduled tasks in RsyncOSX, quit RsyncOSX and let the menu app take care of executing the scheduled tasks.
+Initial listing v0.0.1, it compiles and executes but still need some more testing before released. This is the menu app (popover) for executing scheduled tasks RsyncOSX. The idea is add scheduled tasks in RsyncOSX, quit RsyncOSX and let the menu app take care of executing the scheduled tasks.
 
-The menu app can be started from RsyncOSX and RsyncOSX from the menu app.
+**Important**: only scheduled tasks from the selected profile is active. **Do not** run both RsyncOSX and the menu app at the same time **utilizing the same profile**. Any scheduled tasks will be executed at the same time in both apps and it will most likely cause problems. 
 
-Adding info about where RsyncOSX and RsyncOSXsched are installed. The paths are used for activating the apps either within RsyncOSX or RsyncOSXsched.
+The menu app can be started from RsyncOSX and RsyncOSX from the menu app. This require paths for both apps to be entered into userconfiguration (**without** a trailiong `/`).  The paths are used for activating the apps from either within RsyncOSX or RsyncOSXsched.
 ![](screenshots/sched1.png)
 Adding scheduled for tasks (in profile `Schedules`) in RsyncOSX. After adding tasks either keep RsyncOSX running or select main menu and select the button `Menuapp`.
 ![](screenshots/sched2.png)
