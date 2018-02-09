@@ -209,26 +209,17 @@ final class Tools: SetConfigurations {
     func testAllremoteserverConnections () {
         weak var probablynoconnectionsDelegate: Updatestatustcpconnections?
         probablynoconnectionsDelegate = ViewControllerReference.shared.viewControllermain as? ViewControllerMain
-        self.indexBoolremoteserverOff = nil
-        self.indexBoolremoteserverOff = [Bool]()
         guard self.configurations!.configurationsDataSourcecount() > 0 else { return }
         globalDefaultQueue.async(execute: { () -> Void in
             var port: Int = 22
-            print(self.configurations!.configurationsDataSourcecount())
             for i in 0 ..< self.configurations!.configurationsDataSourcecount() {
                 if let record = self.configurations!.getargumentAllConfigurations()[i] as? ArgumentsOneConfiguration {
                     if record.config!.offsiteServer.isEmpty == false {
                         if let sshport: Int = record.config!.sshport { port = sshport }
                         let (success, _) = self.testTCPconnection(record.config!.offsiteServer, port: port, timeout: 1)
-                        if success {
-                            self.indexBoolremoteserverOff!.append(false)
-                        } else {
-                            // self.remoteserverOff = true
+                        if success == false {
                             probablynoconnectionsDelegate?.updatestatustcpconnections()
-                            self.indexBoolremoteserverOff!.append(true)
                         }
-                    } else {
-                        self.indexBoolremoteserverOff!.append(false)
                     }
                 }
             }
