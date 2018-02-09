@@ -9,8 +9,8 @@
 import Foundation
 import Cocoa
 
-class ScheduleSortedAndExpand: SetSchedules {
-
+class ScheduleSortedAndExpand: SetConfigurations, SetSchedules {
+    
     // Reference to main View
     private var vctabmain: NSViewController?
     private var schedulesNSDictionary: [NSDictionary]?
@@ -19,35 +19,29 @@ class ScheduleSortedAndExpand: SetSchedules {
     private var sortedschedules: [NSDictionary]?
     private var scheduleInProgress: Bool = false
     private var tools: Tools?
-    weak var statuslightDelegate: Updatestatuslight?
-
-    // First job to execute.Job is first element in 
+    
+    // First job to execute. Job is first element in
     func firstscheduledtask() -> NSDictionary? {
-        guard self.sortedschedules != nil else {
-            self.statuslightDelegate?.updatestatuslight(color: .red)
-            return nil
-        }
+        guard self.sortedschedules != nil else { return nil}
         guard self.sortedschedules!.count > 0 else {
             ViewControllerReference.shared.scheduledTask = nil
-            self.statuslightDelegate?.updatestatuslight(color: .red)
             return nil
         }
-        self.statuslightDelegate?.updatestatuslight(color: .green)
         return self.sortedschedules![0]
     }
-
+    
     // Returns reference to all sorted and expanded schedules
     func getsortedAndExpandedScheduleData() -> [NSDictionary]? {
         return self.sortedschedules
     }
-
+    
     // Calculate daily schedules
     private func daily (days: Double, dateStart: Date, schedule: String, dict: NSDictionary) {
         var k = Int(days)
         if k > 30 { k = 30 }
         for j in 0 ..< k {
             var dateComponent = DateComponents()
-            dateComponent.day = j+1
+            dateComponent.day = j
             let cal = Calendar.current
             if let start: Date = cal.date(byAdding: dateComponent, to: dateStart) {
                 if start.timeIntervalSinceNow > 0 {
@@ -64,14 +58,14 @@ class ScheduleSortedAndExpand: SetSchedules {
             }
         }
     }
-
+    
     // Calculate weekly schedules
     private func weekly (days: Double, dateStart: Date, schedule: String, dict: NSDictionary) {
         var k = Int(days)
         if k > 30 { k = 30 }
         for j in 0 ..< Int(k/7) {
             var dateComponent = DateComponents()
-            dateComponent.day = ((j+1)*7)
+            dateComponent.day = (j*7)
             let cal = Calendar.current
             if let start: Date = cal.date(byAdding: dateComponent, to: dateStart) {
                 if start.timeIntervalSinceNow > 0 {
@@ -88,7 +82,7 @@ class ScheduleSortedAndExpand: SetSchedules {
             }
         }
     }
-
+    
     // Expanding and sorting Scheduledata
     private func sortAndExpandScheduleTasks() {
         let dateformatter = Tools().setDateformat()
@@ -106,7 +100,7 @@ class ScheduleSortedAndExpand: SetSchedules {
                     let hiddenID = (dict.value(forKey: "hiddenID") as? Int)!
                     let time = seconds
                     let dict: NSDictionary = [
-                        "start": dateStop,
+                        "start": dateStart,
                         "hiddenID": hiddenID,
                         "dateStart": dateStart,
                         "schedule": schedule,
@@ -129,9 +123,9 @@ class ScheduleSortedAndExpand: SetSchedules {
             }
         }
     }
-
+    
     typealias Futureschedules = (Int, Double)
-
+    
     // Calculates number of future Schedules ID by hiddenID
     func countscheduledtasks (_ hiddenID: Int) -> Futureschedules {
         let result = self.sortedschedules?.filter({return (($0.value(forKey: "hiddenID") as? Int)! == hiddenID)})
@@ -139,7 +133,7 @@ class ScheduleSortedAndExpand: SetSchedules {
         let timetostart = result![0].value(forKey: "timetostart" ) as? Double ?? 0
         return (result!.count, timetostart)
     }
-
+    
     func sortandcountscheduledonetask (_ hiddenID: Int) -> String {
         if let result = self.sortedschedules?.filter({return (($0.value(forKey: "hiddenID") as? Int)! == hiddenID
             && ($0.value(forKey: "start") as? Date)!.timeIntervalSinceNow > 0 )}) {
@@ -157,7 +151,7 @@ class ScheduleSortedAndExpand: SetSchedules {
             return ""
         }
     }
-
+    
     /// Function is reading Schedule plans and transform plans to
     /// array of NSDictionary.
     /// - returns : none
@@ -175,17 +169,17 @@ class ScheduleSortedAndExpand: SetSchedules {
                     "schedule": self.scheduleConfiguration![i].schedule
                 ]
                 data.append(dict as NSDictionary)
-            }
+        }
         self.schedulesNSDictionary = data
     }
-
+    
     init () {
-        guard self.schedules != nil  else { return }
         // Getting the Schedule and expanding all the jobs
-        self.scheduleConfiguration = self.schedules!.getSchedule()
-        self.setallscheduledtasksNSDictionary()
-        self.sortAndExpandScheduleTasks()
+        if self.schedules != nil {
+            self.scheduleConfiguration = self.schedules!.getSchedule()
+            self.setallscheduledtasksNSDictionary()
+            self.sortAndExpandScheduleTasks()
+        }
         self.tools = Tools()
-        self.statuslightDelegate = ViewControllerReference.shared.viewControllermain as? ViewControllerMain
     }
 }
