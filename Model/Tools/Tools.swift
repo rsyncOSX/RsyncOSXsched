@@ -189,7 +189,7 @@ final class Tools: SetConfigurations {
     }
     
     // Test for TCP connection
-    func testTCPconnection (_ addr: String, port: Int, timeout: Int) -> (Bool, String) {
+    private func testTCPconnection (_ addr: String, port: Int, timeout: Int) -> (Bool, String) {
         var connectionOK: Bool = false
         var str: String = ""
         let client: TCPClient = TCPClient(addr: addr, port: port)
@@ -207,11 +207,14 @@ final class Tools: SetConfigurations {
     // Adding connection true or false in array[bool]
     // Do the check in background que, reload table in global main queue
     func testAllremoteserverConnections () {
+        weak var probablynoconnectionsDelegate: Updatestatustcpconnections?
+        probablynoconnectionsDelegate = ViewControllerReference.shared.viewControllermain as? ViewControllerMain
         self.indexBoolremoteserverOff = nil
         self.indexBoolremoteserverOff = [Bool]()
         guard self.configurations!.configurationsDataSourcecount() > 0 else { return }
         globalDefaultQueue.async(execute: { () -> Void in
             var port: Int = 22
+            print(self.configurations!.configurationsDataSourcecount())
             for i in 0 ..< self.configurations!.configurationsDataSourcecount() {
                 if let record = self.configurations!.getargumentAllConfigurations()[i] as? ArgumentsOneConfiguration {
                     if record.config!.offsiteServer.isEmpty == false {
@@ -221,6 +224,7 @@ final class Tools: SetConfigurations {
                             self.indexBoolremoteserverOff!.append(false)
                         } else {
                             // self.remoteserverOff = true
+                            probablynoconnectionsDelegate?.updatestatustcpconnections()
                             self.indexBoolremoteserverOff!.append(true)
                         }
                     } else {
@@ -230,6 +234,4 @@ final class Tools: SetConfigurations {
             }
         })
     }
-
-
 }
