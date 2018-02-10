@@ -8,7 +8,7 @@
 
 import Foundation
 
-class ScheduleOperationDispatch: SecondsBeforeStart, SetSortedAndExpanded {
+class ScheduleOperationDispatch: SecondsBeforeStart, SetSortedAndExpanded, Setlog {
 
     private var pendingRequestWorkItem: DispatchWorkItem?
 
@@ -33,6 +33,6 @@ class ScheduleOperationDispatch: SecondsBeforeStart, SetSortedAndExpanded {
         // Set reference to schedule for later cancel if any
         ViewControllerReference.shared.dispatchTaskWaiting = self.pendingRequestWorkItem
         updatestatuslightDelegate?.updatestatuslight(color: .green)
+        self.logDelegate?.addlog(logrecord: "Next task in seconds: " + String(seconds))
     }
-
 }

@@ -251,3 +251,17 @@ protocol Updatestatuslight: class {
 protocol Updatestatustcpconnections: class {
     func updatestatustcpconnections()
 }
+
+protocol Addlog: class {
+    func addlog( logrecord: String)
+}
+
+protocol Setlog  {
+    weak var logDelegate: Addlog? { get }
+}
+
+extension Setlog {
+    weak var logDelegate: Addlog? {
+        return ViewControllerReference.shared.viewControllermain as? ViewControllerMain
+    }
+}

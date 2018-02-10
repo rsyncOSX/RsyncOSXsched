@@ -26,6 +26,7 @@ class ViewControllerMain: NSViewController, Coloractivetask, Delay {
     var outputprocess: OutputProcess?
     var profilename: String?
     var tools: Tools?
+    var log: [String]?
     
     private var profilesArray: [String]?
     private var profile: Profiles?
@@ -174,7 +175,7 @@ class ViewControllerMain: NSViewController, Coloractivetask, Delay {
             }
         })
     }
-    
+
 }
 
 extension ViewControllerMain: NSTableViewDataSource {
@@ -231,6 +232,17 @@ extension ViewControllerMain: Updatestatuslight {
 extension ViewControllerMain: Updatestatustcpconnections {
     func updatestatustcpconnections() {
         self.info(num: 1)
+    }
+}
+
+extension ViewControllerMain: Addlog {
+    func addlog(logrecord: String) {
+        if self.log == nil {
+            self.log = [String]()
+        }
+        let dateformatter = Tools().setDateformat()
+        let logtime = dateformatter.string(from: Date())
+        self.log!.append(logtime + ": " + logrecord)
     }
 }
 
