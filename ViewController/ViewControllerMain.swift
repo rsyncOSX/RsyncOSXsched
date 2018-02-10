@@ -185,25 +185,16 @@ extension ViewControllerMain: NSTableViewDataSource {
 }
 
 extension ViewControllerMain: NSTableViewDelegate, Attributedestring {
-    
+
     func tableView(_ tableView: NSTableView, objectValueFor tableColumn: NSTableColumn?, row: Int) -> Any? {
         guard row < self.configurations!.getConfigurationsDataSourcecountBackup()!.count  else { return nil }
         let object: NSDictionary = self.configurations!.getConfigurationsDataSourcecountBackup()![row]
-        var number: Int?
-        var taskintime: String?
         let hiddenID: Int = (object.value(forKey: "hiddenID") as? Int)!
         switch tableColumn!.identifier.rawValue {
-        case "numberCellID" :
+        case "scheduleID" :
             if self.sortedandexpanded != nil {
-                number = self.sortedandexpanded!.countscheduledtasks(hiddenID).0
-            }
-            if number ?? 0 > 0 {
-                let returnstr = String(number!)
-                if let color = self.colorindex, color == hiddenID {
-                    return self.attributedstring(str: returnstr, color: NSColor.red, align: .center)
-                } else {
-                    return returnstr
-                }
+                let schedule: String? = self.sortedandexpanded!.sortandcountscheduledonetask(hiddenID, number: false)
+                return schedule ?? ""
             }
         case "batchCellID" :
             return object[tableColumn!.identifier] as? Int!
@@ -215,7 +206,7 @@ extension ViewControllerMain: NSTableViewDelegate, Attributedestring {
             }
         case "inCellID":
             if self.sortedandexpanded != nil {
-                taskintime = self.sortedandexpanded!.sortandcountscheduledonetask(hiddenID)
+                let taskintime: String? = self.sortedandexpanded!.sortandcountscheduledonetask(hiddenID, number: true)
                 return taskintime ?? ""
             }
         default:
@@ -223,6 +214,7 @@ extension ViewControllerMain: NSTableViewDelegate, Attributedestring {
         }
         return nil
     }
+
 }
 
 extension ViewControllerMain: Updatestatuslight {
