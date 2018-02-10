@@ -18,4 +18,3 @@ Selecting the `Menuapp` quits RsyncOSX and starts the menu application. The defa
 The status light is green indicating there is an active task waiting for execution. In the example there was only schedules of type `once`. After all three was executed there were not any scheduled tasks waiting.
 ![](screenshots/sched6.png)
 Opening RsyncOSX and checking the logs for result of executed tasks.
-![](screenshots/sched7.png)
