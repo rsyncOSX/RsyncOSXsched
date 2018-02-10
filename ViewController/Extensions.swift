@@ -251,3 +251,54 @@ protocol Updatestatuslight: class {
 protocol Updatestatustcpconnections: class {
     func updatestatustcpconnections()
 }
+
+protocol Addlog: class {
+    func addlog( logrecord: String)
+}
+
+protocol Setlog  {
+    weak var logDelegate: Addlog? { get }
+}
+
+extension Setlog {
+    weak var logDelegate: Addlog? {
+        return ViewControllerReference.shared.viewControllermain as? ViewControllerMain
+    }
+}
+
+protocol Information: class {
+    func getInformation () -> [String]
+}
+
+protocol GetInformation {
+    weak var informationDelegateMain: Information? {get}
+}
+
+extension GetInformation {
+    weak var informationDelegateMain: Information? {
+        return ViewControllerReference.shared.viewControllermain as? ViewControllerMain
+    }
+    
+    func getinfo() -> [String] {
+       return self.informationDelegateMain?.getInformation() ?? []
+    }
+}
+
+// Protocol for dismissing a viewcontroller
+protocol DismissViewController: class {
+    func dismiss_view(viewcontroller: NSViewController)
+}
+protocol SetDismisser {
+    weak var dismissDelegateMain: DismissViewController? {get}
+    func dismissview(viewcontroller: NSViewController)
+}
+
+extension SetDismisser {
+    weak var dismissDelegateMain: DismissViewController? {
+        return ViewControllerReference.shared.viewControllermain as? ViewControllerMain
+    }
+    
+    func dismissview(viewcontroller: NSViewController) {
+       self.dismissDelegateMain?.dismiss_view(viewcontroller: (self as? NSViewController)!)
+    }
+}

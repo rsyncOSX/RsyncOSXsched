@@ -12,6 +12,13 @@ import Foundation
 
 class ViewControllerMain: NSViewController, Coloractivetask, Delay {
     
+    // Information about rsync output
+    // self.presentViewControllerAsSheet(self.ViewControllerInformation)
+    var viewControllerInformation: NSViewController? {
+        return (self.storyboard!.instantiateController(withIdentifier: NSStoryboard.SceneIdentifier(rawValue: "StoryboardInformationID"))
+            as? NSViewController)!
+    }
+    
     @IBOutlet weak var mainTableView: NSTableView!
     @IBOutlet weak var progress: NSProgressIndicator!
     @IBOutlet weak var profilescombobox: NSComboBox!
@@ -26,6 +33,7 @@ class ViewControllerMain: NSViewController, Coloractivetask, Delay {
     var outputprocess: OutputProcess?
     var profilename: String?
     var tools: Tools?
+    var log: [String]?
     
     private var profilesArray: [String]?
     private var profile: Profiles?
@@ -91,6 +99,10 @@ class ViewControllerMain: NSViewController, Coloractivetask, Delay {
     @IBAction func selectprofile(_ sender: NSComboBox) {
         self.tools = nil
         self.reload()
+    }
+    
+    @IBAction func viewlogg(_ sender: NSButton) {
+        self.presentViewControllerAsSheet(self.viewControllerInformation!)
     }
     
     private func reload() {
@@ -174,7 +186,7 @@ class ViewControllerMain: NSViewController, Coloractivetask, Delay {
             }
         })
     }
-    
+
 }
 
 extension ViewControllerMain: NSTableViewDataSource {
@@ -234,4 +246,27 @@ extension ViewControllerMain: Updatestatustcpconnections {
     }
 }
 
+extension ViewControllerMain: Addlog {
+    func addlog(logrecord: String) {
+        if self.log == nil {
+            self.log = [String]()
+        }
+        let dateformatter = Tools().setDateformat()
+        let logtime = dateformatter.string(from: Date())
+        self.log!.append(logtime + ": " + logrecord)
+    }
+}
 
+extension ViewControllerMain: Information {
+    func getInformation() -> [String] {
+        return self.log ?? []
+    }
+}
+
+extension ViewControllerMain: DismissViewController {
+    func dismiss_view(viewcontroller: NSViewController) {
+        self.dismissViewController(viewcontroller)
+    }
+    
+    
+}

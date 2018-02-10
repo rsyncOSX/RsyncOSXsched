@@ -13,7 +13,7 @@ import Foundation
 // is set in the static object. The finalize object is invoked
 // when the job discover (observs) the termination of the process.
 
-class ExecuteTaskDispatch: SetScheduledTask, SetConfigurations {
+class ExecuteTaskDispatch: SetScheduledTask, SetConfigurations, Setlog {
 
     let outputprocess = OutputProcess()
     var arguments: [String]?
@@ -23,6 +23,7 @@ class ExecuteTaskDispatch: SetScheduledTask, SetConfigurations {
         // Get the first job of the queue
         if let dict: NSDictionary = ViewControllerReference.shared.scheduledTask {
             if let hiddenID: Int = dict.value(forKey: "hiddenID") as? Int {
+                self.logDelegate?.addlog(logrecord: "Executing task hiddenID: " + String(hiddenID))
                 let getconfigurations: [Configuration]? = configurations?.getConfigurations()
                 guard getconfigurations != nil else { return }
                 let configArray = getconfigurations!.filter({return ($0.hiddenID == hiddenID)})

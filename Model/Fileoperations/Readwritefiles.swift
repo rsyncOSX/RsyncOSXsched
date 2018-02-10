@@ -21,7 +21,7 @@ enum WhatToReadWrite {
     case none
 }
 
-class Readwritefiles: SetConfigurations {
+class Readwritefiles: SetConfigurations, Setlog {
 
     // Name set for schedule, configuration or config
     private var name: String?
@@ -91,6 +91,7 @@ class Readwritefiles: SetConfigurations {
         self.setpreferences(task)
         let dictionary = NSDictionary(object: array, forKey: self.key! as NSCopying)
         guard self.filename != nil else { return false }
+        self.logDelegate?.addlog(logrecord: "Writing: " + self.filename! + " to disk.")
         return  dictionary.write(toFile: self.filename!, atomically: true)
     }
 
