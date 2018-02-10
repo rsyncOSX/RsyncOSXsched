@@ -8,6 +8,8 @@ Initial listing v0.0.1, it compiles and executes but still need some more testin
 
 **Important**: only scheduled tasks from the selected profile is active. **Do not** run both RsyncOSX and the menu app at the same time **utilizing the same profile**. Any scheduled tasks will be executed at the same time in both apps and it will most likely cause problems.
 
+In last release candidate there is added a log of tasks.
+
 The menu app can be started from RsyncOSX and RsyncOSX can be activated from the menu app. This require paths for both apps to be entered into userconfiguration (**without** a trailing `/`).  The paths are used for activating the apps from either within RsyncOSX or RsyncOSXsched.
 ![](screenshots/sched0.png)
 Adding scheduled for tasks (in profile `Snapshots`) in RsyncOSX. After adding tasks either keep RsyncOSX running or select main menu and select the button `Menuapp`.
@@ -21,3 +23,9 @@ Selecting the `Menuapp` in main view quits RsyncOSX and starts the menu applicat
 ![](screenshots/sched5.png)
 The status light is green indicating there is an active task waiting for execution.
 ![](screenshots/sched6.png)
+
+### Logging
+
+There is a minimal logging in menu app. The log is not saved to disk, it lives only during lifetime of menu app. The menu app logs the major actions within the menu app.
+![](screenshots/log1.png)
+![](screenshots/log2.png)
