@@ -12,13 +12,12 @@ The menu app can be started from RsyncOSX and RsyncOSX can be activated from the
 ![](screenshots/sched0.png)
 Adding scheduled for tasks (in profile `Snapshots`) in RsyncOSX. After adding tasks either keep RsyncOSX running or select main menu and select the button `Menuapp`.
 ![](screenshots/sched1.png)
-The green and yellow lights in column `Schedule` indicates two scheduled tasks within next hour (green lights) and one more than one hour (yellow light).
-![](screenshots/sched2.png)
 Double click on row brings up details about schedules and logs for one task.
 ![](screenshots/sched3.png)
+The green and yellow lights in column `Schedule` indicates two scheduled tasks within next hour (green lights) and one more than one hour (yellow light).
+![](screenshots/sched2.png)
 Selecting the `Menuapp` in main view quits RsyncOSX and starts the menu application. The default profile is selected when it starts. There are no active schedules in the `default` profile. Selecting profile `Snapshots` (the menu app reads any profile created within RsyncOSX) activates any scheduled tasks in profile. Only scheduled tasks in selected profile is activated.
 ![](screenshots/sched4.png)
 ![](screenshots/sched5.png)
-The status light is green indicating there is an active task waiting for execution. In the example there was only schedules of type `once`. After all three was executed there were not any scheduled tasks waiting.
+The status light is green indicating there is an active task waiting for execution.
 ![](screenshots/sched6.png)
-Opening RsyncOSX and checking the logs for result of executed tasks.
