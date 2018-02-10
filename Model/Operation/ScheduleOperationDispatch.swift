@@ -25,6 +25,7 @@ class ScheduleOperationDispatch: SecondsBeforeStart, SetSortedAndExpanded, Setlo
         updatestatuslightDelegate = ViewControllerReference.shared.viewControllermain as? ViewControllerMain
         let seconds = self.secondsbeforestart()
         guard seconds > 0 else {
+            self.logDelegate?.addlog(logrecord: "Last scheduled task in queue")
             updatestatuslightDelegate?.updatestatuslight(color: .red)
             return
         }

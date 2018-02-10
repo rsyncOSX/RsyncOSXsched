@@ -909,13 +909,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="696" height="319"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
-                            <scrollView autohidesScrollers="YES" horizontalLineScroll="44" horizontalPageScroll="10" verticalLineScroll="44" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jpZ-V5-DSC">
+                            <scrollView autohidesScrollers="YES" horizontalLineScroll="23" horizontalPageScroll="10" verticalLineScroll="23" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jpZ-V5-DSC">
                                 <rect key="frame" x="20" y="61" width="656" height="238"/>
                                 <clipView key="contentView" id="xbj-sj-mJw">
                                     <rect key="frame" x="1" y="0.0" width="654" height="237"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
-                                        <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnSelection="YES" multipleSelection="NO" autosaveColumns="NO" rowHeight="42" rowSizeStyle="automatic" headerView="mJp-Xi-fw9" viewBased="YES" id="nqz-t1-Bam">
+                                        <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnSelection="YES" multipleSelection="NO" autosaveColumns="NO" rowHeight="21" rowSizeStyle="automatic" headerView="mJp-Xi-fw9" viewBased="YES" id="nqz-t1-Bam">
                                             <rect key="frame" x="0.0" y="0.0" width="654" height="214"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <size key="intercellSpacing" width="3" height="2"/>
@@ -936,11 +936,11 @@
                                                     <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                                     <prototypeCellViews>
                                                         <tableCellView id="3dl-a8-ssG">
-                                                            <rect key="frame" x="1" y="1" width="651" height="42"/>
+                                                            <rect key="frame" x="1" y="1" width="651" height="21"/>
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                             <subviews>
                                                                 <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2Tg-IL-MR8">
-                                                                    <rect key="frame" x="0.0" y="24" width="649" height="17"/>
+                                                                    <rect key="frame" x="0.0" y="3" width="649" height="17"/>
                                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                                     <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" identifier="outputID" title="output" id="lnW-x5-dek">
                                                                         <font key="font" metaFont="system"/>
@@ -1008,7 +1008,7 @@ DQ
                 </viewController>
                 <customObject id="4WV-RV-aJL" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-318" y="1718.5"/>
+            <point key="canvasLocation" x="102" y="349"/>
         </scene>
     </scenes>
     <resources>
