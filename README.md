@@ -19,6 +19,5 @@ The green and yellow lights in column `Schedule` indicates two scheduled tasks w
 Selecting the `Menuapp` in main view quits RsyncOSX and starts the menu application. The default profile is selected when it starts. There are no active schedules in the `default` profile. Selecting profile `Snapshots` (the menu app reads any profile created within RsyncOSX) activates any scheduled tasks in profile. Only scheduled tasks in selected profile is activated.
 ![](screenshots/sched4.png)
 ![](screenshots/sched5.png)
-The status light is green indicating there is an active task waiting for execution. In the example there was only schedules of type `once`. After all three was executed there were not any scheduled tasks waiting.
+The status light is green indicating there is an active task waiting for execution.
 ![](screenshots/sched6.png)
-Opening RsyncOSX and checking the logs for result of executed tasks.
