@@ -12,6 +12,13 @@ import Foundation
 
 class ViewControllerMain: NSViewController, Coloractivetask, Delay {
     
+    // Information about rsync output
+    // self.presentViewControllerAsSheet(self.ViewControllerInformation)
+    var viewControllerInformation: NSViewController? {
+        return (self.storyboard!.instantiateController(withIdentifier: NSStoryboard.SceneIdentifier(rawValue: "StoryboardInformationID"))
+            as? NSViewController)!
+    }
+    
     @IBOutlet weak var mainTableView: NSTableView!
     @IBOutlet weak var progress: NSProgressIndicator!
     @IBOutlet weak var profilescombobox: NSComboBox!
@@ -92,6 +99,10 @@ class ViewControllerMain: NSViewController, Coloractivetask, Delay {
     @IBAction func selectprofile(_ sender: NSComboBox) {
         self.tools = nil
         self.reload()
+    }
+    
+    @IBAction func viewlogg(_ sender: NSButton) {
+        self.presentViewControllerAsSheet(self.viewControllerInformation!)
     }
     
     private func reload() {
@@ -246,4 +257,16 @@ extension ViewControllerMain: Addlog {
     }
 }
 
+extension ViewControllerMain: Information {
+    func getInformation() -> [String] {
+        return self.log ?? []
+    }
+}
 
+extension ViewControllerMain: DismissViewController {
+    func dismiss_view(viewcontroller: NSViewController) {
+        self.dismissViewController(viewcontroller)
+    }
+    
+    
+}
