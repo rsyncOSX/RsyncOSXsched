@@ -10,8 +10,9 @@ Initial listing v0.0.1, it compiles and executes but still need some more testin
 
 The menu app can be started from RsyncOSX and RsyncOSX can be activated from the menu app. This require paths for both apps to be entered into userconfiguration (**without** a trailing `/`).  The paths are used for activating the apps from either within RsyncOSX or RsyncOSXsched.
 ![](screenshots/sched0.png)
+Adding scheduled for tasks (in profile `Snapshots`) in RsyncOSX. After adding tasks either keep RsyncOSX running or select main menu and select the button `Menuapp`.
 ![](screenshots/sched1.png)
-Adding scheduled for tasks (in profile `Snapshots`) in RsyncOSX. After adding tasks either keep RsyncOSX running or select main menu and select the button `Menuapp`. The green and yellow lights in column `Schedule` indicates two scheduled tasks within next hour (green lights) and one more than one hour (yellow light).
+The green and yellow lights in column `Schedule` indicates two scheduled tasks within next hour (green lights) and one more than one hour (yellow light).
 ![](screenshots/sched2.png)
 Double click on row brings up details about schedules and logs for one task.
 ![](screenshots/sched3.png)
