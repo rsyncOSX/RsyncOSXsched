@@ -107,6 +107,7 @@
 		94E0FC321BD7FC3600A3C537 = {
 			isa = PBXGroup;
 			children = (
+				E946B4ED2030159500B929ED /* Menuapp */,
 				E95AB5602028506000D77CDE /* RsyncOSXsched */,
 				E97983B3202878B9003ADB25 /* ViewController */,
 				E98398A720260D0300C977C3 /* Model */,
@@ -225,6 +226,16 @@
 			path = Operations;
 			sourceTree = "<group>";
 		};
+		E946B4ED2030159500B929ED /* Menuapp */ = {
+			isa = PBXGroup;
+			children = (
+				94E0FC3E1BD7FC3600A3C537 /* AppDelegate.swift */,
+				E9E4E988202AD26300C8724B /* Extensions.swift */,
+				94E0FC4D1BD7FCBE00A3C537 /* EventMonitor.swift */,
+			);
+			path = Menuapp;
+			sourceTree = "<group>";
+		};
 		E946CDBB20279A3C005BF6E9 /* User */ = {
 			isa = PBXGroup;
 			children = (
@@ -246,10 +257,7 @@
 		E97983B3202878B9003ADB25 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
-				94E0FC4D1BD7FCBE00A3C537 /* EventMonitor.swift */,
-				94E0FC3E1BD7FC3600A3C537 /* AppDelegate.swift */,
 				94E0FC401BD7FC3600A3C537 /* ViewControllerMain.swift */,
-				E9E4E988202AD26300C8724B /* Extensions.swift */,
 				E9415401202F6E0C00BCE8A1 /* ViewControllerLog.swift */,
 			);
 			path = ViewController;
