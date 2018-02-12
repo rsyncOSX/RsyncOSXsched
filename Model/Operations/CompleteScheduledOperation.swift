@@ -11,7 +11,7 @@ import Foundation
 
 // Class for completion of Operation objects when Process object termination.
 // The object does also kicks of next scheduled job by setting new waiter time.
-final class CompleteScheduledOperation: SetScheduledTask, SetConfigurations, SetSchedules {
+final class CompleteScheduledOperation: SetScheduledTask, SetConfigurations, SetSchedules, Setlog {
 
     // weak var startTimerDelegate: StartTimer?
     private var date: Date?
@@ -30,6 +30,7 @@ final class CompleteScheduledOperation: SetScheduledTask, SetConfigurations, Set
         let dateStartstring = self.dateformatter!.string(from: dateStart!)
         let number = Numbers(outputprocess: outputprocess)
         let numberstring = number.stats(numberOfFiles: nil, sizeOfFiles: nil)
+        self.logDelegate?.addlog(logrecord: "Adding result to log: " + numberstring)
         self.schedules!.addresultschedule(self.hiddenID!, dateStart: dateStartstring, result: numberstring, date: datestring, schedule: schedule!)
         // Writing timestamp to configuration
         self.configurations!.setCurrentDateonConfigurationQuickbackup(self.index!, outputprocess: outputprocess)
