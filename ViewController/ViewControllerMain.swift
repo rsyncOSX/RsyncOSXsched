@@ -12,8 +12,7 @@ import Foundation
 
 class ViewControllerMain: NSViewController, Coloractivetask, Delay {
     
-    // Information about rsync output
-    // self.presentViewControllerAsSheet(self.ViewControllerInformation)
+    // Information about logs
     var viewControllerInformation: NSViewController? {
         return (self.storyboard!.instantiateController(withIdentifier: NSStoryboard.SceneIdentifier(rawValue: "StoryboardInformationID"))
             as? NSViewController)!
@@ -197,7 +196,6 @@ extension ViewControllerMain: NSTableViewDataSource {
 }
 
 extension ViewControllerMain: NSTableViewDelegate, Attributedestring {
-
     func tableView(_ tableView: NSTableView, objectValueFor tableColumn: NSTableColumn?, row: Int) -> Any? {
         guard row < self.configurations!.getConfigurationsDataSourcecountBackup()!.count  else { return nil }
         let object: NSDictionary = self.configurations!.getConfigurationsDataSourcecountBackup()![row]
@@ -267,6 +265,4 @@ extension ViewControllerMain: DismissViewController {
     func dismiss_view(viewcontroller: NSViewController) {
         self.dismissViewController(viewcontroller)
     }
-    
-    
 }

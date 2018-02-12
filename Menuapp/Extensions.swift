@@ -28,7 +28,6 @@ protocol Coloractivetask {
 }
 
 extension Coloractivetask {
-    
     var colorindex: Int? {
         return self.color()
     }
@@ -211,10 +210,7 @@ protocol SecondsBeforeStart {
 }
 
 extension SecondsBeforeStart {
-    
     // Calculation of time to a spesific date
-    // Used in view of all tasks
-    // Returns time in seconds
     private func timeDoubleSeconds (_ startdate: Date, enddate: Date?) -> Double {
         let seconds: Double = self.seconds(startdate, enddate: enddate)
         return seconds
