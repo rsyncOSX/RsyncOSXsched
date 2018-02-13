@@ -53,4 +53,5 @@ class ViewControllerReference {
     var pathrsyncosxsched: String?
     let namersyncosx: String = "RsyncOSX.app"
     let namersyncosssched: String = "RsyncOSXsched.app"
+    let executescheduledappsinmenuapp: Bool = true
 }

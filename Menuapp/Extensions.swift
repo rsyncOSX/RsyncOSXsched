@@ -155,7 +155,7 @@ extension ViewControllerMain: GetSchedulesObject {
 
 extension ViewControllerMain: GetSortedandExpandedObject {
     func getsortedandexpandeobject() -> ScheduleSortedAndExpand? {
-        return self.sortedandexpanded
+        return self.schedulesortedandexpanded
     }
 }
 
@@ -297,4 +297,9 @@ extension SetDismisser {
     func dismissview(viewcontroller: NSViewController) {
        self.dismissDelegateMain?.dismiss_view(viewcontroller: (self as? NSViewController)!)
     }
+}
+
+// Protocol for doing a refresh of tabledata
+protocol Reloadsortedandrefresh: class {
+    func reloadsortedandrefreshtabledata()
 }
