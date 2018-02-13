@@ -238,6 +238,7 @@ extension SecondsBeforeStart {
 enum status {
     case red
     case green
+    case yellow
 }
 
 protocol Updatestatuslight: class {

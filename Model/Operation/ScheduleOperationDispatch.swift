@@ -40,6 +40,7 @@ class ScheduleOperationDispatch: SecondsBeforeStart, SetSortedAndExpanded, Setlo
                 updatestatuslightDelegate?.updatestatuslight(color: .red)
                 return
             }
+            updatestatuslightDelegate?.updatestatuslight(color: .yellow)
             self.dispatchtasktest(Int(seconds))
             self.logDelegate?.addlog(logrecord: "Mocup: task starts in: " + String(seconds))
             // Set reference to schedule for later cancel if any

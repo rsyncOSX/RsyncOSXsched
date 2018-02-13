@@ -234,6 +234,8 @@ extension ViewControllerMain: Updatestatuslight {
             self.statuslight.image = #imageLiteral(resourceName: "red")
         case .green:
             self.statuslight.image = #imageLiteral(resourceName: "green")
+        case .yellow:
+            self.statuslight.image = #imageLiteral(resourceName: "yellow")
         }
     }
 }
