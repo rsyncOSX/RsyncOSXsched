@@ -29,12 +29,8 @@ class ViewControllerReference {
     var rsyncVer3: Bool = false
     // Optional path to rsync
     var rsyncPath: String?
-    // No valid rsyncPath - true if no valid rsync is found
-    var norsync: Bool = false
     // Detailed logging
     var detailedlogging: Bool = true
-    // Temporary path for restore
-    var restorePath: String?
     // Reference to the Operation object
     // Reference is set in when Scheduled task is executed
     var completeoperation: CompleteScheduledOperation?
@@ -54,5 +50,5 @@ class ViewControllerReference {
     let namersyncosx: String = "RsyncOSX.app"
     let namersyncosssched: String = "RsyncOSXsched.app"
     // Set true if test in menu app
-    let executescheduledappsinmenuapp: Bool = false
+    var executeschedulesmocup: Bool = false
 }

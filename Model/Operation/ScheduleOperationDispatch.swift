@@ -13,6 +13,7 @@ class ScheduleOperationDispatch: SecondsBeforeStart, SetSortedAndExpanded, Setlo
     private var pendingRequestWorkItem: DispatchWorkItem?
     
     private func dispatchtasktest(_ seconds: Int) {
+        self.logDelegate?.addlog(logrecord: "Mocup: task starts in: " + String(Int(seconds)))
         let scheduledtask = DispatchWorkItem { [weak self] in
             weak var reloadDelegate: Reloadsortedandrefresh?
             reloadDelegate = ViewControllerReference.shared.viewControllermain as? ViewControllerMain
@@ -23,6 +24,7 @@ class ScheduleOperationDispatch: SecondsBeforeStart, SetSortedAndExpanded, Setlo
     }
 
     private func dispatchtask(_ seconds: Int) {
+        self.logDelegate?.addlog(logrecord: "Next task in seconds: " + String(Int(seconds)))
         let scheduledtask = DispatchWorkItem { [weak self] in
             _ = ExecuteTaskDispatch()
         }
@@ -34,7 +36,7 @@ class ScheduleOperationDispatch: SecondsBeforeStart, SetSortedAndExpanded, Setlo
         weak var updatestatuslightDelegate: Updatestatuslight?
         updatestatuslightDelegate = ViewControllerReference.shared.viewControllermain as? ViewControllerMain
         let seconds = self.secondsbeforestart()
-        guard ViewControllerReference.shared.executescheduledappsinmenuapp == false else {
+        guard ViewControllerReference.shared.executeschedulesmocup == false else {
             guard seconds > 0 else {
                 self.logDelegate?.addlog(logrecord: "Mocup: no more scheduled task in queue")
                 updatestatuslightDelegate?.updatestatuslight(color: .red)
@@ -42,7 +44,6 @@ class ScheduleOperationDispatch: SecondsBeforeStart, SetSortedAndExpanded, Setlo
             }
             updatestatuslightDelegate?.updatestatuslight(color: .yellow)
             self.dispatchtasktest(Int(seconds))
-            self.logDelegate?.addlog(logrecord: "Mocup: task starts in: " + String(seconds))
             // Set reference to schedule for later cancel if any
             ViewControllerReference.shared.dispatchTaskWaiting = self.pendingRequestWorkItem
             return
@@ -57,6 +58,5 @@ class ScheduleOperationDispatch: SecondsBeforeStart, SetSortedAndExpanded, Setlo
         // Set reference to schedule for later cancel if any
         ViewControllerReference.shared.dispatchTaskWaiting = self.pendingRequestWorkItem
         updatestatuslightDelegate?.updatestatuslight(color: .green)
-        self.logDelegate?.addlog(logrecord: "Next task in seconds: " + String(seconds))
     }
 }
