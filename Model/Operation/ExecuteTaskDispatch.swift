@@ -46,7 +46,11 @@ class ExecuteTaskDispatch: SetScheduledTask, SetConfigurations, Setlog {
                         }
                     })
                 }
+            } else {
+                self.logDelegate?.addlog(logrecord: "No hiddenID in dictionary")
             }
+        } else {
+            self.logDelegate?.addlog(logrecord: "No record for scheduled task: ViewControllerReference.shared.scheduledTask")
         }
     }
 

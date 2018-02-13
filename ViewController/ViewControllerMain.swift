@@ -28,7 +28,7 @@ class ViewControllerMain: NSViewController, Coloractivetask, Delay {
     
     var configurations: Configurations?
     var schedules: Schedules?
-    var sortedandexpanded: ScheduleSortedAndExpand?
+    var schedulesortedandexpanded: ScheduleSortedAndExpand?
     var outputprocess: OutputProcess?
     var profilename: String?
     var tools: Tools?
@@ -45,7 +45,7 @@ class ViewControllerMain: NSViewController, Coloractivetask, Delay {
         ViewControllerReference.shared.viewControllermain = self
         self.configurations = Configurations(profile: self.profilename)
         self.schedules = Schedules(profile: self.profilename)
-        self.sortedandexpanded = ScheduleSortedAndExpand()
+        self.schedulesortedandexpanded = ScheduleSortedAndExpand()
         self.startfirstcheduledtask()
         self.tools = Tools()
         self.tools?.testAllremoteserverConnections()
@@ -144,9 +144,9 @@ class ViewControllerMain: NSViewController, Coloractivetask, Delay {
             self.schedules = nil
             self.schedules = Schedules(profile: nil)
         }
-        self.sortedandexpanded = ScheduleSortedAndExpand()
-        self.schedules?.scheduledTasks = self.sortedandexpanded?.firstscheduledtask()
-        ViewControllerReference.shared.scheduledTask = self.sortedandexpanded?.firstscheduledtask()
+        self.schedulesortedandexpanded = ScheduleSortedAndExpand()
+        self.schedules?.scheduledTasks = self.schedulesortedandexpanded?.firstscheduledtask()
+        ViewControllerReference.shared.scheduledTask = self.schedulesortedandexpanded?.firstscheduledtask()
     }
     
     func createandreloadconfigurations() {
@@ -202,8 +202,8 @@ extension ViewControllerMain: NSTableViewDelegate, Attributedestring {
         let hiddenID: Int = (object.value(forKey: "hiddenID") as? Int)!
         switch tableColumn!.identifier.rawValue {
         case "scheduleID" :
-            if self.sortedandexpanded != nil {
-                let schedule: String? = self.sortedandexpanded!.sortandcountscheduledonetask(hiddenID, number: false)
+            if self.schedulesortedandexpanded != nil {
+                let schedule: String? = self.schedulesortedandexpanded!.sortandcountscheduledonetask(hiddenID, number: false)
                 return schedule ?? ""
             }
         case "batchCellID" :
@@ -215,8 +215,8 @@ extension ViewControllerMain: NSTableViewDelegate, Attributedestring {
                 return object[tableColumn!.identifier] as? String
             }
         case "inCellID":
-            if self.sortedandexpanded != nil {
-                let taskintime: String? = self.sortedandexpanded!.sortandcountscheduledonetask(hiddenID, number: true)
+            if self.schedulesortedandexpanded != nil {
+                let taskintime: String? = self.schedulesortedandexpanded!.sortandcountscheduledonetask(hiddenID, number: true)
                 return taskintime ?? ""
             }
         default:
@@ -234,6 +234,8 @@ extension ViewControllerMain: Updatestatuslight {
             self.statuslight.image = #imageLiteral(resourceName: "red")
         case .green:
             self.statuslight.image = #imageLiteral(resourceName: "green")
+        case .yellow:
+            self.statuslight.image = #imageLiteral(resourceName: "yellow")
         }
     }
 }
@@ -264,5 +266,15 @@ extension ViewControllerMain: Information {
 extension ViewControllerMain: DismissViewController {
     func dismiss_view(viewcontroller: NSViewController) {
         self.dismissViewController(viewcontroller)
+    }
+}
+
+extension ViewControllerMain: Reloadsortedandrefresh {
+    func reloadsortedandrefreshtabledata() {
+        self.schedulesortedandexpanded = ScheduleSortedAndExpand()
+        self.startfirstcheduledtask()
+        globalMainQueue.async(execute: { () -> Void in
+            self.mainTableView.reloadData()
+        })
     }
 }
