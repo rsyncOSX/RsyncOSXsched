@@ -12,6 +12,18 @@ import Foundation
 
 class ViewControllerMain: NSViewController, Coloractivetask, Delay {
     
+    // Abort button
+    @IBAction func mocup(_ sender: NSButton) {
+        if ViewControllerReference.shared.executeschedulesmocup == true {
+            ViewControllerReference.shared.executeschedulesmocup = false
+            self.addlog(logrecord: "Mocup mode DISABLED.")
+        } else {
+            ViewControllerReference.shared.executeschedulesmocup = true
+            self.addlog(logrecord: "Mocup mode ENABLED.")
+        }
+        self.reloadsortedandrefreshtabledata()
+    }
+    
     // Information about logs
     var viewControllerInformation: NSViewController? {
         return (self.storyboard!.instantiateController(withIdentifier: NSStoryboard.SceneIdentifier(rawValue: "StoryboardInformationID"))
@@ -108,6 +120,7 @@ class ViewControllerMain: NSViewController, Coloractivetask, Delay {
         self.info(num: -1)
         guard self.profilesArray != nil else { return }
         guard self.profilescombobox.indexOfSelectedItem > -1 else {
+            self.addlog(logrecord: "Profile: default loaded.")
             self.profileinfo.stringValue = "Profile: default"
             self.profilename = nil
             self.createandreloadconfigurations()
@@ -117,6 +130,7 @@ class ViewControllerMain: NSViewController, Coloractivetask, Delay {
         }
         self.profilename = self.profilesArray![self.profilescombobox.indexOfSelectedItem]
         self.profileinfo.stringValue = "Profile: " + self.profilename!
+        self.addlog(logrecord: "Profile: " + self.profilename! + " loaded.")
         self.createandreloadconfigurations()
         self.createandreloadschedules()
         self.startfirstcheduledtask()
