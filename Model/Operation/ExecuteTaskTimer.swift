@@ -39,9 +39,11 @@ class ExecuteTaskTimer: Operation, SetSchedules, SetConfigurations, SetScheduled
                         weak var sendprocess: Sendprocessreference?
                         sendprocess = ViewControllerReference.shared.viewControllermain as? ViewControllerMain
                         let process = RsyncScheduled(arguments: arguments)
-                        process.executeProcess(outputprocess: outputprocess)
-                        sendprocess?.sendprocessreference(process: process.getProcess())
-                        sendprocess?.sendoutputprocessreference(outputprocess: outputprocess)
+                        globalMainQueue.async(execute: {
+                            process.executeProcess(outputprocess: outputprocess)
+                            sendprocess?.sendprocessreference(process: process.getProcess())
+                            sendprocess?.sendoutputprocessreference(outputprocess: outputprocess)
+                        })
                     }
                 }
             } else {

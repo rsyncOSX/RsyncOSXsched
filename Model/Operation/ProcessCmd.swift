@@ -40,8 +40,6 @@ class ProcessCmd: Delay, SetConfigurations {
     var calculatedNumberOfFiles: Int = 0
     // Variable for reference to Process
     var processReference: Process?
-    // Message to calling class
-    weak var updateDelegate: UpdateProgress?
     // Observer
     weak var notifications: NSObjectProtocol?
     // Command to be executed, normally rsync
@@ -52,9 +50,10 @@ class ProcessCmd: Delay, SetConfigurations {
     var termination: Bool = false
     // possible error ouput
     weak var possibleerrorDelegate: ErrorOutput?
+    // Message to calling class
+    weak var updateDelegate: UpdateProgress?
 
     func executeProcess (outputprocess: OutputProcess?) {
-        // Process
         let task = Process()
         // Setting the correct path for rsync
         // If self.command != nil other command than rsync to be executed
@@ -118,5 +117,6 @@ class ProcessCmd: Delay, SetConfigurations {
         self.command = command
         self.arguments = arguments
         self.possibleerrorDelegate = ViewControllerReference.shared.viewControllermain as? ViewControllerMain
+        self.updateDelegate = ViewControllerReference.shared.viewControllermain as? ViewControllerMain
     }
 }
