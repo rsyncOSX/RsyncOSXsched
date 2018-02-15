@@ -35,16 +35,14 @@ class ExecuteTaskDispatch: SetScheduledTask, SetConfigurations, Setlog {
                     arguments = RsyncParametersProcess().argumentsRsync(config!, dryRun: false, forDisplay: false)
                     // Setting reference to finalize the job, finalize job is done when rsynctask ends (in process termination)
                     ViewControllerReference.shared.completeoperation = CompleteScheduledOperation(dict: dict)
-                    globalMainQueue.async(execute: {
-                        if self.arguments != nil {
-                            weak var sendprocess: Sendprocessreference?
-                            sendprocess = ViewControllerReference.shared.viewControllermain as? ViewControllerMain
-                            let process = RsyncScheduled(arguments: self.arguments)
-                            process.executeProcess(outputprocess: self.outputprocess)
-                            sendprocess?.sendprocessreference(process: process.getProcess())
-                            sendprocess?.sendoutputprocessreference(outputprocess: self.outputprocess)
-                        }
-                    })
+                    if self.arguments != nil {
+                        weak var sendprocess: Sendprocessreference?
+                        sendprocess = ViewControllerReference.shared.viewControllermain as? ViewControllerMain
+                        let process = RsyncScheduled(arguments: self.arguments)
+                        process.executeProcess(outputprocess: self.outputprocess)
+                        sendprocess?.sendprocessreference(process: process.getProcess())
+                        sendprocess?.sendoutputprocessreference(outputprocess: self.outputprocess)
+                    }
                 }
             } else {
                 self.logDelegate?.addlog(logrecord: "No hiddenID in dictionary")

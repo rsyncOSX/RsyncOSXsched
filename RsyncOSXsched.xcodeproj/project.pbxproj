@@ -29,6 +29,8 @@
 		E91C5DCF202705E800FE7E76 /* RsyncScheduled.swift in Sources */ = {isa = PBXBuildFile; fileRef = E91C5DCE202705E700FE7E76 /* RsyncScheduled.swift */; };
 		E9415402202F6E0C00BCE8A1 /* ViewControllerLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9415401202F6E0C00BCE8A1 /* ViewControllerLog.swift */; };
 		E946CDBD20279A85005BF6E9 /* Userconfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = E946CDBC20279A85005BF6E9 /* Userconfiguration.swift */; };
+		E95548012035F4CD00D2E713 /* ExecuteTaskTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E95547FF2035F4CD00D2E713 /* ExecuteTaskTimer.swift */; };
+		E95548022035F4CD00D2E713 /* ScheduleOperationTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E95548002035F4CD00D2E713 /* ScheduleOperationTimer.swift */; };
 		E98398AE20260E9D00C977C3 /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = E98398AC20260E9D00C977C3 /* Configuration.swift */; };
 		E98398AF20260E9D00C977C3 /* Configurations.swift in Sources */ = {isa = PBXBuildFile; fileRef = E98398AD20260E9D00C977C3 /* Configurations.swift */; };
 		E98BB14B202763B40078DF8E /* Numbers.swift in Sources */ = {isa = PBXBuildFile; fileRef = E98BB14A202763B40078DF8E /* Numbers.swift */; };
@@ -74,6 +76,8 @@
 		E91C5DCE202705E700FE7E76 /* RsyncScheduled.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RsyncScheduled.swift; sourceTree = "<group>"; };
 		E9415401202F6E0C00BCE8A1 /* ViewControllerLog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerLog.swift; sourceTree = "<group>"; };
 		E946CDBC20279A85005BF6E9 /* Userconfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Userconfiguration.swift; sourceTree = "<group>"; };
+		E95547FF2035F4CD00D2E713 /* ExecuteTaskTimer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExecuteTaskTimer.swift; sourceTree = "<group>"; };
+		E95548002035F4CD00D2E713 /* ScheduleOperationTimer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScheduleOperationTimer.swift; sourceTree = "<group>"; };
 		E98398AC20260E9D00C977C3 /* Configuration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Configuration.swift; sourceTree = "<group>"; };
 		E98398AD20260E9D00C977C3 /* Configurations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Configurations.swift; sourceTree = "<group>"; };
 		E98BB14A202763B40078DF8E /* Numbers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Numbers.swift; sourceTree = "<group>"; };
@@ -153,6 +157,8 @@
 			children = (
 				E91C5DCE202705E700FE7E76 /* RsyncScheduled.swift */,
 				E91C5DBE2026F8F900FE7E76 /* ScheduleOperationDispatch.swift */,
+				E95547FF2035F4CD00D2E713 /* ExecuteTaskTimer.swift */,
+				E95548002035F4CD00D2E713 /* ScheduleOperationTimer.swift */,
 				E91C5DC42026FAFB00FE7E76 /* ExecuteTaskDispatch.swift */,
 				E91C5DC82026FCF200FE7E76 /* OperationFactory.swift */,
 				E91C5DC62026FB3500FE7E76 /* ProcessCmd.swift */,
@@ -218,12 +224,12 @@
 			path = Reference;
 			sourceTree = "<group>";
 		};
-		E93A7EFF2026ED4300D61258 /* Operations */ = {
+		E93A7EFF2026ED4300D61258 /* CompleteOperation */ = {
 			isa = PBXGroup;
 			children = (
 				E9F54D7C2026D83500A664CF /* CompleteScheduledOperation.swift */,
 			);
-			path = Operations;
+			path = CompleteOperation;
 			sourceTree = "<group>";
 		};
 		E946B4ED2030159500B929ED /* Menuapp */ = {
@@ -270,7 +276,7 @@
 				E946CDBB20279A3C005BF6E9 /* User */,
 				E91C5DC32026FACF00FE7E76 /* Operation */,
 				E91C5DBA2026F80C00FE7E76 /* Schedules */,
-				E93A7EFF2026ED4300D61258 /* Operations */,
+				E93A7EFF2026ED4300D61258 /* CompleteOperation */,
 				E93A7EFE2026ED3100D61258 /* Reference */,
 				E93A7EFD2026ED0000D61258 /* Tools */,
 				E93A7EFC2026ECC800D61258 /* Fileoperations */,
@@ -381,6 +387,8 @@
 				E9F54D892026DCCF00A664CF /* Files.swift in Sources */,
 				E9F54D872026DCC800A664CF /* Profiles.swift in Sources */,
 				E91C5DC52026FAFB00FE7E76 /* ExecuteTaskDispatch.swift in Sources */,
+				E95548012035F4CD00D2E713 /* ExecuteTaskTimer.swift in Sources */,
+				E95548022035F4CD00D2E713 /* ScheduleOperationTimer.swift in Sources */,
 				E90BFDCA202D989D004AE4EC /* yudpsocket.c in Sources */,
 				E9F54D7D2026D83500A664CF /* CompleteScheduledOperation.swift in Sources */,
 				E90BFDC9202D989D004AE4EC /* yudpsocket.swift in Sources */,
