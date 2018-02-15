@@ -13,13 +13,13 @@ import Foundation
 // is set in the static object. The finalize object is invoked
 // when the job discover (observs) the termination of the process.
 
-class ExecuteTaskDispatch: SetScheduledTask, SetConfigurations, Setlog {
+class ExecuteTaskTimer: Operation, SetSchedules, SetConfigurations, SetScheduledTask, Setlog {
 
-    let outputprocess = OutputProcess()
-    var arguments: [String]?
-    var config: Configuration?
-
-    private func executeTaskDispatch() {
+    override func main() {
+        let outputprocess = OutputProcess()
+        var arguments: [String]?
+        var config: Configuration?
+        // Get the first job of the queue
         // Get the first job of the queue
         if let dict: NSDictionary = ViewControllerReference.shared.scheduledTask {
             if let hiddenID: Int = dict.value(forKey: "hiddenID") as? Int {
@@ -35,13 +35,15 @@ class ExecuteTaskDispatch: SetScheduledTask, SetConfigurations, Setlog {
                     arguments = RsyncParametersProcess().argumentsRsync(config!, dryRun: false, forDisplay: false)
                     // Setting reference to finalize the job, finalize job is done when rsynctask ends (in process termination)
                     ViewControllerReference.shared.completeoperation = CompleteScheduledOperation(dict: dict)
-                    if self.arguments != nil {
+                    if arguments != nil {
                         weak var sendprocess: Sendprocessreference?
                         sendprocess = ViewControllerReference.shared.viewControllermain as? ViewControllerMain
-                        let process = RsyncScheduled(arguments: self.arguments)
-                        process.executeProcess(outputprocess: self.outputprocess)
-                        sendprocess?.sendprocessreference(process: process.getProcess())
-                        sendprocess?.sendoutputprocessreference(outputprocess: self.outputprocess)
+                        let process = RsyncScheduled(arguments: arguments)
+                        globalMainQueue.async(execute: {
+                            process.executeProcess(outputprocess: outputprocess)
+                            sendprocess?.sendprocessreference(process: process.getProcess())
+                            sendprocess?.sendoutputprocessreference(outputprocess: outputprocess)
+                        })
                     }
                 }
             } else {
@@ -51,8 +53,12 @@ class ExecuteTaskDispatch: SetScheduledTask, SetConfigurations, Setlog {
             self.logDelegate?.addlog(logrecord: "No record for scheduled task: ViewControllerReference.shared.scheduledTask")
         }
     }
+}
 
-    init () {
-        self.executeTaskDispatch()
+class ExecuteTaskTimerMocup: Operation, Setlog {
+    override func main() {
+        weak var reloadDelegate: Reloadsortedandrefresh?
+        reloadDelegate = ViewControllerReference.shared.viewControllermain as? ViewControllerMain
+        reloadDelegate?.reloadsortedandrefreshtabledata()
     }
 }
