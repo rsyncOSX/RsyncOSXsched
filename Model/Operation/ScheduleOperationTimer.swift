@@ -54,13 +54,13 @@ final class ScheduleOperationTimer: SetSchedules, SecondsBeforeStart, Setlog {
                 self.timerTaskWaiting = Timer.scheduledTimer(timeInterval: seconds, target: self, selector: #selector(executetasktest),
                                                              userInfo: nil, repeats: false)
                 ViewControllerReference.shared.timerTaskWaiting = self.timerTaskWaiting
-                self.logDelegate?.addlog(logrecord: "Mocup: task starts in: " + String(Int(seconds)))
+                self.logDelegate?.addlog(logrecord: "Mocup timer: task starts in: " + String(Int(seconds)))
                 return
             }
             self.timerTaskWaiting = Timer.scheduledTimer(timeInterval: seconds, target: self, selector: #selector(executetask),
                                                          userInfo: nil, repeats: false)
             ViewControllerReference.shared.timerTaskWaiting = self.timerTaskWaiting
-            self.logDelegate?.addlog(logrecord: "Next task in seconds: " + String(Int(seconds)))
+            self.logDelegate?.addlog(logrecord: "Timer: next task in seconds: " + String(Int(seconds)))
         }
     }
 }

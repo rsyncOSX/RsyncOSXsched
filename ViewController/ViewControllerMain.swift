@@ -145,7 +145,7 @@ class ViewControllerMain: NSViewController, Coloractivetask, Delay {
         ViewControllerReference.shared.timerTaskWaiting?.invalidate()
         ViewControllerReference.shared.dispatchTaskWaiting = nil
         ViewControllerReference.shared.timerTaskWaiting = nil
-        _ = OperationFactory()
+        _ = OperationFactory(factory: .timer)
     }
     
     func createandreloadschedules() {

@@ -8,12 +8,22 @@
 
 import Foundation
 
+enum OperationObject {
+    case timer
+    case dispatch
+}
+
 class OperationFactory {
-
+    
+    var operationTimer: ScheduleOperationTimer?
     var operationDispatch: ScheduleOperationDispatch?
-
-    init() {
-        self.operationDispatch = ScheduleOperationDispatch()
+    
+    init(factory: OperationObject) {
+        switch factory {
+        case .timer:
+            self.operationTimer = ScheduleOperationTimer()
+        case .dispatch:
+            self.operationDispatch = ScheduleOperationDispatch()
+        }
     }
-
 }

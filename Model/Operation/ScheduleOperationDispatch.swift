@@ -13,7 +13,7 @@ class ScheduleOperationDispatch: SecondsBeforeStart, SetSortedAndExpanded, Setlo
     private var pendingRequestWorkItem: DispatchWorkItem?
     
     private func dispatchtasktest(_ seconds: Int) {
-        self.logDelegate?.addlog(logrecord: "Mocup: task starts in: " + String(Int(seconds)))
+        self.logDelegate?.addlog(logrecord: "Mocup dispatch: task starts in: " + String(Int(seconds)))
         let scheduledtask = DispatchWorkItem { [weak self] in
             weak var reloadDelegate: Reloadsortedandrefresh?
             reloadDelegate = ViewControllerReference.shared.viewControllermain as? ViewControllerMain
@@ -24,7 +24,7 @@ class ScheduleOperationDispatch: SecondsBeforeStart, SetSortedAndExpanded, Setlo
     }
 
     private func dispatchtask(_ seconds: Int) {
-        self.logDelegate?.addlog(logrecord: "Next task in seconds: " + String(Int(seconds)))
+        self.logDelegate?.addlog(logrecord: "Dispatch: next task in seconds: " + String(Int(seconds)))
         let scheduledtask = DispatchWorkItem { [weak self] in
             _ = ExecuteTaskDispatch()
         }
