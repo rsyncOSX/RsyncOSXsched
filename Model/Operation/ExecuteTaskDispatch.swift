@@ -18,8 +18,10 @@ class ExecuteTaskDispatch: SetScheduledTask, SetConfigurations, Setlog {
     let outputprocess = OutputProcess()
     var arguments: [String]?
     var config: Configuration?
+    weak var updatestatuslightDelegate: Updatestatuslight?
 
     private func executeTaskDispatch() {
+        self.updatestatuslightDelegate = ViewControllerReference.shared.viewControllermain as? ViewControllerMain
         // Get the first job of the queue
         if let dict: NSDictionary = ViewControllerReference.shared.scheduledTask {
             if let hiddenID: Int = dict.value(forKey: "hiddenID") as? Int {
@@ -39,15 +41,19 @@ class ExecuteTaskDispatch: SetScheduledTask, SetConfigurations, Setlog {
                         weak var sendprocess: Sendprocessreference?
                         sendprocess = ViewControllerReference.shared.viewControllermain as? ViewControllerMain
                         let process = RsyncScheduled(arguments: self.arguments)
-                        process.executeProcess(outputprocess: self.outputprocess)
-                        sendprocess?.sendprocessreference(process: process.getProcess())
-                        sendprocess?.sendoutputprocessreference(outputprocess: self.outputprocess)
+                        globalMainQueue.async(execute: {
+                            process.executeProcess(outputprocess: self.outputprocess)
+                            sendprocess?.sendprocessreference(process: process.getProcess())
+                            sendprocess?.sendoutputprocessreference(outputprocess: self.outputprocess)
+                        })
                     }
                 }
             } else {
+                self.updatestatuslightDelegate?.updatestatuslight(color: .red)
                 self.logDelegate?.addlog(logrecord: "No hiddenID in dictionary")
             }
         } else {
+            self.updatestatuslightDelegate?.updatestatuslight(color: .red)
             self.logDelegate?.addlog(logrecord: "No record for scheduled task: ViewControllerReference.shared.scheduledTask")
         }
     }

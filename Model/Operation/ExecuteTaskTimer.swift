@@ -18,6 +18,8 @@ class ExecuteTaskTimer: Operation, SetSchedules, SetConfigurations, SetScheduled
     override func main() {
         let outputprocess = OutputProcess()
         var arguments: [String]?
+        weak var updatestatuslightDelegate: Updatestatuslight?
+        updatestatuslightDelegate = ViewControllerReference.shared.viewControllermain as? ViewControllerMain
         var config: Configuration?
         // Get the first job of the queue
         // Get the first job of the queue
@@ -47,9 +49,11 @@ class ExecuteTaskTimer: Operation, SetSchedules, SetConfigurations, SetScheduled
                     }
                 }
             } else {
+                updatestatuslightDelegate?.updatestatuslight(color: .red)
                 self.logDelegate?.addlog(logrecord: "No hiddenID in dictionary")
             }
         } else {
+            updatestatuslightDelegate?.updatestatuslight(color: .red)
             self.logDelegate?.addlog(logrecord: "No record for scheduled task: ViewControllerReference.shared.scheduledTask")
         }
     }
