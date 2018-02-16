@@ -1,10 +1,8 @@
 ## RsyncOSXsched
 
-**Issues:** From time to time there are some issues about tasks not starting. In the logs I see that the task is added to the dispatch queue, but it does not start. I am working on finding out why this happens..
+**Issue:**  Updated Friday 16 Oct 2018: The app is [released](https://github.com/rsyncOSX/RsyncOSX/releases) as release candidate together with RsyncOSX. The release candidate is for the moment removed due to the issues about kicking off tasks. A new release candidate will be released soon (by a week or two). Some test in changed code indicates that issues with kicking of scheduled tasks is solved, but some more review of code and testing is required before a new rc is released.
 
-**Schedules in version 5.0.0** There are some issues regarding how to enter `daily` and `weekly` schedules in version 5.0.0 of RsyncOSX. The scheduled part is redesigned in the release candidate. To activate a schedule select start date and time and type of schedule. The schedules are active until *deleted* or *stopped*. Schedule `once` only executes once, `daily` and `weekly` until stopped or deleted.
-
-Updated Friday 16 Oct 2018: The app is [released](https://github.com/rsyncOSX/RsyncOSX/releases) as release candidate together with RsyncOSX. The release candidate is for the moment removed due to some issues kicking off tasks. A new release candidate will be released soon (by a week or two).
+**Schedules in version 5.0.0:** There are some issues regarding how to enter `daily` and `weekly` schedules in version 5.0.0 of RsyncOSX. The scheduled part is redesigned in the release candidate. To activate a schedule select start date and time and type of schedule. The schedules are active until *deleted* or *stopped*. Schedule `once` only executes once, `daily` and `weekly` until stopped or deleted.
 
 Initial listing v0.0.1 of the `menu app`. It compiles and executes but still need some more testing before release. This is the menu app (popover) for executing scheduled tasks RsyncOSX. The idea is to add scheduled tasks in RsyncOSX, quit RsyncOSX and let the menu app take care of executing the scheduled tasks.
 
