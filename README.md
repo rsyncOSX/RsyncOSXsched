@@ -4,7 +4,7 @@
 
 **Schedules in version 5.0.0** There are some issues regarding how to enter `daily` and `weekly` schedules in version 5.0.0 of RsyncOSX. The scheduled part is redesigned in the release candidate. To activate a schedule select start date and time and type of schedule. The schedules are active until *deleted* or *stopped*. Schedule `once` only executes once, `daily` and `weekly` until stopped or deleted.
 
-The app is [released](https://github.com/rsyncOSX/RsyncOSX/releases) as release candidate together with RsyncOSX.
+Updated Friday 16 Oct 2018: The app is [released](https://github.com/rsyncOSX/RsyncOSX/releases) as release candidate together with RsyncOSX. The release candidate is for the moment removed due to some issues kicking off tasks. A new release candidate will be released soon (by a week or two).
 
 Initial listing v0.0.1 of the `menu app`. It compiles and executes but still need some more testing before release. This is the menu app (popover) for executing scheduled tasks RsyncOSX. The idea is to add scheduled tasks in RsyncOSX, quit RsyncOSX and let the menu app take care of executing the scheduled tasks.
 
