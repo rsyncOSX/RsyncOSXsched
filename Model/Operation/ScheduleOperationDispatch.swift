@@ -38,7 +38,7 @@ class ScheduleOperationDispatch: SecondsBeforeStart, SetSortedAndExpanded, Setlo
         let seconds = self.secondsbeforestart()
         guard ViewControllerReference.shared.executeschedulesmocup == false else {
             guard seconds > 0 else {
-                self.logDelegate?.addlog(logrecord: "Mocup: no more scheduled task in queue")
+                self.logDelegate?.addlog(logrecord: "Mocup dispatch: no more scheduled task in queue")
                 updatestatuslightDelegate?.updatestatuslight(color: .red)
                 return
             }
@@ -55,7 +55,6 @@ class ScheduleOperationDispatch: SecondsBeforeStart, SetSortedAndExpanded, Setlo
         }
         self.dispatchtask(Int(seconds))
         ViewControllerReference.shared.scheduledTask = self.sortedandexpanded?.firstscheduledtask()
-        // Set reference to schedule for later cancel if any
         ViewControllerReference.shared.dispatchTaskWaiting = self.pendingRequestWorkItem
         updatestatuslightDelegate?.updatestatuslight(color: .green)
     }
