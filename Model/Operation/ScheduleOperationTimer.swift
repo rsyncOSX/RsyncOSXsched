@@ -71,7 +71,6 @@ final class ScheduleOperationTimer: SecondsBeforeStart, SetSortedAndExpanded, Se
         self.timerTaskWaiting = Timer.scheduledTimer(timeInterval: seconds, target: self, selector: #selector(executetask), userInfo: nil, repeats: false)
         ViewControllerReference.shared.scheduledTask = self.sortedandexpanded?.firstscheduledtask()
         ViewControllerReference.shared.timerTaskWaiting = self.timerTaskWaiting
-        self.logDelegate?.addlog(logrecord: "Timer: next task in seconds: " + String(Int(seconds)))
         updatestatuslightDelegate?.updatestatuslight(color: .green)
     }
 }
