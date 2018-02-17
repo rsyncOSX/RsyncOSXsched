@@ -410,6 +410,17 @@ DQ
                                     <action selector="close:" target="SMW-uL-v3k" id="zHB-M8-bVq"/>
                                 </connections>
                             </button>
+                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Pke-1b-da9">
+                                <rect key="frame" x="558" y="13" width="61" height="32"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <buttonCell key="cell" type="push" title="Write" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="tub-al-k7W">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="writelogg:" target="SMW-uL-v3k" id="8YT-PY-XnJ"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <constraints>
                             <constraint firstItem="9b4-TI-GsS" firstAttribute="top" secondItem="jpZ-V5-DSC" secondAttribute="bottom" constant="20" id="9B6-kM-yc6"/>
@@ -429,6 +440,8 @@ DQ
                     </view>
                     <connections>
                         <outlet property="detailsTable" destination="nqz-t1-Bam" id="zPX-gg-76T"/>
+                        <outlet property="writelogg" destination="Pke-1b-da9" id="LuH-11-6v0"/>
+                        <outlet property="writeloggbutton" destination="Pke-1b-da9" id="Jl5-BO-LnJ"/>
                     </connections>
                 </viewController>
                 <customObject id="4WV-RV-aJL" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
