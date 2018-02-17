@@ -41,9 +41,7 @@ class ViewControllerReference {
     var usrlocalbinrsync: String = "/usr/local/bin/rsync"
     var configpath: String = "/Rsync/"
     // Loggfile
-    var minimumlogging: Bool = false
-    var fulllogging: Bool = false
-    var logname: String = "rsynclog"
+    var logname: String = "schedulelogg"
     var viewControllermain: NSViewController?
     // Paths
     var pathrsyncosx: String?
@@ -52,4 +50,6 @@ class ViewControllerReference {
     let namersyncosssched: String = "RsyncOSXsched.app"
     // Set true if test in menu app
     var executeschedulesmocup: Bool = false
+    // log file
+    var fileURL: URL?
 }
