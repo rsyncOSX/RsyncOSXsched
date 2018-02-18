@@ -207,13 +207,15 @@ final class Tools: SetConfigurations {
     // Adding connection true or false in array[bool]
     // Do the check in background que, reload table in global main queue
     func testAllremoteserverConnections () {
-        weak var probablynoconnectionsDelegate: Updatestatustcpconnections?
-        probablynoconnectionsDelegate = ViewControllerReference.shared.viewControllermain as? ViewControllerMain
-        guard self.configurations!.configurationsDataSourcecount() > 0 else { return }
-        globalDefaultQueue.async(execute: { () -> Void in
+        globalBackgroundQueue.async(execute: { () -> Void in
+            weak var probablynoconnectionsDelegate: Updatestatustcpconnections?
+            probablynoconnectionsDelegate = ViewControllerReference.shared.viewControllermain as? ViewControllerMain
+            guard self.configurations!.configurationsDataSourcecount() > 0 else { return }
             var port: Int = 22
-            for i in 0 ..< self.configurations!.configurationsDataSourcecount() {
-                if let record = self.configurations!.getargumentAllConfigurations()[i] as? ArgumentsOneConfiguration {
+            let j = self.configurations!.configurationsDataSourcecount()
+            let configurations = self.configurations!.getargumentAllConfigurations()
+            for i in 0 ..< j {
+                if let record = configurations[i] as? ArgumentsOneConfiguration {
                     if record.config!.offsiteServer.isEmpty == false {
                         if let sshport: Int = record.config!.sshport { port = sshport }
                         let (success, _) = self.testTCPconnection(record.config!.offsiteServer, port: port, timeout: 1)

@@ -440,7 +440,6 @@ DQ
                     </view>
                     <connections>
                         <outlet property="detailsTable" destination="nqz-t1-Bam" id="zPX-gg-76T"/>
-                        <outlet property="writelogg" destination="Pke-1b-da9" id="LuH-11-6v0"/>
                         <outlet property="writeloggbutton" destination="Pke-1b-da9" id="Jl5-BO-LnJ"/>
                     </connections>
                 </viewController>

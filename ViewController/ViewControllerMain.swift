@@ -59,11 +59,8 @@ class ViewControllerMain: NSViewController, Coloractivetask, Delay {
         self.schedules = Schedules(profile: self.profilename)
         self.schedulesortedandexpanded = ScheduleSortedAndExpand()
         self.startfirstcheduledtask()
-        /*
         self.tools = Tools()
         self.tools?.testAllremoteserverConnections()
-        */
-        
 	}
     
     override func viewDidAppear() {
@@ -137,12 +134,10 @@ class ViewControllerMain: NSViewController, Coloractivetask, Delay {
         self.createandreloadconfigurations()
         self.createandreloadschedules()
         self.startfirstcheduledtask()
-         /*
         if self.tools == nil {
              self.tools = Tools()
              self.tools?.testAllremoteserverConnections()
         }
-        */
     }
     
     func startfirstcheduledtask() {
@@ -470,7 +465,7 @@ extension ViewControllerMain: RsyncError {
 
 extension ViewControllerMain: Fileerror {
     func fileerror(errorstr: String, errortype: Fileerrortype) {
-        //
+        // print(errorstr)
     }
 }
 
