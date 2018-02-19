@@ -102,7 +102,7 @@ class ViewControllerMain: NSViewController, Coloractivetask, Delay, Setlog {
 	}
     
     @IBAction func openRsyncOSX(_ sender: NSButton) {
-        let pathtorsyncosxapp: String = ViewControllerReference.shared.pathrsyncosx! + "/" + ViewControllerReference.shared.namersyncosx
+        let pathtorsyncosxapp: String = ViewControllerReference.shared.pathrsyncosx! + ViewControllerReference.shared.namersyncosx
         NSWorkspace.shared.open(URL(fileURLWithPath: pathtorsyncosxapp))
         NSApp.terminate(self)
     }
