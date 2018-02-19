@@ -10,7 +10,7 @@ import Cocoa
 import Foundation
 
 
-class ViewControllerMain: NSViewController, Coloractivetask, Delay {
+class ViewControllerMain: NSViewController, Coloractivetask, Delay, Setlog {
     
     // Abort button
     @IBAction func mocup(_ sender: NSButton) {
@@ -465,7 +465,7 @@ extension ViewControllerMain: RsyncError {
 
 extension ViewControllerMain: Fileerror {
     func fileerror(errorstr: String, errortype: Fileerrortype) {
-        // print(errorstr)
+        self.logDelegate?.addlog(logrecord: errorstr)
     }
 }
 

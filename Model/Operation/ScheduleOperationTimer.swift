@@ -50,7 +50,6 @@ final class ScheduleOperationTimer: SecondsBeforeStart, SetSortedAndExpanded, Se
         weak var updatestatuslightDelegate: Updatestatuslight?
         updatestatuslightDelegate = ViewControllerReference.shared.viewControllermain as? ViewControllerMain
         let seconds = self.secondsbeforestart()
-        guard seconds > 0 else { return }
         guard ViewControllerReference.shared.executeschedulesmocup == false else {
             guard seconds > 0 else {
                 self.logDelegate?.addlog(logrecord: "Mocup timer: no more scheduled task in queue")
