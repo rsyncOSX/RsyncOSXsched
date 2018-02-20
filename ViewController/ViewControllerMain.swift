@@ -9,7 +9,6 @@
 import Cocoa
 import Foundation
 
-
 class ViewControllerMain: NSViewController, Coloractivetask, Delay, Setlog {
     
     // Abort button
