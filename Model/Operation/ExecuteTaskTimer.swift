@@ -51,10 +51,12 @@ class ExecuteTaskTimer: Operation, SetSchedules, SetConfigurations, SetScheduled
             } else {
                 updatestatuslightDelegate?.updatestatuslight(color: .red)
                 self.logDelegate?.addlog(logrecord: "No hiddenID in dictionary")
+                _ = Notifications().showNotification(message: "Scheduled backup did not execute")
             }
         } else {
             updatestatuslightDelegate?.updatestatuslight(color: .red)
             self.logDelegate?.addlog(logrecord: "No record for scheduled task: ViewControllerReference.shared.scheduledTask")
+            _ = Notifications().showNotification(message: "Scheduled backup did not execute")
         }
     }
 }
