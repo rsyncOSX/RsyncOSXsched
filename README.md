@@ -1,6 +1,6 @@
 ## RsyncOSXsched
 
-Updated Monday 19 Feb 2018: The app is [released](https://github.com/rsyncOSX/RsyncOSX/releases) as release candidate together with RsyncOSX.
+Updated 21 Feb 2018: The app is [released](https://github.com/rsyncOSX/RsyncOSX/releases) as release candidate together with RsyncOSX.
 
 **Schedules in version 5.0.0:** There are some issues regarding schedules `daily` and `weekly` in version 5.0.0 of RsyncOSX. The schedules part is redesigned in the release candidate. To activate a schedule select start date and time and type of schedule. The schedules are active until *deleted* or *stopped*. Schedule `once` only executes once, `daily` and `weekly` until stopped or deleted.
 
@@ -10,6 +10,7 @@ Only scheduled tasks from the selected profile is active. In the release candida
 
 The menu app can be started from RsyncOSX and RsyncOSX can be activated from the menu app. This require paths for both apps to be entered into userconfiguration.  The paths are used for activating the apps from either within RsyncOSX or RsyncOSXsched. Toggle on/off if scheduled tasks in menu app only. Default is in menu app only.
 ![](screenshots/sched0.png)
+
 A notification is submitted when a scheduled tasks is completed.
 
 ![](screenshots/notifications1.png)
