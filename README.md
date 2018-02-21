@@ -10,6 +10,9 @@ Only scheduled tasks from the selected profile is active. In the release candida
 
 The menu app can be started from RsyncOSX and RsyncOSX can be activated from the menu app. This require paths for both apps to be entered into userconfiguration.  The paths are used for activating the apps from either within RsyncOSX or RsyncOSXsched. Toggle on/off if scheduled tasks in menu app only. Default is in menu app only.
 ![](screenshots/sched0.png)
+A notification is submitted when a scheduled tasks is completed.
+![](screenshots/notifications1.png)
+![](screenshots/notifications2.png)
 Adding scheduled for tasks in RsyncOSX. After adding tasks either keep RsyncOSX running or select main menu and select the menuapp button. If you decide to let RsyncOSX execute the scheduled tasks remember to set the correct settings in user configuration.
 ![](screenshots/sched4.png)
 Double click on row brings up details about schedules and logs for one task.
