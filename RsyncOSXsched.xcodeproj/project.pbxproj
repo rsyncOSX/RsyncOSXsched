@@ -17,6 +17,7 @@
 		E90BFDCA202D989D004AE4EC /* yudpsocket.c in Sources */ = {isa = PBXBuildFile; fileRef = E90BFDC5202D989D004AE4EC /* yudpsocket.c */; };
 		E90BFDCB202D989D004AE4EC /* ytcpsocket.swift in Sources */ = {isa = PBXBuildFile; fileRef = E90BFDC6202D989D004AE4EC /* ytcpsocket.swift */; };
 		E90BFDCC202D989D004AE4EC /* ysocket.swift in Sources */ = {isa = PBXBuildFile; fileRef = E90BFDC7202D989D004AE4EC /* ysocket.swift */; };
+		E90CAC5F203D7409004BA7C6 /* Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = E90CAC5E203D7409004BA7C6 /* Notifications.swift */; };
 		E91C5DBF2026F8FA00FE7E76 /* ScheduleSortedAndExpanded.swift in Sources */ = {isa = PBXBuildFile; fileRef = E91C5DBB2026F8F900FE7E76 /* ScheduleSortedAndExpanded.swift */; };
 		E91C5DC02026F8FA00FE7E76 /* Schedules.swift in Sources */ = {isa = PBXBuildFile; fileRef = E91C5DBC2026F8F900FE7E76 /* Schedules.swift */; };
 		E91C5DC12026F8FA00FE7E76 /* ScheduleWriteLoggData.swift in Sources */ = {isa = PBXBuildFile; fileRef = E91C5DBD2026F8F900FE7E76 /* ScheduleWriteLoggData.swift */; };
@@ -64,6 +65,7 @@
 		E90BFDC5202D989D004AE4EC /* yudpsocket.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = yudpsocket.c; path = Model/ydpsoket/yudpsocket.c; sourceTree = SOURCE_ROOT; };
 		E90BFDC6202D989D004AE4EC /* ytcpsocket.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ytcpsocket.swift; path = Model/ydpsoket/ytcpsocket.swift; sourceTree = SOURCE_ROOT; };
 		E90BFDC7202D989D004AE4EC /* ysocket.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ysocket.swift; path = Model/ydpsoket/ysocket.swift; sourceTree = SOURCE_ROOT; };
+		E90CAC5E203D7409004BA7C6 /* Notifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notifications.swift; sourceTree = "<group>"; };
 		E91C5DBB2026F8F900FE7E76 /* ScheduleSortedAndExpanded.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScheduleSortedAndExpanded.swift; sourceTree = "<group>"; };
 		E91C5DBC2026F8F900FE7E76 /* Schedules.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Schedules.swift; sourceTree = "<group>"; };
 		E91C5DBD2026F8F900FE7E76 /* ScheduleWriteLoggData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScheduleWriteLoggData.swift; sourceTree = "<group>"; };
@@ -213,6 +215,7 @@
 				E9F54D762026D61F00A664CF /* Tools.swift */,
 				E9A63065202B4DE900F1FFF1 /* Running.swift */,
 				E9B96298203802EF00EA6D5A /* Logging.swift */,
+				E90CAC5E203D7409004BA7C6 /* Notifications.swift */,
 			);
 			path = Tools;
 			sourceTree = "<group>";
@@ -359,6 +362,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E90CAC5F203D7409004BA7C6 /* Notifications.swift in Sources */,
 				E91C5DBF2026F8FA00FE7E76 /* ScheduleSortedAndExpanded.swift in Sources */,
 				E9B96299203802EF00EA6D5A /* Logging.swift in Sources */,
 				E91C5DC72026FB3500FE7E76 /* ProcessCmd.swift in Sources */,

@@ -32,6 +32,7 @@ final class CompleteScheduledOperation: SetScheduledTask, SetConfigurations, Set
         let numberstring = number.stats(numberOfFiles: nil, sizeOfFiles: nil)
         self.logDelegate?.addlog(logrecord: "Adding result to log: " + numberstring)
         self.schedules!.addresultschedule(self.hiddenID!, dateStart: dateStartstring, result: numberstring, date: datestring, schedule: schedule!)
+        _ = Notifications().showNotification(message: datestring + " " + numberstring)
         // Writing timestamp to configuration
         self.configurations!.setCurrentDateonConfigurationQuickbackup(self.index!, outputprocess: outputprocess)
         // Reset reference til scheduled job
