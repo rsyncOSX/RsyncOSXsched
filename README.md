@@ -22,8 +22,7 @@ The status light is green indicates there are active tasks waiting for execution
 ![](screenshots/sched5.png)
 The scheduled tasks are completed.
 ![](screenshots/sched6.png)
-![](screenshots/sched7.png)
-![](screenshots/sched8.png)
+The menu app logs backups.
 
 ### Logging
 
