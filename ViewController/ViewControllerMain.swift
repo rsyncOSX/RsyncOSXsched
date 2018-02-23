@@ -55,9 +55,13 @@ class ViewControllerMain: NSViewController, Coloractivetask, Delay, Setlog {
         self.mainTableView.dataSource = self
         ViewControllerReference.shared.viewControllermain = self
         self.configurations = Configurations(profile: self.profilename)
-        self.schedules = Schedules(profile: self.profilename)
-        self.schedulesortedandexpanded = ScheduleSortedAndExpand()
-        self.startfirstcheduledtask()
+        if ViewControllerReference.shared.executescheduledtasksmenuapp == true {
+            self.schedules = Schedules(profile: self.profilename)
+            self.schedulesortedandexpanded = ScheduleSortedAndExpand()
+            self.startfirstcheduledtask()
+        } else {
+            self.info(num: 2)
+        }
         self.tools = Tools()
         self.tools?.testAllremoteserverConnections()
 	}
@@ -108,6 +112,10 @@ class ViewControllerMain: NSViewController, Coloractivetask, Delay, Setlog {
 
     @IBAction func selectprofile(_ sender: NSComboBox) {
         self.tools = nil
+        guard ViewControllerReference.shared.executescheduledtasksmenuapp == true else {
+            self.info(num: 2)
+            return
+        }
         self.reload()
     }
     
@@ -194,7 +202,13 @@ class ViewControllerMain: NSViewController, Coloractivetask, Delay, Setlog {
         globalMainQueue.async(execute: { () -> Void in
             switch num {
             case 1:
+                guard ViewControllerReference.shared.executescheduledtasksmenuapp == true else {
+                    self.info.stringValue = "Executing scheduled tasks is not enabled in RsyncOSX...."
+                    return
+                }
                 self.info.stringValue = "One or more remote sites not avaliable...."
+            case 2:
+                self.info.stringValue = "Executing scheduled tasks is not enabled in RsyncOSX...."
             default:
                 self.info.stringValue = ""
             }

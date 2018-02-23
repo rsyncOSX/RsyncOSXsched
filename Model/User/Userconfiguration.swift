@@ -28,6 +28,13 @@ final class Userconfiguration {
                 ViewControllerReference.shared.detailedlogging = false
             }
         }
+        if let executeinmenuapp = dict.value(forKey: "executeinmenuapp") as? Int {
+            if executeinmenuapp == 1 {
+                ViewControllerReference.shared.executescheduledtasksmenuapp = true
+            } else {
+                ViewControllerReference.shared.executescheduledtasksmenuapp = false
+            }
+        }
         // Optional path for rsync
         if let rsyncPath = dict.value(forKey: "rsyncPath") as? String {
             ViewControllerReference.shared.rsyncPath = rsyncPath

@@ -4,16 +4,12 @@ Updated 22 Feb 2018: The app is [released](https://github.com/rsyncOSX/RsyncOSX/
 
 This is the menu app (popover) for executing scheduled tasks RsyncOSX. The idea is to add scheduled tasks in RsyncOSX, quit RsyncOSX and let the menu app take care of executing the scheduled tasks.
 
-Only scheduled tasks from the selected profile is active. In the release candidate there is an option (default on) to execute scheduled tasks within the menu app only. **Do not** run both RsyncOSX and the menu app at the same time **utilizing the same profile** if this option is switched **off**. Any scheduled tasks will be executed at the same time in both apps and it will most likely cause problems. Default is execute scheduled tasks only in menu app.
+Only scheduled tasks from the selected profile is active. In the release candidate there is an option to execute scheduled tasks within the menu app. Technically it is possible to execute scheduled tasks in both RsyncOSX and the menu app. A flag in RsyncOSX indicates where the scheduled tasks is set to be executed. If both RsyncOSX and the menu app is active at the same time only one of them is allowed to executed scheduled tasks.
 
 The menu app can be started from RsyncOSX and RsyncOSX can be activated from the menu app. This require paths for both apps to be entered into userconfiguration.  The paths are used for activating the apps from either within RsyncOSX or RsyncOSXsched. Toggle on/off if scheduled tasks in menu app only. Default is in menu app only.
 ![](screenshots/sched0.png)
-
 A notification is submitted when a scheduled tasks is completed.
-
 ![](screenshots/notifications1.png)
-![](screenshots/notifications2.png)
-
 Adding scheduled for tasks in RsyncOSX. After adding tasks either keep RsyncOSX running or select main menu and select the menuapp button. If you decide to let RsyncOSX execute the scheduled tasks remember to set the correct settings in user configuration.
 ![](screenshots/sched4.png)
 Double click on row brings up details about schedules and logs for one task.
