@@ -52,4 +52,6 @@ class ViewControllerReference {
     var executeschedulesmocup: Bool = false
     // log file
     var fileURL: URL?
+    // Execute scheduled tasks in menu app, default off
+    var executescheduledtasksmenuapp: Bool = false
 }
