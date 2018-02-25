@@ -46,7 +46,6 @@
 		E9F54D812026DAFD00A664CF /* PersistentStorageAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9F54D802026DAFD00A664CF /* PersistentStorageAPI.swift */; };
 		E9F54D832026DBD700A664CF /* PersistentStorageConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9F54D822026DBD600A664CF /* PersistentStorageConfiguration.swift */; };
 		E9F54D852026DC5D00A664CF /* Readwritefiles.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9F54D842026DC5D00A664CF /* Readwritefiles.swift */; };
-		E9F54D872026DCC800A664CF /* Profiles.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9F54D862026DCC800A664CF /* Profiles.swift */; };
 		E9F54D892026DCCF00A664CF /* Files.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9F54D882026DCCF00A664CF /* Files.swift */; };
 		E9F54D8B2026DED600A664CF /* PersistentStorageUserconfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9F54D8A2026DED600A664CF /* PersistentStorageUserconfiguration.swift */; };
 /* End PBXBuildFile section */
@@ -94,7 +93,6 @@
 		E9F54D802026DAFD00A664CF /* PersistentStorageAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersistentStorageAPI.swift; sourceTree = "<group>"; };
 		E9F54D822026DBD600A664CF /* PersistentStorageConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersistentStorageConfiguration.swift; sourceTree = "<group>"; };
 		E9F54D842026DC5D00A664CF /* Readwritefiles.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Readwritefiles.swift; sourceTree = "<group>"; };
-		E9F54D862026DCC800A664CF /* Profiles.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Profiles.swift; sourceTree = "<group>"; };
 		E9F54D882026DCCF00A664CF /* Files.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Files.swift; sourceTree = "<group>"; };
 		E9F54D8A2026DED600A664CF /* PersistentStorageUserconfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersistentStorageUserconfiguration.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -201,7 +199,6 @@
 		E93A7EFC2026ECC800D61258 /* Fileoperations */ = {
 			isa = PBXGroup;
 			children = (
-				E9F54D862026DCC800A664CF /* Profiles.swift */,
 				E9F54D882026DCCF00A664CF /* Files.swift */,
 				E9F54D842026DC5D00A664CF /* Readwritefiles.swift */,
 			);
@@ -390,7 +387,6 @@
 				E9F54D7F2026DA8B00A664CF /* OutputProcess.swift in Sources */,
 				E91C5DCD2026FFD200FE7E76 /* ConfigurationSchedule.swift in Sources */,
 				E9F54D892026DCCF00A664CF /* Files.swift in Sources */,
-				E9F54D872026DCC800A664CF /* Profiles.swift in Sources */,
 				E91C5DC52026FAFB00FE7E76 /* ExecuteTaskDispatch.swift in Sources */,
 				E95548012035F4CD00D2E713 /* ExecuteTaskTimer.swift in Sources */,
 				E95548022035F4CD00D2E713 /* ScheduleOperationTimer.swift in Sources */,

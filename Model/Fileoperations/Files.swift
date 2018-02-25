@@ -115,6 +115,7 @@ class Files: Reportfileerror, SetConfigurations {
     // Function for returning profiles as array of Strings
     func getDirectorysStrings() -> [String] {
         var array = [String]()
+        array.append("Default profile")
         if let filePath = self.rootpath {
             if let fileURLs = self.getfileURLs(path: filePath) {
                 for i in 0 ..< fileURLs.count where fileURLs[i].hasDirectoryPath {
