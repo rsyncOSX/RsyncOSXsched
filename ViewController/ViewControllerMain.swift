@@ -36,6 +36,7 @@ class ViewControllerMain: NSViewController, Coloractivetask, Delay, Setlog {
     @IBOutlet weak var rsyncosxbutton: NSButton!
     @IBOutlet weak var statuslight: NSImageView!
     @IBOutlet weak var info: NSTextField!
+    @IBOutlet weak var progresslabel: NSTextField!
     
     var configurations: Configurations?
     var schedules: Schedules?
@@ -46,7 +47,7 @@ class ViewControllerMain: NSViewController, Coloractivetask, Delay, Setlog {
     var log: [String]?
     
     private var profilesArray: [String]?
-    private var profile: Profiles?
+    private var profile: Files?
     private var useprofile: String?
 
 	override func viewDidLoad() {
@@ -126,7 +127,7 @@ class ViewControllerMain: NSViewController, Coloractivetask, Delay, Setlog {
     private func reload() {
         self.info(num: -1)
         guard self.profilesArray != nil else { return }
-        guard self.profilescombobox.indexOfSelectedItem > -1 else {
+        guard self.profilescombobox.indexOfSelectedItem > 0 else {
             self.addlog(logrecord: "Profile: default loaded.")
             self.profileinfo.stringValue = "Profile: default"
             self.profilename = nil
@@ -191,7 +192,7 @@ class ViewControllerMain: NSViewController, Coloractivetask, Delay, Setlog {
     
     private func setprofiles() {
         self.profile = nil
-        self.profile = Profiles()
+        self.profile = Files(root: .profileRoot)
         self.profilesArray = self.profile!.getDirectorysStrings()
         self.profilescombobox.removeAllItems()
         guard self.profilesArray != nil else { return }
@@ -417,6 +418,7 @@ extension ViewControllerMain: ScheduledTaskWorking {
     func start() {
         globalMainQueue.async(execute: { () -> Void in
             self.progress.startAnimation(nil)
+            self.progresslabel.isHidden = false
             self.statuslight.image = #imageLiteral(resourceName: "green")
         })
     }
@@ -437,6 +439,7 @@ extension ViewControllerMain: UpdateProgress {
         ViewControllerReference.shared.completeoperation!.finalizeScheduledJob(outputprocess: self.outputprocess)
         globalMainQueue.async(execute: { () -> Void in
             self.progress.stopAnimation(nil)
+            self.progresslabel.isHidden = true
         })
         self.startfirstcheduledtask()
     }

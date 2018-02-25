@@ -266,10 +266,10 @@
                                 </connections>
                             </button>
                             <progressIndicator wantsLayer="YES" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" maxValue="100" displayedWhenStopped="NO" bezeled="NO" indeterminate="YES" controlSize="small" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="OyE-6j-Ril">
-                                <rect key="frame" x="735" y="24" width="16" height="16"/>
+                                <rect key="frame" x="735" y="23" width="16" height="16"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                             </progressIndicator>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="HG6-YM-Pq9">
+                            <textField hidden="YES" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="HG6-YM-Pq9">
                                 <rect key="frame" x="681" y="22" width="53" height="17"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Working" id="Ybm-e4-iVi">
@@ -318,6 +318,7 @@
                         <outlet property="profilename" destination="Dbt-F1-zrn" id="nTE-CR-MKs"/>
                         <outlet property="profilescombobox" destination="1fS-UE-vUd" id="IEq-WQ-EqQ"/>
                         <outlet property="progress" destination="OyE-6j-Ril" id="CnQ-3c-LNN"/>
+                        <outlet property="progresslabel" destination="HG6-YM-Pq9" id="gnO-BQ-6MR"/>
                         <outlet property="rsyncosxbutton" destination="5nF-vB-oIM" id="fUM-D4-GXS"/>
                         <outlet property="statuslight" destination="QZT-xW-DCA" id="HLR-59-DPK"/>
                     </connections>
