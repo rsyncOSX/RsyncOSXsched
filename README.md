@@ -2,9 +2,7 @@
 
 ![](icon/menuapp.png)
 
-The `menu app` is [released](https://github.com/rsyncOSX/RsyncOSX/releases) as release candidate together with RsyncOSX. This is probably the last release candidate before release in beginning of March.
-
-This is the `menu app` (popover) for executing scheduled tasks in RsyncOSX. The idea is to add scheduled tasks in RsyncOSX, quit RsyncOSX and let the menu app take care of executing the scheduled tasks.
+This is the `menu app` for executing scheduled tasks in RsyncOSX. The idea is to add scheduled tasks in RsyncOSX, quit RsyncOSX and let the menu app take care of executing the scheduled tasks.
 
 The `menu app` should be started from RsyncOSX. This require paths for both apps to be entered into userconfiguration.  The paths are used for activating the apps from either within RsyncOSX or RsyncOSXsched.
 Adding paths for applications automatically enables, if both apps are found, executing scheduled apps in the `menu app`. To disable delete paths.
