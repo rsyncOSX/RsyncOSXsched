@@ -44,7 +44,7 @@ class Configurations {
     private var configurations: [Configuration]?
     // Array to store argumenst for all tasks.
     // Initialized during startup
-    private var argumentAllConfigurations: NSMutableArray?
+    private var argumentAllConfigurations: [ArgumentsOneConfiguration]?
     // Datasource for NSTableViews
     private var configurationsDataSource: [NSMutableDictionary]?
 
@@ -63,11 +63,8 @@ class Configurations {
     /// Function for getting arguments for all Configurations read into memory
     /// - parameter none: none
     /// - returns : Array of arguments
-    func getargumentAllConfigurations() -> NSMutableArray {
-        guard self.argumentAllConfigurations != nil else {
-            return []
-        }
-        return self.argumentAllConfigurations!
+    func getargumentAllConfigurations() -> [ArgumentsOneConfiguration] {
+        return self.argumentAllConfigurations ?? []
     }
 
     /// Function for getting the number of configurations used in NSTableViews
@@ -95,7 +92,7 @@ class Configurations {
     /// - parameter argtype : either .arg or .argdryRun (of enumtype argumentsRsync)
     /// - returns : array of Strings holding all computed arguments
     func arguments4rsync (index: Int, argtype: ArgumentsRsync) -> [String] {
-        let allarguments = (self.argumentAllConfigurations![index] as? ArgumentsOneConfiguration)!
+        let allarguments = self.argumentAllConfigurations![index]
         switch argtype {
         case .arg:
             return allarguments.arg!
@@ -203,13 +200,13 @@ class Configurations {
     /// - parameter none: none
     private func readconfigurations() {
         self.configurations = [Configuration]()
-        self.argumentAllConfigurations = NSMutableArray()
+        self.argumentAllConfigurations = [ArgumentsOneConfiguration]()
         var store: [Configuration]? = self.storageapi!.getConfigurations()
         guard store != nil else { return }
         for i in 0 ..< store!.count {
             self.configurations!.append(store![i])
             let rsyncArgumentsOneConfig = ArgumentsOneConfiguration(config: store![i])
-            self.argumentAllConfigurations!.add(rsyncArgumentsOneConfig)
+            self.argumentAllConfigurations!.append(rsyncArgumentsOneConfig)
         }
         // Then prepare the datasource for use in tableviews as Dictionarys
         //var row =  NSMutableDictionary()
