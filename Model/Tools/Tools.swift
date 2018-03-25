@@ -215,13 +215,12 @@ final class Tools: SetConfigurations {
             let j = self.configurations!.configurationsDataSourcecount()
             let configurations = self.configurations!.getargumentAllConfigurations()
             for i in 0 ..< j {
-                if let record = configurations[i] as? ArgumentsOneConfiguration {
-                    if record.config!.offsiteServer.isEmpty == false {
-                        if let sshport: Int = record.config!.sshport { port = sshport }
-                        let (success, _) = self.testTCPconnection(record.config!.offsiteServer, port: port, timeout: 1)
-                        if success == false {
-                            probablynoconnectionsDelegate?.updatestatustcpconnections()
-                        }
+                let record = configurations[i]
+                if record.config!.offsiteServer.isEmpty == false {
+                    if let sshport: Int = record.config!.sshport { port = sshport }
+                    let (success, _) = self.testTCPconnection(record.config!.offsiteServer, port: port, timeout: 1)
+                    if success == false {
+                        probablynoconnectionsDelegate?.updatestatustcpconnections()
                     }
                 }
             }
