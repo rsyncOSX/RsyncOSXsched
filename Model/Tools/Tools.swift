@@ -91,7 +91,7 @@ final class Tools: SetConfigurations {
                                                                        IOServiceMatching("IOPlatformExpertDevice"))
         // Get the serial number as a CFString ( actually as Unmanaged<AnyObject>! )
         let serialNumberAsCFString = IORegistryEntryCreateCFProperty(platformExpert,
-                                                                     kIOPlatformSerialNumberKey as CFString!,
+                                                                     kIOPlatformSerialNumberKey as CFString?,
                                                                      kCFAllocatorDefault, 0)
         // Release the platform expert (we're responsible)
         IOObjectRelease(platformExpert)

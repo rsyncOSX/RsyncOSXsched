@@ -237,7 +237,7 @@ extension ViewControllerMain: NSTableViewDelegate, Attributedestring {
                 return schedule ?? ""
             }
         case "batchCellID" :
-            return object[tableColumn!.identifier] as? Int!
+            return object[tableColumn!.identifier]
         case "offsiteServerCellID":
             if (object[tableColumn!.identifier] as? String)!.isEmpty {
                 return "localhost"
@@ -361,7 +361,7 @@ protocol GetConfigurationsObject: class {
 }
 
 protocol SetConfigurations {
-    weak var configurationsDelegate: GetConfigurationsObject? { get }
+    var configurationsDelegate: GetConfigurationsObject? { get }
     var configurations: Configurations? { get }
 }
 
@@ -381,7 +381,7 @@ protocol GetSchedulesObject: class {
 }
 
 protocol SetSchedules {
-    weak var schedulesDelegate: GetSchedulesObject? { get }
+    var schedulesDelegate: GetSchedulesObject? { get }
     var schedules: Schedules? { get }
 }
 
@@ -400,7 +400,7 @@ protocol GetSortedandExpandedObject: class {
 }
 
 protocol SetSortedAndExpanded {
-    weak var sortedandexpandedDelegate: GetSortedandExpandedObject? { get }
+    var sortedandexpandedDelegate: GetSortedandExpandedObject? { get }
     var sortedandexpanded: ScheduleSortedAndExpand? { get }
 }
 
@@ -493,7 +493,7 @@ protocol ScheduledTaskWorking: class {
 }
 
 protocol SetScheduledTask {
-    weak var scheduleJob: ScheduledTaskWorking? { get }
+    var scheduleJob: ScheduledTaskWorking? { get }
 }
 
 extension SetScheduledTask {
@@ -562,7 +562,7 @@ protocol Addlog: class {
 }
 
 protocol Setlog  {
-    weak var logDelegate: Addlog? { get }
+    var logDelegate: Addlog? { get }
 }
 
 extension Setlog {
@@ -576,7 +576,7 @@ protocol Information: class {
 }
 
 protocol GetInformation {
-    weak var informationDelegateMain: Information? {get}
+    var informationDelegateMain: Information? {get}
 }
 
 extension GetInformation {
@@ -594,7 +594,7 @@ protocol DismissViewController: class {
     func dismiss_view(viewcontroller: NSViewController)
 }
 protocol SetDismisser {
-    weak var dismissDelegateMain: DismissViewController? {get}
+    var dismissDelegateMain: DismissViewController? {get}
     func dismissview(viewcontroller: NSViewController)
 }
 
