@@ -19,7 +19,7 @@ import Foundation
 final class ScheduleOperationTimer: SecondsBeforeStart, SetSortedAndExpanded, Setlog {
 
     private var timerTaskWaiting: Timer?
-    
+
     @objc private func executetasktest() {
         // Start the task in BackgroundQueue
         // The Process itself is executed in GlobalMainQueue

@@ -11,7 +11,7 @@ import Foundation
 class ScheduleOperationDispatch: SecondsBeforeStart, SetSortedAndExpanded, Setlog {
 
     private var pendingRequestWorkItem: DispatchWorkItem?
-    
+
     private func dispatchtasktest(_ seconds: Int) {
         self.logDelegate?.addlog(logrecord: "Mocup dispatch: task starts in: " + String(Int(seconds)))
         let scheduledtask = DispatchWorkItem { [weak self] in

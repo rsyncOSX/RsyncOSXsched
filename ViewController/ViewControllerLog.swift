@@ -11,18 +11,18 @@ import Foundation
 import Cocoa
 
 class ViewControllerLog: NSViewController, SetDismisser, GetInformation {
-    
+
     @IBOutlet weak var detailsTable: NSTableView!
     @IBOutlet weak var writeloggbutton: NSButton!
-    
+
     var log: [String]?
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         detailsTable.delegate = self
         detailsTable.dataSource = self
     }
-    
+
     override func viewDidAppear() {
         super.viewDidAppear()
         self.log = self.getinfo()
@@ -30,7 +30,7 @@ class ViewControllerLog: NSViewController, SetDismisser, GetInformation {
             self.detailsTable.reloadData()
         })
     }
-    
+
     @IBAction func close(_ sender: NSButton) {
         self.dismissview(viewcontroller: self)
     }
@@ -39,19 +39,17 @@ class ViewControllerLog: NSViewController, SetDismisser, GetInformation {
         _ = Logging(array: self.log ?? [])
         self.dismissview(viewcontroller: self)
     }
-    
 }
 
 extension ViewControllerLog: NSTableViewDataSource {
-    
+
     func numberOfRows(in aTableView: NSTableView) -> Int {
         return self.log?.count ?? 0
     }
-    
 }
 
 extension ViewControllerLog: NSTableViewDelegate {
-    
+
     func tableView(_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView? {
         var text: String = ""
         var cellIdentifier: String = ""
@@ -66,4 +64,3 @@ extension ViewControllerLog: NSTableViewDelegate {
         return nil
     }
 }
-

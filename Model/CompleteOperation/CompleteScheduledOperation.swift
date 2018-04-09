@@ -20,7 +20,7 @@ final class CompleteScheduledOperation: SetScheduledTask, SetConfigurations, Set
     private var hiddenID: Int?
     private var schedule: String?
     private var index: Int?
-    
+
     // Function for finalizing the Scheduled job
     // The Operation object sets reference to the completeScheduledOperation in self.schedules!.operation
     // This function is executed when rsyn process terminates

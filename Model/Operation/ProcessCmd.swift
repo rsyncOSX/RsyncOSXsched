@@ -14,7 +14,7 @@ protocol Delay {
 }
 
 extension Delay {
-    
+
     func delayWithSeconds(_ seconds: Double, completion: @escaping () -> Void) {
         DispatchQueue.main.asyncAfter(deadline: .now() + seconds) {
             completion()

@@ -5,12 +5,13 @@
 //  Created by Maxim on 10/21/15.
 //  Copyright © 2015 Maxim. All rights reserved.
 //
+//  swiftlint:disable line_length file_length
 
 import Cocoa
 import Foundation
 
 class ViewControllerMain: NSViewController, Coloractivetask, Delay, Setlog {
-    
+
     // Abort button
     @IBAction func mocup(_ sender: NSButton) {
         if ViewControllerReference.shared.executeschedulesmocup == true {
@@ -22,13 +23,13 @@ class ViewControllerMain: NSViewController, Coloractivetask, Delay, Setlog {
         }
         self.reloadsortedandrefreshtabledata()
     }
-    
+
     // Information about logs
     var viewControllerInformation: NSViewController? {
         return (self.storyboard!.instantiateController(withIdentifier: NSStoryboard.SceneIdentifier(rawValue: "StoryboardInformationID"))
             as? NSViewController)!
     }
-    
+
     @IBOutlet weak var mainTableView: NSTableView!
     @IBOutlet weak var progress: NSProgressIndicator!
     @IBOutlet weak var profilescombobox: NSComboBox!
@@ -37,7 +38,7 @@ class ViewControllerMain: NSViewController, Coloractivetask, Delay, Setlog {
     @IBOutlet weak var statuslight: NSImageView!
     @IBOutlet weak var info: NSTextField!
     @IBOutlet weak var progresslabel: NSTextField!
-    
+
     var configurations: Configurations?
     var schedules: Schedules?
     var schedulesortedandexpanded: ScheduleSortedAndExpand?
@@ -45,7 +46,7 @@ class ViewControllerMain: NSViewController, Coloractivetask, Delay, Setlog {
     var profilename: String?
     var tools: Tools?
     var log: [String]?
-    
+
     private var profilesArray: [String]?
     private var profile: Files?
     private var useprofile: String?
@@ -66,7 +67,7 @@ class ViewControllerMain: NSViewController, Coloractivetask, Delay, Setlog {
         self.tools = Tools()
         self.tools?.testAllremoteserverConnections()
 	}
-    
+
     override func viewDidAppear() {
         super.viewDidAppear()
         self.setprofiles()
@@ -76,7 +77,7 @@ class ViewControllerMain: NSViewController, Coloractivetask, Delay, Setlog {
             self.mainTableView.reloadData()
         })
     }
-    
+
     private func checkforrunning() {
         guard Running().rsyncOSXisrunning == false else {
             self.rsyncosxbutton.isEnabled = false
@@ -94,17 +95,17 @@ class ViewControllerMain: NSViewController, Coloractivetask, Delay, Setlog {
 		// Update the view, if already loaded.
 		}
 	}
-    
+
     @IBAction func abort(_ sender: NSButton) {
         ViewControllerReference.shared.process?.terminate()
         self.progress.stopAnimation(nil)
         self.reload()
     }
-    
+
 	@IBAction func closeButtonAction(_ sender: NSButton) {
 		NSApp.terminate(self)
 	}
-    
+
     @IBAction func openRsyncOSX(_ sender: NSButton) {
         let pathtorsyncosxapp: String = ViewControllerReference.shared.pathrsyncosx! + ViewControllerReference.shared.namersyncosx
         NSWorkspace.shared.open(URL(fileURLWithPath: pathtorsyncosxapp))
@@ -119,11 +120,11 @@ class ViewControllerMain: NSViewController, Coloractivetask, Delay, Setlog {
         }
         self.reload()
     }
-    
+
     @IBAction func viewlogg(_ sender: NSButton) {
         self.presentViewControllerAsSheet(self.viewControllerInformation!)
     }
-    
+
     private func reload() {
         self.info(num: -1)
         guard self.profilesArray != nil else { return }
@@ -147,7 +148,7 @@ class ViewControllerMain: NSViewController, Coloractivetask, Delay, Setlog {
              self.tools?.testAllremoteserverConnections()
         }
     }
-    
+
     func startfirstcheduledtask() {
         ViewControllerReference.shared.dispatchTaskWaiting?.cancel()
         ViewControllerReference.shared.timerTaskWaiting?.invalidate()
@@ -155,7 +156,7 @@ class ViewControllerMain: NSViewController, Coloractivetask, Delay, Setlog {
         ViewControllerReference.shared.timerTaskWaiting = nil
         _ = OperationFactory(factory: .timer)
     }
-    
+
     func createandreloadschedules() {
         guard self.configurations != nil else {
             self.schedules = Schedules(profile: nil)
@@ -172,7 +173,7 @@ class ViewControllerMain: NSViewController, Coloractivetask, Delay, Setlog {
         self.schedules?.scheduledTasks = self.schedulesortedandexpanded?.firstscheduledtask()
         ViewControllerReference.shared.scheduledTask = self.schedulesortedandexpanded?.firstscheduledtask()
     }
-    
+
     func createandreloadconfigurations() {
         guard self.configurations != nil else {
             self.configurations = Configurations(profile: nil)
@@ -189,7 +190,7 @@ class ViewControllerMain: NSViewController, Coloractivetask, Delay, Setlog {
             self.mainTableView.reloadData()
         })
     }
-    
+
     private func setprofiles() {
         self.profile = nil
         self.profile = Files(root: .profileRoot)
@@ -198,7 +199,7 @@ class ViewControllerMain: NSViewController, Coloractivetask, Delay, Setlog {
         guard self.profilesArray != nil else { return }
         self.profilescombobox.addItems(withObjectValues: (self.profilesArray!))
     }
-    
+
     private func info (num: Int) {
         globalMainQueue.async(execute: { () -> Void in
             switch num {
@@ -258,7 +259,7 @@ extension ViewControllerMain: NSTableViewDelegate, Attributedestring {
 }
 
 extension ViewControllerMain: Updatestatuslight {
-    func updatestatuslight(color: status) {
+    func updatestatuslight(color: Status) {
         globalMainQueue.async(execute: { () -> Void in
             switch color {
             case .red:
@@ -333,7 +334,7 @@ extension Coloractivetask {
     var colorindex: Int? {
         return self.color()
     }
-    
+
     func color() -> Int? {
         if let dict: NSDictionary = ViewControllerReference.shared.scheduledTask {
             if let hiddenID: Int = dict.value(forKey: "hiddenID") as? Int {
@@ -385,7 +386,7 @@ protocol SetSchedules {
     var schedules: Schedules? { get }
 }
 
-extension SetSchedules{
+extension SetSchedules {
     weak var schedulesDelegate: GetSchedulesObject? {
         return ViewControllerReference.shared.viewControllermain as? ViewControllerMain
     }
@@ -413,7 +414,6 @@ extension SetSortedAndExpanded {
     }
 }
 
-
 extension ViewControllerMain: ScheduledTaskWorking {
     func start() {
         globalMainQueue.async(execute: { () -> Void in
@@ -428,7 +428,7 @@ extension ViewControllerMain: Sendprocessreference {
     func sendprocessreference(process: Process?) {
         ViewControllerReference.shared.process = process
     }
-    
+
     func sendoutputprocessreference(outputprocess: OutputProcess?) {
         self.outputprocess = outputprocess
     }
@@ -443,7 +443,7 @@ extension ViewControllerMain: UpdateProgress {
         })
         self.startfirstcheduledtask()
     }
-    
+
     func fileHandler() {
         //
     }
@@ -523,7 +523,7 @@ extension SecondsBeforeStart {
         let seconds: Double = self.seconds(startdate, enddate: enddate)
         return seconds
     }
-    
+
     private func seconds (_ startdate: Date, enddate: Date?) -> Double {
         if enddate == nil {
             return startdate.timeIntervalSinceNow
@@ -531,7 +531,7 @@ extension SecondsBeforeStart {
             return enddate!.timeIntervalSince(startdate)
         }
     }
-    
+
     func secondsbeforestart() -> Double {
         var secondsToWait: Double?
         let scheduledJobs = ScheduleSortedAndExpand()
@@ -543,14 +543,14 @@ extension SecondsBeforeStart {
     }
 }
 
-enum status {
+enum Status {
     case red
     case green
     case yellow
 }
 
 protocol Updatestatuslight: class {
-    func updatestatuslight(color: status)
+    func updatestatuslight(color: Status)
 }
 
 protocol Updatestatustcpconnections: class {
@@ -561,7 +561,7 @@ protocol Addlog: class {
     func addlog( logrecord: String)
 }
 
-protocol Setlog  {
+protocol Setlog {
     var logDelegate: Addlog? { get }
 }
 
@@ -583,7 +583,7 @@ extension GetInformation {
     weak var informationDelegateMain: Information? {
         return ViewControllerReference.shared.viewControllermain as? ViewControllerMain
     }
-    
+
     func getinfo() -> [String] {
         return self.informationDelegateMain?.getInformation() ?? []
     }
@@ -602,7 +602,7 @@ extension SetDismisser {
     weak var dismissDelegateMain: DismissViewController? {
         return ViewControllerReference.shared.viewControllermain as? ViewControllerMain
     }
-    
+
     func dismissview(viewcontroller: NSViewController) {
         self.dismissDelegateMain?.dismiss_view(viewcontroller: (self as? NSViewController)!)
     }
@@ -612,4 +612,3 @@ extension SetDismisser {
 protocol Reloadsortedandrefresh: class {
     func reloadsortedandrefreshtabledata()
 }
-

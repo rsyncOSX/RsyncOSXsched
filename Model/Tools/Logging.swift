@@ -15,7 +15,7 @@ class Logging: Reportfileerror {
     var log: String?
     var filename: String?
     var fileURL: URL?
-    
+
     private func write() {
         do {
             try self.log!.write(to: self.fileURL!, atomically: true, encoding: String.Encoding.utf8)
@@ -24,7 +24,7 @@ class Logging: Reportfileerror {
             self.error(error: error.description, errortype: .writelogfile)
         }
     }
-    
+
     private func read() {
         do {
             self.log = try String(contentsOf: self.fileURL!, encoding: String.Encoding.utf8)
@@ -32,9 +32,8 @@ class Logging: Reportfileerror {
             let error = e as NSError
             self.error(error: error.description, errortype: .openlogfile)
         }
-        
     }
-    
+
     private func logg() {
         let currendate = Date()
         let dateformatter = Tools().setDateformat()
@@ -49,12 +48,12 @@ class Logging: Reportfileerror {
         }
         self.write()
     }
-    
+
     private func getDocumentsDirectory() -> URL {
         let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
         return paths[0]
     }
-    
+
     init(array: [String]) {
         self.array = array
         self.filename = ViewControllerReference.shared.logname
@@ -64,4 +63,3 @@ class Logging: Reportfileerror {
         self.logg()
     }
 }
-
