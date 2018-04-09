@@ -5,7 +5,6 @@
 //  Created by Thomas Evensen on 22.07.2017.
 //  Copyright © 2017 Thomas Evensen. All rights reserved.
 //
-//  swiftlint:disable line_length
 
 import Foundation
 
@@ -83,7 +82,6 @@ final class Tools: SetConfigurations {
         }
     }
 
-
     /// Function for computing MacSerialNumber
     func computemacSerialNumber() -> String {
         // Get the platform expert
@@ -91,7 +89,7 @@ final class Tools: SetConfigurations {
                                                                        IOServiceMatching("IOPlatformExpertDevice"))
         // Get the serial number as a CFString ( actually as Unmanaged<AnyObject>! )
         let serialNumberAsCFString = IORegistryEntryCreateCFProperty(platformExpert,
-                                                                     kIOPlatformSerialNumberKey as CFString!,
+                                                                     kIOPlatformSerialNumberKey as CFString?,
                                                                      kCFAllocatorDefault, 0)
         // Release the platform expert (we're responsible)
         IOObjectRelease(platformExpert)
@@ -187,7 +185,7 @@ final class Tools: SetConfigurations {
         }
         return result ?? ""
     }
-    
+
     // Test for TCP connection
     private func testTCPconnection (_ addr: String, port: Int, timeout: Int) -> (Bool, String) {
         var connectionOK: Bool = false
@@ -202,7 +200,7 @@ final class Tools: SetConfigurations {
         }
         return (connectionOK, str)
     }
-    
+
     // Testing all remote servers.
     // Adding connection true or false in array[bool]
     // Do the check in background que, reload table in global main queue

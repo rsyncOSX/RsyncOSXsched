@@ -14,10 +14,10 @@ enum OperationObject {
 }
 
 class OperationFactory {
-    
+
     var operationTimer: ScheduleOperationTimer?
     var operationDispatch: ScheduleOperationDispatch?
-    
+
     init(factory: OperationObject) {
         switch factory {
         case .timer:

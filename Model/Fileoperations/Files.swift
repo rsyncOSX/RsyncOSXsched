@@ -22,14 +22,14 @@ protocol Fileerror: class {
 }
 
 protocol Reportfileerror {
-    weak var errorDelegate: Fileerror? { get }
+    var errorDelegate: Fileerror? { get }
 }
 
 extension Reportfileerror {
     weak var errorDelegate: Fileerror? {
         return ViewControllerReference.shared.viewControllermain as? ViewControllerMain
     }
-    
+
     func error(error: String, errortype: Fileerrortype) {
         self.errorDelegate?.fileerror(errorstr: error, errortype: errortype)
     }

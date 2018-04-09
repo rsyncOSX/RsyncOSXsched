@@ -10,7 +10,7 @@
 import Foundation
 
 class Notifications {
-    
+
     func showNotification(message: String) {
         let notification = NSUserNotification()
         notification.title = "A scheduled backup is completed"
@@ -19,7 +19,7 @@ class Notifications {
         NSUserNotificationCenter.default.delegate = self as? NSUserNotificationCenterDelegate
         NSUserNotificationCenter.default.deliver(notification)
     }
-    
+
     func userNotificationCenter(_ center: NSUserNotificationCenter, shouldPresent notification: NSUserNotification) -> Bool {
         return true
     }

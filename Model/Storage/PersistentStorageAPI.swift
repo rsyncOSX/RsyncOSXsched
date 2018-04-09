@@ -38,7 +38,7 @@ final class PersistentStorageAPI: SetConfigurations, SetSchedules {
     }
 
     // SCHEDULE
-    
+
     // Saving Schedules from memory to persistent store
     func saveScheduleFromMemory() {
         let store = PersistentStorageScheduling(profile: self.profile)
@@ -67,7 +67,7 @@ final class PersistentStorageAPI: SetConfigurations, SetSchedules {
             return nil
         }
     }
-    
+
     // USERCONFIG
 
     func getUserconfiguration (readfromstorage: Bool) -> [NSDictionary]? {
