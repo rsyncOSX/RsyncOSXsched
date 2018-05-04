@@ -10,7 +10,7 @@
 import Cocoa
 import Foundation
 
-class ViewControllerMain: NSViewController, Coloractivetask, Delay, Setlog {
+class ViewControllerMain: NSViewController, Delay, Setlog {
 
     // Abort button
     @IBAction func mocup(_ sender: NSButton) {
@@ -323,28 +323,6 @@ extension Attributedestring {
         attributedString.addAttribute(NSAttributedStringKey.foregroundColor, value: color, range: range)
         attributedString.setAlignment(align, range: range)
         return attributedString
-    }
-}
-
-protocol Coloractivetask {
-    var colorindex: Int? { get }
-}
-
-extension Coloractivetask {
-    var colorindex: Int? {
-        return self.color()
-    }
-
-    func color() -> Int? {
-        if let dict: NSDictionary = ViewControllerReference.shared.scheduledTask {
-            if let hiddenID: Int = dict.value(forKey: "hiddenID") as? Int {
-                return hiddenID
-            } else {
-                return nil
-            }
-        } else {
-            return nil
-        }
     }
 }
 
