@@ -90,12 +90,6 @@ class ViewControllerMain: NSViewController, Delay, Setlog {
         }
     }
 
-	override var representedObject: Any? {
-		didSet {
-		// Update the view, if already loaded.
-		}
-	}
-
     @IBAction func abort(_ sender: NSButton) {
         ViewControllerReference.shared.process?.terminate()
         self.progress.stopAnimation(nil)

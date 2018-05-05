@@ -54,12 +54,13 @@ final class PersistentStorageAPI: SetConfigurations, SetSchedules {
         // return Schedule already in memory
         if read.readSchedulesFromPermanentStore() != nil {
             for dict in read.readSchedulesFromPermanentStore()! {
+                dict.setValue(self.profile, forKey: "profile")
                 if let log = dict.value(forKey: "executed") {
-                    let conf = ConfigurationSchedule(dictionary: dict, log: log as? NSArray)
-                    schedule.append(conf)
+                    let scheduleconfig = ConfigurationSchedule(dictionary: dict, log: log as? NSArray)
+                    schedule.append(scheduleconfig)
                 } else {
-                    let conf = ConfigurationSchedule(dictionary: dict, log: nil)
-                    schedule.append(conf)
+                    let scheduleconfig = ConfigurationSchedule(dictionary: dict, log: nil)
+                    schedule.append(scheduleconfig)
                 }
             }
             return schedule
