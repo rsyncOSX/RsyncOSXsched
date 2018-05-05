@@ -51,7 +51,7 @@ class Allconfigurations {
                 configurations[i].offsiteServer = "localhost"
             }
             let row: NSMutableDictionary = [
-                "profile": configurations[i].profile ?? "",
+                "profilename": configurations[i].profile ?? "",
                 "task": configurations[i].task,
                 "hiddenID": configurations[i].hiddenID,
                 "localCatalog": configurations[i].localCatalog,
