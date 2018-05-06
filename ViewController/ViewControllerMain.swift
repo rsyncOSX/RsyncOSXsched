@@ -51,6 +51,8 @@ class ViewControllerMain: NSViewController, Delay, Setlog {
     private var profile: Files?
     private var useprofile: String?
 
+    private var allschedules: [ConfigurationSchedule]?
+
 	override func viewDidLoad() {
 		super.viewDidLoad()
         self.mainTableView.delegate = self
@@ -66,6 +68,7 @@ class ViewControllerMain: NSViewController, Delay, Setlog {
         }
         self.tools = Tools()
         self.tools?.testAllremoteserverConnections()
+        self.allschedules = Allschedules().getallschedules()
 	}
 
     override func viewDidAppear() {

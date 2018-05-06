@@ -15,28 +15,28 @@ class Allconfigurations {
     private var allprofiles: [String]?
 
     private func getprofilenames() {
-        let profile = Files(root: .profileRoot)
-        self.allprofiles = profile.getDirectorysStrings()
+        let profilename = Files(root: .profileRoot)
+        self.allprofiles = profilename.getDirectorysStrings()
         guard self.allprofiles != nil else { return }
         self.allprofiles!.append("Default profile")
     }
 
-    private func getallconfigurations() {
+    private func readallconfigurations() {
         guard self.allprofiles != nil else { return }
         var configurations: [Configuration]?
         for i in 0 ..< self.allprofiles!.count {
-            let profile = self.allprofiles![i]
+            let profilename = self.allprofiles![i]
             if self.allconfigurations == nil {
                 self.allconfigurations = []
             }
-            if profile == "Default profile" {
+            if profilename == "Default profile" {
                 configurations = PersistentStorageAPI(profile: nil).getConfigurations()
             } else {
-                configurations = PersistentStorageAPI(profile: profile).getConfigurations()
+                configurations = PersistentStorageAPI(profile: profilename).getConfigurations()
             }
             guard configurations != nil else { return }
             for j in 0 ..< configurations!.count {
-                configurations![j].profile = profile
+                configurations![j].profile = profilename
                 self.allconfigurations!.append(configurations![j])
             }
         }
@@ -70,7 +70,7 @@ class Allconfigurations {
 
     init() {
         self.getprofilenames()
-        self.getallconfigurations()
+        self.readallconfigurations()
         self.setConfigurationsDataSourcecountBackupSnapshot()
     }
 }
