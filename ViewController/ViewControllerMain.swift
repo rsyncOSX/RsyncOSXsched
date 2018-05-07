@@ -51,7 +51,7 @@ class ViewControllerMain: NSViewController, Delay, Setlog {
     private var profile: Files?
     private var useprofile: String?
 
-    private var allschedules: [ConfigurationSchedule]?
+    var allschedules: [ConfigurationSchedule]?
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
@@ -59,16 +59,16 @@ class ViewControllerMain: NSViewController, Delay, Setlog {
         self.mainTableView.dataSource = self
         ViewControllerReference.shared.viewControllermain = self
         self.configurations = Configurations(profile: self.profilename)
+        self.tools = Tools()
+        self.tools?.testAllremoteserverConnections()
         if ViewControllerReference.shared.executescheduledtasksmenuapp == true {
-            self.schedules = Schedules(profile: self.profilename)
             self.schedulesortedandexpanded = ScheduleSortedAndExpand()
             self.startfirstcheduledtask()
+            // For logging only
+            self.schedules = Schedules(profile: self.profilename)
         } else {
             self.info(num: 2)
         }
-        self.tools = Tools()
-        self.tools?.testAllremoteserverConnections()
-        self.allschedules = Allschedules().getallschedules()
 	}
 
     override func viewDidAppear() {

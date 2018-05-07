@@ -104,6 +104,7 @@ class ScheduleSortedAndExpand: SetConfigurations, SetSchedules {
 
     // Expanding and sorting Scheduledata
     private func sortAndExpandScheduleTasks() {
+        guard self.schedulesNSDictionary != nil else { return }
         let dateformatter = Tools().setDateformat()
         for i in 0 ..< self.schedulesNSDictionary!.count {
             let dict = self.schedulesNSDictionary![i]
@@ -179,10 +180,8 @@ class ScheduleSortedAndExpand: SetConfigurations, SetSchedules {
     /// Function is reading Schedule plans and transform plans to
     /// array of NSDictionary.
     /// - returns : none
-    private func setallscheduledtasksNSDictionary () {
-        guard self.scheduleConfiguration != nil else {
-            return
-        }
+    private func setallscheduledtasksNSDictionary() {
+        guard self.scheduleConfiguration != nil else { return }
         var data = [NSDictionary]()
         for i in 0 ..< self.scheduleConfiguration!.count where
             self.scheduleConfiguration![i].dateStop != nil && self.scheduleConfiguration![i].schedule != "stopped" {
@@ -190,7 +189,8 @@ class ScheduleSortedAndExpand: SetConfigurations, SetSchedules {
                     "dateStart": self.scheduleConfiguration![i].dateStart,
                     "dateStop": self.scheduleConfiguration![i].dateStop!,
                     "hiddenID": self.scheduleConfiguration![i].hiddenID,
-                    "schedule": self.scheduleConfiguration![i].schedule
+                    "schedule": self.scheduleConfiguration![i].schedule,
+                    "profilename": self.scheduleConfiguration![i].profilename ?? ""
                 ]
                 data.append(dict as NSDictionary)
         }
@@ -198,12 +198,9 @@ class ScheduleSortedAndExpand: SetConfigurations, SetSchedules {
     }
 
     init () {
-        // Getting the Schedule and expanding all the jobs
-        if self.schedules != nil {
-            self.scheduleConfiguration = self.schedules!.getSchedule()
-            self.setallscheduledtasksNSDictionary()
-            self.sortAndExpandScheduleTasks()
-        }
+        self.scheduleConfiguration = Allschedules().getallschedules()
+        self.setallscheduledtasksNSDictionary()
+        self.sortAndExpandScheduleTasks()
         self.tools = Tools()
     }
 }
