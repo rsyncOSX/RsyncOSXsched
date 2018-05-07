@@ -13,7 +13,7 @@ import Cocoa
 class Schedules: ScheduleWriteLoggData {
 
     var scheduledTasks: NSDictionary?
-    var profile: String?
+    var profilename: String?
 
     // Return reference to Schedule data
     // self.Schedule is privat data
@@ -67,8 +67,8 @@ class Schedules: ScheduleWriteLoggData {
 
     init(profile: String?) {
         super.init()
-        self.profile = profile
-        self.storageapi = PersistentStorageAPI(profile: self.profile)
+        self.profilename = profile
+        self.storageapi = PersistentStorageAPI(profile: self.profilename)
         self.readschedules()
     }
 }

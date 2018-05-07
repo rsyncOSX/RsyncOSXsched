@@ -52,7 +52,7 @@ class ScheduleSortedAndExpand: SetConfigurations, SetSchedules {
                     "dateStart": dateStart,
                     "schedule": schedule,
                     "timetostart": time,
-                    "profilename": self.schedules?.profile ?? ""]
+                    "profilename": self.schedules?.profilename ?? ""]
                 self.expandedData.append(dictSchedule)
             }
         }
@@ -75,7 +75,7 @@ class ScheduleSortedAndExpand: SetConfigurations, SetSchedules {
                     "dateStart": dateStart,
                     "schedule": schedule,
                     "timetostart": time,
-                    "profilename": self.schedules?.profile ?? ""]
+                    "profilename": self.schedules?.profilename ?? ""]
                 self.expandedData.append(dictSchedule)
             }
         }
@@ -124,7 +124,7 @@ class ScheduleSortedAndExpand: SetConfigurations, SetSchedules {
                         "dateStart": dateStart,
                         "schedule": schedule,
                         "timetostart": time,
-                        "profilename": self.schedules?.profile ?? ""]
+                        "profilename": self.schedules?.profilename ?? ""]
                     self.expandedData.append(dict)
                 case "daily":
                     self.daily(dateStart: dateStart, schedule: schedule, dict: dict)

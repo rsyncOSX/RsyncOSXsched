@@ -227,7 +227,8 @@ extension ViewControllerMain: NSTableViewDelegate, Attributedestring {
     func tableView(_ tableView: NSTableView, objectValueFor tableColumn: NSTableColumn?, row: Int) -> Any? {
         guard row < self.configurations!.getConfigurationsDataSourcecountBackup()!.count  else { return nil }
         let object: NSDictionary = self.configurations!.getConfigurationsDataSourcecountBackup()![row]
-        let hiddenID: Int = (object.value(forKey: "hiddenID") as? Int)!
+        let hiddenID = object.value(forKey: "hiddenID") as? Int ?? -1
+        let profilename = object.value(forKey: "profilename") as? String ?? ""
         switch tableColumn!.identifier.rawValue {
         case "scheduleID" :
             if self.schedulesortedandexpanded != nil {

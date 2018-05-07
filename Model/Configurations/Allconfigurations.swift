@@ -37,7 +37,7 @@ class Allconfigurations {
             }
             guard configurations != nil else { return }
             for j in 0 ..< configurations!.count {
-                configurations![j].profile = profilename
+                configurations![j].profilename = profilename
                 self.allconfigurations!.append(configurations![j])
             }
         }
@@ -52,7 +52,7 @@ class Allconfigurations {
                 configurations[i].offsiteServer = "localhost"
             }
             let row: NSMutableDictionary = [
-                "profilename": configurations[i].profile ?? "",
+                "profilename": configurations[i].profilename ?? "",
                 "task": configurations[i].task,
                 "hiddenID": configurations[i].hiddenID,
                 "localCatalog": configurations[i].localCatalog,

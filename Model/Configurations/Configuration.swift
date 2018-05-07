@@ -36,7 +36,7 @@ struct Configuration {
     var sshport: Int?
     var dayssincelastbackup: String?
     var markdays: Bool = false
-    var profile: String?
+    var profilename: String?
 
     init(dictionary: NSDictionary) {
         // Parameters 1 - 6 is mandatory, set by RsyncOSX.

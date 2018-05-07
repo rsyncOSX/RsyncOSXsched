@@ -10,13 +10,13 @@ import Foundation
 
 final class PersistentStorageAPI: SetConfigurations, SetSchedules {
 
-    var profile: String?
+    var profilename: String?
 
     // CONFIGURATIONS
 
     // Read configurations from persisten store
     func getConfigurations() -> [Configuration]? {
-        let read = PersistentStorageConfiguration(profile: self.profile)
+        let read = PersistentStorageConfiguration(profile: self.profilename)
         // Either read from persistent store or
         // return Configurations already in memory
         if read.readConfigurationsFromPermanentStore() != nil {
@@ -33,7 +33,7 @@ final class PersistentStorageAPI: SetConfigurations, SetSchedules {
 
     // Saving configuration from memory to persistent store
     func saveConfigFromMemory() {
-        let save = PersistentStorageConfiguration(profile: self.profile)
+        let save = PersistentStorageConfiguration(profile: self.profilename)
         save.saveconfigInMemoryToPersistentStore()
     }
 
@@ -41,20 +41,20 @@ final class PersistentStorageAPI: SetConfigurations, SetSchedules {
 
     // Saving Schedules from memory to persistent store
     func saveScheduleFromMemory() {
-        let store = PersistentStorageScheduling(profile: self.profile)
+        let store = PersistentStorageScheduling(profile: self.profilename)
         store.savescheduleInMemoryToPersistentStore()
     }
 
     // Read schedules and history
     // If no Schedule from persistent store return nil
     func getScheduleandhistory(nolog: Bool) -> [ConfigurationSchedule]? {
-        let read = PersistentStorageScheduling(profile: self.profile)
+        let read = PersistentStorageScheduling(profile: self.profilename)
         var schedule = [ConfigurationSchedule]()
         // Either read from persistent store or
         // return Schedule already in memory
         if read.readSchedulesFromPermanentStore() != nil {
             for dict in read.readSchedulesFromPermanentStore()! {
-                dict.setValue(self.profile, forKey: "profilename")
+                dict.setValue(self.profilename, forKey: "profilename")
                 if let log = dict.value(forKey: "executed") {
                     let scheduleconfig = ConfigurationSchedule(dictionary: dict, log: log as? NSArray, nolog: nolog)
                     schedule.append(scheduleconfig)
@@ -77,6 +77,6 @@ final class PersistentStorageAPI: SetConfigurations, SetSchedules {
     }
 
     init(profile: String?) {
-        self.profile = profile
+        self.profilename = profile
     }
 }
