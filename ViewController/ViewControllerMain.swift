@@ -167,7 +167,6 @@ class ViewControllerMain: NSViewController, Delay, Setlog {
             self.schedules = Schedules(profile: nil)
         }
         self.schedulesortedandexpanded = ScheduleSortedAndExpand()
-        self.schedules?.scheduledTasks = self.schedulesortedandexpanded?.firstscheduledtask()
         ViewControllerReference.shared.scheduledTask = self.schedulesortedandexpanded?.firstscheduledtask()
     }
 

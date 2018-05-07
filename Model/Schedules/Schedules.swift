@@ -12,7 +12,6 @@ import Cocoa
 
 class Schedules: ScheduleWriteLoggData {
 
-    var scheduledTasks: NSDictionary?
     var profilename: String?
 
     // Return reference to Schedule data

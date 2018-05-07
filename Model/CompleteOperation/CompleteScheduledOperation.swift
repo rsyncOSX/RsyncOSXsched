@@ -35,8 +35,6 @@ final class CompleteScheduledOperation: SetScheduledTask, SetConfigurations, Set
         _ = Notifications().showNotification(message: datestring + " " + numberstring)
         // Writing timestamp to configuration
         self.configurations!.setCurrentDateonConfigurationQuickbackup(self.index!, outputprocess: outputprocess)
-        // Reset reference til scheduled job
-        self.schedules!.scheduledTasks = nil
     }
 
     init (dict: NSDictionary) {
