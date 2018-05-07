@@ -518,16 +518,28 @@ extension SecondsBeforeStart {
     }
 }
 
-extension ViewControllerMain: ReloadSchedules {
-    func reloadschedules(profilename: String?) {
+extension ViewControllerMain: ReloadData {
+    func reloadconfiguration(profilename: String?) {
         guard profilename != nil else {
             if self.profilename == nil { return }
             self.createandreloadconfigurations()
+            return
+        }
+        guard profilename == self.profilename else {
+            self.profilename = profilename
+            self.createandreloadconfigurations()
+            return
+        }
+    }
+
+    func reloadschedules(profilename: String?) {
+        guard profilename != nil else {
+            if self.profilename == nil { return }
             self.createandreloadschedules()
             return
         }
         guard profilename == self.profilename else {
-            self.createandreloadconfigurations()
+            self.profilename = profilename
             self.createandreloadschedules()
             return
         }
