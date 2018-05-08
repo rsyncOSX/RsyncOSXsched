@@ -151,7 +151,7 @@ class ViewControllerMain: NSViewController, Delay, Setlog {
         ViewControllerReference.shared.timerTaskWaiting?.invalidate()
         ViewControllerReference.shared.dispatchTaskWaiting = nil
         ViewControllerReference.shared.timerTaskWaiting = nil
-        _ = OperationFactory(factory: .timer)
+        _ = ScheduleOperationTimer()
     }
 
     func createandreloadschedules() {
