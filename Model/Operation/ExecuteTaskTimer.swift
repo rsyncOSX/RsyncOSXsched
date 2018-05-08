@@ -13,17 +13,28 @@ import Foundation
 // is set in the static object. The finalize object is invoked
 // when the job discover (observs) the termination of the process.
 
+protocol ReloadData: class {
+    func reloaddata(profilename: String?)
+}
+
 class ExecuteTaskTimer: Operation, SetSchedules, SetConfigurations, SetScheduledTask, Setlog {
 
     override func main() {
         let outputprocess = OutputProcess()
         var arguments: [String]?
         weak var updatestatuslightDelegate: Updatestatuslight?
+        weak var reloaddataDelegate: ReloadData?
         updatestatuslightDelegate = ViewControllerReference.shared.viewControllermain as? ViewControllerMain
+        reloaddataDelegate = ViewControllerReference.shared.viewControllermain as? ViewControllerMain
         var config: Configuration?
         // Get the first job of the queue
-        // Get the first job of the queue
         if let dict: NSDictionary = ViewControllerReference.shared.scheduledTask {
+            let profilename = dict.value(forKey: "profilename") as? String
+            if profilename!.isEmpty {
+                reloaddataDelegate?.reloaddata(profilename: nil)
+            } else {
+                reloaddataDelegate?.reloaddata(profilename: profilename)
+            }
             if let hiddenID: Int = dict.value(forKey: "hiddenID") as? Int {
                 self.logDelegate?.addlog(logrecord: "Executing task hiddenID: " + String(hiddenID))
                 let getconfigurations: [Configuration]? = configurations?.getConfigurations()

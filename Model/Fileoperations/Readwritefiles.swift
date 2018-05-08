@@ -70,7 +70,7 @@ class Readwritefiles: SetConfigurations, Setlog {
     }
 
     // Function for reading data from persistent store
-    func getDatafromfile () -> [NSDictionary]? {
+    func getDatafromfile() -> [NSDictionary]? {
         var data = [NSDictionary]()
         guard self.filename != nil && self.key != nil else { return nil }
         let dictionary = NSDictionary(contentsOfFile: self.filename!)

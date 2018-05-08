@@ -51,21 +51,24 @@ class ViewControllerMain: NSViewController, Delay, Setlog {
     private var profile: Files?
     private var useprofile: String?
 
+    var allschedules: [ConfigurationSchedule]?
+
 	override func viewDidLoad() {
 		super.viewDidLoad()
         self.mainTableView.delegate = self
         self.mainTableView.dataSource = self
         ViewControllerReference.shared.viewControllermain = self
         self.configurations = Configurations(profile: self.profilename)
+        self.tools = Tools()
+        self.tools?.testAllremoteserverConnections()
         if ViewControllerReference.shared.executescheduledtasksmenuapp == true {
-            self.schedules = Schedules(profile: self.profilename)
             self.schedulesortedandexpanded = ScheduleSortedAndExpand()
             self.startfirstcheduledtask()
+            // For logging only
+            self.schedules = Schedules(profile: self.profilename)
         } else {
             self.info(num: 2)
         }
-        self.tools = Tools()
-        self.tools?.testAllremoteserverConnections()
 	}
 
     override func viewDidAppear() {
@@ -89,12 +92,6 @@ class ViewControllerMain: NSViewController, Delay, Setlog {
             self.rsyncosxbutton.isEnabled = false
         }
     }
-
-	override var representedObject: Any? {
-		didSet {
-		// Update the view, if already loaded.
-		}
-	}
 
     @IBAction func abort(_ sender: NSButton) {
         ViewControllerReference.shared.process?.terminate()
@@ -170,7 +167,6 @@ class ViewControllerMain: NSViewController, Delay, Setlog {
             self.schedules = Schedules(profile: nil)
         }
         self.schedulesortedandexpanded = ScheduleSortedAndExpand()
-        self.schedules?.scheduledTasks = self.schedulesortedandexpanded?.firstscheduledtask()
         ViewControllerReference.shared.scheduledTask = self.schedulesortedandexpanded?.firstscheduledtask()
     }
 
@@ -230,11 +226,12 @@ extension ViewControllerMain: NSTableViewDelegate, Attributedestring {
     func tableView(_ tableView: NSTableView, objectValueFor tableColumn: NSTableColumn?, row: Int) -> Any? {
         guard row < self.configurations!.getConfigurationsDataSourcecountBackup()!.count  else { return nil }
         let object: NSDictionary = self.configurations!.getConfigurationsDataSourcecountBackup()![row]
-        let hiddenID: Int = (object.value(forKey: "hiddenID") as? Int)!
+        let hiddenID = object.value(forKey: "hiddenID") as? Int ?? -1
+        let profilename = object.value(forKey: "profilename") as? String ?? ""
         switch tableColumn!.identifier.rawValue {
         case "scheduleID" :
             if self.schedulesortedandexpanded != nil {
-                let schedule: String? = self.schedulesortedandexpanded!.sortandcountscheduledonetask(hiddenID, number: false)
+                let schedule: String? = self.schedulesortedandexpanded!.sortandcountscheduledonetask(hiddenID, profilename: profilename, number: false)
                 return schedule ?? ""
             }
         case "batchCellID" :
@@ -247,7 +244,7 @@ extension ViewControllerMain: NSTableViewDelegate, Attributedestring {
             }
         case "inCellID":
             if self.schedulesortedandexpanded != nil {
-                let taskintime: String? = self.schedulesortedandexpanded!.sortandcountscheduledonetask(hiddenID, number: true)
+                let taskintime: String? = self.schedulesortedandexpanded!.sortandcountscheduledonetask(hiddenID, profilename: profilename, number: true)
                 return taskintime ?? ""
             }
         default:
@@ -518,6 +515,23 @@ extension SecondsBeforeStart {
             secondsToWait = self.timeDoubleSeconds(dateStart, enddate: nil)
         }
         return secondsToWait ?? 0
+    }
+}
+
+extension ViewControllerMain: ReloadData {
+    func reloaddata(profilename: String?) {
+        guard profilename != nil else {
+            if self.profilename == nil { return }
+            self.createandreloadconfigurations()
+            self.createandreloadschedules()
+            return
+        }
+        guard profilename == self.profilename else {
+            self.profilename = profilename
+            self.createandreloadconfigurations()
+            self.createandreloadschedules()
+            return
+        }
     }
 }
 
