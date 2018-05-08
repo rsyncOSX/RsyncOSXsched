@@ -21,10 +21,7 @@
 		E91C5DBF2026F8FA00FE7E76 /* ScheduleSortedAndExpanded.swift in Sources */ = {isa = PBXBuildFile; fileRef = E91C5DBB2026F8F900FE7E76 /* ScheduleSortedAndExpanded.swift */; };
 		E91C5DC02026F8FA00FE7E76 /* Schedules.swift in Sources */ = {isa = PBXBuildFile; fileRef = E91C5DBC2026F8F900FE7E76 /* Schedules.swift */; };
 		E91C5DC12026F8FA00FE7E76 /* ScheduleWriteLoggData.swift in Sources */ = {isa = PBXBuildFile; fileRef = E91C5DBD2026F8F900FE7E76 /* ScheduleWriteLoggData.swift */; };
-		E91C5DC22026F8FA00FE7E76 /* ScheduleOperationDispatch.swift in Sources */ = {isa = PBXBuildFile; fileRef = E91C5DBE2026F8F900FE7E76 /* ScheduleOperationDispatch.swift */; };
-		E91C5DC52026FAFB00FE7E76 /* ExecuteTaskDispatch.swift in Sources */ = {isa = PBXBuildFile; fileRef = E91C5DC42026FAFB00FE7E76 /* ExecuteTaskDispatch.swift */; };
 		E91C5DC72026FB3500FE7E76 /* ProcessCmd.swift in Sources */ = {isa = PBXBuildFile; fileRef = E91C5DC62026FB3500FE7E76 /* ProcessCmd.swift */; };
-		E91C5DC92026FCF300FE7E76 /* OperationFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = E91C5DC82026FCF200FE7E76 /* OperationFactory.swift */; };
 		E91C5DCB2026FE4200FE7E76 /* PersistentStorageScheduling.swift in Sources */ = {isa = PBXBuildFile; fileRef = E91C5DCA2026FE4200FE7E76 /* PersistentStorageScheduling.swift */; };
 		E91C5DCD2026FFD200FE7E76 /* ConfigurationSchedule.swift in Sources */ = {isa = PBXBuildFile; fileRef = E91C5DCC2026FFD200FE7E76 /* ConfigurationSchedule.swift */; };
 		E91C5DCF202705E800FE7E76 /* RsyncScheduled.swift in Sources */ = {isa = PBXBuildFile; fileRef = E91C5DCE202705E700FE7E76 /* RsyncScheduled.swift */; };
@@ -33,6 +30,7 @@
 		E9542589209ECA900012170B /* Allschedules.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9542588209ECA900012170B /* Allschedules.swift */; };
 		E95548012035F4CD00D2E713 /* ExecuteTaskTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E95547FF2035F4CD00D2E713 /* ExecuteTaskTimer.swift */; };
 		E95548022035F4CD00D2E713 /* ScheduleOperationTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E95548002035F4CD00D2E713 /* ScheduleOperationTimer.swift */; };
+		E965E1AB20A17BF9004F42DC /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E965E1AA20A17BF9004F42DC /* Extensions.swift */; };
 		E98398AE20260E9D00C977C3 /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = E98398AC20260E9D00C977C3 /* Configuration.swift */; };
 		E98398AF20260E9D00C977C3 /* Configurations.swift in Sources */ = {isa = PBXBuildFile; fileRef = E98398AD20260E9D00C977C3 /* Configurations.swift */; };
 		E98A9AC3209D8B1D000FDB55 /* Allconfigurations.swift in Sources */ = {isa = PBXBuildFile; fileRef = E98A9AC2209D8B1D000FDB55 /* Allconfigurations.swift */; };
@@ -70,10 +68,7 @@
 		E91C5DBB2026F8F900FE7E76 /* ScheduleSortedAndExpanded.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScheduleSortedAndExpanded.swift; sourceTree = "<group>"; };
 		E91C5DBC2026F8F900FE7E76 /* Schedules.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Schedules.swift; sourceTree = "<group>"; };
 		E91C5DBD2026F8F900FE7E76 /* ScheduleWriteLoggData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScheduleWriteLoggData.swift; sourceTree = "<group>"; };
-		E91C5DBE2026F8F900FE7E76 /* ScheduleOperationDispatch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScheduleOperationDispatch.swift; sourceTree = "<group>"; };
-		E91C5DC42026FAFB00FE7E76 /* ExecuteTaskDispatch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExecuteTaskDispatch.swift; sourceTree = "<group>"; };
 		E91C5DC62026FB3500FE7E76 /* ProcessCmd.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProcessCmd.swift; sourceTree = "<group>"; };
-		E91C5DC82026FCF200FE7E76 /* OperationFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OperationFactory.swift; sourceTree = "<group>"; };
 		E91C5DCA2026FE4200FE7E76 /* PersistentStorageScheduling.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersistentStorageScheduling.swift; sourceTree = "<group>"; };
 		E91C5DCC2026FFD200FE7E76 /* ConfigurationSchedule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfigurationSchedule.swift; sourceTree = "<group>"; };
 		E91C5DCE202705E700FE7E76 /* RsyncScheduled.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RsyncScheduled.swift; sourceTree = "<group>"; };
@@ -82,6 +77,7 @@
 		E9542588209ECA900012170B /* Allschedules.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Allschedules.swift; sourceTree = "<group>"; };
 		E95547FF2035F4CD00D2E713 /* ExecuteTaskTimer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExecuteTaskTimer.swift; sourceTree = "<group>"; };
 		E95548002035F4CD00D2E713 /* ScheduleOperationTimer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScheduleOperationTimer.swift; sourceTree = "<group>"; };
+		E965E1AA20A17BF9004F42DC /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		E98398AC20260E9D00C977C3 /* Configuration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Configuration.swift; sourceTree = "<group>"; };
 		E98398AD20260E9D00C977C3 /* Configurations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Configurations.swift; sourceTree = "<group>"; };
 		E98A9AC2209D8B1D000FDB55 /* Allconfigurations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Allconfigurations.swift; sourceTree = "<group>"; };
@@ -161,11 +157,8 @@
 			isa = PBXGroup;
 			children = (
 				E91C5DCE202705E700FE7E76 /* RsyncScheduled.swift */,
-				E91C5DBE2026F8F900FE7E76 /* ScheduleOperationDispatch.swift */,
 				E95547FF2035F4CD00D2E713 /* ExecuteTaskTimer.swift */,
 				E95548002035F4CD00D2E713 /* ScheduleOperationTimer.swift */,
-				E91C5DC42026FAFB00FE7E76 /* ExecuteTaskDispatch.swift */,
-				E91C5DC82026FCF200FE7E76 /* OperationFactory.swift */,
 				E91C5DC62026FB3500FE7E76 /* ProcessCmd.swift */,
 			);
 			path = Operation;
@@ -266,6 +259,14 @@
 			path = RsyncOSXsched;
 			sourceTree = "<group>";
 		};
+		E965E1A920A17BDC004F42DC /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				E965E1AA20A17BF9004F42DC /* Extensions.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		E97983B3202878B9003ADB25 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -278,6 +279,7 @@
 		E98398A720260D0300C977C3 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				E965E1A920A17BDC004F42DC /* Extensions */,
 				E90BFDC1202D9858004AE4EC /* ydpsocket */,
 				E946CDBB20279A3C005BF6E9 /* User */,
 				E91C5DC32026FACF00FE7E76 /* Operation */,
@@ -389,16 +391,15 @@
 				E91C5DC02026F8FA00FE7E76 /* Schedules.swift in Sources */,
 				94E0FC4E1BD7FCBE00A3C537 /* EventMonitor.swift in Sources */,
 				E98A9AC3209D8B1D000FDB55 /* Allconfigurations.swift in Sources */,
-				E91C5DC22026F8FA00FE7E76 /* ScheduleOperationDispatch.swift in Sources */,
 				E98398AF20260E9D00C977C3 /* Configurations.swift in Sources */,
 				E90BFDC8202D989D004AE4EC /* ytcpsocket.c in Sources */,
 				E9F54D7B2026D7D400A664CF /* RsyncParametersProcess.swift in Sources */,
 				E91C5DC12026F8FA00FE7E76 /* ScheduleWriteLoggData.swift in Sources */,
 				E9A63066202B4DE900F1FFF1 /* Running.swift in Sources */,
+				E965E1AB20A17BF9004F42DC /* Extensions.swift in Sources */,
 				E9F54D852026DC5D00A664CF /* Readwritefiles.swift in Sources */,
 				E91C5DCF202705E800FE7E76 /* RsyncScheduled.swift in Sources */,
 				E9F54D752026D5D500A664CF /* ArgumentsOneConfiguration.swift in Sources */,
-				E91C5DC92026FCF300FE7E76 /* OperationFactory.swift in Sources */,
 				E9F54D8B2026DED600A664CF /* PersistentStorageUserconfiguration.swift in Sources */,
 				E946CDBD20279A85005BF6E9 /* Userconfiguration.swift in Sources */,
 				E91C5DCB2026FE4200FE7E76 /* PersistentStorageScheduling.swift in Sources */,
@@ -412,7 +413,6 @@
 				E9542589209ECA900012170B /* Allschedules.swift in Sources */,
 				E91C5DCD2026FFD200FE7E76 /* ConfigurationSchedule.swift in Sources */,
 				E9F54D892026DCCF00A664CF /* Files.swift in Sources */,
-				E91C5DC52026FAFB00FE7E76 /* ExecuteTaskDispatch.swift in Sources */,
 				E95548012035F4CD00D2E713 /* ExecuteTaskTimer.swift in Sources */,
 				E95548022035F4CD00D2E713 /* ScheduleOperationTimer.swift in Sources */,
 				E90BFDCA202D989D004AE4EC /* yudpsocket.c in Sources */,
