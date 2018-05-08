@@ -2,7 +2,7 @@
 //  Created by Thomas Evensen on 20/01/2017.
 //  Copyright © 2017 Thomas Evensen. All rights reserved.
 //
-//  swiftlint:disable line_length function_body_length
+//  swiftlint:disable line_length
 
 import Foundation
 
@@ -14,8 +14,7 @@ import Foundation
 // when the job discover (observs) the termination of the process.
 
 protocol ReloadData: class {
-    func reloadschedules(profilename: String?)
-    func reloadconfiguration(profilename: String?)
+    func reloaddata(profilename: String?)
 }
 
 class ExecuteTaskTimer: Operation, SetSchedules, SetConfigurations, SetScheduledTask, Setlog {
@@ -24,19 +23,17 @@ class ExecuteTaskTimer: Operation, SetSchedules, SetConfigurations, SetScheduled
         let outputprocess = OutputProcess()
         var arguments: [String]?
         weak var updatestatuslightDelegate: Updatestatuslight?
-        weak var reloaddata: ReloadData?
+        weak var reloaddataDelegate: ReloadData?
         updatestatuslightDelegate = ViewControllerReference.shared.viewControllermain as? ViewControllerMain
-        reloaddata = ViewControllerReference.shared.viewControllermain as? ViewControllerMain
+        reloaddataDelegate = ViewControllerReference.shared.viewControllermain as? ViewControllerMain
         var config: Configuration?
         // Get the first job of the queue
         if let dict: NSDictionary = ViewControllerReference.shared.scheduledTask {
             let profilename = dict.value(forKey: "profilename") as? String
             if profilename!.isEmpty {
-                reloaddata?.reloadconfiguration(profilename: nil)
-                reloaddata?.reloadschedules(profilename: nil)
+                reloaddataDelegate?.reloaddata(profilename: nil)
             } else {
-                reloaddata?.reloadconfiguration(profilename: profilename)
-                reloaddata?.reloadschedules(profilename: profilename)
+                reloaddataDelegate?.reloaddata(profilename: profilename)
             }
             if let hiddenID: Int = dict.value(forKey: "hiddenID") as? Int {
                 self.logDelegate?.addlog(logrecord: "Executing task hiddenID: " + String(hiddenID))
