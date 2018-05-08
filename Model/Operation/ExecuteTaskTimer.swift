@@ -30,7 +30,7 @@ class ExecuteTaskTimer: Operation, SetSchedules, SetConfigurations, SetScheduled
         // Get the first job of the queue
         if let dict: NSDictionary = ViewControllerReference.shared.scheduledTask {
             let profilename = dict.value(forKey: "profilename") as? String
-            if profilename!.isEmpty {
+            if profilename!.isEmpty || profilename! == "Default profile" {
                 reloaddataDelegate?.reloaddata(profilename: nil)
             } else {
                 reloaddataDelegate?.reloaddata(profilename: profilename)

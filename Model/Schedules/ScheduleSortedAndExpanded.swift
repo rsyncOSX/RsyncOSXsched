@@ -45,7 +45,7 @@ class ScheduleSortedAndExpand: SetConfigurations {
         if let start: Date = cal.date(byAdding: dateComponent, to: dateStart) {
             if start.timeIntervalSinceNow > 0 {
                 let hiddenID = (dict.value(forKey: "hiddenID") as? Int)!
-                let profilename = dict.value(forKey: "profilename") ?? ""
+                let profilename = dict.value(forKey: "profilename") ?? "Default profile"
                 let time = start.timeIntervalSinceNow
                 let dictSchedule: NSDictionary = [
                     "start": start,
@@ -69,7 +69,7 @@ class ScheduleSortedAndExpand: SetConfigurations {
         if let start: Date = cal.date(byAdding: dateComponent, to: dateStart) {
             if start.timeIntervalSinceNow > 0 {
                 let hiddenID = (dict.value(forKey: "hiddenID") as? Int)!
-                let profilename = dict.value(forKey: "profilename") ?? ""
+                let profilename = dict.value(forKey: "profilename") ?? "Default profile"
                 let time = start.timeIntervalSinceNow
                 let dictSchedule: NSDictionary = [
                     "start": start,
@@ -119,7 +119,7 @@ class ScheduleSortedAndExpand: SetConfigurations {
                 switch schedule {
                 case "once" :
                     let hiddenID = (dict.value(forKey: "hiddenID") as? Int)!
-                    let profilename = dict.value(forKey: "profilename") ?? ""
+                    let profilename = dict.value(forKey: "profilename") ?? "Default profile"
                     let time = seconds
                     let dict: NSDictionary = [
                         "start": dateStart,

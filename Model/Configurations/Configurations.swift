@@ -183,7 +183,7 @@ class Configurations {
                 "daysID": configurations[i].dayssincelastbackup ?? "",
                 "markdays": configurations[i].markdays,
                 "selectCellID": 0,
-                "profilename": self.profile ?? ""
+                "profilename": self.profile ?? "Default profile"
             ]
             if (row.value(forKey: "offsiteServerCellID") as? String)?.isEmpty == true {
                 row.setValue("localhost", forKey: "offsiteServerCellID")
@@ -228,7 +228,7 @@ class Configurations {
                 "backupIDCellID": self.configurations![i].backupID,
                 "runDateCellID": self.configurations![i].dateRun ?? "",
                 "daysID": self.configurations![i].dayssincelastbackup ?? "",
-                "profilename": self.profile ?? ""
+                "profilename": self.profile ?? "Default profile"
             ]
             data.append(row)
         }
