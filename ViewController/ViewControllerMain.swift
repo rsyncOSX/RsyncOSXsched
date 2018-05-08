@@ -5,7 +5,7 @@
 //  Created by Maxim on 10/21/15.
 //  Copyright © 2015 Maxim. All rights reserved.
 //
-//  swiftlint:disable line_length
+//  swiftlint:disable line_length file_length
 
 import Cocoa
 import Foundation
@@ -227,7 +227,7 @@ extension ViewControllerMain: NSTableViewDelegate, Attributedestring {
         guard row < self.configurations!.getConfigurationsDataSourcecountBackup()!.count  else { return nil }
         let object: NSDictionary = self.configurations!.getConfigurationsDataSourcecountBackup()![row]
         let hiddenID = object.value(forKey: "hiddenID") as? Int ?? -1
-        let profilename = object.value(forKey: "profilename") as? String ?? ""
+        var profilename = object.value(forKey: "profilename") as? String ?? "Default profile"
         switch tableColumn!.identifier.rawValue {
         case "scheduleID" :
             if self.schedulesortedandexpanded != nil {
@@ -383,13 +383,22 @@ extension ViewControllerMain: Fileerror {
 extension ViewControllerMain: ReloadData {
     func reloaddata(profilename: String?) {
         guard profilename != nil else {
-            if self.profilename == nil { return }
+            if self.profilename == nil {
+                globalMainQueue.async(execute: { () -> Void in
+                     self.profileinfo.stringValue = "Profile: default"
+                })
+                return
+            }
+            self.profilename = nil
             self.createandreloadconfigurations()
             self.createandreloadschedules()
             return
         }
         guard profilename == self.profilename else {
             self.profilename = profilename
+            globalMainQueue.async(execute: { () -> Void in
+                self.profileinfo.stringValue = "Profile: " + self.profilename!
+            })
             self.createandreloadconfigurations()
             self.createandreloadschedules()
             return

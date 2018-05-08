@@ -21,7 +21,7 @@ struct ConfigurationSchedule {
         self.hiddenID = dictionary.object(forKey: "hiddenID") as? Int ?? -1
         self.dateStart = dictionary.object(forKey: "dateStart") as? String ?? ""
         self.schedule = dictionary.object(forKey: "schedule") as? String ?? ""
-        self.profilename = dictionary.object(forKey: "profilename") as? String ?? ""
+        self.profilename = dictionary.object(forKey: "profilename") as? String ?? "Default profile"
         if let date = dictionary.object(forKey: "dateStop") as? String {
             self.dateStop = date
         }
