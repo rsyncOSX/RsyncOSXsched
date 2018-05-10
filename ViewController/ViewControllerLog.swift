@@ -19,8 +19,8 @@ class ViewControllerLog: NSViewController, SetDismisser, GetInformation {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        detailsTable.delegate = self
-        detailsTable.dataSource = self
+        self.detailsTable.delegate = self
+        self.detailsTable.dataSource = self
     }
 
     override func viewDidAppear() {

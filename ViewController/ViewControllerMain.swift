@@ -30,6 +30,12 @@ class ViewControllerMain: NSViewController, Delay, Setlog {
             as? NSViewController)!
     }
 
+    // All schedules
+    var viewControllerAllschedules: NSViewController? {
+        return (self.storyboard!.instantiateController(withIdentifier: NSStoryboard.SceneIdentifier(rawValue: "StoryboardAllschedulesID"))
+            as? NSViewController)!
+    }
+
     @IBOutlet weak var mainTableView: NSTableView!
     @IBOutlet weak var progress: NSProgressIndicator!
     @IBOutlet weak var profilescombobox: NSComboBox!
@@ -120,6 +126,10 @@ class ViewControllerMain: NSViewController, Delay, Setlog {
 
     @IBAction func viewlogg(_ sender: NSButton) {
         self.presentViewControllerAsSheet(self.viewControllerInformation!)
+    }
+
+    @IBAction func viewallschedules(_ sender: NSButton) {
+        self.presentViewControllerAsSheet(self.viewControllerAllschedules!)
     }
 
     private func reload() {
@@ -227,7 +237,7 @@ extension ViewControllerMain: NSTableViewDelegate, Attributedestring {
         guard row < self.configurations!.getConfigurationsDataSourcecountBackup()!.count  else { return nil }
         let object: NSDictionary = self.configurations!.getConfigurationsDataSourcecountBackup()![row]
         let hiddenID = object.value(forKey: "hiddenID") as? Int ?? -1
-        var profilename = object.value(forKey: "profilename") as? String ?? "Default profile"
+        let profilename = object.value(forKey: "profilename") as? String ?? "Default profile"
         switch tableColumn!.identifier.rawValue {
         case "scheduleID" :
             if self.schedulesortedandexpanded != nil {
@@ -403,5 +413,11 @@ extension ViewControllerMain: ReloadData {
             self.createandreloadschedules()
             return
         }
+    }
+}
+
+extension ViewControllerMain: GetSchedulesSortedAndExpanded {
+    func getschedulessortedandexpanded() -> ScheduleSortedAndExpand? {
+        return self.schedulesortedandexpanded
     }
 }

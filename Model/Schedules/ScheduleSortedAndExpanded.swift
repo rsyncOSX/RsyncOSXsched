@@ -194,7 +194,7 @@ class ScheduleSortedAndExpand: SetConfigurations {
                     "dateStop": self.scheduleConfiguration![i].dateStop!,
                     "hiddenID": self.scheduleConfiguration![i].hiddenID,
                     "schedule": self.scheduleConfiguration![i].schedule,
-                    "profilename": self.scheduleConfiguration![i].profilename ?? ""
+                    "profilename": self.scheduleConfiguration![i].profilename ?? "Default profile"
                 ]
                 data.append(dict as NSDictionary)
         }

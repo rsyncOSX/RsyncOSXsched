@@ -7,6 +7,26 @@
 //
 
 import Foundation
+import Cocoa
+
+// Protocol for returning object configurations data
+protocol GetSchedulesSortedAndExpanded: class {
+    func getschedulessortedandexpanded() -> ScheduleSortedAndExpand?
+}
+
+protocol GetAllSchedules {
+    var allschedulesDelegate: GetSchedulesSortedAndExpanded? { get }
+    var schedulessortedandexpanded: ScheduleSortedAndExpand? { get }
+}
+
+extension GetAllSchedules {
+    weak var allschedulesDelegate: GetSchedulesSortedAndExpanded? {
+        return ViewControllerReference.shared.viewControllermain as? ViewControllerMain
+    }
+    var schedulessortedandexpanded: ScheduleSortedAndExpand? {
+        return allschedulesDelegate?.getschedulessortedandexpanded()
+    }
+}
 
 class Allschedules {
 
