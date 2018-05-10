@@ -82,6 +82,7 @@ class ViewControllerMain: NSViewController, Delay, Setlog {
         self.setprofiles()
         self.checkforrunning()
         self.info(num: -1)
+        self.profilescombobox.stringValue = "Default profile"
         globalMainQueue.async(execute: { () -> Void in
             self.mainTableView.reloadData()
         })
@@ -400,6 +401,7 @@ extension ViewControllerMain: ReloadData {
                 return
             }
             self.profilename = nil
+            self.profilescombobox.stringValue = "Default profile"
             self.createandreloadconfigurations()
             self.createandreloadschedules()
             return
@@ -409,6 +411,7 @@ extension ViewControllerMain: ReloadData {
             globalMainQueue.async(execute: { () -> Void in
                 self.profileinfo.stringValue = "Profile: " + self.profilename!
             })
+            self.profilescombobox.stringValue = self.profilename!
             self.createandreloadconfigurations()
             self.createandreloadschedules()
             return

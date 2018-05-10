@@ -5,29 +5,38 @@
 //  Created by Thomas Evensen on 10.05.2018.
 //  Copyright © 2018 Maxim. All rights reserved.
 //
+// swiftlint:disable line_length
 
 import Foundation
-
 import Cocoa
 
 class ViewControllerSchedules: NSViewController, SetDismisser, GetAllSchedules {
 
     @IBOutlet weak var allschedulestable: NSTableView!
+    var profilname: String?
+    weak var loadProfileDelegate: ReloadData?
 
     override func viewDidLoad() {
         super.viewDidLoad()
         self.allschedulestable.delegate = self
         self.allschedulestable.dataSource = self
+        self.allschedulestable.doubleAction = #selector(ViewControllerSchedules.tableViewDoubleClick(sender:))
     }
 
     override func viewDidAppear() {
         super.viewDidAppear()
+        self.loadProfileDelegate = ViewControllerReference.shared.viewControllermain as? ViewControllerMain
         globalMainQueue.async(execute: { () -> Void in
             self.allschedulestable.reloadData()
         })
     }
 
     @IBAction func close(_ sender: NSButton) {
+        self.dismissview(viewcontroller: self)
+    }
+
+    @objc(tableViewDoubleClick:) func tableViewDoubleClick(sender: AnyObject) {
+        self.loadProfileDelegate?.reloaddata(profilename: self.profilname)
         self.dismissview(viewcontroller: self)
     }
 }
@@ -51,6 +60,15 @@ extension ViewControllerSchedules: NSTableViewDelegate {
             return taskintime ?? ""
         } else {
             return object[tableColumn!.identifier]
+        }
+    }
+
+    func tableViewSelectionDidChange(_ notification: Notification) {
+        let myTableViewFromNotification = (notification.object as? NSTableView)!
+        let indexes = myTableViewFromNotification.selectedRowIndexes
+        if let index = indexes.first {
+            let dict = self.schedulessortedandexpanded!.getsortedAndExpandedScheduleData()![index]
+            self.profilname = dict.value(forKey: "profilename") as? String ?? "Default profile"
         }
     }
 }
