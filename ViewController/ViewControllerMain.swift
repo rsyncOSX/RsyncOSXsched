@@ -416,9 +416,8 @@ extension ViewControllerMain: ReloadData {
     }
 }
 
-extension ViewControllerMain: GetAllSchedulesObject {
-    func getallschedulesobject() -> [NSDictionary]? {
-        guard self.schedulesortedandexpanded != nil else { return nil}
-        return self.schedulesortedandexpanded!.getsortedAndExpandedScheduleData()
+extension ViewControllerMain: GetSchedulesSortedAndExpanded {
+    func getschedulessortedandexpanded() -> ScheduleSortedAndExpand? {
+        return self.schedulesortedandexpanded
     }
 }

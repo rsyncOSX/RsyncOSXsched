@@ -35,15 +35,22 @@ class ViewControllerSchedules: NSViewController, SetDismisser, GetAllSchedules {
 extension ViewControllerSchedules: NSTableViewDataSource {
 
     func numberOfRows(in aTableView: NSTableView) -> Int {
-        return self.allschedules?.count ?? 0
+        return self.schedulessortedandexpanded?.getsortedAndExpandedScheduleData()?.count ?? 0
     }
 }
 
 extension ViewControllerSchedules: NSTableViewDelegate {
 
     func tableView(_ tableView: NSTableView, objectValueFor tableColumn: NSTableColumn?, row: Int) -> Any? {
-        guard row < self.allschedules!.count  else { return nil }
-        let object: NSDictionary = self.allschedules![row]
-        return object[tableColumn!.identifier]
+        guard row < self.schedulessortedandexpanded!.getsortedAndExpandedScheduleData()!.count else { return nil }
+        let object: NSDictionary = self.schedulessortedandexpanded!.getsortedAndExpandedScheduleData()![row]
+        if tableColumn!.identifier.rawValue == "intime" {
+            let hiddenID = object.value(forKey: "hiddenID") as? Int ?? -1
+            let profilename = object.value(forKey: "profilename") as? String ?? "Default profile"
+            let taskintime: String? = self.schedulessortedandexpanded!.sortandcountscheduledonetask(hiddenID, profilename: profilename, number: true)
+            return taskintime ?? ""
+        } else {
+            return object[tableColumn!.identifier]
+        }
     }
 }
