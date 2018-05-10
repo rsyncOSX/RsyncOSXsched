@@ -30,6 +30,12 @@ class ViewControllerMain: NSViewController, Delay, Setlog {
             as? NSViewController)!
     }
 
+    // All schedules
+    var viewControllerAllschedules: NSViewController? {
+        return (self.storyboard!.instantiateController(withIdentifier: NSStoryboard.SceneIdentifier(rawValue: "StoryboardAllschedulesID"))
+            as? NSViewController)!
+    }
+
     @IBOutlet weak var mainTableView: NSTableView!
     @IBOutlet weak var progress: NSProgressIndicator!
     @IBOutlet weak var profilescombobox: NSComboBox!
@@ -120,6 +126,10 @@ class ViewControllerMain: NSViewController, Delay, Setlog {
 
     @IBAction func viewlogg(_ sender: NSButton) {
         self.presentViewControllerAsSheet(self.viewControllerInformation!)
+    }
+
+    @IBAction func viewallschedules(_ sender: NSButton) {
+        self.presentViewControllerAsSheet(self.viewControllerAllschedules!)
     }
 
     private func reload() {
@@ -403,5 +413,12 @@ extension ViewControllerMain: ReloadData {
             self.createandreloadschedules()
             return
         }
+    }
+}
+
+extension ViewControllerMain: GetAllSchedulesObject {
+    func getallschedulesobject() -> [NSDictionary]? {
+        guard self.schedulesortedandexpanded != nil else { return nil}
+        return self.schedulesortedandexpanded!.getsortedAndExpandedScheduleData()
     }
 }

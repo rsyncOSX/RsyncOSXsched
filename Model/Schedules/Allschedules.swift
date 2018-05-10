@@ -7,6 +7,26 @@
 //
 
 import Foundation
+import Cocoa
+
+// Protocol for returning object configurations data
+protocol GetAllSchedulesObject: class {
+    func getallschedulesobject() -> [NSDictionary]?
+}
+
+protocol GetAllSchedules {
+    var allschedulesDelegate: GetAllSchedulesObject? { get }
+    var allschedules: [NSDictionary]? { get }
+}
+
+extension GetAllSchedules {
+    weak var allschedulesDelegate: GetAllSchedulesObject? {
+        return ViewControllerReference.shared.viewControllermain as? ViewControllerMain
+    }
+    var allschedules: [NSDictionary]? {
+        return allschedulesDelegate?.getallschedulesobject()
+    }
+}
 
 class Allschedules {
 

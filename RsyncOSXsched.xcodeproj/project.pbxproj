@@ -27,6 +27,7 @@
 		E91C5DCF202705E800FE7E76 /* RsyncScheduled.swift in Sources */ = {isa = PBXBuildFile; fileRef = E91C5DCE202705E700FE7E76 /* RsyncScheduled.swift */; };
 		E9415402202F6E0C00BCE8A1 /* ViewControllerLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9415401202F6E0C00BCE8A1 /* ViewControllerLog.swift */; };
 		E946CDBD20279A85005BF6E9 /* Userconfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = E946CDBC20279A85005BF6E9 /* Userconfiguration.swift */; };
+		E94DDC8720A40CC90041CF53 /* ViewControllerSchedules.swift in Sources */ = {isa = PBXBuildFile; fileRef = E94DDC8620A40CC90041CF53 /* ViewControllerSchedules.swift */; };
 		E9542589209ECA900012170B /* Allschedules.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9542588209ECA900012170B /* Allschedules.swift */; };
 		E95548012035F4CD00D2E713 /* ExecuteTaskTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E95547FF2035F4CD00D2E713 /* ExecuteTaskTimer.swift */; };
 		E95548022035F4CD00D2E713 /* ScheduleOperationTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E95548002035F4CD00D2E713 /* ScheduleOperationTimer.swift */; };
@@ -73,6 +74,7 @@
 		E91C5DCE202705E700FE7E76 /* RsyncScheduled.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RsyncScheduled.swift; sourceTree = "<group>"; };
 		E9415401202F6E0C00BCE8A1 /* ViewControllerLog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerLog.swift; sourceTree = "<group>"; };
 		E946CDBC20279A85005BF6E9 /* Userconfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Userconfiguration.swift; sourceTree = "<group>"; };
+		E94DDC8620A40CC90041CF53 /* ViewControllerSchedules.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerSchedules.swift; sourceTree = "<group>"; };
 		E9542588209ECA900012170B /* Allschedules.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Allschedules.swift; sourceTree = "<group>"; };
 		E95547FF2035F4CD00D2E713 /* ExecuteTaskTimer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExecuteTaskTimer.swift; sourceTree = "<group>"; };
 		E95548002035F4CD00D2E713 /* ScheduleOperationTimer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScheduleOperationTimer.swift; sourceTree = "<group>"; };
@@ -269,6 +271,7 @@
 			children = (
 				94E0FC401BD7FC3600A3C537 /* ViewControllerMain.swift */,
 				E9415401202F6E0C00BCE8A1 /* ViewControllerLog.swift */,
+				E94DDC8620A40CC90041CF53 /* ViewControllerSchedules.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -382,6 +385,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E90CAC5F203D7409004BA7C6 /* Notifications.swift in Sources */,
+				E94DDC8720A40CC90041CF53 /* ViewControllerSchedules.swift in Sources */,
 				E91C5DBF2026F8FA00FE7E76 /* ScheduleSortedAndExpanded.swift in Sources */,
 				E9B96299203802EF00EA6D5A /* Logging.swift in Sources */,
 				E91C5DC72026FB3500FE7E76 /* ProcessCmd.swift in Sources */,
