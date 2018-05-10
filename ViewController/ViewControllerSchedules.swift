@@ -5,6 +5,7 @@
 //  Created by Thomas Evensen on 10.05.2018.
 //  Copyright © 2018 Maxim. All rights reserved.
 //
+// swiftlint:disable line_length
 
 import Foundation
 
@@ -18,6 +19,7 @@ class ViewControllerSchedules: NSViewController, SetDismisser, GetAllSchedules {
         super.viewDidLoad()
         self.allschedulestable.delegate = self
         self.allschedulestable.dataSource = self
+        self.allschedulestable.doubleAction = #selector(ViewControllerSchedules.tableViewDoubleClick(sender:))
     }
 
     override func viewDidAppear() {
@@ -28,6 +30,11 @@ class ViewControllerSchedules: NSViewController, SetDismisser, GetAllSchedules {
     }
 
     @IBAction func close(_ sender: NSButton) {
+        self.dismissview(viewcontroller: self)
+    }
+
+    @objc(tableViewDoubleClick:) func tableViewDoubleClick(sender: AnyObject) {
+        // self.newProfileDelegate?.newProfile(profile: self.useprofile)
         self.dismissview(viewcontroller: self)
     }
 }
@@ -51,6 +58,14 @@ extension ViewControllerSchedules: NSTableViewDelegate {
             return taskintime ?? ""
         } else {
             return object[tableColumn!.identifier]
+        }
+    }
+
+    func tableViewSelectionDidChange(_ notification: Notification) {
+        let myTableViewFromNotification = (notification.object as? NSTableView)!
+        let indexes = myTableViewFromNotification.selectedRowIndexes
+        if let index = indexes.first {
+            // self.useprofile = self.profilesArray![index]
         }
     }
 }
