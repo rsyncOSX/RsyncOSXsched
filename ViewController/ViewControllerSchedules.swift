@@ -8,12 +8,13 @@
 // swiftlint:disable line_length
 
 import Foundation
-
 import Cocoa
 
 class ViewControllerSchedules: NSViewController, SetDismisser, GetAllSchedules {
 
     @IBOutlet weak var allschedulestable: NSTableView!
+    var profilname: String?
+    weak var loadProfileDelegate: ReloadData?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,6 +25,7 @@ class ViewControllerSchedules: NSViewController, SetDismisser, GetAllSchedules {
 
     override func viewDidAppear() {
         super.viewDidAppear()
+        self.loadProfileDelegate = ViewControllerReference.shared.viewControllermain as? ViewControllerMain
         globalMainQueue.async(execute: { () -> Void in
             self.allschedulestable.reloadData()
         })
@@ -34,7 +36,7 @@ class ViewControllerSchedules: NSViewController, SetDismisser, GetAllSchedules {
     }
 
     @objc(tableViewDoubleClick:) func tableViewDoubleClick(sender: AnyObject) {
-        // self.newProfileDelegate?.newProfile(profile: self.useprofile)
+        self.loadProfileDelegate?.reloaddata(profilename: self.profilname)
         self.dismissview(viewcontroller: self)
     }
 }
@@ -65,7 +67,8 @@ extension ViewControllerSchedules: NSTableViewDelegate {
         let myTableViewFromNotification = (notification.object as? NSTableView)!
         let indexes = myTableViewFromNotification.selectedRowIndexes
         if let index = indexes.first {
-            // self.useprofile = self.profilesArray![index]
+            let dict = self.schedulessortedandexpanded!.getsortedAndExpandedScheduleData()![index]
+            self.profilname = dict.value(forKey: "profilename") as? String ?? "Default profile"
         }
     }
 }
