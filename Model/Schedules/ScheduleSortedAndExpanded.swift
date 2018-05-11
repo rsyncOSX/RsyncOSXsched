@@ -5,6 +5,7 @@
 //  Created by Thomas Evensen on 05/09/2016.
 //  Copyright © 2016 Thomas Evensen. All rights reserved.
 //
+// swiftlint:disable line_length
 
 import Foundation
 import Cocoa
@@ -157,27 +158,52 @@ class ScheduleSortedAndExpand: SetConfigurations {
         return (result!.count, timetostart)
     }
 
-    func sortandcountscheduledonetask (_ hiddenID: Int, profilename: String, number: Bool) -> String {
-        if let result = self.sortedschedules?.filter({return (($0.value(forKey: "hiddenID") as? Int)! == hiddenID
-            && ($0.value(forKey: "start") as? Date)!.timeIntervalSinceNow > 0 )
-            && ($0.value(forKey: "profilename") as? String)! == profilename }) {
-            let sorted = result.sorted {(di1, di2) -> Bool in
-                if (di1.value(forKey: "start") as? Date)!.timeIntervalSince((di2.value(forKey: "start") as? Date)!)>0 {
-                    return false
-                } else {
-                    return true
+    func sortandcountscheduledonetask (_ hiddenID: Int, profilename: String, dateStart: Date?, number: Bool) -> String {
+        if dateStart != nil {
+            if let result = self.sortedschedules?.filter({return (($0.value(forKey: "hiddenID") as? Int)! == hiddenID
+                && ($0.value(forKey: "start") as? Date)!.timeIntervalSinceNow > 0 )
+                && ($0.value(forKey: "profilename") as? String)! == profilename
+                && ($0.value(forKey: "dateStart") as? Date)! == dateStart}) {
+                let sorted = result.sorted {(di1, di2) -> Bool in
+                    if (di1.value(forKey: "start") as? Date)!.timeIntervalSince((di2.value(forKey: "start") as? Date)!)>0 {
+                        return false
+                    } else {
+                        return true
+                    }
                 }
-            }
-            guard sorted.count > 0 else { return "" }
-            if number {
-                let firsttask = (sorted[0].value(forKey: "start") as? Date)?.timeIntervalSinceNow
-                return self.tools?.timeString(firsttask!) ?? ""
+                guard sorted.count > 0 else { return "" }
+                if number {
+                    let firsttask = (sorted[0].value(forKey: "start") as? Date)?.timeIntervalSinceNow
+                    return self.tools?.timeString(firsttask!) ?? ""
+                } else {
+                    let type = sorted[0].value(forKey: "schedule") as? String
+                    return type ?? ""
+                }
             } else {
-                let type = sorted[0].value(forKey: "schedule") as? String
-                return type ?? ""
+                return ""
             }
         } else {
-            return ""
+            if let result = self.sortedschedules?.filter({return (($0.value(forKey: "hiddenID") as? Int)! == hiddenID
+                && ($0.value(forKey: "start") as? Date)!.timeIntervalSinceNow > 0 )
+                && ($0.value(forKey: "profilename") as? String)! == profilename }) {
+                let sorted = result.sorted {(di1, di2) -> Bool in
+                    if (di1.value(forKey: "start") as? Date)!.timeIntervalSince((di2.value(forKey: "start") as? Date)!)>0 {
+                        return false
+                    } else {
+                        return true
+                    }
+                }
+                guard sorted.count > 0 else { return "" }
+                if number {
+                    let firsttask = (sorted[0].value(forKey: "start") as? Date)?.timeIntervalSinceNow
+                    return self.tools?.timeString(firsttask!) ?? ""
+                } else {
+                    let type = sorted[0].value(forKey: "schedule") as? String
+                    return type ?? ""
+                }
+            } else {
+                return ""
+            }
         }
     }
 
