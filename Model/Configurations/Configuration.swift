@@ -37,6 +37,9 @@ struct Configuration {
     var dayssincelastbackup: String?
     var markdays: Bool = false
     var profilename: String?
+    // If connected to rclone for encrypted backups
+    var rclonehiddenID: Int?
+    var rcloneprofile: String?
 
     init(dictionary: NSDictionary) {
         // Parameters 1 - 6 is mandatory, set by RsyncOSX.
@@ -88,6 +91,12 @@ struct Configuration {
         }
         if let sshport = dictionary.object(forKey: "sshport") {
             self.sshport = sshport as? Int
+        }
+        if let rclonehiddenID = dictionary.object(forKey: "rclonehiddenID") {
+            self.rclonehiddenID = rclonehiddenID as? Int
+        }
+        if let rcloneprofile = dictionary.object(forKey: "rcloneprofile") {
+            self.rcloneprofile = rcloneprofile as? String
         }
     }
 }
