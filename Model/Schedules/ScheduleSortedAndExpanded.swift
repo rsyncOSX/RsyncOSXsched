@@ -9,7 +9,7 @@
 import Foundation
 import Cocoa
 
-class ScheduleSortedAndExpand: SetConfigurations {
+class ScheduleSortedAndExpand {
 
     // Reference to main View
     private var vctabmain: NSViewController?
