@@ -36,6 +36,7 @@ class ViewControllerSchedules: NSViewController, SetDismisser, GetAllSchedules {
     }
 
     @objc(tableViewDoubleClick:) func tableViewDoubleClick(sender: AnyObject) {
+        if self.profilname == "Default profile" { self.profilname = nil }
         self.loadProfileDelegate?.reloaddata(profilename: self.profilname)
         self.dismissview(viewcontroller: self)
     }
