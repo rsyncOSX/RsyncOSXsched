@@ -38,7 +38,6 @@ class Allschedules {
         let profile = Files(root: .profileRoot)
         self.allprofiles = profile.getDirectorysStrings()
         guard self.allprofiles != nil else { return }
-        self.allprofiles!.append("Default profile")
     }
 
     private func readallschedules() {
