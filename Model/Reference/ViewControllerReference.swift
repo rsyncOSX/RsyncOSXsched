@@ -53,4 +53,6 @@ class ViewControllerReference {
     var fileURL: URL?
     // Execute scheduled tasks in menu app, default off
     var executescheduledtasksmenuapp: Bool = false
+    // Mac serialnumer
+    var macserialnumber: String?
 }
