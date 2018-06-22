@@ -128,8 +128,10 @@ extension SecondsBeforeStart {
 
     func secondsbeforestart() -> Double {
         var secondsToWait: Double?
-        let scheduledJobs = ScheduleSortedAndExpand()
-        if let dict = scheduledJobs.firstscheduledtask() {
+        weak var schedulesDelegate: GetSortedandExpandedObject?
+        schedulesDelegate = ViewControllerReference.shared.viewControllermain as? ViewControllerMain
+        let scheduledJobs = schedulesDelegate?.getsortedandexpandeobject()
+        if let dict = scheduledJobs?.firstscheduledtask() {
             let dateStart: Date = (dict.value(forKey: "start") as? Date)!
             secondsToWait = self.timeDoubleSeconds(dateStart, enddate: nil)
         }
