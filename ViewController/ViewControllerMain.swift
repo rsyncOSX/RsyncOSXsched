@@ -409,8 +409,8 @@ extension ViewControllerMain: ReloadData {
             self.profilename = profilename
             globalMainQueue.async(execute: { () -> Void in
                 self.profileinfo.stringValue = "Profile: " + self.profilename!
+                self.profilescombobox.stringValue = self.profilename!
             })
-            self.profilescombobox.stringValue = self.profilename!
             self.createandreloadconfigurations()
             self.createandreloadschedules()
             return
