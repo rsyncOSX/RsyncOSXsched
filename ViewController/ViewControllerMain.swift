@@ -50,7 +50,6 @@ class ViewControllerMain: NSViewController, Delay, Setlog {
     var schedulesortedandexpanded: ScheduleSortedAndExpand?
     var outputprocess: OutputProcess?
     var profilename: String?
-    var tools: Tools?
     var log: [String]?
 
     private var profilesArray: [String]?
@@ -68,7 +67,6 @@ class ViewControllerMain: NSViewController, Delay, Setlog {
         self.schedules = Schedules(profile: nil)
         if ViewControllerReference.shared.executescheduledtasksmenuapp == true {
             self.schedulesortedandexpanded = ScheduleSortedAndExpand()
-            self.tools = schedulesortedandexpanded?.tools
             self.startfirstcheduledtask()
         } else {
             self.info(num: 2)
@@ -115,7 +113,6 @@ class ViewControllerMain: NSViewController, Delay, Setlog {
     }
 
     @IBAction func selectprofile(_ sender: NSComboBox) {
-        self.tools = nil
         guard ViewControllerReference.shared.executescheduledtasksmenuapp == true else {
             self.info(num: 2)
             return
@@ -172,7 +169,6 @@ class ViewControllerMain: NSViewController, Delay, Setlog {
             self.schedules = Schedules(profile: nil)
         }
         self.schedulesortedandexpanded = ScheduleSortedAndExpand()
-        self.tools = schedulesortedandexpanded?.tools
         ViewControllerReference.shared.scheduledTask = self.schedulesortedandexpanded?.firstscheduledtask()
     }
 
@@ -422,6 +418,6 @@ extension ViewControllerMain: GetSchedulesSortedAndExpanded {
 
 extension ViewControllerMain: GetTools {
     func gettools() -> Tools? {
-        return self.tools
+        return self.schedulesortedandexpanded?.tools
     }
 }

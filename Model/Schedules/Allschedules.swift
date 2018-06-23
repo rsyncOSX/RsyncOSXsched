@@ -57,7 +57,9 @@ class Allschedules {
                 let offsiteserver = configurationschedule![j].offsiteserver ?? ""
                 let ifadded = self.alloffsiteservers!.filter({return $0 == offsiteserver})
                 if ifadded.count == 0 {
-                    self.alloffsiteservers?.append(offsiteserver)
+                    if offsiteserver.isEmpty == true || offsiteserver != "localhost" {
+                         self.alloffsiteservers?.append(offsiteserver)
+                    }
                 }
                 self.allschedules!.append(configurationschedule![j])
             }
