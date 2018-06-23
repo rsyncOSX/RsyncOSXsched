@@ -333,11 +333,15 @@ extension ViewControllerMain: Sendprocessreference {
 
 extension ViewControllerMain: UpdateProgress {
     func processTermination() {
-        ViewControllerReference.shared.completeoperation!.finalizeScheduledJob(outputprocess: self.outputprocess)
         globalMainQueue.async(execute: { () -> Void in
             self.progress.stopAnimation(nil)
             self.progresslabel.isHidden = true
         })
+        guard ViewControllerReference.shared.completeoperation != nil else {
+            self.startfirstcheduledtask()
+            return
+        }
+        ViewControllerReference.shared.completeoperation!.finalizeScheduledJob(outputprocess: self.outputprocess)
         self.startfirstcheduledtask()
     }
 

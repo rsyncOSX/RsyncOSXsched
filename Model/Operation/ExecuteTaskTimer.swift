@@ -51,6 +51,7 @@ class ExecuteTaskTimer: Operation, SetSchedules, SetConfigurations, SetScheduled
                 // Inform and notify
                 self.scheduleJob?.start()
                 if hiddenID >= 0 && config != nil {
+                    print (toolsDelegate?.gettools()?.noconnections)
                     if let noconnections = toolsDelegate?.gettools()?.noconnections {
                         self.logDelegate?.addlog(logrecord: "Checking for connection to remote server")
                         if let remoteserver = config?.offsiteServer {
