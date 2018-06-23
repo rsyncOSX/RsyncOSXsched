@@ -214,7 +214,7 @@ class ViewControllerMain: NSViewController, Delay, Setlog {
                     self.info.stringValue = "Executing scheduled tasks is not enabled in RsyncOSX...."
                     return
                 }
-                self.info.stringValue = "One or more remote sites not avaliable...."
+                self.info.stringValue = "Remote sites not avaliable, see log ...."
             case 2:
                 self.info.stringValue = "Executing scheduled tasks is not enabled in RsyncOSX...."
             default:
@@ -421,5 +421,11 @@ extension ViewControllerMain: ReloadData {
 extension ViewControllerMain: GetSchedulesSortedAndExpanded {
     func getschedulessortedandexpanded() -> ScheduleSortedAndExpand? {
         return self.schedulesortedandexpanded
+    }
+}
+
+extension ViewControllerMain: GetTools {
+    func gettools() -> Tools? {
+        return self.tools
     }
 }

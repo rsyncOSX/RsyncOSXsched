@@ -2,7 +2,7 @@
 //  Created by Thomas Evensen on 20/01/2017.
 //  Copyright © 2017 Thomas Evensen. All rights reserved.
 //
-//  swiftlint:disable line_length
+//  swiftlint:disable line_length function_body_length
 
 import Foundation
 
@@ -17,15 +17,21 @@ protocol ReloadData: class {
     func reloaddata(profilename: String?)
 }
 
+protocol GetTools: class {
+    func gettools() -> Tools?
+}
+
 class ExecuteTaskTimer: Operation, SetSchedules, SetConfigurations, SetScheduledTask, Setlog {
 
     override func main() {
         let outputprocess = OutputProcess()
         var arguments: [String]?
         weak var updatestatuslightDelegate: Updatestatuslight?
+        weak var toolsDelegate: GetTools?
         weak var reloaddataDelegate: ReloadData?
         updatestatuslightDelegate = ViewControllerReference.shared.viewControllermain as? ViewControllerMain
         reloaddataDelegate = ViewControllerReference.shared.viewControllermain as? ViewControllerMain
+        toolsDelegate =  ViewControllerReference.shared.viewControllermain as? ViewControllerMain
         var config: Configuration?
         // Get the first job of the queue
         if let dict: NSDictionary = ViewControllerReference.shared.scheduledTask {
@@ -45,6 +51,19 @@ class ExecuteTaskTimer: Operation, SetSchedules, SetConfigurations, SetScheduled
                 // Inform and notify
                 self.scheduleJob?.start()
                 if hiddenID >= 0 && config != nil {
+                    if let noconnections = toolsDelegate?.gettools()?.noconnections {
+                        self.logDelegate?.addlog(logrecord: "Checking for connection to remote server")
+                        if let remoteserver = config?.offsiteServer {
+                            guard noconnections.filter({return ($0 == remoteserver)}).count < 1 else {
+                                self.logDelegate?.addlog(logrecord: "No connection, bailed out...")
+                                _ = Notifications().showNotification(message: "Scheduled backup did not execute")
+                                weak var processTerminationDelegate: UpdateProgress?
+                                processTerminationDelegate = ViewControllerReference.shared.viewControllermain as? ViewControllerMain
+                                processTerminationDelegate?.processTermination()
+                                return
+                            }
+                        }
+                    }
                     arguments = RsyncParametersProcess().argumentsRsync(config!, dryRun: false, forDisplay: false)
                     // Setting reference to finalize the job, finalize job is done when rsynctask ends (in process termination)
                     ViewControllerReference.shared.completeoperation = CompleteScheduledOperation(dict: dict)

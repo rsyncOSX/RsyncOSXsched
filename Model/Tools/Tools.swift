@@ -5,6 +5,7 @@
 //  Created by Thomas Evensen on 22.07.2017.
 //  Copyright © 2017 Thomas Evensen. All rights reserved.
 //
+// swiftlint: line_length
 
 import Foundation
 
@@ -48,12 +49,13 @@ protocol Verifyrsync: class {
     func verifyrsync()
 }
 
-final class Tools: SetConfigurations {
+final class Tools: SetConfigurations, Setlog {
 
     private var indexBoolremoteserverOff: [Bool]?
     weak var testconnectionsDelegate: Connections?
     private var macSerialNumber: String?
     weak var verifyrsyncDelegate: Verifyrsync?
+    var noconnections: [String]?
 
     // Setting date format
     func setDateformat() -> DateFormatter {
@@ -219,6 +221,13 @@ final class Tools: SetConfigurations {
                     let (success, _) = self.testTCPconnection(record.config!.offsiteServer, port: port, timeout: 1)
                     if success == false {
                         probablynoconnectionsDelegate?.updatestatustcpconnections()
+                        self.logDelegate?.addlog(logrecord: "No connection with server: " + record.config!.offsiteServer)
+                        if self.noconnections == nil {
+                            self.noconnections = [String]()
+                            self.noconnections?.append(record.config!.offsiteServer)
+                        } else {
+                            self.noconnections?.append(record.config!.offsiteServer)
+                        }
                     }
                 }
             }
