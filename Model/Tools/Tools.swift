@@ -5,7 +5,6 @@
 //  Created by Thomas Evensen on 22.07.2017.
 //  Copyright © 2017 Thomas Evensen. All rights reserved.
 //
-// swiftlint:disable line_length
 
 import Foundation
 
@@ -206,28 +205,22 @@ final class Tools: SetConfigurations, Setlog {
     // Testing all remote servers.
     // Adding connection true or false in array[bool]
     // Do the check in background que, reload table in global main queue
-    func testAllremoteserverConnections () {
+    func testAllremoteserverConnections(offsiteservers: [String]?) {
+        guard offsiteservers != nil else { return }
         globalBackgroundQueue.async(execute: { () -> Void in
             weak var probablynoconnectionsDelegate: Updatestatustcpconnections?
             probablynoconnectionsDelegate = ViewControllerReference.shared.viewControllermain as? ViewControllerMain
-            guard self.configurations!.configurationsDataSourcecount() > 0 else { return }
-            var port: Int = 22
-            let j = self.configurations!.configurationsDataSourcecount()
-            let configurations = self.configurations!.getargumentAllConfigurations()
-            for i in 0 ..< j {
-                let record = configurations[i]
-                if record.config!.offsiteServer.isEmpty == false {
-                    if let sshport: Int = record.config!.sshport { port = sshport }
-                    let (success, _) = self.testTCPconnection(record.config!.offsiteServer, port: port, timeout: 1)
-                    if success == false {
-                        probablynoconnectionsDelegate?.updatestatustcpconnections()
-                        self.logDelegate?.addlog(logrecord: "No connection with server: " + record.config!.offsiteServer)
-                        if self.noconnections == nil {
-                            self.noconnections = [String]()
-                            self.noconnections?.append(record.config!.offsiteServer)
-                        } else {
-                            self.noconnections?.append(record.config!.offsiteServer)
-                        }
+            let port: Int = 22
+            for i in 0 ..< offsiteservers!.count where offsiteservers![i].isEmpty == false {
+                let (success, _) = self.testTCPconnection(offsiteservers![i], port: port, timeout: 1)
+                if success == false {
+                    probablynoconnectionsDelegate?.updatestatustcpconnections()
+                    self.logDelegate?.addlog(logrecord: "No connection with server: " + offsiteservers![i])
+                    if self.noconnections == nil {
+                        self.noconnections = [String]()
+                        self.noconnections?.append(offsiteservers![i])
+                    } else {
+                        self.noconnections?.append(offsiteservers![i])
                     }
                 }
             }

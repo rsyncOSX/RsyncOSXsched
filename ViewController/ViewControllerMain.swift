@@ -66,10 +66,9 @@ class ViewControllerMain: NSViewController, Delay, Setlog {
         ViewControllerReference.shared.viewControllermain = self
         self.configurations = Configurations(profile: nil)
         self.schedules = Schedules(profile: nil)
-        self.tools = Tools()
-        self.tools?.testAllremoteserverConnections()
         if ViewControllerReference.shared.executescheduledtasksmenuapp == true {
             self.schedulesortedandexpanded = ScheduleSortedAndExpand()
+            self.tools = schedulesortedandexpanded?.tools
             self.startfirstcheduledtask()
         } else {
             self.info(num: 2)
@@ -150,10 +149,6 @@ class ViewControllerMain: NSViewController, Delay, Setlog {
         self.createandreloadconfigurations()
         self.createandreloadschedules()
         self.startfirstcheduledtask()
-        if self.tools == nil {
-             self.tools = Tools()
-             self.tools?.testAllremoteserverConnections()
-        }
     }
 
     func startfirstcheduledtask() {
@@ -177,6 +172,7 @@ class ViewControllerMain: NSViewController, Delay, Setlog {
             self.schedules = Schedules(profile: nil)
         }
         self.schedulesortedandexpanded = ScheduleSortedAndExpand()
+        self.tools = schedulesortedandexpanded?.tools
         ViewControllerReference.shared.scheduledTask = self.schedulesortedandexpanded?.firstscheduledtask()
     }
 
@@ -214,7 +210,7 @@ class ViewControllerMain: NSViewController, Delay, Setlog {
                     self.info.stringValue = "Executing scheduled tasks is not enabled in RsyncOSX...."
                     return
                 }
-                self.info.stringValue = "Remote sites not avaliable, see log ...."
+                self.info.stringValue = "Some remote sites not avaliable, see log ...."
             case 2:
                 self.info.stringValue = "Executing scheduled tasks is not enabled in RsyncOSX...."
             default:

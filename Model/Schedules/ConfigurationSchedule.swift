@@ -10,6 +10,7 @@ import Foundation
 
 struct ConfigurationSchedule {
     var hiddenID: Int
+    var offsiteserver: String?
     var dateStart: String
     var dateStop: String?
     var schedule: String
@@ -22,6 +23,7 @@ struct ConfigurationSchedule {
         self.dateStart = dictionary.object(forKey: "dateStart") as? String ?? ""
         self.schedule = dictionary.object(forKey: "schedule") as? String ?? ""
         self.profilename = dictionary.object(forKey: "profilename") as? String ?? "Default profile"
+        self.offsiteserver = dictionary.object(forKey: "offsiteserver") as? String ?? ""
         if let date = dictionary.object(forKey: "dateStop") as? String {
             self.dateStop = date
         }

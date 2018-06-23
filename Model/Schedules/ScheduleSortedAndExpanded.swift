@@ -18,7 +18,7 @@ class ScheduleSortedAndExpand {
     private var expandedData = [NSDictionary]()
     private var sortedschedules: [NSDictionary]?
     private var scheduleInProgress: Bool = false
-    private var tools: Tools?
+    var tools: Tools?
 
     // First job to execute. Job is first element in
     func firstscheduledtask() -> NSDictionary? {
@@ -208,9 +208,11 @@ class ScheduleSortedAndExpand {
     }
 
     init () {
-        self.scheduleConfiguration = Allschedules().getallschedules()
+        let allschedules = Allschedules()
+        self.scheduleConfiguration = allschedules.getallschedules()
         self.setallscheduledtasksNSDictionary()
         self.sortAndExpandScheduleTasks()
         self.tools = Tools()
+        self.tools?.testAllremoteserverConnections(offsiteservers: allschedules.getalloffsiteservers())
     }
 }
