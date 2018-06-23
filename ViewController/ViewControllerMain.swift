@@ -64,14 +64,13 @@ class ViewControllerMain: NSViewController, Delay, Setlog {
         self.mainTableView.delegate = self
         self.mainTableView.dataSource = self
         ViewControllerReference.shared.viewControllermain = self
-        self.configurations = Configurations(profile: self.profilename)
+        self.configurations = Configurations(profile: nil)
+        self.schedules = Schedules(profile: nil)
         self.tools = Tools()
         self.tools?.testAllremoteserverConnections()
         if ViewControllerReference.shared.executescheduledtasksmenuapp == true {
             self.schedulesortedandexpanded = ScheduleSortedAndExpand()
             self.startfirstcheduledtask()
-            // For logging only
-            self.schedules = Schedules(profile: self.profilename)
         } else {
             self.info(num: 2)
         }
