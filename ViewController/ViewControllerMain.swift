@@ -168,7 +168,6 @@ class ViewControllerMain: NSViewController, Delay, Setlog {
             self.schedules = nil
             self.schedules = Schedules(profile: nil)
         }
-        self.schedulesortedandexpanded = ScheduleSortedAndExpand()
         ViewControllerReference.shared.scheduledTask = self.schedulesortedandexpanded?.firstscheduledtask()
     }
 
@@ -333,6 +332,7 @@ extension ViewControllerMain: Sendprocessreference {
 
 extension ViewControllerMain: UpdateProgress {
     func processTermination() {
+        self.schedulesortedandexpanded = ScheduleSortedAndExpand()
         globalMainQueue.async(execute: { () -> Void in
             self.progress.stopAnimation(nil)
             self.progresslabel.isHidden = true

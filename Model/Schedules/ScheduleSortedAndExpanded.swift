@@ -213,6 +213,6 @@ class ScheduleSortedAndExpand {
         self.setallscheduledtasksNSDictionary()
         self.sortAndExpandScheduleTasks()
         self.tools = Tools()
-        self.tools?.testAllremoteserverConnections(offsiteservers: allschedules.getalloffsiteservers())
+        self.tools!.testAllremoteserverConnections(offsiteservers: allschedules.getalloffsiteservers())
     }
 }

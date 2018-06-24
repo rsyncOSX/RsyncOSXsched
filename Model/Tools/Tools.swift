@@ -226,4 +226,18 @@ final class Tools: SetConfigurations, Setlog {
             }
         })
     }
+
+    func checkremoteconnection(remoteserver: String) -> Bool {
+        guard self.noconnections != nil else { return true}
+        self.logDelegate?.addlog(logrecord: "Checking for connection to remote server")
+        guard noconnections!.filter({return ($0 == remoteserver)}).count < 1 else {
+            self.logDelegate?.addlog(logrecord: "No connection, bailed out...")
+            _ = Notifications().showNotification(message: "Scheduled backup did not execute")
+            weak var processTerminationDelegate: UpdateProgress?
+            processTerminationDelegate = ViewControllerReference.shared.viewControllermain as? ViewControllerMain
+            processTerminationDelegate?.processTermination()
+            return false
+        }
+        return true
+    }
 }

@@ -51,18 +51,8 @@ class ExecuteTaskTimer: Operation, SetSchedules, SetConfigurations, SetScheduled
                 // Inform and notify
                 self.scheduleJob?.start()
                 if hiddenID >= 0 && config != nil {
-                    if let noconnections = toolsDelegate?.gettools()?.noconnections {
-                        self.logDelegate?.addlog(logrecord: "Checking for connection to remote server")
-                        if let remoteserver = config?.offsiteServer {
-                            guard noconnections.filter({return ($0 == remoteserver)}).count < 1 else {
-                                self.logDelegate?.addlog(logrecord: "No connection, bailed out...")
-                                _ = Notifications().showNotification(message: "Scheduled backup did not execute")
-                                weak var processTerminationDelegate: UpdateProgress?
-                                processTerminationDelegate = ViewControllerReference.shared.viewControllermain as? ViewControllerMain
-                                processTerminationDelegate?.processTermination()
-                                return
-                            }
-                        }
+                    if let remoteserver = config?.offsiteServer {
+                        guard toolsDelegate?.gettools()?.checkremoteconnection(remoteserver: remoteserver) == true else { return }
                     }
                     arguments = RsyncParametersProcess().argumentsRsync(config!, dryRun: false, forDisplay: false)
                     // Setting reference to finalize the job, finalize job is done when rsynctask ends (in process termination)
