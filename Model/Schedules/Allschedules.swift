@@ -33,6 +33,7 @@ class Allschedules {
     // Configurations object
     private var allschedules: [ConfigurationSchedule]?
     private var allprofiles: [String]?
+    private var alloffsiteservers: [String]?
 
     private func getprofilenames() {
         let profile = Files(root: .profileRoot)
@@ -44,9 +45,7 @@ class Allschedules {
         var configurationschedule: [ConfigurationSchedule]?
         for i in 0 ..< self.allprofiles!.count {
             let profilename = self.allprofiles![i]
-            if self.allschedules == nil {
-                self.allschedules = []
-            }
+            if self.allschedules == nil { self.allschedules = [] }
             if profilename == "Default profile" {
                 configurationschedule = PersistentStorageAPI(profile: nil).getScheduleandhistory(nolog: true)
             } else {
@@ -55,6 +54,13 @@ class Allschedules {
             guard configurationschedule != nil else { return }
             for j in 0 ..< configurationschedule!.count {
                 configurationschedule![j].profilename = profilename
+                let offsiteserver = configurationschedule![j].offsiteserver ?? ""
+                let ifadded = self.alloffsiteservers!.filter({return $0 == offsiteserver})
+                if ifadded.count == 0 {
+                    if offsiteserver.isEmpty == true || offsiteserver != "localhost" {
+                         self.alloffsiteservers?.append(offsiteserver)
+                    }
+                }
                 self.allschedules!.append(configurationschedule![j])
             }
         }
@@ -64,8 +70,13 @@ class Allschedules {
         return self.allschedules
     }
 
+    func getalloffsiteservers() -> [String]? {
+        return self.alloffsiteservers
+    }
+
     init() {
         self.getprofilenames()
+        self.alloffsiteservers = [String]()
         self.readallschedules()
     }
 }

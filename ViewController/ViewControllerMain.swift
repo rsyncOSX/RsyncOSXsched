@@ -50,7 +50,6 @@ class ViewControllerMain: NSViewController, Delay, Setlog {
     var schedulesortedandexpanded: ScheduleSortedAndExpand?
     var outputprocess: OutputProcess?
     var profilename: String?
-    var tools: Tools?
     var log: [String]?
 
     private var profilesArray: [String]?
@@ -66,8 +65,6 @@ class ViewControllerMain: NSViewController, Delay, Setlog {
         ViewControllerReference.shared.viewControllermain = self
         self.configurations = Configurations(profile: nil)
         self.schedules = Schedules(profile: nil)
-        self.tools = Tools()
-        self.tools?.testAllremoteserverConnections()
         if ViewControllerReference.shared.executescheduledtasksmenuapp == true {
             self.schedulesortedandexpanded = ScheduleSortedAndExpand()
             self.startfirstcheduledtask()
@@ -116,7 +113,6 @@ class ViewControllerMain: NSViewController, Delay, Setlog {
     }
 
     @IBAction func selectprofile(_ sender: NSComboBox) {
-        self.tools = nil
         guard ViewControllerReference.shared.executescheduledtasksmenuapp == true else {
             self.info(num: 2)
             return
@@ -150,10 +146,6 @@ class ViewControllerMain: NSViewController, Delay, Setlog {
         self.createandreloadconfigurations()
         self.createandreloadschedules()
         self.startfirstcheduledtask()
-        if self.tools == nil {
-             self.tools = Tools()
-             self.tools?.testAllremoteserverConnections()
-        }
     }
 
     func startfirstcheduledtask() {
@@ -176,7 +168,6 @@ class ViewControllerMain: NSViewController, Delay, Setlog {
             self.schedules = nil
             self.schedules = Schedules(profile: nil)
         }
-        self.schedulesortedandexpanded = ScheduleSortedAndExpand()
         ViewControllerReference.shared.scheduledTask = self.schedulesortedandexpanded?.firstscheduledtask()
     }
 
@@ -214,7 +205,7 @@ class ViewControllerMain: NSViewController, Delay, Setlog {
                     self.info.stringValue = "Executing scheduled tasks is not enabled in RsyncOSX...."
                     return
                 }
-                self.info.stringValue = "One or more remote sites not avaliable...."
+                self.info.stringValue = "Some remote sites not avaliable, see log ...."
             case 2:
                 self.info.stringValue = "Executing scheduled tasks is not enabled in RsyncOSX...."
             default:
@@ -341,11 +332,16 @@ extension ViewControllerMain: Sendprocessreference {
 
 extension ViewControllerMain: UpdateProgress {
     func processTermination() {
-        ViewControllerReference.shared.completeoperation!.finalizeScheduledJob(outputprocess: self.outputprocess)
+        self.schedulesortedandexpanded = ScheduleSortedAndExpand()
         globalMainQueue.async(execute: { () -> Void in
             self.progress.stopAnimation(nil)
             self.progresslabel.isHidden = true
         })
+        guard ViewControllerReference.shared.completeoperation != nil else {
+            self.startfirstcheduledtask()
+            return
+        }
+        ViewControllerReference.shared.completeoperation!.finalizeScheduledJob(outputprocess: self.outputprocess)
         self.startfirstcheduledtask()
     }
 
@@ -421,5 +417,11 @@ extension ViewControllerMain: ReloadData {
 extension ViewControllerMain: GetSchedulesSortedAndExpanded {
     func getschedulessortedandexpanded() -> ScheduleSortedAndExpand? {
         return self.schedulesortedandexpanded
+    }
+}
+
+extension ViewControllerMain: GetTools {
+    func gettools() -> Tools? {
+        return self.schedulesortedandexpanded?.tools
     }
 }
