@@ -137,6 +137,7 @@ class ViewControllerMain: NSViewController, Delay, Setlog {
             self.profilename = nil
             self.createandreloadconfigurations()
             self.createandreloadschedules()
+            self.schedulesortedandexpanded = ScheduleSortedAndExpand()
             self.startfirstcheduledtask()
             return
         }
@@ -145,15 +146,8 @@ class ViewControllerMain: NSViewController, Delay, Setlog {
         self.addlog(logrecord: "Profile: " + self.profilename! + " loaded.")
         self.createandreloadconfigurations()
         self.createandreloadschedules()
+        self.schedulesortedandexpanded = ScheduleSortedAndExpand()
         self.startfirstcheduledtask()
-    }
-
-    func startfirstcheduledtask() {
-        ViewControllerReference.shared.dispatchTaskWaiting?.cancel()
-        ViewControllerReference.shared.timerTaskWaiting?.invalidate()
-        ViewControllerReference.shared.dispatchTaskWaiting = nil
-        ViewControllerReference.shared.timerTaskWaiting = nil
-        _ = ScheduleOperationTimer()
     }
 
     func createandreloadschedules() {
@@ -214,6 +208,13 @@ class ViewControllerMain: NSViewController, Delay, Setlog {
         })
     }
 
+    private func startfirstcheduledtask() {
+        ViewControllerReference.shared.dispatchTaskWaiting?.cancel()
+        ViewControllerReference.shared.timerTaskWaiting?.invalidate()
+        ViewControllerReference.shared.dispatchTaskWaiting = nil
+        ViewControllerReference.shared.timerTaskWaiting = nil
+        _ = ScheduleOperationTimer()
+    }
 }
 
 extension ViewControllerMain: NSTableViewDataSource {
@@ -333,16 +334,13 @@ extension ViewControllerMain: Sendprocessreference {
 extension ViewControllerMain: UpdateProgress {
     func processTermination() {
         self.schedulesortedandexpanded = ScheduleSortedAndExpand()
+        self.startfirstcheduledtask()
         globalMainQueue.async(execute: { () -> Void in
             self.progress.stopAnimation(nil)
             self.progresslabel.isHidden = true
         })
-        guard ViewControllerReference.shared.completeoperation != nil else {
-            self.startfirstcheduledtask()
-            return
-        }
+        guard ViewControllerReference.shared.completeoperation != nil else { return }
         ViewControllerReference.shared.completeoperation!.finalizeScheduledJob(outputprocess: self.outputprocess)
-        self.startfirstcheduledtask()
     }
 
     func fileHandler() {
