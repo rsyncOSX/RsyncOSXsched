@@ -338,8 +338,10 @@ extension ViewControllerMain: UpdateProgress {
             self.progresslabel.isHidden = true
         })
         guard ViewControllerReference.shared.completeoperation != nil else {
-            self.schedulesortedandexpanded = ScheduleSortedAndExpand()
-            self.startfirstcheduledtask()
+            self.delayWithSeconds(5) {
+                self.schedulesortedandexpanded = ScheduleSortedAndExpand()
+                self.startfirstcheduledtask()
+            }
             return
         }
         self.schedulesortedandexpanded = ScheduleSortedAndExpand()
