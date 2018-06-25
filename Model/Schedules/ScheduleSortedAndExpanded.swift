@@ -21,7 +21,7 @@ class ScheduleSortedAndExpand: Setlog {
     var tools: Tools?
 
     // First job to execute. Job is first element in
-    func firstscheduledtask() -> NSDictionary? {
+    func getfirstscheduledtask() -> NSDictionary? {
         guard self.sortedschedules != nil else { return nil}
         guard self.sortedschedules!.count > 0 else {
             ViewControllerReference.shared.scheduledTask = nil
