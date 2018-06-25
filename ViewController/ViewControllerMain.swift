@@ -333,13 +333,19 @@ extension ViewControllerMain: Sendprocessreference {
 
 extension ViewControllerMain: UpdateProgress {
     func processTermination() {
-        self.schedulesortedandexpanded = ScheduleSortedAndExpand()
-        self.startfirstcheduledtask()
         globalMainQueue.async(execute: { () -> Void in
             self.progress.stopAnimation(nil)
             self.progresslabel.isHidden = true
         })
-        guard ViewControllerReference.shared.completeoperation != nil else { return }
+        guard ViewControllerReference.shared.completeoperation != nil else {
+            self.delayWithSeconds(5) {
+                self.schedulesortedandexpanded = ScheduleSortedAndExpand()
+                self.startfirstcheduledtask()
+            }
+            return
+        }
+        self.schedulesortedandexpanded = ScheduleSortedAndExpand()
+        self.startfirstcheduledtask()
         ViewControllerReference.shared.completeoperation!.finalizeScheduledJob(outputprocess: self.outputprocess)
     }
 
