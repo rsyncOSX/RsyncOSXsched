@@ -9,7 +9,7 @@
 import Foundation
 import Cocoa
 
-class ScheduleSortedAndExpand {
+class ScheduleSortedAndExpand: Setlog {
 
     // Reference to main View
     private var vctabmain: NSViewController?
@@ -208,6 +208,7 @@ class ScheduleSortedAndExpand {
     }
 
     init () {
+        self.logDelegate?.addlog(logrecord: "Reloading all schedules and scheduled first task for start...")
         let allschedules = Allschedules()
         self.scheduleConfiguration = allschedules.getallschedules()
         self.setallscheduledtasksNSDictionary()
