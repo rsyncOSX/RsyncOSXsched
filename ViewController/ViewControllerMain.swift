@@ -67,7 +67,7 @@ class ViewControllerMain: NSViewController, Delay, Setlog {
         self.schedules = Schedules(profile: nil)
         if ViewControllerReference.shared.executescheduledtasksmenuapp == true {
             self.schedulesortedandexpanded = ScheduleSortedAndExpand()
-            self.startfirstcheduledtask()
+            self.startfirstscheduledtask()
         } else {
             self.info(num: 2)
         }
@@ -138,7 +138,7 @@ class ViewControllerMain: NSViewController, Delay, Setlog {
             self.createandreloadconfigurations()
             self.createandreloadschedules()
             self.schedulesortedandexpanded = ScheduleSortedAndExpand()
-            self.startfirstcheduledtask()
+            self.startfirstscheduledtask()
             return
         }
         self.profilename = self.profilesArray![self.profilescombobox.indexOfSelectedItem]
@@ -147,7 +147,7 @@ class ViewControllerMain: NSViewController, Delay, Setlog {
         self.createandreloadconfigurations()
         self.createandreloadschedules()
         self.schedulesortedandexpanded = ScheduleSortedAndExpand()
-        self.startfirstcheduledtask()
+        self.startfirstscheduledtask()
     }
 
     func createandreloadschedules() {
@@ -162,7 +162,6 @@ class ViewControllerMain: NSViewController, Delay, Setlog {
             self.schedules = nil
             self.schedules = Schedules(profile: nil)
         }
-        ViewControllerReference.shared.scheduledTask = self.schedulesortedandexpanded?.firstscheduledtask()
     }
 
     func createandreloadconfigurations() {
@@ -208,11 +207,12 @@ class ViewControllerMain: NSViewController, Delay, Setlog {
         })
     }
 
-    private func startfirstcheduledtask() {
+    private func startfirstscheduledtask() {
         ViewControllerReference.shared.dispatchTaskWaiting?.cancel()
         ViewControllerReference.shared.timerTaskWaiting?.invalidate()
         ViewControllerReference.shared.dispatchTaskWaiting = nil
         ViewControllerReference.shared.timerTaskWaiting = nil
+        ViewControllerReference.shared.scheduledTask = self.schedulesortedandexpanded?.getfirstscheduledtask()
         _ = ScheduleOperationTimer()
     }
 }
@@ -304,7 +304,7 @@ extension ViewControllerMain: DismissViewController {
 extension ViewControllerMain: Reloadsortedandrefresh {
     func reloadsortedandrefreshtabledata() {
         self.schedulesortedandexpanded = ScheduleSortedAndExpand()
-        self.startfirstcheduledtask()
+        self.startfirstscheduledtask()
         globalMainQueue.async(execute: { () -> Void in
             self.mainTableView.reloadData()
         })
@@ -340,12 +340,12 @@ extension ViewControllerMain: UpdateProgress {
         guard ViewControllerReference.shared.completeoperation != nil else {
             self.delayWithSeconds(5) {
                 self.schedulesortedandexpanded = ScheduleSortedAndExpand()
-                self.startfirstcheduledtask()
+                self.startfirstscheduledtask()
             }
             return
         }
         self.schedulesortedandexpanded = ScheduleSortedAndExpand()
-        self.startfirstcheduledtask()
+        self.startfirstscheduledtask()
         ViewControllerReference.shared.completeoperation!.finalizeScheduledJob(outputprocess: self.outputprocess)
     }
 
