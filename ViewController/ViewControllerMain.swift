@@ -218,7 +218,7 @@ class ViewControllerMain: NSViewController, Delay, Setlog {
     }
     
     @objc func onWakeNote(note: NSNotification) {
-        _ = Notifications().showNotification(message: "Activating schedules again after sleeping...")
+        self.logDelegate?.addlog(logrecord: "Activating schedules again after sleeping...")
         self.schedulesortedandexpanded = ScheduleSortedAndExpand()
         self.startfirstscheduledtask()
         
