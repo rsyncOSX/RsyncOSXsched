@@ -218,18 +218,18 @@ class ViewControllerMain: NSViewController, Delay, Setlog {
     }
     
     @objc func onWakeNote(note: NSNotification) {
-        self.logDelegate?.addlog(logrecord: "Activating schedules again after sleeping...")
         _ = Notifications().showNotification(message: "Activating schedules again after sleeping...")
+        self.schedulesortedandexpanded = ScheduleSortedAndExpand()
         self.startfirstscheduledtask()
         
     }
-
+    
     @objc func onSleepNote(note: NSNotification) {
         self.logDelegate?.addlog(logrecord: "Invalidating tasks and going to sleep...")
         ViewControllerReference.shared.dispatchTaskWaiting?.cancel()
         ViewControllerReference.shared.timerTaskWaiting?.invalidate()
     }
-
+    
     private func sleepandwakenotifications() {
         NSWorkspace.shared.notificationCenter.addObserver( self, selector: #selector(onWakeNote(note:)),
                                                            name: NSWorkspace.didWakeNotification, object: nil)
