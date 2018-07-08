@@ -12,6 +12,8 @@
 		94E0FC431BD7FC3600A3C537 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 94E0FC421BD7FC3600A3C537 /* Assets.xcassets */; };
 		94E0FC461BD7FC3600A3C537 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 94E0FC441BD7FC3600A3C537 /* Main.storyboard */; };
 		94E0FC4E1BD7FCBE00A3C537 /* EventMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94E0FC4D1BD7FCBE00A3C537 /* EventMonitor.swift */; };
+		E906BF6D20F1DB2200238E6A /* ScheduleOperationDispatch.swift in Sources */ = {isa = PBXBuildFile; fileRef = E906BF6B20F1DB2200238E6A /* ScheduleOperationDispatch.swift */; };
+		E906BF6E20F1DB2200238E6A /* ExecuteTaskDispatch.swift in Sources */ = {isa = PBXBuildFile; fileRef = E906BF6C20F1DB2200238E6A /* ExecuteTaskDispatch.swift */; };
 		E90BFDC8202D989D004AE4EC /* ytcpsocket.c in Sources */ = {isa = PBXBuildFile; fileRef = E90BFDC3202D989D004AE4EC /* ytcpsocket.c */; };
 		E90BFDC9202D989D004AE4EC /* yudpsocket.swift in Sources */ = {isa = PBXBuildFile; fileRef = E90BFDC4202D989D004AE4EC /* yudpsocket.swift */; };
 		E90BFDCA202D989D004AE4EC /* yudpsocket.c in Sources */ = {isa = PBXBuildFile; fileRef = E90BFDC5202D989D004AE4EC /* yudpsocket.c */; };
@@ -58,6 +60,8 @@
 		94E0FC451BD7FC3600A3C537 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		94E0FC471BD7FC3600A3C537 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		94E0FC4D1BD7FCBE00A3C537 /* EventMonitor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventMonitor.swift; sourceTree = "<group>"; };
+		E906BF6B20F1DB2200238E6A /* ScheduleOperationDispatch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScheduleOperationDispatch.swift; sourceTree = "<group>"; };
+		E906BF6C20F1DB2200238E6A /* ExecuteTaskDispatch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExecuteTaskDispatch.swift; sourceTree = "<group>"; };
 		E90BFDC2202D989C004AE4EC /* RsyncOSXsched-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "RsyncOSXsched-Bridging-Header.h"; sourceTree = "<group>"; };
 		E90BFDC3202D989D004AE4EC /* ytcpsocket.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = ytcpsocket.c; path = Model/ydpsoket/ytcpsocket.c; sourceTree = SOURCE_ROOT; };
 		E90BFDC4202D989D004AE4EC /* yudpsocket.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = yudpsocket.swift; path = Model/ydpsoket/yudpsocket.swift; sourceTree = SOURCE_ROOT; };
@@ -156,6 +160,8 @@
 		E91C5DC32026FACF00FE7E76 /* Operation */ = {
 			isa = PBXGroup;
 			children = (
+				E906BF6C20F1DB2200238E6A /* ExecuteTaskDispatch.swift */,
+				E906BF6B20F1DB2200238E6A /* ScheduleOperationDispatch.swift */,
 				E91C5DCE202705E700FE7E76 /* RsyncScheduled.swift */,
 				E95547FF2035F4CD00D2E713 /* ExecuteTaskTimer.swift */,
 				E95548002035F4CD00D2E713 /* ScheduleOperationTimer.swift */,
@@ -385,6 +391,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E906BF6D20F1DB2200238E6A /* ScheduleOperationDispatch.swift in Sources */,
 				E90CAC5F203D7409004BA7C6 /* Notifications.swift in Sources */,
 				E94DDC8720A40CC90041CF53 /* ViewControllerSchedules.swift in Sources */,
 				E91C5DBF2026F8FA00FE7E76 /* ScheduleSortedAndExpanded.swift in Sources */,
@@ -398,6 +405,7 @@
 				E91C5DC12026F8FA00FE7E76 /* ScheduleWriteLoggData.swift in Sources */,
 				E9A63066202B4DE900F1FFF1 /* Running.swift in Sources */,
 				E965E1AB20A17BF9004F42DC /* Extensions.swift in Sources */,
+				E906BF6E20F1DB2200238E6A /* ExecuteTaskDispatch.swift in Sources */,
 				E9F54D852026DC5D00A664CF /* Readwritefiles.swift in Sources */,
 				E91C5DCF202705E800FE7E76 /* RsyncScheduled.swift in Sources */,
 				E9F54D752026D5D500A664CF /* ArgumentsOneConfiguration.swift in Sources */,

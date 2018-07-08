@@ -60,6 +60,7 @@ class ViewControllerMain: NSViewController, Delay, Setlog {
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
+        self.sleepandwakenotifications()
         self.mainTableView.delegate = self
         self.mainTableView.dataSource = self
         ViewControllerReference.shared.viewControllermain = self
@@ -214,6 +215,27 @@ class ViewControllerMain: NSViewController, Delay, Setlog {
         ViewControllerReference.shared.timerTaskWaiting = nil
         ViewControllerReference.shared.scheduledTask = self.schedulesortedandexpanded?.getfirstscheduledtask()
         _ = ScheduleOperationTimer()
+    }
+    
+    @objc func onWakeNote(note: NSNotification) {
+        self.logDelegate?.addlog(logrecord: "Activating schedules again after sleeping...")
+        self.schedulesortedandexpanded = ScheduleSortedAndExpand()
+        self.startfirstscheduledtask()
+        
+    }
+    
+    @objc func onSleepNote(note: NSNotification) {
+        self.logDelegate?.addlog(logrecord: "Invalidating tasks and going to sleep...")
+        ViewControllerReference.shared.dispatchTaskWaiting?.cancel()
+        ViewControllerReference.shared.timerTaskWaiting?.invalidate()
+    }
+    
+    private func sleepandwakenotifications() {
+        NSWorkspace.shared.notificationCenter.addObserver( self, selector: #selector(onWakeNote(note:)),
+                                                           name: NSWorkspace.didWakeNotification, object: nil)
+        
+        NSWorkspace.shared.notificationCenter.addObserver( self, selector: #selector(onSleepNote(note:)),
+                                                           name: NSWorkspace.willSleepNotification, object: nil)
     }
 }
 
