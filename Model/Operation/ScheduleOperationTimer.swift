@@ -52,23 +52,23 @@ final class ScheduleOperationTimer: SecondsBeforeStart, SetSortedAndExpanded, Se
         let seconds = self.secondsbeforestart()
         guard ViewControllerReference.shared.executeschedulesmocup == false else {
             guard seconds > 0 else {
-                self.logDelegate?.addlog(logrecord: "Mocup timer: no more scheduled task in queue")
+                self.logDelegate?.addlog(logrecord: "(Timer) Mocup timer: no more scheduled task in queue")
                 updatestatuslightDelegate?.updatestatuslight(color: .red)
                 return
             }
             updatestatuslightDelegate?.updatestatuslight(color: .yellow)
             self.timerTaskWaiting = Timer.scheduledTimer(timeInterval: seconds, target: self, selector: #selector(executetasktest), userInfo: nil, repeats: false)
             ViewControllerReference.shared.timerTaskWaiting = self.timerTaskWaiting
-            self.logDelegate?.addlog(logrecord: "Mocup timer: task starts in: " + String(Int(seconds)))
+            self.logDelegate?.addlog(logrecord: "(Timer) Mocup timer: task starts in: " + String(Int(seconds)))
             return
         }
         guard seconds > 0 else {
-            self.logDelegate?.addlog(logrecord: "Timer: no more scheduled task in queue")
+            self.logDelegate?.addlog(logrecord: "(Timer) Timer: no more scheduled task in queue")
             updatestatuslightDelegate?.updatestatuslight(color: .red)
             return
         }
         let timestring = Tools().timeString(seconds)
-        self.logDelegate?.addlog(logrecord: "Timer: setting next scheduled task in: " + timestring)
+        self.logDelegate?.addlog(logrecord: "(Timer)Timer: setting next scheduled task in: " + timestring)
         self.timerTaskWaiting = Timer.scheduledTimer(timeInterval: seconds, target: self, selector: #selector(executetask), userInfo: nil, repeats: false)
         ViewControllerReference.shared.scheduledTask = self.sortedandexpanded?.getfirstscheduledtask()
         ViewControllerReference.shared.timerTaskWaiting = self.timerTaskWaiting

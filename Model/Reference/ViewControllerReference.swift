@@ -9,6 +9,11 @@
 import Foundation
 import Cocoa
 
+enum OperationObject {
+    case timer
+    case dispatch
+}
+
 class ViewControllerReference {
 
     // Creates a singelton of this class
@@ -55,4 +60,6 @@ class ViewControllerReference {
     var executescheduledtasksmenuapp: Bool = false
     // Mac serialnumer
     var macserialnumber: String?
+    // Operation
+    var operation: OperationObject?
 }

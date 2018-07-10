@@ -37,22 +37,22 @@ class ScheduleOperationDispatch: SetSchedules, SecondsBeforeStart, Setlog {
         let seconds = self.secondsbeforestart()
         guard ViewControllerReference.shared.executeschedulesmocup == false else {
             guard seconds > 0 else {
-                self.logDelegate?.addlog(logrecord: "Mocup timer: no more scheduled task in queue")
+                self.logDelegate?.addlog(logrecord: "(Dispatch) Mocup timer: no more scheduled task in queue")
                 updatestatuslightDelegate?.updatestatuslight(color: .red)
                 return
             }
             updatestatuslightDelegate?.updatestatuslight(color: .yellow)
-            self.logDelegate?.addlog(logrecord: "Mocup timer: task starts in: " + String(Int(seconds)))
+            self.logDelegate?.addlog(logrecord: "(Dispatch) Mocup timer: task starts in: " + String(Int(seconds)))
             self.dispatchtaskmocup(Int(seconds))
             return
         }
         guard seconds > 0 else {
-            self.logDelegate?.addlog(logrecord: "Timer: no more scheduled task in queue")
+            self.logDelegate?.addlog(logrecord: "(Dispatch) Timer: no more scheduled task in queue")
             updatestatuslightDelegate?.updatestatuslight(color: .red)
             return
         }
         let timestring = Tools().timeString(seconds)
-        self.logDelegate?.addlog(logrecord: "Timer: setting next scheduled task in: " + timestring)
+        self.logDelegate?.addlog(logrecord: "(Dispatch)Timer: setting next scheduled task in: " + timestring)
         self.dispatchtask(Int(seconds))
         // Set reference to schedule for later cancel if any
         ViewControllerReference.shared.dispatchTaskWaiting = self.pendingRequestWorkItem
