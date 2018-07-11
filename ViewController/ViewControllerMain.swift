@@ -214,7 +214,16 @@ class ViewControllerMain: NSViewController, Delay, Setlog {
         ViewControllerReference.shared.dispatchTaskWaiting = nil
         ViewControllerReference.shared.timerTaskWaiting = nil
         ViewControllerReference.shared.scheduledTask = self.schedulesortedandexpanded?.getfirstscheduledtask()
-        _ = ScheduleOperationTimer()
+        if let operation = ViewControllerReference.shared.operation {
+            switch operation {
+            case .dispatch:
+                _ = ScheduleOperationDispatch()
+            case .timer:
+                _ = ScheduleOperationTimer()
+            }
+        } else {
+            _ = ScheduleOperationTimer()
+        }
     }
     
     @objc func onWakeNote(note: NSNotification) {
