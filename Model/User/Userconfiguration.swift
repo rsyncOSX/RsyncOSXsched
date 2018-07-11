@@ -46,6 +46,18 @@ final class Userconfiguration {
         if let pathrsyncosxsched = dict.value(forKey: "pathrsyncosxsched") as? String {
             ViewControllerReference.shared.pathrsyncosxsched = pathrsyncosxsched
         }
+        // Operation object
+        // Default is dispatch
+        if let operation = dict.value(forKey: "operation") as? String {
+            switch operation {
+            case "dispatch":
+                ViewControllerReference.shared.operation = .dispatch
+            case "timer":
+                ViewControllerReference.shared.operation = .timer
+            default:
+                ViewControllerReference.shared.operation = .dispatch
+            }
+        }
     }
 
     init (userconfigRsyncOSX: [NSDictionary]) {
