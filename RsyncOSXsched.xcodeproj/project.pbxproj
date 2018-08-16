@@ -6,6 +6,21 @@
 	objectVersion = 46;
 	objects = {
 
+/* Begin PBXAggregateTarget section */
+		E9107CB421254BD40030305B /* rsyncosxsched-dmg */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = E9107CB721254BD50030305B /* Build configuration list for PBXAggregateTarget "rsyncosxsched-dmg" */;
+			buildPhases = (
+				E9107CB821254BDA0030305B /* ShellScript */,
+			);
+			dependencies = (
+				E9107CBA21254BE50030305B /* PBXTargetDependency */,
+			);
+			name = "rsyncosxsched-dmg";
+			productName = "rsyncosxsched-dmg";
+		};
+/* End PBXAggregateTarget section */
+
 /* Begin PBXBuildFile section */
 		94E0FC3F1BD7FC3600A3C537 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94E0FC3E1BD7FC3600A3C537 /* AppDelegate.swift */; };
 		94E0FC411BD7FC3600A3C537 /* ViewControllerMain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94E0FC401BD7FC3600A3C537 /* ViewControllerMain.swift */; };
@@ -51,6 +66,16 @@
 		E9F54D892026DCCF00A664CF /* Files.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9F54D882026DCCF00A664CF /* Files.swift */; };
 		E9F54D8B2026DED600A664CF /* PersistentStorageUserconfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9F54D8A2026DED600A664CF /* PersistentStorageUserconfiguration.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		E9107CB921254BE50030305B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 94E0FC331BD7FC3600A3C537 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 94E0FC3A1BD7FC3600A3C537;
+			remoteInfo = RsyncOSXsched;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		94E0FC3B1BD7FC3600A3C537 /* RsyncOSXsched.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RsyncOSXsched.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -337,6 +362,11 @@
 						LastSwiftMigration = 0920;
 						ProvisioningStyle = Automatic;
 					};
+					E9107CB421254BD40030305B = {
+						CreatedOnToolsVersion = 9.4.1;
+						DevelopmentTeam = 93M47F4H9T;
+						ProvisioningStyle = Automatic;
+					};
 				};
 			};
 			buildConfigurationList = 94E0FC361BD7FC3600A3C537 /* Build configuration list for PBXProject "RsyncOSXsched" */;
@@ -353,6 +383,7 @@
 			projectRoot = "";
 			targets = (
 				94E0FC3A1BD7FC3600A3C537 /* RsyncOSXsched */,
+				E9107CB421254BD40030305B /* rsyncosxsched-dmg */,
 			);
 		};
 /* End PBXProject section */
@@ -370,6 +401,19 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		E9107CB821254BDA0030305B /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "${SOURCE_ROOT}/RsyncOSXsched/Scripts/create-dmg.sh";
+		};
 		E9B10952207B5FDF0021A2EC /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -436,6 +480,14 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		E9107CBA21254BE50030305B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 94E0FC3A1BD7FC3600A3C537 /* RsyncOSXsched */;
+			targetProxy = E9107CB921254BE50030305B /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		94E0FC441BD7FC3600A3C537 /* Main.storyboard */ = {
@@ -591,6 +643,24 @@
 			};
 			name = Release;
 		};
+		E9107CB521254BD50030305B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 93M47F4H9T;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		E9107CB621254BD50030305B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 93M47F4H9T;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -608,6 +678,15 @@
 			buildConfigurations = (
 				94E0FC4B1BD7FC3600A3C537 /* Debug */,
 				94E0FC4C1BD7FC3600A3C537 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E9107CB721254BD50030305B /* Build configuration list for PBXAggregateTarget "rsyncosxsched-dmg" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E9107CB521254BD50030305B /* Debug */,
+				E9107CB621254BD50030305B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
