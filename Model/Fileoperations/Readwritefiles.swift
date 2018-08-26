@@ -46,7 +46,7 @@ class Readwritefiles: SetConfigurations, Setlog {
         let paths = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true) as NSArray
         let docuDir = (paths.firstObject as? String)!
         if ViewControllerReference.shared.macserialnumber == nil {
-            ViewControllerReference.shared.macserialnumber = Tools().getMacSerialNumber() ?? ""
+            ViewControllerReference.shared.macserialnumber = Macserialnumber().getMacSerialNumber() ?? ""
         }
         let macserialnumber = ViewControllerReference.shared.macserialnumber
         if self.useProfile {

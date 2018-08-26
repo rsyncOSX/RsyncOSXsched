@@ -18,7 +18,7 @@ class ScheduleSortedAndExpand: Setlog {
     private var expandedData = [NSDictionary]()
     private var sortedschedules: [NSDictionary]?
     private var scheduleInProgress: Bool = false
-    var tools: Tools?
+    var tcpconnections: TCPconnections?
 
     // First job to execute. Job is first element in
     func getfirstscheduledtask() -> NSDictionary? {
@@ -107,7 +107,7 @@ class ScheduleSortedAndExpand: Setlog {
     // Expanding and sorting Scheduledata
     private func sortAndExpandScheduleTasks() {
         guard self.schedulesNSDictionary != nil else { return }
-        let dateformatter = Tools().setDateformat()
+        let dateformatter = Dateandtime().setDateformat()
         for i in 0 ..< self.schedulesNSDictionary!.count {
             let dict = self.schedulesNSDictionary![i]
             let dateStop: Date = dateformatter.date(from: (dict.value(forKey: "dateStop") as? String)!)!
@@ -180,7 +180,7 @@ class ScheduleSortedAndExpand: Setlog {
         guard sorted.count > 0 else { return "" }
         if number {
             let firsttask = (sorted[0].value(forKey: "start") as? Date)?.timeIntervalSinceNow
-            return self.tools?.timeString(firsttask!) ?? ""
+            return Dateandtime().timeString(firsttask!)
         } else {
             let type = sorted[0].value(forKey: "schedule") as? String
             return type ?? ""
@@ -213,7 +213,7 @@ class ScheduleSortedAndExpand: Setlog {
         self.scheduleConfiguration = allschedules.getallschedules()
         self.setallscheduledtasksNSDictionary()
         self.sortAndExpandScheduleTasks()
-        self.tools = Tools()
-        self.tools!.testAllremoteserverConnections(offsiteservers: allschedules.getalloffsiteservers())
+        self.tcpconnections = TCPconnections()
+        self.tcpconnections!.testAllremoteserverConnections(offsiteservers: allschedules.getalloffsiteservers())
     }
 }

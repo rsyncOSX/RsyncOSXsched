@@ -34,6 +34,8 @@ class ViewControllerReference {
     var rsyncVer3: Bool = false
     // Optional path to rsync
     var rsyncPath: String?
+    // No valid rsyncPath - true if no valid rsync is found
+    var norsync: Bool = false
     // Detailed logging
     var detailedlogging: Bool = true
     // Reference to the Operation object

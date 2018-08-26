@@ -61,7 +61,7 @@ class ProcessCmd: Delay, SetConfigurations {
         if let command = self.command {
             task.launchPath = command
         } else {
-            task.launchPath = Tools().rsyncpath()
+            task.launchPath = Verifyrsyncpath().rsyncpath()
         }
         task.arguments = self.arguments
         // Pipe for reading output from Process

@@ -51,7 +51,7 @@ class ScheduleOperationDispatch: SetSchedules, SecondsBeforeStart, Setlog {
             updatestatuslightDelegate?.updatestatuslight(color: .red)
             return
         }
-        let timestring = Tools().timeString(seconds)
+        let timestring = Dateandtime().timeString(seconds)
         self.logDelegate?.addlog(logrecord: "(Dispatch)Timer: setting next scheduled task in: " + timestring)
         self.dispatchtask(Int(seconds))
         // Set reference to schedule for later cancel if any
