@@ -23,7 +23,7 @@ class ScheduleWriteLoggData: SetConfigurations {
         if ViewControllerReference.shared.detailedlogging {
             // Set the current date
             let currendate = Date()
-            let dateformatter = Tools().setDateformat()
+            let dateformatter = Dateandtime().setDateformat()
             let date = dateformatter.string(from: currendate)
             let config = self.getconfig(hiddenID: hiddenID)
             var resultannotaded: String?

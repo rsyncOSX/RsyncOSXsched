@@ -23,11 +23,11 @@ class ExecuteTaskDispatch: SetSchedules, SetConfigurations, SetScheduledTask, Se
         let outputprocess = OutputProcess()
         var arguments: [String]?
         weak var updatestatuslightDelegate: Updatestatuslight?
-        weak var toolsDelegate: GetTools?
+        weak var tcpconnectionsDelegate: GetTCPconnections?
         weak var reloaddataDelegate: ReloadData?
         updatestatuslightDelegate = ViewControllerReference.shared.viewControllermain as? ViewControllerMain
         reloaddataDelegate = ViewControllerReference.shared.viewControllermain as? ViewControllerMain
-        toolsDelegate =  ViewControllerReference.shared.viewControllermain as? ViewControllerMain
+        tcpconnectionsDelegate =  ViewControllerReference.shared.viewControllermain as? ViewControllerMain
         var config: Configuration?
         // Get the first job of the queue
         if let dict: NSDictionary = ViewControllerReference.shared.scheduledTask {
@@ -48,7 +48,7 @@ class ExecuteTaskDispatch: SetSchedules, SetConfigurations, SetScheduledTask, Se
                 self.scheduleJob?.start()
                 if hiddenID >= 0 && config != nil {
                     if let remoteserver = config?.offsiteServer {
-                        guard toolsDelegate?.gettools()?.checkremoteconnection(remoteserver: remoteserver) == true else { return }
+                        guard tcpconnectionsDelegate?.gettcpconnections()?.checkremoteconnection(remoteserver: remoteserver) == true else { return }
                     }
                     arguments = RsyncParametersProcess().argumentsRsync(config!, dryRun: false, forDisplay: false)
                     // Setting reference to finalize the job, finalize job is done when rsynctask ends (in process termination)

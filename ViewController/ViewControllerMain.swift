@@ -314,7 +314,7 @@ extension ViewControllerMain: Addlog {
         if self.log == nil {
             self.log = [String]()
         }
-        let dateformatter = Tools().setDateformat()
+        let dateformatter = Dateandtime().setDateformat()
         let logtime = dateformatter.string(from: Date())
         self.log!.append(logtime + ": " + logrecord)
     }
@@ -455,8 +455,8 @@ extension ViewControllerMain: GetSchedulesSortedAndExpanded {
     }
 }
 
-extension ViewControllerMain: GetTools {
-    func gettools() -> Tools? {
-        return self.schedulesortedandexpanded?.tools
+extension ViewControllerMain: GetTCPconnections {
+    func gettcpconnections() -> TCPconnections? {
+        return self.schedulesortedandexpanded?.tcpconnections
     }
 }
