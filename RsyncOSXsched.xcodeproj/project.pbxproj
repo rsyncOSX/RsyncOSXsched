@@ -53,11 +53,13 @@
 		E98398AF20260E9D00C977C3 /* Configurations.swift in Sources */ = {isa = PBXBuildFile; fileRef = E98398AD20260E9D00C977C3 /* Configurations.swift */; };
 		E98BB14B202763B40078DF8E /* Numbers.swift in Sources */ = {isa = PBXBuildFile; fileRef = E98BB14A202763B40078DF8E /* Numbers.swift */; };
 		E9A63066202B4DE900F1FFF1 /* Running.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A63065202B4DE900F1FFF1 /* Running.swift */; };
+		E9B5B4602133F2DB004B7041 /* Checkfornewversion.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9B5B45F2133F2DB004B7041 /* Checkfornewversion.swift */; };
 		E9B96299203802EF00EA6D5A /* Logging.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9B96298203802EF00EA6D5A /* Logging.swift */; };
 		E9E6A7C7213278C300342168 /* Dateandtime.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E6A7C4213278C200342168 /* Dateandtime.swift */; };
 		E9E6A7C8213278C300342168 /* Verifyrsyncpath.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E6A7C5213278C200342168 /* Verifyrsyncpath.swift */; };
 		E9E6A7C9213278C300342168 /* Macserialnumber.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E6A7C6213278C300342168 /* Macserialnumber.swift */; };
 		E9E6A7CB2132802500342168 /* TCPconnections.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E6A7CA2132802500342168 /* TCPconnections.swift */; };
+		E9E7A8282133FA8C00AD1C9B /* Resources.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E7A8272133FA8C00AD1C9B /* Resources.swift */; };
 		E9F54D752026D5D500A664CF /* ArgumentsOneConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9F54D742026D5D500A664CF /* ArgumentsOneConfiguration.swift */; };
 		E9F54D792026D68D00A664CF /* ViewControllerReference.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9F54D782026D68D00A664CF /* ViewControllerReference.swift */; };
 		E9F54D7B2026D7D400A664CF /* RsyncParametersProcess.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9F54D7A2026D7D400A664CF /* RsyncParametersProcess.swift */; };
@@ -115,11 +117,13 @@
 		E98398AD20260E9D00C977C3 /* Configurations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Configurations.swift; sourceTree = "<group>"; };
 		E98BB14A202763B40078DF8E /* Numbers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Numbers.swift; sourceTree = "<group>"; };
 		E9A63065202B4DE900F1FFF1 /* Running.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Running.swift; sourceTree = "<group>"; };
+		E9B5B45F2133F2DB004B7041 /* Checkfornewversion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Checkfornewversion.swift; sourceTree = "<group>"; };
 		E9B96298203802EF00EA6D5A /* Logging.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logging.swift; sourceTree = "<group>"; };
 		E9E6A7C4213278C200342168 /* Dateandtime.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Dateandtime.swift; sourceTree = "<group>"; };
 		E9E6A7C5213278C200342168 /* Verifyrsyncpath.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Verifyrsyncpath.swift; sourceTree = "<group>"; };
 		E9E6A7C6213278C300342168 /* Macserialnumber.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Macserialnumber.swift; sourceTree = "<group>"; };
 		E9E6A7CA2132802500342168 /* TCPconnections.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TCPconnections.swift; sourceTree = "<group>"; };
+		E9E7A8272133FA8C00AD1C9B /* Resources.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Resources.swift; sourceTree = "<group>"; };
 		E9F54D742026D5D500A664CF /* ArgumentsOneConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArgumentsOneConfiguration.swift; sourceTree = "<group>"; };
 		E9F54D782026D68D00A664CF /* ViewControllerReference.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewControllerReference.swift; sourceTree = "<group>"; };
 		E9F54D7A2026D7D400A664CF /* RsyncParametersProcess.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RsyncParametersProcess.swift; sourceTree = "<group>"; };
@@ -243,6 +247,8 @@
 		E93A7EFD2026ED0000D61258 /* Tools */ = {
 			isa = PBXGroup;
 			children = (
+				E9E7A8272133FA8C00AD1C9B /* Resources.swift */,
+				E9B5B45F2133F2DB004B7041 /* Checkfornewversion.swift */,
 				E9E6A7CA2132802500342168 /* TCPconnections.swift */,
 				E9E6A7C4213278C200342168 /* Dateandtime.swift */,
 				E9E6A7C6213278C300342168 /* Macserialnumber.swift */,
@@ -455,6 +461,7 @@
 				E98398AF20260E9D00C977C3 /* Configurations.swift in Sources */,
 				E90BFDC8202D989D004AE4EC /* ytcpsocket.c in Sources */,
 				E9F54D7B2026D7D400A664CF /* RsyncParametersProcess.swift in Sources */,
+				E9B5B4602133F2DB004B7041 /* Checkfornewversion.swift in Sources */,
 				E91C5DC12026F8FA00FE7E76 /* ScheduleWriteLoggData.swift in Sources */,
 				E9A63066202B4DE900F1FFF1 /* Running.swift in Sources */,
 				E965E1AB20A17BF9004F42DC /* Extensions.swift in Sources */,
@@ -480,6 +487,7 @@
 				E9E6A7CB2132802500342168 /* TCPconnections.swift in Sources */,
 				E95548012035F4CD00D2E713 /* ExecuteTaskTimer.swift in Sources */,
 				E95548022035F4CD00D2E713 /* ScheduleOperationTimer.swift in Sources */,
+				E9E7A8282133FA8C00AD1C9B /* Resources.swift in Sources */,
 				E90BFDCA202D989D004AE4EC /* yudpsocket.c in Sources */,
 				E9F54D7D2026D83500A664CF /* CompleteScheduledOperation.swift in Sources */,
 				E90BFDC9202D989D004AE4EC /* yudpsocket.swift in Sources */,
