@@ -64,4 +64,6 @@ class ViewControllerReference {
     var macserialnumber: String?
     // Operation
     var operation: OperationObject?
+    // String for new version
+    var URLnewVersion: String?
 }

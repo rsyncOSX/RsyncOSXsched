@@ -460,3 +460,9 @@ extension ViewControllerMain: GetTCPconnections {
         return self.schedulesortedandexpanded?.tcpconnections
     }
 }
+
+extension ViewControllerMain: NewVersionDiscovered {
+    func notifyNewVersion() {
+        //
+    }
+}
