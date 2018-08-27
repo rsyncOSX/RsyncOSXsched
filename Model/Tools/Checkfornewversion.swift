@@ -44,8 +44,8 @@ final class Checkfornewversion {
         })
     }
 
-    // Return version of RsyncOSX
-    func rsyncOSXversion() -> String? {
+    // Return version of RsyncOSXsched
+    func rsyncOSXschedversion() -> String? {
         return self.runningVersion
     }
 
@@ -55,10 +55,7 @@ final class Checkfornewversion {
         if version != nil {
             self.runningVersion = version as? String
         }
-        self.resource = Resources()
-        if let resource = self.resource {
-            self.urlPlist = resource.getResource(resource: .urlPlist)
-        }
+        self.urlPlist = Resources().getResource()
         self.urlnewVersion()
     }
 

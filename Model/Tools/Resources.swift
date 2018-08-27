@@ -10,28 +10,10 @@
 
 import Foundation
 
-// Enumtype type of resource
-enum ResourceType {
-    case changelog
-    case documents
-    case urlPlist
-}
-
 struct Resources {
-    // Resource strings
-    private var changelog: String = "https://rsyncosx.github.io/RcloneChangelog"
-    private var documents: String = "https://rsyncosx.github.io/RcloneIntro"
-    private var urlPlist: String = "https://raw.githubusercontent.com/rsyncOSX/rcloneosx/master/versionRcloneOSX/versionRcloneOSX.plist"
+    private var urlPlist: String = "https://raw.githubusercontent.com/rsyncOSX/RsyncOSX/master/versionRsyncOSX/versionRsyncOSX.plist"
     // Get the resource.
-    func getResource (resource: ResourceType) -> String {
-        switch resource {
-        case .changelog:
-            return self.changelog
-        case .documents:
-            return self.documents
-        case .urlPlist:
-            return self.urlPlist
-        }
+    func getResource () -> String {
+        return self.urlPlist
     }
-
 }
