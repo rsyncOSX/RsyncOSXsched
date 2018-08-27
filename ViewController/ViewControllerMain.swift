@@ -44,7 +44,8 @@ class ViewControllerMain: NSViewController, Delay, Setlog {
     @IBOutlet weak var statuslight: NSImageView!
     @IBOutlet weak var info: NSTextField!
     @IBOutlet weak var progresslabel: NSTextField!
-
+    @IBOutlet weak var newversion: NSTextField!
+    
     var configurations: Configurations?
     var schedules: Schedules?
     var schedulesortedandexpanded: ScheduleSortedAndExpand?
@@ -463,6 +464,8 @@ extension ViewControllerMain: GetTCPconnections {
 
 extension ViewControllerMain: NewVersionDiscovered {
     func notifyNewVersion() {
-        //
+        globalMainQueue.async(execute: { () -> Void in
+            self.newversion.isHidden = false
+        })
     }
 }
