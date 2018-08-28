@@ -45,6 +45,7 @@ class ViewControllerMain: NSViewController, Delay, Setlog {
     @IBOutlet weak var info: NSTextField!
     @IBOutlet weak var progresslabel: NSTextField!
     @IBOutlet weak var newversion: NSTextField!
+    @IBOutlet weak var rsyncosxschedversion: NSTextField!
     
     var configurations: Configurations?
     var schedules: Schedules?
@@ -73,6 +74,8 @@ class ViewControllerMain: NSViewController, Delay, Setlog {
         } else {
             self.info(num: 2)
         }
+        // Check for new version
+        _ = Checkfornewversion()
 	}
 
     override func viewDidAppear() {
@@ -462,7 +465,13 @@ extension ViewControllerMain: GetTCPconnections {
     }
 }
 
-extension ViewControllerMain: NewVersionDiscovered {
+extension ViewControllerMain: RsyncOSXschedversion {
+    func currentversion(version: String) {
+         globalMainQueue.async(execute: { () -> Void in
+            self.rsyncosxschedversion.stringValue = "RsyncOSXsched version: " + version
+         })
+    }
+    
     func notifyNewVersion() {
         globalMainQueue.async(execute: { () -> Void in
             self.newversion.isHidden = false
