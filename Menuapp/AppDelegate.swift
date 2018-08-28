@@ -23,8 +23,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
 	func applicationDidFinishLaunching(_ aNotification: Notification) {
         var storage: PersistentStorageAPI?
-        // Check for new version
-        _ = Checkfornewversion()
         // Read user configuration
         storage = PersistentStorageAPI(profile: nil)
         if let userConfiguration =  storage?.getUserconfiguration(readfromstorage: true) {

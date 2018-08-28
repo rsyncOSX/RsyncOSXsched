@@ -9,8 +9,9 @@
 
 import Foundation
 
-protocol NewVersionDiscovered: class {
+protocol RsyncOSXschedversion: class {
     func notifyNewVersion()
+    func currentversion(version: String)
 }
 
 final class Checkfornewversion {
@@ -22,10 +23,11 @@ final class Checkfornewversion {
     // External resources
     private var resource: Resources?
 
-    weak var newversionDelegate: NewVersionDiscovered?
+    weak var newversionDelegate: RsyncOSXschedversion?
 
     //If new version set URL for download link and notify caller
     private func urlnewVersion () {
+        self.newversionDelegate?.currentversion(version: self.runningVersion ?? "")
         globalBackgroundQueue.async(execute: { () -> Void in
             if let url = URL(string: self.urlPlist!) {
                 do {
@@ -35,7 +37,6 @@ final class Checkfornewversion {
                     }
                     if let url = contents?.object(forKey: self.runningVersion!) {
                         self.urlNewVersion = url as? String
-                        self.newversionDelegate = ViewControllerReference.shared.viewControllermain as? ViewControllerMain
                         self.newversionDelegate?.notifyNewVersion()
                         ViewControllerReference.shared.URLnewVersion = self.urlNewVersion
                     }
@@ -52,6 +53,7 @@ final class Checkfornewversion {
     init () {
         let infoPlist = Bundle.main.infoDictionary
         let version = infoPlist?["CFBundleShortVersionString"]
+        self.newversionDelegate = ViewControllerReference.shared.viewControllermain as? ViewControllerMain
         if version != nil {
             self.runningVersion = version as? String
         }
