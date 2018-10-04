@@ -58,6 +58,9 @@ class ViewControllerReference {
     var executeschedulesmocup: Bool = false
     // log file
     var fileURL: URL?
+    // String tasks
+    var backup: String = "synchronize"
+    var snapshot: String = "snapshot"
     // Execute scheduled tasks in menu app, default off
     var executescheduledtasksmenuapp: Bool = false
     // Mac serialnumer

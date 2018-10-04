@@ -143,9 +143,9 @@ final class RsyncParametersProcess {
         self.setParameters1To6(config, dryRun: dryRun, forDisplay: forDisplay)
         self.setParameters8To14(config, dryRun: dryRun, forDisplay: forDisplay)
         switch config.task {
-        case "backup":
+        case ViewControllerReference.shared.backup:
             self.argumentsforbackup(dryRun: dryRun, forDisplay: forDisplay)
-        case "snapshot":
+        case ViewControllerReference.shared.snapshot:
             self.remoteargssnapshot(config)
             self.argumentsforsnapshot(dryRun: dryRun, forDisplay: forDisplay)
         case "restore":
