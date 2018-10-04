@@ -107,7 +107,7 @@ class Configurations {
     /// in tableView.
     /// - parameter index: index of Configuration to update
     func setCurrentDateonConfigurationQuickbackup (_ index: Int, outputprocess: OutputProcess?) {
-        if self.configurations![index].task == "snapshot" {
+        if self.configurations![index].task == ViewControllerReference.shared.snapshot {
             self.increasesnapshotnum(index: index)
         }
         let currendate = Date()
@@ -168,7 +168,7 @@ class Configurations {
     /// - parameter none: none
     /// - returns : Array of NSDictionary
     func getConfigurationsDataSourcecountBackup() -> [NSMutableDictionary]? {
-        let configurations: [Configuration] = self.configurations!.filter({return ($0.task == "backup" || $0.task == "snapshot")})
+        let configurations: [Configuration] = self.configurations!.filter({return ($0.task == ViewControllerReference.shared.backup || $0.task == ViewControllerReference.shared.snapshot)})
         var row =  NSMutableDictionary()
         var data = [NSMutableDictionary]()
         for i in 0 ..< configurations.count {

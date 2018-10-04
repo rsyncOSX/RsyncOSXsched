@@ -27,7 +27,7 @@ class ScheduleWriteLoggData: SetConfigurations {
             let date = dateformatter.string(from: currendate)
             let config = self.getconfig(hiddenID: hiddenID)
             var resultannotaded: String?
-            if config.task == "snapshot" {
+            if config.task == ViewControllerReference.shared.snapshot {
                 let snapshotnum = String(config.snapshotnum!)
                 resultannotaded = "(" +  snapshotnum + ") " + result
             } else {
@@ -47,7 +47,7 @@ class ScheduleWriteLoggData: SetConfigurations {
     private func addloggtaskmanualexisting(_ hiddenID: Int, result: String, date: String) -> Bool {
         var loggadded: Bool = false
         for i in 0 ..< self.schedules!.count where
-            self.configurations!.getResourceConfiguration(hiddenID, resource: .task) == "backup" {
+            self.configurations!.getResourceConfiguration(hiddenID, resource: .task) == ViewControllerReference.shared.backup {
                 if self.schedules![i].hiddenID == hiddenID  &&
                     self.schedules![i].schedule == "manuel" &&
                     self.schedules![i].dateStop == nil {
@@ -63,8 +63,8 @@ class ScheduleWriteLoggData: SetConfigurations {
 
     private func addloggtaskmanulnew(_ hiddenID: Int, result: String, date: String) -> Bool {
         var loggadded: Bool = false
-        if (self.configurations!.getResourceConfiguration(hiddenID, resource: .task) == "backup" ||
-            self.configurations!.getResourceConfiguration(hiddenID, resource: .task) == "snapshot") {
+        if (self.configurations!.getResourceConfiguration(hiddenID, resource: .task) == ViewControllerReference.shared.backup ||
+            self.configurations!.getResourceConfiguration(hiddenID, resource: .task) == ViewControllerReference.shared.snapshot) {
             let masterdict = NSMutableDictionary()
             masterdict.setObject(hiddenID, forKey: "hiddenID" as NSCopying)
             masterdict.setObject("01 Jan 1900 00:00", forKey: "dateStart" as NSCopying)
@@ -95,13 +95,13 @@ class ScheduleWriteLoggData: SetConfigurations {
                 self.schedules![i].hiddenID == hiddenID  &&
                 self.schedules![i].schedule == schedule &&
                 self.schedules![i].dateStart == dateStart {
-                    if (self.configurations!.getResourceConfiguration(hiddenID, resource: .task) == "backup" ||
-                        self.configurations!.getResourceConfiguration(hiddenID, resource: .task) == "snapshot" ) {
+                    if (self.configurations!.getResourceConfiguration(hiddenID, resource: .task) == ViewControllerReference.shared.backup ||
+                        self.configurations!.getResourceConfiguration(hiddenID, resource: .task) == ViewControllerReference.shared.snapshot ) {
                         logged = true
                         let dict = NSMutableDictionary()
                         var resultannotaded: String?
                         let config = self.getconfig(hiddenID: hiddenID)
-                        if config.task == "snapshot" {
+                        if config.task == ViewControllerReference.shared.snapshot {
                             let snapshotnum = String(config.snapshotnum!)
                             resultannotaded = "(" +  snapshotnum + ") " + result
                         } else {
