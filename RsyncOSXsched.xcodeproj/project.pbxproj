@@ -19,6 +19,17 @@
 			name = "rsyncosxsched-dmg";
 			productName = "rsyncosxsched-dmg";
 		};
+		E95FC87E217FB637000E0455 /* rsyncosxsched-dmg-notarize */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = E95FC882217FB637000E0455 /* Build configuration list for PBXAggregateTarget "rsyncosxsched-dmg-notarize" */;
+			buildPhases = (
+				E95FC881217FB637000E0455 /* ShellScript */,
+			);
+			dependencies = (
+			);
+			name = "rsyncosxsched-dmg-notarize";
+			productName = "rsyncosxsched-dmg";
+		};
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
@@ -389,6 +400,10 @@
 						DevelopmentTeam = 93M47F4H9T;
 						ProvisioningStyle = Automatic;
 					};
+					E95FC87E217FB637000E0455 = {
+						DevelopmentTeam = 93M47F4H9T;
+						ProvisioningStyle = Automatic;
+					};
 				};
 			};
 			buildConfigurationList = 94E0FC361BD7FC3600A3C537 /* Build configuration list for PBXProject "RsyncOSXsched" */;
@@ -406,6 +421,7 @@
 			targets = (
 				94E0FC3A1BD7FC3600A3C537 /* RsyncOSXsched */,
 				E9107CB421254BD40030305B /* rsyncosxsched-dmg */,
+				E95FC87E217FB637000E0455 /* rsyncosxsched-dmg-notarize */,
 			);
 		};
 /* End PBXProject section */
@@ -434,7 +450,20 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "${SOURCE_ROOT}/RsyncOSXsched/Scripts/create-dmg.sh";
+			shellScript = "${SOURCE_ROOT}/RsyncOSXsched/Scripts/create-dmg.sh\n";
+		};
+		E95FC881217FB637000E0455 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "${SOURCE_ROOT}/RsyncOSXsched/Scripts/create-dmg-notarize.dmg\n";
 		};
 		E9B10952207B5FDF0021A2EC /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -690,6 +719,24 @@
 			};
 			name = Release;
 		};
+		E95FC883217FB637000E0455 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 93M47F4H9T;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		E95FC884217FB637000E0455 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 93M47F4H9T;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -716,6 +763,15 @@
 			buildConfigurations = (
 				E9107CB521254BD50030305B /* Debug */,
 				E9107CB621254BD50030305B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E95FC882217FB637000E0455 /* Build configuration list for PBXAggregateTarget "rsyncosxsched-dmg-notarize" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E95FC883217FB637000E0455 /* Debug */,
+				E95FC884217FB637000E0455 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
