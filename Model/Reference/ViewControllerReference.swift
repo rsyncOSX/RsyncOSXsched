@@ -69,4 +69,6 @@ class ViewControllerReference {
     var operation: OperationObject?
     // String for new version
     var URLnewVersion: String?
+    // Mark number of days since last backup
+    var marknumberofdayssince: Double = 5
 }
