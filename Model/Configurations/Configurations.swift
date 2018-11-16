@@ -86,21 +86,6 @@ class Configurations {
         return self.configurationsDataSource
     }
 
-    /// Function computes arguments for rsync, either arguments for
-    /// real runn or arguments for --dry-run for Configuration at selected index
-    /// - parameter index: index of Configuration
-    /// - parameter argtype : either .arg or .argdryRun (of enumtype argumentsRsync)
-    /// - returns : array of Strings holding all computed arguments
-    func arguments4rsync (index: Int, argtype: ArgumentsRsync) -> [String] {
-        let allarguments = self.argumentAllConfigurations![index]
-        switch argtype {
-        case .arg:
-            return allarguments.arg!
-        case .argdryRun:
-            return allarguments.argdryRun!
-        }
-    }
-
     /// Function sets currentDate on Configuration when executed on task
     /// stored in memory and then saves updated configuration from memory to persistent store.
     /// Function also notifies Execute view to refresh data

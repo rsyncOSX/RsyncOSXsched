@@ -32,9 +32,7 @@ final class Checkfornewversion {
             if let url = URL(string: self.urlPlist!) {
                 do {
                     let contents = NSDictionary (contentsOf: url)
-                    guard self.runningVersion != nil else {
-                        return
-                    }
+                    guard self.runningVersion != nil else { return }
                     if let url = contents?.object(forKey: self.runningVersion!) {
                         self.urlNewVersion = url as? String
                         self.newversionDelegate?.notifyNewVersion()

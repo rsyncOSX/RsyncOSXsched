@@ -41,6 +41,14 @@ struct Configuration {
     var rclonehiddenID: Int?
     var rcloneprofile: String?
 
+    private func calculatedays(date: String) -> Double? {
+        guard date != "" else { return nil }
+        let dateformatter = Dateandtime().setDateformat()
+        let lastbackup = dateformatter.date(from: date)
+        let seconds: TimeInterval = lastbackup!.timeIntervalSinceNow
+        return seconds * (-1)
+    }
+
     init(dictionary: NSDictionary) {
         // Parameters 1 - 6 is mandatory, set by RsyncOSX.
         self.hiddenID = (dictionary.object(forKey: "hiddenID") as? Int) ?? 0
@@ -48,24 +56,31 @@ struct Configuration {
         if self.task == "backup" {
             self.task = ViewControllerReference.shared.backup
         }
-        self.localCatalog = (dictionary.object(forKey: "localCatalog") as? String)!
-        self.offsiteCatalog = (dictionary.object(forKey: "offsiteCatalog") as? String)!
-        self.offsiteUsername = (dictionary.object(forKey: "offsiteUsername") as? String)!
-        self.batch = (dictionary.object(forKey: "batch") as? String)!
-        self.dryrun = (dictionary.object(forKey: "dryrun") as? String)!
-        self.parameter1 = (dictionary.object(forKey: "parameter1") as? String)!
-        self.parameter2 = (dictionary.object(forKey: "parameter2") as? String)!
-        self.parameter3 = (dictionary.object(forKey: "parameter3") as? String)!
-        self.parameter4 = (dictionary.object(forKey: "parameter4") as? String)!
-        self.parameter5 = (dictionary.object(forKey: "parameter5") as? String)!
-        self.parameter6 = (dictionary.object(forKey: "parameter6") as? String)!
-        self.offsiteServer = (dictionary.object(forKey: "offsiteServer") as? String)!
-        self.backupID = (dictionary.object(forKey: "backupID") as? String)!
+        self.localCatalog = dictionary.object(forKey: "localCatalog") as? String ?? ""
+        self.offsiteCatalog = dictionary.object(forKey: "offsiteCatalog") as? String ?? ""
+        self.offsiteUsername = dictionary.object(forKey: "offsiteUsername") as? String ?? ""
+        self.batch = dictionary.object(forKey: "batch") as? String ?? ""
+        self.dryrun = dictionary.object(forKey: "dryrun") as? String ?? ""
+        self.parameter1 = dictionary.object(forKey: "parameter1") as? String ?? ""
+        self.parameter2 = dictionary.object(forKey: "parameter2") as? String ?? ""
+        self.parameter3 = dictionary.object(forKey: "parameter3") as? String ?? ""
+        self.parameter4 = dictionary.object(forKey: "parameter4") as? String ?? ""
+        self.parameter5 = dictionary.object(forKey: "parameter5") as? String ?? ""
+        self.parameter6 = dictionary.object(forKey: "parameter6") as? String ?? ""
+        self.offsiteServer = dictionary.object(forKey: "offsiteServer") as? String ?? ""
+        self.backupID = dictionary.object(forKey: "backupID") as? String ?? ""
         if let snapshotnum = dictionary.object(forKey: "snapshotnum") as? Int {
             self.snapshotnum = snapshotnum
         }
+        // Last run of task
         if let dateRun = dictionary.object(forKey: "dateRun") {
             self.dateRun = dateRun as? String
+            if let secondssince = self.calculatedays(date: self.dateRun!) {
+                self.dayssincelastbackup = String(format: "%.2f", secondssince/(60*60*24))
+                if secondssince/(60*60*24) > ViewControllerReference.shared.marknumberofdayssince {
+                    self.markdays = true
+                }
+            }
         }
         // Parameters 8 - 14 is user selected, as well as ssh port.
         if let parameter8 = dictionary.object(forKey: "parameter8") {
