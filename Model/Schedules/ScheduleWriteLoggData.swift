@@ -5,6 +5,7 @@
 //  Created by Thomas Evensen on 19.04.2017.
 //  Copyright © 2017 Thomas Evensen. All rights reserved.
 //
+// swiftlint:disable line_length
 
 import Foundation
 import Cocoa
@@ -63,8 +64,8 @@ class ScheduleWriteLoggData: SetConfigurations {
 
     private func addloggtaskmanulnew(_ hiddenID: Int, result: String, date: String) -> Bool {
         var loggadded: Bool = false
-        if (self.configurations!.getResourceConfiguration(hiddenID, resource: .task) == ViewControllerReference.shared.backup ||
-            self.configurations!.getResourceConfiguration(hiddenID, resource: .task) == ViewControllerReference.shared.snapshot) {
+        if self.configurations!.getResourceConfiguration(hiddenID, resource: .task) == ViewControllerReference.shared.backup ||
+            self.configurations!.getResourceConfiguration(hiddenID, resource: .task) == ViewControllerReference.shared.snapshot {
             let masterdict = NSMutableDictionary()
             masterdict.setObject(hiddenID, forKey: "hiddenID" as NSCopying)
             masterdict.setObject("01 Jan 1900 00:00", forKey: "dateStart" as NSCopying)
@@ -95,8 +96,8 @@ class ScheduleWriteLoggData: SetConfigurations {
                 self.schedules![i].hiddenID == hiddenID  &&
                 self.schedules![i].schedule == schedule &&
                 self.schedules![i].dateStart == dateStart {
-                    if (self.configurations!.getResourceConfiguration(hiddenID, resource: .task) == ViewControllerReference.shared.backup ||
-                        self.configurations!.getResourceConfiguration(hiddenID, resource: .task) == ViewControllerReference.shared.snapshot ) {
+                    if self.configurations!.getResourceConfiguration(hiddenID, resource: .task) == ViewControllerReference.shared.backup ||
+                        self.configurations!.getResourceConfiguration(hiddenID, resource: .task) == ViewControllerReference.shared.snapshot {
                         logged = true
                         let dict = NSMutableDictionary()
                         var resultannotaded: String?

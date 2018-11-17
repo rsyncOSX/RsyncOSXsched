@@ -46,7 +46,7 @@ class ViewControllerMain: NSViewController, Delay, Setlog {
     @IBOutlet weak var progresslabel: NSTextField!
     @IBOutlet weak var newversion: NSTextField!
     @IBOutlet weak var rsyncosxschedversion: NSTextField!
-    
+
     var configurations: Configurations?
     var schedules: Schedules?
     var schedulesortedandexpanded: ScheduleSortedAndExpand?
@@ -229,24 +229,24 @@ class ViewControllerMain: NSViewController, Delay, Setlog {
             _ = ScheduleOperationTimer()
         }
     }
-    
+
     @objc func onWakeNote(note: NSNotification) {
         self.logDelegate?.addlog(logrecord: "Activating schedules again after sleeping...")
         self.schedulesortedandexpanded = ScheduleSortedAndExpand()
         self.startfirstscheduledtask()
-        
+
     }
-    
+
     @objc func onSleepNote(note: NSNotification) {
         self.logDelegate?.addlog(logrecord: "Invalidating tasks and going to sleep...")
         ViewControllerReference.shared.dispatchTaskWaiting?.cancel()
         ViewControllerReference.shared.timerTaskWaiting?.invalidate()
     }
-    
+
     private func sleepandwakenotifications() {
         NSWorkspace.shared.notificationCenter.addObserver( self, selector: #selector(onWakeNote(note:)),
                                                            name: NSWorkspace.didWakeNotification, object: nil)
-        
+
         NSWorkspace.shared.notificationCenter.addObserver( self, selector: #selector(onSleepNote(note:)),
                                                            name: NSWorkspace.willSleepNotification, object: nil)
     }
@@ -471,7 +471,7 @@ extension ViewControllerMain: RsyncOSXschedversion {
             self.rsyncosxschedversion.stringValue = "RsyncOSXsched version: " + version
          })
     }
-    
+
     func notifyNewVersion() {
         globalMainQueue.async(execute: { () -> Void in
             self.newversion.isHidden = false

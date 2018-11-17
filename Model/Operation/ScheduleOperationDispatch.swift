@@ -5,7 +5,6 @@
 //  Created by Thomas Evensen on 21.10.2017.
 //  Copyright © 2017 Thomas Evensen. All rights reserved.
 //
-// swiftlint:disable line_length
 
 import Foundation
 
@@ -22,7 +21,7 @@ class ScheduleOperationDispatch: SetSchedules, SecondsBeforeStart, Setlog {
         self.pendingRequestWorkItem = scheduledtask
         DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(seconds), execute: scheduledtask)
     }
-    
+
     private func dispatchtask(_ seconds: Int) {
         let scheduledtask = DispatchWorkItem { [weak self] in
             _ = ExecuteTaskDispatch()

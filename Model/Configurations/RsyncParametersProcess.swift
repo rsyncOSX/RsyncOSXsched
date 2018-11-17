@@ -18,7 +18,7 @@ final class RsyncParametersProcess {
     var offsiteServer: String?
     var remoteargs: String?
     var linkdestparam: String?
-    
+
     private func setParameters1To6(_ config: Configuration, dryRun: Bool, forDisplay: Bool, verify: Bool) {
         var parameter1: String?
         if verify {
@@ -52,7 +52,7 @@ final class RsyncParametersProcess {
             self.sshportparameter(config, forDisplay: forDisplay)
         }
     }
-    
+
     private func sshportparameter(_ config: Configuration, forDisplay: Bool) {
         let parameter5: String = config.parameter5
         let parameter6: String = config.parameter6
@@ -70,10 +70,10 @@ final class RsyncParametersProcess {
         }
         if forDisplay {self.arguments!.append(" ")}
     }
-    
+
     // Compute user selected parameters parameter8 ... parameter14
     // Brute force, check every parameter, not special elegant, but it works
-    
+
     private func setParameters8To14(_ config: Configuration, dryRun: Bool, forDisplay: Bool) {
         self.stats = false
         if config.parameter8 != nil {
@@ -106,7 +106,7 @@ final class RsyncParametersProcess {
             }
         }
     }
-    
+
     private func setParameters8To14restore(_ config: Configuration, dryRun: Bool, forDisplay: Bool) {
         self.stats = false
         // Append --stats parameter to collect info about run
@@ -118,7 +118,7 @@ final class RsyncParametersProcess {
             }
         }
     }
-    
+
     private func dryrunparameter(_ config: Configuration, forDisplay: Bool) {
         let dryrun: String = config.dryrun
         self.arguments!.append(dryrun)
@@ -128,10 +128,10 @@ final class RsyncParametersProcess {
             if forDisplay {self.arguments!.append(" ")}
         }
     }
-    
+
     // Check userselected parameter and append it to arguments array passed to rsync or displayed
     // on screen.
-    
+
     private func appendParameter (parameter: String, forDisplay: Bool) {
         if parameter.count > 1 {
             if parameter == "--stats" {
@@ -143,7 +143,7 @@ final class RsyncParametersProcess {
             }
         }
     }
-    
+
     /// Function for initialize arguments array. RsyncOSX computes four argumentstrings
     /// two arguments for dryrun, one for rsync and one for display
     /// two arguments for realrun, one for rsync and one for display
@@ -203,7 +203,7 @@ final class RsyncParametersProcess {
             self.offsiteCatalog! += String(snapshotnum)
         }
     }
-    
+
     private func argumentsforsynchronize(dryRun: Bool, forDisplay: Bool) {
         self.arguments!.append(self.localCatalog!)
         guard self.offsiteCatalog != nil else { return }
@@ -217,7 +217,7 @@ final class RsyncParametersProcess {
             if forDisplay {self.arguments!.append(" ")}
         }
     }
-    
+
     private func argumentsforsynchronizesnapshot(dryRun: Bool, forDisplay: Bool) {
         guard self.linkdestparam != nil else {
             self.arguments!.append(self.localCatalog!)
@@ -236,7 +236,7 @@ final class RsyncParametersProcess {
             if forDisplay {self.arguments!.append(" ")}
         }
     }
-    
+
     init () {
         self.arguments = [String]()
     }

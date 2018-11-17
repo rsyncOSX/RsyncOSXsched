@@ -5,7 +5,6 @@
 //  Created by Thomas Evensen on 24.08.2018.
 //  Copyright © 2018 Thomas Evensen. All rights reserved.
 //
-//  swiftlint:disable line_length
 
 import Foundation
 
@@ -24,7 +23,6 @@ var globalBackgroundQueue: DispatchQueue {
 
 class TCPconnections: SetConfigurations, Delay, Setlog {
 
-    private var indexBoolremoteserverOff: [Bool]?
     weak var testconnectionsDelegate: Connections?
     var noconnections: [String]?
 
@@ -42,7 +40,7 @@ class TCPconnections: SetConfigurations, Delay, Setlog {
         }
         return (connectionOK, str)
     }
-    
+
     // Testing all remote servers.
     // Adding connection true or false in array[bool]
     // Do the check in background que, reload table in global main queue
@@ -67,7 +65,7 @@ class TCPconnections: SetConfigurations, Delay, Setlog {
             }
         })
     }
-    
+
     func checkremoteconnection(remoteserver: String) -> Bool {
         guard self.noconnections != nil else { return true}
         self.logDelegate?.addlog(logrecord: "Checking for connection to remote server")
