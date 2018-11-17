@@ -12,12 +12,10 @@ import Cocoa
 class ScheduleSortedAndExpand: Setlog {
 
     // Reference to main View
-    private var vctabmain: NSViewController?
     private var schedulesNSDictionary: [NSDictionary]?
     private var scheduleConfiguration: [ConfigurationSchedule]?
     private var expandedData = [NSDictionary]()
     private var sortedschedules: [NSDictionary]?
-    private var scheduleInProgress: Bool = false
     var tcpconnections: TCPconnections?
 
     // First job to execute. Job is first element in

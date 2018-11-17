@@ -6,7 +6,6 @@
 //  Copyright © 2016 Thomas Evensen. All rights reserved.
 //
 
-import Foundation
 
 class Profiles: Files {
 

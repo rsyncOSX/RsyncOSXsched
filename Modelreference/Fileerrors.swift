@@ -5,7 +5,6 @@
 //  Created by Thomas Evensen on 21.11.2017.
 //  Copyright © 2017 Thomas Evensen. All rights reserved.
 //
-// swiftlint:disable line_length
 
 import Foundation
 
@@ -32,30 +31,5 @@ extension Reportfileerror {
 
     func error(error: String, errortype: Fileerrortype) {
         self.errorDelegate?.fileerror(errorstr: error, errortype: errortype)
-    }
-}
-
-class Filerrors {
-
-    private var errortype: Fileerrortype
-
-    func errordescription() -> String {
-        switch self.errortype {
-        case .openlogfile:
-            guard ViewControllerReference.shared.fileURL != nil else {
-                return "No existing logfile, creating a new one"
-            }
-            return "No existing logfile, creating a new one: " + String(describing: ViewControllerReference.shared.fileURL!)
-        case .writelogfile:
-            return "Could not write to logfile"
-        case .profilecreatedirectory:
-            return "Could not create profile directory"
-        case .profiledeletedirectory:
-            return "Could not delete profile directory"
-        }
-     }
-
-    init(errortype: Fileerrortype) {
-        self.errortype = errortype
     }
 }

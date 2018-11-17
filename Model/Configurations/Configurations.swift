@@ -16,12 +16,6 @@
 import Foundation
 import Cocoa
 
-// Used to select argument
-enum ArgumentsRsync {
-    case arg
-    case argdryRun
-}
-
 // Enum which resource to return
 enum ResourceInConfiguration {
     case remoteCatalog

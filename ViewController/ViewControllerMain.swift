@@ -56,8 +56,6 @@ class ViewControllerMain: NSViewController, Delay, Setlog {
 
     private var profilesArray: [String]?
     private var profile: Files?
-    private var useprofile: String?
-
     var allschedules: [ConfigurationSchedule]?
 
 	override func viewDidLoad() {

@@ -101,12 +101,6 @@ protocol Sendprocessreference: class {
     func sendoutputprocessreference(outputprocess: OutputProcess?)
 }
 
-// Protocol for starting next scheduled job
-protocol StartNextTask: class {
-    // func startanyscheduledtask()
-    func startfirstcheduledtask()
-}
-
 protocol SecondsBeforeStart {
     func secondsbeforestart() -> Double
 }
