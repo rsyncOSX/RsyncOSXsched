@@ -185,25 +185,7 @@ final class RsyncParametersProcess {
             }
         }
     }
-    
-    private func remoteargssnapshot(_ config: Configuration) {
-        let snapshotnum = config.snapshotnum ?? 1
-        self.offsiteCatalog = config.offsiteCatalog + String(snapshotnum - 1) + "/"
-        self.offsiteUsername = config.offsiteUsername
-        self.offsiteServer = config.offsiteServer
-        if self.offsiteServer!.isEmpty == false {
-            if config.rsyncdaemon != nil {
-                if config.rsyncdaemon == 1 {
-                    self.remoteargs = self.offsiteUsername! + "@" + self.offsiteServer! + "::" + self.offsiteCatalog!
-                } else {
-                    self.remoteargs = self.offsiteUsername! + "@" + self.offsiteServer! + ":" + self.offsiteCatalog!
-                }
-            } else {
-                self.remoteargs = self.offsiteUsername! + "@" + self.offsiteServer! + ":" + self.offsiteCatalog!
-            }
-        }
-    }
-    
+
     // Additional parameters if snapshot
     private func linkdestparameter(_ config: Configuration, verify: Bool) {
         let snapshotnum = config.snapshotnum ?? 1
@@ -252,23 +234,6 @@ final class RsyncParametersProcess {
             if forDisplay {self.arguments!.append(" ")}
             self.arguments!.append(remoteargs!)
             if forDisplay {self.arguments!.append(" ")}
-        }
-    }
-    
-    private func argumentsforrestore(dryRun: Bool, forDisplay: Bool, tmprestore: Bool) {
-        if self.offsiteServer!.isEmpty {
-            self.arguments!.append(self.offsiteCatalog!)
-            if forDisplay {self.arguments!.append(" ")}
-        } else {
-            if forDisplay {self.arguments!.append(" ")}
-            self.arguments!.append(remoteargs!)
-            if forDisplay {self.arguments!.append(" ")}
-        }
-        if tmprestore {
-            let restorepath = ""
-            self.arguments!.append(restorepath)
-        } else {
-            self.arguments!.append(self.localCatalog!)
         }
     }
     
