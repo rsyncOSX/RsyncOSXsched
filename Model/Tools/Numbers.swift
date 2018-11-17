@@ -10,17 +10,6 @@
 
 import Foundation
 
-// enum for returning what is asked for
-enum EnumNumbers {
-    case totalNumber
-    case totalDirs
-    case totalNumberSizebytes
-    case transferredNumber
-    case transferredNumberSizebytes
-    case new
-    case delete
-}
-
 final class Numbers: SetConfigurations {
 
     // Second last String in Array rsync output of how much in what time
@@ -53,30 +42,6 @@ final class Numbers: SetConfigurations {
     var new: [String]?
     // Delete files
     var delete: [String]?
-
-    // Get numbers from rsync (dry run)
-    func getTransferredNumbers (numbers: EnumNumbers) -> Int {
-        switch numbers {
-        case .totalDirs:
-            return self.totDir ?? 0
-        case .totalNumber:
-            return self.totNum ?? 0
-        case .transferredNumber:
-            return self.transferNum ?? 0
-        case .totalNumberSizebytes:
-            let size = self.totNumSize ?? 0
-            return Int(size/1024 )
-        case .transferredNumberSizebytes:
-            let size = self.transferNumSize ?? 0
-            return Int(size/1024)
-        case .new:
-            let num = self.newfiles ?? 0
-            return Int(num)
-        case .delete:
-            let num = self.deletefiles ?? 0
-            return Int(num)
-        }
-    }
 
     private func resultrsyncver3() {
         // Ver3 of rsync adds "," as 1000 mark, must replace it and then split numbers into components

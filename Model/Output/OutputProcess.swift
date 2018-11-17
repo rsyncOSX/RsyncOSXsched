@@ -27,23 +27,8 @@ final class OutputProcess {
     private var maxNumber: Int = 0
     weak var errorDelegate: RsyncError?
 
-    func getMaxcount() -> Int {
-        if self.trimmedoutput == nil {
-            _ = self.trimoutput(trim: .two)
-        }
-        return self.maxNumber
-    }
-
     func count() -> Int {
         return self.output?.count ?? 0
-    }
-
-    func getOutput() -> [String]? {
-        if self.trimmedoutput != nil {
-            return self.trimmedoutput
-        } else {
-            return self.output
-        }
     }
 
     // Add line from output

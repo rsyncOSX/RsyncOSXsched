@@ -26,14 +26,6 @@ protocol ErrorOutput: class {
     func erroroutput()
 }
 
-enum ProcessTermination {
-    case singletask
-    case batchtask
-    case quicktask
-    case singlequicktask
-    case remoteinfotask
-}
-
 class ProcessCmd: Delay, SetConfigurations {
 
     // Number of calculated files to be copied
@@ -105,12 +97,6 @@ class ProcessCmd: Delay, SetConfigurations {
     // Get the reference to the Process object.
     func getProcess() -> Process? {
         return self.processReference
-    }
-
-    // Terminate Process, used when user Aborts task.
-    func abortProcess() {
-        guard self.processReference != nil else { return }
-        self.processReference!.terminate()
     }
 
     init(command: String?, arguments: [String]?) {

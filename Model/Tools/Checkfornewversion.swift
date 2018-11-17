@@ -5,7 +5,6 @@
 //  Created by Thomas Evensen on 02/09/2016.
 //  Copyright © 2016 Thomas Evensen. All rights reserved.
 //
-//  swiftlint:disable line_length
 
 import Foundation
 
@@ -21,7 +20,7 @@ final class Checkfornewversion {
     private var urlNewVersion: String?
 
     // External resources
-    private var resource: Resources?
+    // private var resource: Resources?
 
     weak var newversionDelegate: RsyncOSXschedversion?
 
@@ -41,11 +40,6 @@ final class Checkfornewversion {
                 }
             }
         })
-    }
-
-    // Return version of RsyncOSXsched
-    func rsyncOSXschedversion() -> String? {
-        return self.runningVersion
     }
 
     init () {

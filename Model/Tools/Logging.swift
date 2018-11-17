@@ -49,11 +49,6 @@ class Logging: Reportfileerror {
         self.write()
     }
 
-    private func getDocumentsDirectory() -> URL {
-        let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
-        return paths[0]
-    }
-
     init(array: [String]) {
         self.array = array
         self.filename = ViewControllerReference.shared.logname

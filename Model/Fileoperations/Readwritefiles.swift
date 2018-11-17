@@ -65,14 +65,6 @@ class Readwritefiles: SetConfigurations, Setlog {
         }
     }
 
-    func getfilenameandpath() -> String? {
-        return self.filename
-    }
-
-    func getpath() -> String? {
-        return self.filepath
-    }
-
     // Function for reading data from persistent store
     func getDatafromfile() -> [NSDictionary]? {
         var data = [NSDictionary]()

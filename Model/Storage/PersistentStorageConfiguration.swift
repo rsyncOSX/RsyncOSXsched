@@ -113,7 +113,7 @@ final class PersistentStorageConfiguration: Readwritefiles {
     // Writing configuration to persistent store
     // Configuration is [NSDictionary]
     private func writeToStore (_ array: [NSDictionary]) {
-        if (self.writeDatatoPersistentStorage(array, task: .configuration)) {
+        if self.writeDatatoPersistentStorage(array, task: .configuration) {
             self.configurationsDelegate?.createandreloadconfigurations()
             self.logDelegate?.addlog(logrecord: "Reloading Configurations")
         }

@@ -12,12 +12,10 @@ import Cocoa
 class ScheduleSortedAndExpand: Setlog {
 
     // Reference to main View
-    private var vctabmain: NSViewController?
     private var schedulesNSDictionary: [NSDictionary]?
     private var scheduleConfiguration: [ConfigurationSchedule]?
     private var expandedData = [NSDictionary]()
     private var sortedschedules: [NSDictionary]?
-    private var scheduleInProgress: Bool = false
     var tcpconnections: TCPconnections?
 
     // First job to execute. Job is first element in
@@ -148,14 +146,6 @@ class ScheduleSortedAndExpand: Setlog {
     }
 
     typealias Futureschedules = (Int, Double)
-
-    // Calculates number of future Schedules ID by hiddenID
-    func numberoftasks (_ hiddenID: Int) -> Futureschedules {
-        let result = self.sortedschedules?.filter({return (($0.value(forKey: "hiddenID") as? Int)! == hiddenID)})
-        guard result?.count ?? 0 > 0 else { return (0, 0)}
-        let timetostart = result![0].value(forKey: "timetostart" ) as? Double ?? 0
-        return (result!.count, timetostart)
-    }
 
     func sortandcountscheduledonetask(_ hiddenID: Int, profilename: String, dateStart: Date?, number: Bool) -> String {
         var result: [NSDictionary]?

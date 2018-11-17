@@ -34,8 +34,6 @@ class ViewControllerReference {
     var rsyncVer3: Bool = false
     // Optional path to rsync
     var rsyncPath: String?
-    // No valid rsyncPath - true if no valid rsync is found
-    var norsync: Bool = false
     // Detailed logging
     var detailedlogging: Bool = true
     // Reference to the Operation object
@@ -53,7 +51,6 @@ class ViewControllerReference {
     var pathrsyncosx: String?
     var pathrsyncosxsched: String?
     let namersyncosx: String = "RsyncOSX.app"
-    let namersyncosssched: String = "RsyncOSXsched.app"
     // Set true if test in menu app
     var executeschedulesmocup: Bool = false
     // log file
