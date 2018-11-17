@@ -31,9 +31,6 @@ class Configurations {
     // reference to Process, used for kill in executing task
     var process: Process?
     private var profile: String?
-    // Notify about scheduled process
-    // Only allowed to notity by modal window when in main view
-    var allowNotifyinMain: Bool = true
     // The main structure storing all Configurations for tasks
     private var configurations: [Configuration]?
     // Array to store argumenst for all tasks.
@@ -42,42 +39,11 @@ class Configurations {
     // Datasource for NSTableViews
     private var configurationsDataSource: [NSMutableDictionary]?
 
-    /// Function for getting the profile
-    func getProfile() -> String? {
-        return self.profile
-    }
-
     /// Function for getting Configurations read into memory
     /// - parameter none: none
     /// - returns : Array of configurations
     func getConfigurations() -> [Configuration] {
         return self.configurations ?? []
-    }
-
-    /// Function for getting arguments for all Configurations read into memory
-    /// - parameter none: none
-    /// - returns : Array of arguments
-    func getargumentAllConfigurations() -> [ArgumentsOneConfiguration] {
-        return self.argumentAllConfigurations ?? []
-    }
-
-    /// Function for getting the number of configurations used in NSTableViews
-    /// - parameter none: none
-    /// - returns : Int
-    func configurationsDataSourcecount() -> Int {
-        if self.configurationsDataSource == nil {
-            return 0
-        } else {
-            return self.configurationsDataSource!.count
-        }
-    }
-
-    /// Function for getting Configurations read into memory
-    /// as datasource for tableViews
-    /// - parameter none: none
-    /// - returns : Array of Configurations
-    func getConfigurationsDataSource() -> [NSMutableDictionary]? {
-        return self.configurationsDataSource
     }
 
     /// Function sets currentDate on Configuration when executed on task
@@ -96,15 +62,6 @@ class Configurations {
         self.storageapi!.saveConfigFromMemory()
     }
 
-    /// Function is updating Configurations in memory (by record) and
-    /// then saves updated Configurations from memory to persistent store
-    /// - parameter config: updated configuration
-    /// - parameter index: index to Configuration to replace by config
-    func updateConfigurations (_ config: Configuration, index: Int) {
-        self.configurations![index] = config
-        self.storageapi!.saveConfigFromMemory()
-    }
-
     func getIndex(_ hiddenID: Int) -> Int {
         var index: Int = -1
         loop: for i in 0 ..< self.configurations!.count where self.configurations![i].hiddenID == hiddenID {
@@ -112,10 +69,6 @@ class Configurations {
             break loop
         }
         return index
-    }
-
-    func gethiddenID (index: Int) -> Int {
-        return self.configurations![index].hiddenID
     }
 
     private func increasesnapshotnum(index: Int) {

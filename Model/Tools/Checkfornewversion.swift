@@ -42,11 +42,6 @@ final class Checkfornewversion {
         })
     }
 
-    // Return version of RsyncOSXsched
-    func rsyncOSXschedversion() -> String? {
-        return self.runningVersion
-    }
-
     init () {
         let infoPlist = Bundle.main.infoDictionary
         let version = infoPlist?["CFBundleShortVersionString"]

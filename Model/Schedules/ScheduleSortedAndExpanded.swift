@@ -147,14 +147,6 @@ class ScheduleSortedAndExpand: Setlog {
 
     typealias Futureschedules = (Int, Double)
 
-    // Calculates number of future Schedules ID by hiddenID
-    func numberoftasks (_ hiddenID: Int) -> Futureschedules {
-        let result = self.sortedschedules?.filter({return (($0.value(forKey: "hiddenID") as? Int)! == hiddenID)})
-        guard result?.count ?? 0 > 0 else { return (0, 0)}
-        let timetostart = result![0].value(forKey: "timetostart" ) as? Double ?? 0
-        return (result!.count, timetostart)
-    }
-
     func sortandcountscheduledonetask(_ hiddenID: Int, profilename: String, dateStart: Date?, number: Bool) -> String {
         var result: [NSDictionary]?
         if dateStart != nil {

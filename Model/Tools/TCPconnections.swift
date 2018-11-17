@@ -8,11 +8,6 @@
 
 import Foundation
 
-// Protocol for doing a refresh in main view after testing for connectivity
-protocol Connections: class {
-    func displayConnections()
-}
-
 var globalMainQueue: DispatchQueue {
     return DispatchQueue.main
 }
@@ -23,7 +18,6 @@ var globalBackgroundQueue: DispatchQueue {
 
 class TCPconnections: SetConfigurations, Delay, Setlog {
 
-    weak var testconnectionsDelegate: Connections?
     var noconnections: [String]?
 
     // Test for TCP connection
