@@ -20,19 +20,6 @@ final class ScheduleOperationTimer: SecondsBeforeStart, SetSortedAndExpanded, Se
 
     private var timerTaskWaiting: Timer?
 
-    @objc private func executetasktest() {
-        // Start the task in BackgroundQueue
-        // The Process itself is executed in GlobalMainQueue
-        globalMainQueue.async(execute: { [weak self] in
-            let queue = OperationQueue()
-            // Create the Operation object which executes the scheduled job
-            let task = ExecuteTaskTimerMocup()
-            // Add the Operation object to the queue for execution.
-            // The queue executes the main() task whenever everything is ready for execution
-            queue.addOperation(task)
-        })
-    }
-
     @objc private func executetask() {
         // Start the task in BackgroundQueue
         // The Process itself is executed in GlobalMainQueue
@@ -50,25 +37,13 @@ final class ScheduleOperationTimer: SecondsBeforeStart, SetSortedAndExpanded, Se
         weak var updatestatuslightDelegate: Updatestatuslight?
         updatestatuslightDelegate = ViewControllerReference.shared.viewControllermain as? ViewControllerMain
         let seconds = self.secondsbeforestart()
-        guard ViewControllerReference.shared.executeschedulesmocup == false else {
-            guard seconds > 0 else {
-                self.logDelegate?.addlog(logrecord: "(Timer) Mocup timer: no more scheduled task in queue")
-                updatestatuslightDelegate?.updatestatuslight(color: .red)
-                return
-            }
-            updatestatuslightDelegate?.updatestatuslight(color: .yellow)
-            self.timerTaskWaiting = Timer.scheduledTimer(timeInterval: seconds, target: self, selector: #selector(executetasktest), userInfo: nil, repeats: false)
-            ViewControllerReference.shared.timerTaskWaiting = self.timerTaskWaiting
-            self.logDelegate?.addlog(logrecord: "(Timer) Mocup timer: task starts in: " + String(Int(seconds)))
-            return
-        }
         guard seconds > 0 else {
-            self.logDelegate?.addlog(logrecord: "(Timer) Timer: no more scheduled task in queue")
+            self.logDelegate?.addlog(logrecord: "Schedule timer: no more scheduled task in queue")
             updatestatuslightDelegate?.updatestatuslight(color: .red)
             return
         }
         let timestring = Dateandtime().timeString(seconds)
-        self.logDelegate?.addlog(logrecord: "(Timer)Timer: setting next scheduled task in: " + timestring)
+        self.logDelegate?.addlog(logrecord: "Schedule timer: setting next scheduled task in: " + timestring)
         self.timerTaskWaiting = Timer.scheduledTimer(timeInterval: seconds, target: self, selector: #selector(executetask), userInfo: nil, repeats: false)
         ViewControllerReference.shared.scheduledTask = self.sortedandexpanded?.getfirstscheduledtask()
         ViewControllerReference.shared.timerTaskWaiting = self.timerTaskWaiting

@@ -12,18 +12,6 @@ import Foundation
 
 class ViewControllerMain: NSViewController, Delay, Setlog {
 
-    // Abort button
-    @IBAction func mocup(_ sender: NSButton) {
-        if ViewControllerReference.shared.executeschedulesmocup == true {
-            ViewControllerReference.shared.executeschedulesmocup = false
-            self.addlog(logrecord: "Mocup mode DISABLED.")
-        } else {
-            ViewControllerReference.shared.executeschedulesmocup = true
-            self.addlog(logrecord: "Mocup mode ENABLED.")
-        }
-        self.reloadsortedandrefreshtabledata()
-    }
-
     // Information about logs
     var viewControllerInformation: NSViewController? {
         return (self.storyboard!.instantiateController(withIdentifier: NSStoryboard.SceneIdentifier(rawValue: "StoryboardInformationID"))
@@ -72,7 +60,6 @@ class ViewControllerMain: NSViewController, Delay, Setlog {
         } else {
             self.info(num: 2)
         }
-        // Check for new version
         _ = Checkfornewversion()
 	}
 

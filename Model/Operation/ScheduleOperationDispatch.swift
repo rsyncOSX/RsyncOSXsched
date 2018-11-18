@@ -12,16 +12,6 @@ class ScheduleOperationDispatch: SetSchedules, SecondsBeforeStart, Setlog {
 
     private var pendingRequestWorkItem: DispatchWorkItem?
 
-    private func dispatchtaskmocup(_ seconds: Int) {
-        let scheduledtask = DispatchWorkItem { [weak self] in
-            weak var reloadDelegate: Reloadsortedandrefresh?
-            reloadDelegate = ViewControllerReference.shared.viewControllermain as? ViewControllerMain
-            reloadDelegate?.reloadsortedandrefreshtabledata()
-        }
-        self.pendingRequestWorkItem = scheduledtask
-        DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(seconds), execute: scheduledtask)
-    }
-
     private func dispatchtask(_ seconds: Int) {
         let scheduledtask = DispatchWorkItem { [weak self] in
             _ = ExecuteTaskDispatch()
@@ -34,24 +24,13 @@ class ScheduleOperationDispatch: SetSchedules, SecondsBeforeStart, Setlog {
         weak var updatestatuslightDelegate: Updatestatuslight?
         updatestatuslightDelegate = ViewControllerReference.shared.viewControllermain as? ViewControllerMain
         let seconds = self.secondsbeforestart()
-        guard ViewControllerReference.shared.executeschedulesmocup == false else {
-            guard seconds > 0 else {
-                self.logDelegate?.addlog(logrecord: "(Dispatch) Mocup timer: no more scheduled task in queue")
-                updatestatuslightDelegate?.updatestatuslight(color: .red)
-                return
-            }
-            updatestatuslightDelegate?.updatestatuslight(color: .yellow)
-            self.logDelegate?.addlog(logrecord: "(Dispatch) Mocup timer: task starts in: " + String(Int(seconds)))
-            self.dispatchtaskmocup(Int(seconds))
-            return
-        }
         guard seconds > 0 else {
-            self.logDelegate?.addlog(logrecord: "(Dispatch) Timer: no more scheduled task in queue")
+            self.logDelegate?.addlog(logrecord: "Schedule Dispatch: no more scheduled task in queue")
             updatestatuslightDelegate?.updatestatuslight(color: .red)
             return
         }
         let timestring = Dateandtime().timeString(seconds)
-        self.logDelegate?.addlog(logrecord: "(Dispatch)Timer: setting next scheduled task in: " + timestring)
+        self.logDelegate?.addlog(logrecord: "Schedule Dispatch: setting next scheduled task in: " + timestring)
         self.dispatchtask(Int(seconds))
         // Set reference to schedule for later cancel if any
         ViewControllerReference.shared.dispatchTaskWaiting = self.pendingRequestWorkItem
