@@ -51,8 +51,6 @@ class ViewControllerReference {
     var pathrsyncosx: String?
     var pathrsyncosxsched: String?
     let namersyncosx: String = "RsyncOSX.app"
-    // Set true if test in menu app
-    var executeschedulesmocup: Bool = false
     // log file
     var fileURL: URL?
     // String tasks
