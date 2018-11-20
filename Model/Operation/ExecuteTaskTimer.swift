@@ -23,6 +23,6 @@ protocol GetTCPconnections: class {
 class ExecuteTaskTimer: Operation {
 
     override func main() {
-        _ = ExecuteTaskDispatch()
+        _ = ExecuteScheduledTask()
     }
 }

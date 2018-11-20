@@ -10,13 +10,13 @@ import Foundation
 
 class ScheduleOperationDispatch: SetSchedules, SecondsBeforeStart, Setlog {
 
-    private var pendingRequestWorkItem: DispatchWorkItem?
+    private var workitem: DispatchWorkItem?
 
     private func dispatchtask(_ seconds: Int) {
         let scheduledtask = DispatchWorkItem { [weak self] in
-            _ = ExecuteTaskDispatch()
+            _ = ExecuteScheduledTask()
         }
-        self.pendingRequestWorkItem = scheduledtask
+        self.workitem = scheduledtask
         DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(seconds), execute: scheduledtask)
     }
 
@@ -33,7 +33,7 @@ class ScheduleOperationDispatch: SetSchedules, SecondsBeforeStart, Setlog {
         self.logDelegate?.addlog(logrecord: "Schedule Dispatch: setting next scheduled task in: " + timestring)
         self.dispatchtask(Int(seconds))
         // Set reference to schedule for later cancel if any
-        ViewControllerReference.shared.dispatchTaskWaiting = self.pendingRequestWorkItem
+        ViewControllerReference.shared.dispatchTaskWaiting = self.workitem
         updatestatuslightDelegate?.updatestatuslight(color: .green)
     }
 }
