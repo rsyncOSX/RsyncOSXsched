@@ -20,7 +20,7 @@ protocol GetTCPconnections: class {
     func gettcpconnections() -> TCPconnections?
 }
 
-class ExecuteTaskTimer: Operation, SetSchedules, SetConfigurations, SetScheduledTask, Setlog {
+class ExecuteTaskTimer: Operation {
 
     override func main() {
         _ = ExecuteTaskDispatch()
