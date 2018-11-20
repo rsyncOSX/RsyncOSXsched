@@ -13,7 +13,7 @@ import Foundation
 // is set in the static object. The finalize object is invoked
 // when the job discover (observs) the termination of the process.
 
-class ExecuteTaskDispatch: SetSchedules, SetConfigurations, SetScheduledTask, Setlog {
+final class ExecuteTaskDispatch: SetSchedules, SetConfigurations, SetScheduledTask, Setlog {
 
     let outputprocess = OutputProcess()
     var arguments: [String]?
