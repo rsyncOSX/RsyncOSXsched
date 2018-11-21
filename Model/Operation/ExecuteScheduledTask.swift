@@ -19,7 +19,7 @@ final class ExecuteScheduledTask: SetSchedules, SetConfigurations, SetScheduledT
     var arguments: [String]?
     var config: Configuration?
 
-    private func executeTaskDispatch() {
+    private func executetask() {
         let outputprocess = OutputProcess()
         var arguments: [String]?
         weak var updatestatuslightDelegate: Updatestatuslight?
@@ -38,7 +38,6 @@ final class ExecuteScheduledTask: SetSchedules, SetConfigurations, SetScheduledT
                 reloaddataDelegate?.reloaddata(profilename: profilename)
             }
             if let hiddenID: Int = dict.value(forKey: "hiddenID") as? Int {
-                self.logDelegate?.addlog(logrecord: "Executing task hiddenID: " + String(hiddenID))
                 let getconfigurations: [Configuration]? = configurations?.getConfigurations()
                 guard getconfigurations != nil else { return }
                 let configArray = getconfigurations!.filter({return ($0.hiddenID == hiddenID)})
@@ -54,6 +53,7 @@ final class ExecuteScheduledTask: SetSchedules, SetConfigurations, SetScheduledT
                     // Setting reference to finalize the job, finalize job is done when rsynctask ends (in process termination)
                     ViewControllerReference.shared.completeoperation = CompleteScheduledOperation(dict: dict)
                     if arguments != nil {
+                        self.logDelegate?.addlog(logrecord: "Executing task in profile " + profilename! + " with ID " + config!.backupID)
                         weak var sendprocess: Sendprocessreference?
                         sendprocess = ViewControllerReference.shared.viewControllermain as? ViewControllerMain
                         let process = RsyncScheduled(arguments: arguments)
@@ -77,6 +77,6 @@ final class ExecuteScheduledTask: SetSchedules, SetConfigurations, SetScheduledT
     }
 
     init () {
-       self.executeTaskDispatch()
+       self.executetask()
     }
 }
