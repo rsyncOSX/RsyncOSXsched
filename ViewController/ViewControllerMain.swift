@@ -54,12 +54,8 @@ class ViewControllerMain: NSViewController, Delay, Setlog {
         ViewControllerReference.shared.viewControllermain = self
         self.configurations = Configurations(profile: nil)
         self.schedules = Schedules(profile: nil)
-        if ViewControllerReference.shared.executescheduledtasksmenuapp == true {
-            self.schedulesortedandexpanded = ScheduleSortedAndExpand()
-            self.startfirstscheduledtask()
-        } else {
-            self.info(num: 2)
-        }
+        self.schedulesortedandexpanded = ScheduleSortedAndExpand()
+        self.startfirstscheduledtask()
         _ = Checkfornewversion()
 	}
 
@@ -103,10 +99,6 @@ class ViewControllerMain: NSViewController, Delay, Setlog {
     }
 
     @IBAction func selectprofile(_ sender: NSComboBox) {
-        guard ViewControllerReference.shared.executescheduledtasksmenuapp == true else {
-            self.info(num: 2)
-            return
-        }
         self.reload()
     }
 
@@ -184,10 +176,6 @@ class ViewControllerMain: NSViewController, Delay, Setlog {
         globalMainQueue.async(execute: { () -> Void in
             switch num {
             case 1:
-                guard ViewControllerReference.shared.executescheduledtasksmenuapp == true else {
-                    self.info.stringValue = "Executing scheduled tasks is not enabled in RsyncOSX...."
-                    return
-                }
                 self.info.stringValue = "Some remote sites not avaliable, see log ...."
             case 2:
                 self.info.stringValue = "Executing scheduled tasks is not enabled in RsyncOSX...."
@@ -211,7 +199,7 @@ class ViewControllerMain: NSViewController, Delay, Setlog {
                 _ = ScheduleOperationTimer()
             }
         } else {
-            _ = ScheduleOperationTimer()
+            _ = ScheduleOperationDispatch()
         }
     }
 

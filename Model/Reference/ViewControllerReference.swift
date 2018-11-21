@@ -57,7 +57,7 @@ class ViewControllerReference {
     var backup: String = "synchronize"
     var snapshot: String = "snapshot"
     // Execute scheduled tasks in menu app, default off
-    var executescheduledtasksmenuapp: Bool = false
+    // var executescheduledtasksmenuapp: Bool = false
     // Mac serialnumer
     var macserialnumber: String?
     // Operation
