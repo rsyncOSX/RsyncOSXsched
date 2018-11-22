@@ -13,7 +13,6 @@ import Foundation
 // The object does also kicks of next scheduled job by setting new waiter time.
 final class CompleteScheduledOperation: SetScheduledTask, SetConfigurations, SetSchedules, Setlog {
 
-    // weak var startTimerDelegate: StartTimer?
     private var date: Date?
     private var dateStart: Date?
     private var dateformatter: DateFormatter?
@@ -33,7 +32,6 @@ final class CompleteScheduledOperation: SetScheduledTask, SetConfigurations, Set
         self.logDelegate?.addlog(logrecord: "Adding result to log: " + numberstring)
         self.schedules!.addresultschedule(self.hiddenID!, dateStart: dateStartstring, result: numberstring, date: datestring, schedule: schedule!)
         _ = Notifications().showNotification(message: datestring + " " + numberstring)
-        // Writing timestamp to configuration
         self.configurations!.setCurrentDateonConfigurationQuickbackup(self.index!, outputprocess: outputprocess)
     }
 
