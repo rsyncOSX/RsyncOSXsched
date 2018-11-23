@@ -41,6 +41,7 @@ class ViewControllerMain: NSViewController, Delay, Setlog {
     var outputprocess: OutputProcess?
     var profilename: String?
     var log: [String]?
+    var reloadnotification: NSObjectProtocol?
 
     private var profilesArray: [String]?
     private var profile: Files?
@@ -57,9 +58,7 @@ class ViewControllerMain: NSViewController, Delay, Setlog {
         self.schedulesortedandexpanded = ScheduleSortedAndExpand()
         self.startfirstscheduledtask()
         _ = Checkfornewversion()
-        DistributedNotificationCenter.default().addObserver(forName: NSNotification.Name("no.blogspot.RsyncOSX.reload"), object: nil, queue: nil) { _ in
-            self.addlog(logrecord: "Got notification")
-        }
+        self.addobserverforreload()
 	}
 
     override func viewDidAppear() {
@@ -71,6 +70,16 @@ class ViewControllerMain: NSViewController, Delay, Setlog {
         globalMainQueue.async(execute: { () -> Void in
             self.mainTableView.reloadData()
         })
+    }
+
+    private func addobserverforreload() {
+        self.reloadnotification = DistributedNotificationCenter.default().addObserver(forName: NSNotification.Name("no.blogspot.RsyncOSX.reload"), object: nil, queue: nil) { _ -> Void in
+            self.addlog(logrecord: "Got notification")
+            }
+    }
+
+    private func removeobserverforreload() {
+        NotificationCenter.default.removeObserver(self.reloadnotification as Any)
     }
 
     private func checkforrunning() {
@@ -210,13 +219,14 @@ class ViewControllerMain: NSViewController, Delay, Setlog {
         self.logDelegate?.addlog(logrecord: "Activating schedules again after sleeping...")
         self.schedulesortedandexpanded = ScheduleSortedAndExpand()
         self.startfirstscheduledtask()
-
+        self.addobserverforreload()
     }
 
     @objc func onSleepNote(note: NSNotification) {
         self.logDelegate?.addlog(logrecord: "Invalidating tasks and going to sleep...")
         ViewControllerReference.shared.dispatchTaskWaiting?.cancel()
         ViewControllerReference.shared.timerTaskWaiting?.invalidate()
+        self.removeobserverforreload()
     }
 
     private func sleepandwakenotifications() {
