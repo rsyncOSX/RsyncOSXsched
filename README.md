@@ -22,7 +22,7 @@ There is a minimal logging in the menu app. The menu app logs the major actions 
 
 ### Application icon
 
-The application icon is created by [Zsolt Sándor](https://github.com/graphis). All rights reserved to Zsolt Sándor.
+The application icon for `RsyncOSXsched.app` (not the `menu app` icon) is created by [Zsolt Sándor](https://github.com/graphis). All rights reserved to Zsolt Sándor.
 
 ### Signing and notarizing
 
