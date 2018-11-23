@@ -57,6 +57,9 @@ class ViewControllerMain: NSViewController, Delay, Setlog {
         self.schedulesortedandexpanded = ScheduleSortedAndExpand()
         self.startfirstscheduledtask()
         _ = Checkfornewversion()
+        DistributedNotificationCenter.default().addObserver(forName: NSNotification.Name("no.blogspot.RsyncOSX.reload"), object: nil, queue: nil) { _ in
+            self.addlog(logrecord: "Got notification")
+        }
 	}
 
     override func viewDidAppear() {
