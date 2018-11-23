@@ -12,7 +12,7 @@ The `menu app` submit a notification when a scheduled tasks is completed. A sche
 
 ![](screenshots/notifications.png)
 
-The status light is green indicates there are active tasks waiting for execution.
+If there are tasks waiting for executing the status light is green.
 
 ![](screenshots/menuapp1.png)
 
