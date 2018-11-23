@@ -40,7 +40,7 @@ The message is in Norwegian: "Apple har sjekket programmet uten å finne ondsinn
 
 #### SwiftLint
 
-As part of this version of RsyncOSX I am using [SwiftLint](https://github.com/realm/SwiftLint) as tool for writing more readable code. There are about 125 classes with 15,000 lines of code in RsyncOSX (too many?). I am also using [Paul Taykalo swift-scripts](https://github.com/PaulTaykalo/swift-scripts) to find and delete not used code.
+As part of this version of RsyncOSXsched I am using [SwiftLint](https://github.com/realm/SwiftLint) as tool for writing more readable code. I am also using Paul Taykalo´s [swift-scripts](https://github.com/PaulTaykalo/swift-scripts) to find and delete not used code.
 
 ### Compile
 
