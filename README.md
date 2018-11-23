@@ -2,9 +2,9 @@
 
 ![](icon/menuapp.png)
 
-This is the `menu app` for executing scheduled tasks in RsyncOSX. Scheduled tasks are added in RsyncOSX, quit RsyncOSX and let the menu app take care of executing the scheduled tasks. RsyncOSX does **not** execute scheduled tasks.
+This is the `menu app` (RsyncOSXsched.app) for executing scheduled tasks in RsyncOSX. Scheduled tasks are added in RsyncOSX. Quit RsyncOSX and let the menu app take care of executing the scheduled tasks. RsyncOSX does **not** execute scheduled tasks. Scheduled tasks are only added and deleted in RsyncOSX.
 
-The `menu app` should be started from RsyncOSX. This require paths for both apps to be entered into userconfiguration.  The paths are used for activating the apps from either within RsyncOSX or RsyncOSXsched. Adding paths for applications automatically enables, if both apps are found, executing scheduled apps in the `menu app`. To disable delete paths.
+The `menu app` can be started from RsyncOSX. This require paths for both apps to be entered into userconfiguration.  The paths are used for activating the apps from either within RsyncOSX or RsyncOSXsched.
 
 ![](screenshots/userconfig.png).
 
@@ -19,6 +19,10 @@ The status light is green indicates there are active tasks waiting for execution
 There is a minimal logging in the menu app. The menu app logs the major actions within the menu app.
 
 ![](screenshots/menuapp2.png)
+
+### Application icon
+
+The application icon is created by [Zsolt Sándor](https://github.com/graphis). All rights reserved to Zsolt Sándor.
 
 ### Signing and notarizing
 
