@@ -74,12 +74,10 @@ class ViewControllerMain: NSViewController, Delay, Setlog {
 
     private func addobserverforreload() {
         self.reloadnotification = DistributedNotificationCenter.default().addObserver(forName: NSNotification.Name("no.blogspot.RsyncOSX.reload"), object: nil, queue: nil) { _ -> Void in
-            self.addlog(logrecord: "Got notification")
-            }
-    }
-
-    private func removeobserverforreload() {
-        NotificationCenter.default.removeObserver(self.reloadnotification as Any)
+            self.addlog(logrecord: "Got notification for reload")
+            self.schedulesortedandexpanded = ScheduleSortedAndExpand()
+            self.startfirstscheduledtask()
+        }
     }
 
     private func checkforrunning() {
@@ -219,14 +217,12 @@ class ViewControllerMain: NSViewController, Delay, Setlog {
         self.logDelegate?.addlog(logrecord: "Activating schedules again after sleeping...")
         self.schedulesortedandexpanded = ScheduleSortedAndExpand()
         self.startfirstscheduledtask()
-        self.addobserverforreload()
     }
 
     @objc func onSleepNote(note: NSNotification) {
         self.logDelegate?.addlog(logrecord: "Invalidating tasks and going to sleep...")
         ViewControllerReference.shared.dispatchTaskWaiting?.cancel()
         ViewControllerReference.shared.timerTaskWaiting?.invalidate()
-        self.removeobserverforreload()
     }
 
     private func sleepandwakenotifications() {
