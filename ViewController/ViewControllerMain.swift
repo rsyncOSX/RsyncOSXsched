@@ -75,6 +75,7 @@ class ViewControllerMain: NSViewController, Delay, Setlog {
     private func addobserverforreload() {
         self.reloadnotification = DistributedNotificationCenter.default().addObserver(forName: NSNotification.Name("no.blogspot.RsyncOSX.reload"), object: nil, queue: nil) { _ -> Void in
             self.addlog(logrecord: "Got notification for reload")
+            self.reloadselectedprofile()
             self.schedulesortedandexpanded = ScheduleSortedAndExpand()
             self.startfirstscheduledtask()
         }
@@ -95,7 +96,7 @@ class ViewControllerMain: NSViewController, Delay, Setlog {
     @IBAction func abort(_ sender: NSButton) {
         ViewControllerReference.shared.process?.terminate()
         self.progress.stopAnimation(nil)
-        self.reload()
+        self.reloadselectedprofile()
     }
 
 	@IBAction func closeButtonAction(_ sender: NSButton) {
@@ -109,7 +110,7 @@ class ViewControllerMain: NSViewController, Delay, Setlog {
     }
 
     @IBAction func selectprofile(_ sender: NSComboBox) {
-        self.reload()
+        self.reloadselectedprofile()
     }
 
     @IBAction func viewlogg(_ sender: NSButton) {
@@ -120,7 +121,7 @@ class ViewControllerMain: NSViewController, Delay, Setlog {
         self.presentViewControllerAsSheet(self.viewControllerAllschedules!)
     }
 
-    private func reload() {
+    private func reloadselectedprofile() {
         self.info(num: -1)
         guard self.profilesArray != nil else { return }
         guard self.profilescombobox.indexOfSelectedItem > 0 else {
