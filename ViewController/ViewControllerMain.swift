@@ -75,6 +75,7 @@ class ViewControllerMain: NSViewController, Delay, Setlog {
     private func addobserverforreload() {
         self.reloadnotification = DistributedNotificationCenter.default().addObserver(forName: NSNotification.Name("no.blogspot.RsyncOSX.reload"), object: nil, queue: nil) { _ -> Void in
             self.addlog(logrecord: "Got notification for reload")
+            self.reloadselectedprofile()
             self.schedulesortedandexpanded = ScheduleSortedAndExpand()
             self.startfirstscheduledtask()
         }
@@ -95,7 +96,7 @@ class ViewControllerMain: NSViewController, Delay, Setlog {
     @IBAction func abort(_ sender: NSButton) {
         ViewControllerReference.shared.process?.terminate()
         self.progress.stopAnimation(nil)
-        self.reload()
+        self.reloadselectedprofile()
     }
 
 	@IBAction func closeButtonAction(_ sender: NSButton) {
@@ -109,7 +110,7 @@ class ViewControllerMain: NSViewController, Delay, Setlog {
     }
 
     @IBAction func selectprofile(_ sender: NSComboBox) {
-        self.reload()
+        self.reloadselectedprofile()
     }
 
     @IBAction func viewlogg(_ sender: NSButton) {
@@ -120,7 +121,7 @@ class ViewControllerMain: NSViewController, Delay, Setlog {
         self.presentViewControllerAsSheet(self.viewControllerAllschedules!)
     }
 
-    private func reload() {
+    private func reloadselectedprofile() {
         self.info(num: -1)
         guard self.profilesArray != nil else { return }
         guard self.profilescombobox.indexOfSelectedItem > 0 else {
@@ -129,8 +130,6 @@ class ViewControllerMain: NSViewController, Delay, Setlog {
             self.profilename = nil
             self.createandreloadconfigurations()
             self.createandreloadschedules()
-            self.schedulesortedandexpanded = ScheduleSortedAndExpand()
-            self.startfirstscheduledtask()
             return
         }
         self.profilename = self.profilesArray![self.profilescombobox.indexOfSelectedItem]
@@ -138,11 +137,10 @@ class ViewControllerMain: NSViewController, Delay, Setlog {
         self.addlog(logrecord: "Profile: " + self.profilename! + " loaded.")
         self.createandreloadconfigurations()
         self.createandreloadschedules()
-        self.schedulesortedandexpanded = ScheduleSortedAndExpand()
-        self.startfirstscheduledtask()
     }
 
     func createandreloadschedules() {
+        self.addlog(logrecord: "Reading schedules for current profile")
         guard self.configurations != nil else {
             self.schedules = Schedules(profile: nil)
             return
@@ -157,6 +155,7 @@ class ViewControllerMain: NSViewController, Delay, Setlog {
     }
 
     func createandreloadconfigurations() {
+        self.addlog(logrecord: "Reading configurations for current profile")
         guard self.configurations != nil else {
             self.configurations = Configurations(profile: nil)
             return
