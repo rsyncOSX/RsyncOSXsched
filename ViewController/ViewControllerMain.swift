@@ -129,8 +129,6 @@ class ViewControllerMain: NSViewController, Delay, Setlog {
             self.profilename = nil
             self.createandreloadconfigurations()
             self.createandreloadschedules()
-            self.schedulesortedandexpanded = ScheduleSortedAndExpand()
-            self.startfirstscheduledtask()
             return
         }
         self.profilename = self.profilesArray![self.profilescombobox.indexOfSelectedItem]
@@ -138,11 +136,10 @@ class ViewControllerMain: NSViewController, Delay, Setlog {
         self.addlog(logrecord: "Profile: " + self.profilename! + " loaded.")
         self.createandreloadconfigurations()
         self.createandreloadschedules()
-        self.schedulesortedandexpanded = ScheduleSortedAndExpand()
-        self.startfirstscheduledtask()
     }
 
     func createandreloadschedules() {
+        self.addlog(logrecord: "Reading schedules for current profile")
         guard self.configurations != nil else {
             self.schedules = Schedules(profile: nil)
             return
@@ -157,6 +154,7 @@ class ViewControllerMain: NSViewController, Delay, Setlog {
     }
 
     func createandreloadconfigurations() {
+        self.addlog(logrecord: "Reading configurations for current profile")
         guard self.configurations != nil else {
             self.configurations = Configurations(profile: nil)
             return
