@@ -55,10 +55,10 @@ class ViewControllerMain: NSViewController, Delay, Setlog {
         ViewControllerReference.shared.viewControllermain = self
         self.configurations = Configurations(profile: nil)
         self.schedules = Schedules(profile: nil)
-        self.schedulesortedandexpanded = ScheduleSortedAndExpand()
-        self.startfirstscheduledtask()
         _ = Checkfornewversion()
         self.addobserverforreload()
+        self.schedulesortedandexpanded = ScheduleSortedAndExpand()
+        self.startfirstscheduledtask()
 	}
 
     override func viewDidAppear() {

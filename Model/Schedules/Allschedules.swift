@@ -51,17 +51,18 @@ class Allschedules {
             } else {
                 configurationschedule = PersistentStorageAPI(profile: profilename).getScheduleandhistory(nolog: true)
             }
-            guard configurationschedule != nil else { return }
-            for j in 0 ..< configurationschedule!.count {
-                configurationschedule![j].profilename = profilename
-                let offsiteserver = configurationschedule![j].offsiteserver ?? ""
-                let ifadded = self.alloffsiteservers!.filter({return $0 == offsiteserver})
-                if ifadded.count == 0 {
-                    if offsiteserver.isEmpty == true || offsiteserver != "localhost" {
-                         self.alloffsiteservers?.append(offsiteserver)
+            if configurationschedule != nil {
+                for j in 0 ..< configurationschedule!.count {
+                    configurationschedule![j].profilename = profilename
+                    let offsiteserver = configurationschedule![j].offsiteserver ?? ""
+                    let ifadded = self.alloffsiteservers!.filter({return $0 == offsiteserver})
+                    if ifadded.count == 0 {
+                        if offsiteserver.isEmpty == true || offsiteserver != "localhost" {
+                            self.alloffsiteservers?.append(offsiteserver)
+                        }
                     }
+                    self.allschedules!.append(configurationschedule![j])
                 }
-                self.allschedules!.append(configurationschedule![j])
             }
         }
     }
