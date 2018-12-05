@@ -15,10 +15,6 @@ import Foundation
 
 final class ExecuteScheduledTask: SetSchedules, SetConfigurations, SetScheduledTask, Setlog {
 
-    let outputprocess = OutputProcess()
-    var arguments: [String]?
-    var config: Configuration?
-
     private func executetask() {
         let outputprocess = OutputProcess()
         var arguments: [String]?
