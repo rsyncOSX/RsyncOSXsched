@@ -14,13 +14,13 @@ class ViewControllerMain: NSViewController, Delay, Setlog {
 
     // Information about logs
     var viewControllerInformation: NSViewController? {
-        return (self.storyboard!.instantiateController(withIdentifier: NSStoryboard.SceneIdentifier(rawValue: "StoryboardInformationID"))
+        return (self.storyboard!.instantiateController(withIdentifier: "StoryboardInformationID")
             as? NSViewController)!
     }
 
     // All schedules
     var viewControllerAllschedules: NSViewController? {
-        return (self.storyboard!.instantiateController(withIdentifier: NSStoryboard.SceneIdentifier(rawValue: "StoryboardAllschedulesID"))
+        return (self.storyboard!.instantiateController(withIdentifier: "StoryboardAllschedulesID")
             as? NSViewController)!
     }
 
@@ -114,11 +114,11 @@ class ViewControllerMain: NSViewController, Delay, Setlog {
     }
 
     @IBAction func viewlogg(_ sender: NSButton) {
-        self.presentViewControllerAsSheet(self.viewControllerInformation!)
+        self.presentAsSheet(self.viewControllerInformation!)
     }
 
     @IBAction func viewallschedules(_ sender: NSButton) {
-        self.presentViewControllerAsSheet(self.viewControllerAllschedules!)
+        self.presentAsSheet(self.viewControllerAllschedules!)
     }
 
     private func reloadselectedprofile() {
@@ -313,7 +313,7 @@ extension ViewControllerMain: Information {
 
 extension ViewControllerMain: DismissViewController {
     func dismiss_view(viewcontroller: NSViewController) {
-        self.dismissViewController(viewcontroller)
+        self.dismiss(viewcontroller)
     }
 }
 
