@@ -174,7 +174,7 @@ class ViewControllerMain: NSViewController, Delay, Setlog {
 
     private func setprofiles() {
         self.profile = nil
-        self.profile = Files(root: .profileRoot)
+        self.profile = Files(whichroot: .profileRoot)
         self.profilesArray = self.profile!.getDirectorysStrings()
         self.profilescombobox.removeAllItems()
         guard self.profilesArray != nil else { return }

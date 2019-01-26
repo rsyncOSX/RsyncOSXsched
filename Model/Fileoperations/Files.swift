@@ -35,18 +35,18 @@ extension Reportfileerror {
     }
 }
 
-enum Root {
+enum WhichRoot {
     case profileRoot
     case sshRoot
 }
 
 class Files: Reportfileerror, SetConfigurations {
 
-    var root: Root?
+    var whichroot: WhichRoot?
     var rootpath: String?
 
     private func setrootpath() {
-        switch self.root! {
+        switch self.whichroot! {
         case .profileRoot:
             let paths = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true) as NSArray
             let docuDir = (paths.firstObject as? String)!
@@ -91,8 +91,8 @@ class Files: Reportfileerror, SetConfigurations {
         }
     }
 
-    init (root: Root) {
-        self.root = root
+    init (whichroot: WhichRoot) {
+        self.whichroot = whichroot
         self.setrootpath()
     }
 
