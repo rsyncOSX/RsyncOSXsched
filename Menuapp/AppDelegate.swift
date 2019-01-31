@@ -13,11 +13,11 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 	var eventMonitor: EventMonitor?
 
     var storyboard: NSStoryboard? {
-        return NSStoryboard(name: NSStoryboard.Name(rawValue: "Main"), bundle: nil)
+        return NSStoryboard(name: "Main", bundle: nil)
     }
 
     var mainViewController: NSViewController? {
-        return (self.storyboard!.instantiateController(withIdentifier: NSStoryboard.SceneIdentifier(rawValue: "ViewControllerId"))
+        return (self.storyboard!.instantiateController(withIdentifier: "ViewControllerId")
             as? NSViewController)!
     }
 
@@ -29,7 +29,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             _ = Userconfiguration(userconfigRsyncOSX: userConfiguration)
         }
 		if let button = self.statusItem.button {
-			button.image = NSImage(named: NSImage.Name(rawValue: "MenubarButton"))
+			button.image = NSImage(named: "MenubarButton")
 			button.action = #selector(AppDelegate.togglePopover(_:))
 		}
 		self.popover.contentViewController = self.mainViewController
