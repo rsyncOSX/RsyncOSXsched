@@ -2,7 +2,7 @@
 
 ![](icon/menuapp.png)
 
-This repository is updated for Xcode 10.2 and Swift 5. Both are still in beta and yet not released by Apple. The branch "v5.6.2.-fixes" is for updating fixes to the released version of RsyncOSXsched if the upcoming release of Xcode 10.2 and Swift 5 takes some time.
+This repository is updated for Xcode 10.2 and Swift 5. Both are still in beta and yet not released by Apple. The branch `v5.7.1-fixes` is for updating fixes to the released version of RsyncOSXsched if the upcoming release of Xcode 10.2 and Swift 5 takes some time.
 
 This is the `menu app` (RsyncOSXsched.app) for executing scheduled tasks in RsyncOSX. Scheduled tasks are added in RsyncOSX. Quit RsyncOSX and let the menu app take care of executing the scheduled tasks. RsyncOSX does **not** execute scheduled tasks. Scheduled tasks are only added and deleted in RsyncOSX.
 
