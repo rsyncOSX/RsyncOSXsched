@@ -15,8 +15,6 @@ class ViewControllerLog: NSViewController, SetDismisser, GetInformation {
     @IBOutlet weak var detailsTable: NSTableView!
     @IBOutlet weak var writeloggbutton: NSButton!
 
-    var log: [String]?
-
     override func viewDidLoad() {
         super.viewDidLoad()
         self.detailsTable.delegate = self
@@ -25,7 +23,6 @@ class ViewControllerLog: NSViewController, SetDismisser, GetInformation {
 
     override func viewDidAppear() {
         super.viewDidAppear()
-        self.log = self.getinfo()
         globalMainQueue.async(execute: { () -> Void in
             self.detailsTable.reloadData()
         })
@@ -36,7 +33,7 @@ class ViewControllerLog: NSViewController, SetDismisser, GetInformation {
     }
 
     @IBAction func writelogg(_ sender: NSButton) {
-        _ = Logging(array: self.log ?? [])
+        _ = Logging(array: self.getinfo())
         self.dismissview(viewcontroller: self)
     }
 }
@@ -44,7 +41,7 @@ class ViewControllerLog: NSViewController, SetDismisser, GetInformation {
 extension ViewControllerLog: NSTableViewDataSource {
 
     func numberOfRows(in aTableView: NSTableView) -> Int {
-        return self.log?.count ?? 0
+        return self.getinfo().count
     }
 }
 
@@ -54,7 +51,7 @@ extension ViewControllerLog: NSTableViewDelegate {
         var text: String = ""
         var cellIdentifier: String = ""
         if tableColumn == tableView.tableColumns[0] {
-            text = self.log![row]
+            text = self.getinfo()[row]
             cellIdentifier = "outputID"
         }
         if let cell = tableView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: cellIdentifier), owner: nil) as? NSTableCellView {
