@@ -9,7 +9,7 @@
 
 import Foundation
 
-class Logging: Reportfileerror {
+class Logg: Reportfileerror {
 
     var array: [String]?
     var log: String?

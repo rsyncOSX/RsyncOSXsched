@@ -18,7 +18,7 @@ enum Fileerrortype {
 
 // Protocol for reporting file errors
 protocol Fileerror: class {
-    func fileerror(errorstr: String, errortype: Fileerrortype)
+    func errormessage(errorstr: String, errortype: Fileerrortype)
 }
 
 protocol Reportfileerror {
@@ -31,7 +31,7 @@ extension Reportfileerror {
     }
 
     func error(error: String, errortype: Fileerrortype) {
-        self.errorDelegate?.fileerror(errorstr: error, errortype: errortype)
+        self.errorDelegate?.errormessage(errorstr: error, errortype: errortype)
     }
 }
 
@@ -40,17 +40,19 @@ enum WhichRoot {
     case sshRoot
 }
 
-class Files: Reportfileerror, SetConfigurations {
+class Files: Reportfileerror {
 
     var whichroot: WhichRoot?
     var rootpath: String?
+    // ViewControllerReference.shared.configpath or RcloneReference.shared.configpath
+    private var configpath: String?
 
     private func setrootpath() {
         switch self.whichroot! {
         case .profileRoot:
             let paths = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true) as NSArray
             let docuDir = (paths.firstObject as? String)!
-            let profilePath = docuDir + ViewControllerReference.shared.configpath + Macserialnumber().getMacSerialNumber()!
+            let profilePath = docuDir + self.configpath! + Macserialnumber().getMacSerialNumber()!
             self.rootpath = profilePath
         case .sshRoot:
             self.rootpath = NSHomeDirectory() + "/.ssh/"
@@ -91,7 +93,8 @@ class Files: Reportfileerror, SetConfigurations {
         }
     }
 
-    init (whichroot: WhichRoot) {
+    init (whichroot: WhichRoot, configpath: String) {
+        self.configpath = configpath
         self.whichroot = whichroot
         self.setrootpath()
     }

@@ -12,7 +12,7 @@
 
 import Foundation
 
-final class PersistentStorageScheduling: Readwritefiles, SetSchedules {
+final class PersistentStorageScheduling: ReadWriteDictionary, SetSchedules {
 
     private var schedulesasDict: [NSDictionary]?
     /// Function reads schedules from permanent store
@@ -53,13 +53,13 @@ final class PersistentStorageScheduling: Readwritefiles, SetSchedules {
     // Schedule is [NSDictionary]
     private func writeToStore (_ array: [NSDictionary]) {
         self.logDelegate?.addlog(logrecord: "Write and reload schedules")
-        if self.writeDatatoPersistentStorage(array, task: .schedule) {
+        if self.writeNSDictionaryToPersistentStorage(array) {
             self.schedulesDelegate?.createandreloadschedules()
         }
     }
 
     init (profile: String?) {
-        super.init(task: .schedule, profile: profile)
-        self.schedulesasDict = self.getDatafromfile()
+        super.init(whattoreadwrite: .schedule, profile: profile)
+        self.schedulesasDict = self.readNSDictionaryFromPersistentStore()
     }
 }

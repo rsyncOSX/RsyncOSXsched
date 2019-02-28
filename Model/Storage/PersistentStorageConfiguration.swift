@@ -9,7 +9,7 @@
 
 import Foundation
 
-final class PersistentStorageConfiguration: Readwritefiles {
+final class PersistentStorageConfiguration: ReadWriteDictionary {
 
     /// Variable holds all configuration data from persisten storage
     private var configurationsAsNSDict: [NSDictionary]?
@@ -114,13 +114,13 @@ final class PersistentStorageConfiguration: Readwritefiles {
     // Configuration is [NSDictionary]
     private func writeToStore (_ array: [NSDictionary]) {
         self.logDelegate?.addlog(logrecord: "Write and reload configurations")
-        if self.writeDatatoPersistentStorage(array, task: .configuration) {
+        if self.writeNSDictionaryToPersistentStorage(array) {
             self.configurationsDelegate?.createandreloadconfigurations()
         }
     }
 
     init (profile: String?) {
-        super.init(task: .configuration, profile: profile)
-        self.configurationsAsNSDict = self.getDatafromfile()
+        super.init(whattoreadwrite: .configuration, profile: profile)
+        self.configurationsAsNSDict = self.readNSDictionaryFromPersistentStore()
     }
 }

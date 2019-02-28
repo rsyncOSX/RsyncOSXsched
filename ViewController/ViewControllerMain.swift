@@ -174,7 +174,7 @@ class ViewControllerMain: NSViewController, Delay, Setlog {
 
     private func setprofiles() {
         self.profile = nil
-        self.profile = Files(whichroot: .profileRoot)
+        self.profile = Files(whichroot: .profileRoot, configpath: ViewControllerReference.shared.configpath)
         self.profilesArray = self.profile!.getDirectorysStrings()
         self.profilescombobox.removeAllItems()
         guard self.profilesArray != nil else { return }
@@ -401,7 +401,7 @@ extension ViewControllerMain: RsyncError {
 }
 
 extension ViewControllerMain: Fileerror {
-    func fileerror(errorstr: String, errortype: Fileerrortype) {
+    func errormessage(errorstr: String, errortype: Fileerrortype) {
         self.logDelegate?.addlog(logrecord: errorstr)
     }
 }

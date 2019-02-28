@@ -21,7 +21,7 @@ enum WhatToReadWrite {
     case none
 }
 
-class Readwritefiles: SetConfigurations, Setlog {
+class ReadWriteDictionary: SetConfigurations, Setlog {
 
     // Name set for schedule, configuration or config
     private var name: String?
@@ -62,7 +62,7 @@ class Readwritefiles: SetConfigurations, Setlog {
     }
 
     // Function for reading data from persistent store
-    func getDatafromfile() -> [NSDictionary]? {
+    func readNSDictionaryFromPersistentStore() -> [NSDictionary]? {
         var data = [NSDictionary]()
         guard self.filename != nil && self.key != nil else { return nil }
         let dictionary = NSDictionary(contentsOfFile: self.filename!)
@@ -79,8 +79,7 @@ class Readwritefiles: SetConfigurations, Setlog {
     }
 
     // Function for write data to persistent store
-    func writeDatatoPersistentStorage (_ array: [NSDictionary], task: WhatToReadWrite) -> Bool {
-        self.setpreferences(task)
+    func writeNSDictionaryToPersistentStorage (_ array: [NSDictionary]) -> Bool {
         let dictionary = NSDictionary(object: array, forKey: self.key! as NSCopying)
         guard self.filename != nil else { return false }
         self.logDelegate?.addlog(logrecord: "Writing: " + self.filename! + " to disk.")
@@ -105,12 +104,12 @@ class Readwritefiles: SetConfigurations, Setlog {
         }
     }
 
-    init(task: WhatToReadWrite, profile: String?) {
+    init(whattoreadwrite: WhatToReadWrite, profile: String?) {
         if profile != nil {
             self.profile = profile
             self.useProfile = true
         }
-        self.setpreferences(task)
+        self.setpreferences(whattoreadwrite)
         self.setnameandpath()
     }
 

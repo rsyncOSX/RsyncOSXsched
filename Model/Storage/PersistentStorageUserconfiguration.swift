@@ -8,7 +8,7 @@
 
 import Foundation
 
-final class PersistentStorageUserconfiguration: Readwritefiles {
+final class PersistentStorageUserconfiguration: ReadWriteDictionary {
 
     /// Variable holds all configuration data
     private var userconfiguration: [NSDictionary]?
@@ -20,9 +20,9 @@ final class PersistentStorageUserconfiguration: Readwritefiles {
     }
 
     init (readfromstorage: Bool) {
-        super.init(task: .userconfig, profile: nil)
+        super.init(whattoreadwrite: .userconfig, profile: nil)
         if readfromstorage {
-            self.userconfiguration = self.getDatafromfile()
+            self.userconfiguration = self.readNSDictionaryFromPersistentStore()
         }
     }
 }
