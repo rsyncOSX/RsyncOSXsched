@@ -64,7 +64,7 @@
 		E98BB14B202763B40078DF8E /* Numbers.swift in Sources */ = {isa = PBXBuildFile; fileRef = E98BB14A202763B40078DF8E /* Numbers.swift */; };
 		E9A63066202B4DE900F1FFF1 /* Running.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A63065202B4DE900F1FFF1 /* Running.swift */; };
 		E9B5B4602133F2DB004B7041 /* Checkfornewversion.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9B5B45F2133F2DB004B7041 /* Checkfornewversion.swift */; };
-		E9B96299203802EF00EA6D5A /* Logging.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9B96298203802EF00EA6D5A /* Logging.swift */; };
+		E9B96299203802EF00EA6D5A /* Logg.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9B96298203802EF00EA6D5A /* Logg.swift */; };
 		E9E6A7C7213278C300342168 /* Dateandtime.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E6A7C4213278C200342168 /* Dateandtime.swift */; };
 		E9E6A7C8213278C300342168 /* Verifyrsyncpath.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E6A7C5213278C200342168 /* Verifyrsyncpath.swift */; };
 		E9E6A7C9213278C300342168 /* Macserialnumber.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E6A7C6213278C300342168 /* Macserialnumber.swift */; };
@@ -128,7 +128,7 @@
 		E98BB14A202763B40078DF8E /* Numbers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Numbers.swift; sourceTree = "<group>"; };
 		E9A63065202B4DE900F1FFF1 /* Running.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Running.swift; sourceTree = "<group>"; };
 		E9B5B45F2133F2DB004B7041 /* Checkfornewversion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Checkfornewversion.swift; sourceTree = "<group>"; };
-		E9B96298203802EF00EA6D5A /* Logging.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logging.swift; sourceTree = "<group>"; };
+		E9B96298203802EF00EA6D5A /* Logg.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logg.swift; sourceTree = "<group>"; };
 		E9E6A7C4213278C200342168 /* Dateandtime.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Dateandtime.swift; sourceTree = "<group>"; };
 		E9E6A7C5213278C200342168 /* Verifyrsyncpath.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Verifyrsyncpath.swift; sourceTree = "<group>"; };
 		E9E6A7C6213278C300342168 /* Macserialnumber.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Macserialnumber.swift; sourceTree = "<group>"; };
@@ -264,7 +264,7 @@
 				E9E6A7C5213278C200342168 /* Verifyrsyncpath.swift */,
 				E98BB14A202763B40078DF8E /* Numbers.swift */,
 				E9A63065202B4DE900F1FFF1 /* Running.swift */,
-				E9B96298203802EF00EA6D5A /* Logging.swift */,
+				E9B96298203802EF00EA6D5A /* Logg.swift */,
 				E90CAC5E203D7409004BA7C6 /* Notifications.swift */,
 			);
 			path = Tools;
@@ -486,7 +486,7 @@
 				E90CAC5F203D7409004BA7C6 /* Notifications.swift in Sources */,
 				E94DDC8720A40CC90041CF53 /* ViewControllerSchedules.swift in Sources */,
 				E91C5DBF2026F8FA00FE7E76 /* ScheduleSortedAndExpanded.swift in Sources */,
-				E9B96299203802EF00EA6D5A /* Logging.swift in Sources */,
+				E9B96299203802EF00EA6D5A /* Logg.swift in Sources */,
 				E91C5DC72026FB3500FE7E76 /* ProcessCmd.swift in Sources */,
 				E91C5DC02026F8FA00FE7E76 /* Schedules.swift in Sources */,
 				94E0FC4E1BD7FCBE00A3C537 /* EventMonitor.swift in Sources */,

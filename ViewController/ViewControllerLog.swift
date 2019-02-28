@@ -33,7 +33,7 @@ class ViewControllerLog: NSViewController, SetDismisser, GetInformation {
     }
 
     @IBAction func writelogg(_ sender: NSButton) {
-        _ = Logging(array: self.getinfo())
+        _ = Logg(array: self.getinfo())
         self.dismissview(viewcontroller: self)
     }
 }
