@@ -12,13 +12,7 @@ import Foundation
 final class PersistentStorageConfiguration: ReadWriteDictionary {
 
     /// Variable holds all configuration data from persisten storage
-    private var configurationsAsNSDict: [NSDictionary]?
-
-    /// Function reads configurations from permanent store
-    /// - returns : array of NSDictonarys, return might be nil if configuration is already in memory
-    func readConfigurationsFromPermanentStore() -> [NSDictionary]? {
-        return self.configurationsAsNSDict
-    }
+    var configurationsasdictionary: [NSDictionary]?
 
     // Saving Configuration from MEMORY to persistent store
     // Reads Configurations from MEMORY and saves to persistent Store
@@ -121,6 +115,6 @@ final class PersistentStorageConfiguration: ReadWriteDictionary {
 
     init (profile: String?) {
         super.init(whattoreadwrite: .configuration, profile: profile)
-        self.configurationsAsNSDict = self.readNSDictionaryFromPersistentStore()
+        self.configurationsasdictionary = self.readNSDictionaryFromPersistentStore()
     }
 }

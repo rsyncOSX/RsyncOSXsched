@@ -14,12 +14,7 @@ import Foundation
 
 final class PersistentStorageScheduling: ReadWriteDictionary, SetSchedules {
 
-    private var schedulesasDict: [NSDictionary]?
-    /// Function reads schedules from permanent store
-    /// - returns : array of NSDictonarys, return might be nil if schedule is already in memory
-    func readSchedulesFromPermanentStore() -> [NSDictionary]? {
-        return self.schedulesasDict
-    }
+    var schedulesasdictionary: [NSDictionary]?
 
     // Saving Schedules from MEMORY to persistent store
     func savescheduleInMemoryToPersistentStore() {
@@ -60,6 +55,6 @@ final class PersistentStorageScheduling: ReadWriteDictionary, SetSchedules {
 
     init (profile: String?) {
         super.init(whattoreadwrite: .schedule, profile: profile)
-        self.schedulesasDict = self.readNSDictionaryFromPersistentStore()
+        self.schedulesasdictionary = self.readNSDictionaryFromPersistentStore()
     }
 }
