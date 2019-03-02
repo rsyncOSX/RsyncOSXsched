@@ -21,11 +21,11 @@ protocol Fileerror: class {
 }
 
 protocol Reportfileerror {
-    weak var errorDelegate: Fileerror? { get }
+    var errorDelegate: Fileerror? { get }
 }
 
 extension Reportfileerror {
-    weak var errorDelegate: Fileerror? {
+    var errorDelegate: Fileerror? {
         return ViewControllerReference.shared.getvcref(viewcontroller: .vctabmain) as? ViewControllertabMain
     }
 

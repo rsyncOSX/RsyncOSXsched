@@ -27,14 +27,17 @@ ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
 (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
-//  swiftlint:disable disable line_length identifier_name
+
+//swiftlint: disable line_length identifier_name
 
 import Foundation
 
-@_silgen_name("ytcpsocket_connect") func c_ytcpsocket_connect(host: UnsafePointer<Int8>, port: Int32, timeout: Int32) -> Int32
+@_silgen_name("ytcpsocket_connect") func c_ytcpsocket_connect(host: UnsafePointer<Int8>,
+                                                              port: Int32, timeout: Int32) -> Int32
 @_silgen_name("ytcpsocket_close") func c_ytcpsocket_close(fd: Int32) -> Int32
 @_silgen_name("ytcpsocket_send") func c_ytcpsocket_send(fd: Int32, buff: UnsafePointer<UInt8>, len: Int32) -> Int32
-@_silgen_name("ytcpsocket_pull") func c_ytcpsocket_pull(fd: Int32, buff: UnsafePointer<UInt8>, len: Int32, timeout: Int32) -> Int32
+@_silgen_name("ytcpsocket_pull") func c_ytcpsocket_pull(fd: Int32, buff: UnsafePointer<UInt8>,
+                                                        len: Int32, timeout: Int32) -> Int32
 
 public class TCPClient: YSocket {
     /*

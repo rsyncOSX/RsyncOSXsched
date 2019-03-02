@@ -20,7 +20,7 @@ protocol GetAllSchedules {
 }
 
 extension GetAllSchedules {
-    weak var allschedulesDelegate: GetSchedulesSortedAndExpanded? {
+    var allschedulesDelegate: GetSchedulesSortedAndExpanded? {
         return ViewControllerReference.shared.viewControllermain as? ViewControllerMain
     }
     var schedulessortedandexpanded: ScheduleSortedAndExpand? {

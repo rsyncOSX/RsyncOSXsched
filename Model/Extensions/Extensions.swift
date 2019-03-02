@@ -32,7 +32,7 @@ protocol Setlog {
 }
 
 extension Setlog {
-    weak var logDelegate: Addlog? {
+    var logDelegate: Addlog? {
         return ViewControllerReference.shared.viewControllermain as? ViewControllerMain
     }
 }
@@ -46,7 +46,7 @@ protocol GetInformation {
 }
 
 extension GetInformation {
-    weak var informationDelegateMain: Information? {
+    var informationDelegateMain: Information? {
         return ViewControllerReference.shared.viewControllermain as? ViewControllerMain
     }
 
@@ -65,7 +65,7 @@ protocol SetDismisser {
 }
 
 extension SetDismisser {
-    weak var dismissDelegateMain: DismissViewController? {
+    var dismissDelegateMain: DismissViewController? {
         return ViewControllerReference.shared.viewControllermain as? ViewControllerMain
     }
 
@@ -91,7 +91,7 @@ protocol SetScheduledTask {
 }
 
 extension SetScheduledTask {
-    weak var scheduleJob: ScheduledTaskWorking? {
+    var scheduleJob: ScheduledTaskWorking? {
         return ViewControllerReference.shared.viewControllermain as? ViewControllerMain
     }
 }
@@ -166,7 +166,7 @@ protocol SetConfigurations {
 }
 
 extension SetConfigurations {
-    weak var configurationsDelegate: GetConfigurationsObject? {
+    var configurationsDelegate: GetConfigurationsObject? {
         return ViewControllerReference.shared.viewControllermain as? ViewControllerMain
     }
     var configurations: Configurations? {
@@ -186,7 +186,7 @@ protocol SetSchedules {
 }
 
 extension SetSchedules {
-    weak var schedulesDelegate: GetSchedulesObject? {
+    var schedulesDelegate: GetSchedulesObject? {
         return ViewControllerReference.shared.viewControllermain as? ViewControllerMain
     }
     var schedules: Schedules? {
@@ -205,7 +205,7 @@ protocol SetSortedAndExpanded {
 }
 
 extension SetSortedAndExpanded {
-    weak var sortedandexpandedDelegate: GetSortedandExpandedObject? {
+    var sortedandexpandedDelegate: GetSortedandExpandedObject? {
         return ViewControllerReference.shared.viewControllermain as? ViewControllerMain
     }
     var sortedandexpanded: ScheduleSortedAndExpand? {
