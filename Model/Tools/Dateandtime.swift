@@ -62,9 +62,9 @@ final class Dateandtime {
         } else if hr == 0 && min < 60 {
             result = String(format: "%.0f", min) + "m " + String(format: "%.0f", 60 * secf) + "s"
         } else if hr < 25 {
-            result = String(format: "%.0f", hr) + "h " + String(format: "%.0f", min) + "m"
+            result = String(format: "%.1f", hr) + "h " + String(format: "%.0f", min) + "m"
         } else {
-            result = String(format: "%.0f", hr/24) + "d"
+            result = String(format: "%.1f", hr/24) + "d"
         }
         return result ?? ""
     }
