@@ -145,8 +145,6 @@ class ScheduleSortedAndExpand: Setlog {
         }
     }
 
-    typealias Futureschedules = (Int, Double)
-
     func sortandcountscheduledonetask(_ hiddenID: Int, profilename: String, dateStart: Date?, number: Bool) -> String {
         var result: [NSDictionary]?
         if dateStart != nil {
