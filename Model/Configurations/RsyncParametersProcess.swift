@@ -5,6 +5,7 @@
 //  Created by Thomas Evensen on 08/02/16.
 //  Copyright © 2016 Thomas Evensen. All rights reserved.
 //
+// swiftlint:disable cyclomatic_complexity
 
 import Foundation
 
@@ -160,7 +161,7 @@ final class RsyncParametersProcess {
         self.setParameters1To6(config, dryRun: dryRun, forDisplay: forDisplay, verify: false)
         self.setParameters8To14(config, dryRun: dryRun, forDisplay: forDisplay)
         switch config.task {
-        case ViewControllerReference.shared.backup:
+        case ViewControllerReference.shared.synchronize:
             self.argumentsforsynchronize(dryRun: dryRun, forDisplay: forDisplay)
         case ViewControllerReference.shared.snapshot:
             self.linkdestparameter(config, verify: false)

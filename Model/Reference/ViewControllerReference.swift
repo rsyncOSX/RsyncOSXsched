@@ -54,7 +54,7 @@ class ViewControllerReference {
     // log file
     var fileURL: URL?
     // String tasks
-    var backup: String = "synchronize"
+    var synchronize: String = "synchronize"
     var snapshot: String = "snapshot"
     // Execute scheduled tasks in menu app, default off
     // var executescheduledtasksmenuapp: Bool = false

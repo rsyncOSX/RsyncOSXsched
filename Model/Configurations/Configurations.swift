@@ -100,7 +100,7 @@ class Configurations {
     /// - parameter none: none
     /// - returns : Array of NSDictionary
     func getConfigurationsDataSourcecountBackup() -> [NSMutableDictionary]? {
-        let configurations: [Configuration] = self.configurations!.filter({return ($0.task == ViewControllerReference.shared.backup || $0.task == ViewControllerReference.shared.snapshot)})
+        let configurations: [Configuration] = self.configurations!.filter({return ($0.task == ViewControllerReference.shared.synchronize || $0.task == ViewControllerReference.shared.snapshot)})
         var row =  NSMutableDictionary()
         var data = [NSMutableDictionary]()
         for i in 0 ..< configurations.count {
