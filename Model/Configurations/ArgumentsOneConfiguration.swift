@@ -18,6 +18,6 @@ struct ArgumentsOneConfiguration {
 
     init(config: Configuration) {
         self.config = config
-        self.arg = RsyncParametersProcess().argumentsRsync(config, dryRun: false)
+        self.arg = RsyncParametersProcess().argumentsRsync(config)
     }
 }

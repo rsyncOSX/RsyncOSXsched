@@ -21,22 +21,14 @@ final class RsyncParametersProcess {
     private let suffixString = "--suffix=_`date +'%Y-%m-%d.%H.%M'`"
     private let suffixString2 = "--suffix=_$(date +%Y-%m-%d.%H.%M)"
 
-    private func setParameters1To6(_ config: Configuration, verify: Bool) {
-        var parameter1: String?
-        if verify {
-            parameter1 = "--checksum"
-        } else {
-            parameter1 = config.parameter1
-        }
+    private func setParameters1To6(_ config: Configuration) {
+        let parameter1: String = config.parameter1
         let parameter2: String = config.parameter2
         let parameter3: String = config.parameter3
         let parameter4: String = config.parameter4
         let parameter5: String = config.parameter5
         let offsiteServer: String = config.offsiteServer
-        self.arguments!.append(parameter1 ?? "")
-        if verify {
-            self.arguments!.append("--recursive")
-        }
+        self.arguments!.append(parameter1)
         self.arguments!.append(parameter2)
         if offsiteServer.isEmpty  == false {
             if parameter3.isEmpty == false {
@@ -129,17 +121,17 @@ final class RsyncParametersProcess {
     /// - parameter dryRun: true if compute dryrun arguments, false if compute arguments for real run
     /// - paramater forDisplay: true if for display, false if not
     /// - returns: Array of Strings
-    func argumentsRsync(_ config: Configuration, dryRun: Bool) -> [String] {
+    func argumentsRsync(_ config: Configuration) -> [String] {
         self.localCatalog = config.localCatalog
         self.remoteargs(config)
-        self.setParameters1To6(config, verify: false)
+        self.setParameters1To6(config)
         self.setParameters8To14(config)
         switch config.task {
         case ViewControllerReference.shared.synchronize:
-            self.argumentsforsynchronize(dryRun: dryRun)
+            self.argumentsforsynchronize()
         case ViewControllerReference.shared.snapshot:
             self.linkdestparameter(config, verify: false)
-            self.argumentsforsynchronizesnapshot(dryRun: dryRun)
+            self.argumentsforsynchronizesnapshot()
         default:
             break
         }
@@ -181,7 +173,7 @@ final class RsyncParametersProcess {
         }
     }
 
-    private func argumentsforsynchronize(dryRun: Bool) {
+    private func argumentsforsynchronize() {
         self.arguments!.append(self.localCatalog!)
         guard self.offsiteCatalog != nil else { return }
         if self.offsiteServer!.isEmpty {
@@ -191,7 +183,7 @@ final class RsyncParametersProcess {
         }
     }
 
-    private func argumentsforsynchronizesnapshot(dryRun: Bool) {
+    private func argumentsforsynchronizesnapshot() {
         guard self.linkdestparam != nil else {
             self.arguments!.append(self.localCatalog!)
             return
