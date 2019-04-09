@@ -21,97 +21,78 @@ final class RsyncParametersProcess {
     private let suffixString = "--suffix=_`date +'%Y-%m-%d.%H.%M'`"
     private let suffixString2 = "--suffix=_$(date +%Y-%m-%d.%H.%M)"
 
-    private func setParameters1To6(_ config: Configuration, dryRun: Bool, forDisplay: Bool, verify: Bool) {
-        var parameter1: String?
-        if verify {
-            parameter1 = "--checksum"
-        } else {
-            parameter1 = config.parameter1
-        }
+    private func setParameters1To6(_ config: Configuration) {
+        let parameter1: String = config.parameter1
         let parameter2: String = config.parameter2
         let parameter3: String = config.parameter3
         let parameter4: String = config.parameter4
+        let parameter5: String = config.parameter5
         let offsiteServer: String = config.offsiteServer
-        self.arguments!.append(parameter1 ?? "")
-        if verify {
-            if forDisplay {self.arguments!.append(" ")}
-            self.arguments!.append("--recursive")
-        }
-        if forDisplay {self.arguments!.append(" ")}
+        self.arguments!.append(parameter1)
         self.arguments!.append(parameter2)
-        if forDisplay {self.arguments!.append(" ")}
         if offsiteServer.isEmpty  == false {
             if parameter3.isEmpty == false {
                 self.arguments!.append(parameter3)
-                if forDisplay {self.arguments!.append(" ")}
             }
         }
         self.arguments!.append(parameter4)
-        if forDisplay {self.arguments!.append(" ")}
         if offsiteServer.isEmpty {
             // nothing
         } else {
-            self.sshportparameter(config, forDisplay: forDisplay)
+            if parameter5.isEmpty == false {
+                self.sshportparameter(config)
+            }
         }
     }
 
-    private func sshportparameter(_ config: Configuration, forDisplay: Bool) {
+    private func sshportparameter(_ config: Configuration) {
         let parameter5: String = config.parameter5
         let parameter6: String = config.parameter6
         // -e
         self.arguments!.append(parameter5)
-        if forDisplay {self.arguments!.append(" ")}
         if let sshport = config.sshport {
             // "ssh -p xxx"
-            if forDisplay {self.arguments!.append(" \"")}
             self.arguments!.append("ssh -p " + String(sshport))
-            if forDisplay {self.arguments!.append("\" ")}
         } else {
             // ssh
             self.arguments!.append(parameter6)
         }
-        if forDisplay {self.arguments!.append(" ")}
     }
 
     // Compute user selected parameters parameter8 ... parameter14
     // Brute force, check every parameter, not special elegant, but it works
 
-    private func setParameters8To14(_ config: Configuration, dryRun: Bool, forDisplay: Bool) {
+    private func setParameters8To14(_ config: Configuration) {
         self.stats = false
         if config.parameter8 != nil {
-            self.appendParameter(parameter: config.parameter8!, forDisplay: forDisplay)
+            self.appendParameter(parameter: config.parameter8!)
         }
         if config.parameter9 != nil {
-            self.appendParameter(parameter: config.parameter9!, forDisplay: forDisplay)
+            self.appendParameter(parameter: config.parameter9!)
         }
         if config.parameter10 != nil {
-            self.appendParameter(parameter: config.parameter10!, forDisplay: forDisplay)
+            self.appendParameter(parameter: config.parameter10!)
         }
         if config.parameter11 != nil {
-            self.appendParameter(parameter: config.parameter11!, forDisplay: forDisplay)
+            self.appendParameter(parameter: config.parameter11!)
         }
         if config.parameter12 != nil {
-            self.appendParameter(parameter: config.parameter12!, forDisplay: forDisplay)
+            self.appendParameter(parameter: config.parameter12!)
         }
         if config.parameter13 != nil {
-            self.appendParameter(parameter: config.parameter13!, forDisplay: forDisplay)
+            self.appendParameter(parameter: config.parameter13!)
         }
         if config.parameter14 != nil {
             if config.offsiteServer.isEmpty == true {
                 if config.parameter14! == self.suffixString || config.parameter14! == self.suffixString2 {
-                    self.appendParameter(parameter: self.setdatesuffixlocalhost(), forDisplay: forDisplay)
+                    self.appendParameter(parameter: self.setdatesuffixlocalhost())
                 }
             } else {
-                self.appendParameter(parameter: config.parameter14!, forDisplay: forDisplay)
+                self.appendParameter(parameter: config.parameter14!)
             }
         }
-        // Append --stats parameter to collect info about run
-        if dryRun {
-            self.dryrunparameter(config, forDisplay: forDisplay)
-        } else {
-            if self.stats == false {
-                self.appendParameter(parameter: "--stats", forDisplay: forDisplay)
-            }
+        if self.stats == false {
+            self.appendParameter(parameter: "--stats")
         }
     }
 
@@ -121,28 +102,14 @@ final class RsyncParametersProcess {
         return  "--suffix=" + formatter.string(from: Date())
     }
 
-    private func dryrunparameter(_ config: Configuration, forDisplay: Bool) {
-        let dryrun: String = config.dryrun
-        self.arguments!.append(dryrun)
-        if forDisplay {self.arguments!.append(" ")}
-        if self.stats! == false {
-            self.arguments!.append("--stats")
-            if forDisplay {self.arguments!.append(" ")}
-        }
-    }
-
     // Check userselected parameter and append it to arguments array passed to rsync or displayed
     // on screen.
-
-    private func appendParameter (parameter: String, forDisplay: Bool) {
+    private func appendParameter (parameter: String) {
         if parameter.count > 1 {
             if parameter == "--stats" {
                 self.stats = true
             }
             self.arguments!.append(parameter)
-            if forDisplay {
-                self.arguments!.append(" ")
-            }
         }
     }
 
@@ -154,17 +121,17 @@ final class RsyncParametersProcess {
     /// - parameter dryRun: true if compute dryrun arguments, false if compute arguments for real run
     /// - paramater forDisplay: true if for display, false if not
     /// - returns: Array of Strings
-    func argumentsRsync(_ config: Configuration, dryRun: Bool, forDisplay: Bool) -> [String] {
+    func argumentsRsync(_ config: Configuration) -> [String] {
         self.localCatalog = config.localCatalog
         self.remoteargs(config)
-        self.setParameters1To6(config, dryRun: dryRun, forDisplay: forDisplay, verify: false)
-        self.setParameters8To14(config, dryRun: dryRun, forDisplay: forDisplay)
+        self.setParameters1To6(config)
+        self.setParameters8To14(config)
         switch config.task {
-        case ViewControllerReference.shared.backup:
-            self.argumentsforsynchronize(dryRun: dryRun, forDisplay: forDisplay)
+        case ViewControllerReference.shared.synchronize:
+            self.argumentsforsynchronize()
         case ViewControllerReference.shared.snapshot:
             self.linkdestparameter(config, verify: false)
-            self.argumentsforsynchronizesnapshot(dryRun: dryRun, forDisplay: forDisplay)
+            self.argumentsforsynchronizesnapshot()
         default:
             break
         }
@@ -206,36 +173,27 @@ final class RsyncParametersProcess {
         }
     }
 
-    private func argumentsforsynchronize(dryRun: Bool, forDisplay: Bool) {
+    private func argumentsforsynchronize() {
         self.arguments!.append(self.localCatalog!)
         guard self.offsiteCatalog != nil else { return }
         if self.offsiteServer!.isEmpty {
-            if forDisplay {self.arguments!.append(" ")}
             self.arguments!.append(self.offsiteCatalog!)
-            if forDisplay {self.arguments!.append(" ")}
         } else {
-            if forDisplay {self.arguments!.append(" ")}
             self.arguments!.append(remoteargs!)
-            if forDisplay {self.arguments!.append(" ")}
         }
     }
 
-    private func argumentsforsynchronizesnapshot(dryRun: Bool, forDisplay: Bool) {
+    private func argumentsforsynchronizesnapshot() {
         guard self.linkdestparam != nil else {
             self.arguments!.append(self.localCatalog!)
             return
         }
         self.arguments!.append(self.linkdestparam!)
-        if forDisplay {self.arguments!.append(" ")}
         self.arguments!.append(self.localCatalog!)
         if self.offsiteServer!.isEmpty {
-            if forDisplay {self.arguments!.append(" ")}
             self.arguments!.append(self.offsiteCatalog!)
-            if forDisplay {self.arguments!.append(" ")}
         } else {
-            if forDisplay {self.arguments!.append(" ")}
             self.arguments!.append(remoteargs!)
-            if forDisplay {self.arguments!.append(" ")}
         }
     }
 

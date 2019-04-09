@@ -31,9 +31,9 @@ extension GetAllSchedules {
 class Allschedules {
 
     // Configurations object
-    private var allschedules: [ConfigurationSchedule]?
+    var allschedules: [ConfigurationSchedule]?
     private var allprofiles: [String]?
-    private var alloffsiteservers: [String]?
+    var alloffsiteservers: [String]?
 
     private func getprofilenames() {
         let profile = Files(whichroot: .profileRoot, configpath: ViewControllerReference.shared.configpath)
@@ -65,14 +65,6 @@ class Allschedules {
                 }
             }
         }
-    }
-
-    func getallschedules() -> [ConfigurationSchedule]? {
-        return self.allschedules
-    }
-
-    func getalloffsiteservers() -> [String]? {
-        return self.alloffsiteservers
     }
 
     init() {

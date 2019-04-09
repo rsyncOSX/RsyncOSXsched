@@ -15,7 +15,7 @@ class ScheduleSortedAndExpand: Setlog {
     private var schedulesNSDictionary: [NSDictionary]?
     private var scheduleConfiguration: [ConfigurationSchedule]?
     private var expandedData = [NSDictionary]()
-    private var sortedschedules: [NSDictionary]?
+    var sortedschedules: [NSDictionary]?
     var tcpconnections: TCPconnections?
 
     // First job to execute. Job is first element in
@@ -26,11 +26,6 @@ class ScheduleSortedAndExpand: Setlog {
             return nil
         }
         return self.sortedschedules![0]
-    }
-
-    // Returns reference to all sorted and expanded schedules
-    func getsortedAndExpandedScheduleData() -> [NSDictionary]? {
-        return self.sortedschedules
     }
 
     // Calculate daily schedules
@@ -198,10 +193,10 @@ class ScheduleSortedAndExpand: Setlog {
     init () {
         self.logDelegate?.addlog(logrecord: "Reloading all schedules ...")
         let allschedules = Allschedules()
-        self.scheduleConfiguration = allschedules.getallschedules()
+        self.scheduleConfiguration = allschedules.allschedules
         self.setallscheduledtasksNSDictionary()
         self.sortAndExpandScheduleTasks()
         self.tcpconnections = TCPconnections()
-        self.tcpconnections!.testAllremoteserverConnections(offsiteservers: allschedules.getalloffsiteservers())
+        self.tcpconnections!.testAllremoteserverConnections(offsiteservers: allschedules.alloffsiteservers)
     }
 }

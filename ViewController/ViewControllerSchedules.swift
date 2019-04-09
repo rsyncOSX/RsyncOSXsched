@@ -46,15 +46,15 @@ class ViewControllerSchedules: NSViewController, SetDismisser, GetAllSchedules, 
 extension ViewControllerSchedules: NSTableViewDataSource {
 
     func numberOfRows(in aTableView: NSTableView) -> Int {
-        return self.schedulessortedandexpanded?.getsortedAndExpandedScheduleData()?.count ?? 0
+        return self.schedulessortedandexpanded?.sortedschedules?.count ?? 0
     }
 }
 
 extension ViewControllerSchedules: NSTableViewDelegate {
 
     func tableView(_ tableView: NSTableView, objectValueFor tableColumn: NSTableColumn?, row: Int) -> Any? {
-        guard row < self.schedulessortedandexpanded!.getsortedAndExpandedScheduleData()!.count else { return nil }
-        let object: NSDictionary = self.schedulessortedandexpanded!.getsortedAndExpandedScheduleData()![row]
+        guard row < self.schedulessortedandexpanded?.sortedschedules?.count ?? -1 else { return nil }
+        let object: NSDictionary = self.schedulessortedandexpanded!.sortedschedules![row]
         if tableColumn!.identifier.rawValue == "intime" {
             let hiddenID = object.value(forKey: "hiddenID") as? Int ?? -1
             let profilename = object.value(forKey: "profilename") as? String ?? "Default profile"
@@ -70,7 +70,7 @@ extension ViewControllerSchedules: NSTableViewDelegate {
         let myTableViewFromNotification = (notification.object as? NSTableView)!
         let indexes = myTableViewFromNotification.selectedRowIndexes
         if let index = indexes.first {
-            let dict = self.schedulessortedandexpanded!.getsortedAndExpandedScheduleData()![index]
+            let dict = self.schedulessortedandexpanded!.sortedschedules![index]
             self.profilname = dict.value(forKey: "profilename") as? String ?? "Default profile"
         }
     }

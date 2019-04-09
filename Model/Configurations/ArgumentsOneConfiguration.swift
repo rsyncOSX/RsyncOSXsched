@@ -13,11 +13,9 @@ import Foundation
 
 struct ArgumentsOneConfiguration {
 
-    var config: Configuration?
     var arg: [String]?
 
     init(config: Configuration) {
-        self.config = config
-        self.arg = RsyncParametersProcess().argumentsRsync(config, dryRun: false, forDisplay: false)
+        self.arg = RsyncParametersProcess().argumentsRsync(config)
     }
 }
