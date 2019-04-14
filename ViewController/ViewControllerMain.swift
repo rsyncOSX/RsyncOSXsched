@@ -249,7 +249,7 @@ extension ViewControllerMain: NSTableViewDelegate, Attributedestring {
         switch tableColumn!.identifier.rawValue {
         case "scheduleID" :
             if self.schedulesortedandexpanded != nil {
-                let schedule: String? = self.schedulesortedandexpanded!.sortandcountscheduledonetask(hiddenID, profilename: profilename, dateStart: nil, number: false)
+                let schedule: String? = self.schedulesortedandexpanded!.sortandcountscheduledonetask(hiddenID: hiddenID, profilename: profilename, dateStart: nil, number: false)
                 return schedule ?? ""
             }
         case "batchCellID" :
@@ -262,7 +262,7 @@ extension ViewControllerMain: NSTableViewDelegate, Attributedestring {
             }
         case "inCellID":
             if self.schedulesortedandexpanded != nil {
-                let taskintime: String? = self.schedulesortedandexpanded!.sortandcountscheduledonetask(hiddenID, profilename: profilename, dateStart: nil, number: true)
+                let taskintime: String? = self.schedulesortedandexpanded!.sortandcountscheduledonetask(hiddenID: hiddenID, profilename: profilename, dateStart: nil, number: true)
                 return taskintime ?? ""
             }
         default:

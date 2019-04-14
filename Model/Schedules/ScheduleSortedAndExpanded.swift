@@ -140,7 +140,7 @@ class ScheduleSortedAndExpand: Setlog {
         }
     }
 
-    func sortandcountscheduledonetask(_ hiddenID: Int, profilename: String, dateStart: Date?, number: Bool) -> String {
+    func sortandcountscheduledonetask(hiddenID: Int, profilename: String, dateStart: Date?, number: Bool) -> String {
         var result: [NSDictionary]?
         if dateStart != nil {
             result = self.sortedschedules?.filter({return (($0.value(forKey: "hiddenID") as? Int)! == hiddenID
