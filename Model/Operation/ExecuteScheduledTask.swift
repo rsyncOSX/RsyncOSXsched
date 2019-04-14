@@ -72,7 +72,7 @@ final class ExecuteScheduledTask: SetSchedules, SetConfigurations, SetScheduledT
         }
     }
 
-    init () {
+    init() {
        self.executetask()
     }
 }
