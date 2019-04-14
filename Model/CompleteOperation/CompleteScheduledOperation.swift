@@ -25,12 +25,12 @@ final class CompleteScheduledOperation: SetScheduledTask, SetConfigurations, Set
     // This function is executed when rsyn process terminates
     func finalizeScheduledJob(outputprocess: OutputProcess?) {
         // Write result to Schedule
-        let datestring = self.dateformatter!.string(from: date!)
-        let dateStartstring = self.dateformatter!.string(from: dateStart!)
+        let datestring = self.dateformatter!.string(from: date ?? Date())
+        let dateStartstring = self.dateformatter!.string(from: dateStart ?? Date())
         let number = Numbers(outputprocess: outputprocess)
         let numberstring = number.stats(numberOfFiles: nil, sizeOfFiles: nil)
         self.logDelegate?.addlog(logrecord: "Adding result to log: " + numberstring)
-        self.schedules!.addresultschedule(self.hiddenID!, dateStart: dateStartstring, result: numberstring, date: datestring, schedule: schedule!)
+        self.schedules!.addresultschedule(self.hiddenID!, dateStart: dateStartstring, result: numberstring, date: datestring, schedule: schedule ?? "Once")
         _ = Notifications().showNotification(message: datestring + " " + numberstring)
         self.configurations!.setCurrentDateonConfigurationQuickbackup(self.index!, outputprocess: outputprocess)
     }

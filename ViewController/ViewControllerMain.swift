@@ -47,6 +47,7 @@ class ViewControllerMain: NSViewController, Delay, Setlog {
     private var profilesArray: [String]?
     private var profile: Files?
     var allschedules: [ConfigurationSchedule]?
+    var index: Int?
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
@@ -95,7 +96,11 @@ class ViewControllerMain: NSViewController, Delay, Setlog {
     }
 
     @IBAction func backupnow(_ sender: NSButton) {
-
+        guard self.index != nil else { return  }
+        guard self.configurations!.getConfigurationsDataSourcecountBackup() != nil  else { return  }
+        self.backupnowbutton.isEnabled = false
+        let dict: NSDictionary = self.configurations!.getConfigurationsDataSourcecountBackup()![self.index!]
+        _ = ExecuteScheduledTaskNow(dict: dict)
     }
 
     @IBAction func abort(_ sender: NSButton) {
@@ -276,6 +281,17 @@ extension ViewControllerMain: NSTableViewDelegate, Attributedestring {
         return nil
     }
 
+    // setting which table row is selected
+    func tableViewSelectionDidChange(_ notification: Notification) {
+        let myTableViewFromNotification = (notification.object as? NSTableView)!
+        let indexes = myTableViewFromNotification.selectedRowIndexes
+        if let index = indexes.first {
+            self.index = index
+        } else {
+            self.index = nil
+        }
+    }
+
 }
 
 extension ViewControllerMain: Updatestatuslight {
@@ -368,6 +384,7 @@ extension ViewControllerMain: UpdateProgress {
         self.schedulesortedandexpanded = ScheduleSortedAndExpand()
         self.startfirstscheduledtask()
         ViewControllerReference.shared.completeoperation!.finalizeScheduledJob(outputprocess: self.outputprocess)
+        self.backupnowbutton.isEnabled = true
     }
 
     func fileHandler() {
