@@ -20,7 +20,7 @@ final class ExecuteScheduledTaskNow: SetSchedules, SetConfigurations, SetSchedul
         reloaddataDelegate = ViewControllerReference.shared.viewControllermain as? ViewControllerMain
         tcpconnectionsDelegate =  ViewControllerReference.shared.viewControllermain as? ViewControllerMain
         var config: Configuration?
-        
+
         let profilename = dict.value(forKey: "profilename") as? String
         if profilename!.isEmpty || profilename! == "Default profile" {
             reloaddataDelegate?.reloaddata(profilename: nil)

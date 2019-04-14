@@ -34,6 +34,7 @@ class ViewControllerMain: NSViewController, Delay, Setlog {
     @IBOutlet weak var progresslabel: NSTextField!
     @IBOutlet weak var newversion: NSTextField!
     @IBOutlet weak var rsyncosxschedversion: NSTextField!
+    @IBOutlet weak var backupnowbutton: NSButton!
 
     var configurations: Configurations?
     var schedules: Schedules?
@@ -91,6 +92,10 @@ class ViewControllerMain: NSViewController, Delay, Setlog {
         } else {
             self.rsyncosxbutton.isEnabled = false
         }
+    }
+
+    @IBAction func backupnow(_ sender: NSButton) {
+
     }
 
     @IBAction func abort(_ sender: NSButton) {
