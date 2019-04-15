@@ -1,5 +1,5 @@
 //
-//  ExecuteScheduledTaskNow.swift
+//  ExecuteTaskNow.swift
 //  RsyncOSXsched
 //
 //  Created by Thomas Evensen on 14/04/2019.
@@ -9,7 +9,7 @@
 
 import Foundation
 
-final class ExecuteScheduledTaskNow: SetSchedules, SetConfigurations, SetScheduledTask, Setlog {
+final class ExecuteTaskNow: SetSchedules, SetConfigurations, SetScheduledTask, Setlog {
 
     private func executetasknow(dict: NSDictionary) {
         let outputprocess = OutputProcess()
@@ -63,6 +63,8 @@ final class ExecuteScheduledTaskNow: SetSchedules, SetConfigurations, SetSchedul
     }
 
     init(dict: NSDictionary) {
+        ViewControllerReference.shared.dispatchTaskWaiting?.cancel()
+        ViewControllerReference.shared.dispatchTaskWaiting = nil
         self.executetasknow(dict: dict)
     }
 }
