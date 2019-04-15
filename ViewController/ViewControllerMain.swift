@@ -100,7 +100,7 @@ class ViewControllerMain: NSViewController, Delay, Setlog {
         guard self.configurations!.getConfigurationsDataSourcecountBackup() != nil  else { return  }
         self.backupnowbutton.isEnabled = false
         let dict: NSDictionary = self.configurations!.getConfigurationsDataSourcecountBackup()![self.index!]
-        _ = ExecuteScheduledTaskNow(dict: dict)
+        _ = ExecuteTaskNow(dict: dict)
     }
 
     @IBAction func abort(_ sender: NSButton) {
