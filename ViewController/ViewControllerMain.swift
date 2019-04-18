@@ -51,7 +51,7 @@ class ViewControllerMain: NSViewController, Delay, Setlog {
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
-        self.sleepandwakenotifications()
+        self.addobservers()
         self.mainTableView.delegate = self
         self.mainTableView.dataSource = self
         ViewControllerReference.shared.viewControllermain = self
@@ -234,12 +234,27 @@ class ViewControllerMain: NSViewController, Delay, Setlog {
         ViewControllerReference.shared.timerTaskWaiting?.invalidate()
     }
 
-    private func sleepandwakenotifications() {
+    @objc func didMount(_ notification: NSNotification) {
+        if let devicePath = notification.userInfo!["NSDevicePath"] as? String {
+            _ = Notifications().showNotification(message: "Mounted volume " + devicePath)
+        }
+    }
+
+    @objc func didUnMount(_ notification: NSNotification) {
+        if let devicePath = notification.userInfo!["NSDevicePath"] as? String {
+            _ = Notifications().showNotification(message: "Unmounted volume " + devicePath)
+        }
+    }
+
+    private func addobservers() {
         NSWorkspace.shared.notificationCenter.addObserver( self, selector: #selector(onWakeNote(note:)),
                                                            name: NSWorkspace.didWakeNotification, object: nil)
-
         NSWorkspace.shared.notificationCenter.addObserver( self, selector: #selector(onSleepNote(note:)),
                                                            name: NSWorkspace.willSleepNotification, object: nil)
+        NSWorkspace.shared.notificationCenter.addObserver(self, selector: #selector(didMount(_:)),
+                                                      name: NSWorkspace.didMountNotification, object: nil)
+        NSWorkspace.shared.notificationCenter.addObserver(self, selector: #selector(didUnMount(_:)),
+                                                      name: NSWorkspace.didUnmountNotification, object: nil)
     }
 }
 
