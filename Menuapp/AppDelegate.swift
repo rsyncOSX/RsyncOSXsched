@@ -6,11 +6,12 @@
 import Cocoa
 
 @NSApplicationMain
-class AppDelegate: NSObject, NSApplicationDelegate {
+class AppDelegate: NSObject, NSApplicationDelegate, SetConfigurations {
 
 	let statusItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.squareLength)
 	let popover = NSPopover()
 	var eventMonitor: EventMonitor?
+    let workspace = NSWorkspace.shared
 
     var storyboard: NSStoryboard? {
         return NSStoryboard(name: "Main", bundle: nil)
@@ -42,6 +43,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 		}
 		self.eventMonitor?.start()
         self.togglePopover(nil)
+        self.workspace.notificationCenter.addObserver(self, selector: #selector(didMount(_:)),
+                                                      name: NSWorkspace.didMountNotification, object: nil)
+        self.workspace.notificationCenter.addObserver(self, selector: #selector(didUnMount(_:)),
+                                                      name: NSWorkspace.didUnmountNotification, object: nil)
 	}
 
 	func applicationWillTerminate(_ aNotification: Notification) {
@@ -66,4 +71,15 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 		self.popover.performClose(sender)
 		self.eventMonitor?.stop()
 	}
+
+    @objc func didMount(_ notification: NSNotification) {
+        if let devicePath = notification.userInfo!["NSDevicePath"] as? String {
+            _ = Notifications().showNotification(message: "Mounted volume " + devicePath)
+        }
+    }
+    @objc func didUnMount(_ notification: NSNotification) {
+        if let devicePath = notification.userInfo!["NSDevicePath"] as? String {
+            _ = Notifications().showNotification(message: "Unmounted volume " + devicePath)
+        }
+    }
 }
