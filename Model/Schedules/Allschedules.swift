@@ -32,7 +32,7 @@ class Allschedules {
 
     // Configurations object
     var allschedules: [ConfigurationSchedule]?
-    private var allprofiles: [String]?
+    var allprofiles: [String]?
     var alloffsiteservers: [String]?
 
     private func getprofilenames() {
