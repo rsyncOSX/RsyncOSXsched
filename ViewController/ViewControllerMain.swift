@@ -43,6 +43,7 @@ class ViewControllerMain: NSViewController, Delay, Setlog {
     var profilename: String?
     var log: [String]?
     var reloadnotification: NSObjectProtocol?
+    var checkallconfiguration: CheckAllConfigurations?
 
     private var profilesArray: [String]?
     private var profile: Files?
@@ -237,13 +238,18 @@ class ViewControllerMain: NSViewController, Delay, Setlog {
     @objc func didMount(_ notification: NSNotification) {
         if let devicePath = notification.userInfo!["NSDevicePath"] as? String {
             _ = Notifications().showNotification(message: "Mounted volume " + devicePath)
-            _ = CheckAllConfigurations(path: devicePath)
+            if self.checkallconfiguration == nil {
+                self.checkallconfiguration = CheckAllConfigurations(path: devicePath)
+            } else {
+                self.checkallconfiguration?.check(path: devicePath)
+            }
         }
     }
 
     @objc func didUnMount(_ notification: NSNotification) {
         if let devicePath = notification.userInfo!["NSDevicePath"] as? String {
             _ = Notifications().showNotification(message: "Unmounted volume " + devicePath)
+            self.checkallconfiguration = nil
         }
     }
 

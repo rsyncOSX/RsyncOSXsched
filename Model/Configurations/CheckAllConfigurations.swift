@@ -12,14 +12,13 @@ class CheckAllConfigurations {
 
     var allprofiles: [String]?
     var allconfigurations: [Configuration]?
-    var path: String?
 
     private func getprofilenames() {
         let profile = Files(whichroot: .profileRoot, configpath: ViewControllerReference.shared.configpath)
         self.allprofiles = profile.getDirectorysStrings()
     }
 
-    private func checallconfigurations() {
+    private func checallconfigurations(path: String) {
         guard self.allprofiles != nil else { return }
         var configurations: [Configuration]?
         for i in 0 ..< self.allprofiles!.count {
@@ -36,11 +35,16 @@ class CheckAllConfigurations {
                 }
             }
         }
+        self.check(path: path)
+    }
+
+    func check(path: String) {
+        guard self.allconfigurations != nil else { return }
     }
     
+
     init(path: String) {
-        self.path = path
         self.getprofilenames()
-        self.checallconfigurations()
+        self.checallconfigurations(path: path)
     }
 }
