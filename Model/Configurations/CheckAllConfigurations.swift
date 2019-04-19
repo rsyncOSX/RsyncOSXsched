@@ -41,5 +41,6 @@ class CheckAllConfigurations {
     init(path: String) {
         self.path = path
         self.getprofilenames()
+        self.checallconfigurations()
     }
 }

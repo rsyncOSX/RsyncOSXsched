@@ -237,6 +237,7 @@ class ViewControllerMain: NSViewController, Delay, Setlog {
     @objc func didMount(_ notification: NSNotification) {
         if let devicePath = notification.userInfo!["NSDevicePath"] as? String {
             _ = Notifications().showNotification(message: "Mounted volume " + devicePath)
+            _ = CheckAllConfigurations(path: devicePath)
         }
     }
 
