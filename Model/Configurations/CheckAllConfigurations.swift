@@ -8,7 +8,7 @@
 
 import Foundation
 
-class CheckAllConfigurations {
+class CheckAllConfigurations: Delay {
 
     var allprofiles: [String]?
     var allconfigurations: [Configuration]?
@@ -19,7 +19,8 @@ class CheckAllConfigurations {
         self.allprofiles = profile.getDirectorysStrings()
     }
 
-    private func checallconfigurations(path: String) {
+    private func readallconfigurations() {
+        self.getprofilenames()
         guard self.allprofiles != nil else { return }
         var configurations: [Configuration]?
         for i in 0 ..< self.allprofiles!.count {
@@ -36,15 +37,19 @@ class CheckAllConfigurations {
                 }
             }
         }
-        self.check(path: path)
     }
 
-    func check(path: String) {
-        guard self.allconfigurations != nil else { return }
+    func check() {
+        self.delayWithSeconds(10) {
+            guard self.allconfigurations != nil else { return }
+            // print(self.allpaths!)
+        }
     }
 
     init(path: String) {
         self.allpaths = [String]()
         self.allpaths?.append(path)
+        self.readallconfigurations()
+        self.check()
     }
 }
