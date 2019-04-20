@@ -12,6 +12,7 @@ class CheckAllConfigurations {
 
     var allprofiles: [String]?
     var allconfigurations: [Configuration]?
+    var allpaths: [String]?
 
     private func getprofilenames() {
         let profile = Files(whichroot: .profileRoot, configpath: ViewControllerReference.shared.configpath)
@@ -41,10 +42,9 @@ class CheckAllConfigurations {
     func check(path: String) {
         guard self.allconfigurations != nil else { return }
     }
-    
 
     init(path: String) {
-        self.getprofilenames()
-        self.checallconfigurations(path: path)
+        self.allpaths = [String]()
+        self.allpaths?.append(path)
     }
 }

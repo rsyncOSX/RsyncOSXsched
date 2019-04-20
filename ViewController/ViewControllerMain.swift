@@ -241,7 +241,7 @@ class ViewControllerMain: NSViewController, Delay, Setlog {
             if self.checkallconfiguration == nil {
                 self.checkallconfiguration = CheckAllConfigurations(path: devicePath)
             } else {
-                self.checkallconfiguration?.check(path: devicePath)
+                self.checkallconfiguration?.allpaths?.append(devicePath)
             }
         }
     }
