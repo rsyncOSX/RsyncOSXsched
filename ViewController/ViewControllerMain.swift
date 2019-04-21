@@ -237,7 +237,7 @@ class ViewControllerMain: NSViewController, Delay, Setlog {
 
     @objc func didMount(_ notification: NSNotification) {
         if let devicePath = notification.userInfo!["NSDevicePath"] as? String {
-            _ = Notifications().showNotification(message: "Mounted volume " + devicePath)
+            self.logDelegate?.addlog(logrecord: "Mounting volumes: " + devicePath)
             if self.checkallconfiguration == nil {
                 self.checkallconfiguration = CheckAllConfigurations(path: devicePath)
             } else {
@@ -248,7 +248,7 @@ class ViewControllerMain: NSViewController, Delay, Setlog {
 
     @objc func didUnMount(_ notification: NSNotification) {
         if let devicePath = notification.userInfo!["NSDevicePath"] as? String {
-            _ = Notifications().showNotification(message: "Unmounted volume " + devicePath)
+            self.logDelegate?.addlog(logrecord: "Unmounting volumes: " + devicePath)
             self.checkallconfiguration = nil
         }
     }
