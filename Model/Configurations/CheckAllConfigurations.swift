@@ -8,7 +8,7 @@
 
 import Foundation
 
-class CheckAllConfigurations: Delay {
+class CheckAllConfigurations: Delay, Setlog {
 
     var allprofiles: [String]?
     var allconfigurations: [Configuration]?
@@ -33,6 +33,7 @@ class CheckAllConfigurations: Delay {
             }
             if configurations != nil {
                 for j in 0 ..< configurations!.count {
+                    configurations![j].profilename = profilename
                     self.allconfigurations!.append(configurations![j])
                 }
             }
@@ -42,7 +43,17 @@ class CheckAllConfigurations: Delay {
     func check() {
         self.delayWithSeconds(10) {
             guard self.allconfigurations != nil else { return }
-            // print(self.allpaths!)
+            guard self.allpaths != nil else { return }
+            for i in 0 ..< self.allpaths!.count {
+                let mountedpath = self.allpaths![i]
+                for j in 0 ..< self.allconfigurations!.count {
+                    let offsitepath = self.allconfigurations![j].offsiteCatalog
+                    if offsitepath.contains(mountedpath) && self.allconfigurations![j].offsiteServer.isEmpty {
+                        let profile = self.allconfigurations![j].profilename ?? "Default profile"
+                        self.logDelegate?.addlog(logrecord: "Found mounted Volume " + mountedpath + " in: " + profile)
+                    }
+                }
+            }
         }
     }
 
