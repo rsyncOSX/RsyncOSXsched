@@ -33,6 +33,7 @@ class CheckAllConfigurations: Delay, Setlog {
             }
             if configurations != nil {
                 for j in 0 ..< configurations!.count {
+                    configurations![j].profilename = profilename
                     self.allconfigurations!.append(configurations![j])
                 }
             }
