@@ -258,10 +258,12 @@ class ViewControllerMain: NSViewController, Delay, Setlog {
                                                            name: NSWorkspace.didWakeNotification, object: nil)
         NSWorkspace.shared.notificationCenter.addObserver( self, selector: #selector(onSleepNote(note:)),
                                                            name: NSWorkspace.willSleepNotification, object: nil)
-        NSWorkspace.shared.notificationCenter.addObserver(self, selector: #selector(didMount(_:)),
-                                                      name: NSWorkspace.didMountNotification, object: nil)
-        NSWorkspace.shared.notificationCenter.addObserver(self, selector: #selector(didUnMount(_:)),
-                                                      name: NSWorkspace.didUnmountNotification, object: nil)
+        if ViewControllerReference.shared.automaticexecutelocalvolumes {
+            NSWorkspace.shared.notificationCenter.addObserver(self, selector: #selector(didMount(_:)),
+                                                              name: NSWorkspace.didMountNotification, object: nil)
+            NSWorkspace.shared.notificationCenter.addObserver(self, selector: #selector(didUnMount(_:)),
+                                                              name: NSWorkspace.didUnmountNotification, object: nil)
+        }
     }
 }
 
