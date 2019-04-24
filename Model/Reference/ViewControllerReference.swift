@@ -66,4 +66,6 @@ class ViewControllerReference {
     var URLnewVersion: String?
     // Mark number of days since last backup
     var marknumberofdayssince: Double = 5
+    // Automatic execute local configurations in menuapp when mounting local volumes
+    var automaticexecutelocalvolumes: Bool = false
 }
