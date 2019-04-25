@@ -13,6 +13,7 @@ class CheckAllConfigurations: Delay, Setlog {
     var allprofiles: [String]?
     var allconfigurations: [Configuration]?
     var allpaths: [String]?
+    var work: [NSDictionary]?
 
     private func getprofilenames() {
         let profile = Files(whichroot: .profileRoot, configpath: ViewControllerReference.shared.configpath)
@@ -51,6 +52,12 @@ class CheckAllConfigurations: Delay, Setlog {
                     if offsitepath.contains(mountedpath) && self.allconfigurations![j].offsiteServer.isEmpty {
                         let profile = self.allconfigurations![j].profilename ?? "Default profile"
                         self.logDelegate?.addlog(logrecord: "Found mounted Volume " + mountedpath + " in: " + profile)
+
+                        if self.work == nil { self.work = [NSDictionary]()}
+                        let dict: NSDictionary = [
+                            "profilename": self.allconfigurations![j].profilename!,
+                            "hiddenID": self.allconfigurations![j].hiddenID ]
+                        self.work?.append(dict)
                     }
                 }
             }
