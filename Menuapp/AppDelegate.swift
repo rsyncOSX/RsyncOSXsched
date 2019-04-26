@@ -1,6 +1,7 @@
 //
 //  AppDelegate.swift
 //  Popup
+// swiftlint:disable line_length
 
 import Cocoa
 
@@ -32,8 +33,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 			button.action = #selector(AppDelegate.togglePopover(_:))
 		}
 		self.popover.contentViewController = self.mainViewController
-		self.eventMonitor = EventMonitor(mask: [NSEvent.EventTypeMask.leftMouseDown, NSEvent.EventTypeMask.rightMouseDown])
-        { [weak self] event in
+		self.eventMonitor = EventMonitor(mask: [NSEvent.EventTypeMask.leftMouseDown, NSEvent.EventTypeMask.rightMouseDown]) { [weak self] event in
             if let popover = self?.popover {
 				if popover.isShown {
 					self?.closePopover(event)
