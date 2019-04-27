@@ -8,12 +8,17 @@
 
 import Foundation
 
+protocol Startautomaticexecution: class {
+    func startautomaticexecution()
+}
+
 class CheckAllConfigurations: Delay, Setlog {
 
     var allprofiles: [String]?
     var allconfigurations: [Configuration]?
     var allpaths: [String]?
-    var work: [NSDictionary]?
+    var automaticexecution: [NSDictionary]?
+    weak var start: Startautomaticexecution?
 
     private func getprofilenames() {
         let profile = Files(whichroot: .profileRoot, configpath: ViewControllerReference.shared.configpath)
@@ -53,14 +58,16 @@ class CheckAllConfigurations: Delay, Setlog {
                         let profile = self.allconfigurations![j].profilename ?? "Default profile"
                         self.logDelegate?.addlog(logrecord: "Found mounted Volume " + mountedpath + " in: " + profile)
 
-                        if self.work == nil { self.work = [NSDictionary]()}
+                        if self.automaticexecution == nil { self.automaticexecution = [NSDictionary]()}
                         let dict: NSDictionary = [
                             "profilename": self.allconfigurations![j].profilename!,
                             "hiddenID": self.allconfigurations![j].hiddenID ]
-                        self.work?.append(dict)
+                        self.automaticexecution?.append(dict)
                     }
                 }
             }
+            // Kick off automatic backup
+            self.start?.startautomaticexecution()
         }
     }
 
@@ -68,6 +75,7 @@ class CheckAllConfigurations: Delay, Setlog {
         self.allpaths = [String]()
         self.allpaths?.append(path)
         self.readallconfigurations()
+        self.start = ViewControllerReference.shared.viewControllermain as? ViewControllerMain
         self.check()
     }
 }

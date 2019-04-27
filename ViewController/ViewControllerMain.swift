@@ -44,6 +44,7 @@ class ViewControllerMain: NSViewController, Delay, Setlog {
     var log: [String]?
     var reloadnotification: NSObjectProtocol?
     var checkallconfiguration: CheckAllConfigurations?
+    var automaticexecution: [NSDictionary]?
 
     private var profilesArray: [String]?
     private var profile: Files?
@@ -250,6 +251,7 @@ class ViewControllerMain: NSViewController, Delay, Setlog {
         if let devicePath = notification.userInfo!["NSDevicePath"] as? String {
             self.logDelegate?.addlog(logrecord: "Unmounting volumes: " + devicePath)
             self.checkallconfiguration = nil
+            self.automaticexecution = nil
         }
     }
 
@@ -503,5 +505,14 @@ extension ViewControllerMain: RsyncOSXschedversion {
         globalMainQueue.async(execute: { () -> Void in
             self.newversion.isHidden = false
         })
+    }
+}
+
+extension ViewControllerMain: Startautomaticexecution {
+    func startautomaticexecution() {
+        self.automaticexecution = self.checkallconfiguration?.automaticexecution
+        guard  self.automaticexecution != nil else { return }
+        ViewControllerReference.shared.dispatchTaskWaiting?.cancel()
+        ViewControllerReference.shared.timerTaskWaiting?.invalidate()
     }
 }
