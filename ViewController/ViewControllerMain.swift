@@ -44,6 +44,7 @@ class ViewControllerMain: NSViewController, Delay, Setlog {
     var log: [String]?
     var reloadnotification: NSObjectProtocol?
     var checkallconfiguration: CheckAllConfigurations?
+    var automaticexecution: [NSDictionary]?
 
     private var profilesArray: [String]?
     private var profile: Files?
@@ -250,6 +251,7 @@ class ViewControllerMain: NSViewController, Delay, Setlog {
         if let devicePath = notification.userInfo!["NSDevicePath"] as? String {
             self.logDelegate?.addlog(logrecord: "Unmounting volumes: " + devicePath)
             self.checkallconfiguration = nil
+            self.automaticexecution = nil
         }
     }
 
@@ -398,17 +400,30 @@ extension ViewControllerMain: UpdateProgress {
             self.progress.stopAnimation(nil)
             self.progresslabel.isHidden = true
         })
-        guard ViewControllerReference.shared.completeoperation != nil else {
-            self.delayWithSeconds(5) {
+        if self.automaticexecution == nil {
+            guard ViewControllerReference.shared.completeoperation != nil else {
+                self.delayWithSeconds(5) {
+                    self.schedulesortedandexpanded = ScheduleSortedAndExpand()
+                    self.startfirstscheduledtask()
+                }
+                return
+            }
+            self.schedulesortedandexpanded = ScheduleSortedAndExpand()
+            self.startfirstscheduledtask()
+            ViewControllerReference.shared.completeoperation!.finalizeScheduledJob(outputprocess: self.outputprocess)
+            self.backupnowbutton.isEnabled = true
+        } else {
+            ViewControllerReference.shared.completeoperation!.finalizeScheduledJob(outputprocess: self.outputprocess)
+            guard self.automaticexecution != nil else { return }
+            guard self.automaticexecution!.count > 0 else {
+                self.automaticexecution = nil
                 self.schedulesortedandexpanded = ScheduleSortedAndExpand()
                 self.startfirstscheduledtask()
+                return
             }
-            return
+            let dict: NSDictionary = self.automaticexecution!.removeFirst()
+            _ = ExecuteTaskNow(dict: dict)
         }
-        self.schedulesortedandexpanded = ScheduleSortedAndExpand()
-        self.startfirstscheduledtask()
-        ViewControllerReference.shared.completeoperation!.finalizeScheduledJob(outputprocess: self.outputprocess)
-        self.backupnowbutton.isEnabled = true
     }
 
     func fileHandler() {
@@ -503,5 +518,18 @@ extension ViewControllerMain: RsyncOSXschedversion {
         globalMainQueue.async(execute: { () -> Void in
             self.newversion.isHidden = false
         })
+    }
+}
+
+extension ViewControllerMain: Startautomaticexecution {
+    func startautomaticexecution() {
+        self.automaticexecution = self.checkallconfiguration?.automaticexecution
+        guard  self.automaticexecution != nil else { return }
+        guard self.automaticexecution!.count > 0 else {
+            self.automaticexecution = nil
+            return
+        }
+        let dict: NSDictionary = self.automaticexecution!.removeFirst()
+        _ = ExecuteTaskNow(dict: dict)
     }
 }
