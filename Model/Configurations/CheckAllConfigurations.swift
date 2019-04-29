@@ -47,7 +47,7 @@ class CheckAllConfigurations: Delay, Setlog {
     }
 
     func check() {
-        self.delayWithSeconds(5) {
+        self.delayWithSeconds(10) {
             guard self.allconfigurations != nil else { return }
             guard self.allpaths != nil else { return }
             for i in 0 ..< self.allpaths!.count {
