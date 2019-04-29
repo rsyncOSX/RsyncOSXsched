@@ -47,7 +47,7 @@ class CheckAllConfigurations: Delay, Setlog {
     }
 
     func check() {
-        self.delayWithSeconds(10) {
+        self.delayWithSeconds(5) {
             guard self.allconfigurations != nil else { return }
             guard self.allpaths != nil else { return }
             for i in 0 ..< self.allpaths!.count {
@@ -56,7 +56,7 @@ class CheckAllConfigurations: Delay, Setlog {
                     let offsitepath = self.allconfigurations![j].offsiteCatalog
                     if offsitepath.contains(mountedpath) && self.allconfigurations![j].offsiteServer.isEmpty {
                         let profile = self.allconfigurations![j].profilename ?? "Default profile"
-                        self.logDelegate?.addlog(logrecord: "Found mounted Volume " + mountedpath + " in: " + profile)
+                        self.logDelegate?.addlog(logrecord: "Mounted Volume discovered" + mountedpath + " in: " + profile)
 
                         if self.automaticexecution == nil { self.automaticexecution = [NSDictionary]()}
                         let dict: NSDictionary = [

@@ -421,8 +421,10 @@ extension ViewControllerMain: UpdateProgress {
                 self.startfirstscheduledtask()
                 return
             }
-            let dict: NSDictionary = self.automaticexecution!.removeFirst()
-            _ = ExecuteTaskNow(dict: dict)
+            self.delayWithSeconds(1) {
+                let dict: NSDictionary = self.automaticexecution!.removeFirst()
+                _ = ExecuteTaskNow(dict: dict)
+            }
         }
     }
 
