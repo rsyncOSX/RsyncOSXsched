@@ -1,0 +1,355 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="1.2" xsi:schemaLocation="urn:oasis:names:tc:xliff:document:1.2 http://docs.oasis-open.org/xliff/v1.2/os/xliff-core-1.2-strict.xsd">
+  <file original="RsyncOSXsched/Base.lproj/Main.storyboard" source-language="en" target-language="nb" datatype="plaintext">
+    <header>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="10.2.1" build-num="10E1001"/>
+    </header>
+    <body>
+      <trans-unit id="1Xt-HY-uBw.title">
+        <source>RsyncOSXsched</source>
+        <target>RsyncOSXsched</target>
+        <note>Class = "NSMenuItem"; title = "RsyncOSXsched"; ObjectID = "1Xt-HY-uBw";</note>
+      </trans-unit>
+      <trans-unit id="4o0-3W-taC.headerCell.title">
+        <source>Start in</source>
+        <target>Start in</target>
+        <note>Class = "NSTableColumn"; headerCell.title = "Start in"; ObjectID = "4o0-3W-taC";</note>
+      </trans-unit>
+      <trans-unit id="4sb-4s-VLi.title">
+        <source>Quit RsyncOSXsched</source>
+        <target>Quit RsyncOSXsched</target>
+        <note>Class = "NSMenuItem"; title = "Quit RsyncOSXsched"; ObjectID = "4sb-4s-VLi";</note>
+      </trans-unit>
+      <trans-unit id="5c9-F6-lv3.title">
+        <source>All schedules</source>
+        <target>All schedules</target>
+        <note>Class = "NSViewController"; title = "All schedules"; ObjectID = "5c9-F6-lv3";</note>
+      </trans-unit>
+      <trans-unit id="5kV-Vb-QxS.title">
+        <source>About RsyncOSXsched</source>
+        <target>About RsyncOSXsched</target>
+        <note>Class = "NSMenuItem"; title = "About RsyncOSXsched"; ObjectID = "5kV-Vb-QxS";</note>
+      </trans-unit>
+      <trans-unit id="6Qr-L9-cOC.title">
+        <source>Double click on a row to select profile...</source>
+        <target>Double click on a row to select profile...</target>
+        <note>Class = "NSTextFieldCell"; title = "Double click on a row to select profile..."; ObjectID = "6Qr-L9-cOC";</note>
+      </trans-unit>
+      <trans-unit id="7YM-08-OZC.title">
+        <source>Status next task:</source>
+        <target>Status next task:</target>
+        <note>Class = "NSTextFieldCell"; title = "Status next task:"; ObjectID = "7YM-08-OZC";</note>
+      </trans-unit>
+      <trans-unit id="9lr-pg-w2Y.title">
+        <source>Now</source>
+        <target>Now</target>
+        <note>Class = "NSButtonCell"; title = "Now"; ObjectID = "9lr-pg-w2Y";</note>
+      </trans-unit>
+      <trans-unit id="AYu-sK-qS6.title">
+        <source>Main Menu</source>
+        <target>Main Menu</target>
+        <note>Class = "NSMenu"; title = "Main Menu"; ObjectID = "AYu-sK-qS6";</note>
+      </trans-unit>
+      <trans-unit id="Apg-mF-s7e.title">
+        <source>Text Cell</source>
+        <target>Text Cell</target>
+        <note>Class = "NSTextFieldCell"; title = "Text Cell"; ObjectID = "Apg-mF-s7e";</note>
+      </trans-unit>
+      <trans-unit id="BOF-NM-1cW.title">
+        <source>Preferences…</source>
+        <target>Preferences…</target>
+        <note>Class = "NSMenuItem"; title = "Preferences…"; ObjectID = "BOF-NM-1cW";</note>
+      </trans-unit>
+      <trans-unit id="CCr-KQ-oF9.headerCell.title">
+        <source>Profilename</source>
+        <target>Profilename</target>
+        <note>Class = "NSTableColumn"; headerCell.title = "Profilename"; ObjectID = "CCr-KQ-oF9";</note>
+      </trans-unit>
+      <trans-unit id="CQC-uM-hG0.title">
+        <source>Text Cell</source>
+        <target>Text Cell</target>
+        <note>Class = "NSTextFieldCell"; title = "Text Cell"; ObjectID = "CQC-uM-hG0";</note>
+      </trans-unit>
+      <trans-unit id="D5A-Hv-N0n.ibShadowedObjectValues[0]">
+        <source>Item 1</source>
+        <target>Item 1</target>
+        <note>Class = "NSComboBoxCell"; D5A-Hv-N0n.ibShadowedObjectValues[0] = "Item 1"; ObjectID = "D5A-Hv-N0n";</note>
+      </trans-unit>
+      <trans-unit id="D5A-Hv-N0n.ibShadowedObjectValues[1]">
+        <source>Item 2</source>
+        <target>Item 2</target>
+        <note>Class = "NSComboBoxCell"; D5A-Hv-N0n.ibShadowedObjectValues[1] = "Item 2"; ObjectID = "D5A-Hv-N0n";</note>
+      </trans-unit>
+      <trans-unit id="D5A-Hv-N0n.ibShadowedObjectValues[2]">
+        <source>Item 3</source>
+        <target>Item 3</target>
+        <note>Class = "NSComboBoxCell"; D5A-Hv-N0n.ibShadowedObjectValues[2] = "Item 3"; ObjectID = "D5A-Hv-N0n";</note>
+      </trans-unit>
+      <trans-unit id="GMe-Tg-hJO.title">
+        <source>Text Cell</source>
+        <target>Text Cell</target>
+        <note>Class = "NSTextFieldCell"; title = "Text Cell"; ObjectID = "GMe-Tg-hJO";</note>
+      </trans-unit>
+      <trans-unit id="IC7-e5-YBh.headerCell.title">
+        <source>ID</source>
+        <target>ID</target>
+        <note>Class = "NSTableColumn"; headerCell.title = "ID"; ObjectID = "IC7-e5-YBh";</note>
+      </trans-unit>
+      <trans-unit id="Kd2-mp-pUS.title">
+        <source>Show All</source>
+        <target>Show All</target>
+        <note>Class = "NSMenuItem"; title = "Show All"; ObjectID = "Kd2-mp-pUS";</note>
+      </trans-unit>
+      <trans-unit id="L8l-lJ-lKA.title">
+        <source>Schedules</source>
+        <target>Schedules</target>
+        <note>Class = "NSButtonCell"; title = "Schedules"; ObjectID = "L8l-lJ-lKA";</note>
+      </trans-unit>
+      <trans-unit id="LbP-5c-NYf.title">
+        <source>Text Cell</source>
+        <target>Text Cell</target>
+        <note>Class = "NSTextFieldCell"; title = "Text Cell"; ObjectID = "LbP-5c-NYf";</note>
+      </trans-unit>
+      <trans-unit id="Luf-WA-iep.headerCell.title">
+        <source>Remote server</source>
+        <target>Remote server</target>
+        <note>Class = "NSTableColumn"; headerCell.title = "Remote server"; ObjectID = "Luf-WA-iep";</note>
+      </trans-unit>
+      <trans-unit id="Mtm-oR-2oz.title">
+        <source>Text Cell</source>
+        <target>Text Cell</target>
+        <note>Class = "NSTextFieldCell"; title = "Text Cell"; ObjectID = "Mtm-oR-2oz";</note>
+      </trans-unit>
+      <trans-unit id="NAt-yd-56N.title">
+        <source>Close</source>
+        <target>Close</target>
+        <note>Class = "NSButtonCell"; title = "Close"; ObjectID = "NAt-yd-56N";</note>
+      </trans-unit>
+      <trans-unit id="NMo-om-nkz.title">
+        <source>Services</source>
+        <target>Services</target>
+        <note>Class = "NSMenuItem"; title = "Services"; ObjectID = "NMo-om-nkz";</note>
+      </trans-unit>
+      <trans-unit id="OEe-RI-leW.title">
+        <source>RsyncOSXsched version : </source>
+        <target>RsyncOSXsched version : </target>
+        <note>Class = "NSTextFieldCell"; title = "RsyncOSXsched version : "; ObjectID = "OEe-RI-leW";</note>
+      </trans-unit>
+      <trans-unit id="Olw-nP-bQN.title">
+        <source>Hide RsyncOSXsched</source>
+        <target>Hide RsyncOSXsched</target>
+        <note>Class = "NSMenuItem"; title = "Hide RsyncOSXsched"; ObjectID = "Olw-nP-bQN";</note>
+      </trans-unit>
+      <trans-unit id="QPq-ff-gA2.title">
+        <source>Quit</source>
+        <target>Quit</target>
+        <note>Class = "NSButtonCell"; title = "Quit"; ObjectID = "QPq-ff-gA2";</note>
+      </trans-unit>
+      <trans-unit id="Rb9-51-nDu.headerCell.title">
+        <source>Schedule</source>
+        <target>Schedule</target>
+        <note>Class = "NSTableColumn"; headerCell.title = "Schedule"; ObjectID = "Rb9-51-nDu";</note>
+      </trans-unit>
+      <trans-unit id="SMW-uL-v3k.title">
+        <source>Details about files</source>
+        <target>Details about files</target>
+        <note>Class = "NSViewController"; title = "Details about files"; ObjectID = "SMW-uL-v3k";</note>
+      </trans-unit>
+      <trans-unit id="Vdr-fp-XzO.title">
+        <source>Hide Others</source>
+        <target>Hide Others</target>
+        <note>Class = "NSMenuItem"; title = "Hide Others"; ObjectID = "Vdr-fp-XzO";</note>
+      </trans-unit>
+      <trans-unit id="W9w-mv-yJ6.headerCell.title">
+        <source>Schedule</source>
+        <target>Schedule</target>
+        <note>Class = "NSTableColumn"; headerCell.title = "Schedule"; ObjectID = "W9w-mv-yJ6";</note>
+      </trans-unit>
+      <trans-unit id="WRj-Ji-Dme.title">
+        <source>Text Cell</source>
+        <target>Text Cell</target>
+        <note>Class = "NSTextFieldCell"; title = "Text Cell"; ObjectID = "WRj-Ji-Dme";</note>
+      </trans-unit>
+      <trans-unit id="XRT-w7-GWr.title">
+        <source>New version is available, see RsyncOSX download page...</source>
+        <target>New version is available, see RsyncOSX download page...</target>
+        <note>Class = "NSTextFieldCell"; title = "New version is available, see RsyncOSX download page..."; ObjectID = "XRT-w7-GWr";</note>
+      </trans-unit>
+      <trans-unit id="Ybm-e4-iVi.title">
+        <source>Working</source>
+        <target>Working</target>
+        <note>Class = "NSTextFieldCell"; title = "Working"; ObjectID = "Ybm-e4-iVi";</note>
+      </trans-unit>
+      <trans-unit id="Zhf-Z3-f6P.title">
+        <source>Mocup</source>
+        <target>Mocup</target>
+        <note>Class = "NSMenuItem"; title = "Mocup"; ObjectID = "Zhf-Z3-f6P";</note>
+      </trans-unit>
+      <trans-unit id="ae6-sg-TdC.title">
+        <source>Close</source>
+        <target>Close</target>
+        <note>Class = "NSButtonCell"; title = "Close"; ObjectID = "ae6-sg-TdC";</note>
+      </trans-unit>
+      <trans-unit id="bVy-VF-Maa.title">
+        <source>Text Cell</source>
+        <target>Text Cell</target>
+        <note>Class = "NSTextFieldCell"; title = "Text Cell"; ObjectID = "bVy-VF-Maa";</note>
+      </trans-unit>
+      <trans-unit id="eNw-gw-gOP.title">
+        <source>Text Cell</source>
+        <target>Text Cell</target>
+        <note>Class = "NSTextFieldCell"; title = "Text Cell"; ObjectID = "eNw-gw-gOP";</note>
+      </trans-unit>
+      <trans-unit id="gdH-5D-KCh.headerCell.title">
+        <source>Remote catalog</source>
+        <target>Remote catalog</target>
+        <note>Class = "NSTableColumn"; headerCell.title = "Remote catalog"; ObjectID = "gdH-5D-KCh";</note>
+      </trans-unit>
+      <trans-unit id="gkG-rF-JAe.title">
+        <source>RsyncOSX</source>
+        <target>RsyncOSX</target>
+        <note>Class = "NSButtonCell"; title = "RsyncOSX"; ObjectID = "gkG-rF-JAe";</note>
+      </trans-unit>
+      <trans-unit id="hz9-B4-Xy5.title">
+        <source>Services</source>
+        <target>Services</target>
+        <note>Class = "NSMenu"; title = "Services"; ObjectID = "hz9-B4-Xy5";</note>
+      </trans-unit>
+      <trans-unit id="ifM-NK-It0.headerCell.title">
+        <source>Log</source>
+        <target>Log</target>
+        <note>Class = "NSTableColumn"; headerCell.title = "Log"; ObjectID = "ifM-NK-It0";</note>
+      </trans-unit>
+      <trans-unit id="kwV-jU-Gsi.headerCell.title">
+        <source>In time</source>
+        <target>In time</target>
+        <note>Class = "NSTableColumn"; headerCell.title = "In time"; ObjectID = "kwV-jU-Gsi";</note>
+      </trans-unit>
+      <trans-unit id="l2d-BZ-Xq3.headerCell.title">
+        <source>Local catalog</source>
+        <target>Local catalog</target>
+        <note>Class = "NSTableColumn"; headerCell.title = "Local catalog"; ObjectID = "l2d-BZ-Xq3";</note>
+      </trans-unit>
+      <trans-unit id="lnW-x5-dek.title">
+        <source>output</source>
+        <target>output</target>
+        <note>Class = "NSTextFieldCell"; title = "output"; ObjectID = "lnW-x5-dek";</note>
+      </trans-unit>
+      <trans-unit id="mYk-p2-itH.title">
+        <source>Text Cell</source>
+        <target>Text Cell</target>
+        <note>Class = "NSTextFieldCell"; title = "Text Cell"; ObjectID = "mYk-p2-itH";</note>
+      </trans-unit>
+      <trans-unit id="p1x-0f-6rG.title">
+        <source>Log</source>
+        <target>Log</target>
+        <note>Class = "NSButtonCell"; title = "Log"; ObjectID = "p1x-0f-6rG";</note>
+      </trans-unit>
+      <trans-unit id="qyk-58-p0P.title">
+        <source>Text Cell</source>
+        <target>Text Cell</target>
+        <note>Class = "NSTextFieldCell"; title = "Text Cell"; ObjectID = "qyk-58-p0P";</note>
+      </trans-unit>
+      <trans-unit id="tub-al-k7W.title">
+        <source>Write</source>
+        <target>Write</target>
+        <note>Class = "NSButtonCell"; title = "Write"; ObjectID = "tub-al-k7W";</note>
+      </trans-unit>
+      <trans-unit id="uBp-4W-BLA.title">
+        <source>Abort</source>
+        <target>Abort</target>
+        <note>Class = "NSButtonCell"; title = "Abort"; ObjectID = "uBp-4W-BLA";</note>
+      </trans-unit>
+      <trans-unit id="uQy-DD-JDr.title">
+        <source>RsyncOSXsched</source>
+        <target>RsyncOSXsched</target>
+        <note>Class = "NSMenu"; title = "RsyncOSXsched"; ObjectID = "uQy-DD-JDr";</note>
+      </trans-unit>
+      <trans-unit id="vtz-39-lIB.headerCell.title">
+        <source>Task</source>
+        <target>Task</target>
+        <note>Class = "NSTableColumn"; headerCell.title = "Task"; ObjectID = "vtz-39-lIB";</note>
+      </trans-unit>
+      <trans-unit id="wN8-MI-RRk.title">
+        <source>Text Cell</source>
+        <target>Text Cell</target>
+        <note>Class = "NSTextFieldCell"; title = "Text Cell"; ObjectID = "wN8-MI-RRk";</note>
+      </trans-unit>
+      <trans-unit id="xUm-lB-wAP.title">
+        <source>Profile : default</source>
+        <target>Profile : default</target>
+        <note>Class = "NSTextFieldCell"; title = "Profile : default"; ObjectID = "xUm-lB-wAP";</note>
+      </trans-unit>
+    </body>
+  </file>
+  <file original="RsyncOSXsched/en.lproj/InfoPlist.strings" datatype="plaintext" source-language="en" target-language="nb">
+    <header>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="10.2.1" build-num="10E1001"/>
+    </header>
+    <body>
+      <trans-unit id="CFBundleName">
+        <source>RsyncOSXsched</source>
+        <note>Bundle name</note>
+      </trans-unit>
+      <trans-unit id="NSHumanReadableCopyright">
+        <source>Copyright © 2019 Thomas Evensen. All rights reserved.</source>
+        <note>Copyright (human-readable)</note>
+      </trans-unit>
+    </body>
+  </file>
+  <file original="RsyncOSXsched/en.lproj/Localizable.strings" datatype="plaintext" source-language="en" target-language="nb">
+    <header>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="10.2.1" build-num="10E1001"/>
+    </header>
+    <body>
+      <trans-unit id=" in: ">
+        <source> in: </source>
+        <note>Mount</note>
+      </trans-unit>
+      <trans-unit id="Activating schedules again after sleeping...">
+        <source>Activating schedules again after sleeping...</source>
+        <note>onwake</note>
+      </trans-unit>
+      <trans-unit id="Executing scheduled tasks is not enabled in RsyncOSX....">
+        <source>Executing scheduled tasks is not enabled in RsyncOSX....</source>
+        <note>info2</note>
+      </trans-unit>
+      <trans-unit id="Got notification for reload">
+        <source>Got notification for reload</source>
+        <note>addobserverforreload</note>
+      </trans-unit>
+      <trans-unit id="Invalidating tasks and going to sleep...">
+        <source>Invalidating tasks and going to sleep...</source>
+        <note>onsleep</note>
+      </trans-unit>
+      <trans-unit id="Mounted Volume discovered">
+        <source>Mounted Volume discovered</source>
+        <note>Mount</note>
+      </trans-unit>
+      <trans-unit id="Mounting volumes: ">
+        <source>Mounting volumes: </source>
+        <note>didmount</note>
+      </trans-unit>
+      <trans-unit id="Profile: default loaded.">
+        <source>Profile: default loaded.</source>
+        <note>reloadinfo</note>
+      </trans-unit>
+      <trans-unit id="Reading configurations for current profile">
+        <source>Reading configurations for current profile</source>
+        <note>createandreloadconfigurations</note>
+      </trans-unit>
+      <trans-unit id="Reading schedules for current profile">
+        <source>Reading schedules for current profile</source>
+        <note>createandreloadschedules</note>
+      </trans-unit>
+      <trans-unit id="Some remote sites not avaliable, see log ....">
+        <source>Some remote sites not avaliable, see log ....</source>
+        <note>info1</note>
+      </trans-unit>
+      <trans-unit id="Unmounting volumes: ">
+        <source>Unmounting volumes: </source>
+        <note>didunmount</note>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

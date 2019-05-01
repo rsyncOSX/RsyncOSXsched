@@ -152,6 +152,7 @@
 		E9F54D842026DC5D00A664CF /* ReadWriteDictionary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReadWriteDictionary.swift; sourceTree = "<group>"; };
 		E9F54D882026DCCF00A664CF /* Files.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Files.swift; sourceTree = "<group>"; };
 		E9F54D8A2026DED600A664CF /* PersistentStorageUserconfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersistentStorageUserconfiguration.swift; sourceTree = "<group>"; };
+		E9FA8C072279BF0100B28803 /* nb */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nb; path = nb.lproj/Main.strings; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -429,8 +430,8 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				English,
-				en,
 				Base,
+				nb,
 			);
 			mainGroup = 94E0FC321BD7FC3600A3C537;
 			productRefGroup = 94E0FC3C1BD7FC3600A3C537 /* Products */;
@@ -570,6 +571,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				94E0FC451BD7FC3600A3C537 /* Base */,
+				E9FA8C072279BF0100B28803 /* nb */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";

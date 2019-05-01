@@ -78,7 +78,8 @@ class ViewControllerMain: NSViewController, Delay, Setlog {
 
     private func addobserverforreload() {
         self.reloadnotification = DistributedNotificationCenter.default().addObserver(forName: NSNotification.Name("no.blogspot.RsyncOSX.reload"), object: nil, queue: nil) { _ -> Void in
-            self.addlog(logrecord: "Got notification for reload")
+            let notification: String = NSLocalizedString("Got notification for reload", comment: "addobserverforreload")
+            self.addlog(logrecord: notification)
             self.reloadselectedprofile()
             self.schedulesortedandexpanded = ScheduleSortedAndExpand()
             self.startfirstscheduledtask()
@@ -137,7 +138,8 @@ class ViewControllerMain: NSViewController, Delay, Setlog {
         self.info(num: -1)
         guard self.profilesArray != nil else { return }
         guard self.profilescombobox.indexOfSelectedItem > 0 else {
-            self.addlog(logrecord: "Profile: default loaded.")
+            let reloadinfo: String = NSLocalizedString("Profile: default loaded.", comment: "reloadinfo")
+            self.addlog(logrecord: reloadinfo)
             self.profileinfo.stringValue = "Profile: default"
             self.profilename = nil
             self.createandreloadconfigurations()
@@ -152,7 +154,8 @@ class ViewControllerMain: NSViewController, Delay, Setlog {
     }
 
     func createandreloadschedules() {
-        self.addlog(logrecord: "Reading schedules for current profile")
+        let readingschedule: String = NSLocalizedString("Reading schedules for current profile", comment: "createandreloadschedules")
+        self.addlog(logrecord: readingschedule)
         guard self.configurations != nil else {
             self.schedules = Schedules(profile: nil)
             return
@@ -167,7 +170,8 @@ class ViewControllerMain: NSViewController, Delay, Setlog {
     }
 
     func createandreloadconfigurations() {
-        self.addlog(logrecord: "Reading configurations for current profile")
+        let readingconfig: String = NSLocalizedString( "Reading configurations for current profile", comment: "createandreloadconfigurations")
+        self.addlog(logrecord: readingconfig)
         guard self.configurations != nil else {
             self.configurations = Configurations(profile: nil)
             return
@@ -197,9 +201,11 @@ class ViewControllerMain: NSViewController, Delay, Setlog {
         globalMainQueue.async(execute: { () -> Void in
             switch num {
             case 1:
-                self.info.stringValue = "Some remote sites not avaliable, see log ...."
+                let info1: String = NSLocalizedString("Some remote sites not avaliable, see log ....", comment: "info1")
+                self.info.stringValue = info1
             case 2:
-                self.info.stringValue = "Executing scheduled tasks is not enabled in RsyncOSX...."
+                let info2: String = NSLocalizedString("Executing scheduled tasks is not enabled in RsyncOSX....", comment: "info2")
+                self.info.stringValue = info2
             default:
                 self.info.stringValue = ""
             }
@@ -225,20 +231,23 @@ class ViewControllerMain: NSViewController, Delay, Setlog {
     }
 
     @objc func onWakeNote(note: NSNotification) {
-        self.logDelegate?.addlog(logrecord: "Activating schedules again after sleeping...")
+        let onwake: String = NSLocalizedString("Activating schedules again after sleeping...", comment: "onwake")
+        self.logDelegate?.addlog(logrecord: onwake)
         self.schedulesortedandexpanded = ScheduleSortedAndExpand()
         self.startfirstscheduledtask()
     }
 
     @objc func onSleepNote(note: NSNotification) {
-        self.logDelegate?.addlog(logrecord: "Invalidating tasks and going to sleep...")
+        let onsleep: String = NSLocalizedString("Invalidating tasks and going to sleep...", comment: "onsleep")
+        self.logDelegate?.addlog(logrecord: onsleep)
         ViewControllerReference.shared.dispatchTaskWaiting?.cancel()
         ViewControllerReference.shared.timerTaskWaiting?.invalidate()
     }
 
     @objc func didMount(_ notification: NSNotification) {
         if let devicePath = notification.userInfo!["NSDevicePath"] as? String {
-            self.logDelegate?.addlog(logrecord: "Mounting volumes: " + devicePath)
+            let mount: String = NSLocalizedString("Mounting volumes: ", comment: "didmount")
+            self.logDelegate?.addlog(logrecord: mount + devicePath)
             if self.checkallconfiguration == nil {
                 self.checkallconfiguration = CheckAllConfigurations(path: devicePath)
             } else {
@@ -249,7 +258,8 @@ class ViewControllerMain: NSViewController, Delay, Setlog {
 
     @objc func didUnMount(_ notification: NSNotification) {
         if let devicePath = notification.userInfo!["NSDevicePath"] as? String {
-            self.logDelegate?.addlog(logrecord: "Unmounting volumes: " + devicePath)
+            let unmount: String = NSLocalizedString("Unmounting volumes: ", comment: "didunmount")
+            self.logDelegate?.addlog(logrecord: unmount + devicePath)
             self.checkallconfiguration = nil
             self.automaticexecution = nil
         }
