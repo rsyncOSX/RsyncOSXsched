@@ -1,0 +1,36 @@
+/* Mount */
+" in: " = " I: ";
+
+/* onwake */
+"Activating schedules again after sleeping..." = "Aktiverer oppgaver igjen etter aktivering...";
+
+/* info2 */
+"Executing scheduled tasks is not enabled in RsyncOSX...." = "Kjøring av schedulerte oppgaver ikke satt i RsyncOSX";
+
+/* addobserverforreload */
+"Got notification for reload" = "Fikk melding om reload";
+
+/* onsleep */
+"Invalidating tasks and going to sleep..." = "Stoppet oppgaver og stenger ned...";
+
+/* Mount */
+"Mounted Volume discovered" = "Montert disk oppdaget";
+
+/* didmount */
+"Mounting volumes: " = "Monterer katalog:";
+
+/* reloadinfo */
+"Profile: default loaded." = "Profile: default lastet";
+
+/* createandreloadconfigurations */
+"Reading configurations for current profile" = "Leser konfigurasjon for gjeldende profil";
+
+/* createandreloadschedules */
+"Reading schedules for current profile" = "Leser schedule for gjeldende profil";
+
+/* info1 */
+"Some remote sites not avaliable, see log ...." = "Noen eksterne tjenere ikke tilgjengelig, se logg...";
+
+/* didunmount */
+"Unmounting volumes: " = "Deaktiverer katalog:";
+
