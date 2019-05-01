@@ -12,42 +12,42 @@
       </trans-unit>
       <trans-unit id="4o0-3W-taC.headerCell.title">
         <source>Start in</source>
-        <target>Start in</target>
+        <target>Start om</target>
         <note>Class = "NSTableColumn"; headerCell.title = "Start in"; ObjectID = "4o0-3W-taC";</note>
       </trans-unit>
       <trans-unit id="4sb-4s-VLi.title">
         <source>Quit RsyncOSXsched</source>
-        <target>Quit RsyncOSXsched</target>
+        <target>Avslutt RsyncOSXsched</target>
         <note>Class = "NSMenuItem"; title = "Quit RsyncOSXsched"; ObjectID = "4sb-4s-VLi";</note>
       </trans-unit>
       <trans-unit id="5c9-F6-lv3.title">
         <source>All schedules</source>
-        <target>All schedules</target>
+        <target>Alle schedules</target>
         <note>Class = "NSViewController"; title = "All schedules"; ObjectID = "5c9-F6-lv3";</note>
       </trans-unit>
       <trans-unit id="5kV-Vb-QxS.title">
         <source>About RsyncOSXsched</source>
-        <target>About RsyncOSXsched</target>
+        <target>Om RsyncOSXsched</target>
         <note>Class = "NSMenuItem"; title = "About RsyncOSXsched"; ObjectID = "5kV-Vb-QxS";</note>
       </trans-unit>
       <trans-unit id="6Qr-L9-cOC.title">
         <source>Double click on a row to select profile...</source>
-        <target>Double click on a row to select profile...</target>
+        <target>Dobbel klikk på en rad for å velge profil...</target>
         <note>Class = "NSTextFieldCell"; title = "Double click on a row to select profile..."; ObjectID = "6Qr-L9-cOC";</note>
       </trans-unit>
       <trans-unit id="7YM-08-OZC.title">
         <source>Status next task:</source>
-        <target>Status next task:</target>
+        <target>Status neste oppgave:</target>
         <note>Class = "NSTextFieldCell"; title = "Status next task:"; ObjectID = "7YM-08-OZC";</note>
       </trans-unit>
       <trans-unit id="9lr-pg-w2Y.title">
         <source>Now</source>
-        <target>Now</target>
+        <target>Nå</target>
         <note>Class = "NSButtonCell"; title = "Now"; ObjectID = "9lr-pg-w2Y";</note>
       </trans-unit>
       <trans-unit id="AYu-sK-qS6.title">
         <source>Main Menu</source>
-        <target>Main Menu</target>
+        <target>Hoved meny</target>
         <note>Class = "NSMenu"; title = "Main Menu"; ObjectID = "AYu-sK-qS6";</note>
       </trans-unit>
       <trans-unit id="Apg-mF-s7e.title">
@@ -57,12 +57,12 @@
       </trans-unit>
       <trans-unit id="BOF-NM-1cW.title">
         <source>Preferences…</source>
-        <target>Preferences…</target>
+        <target>Konfigurasjoner…</target>
         <note>Class = "NSMenuItem"; title = "Preferences…"; ObjectID = "BOF-NM-1cW";</note>
       </trans-unit>
       <trans-unit id="CCr-KQ-oF9.headerCell.title">
         <source>Profilename</source>
-        <target>Profilename</target>
+        <target>Profilnavn</target>
         <note>Class = "NSTableColumn"; headerCell.title = "Profilename"; ObjectID = "CCr-KQ-oF9";</note>
       </trans-unit>
       <trans-unit id="CQC-uM-hG0.title">
@@ -97,7 +97,7 @@
       </trans-unit>
       <trans-unit id="Kd2-mp-pUS.title">
         <source>Show All</source>
-        <target>Show All</target>
+        <target>Vis alle</target>
         <note>Class = "NSMenuItem"; title = "Show All"; ObjectID = "Kd2-mp-pUS";</note>
       </trans-unit>
       <trans-unit id="L8l-lJ-lKA.title">
@@ -112,7 +112,7 @@
       </trans-unit>
       <trans-unit id="Luf-WA-iep.headerCell.title">
         <source>Remote server</source>
-        <target>Remote server</target>
+        <target>Ekstern server</target>
         <note>Class = "NSTableColumn"; headerCell.title = "Remote server"; ObjectID = "Luf-WA-iep";</note>
       </trans-unit>
       <trans-unit id="Mtm-oR-2oz.title">
@@ -122,7 +122,7 @@
       </trans-unit>
       <trans-unit id="NAt-yd-56N.title">
         <source>Close</source>
-        <target>Close</target>
+        <target>Lukk</target>
         <note>Class = "NSButtonCell"; title = "Close"; ObjectID = "NAt-yd-56N";</note>
       </trans-unit>
       <trans-unit id="NMo-om-nkz.title">
@@ -132,17 +132,17 @@
       </trans-unit>
       <trans-unit id="OEe-RI-leW.title">
         <source>RsyncOSXsched version : </source>
-        <target>RsyncOSXsched version : </target>
+        <target>RsyncOSXsched versjon : </target>
         <note>Class = "NSTextFieldCell"; title = "RsyncOSXsched version : "; ObjectID = "OEe-RI-leW";</note>
       </trans-unit>
       <trans-unit id="Olw-nP-bQN.title">
         <source>Hide RsyncOSXsched</source>
-        <target>Hide RsyncOSXsched</target>
+        <target>Skjul RsyncOSXsched</target>
         <note>Class = "NSMenuItem"; title = "Hide RsyncOSXsched"; ObjectID = "Olw-nP-bQN";</note>
       </trans-unit>
       <trans-unit id="QPq-ff-gA2.title">
         <source>Quit</source>
-        <target>Quit</target>
+        <target>Avslutt</target>
         <note>Class = "NSButtonCell"; title = "Quit"; ObjectID = "QPq-ff-gA2";</note>
       </trans-unit>
       <trans-unit id="Rb9-51-nDu.headerCell.title">
@@ -152,12 +152,12 @@
       </trans-unit>
       <trans-unit id="SMW-uL-v3k.title">
         <source>Details about files</source>
-        <target>Details about files</target>
+        <target>Detaljer om filer</target>
         <note>Class = "NSViewController"; title = "Details about files"; ObjectID = "SMW-uL-v3k";</note>
       </trans-unit>
       <trans-unit id="Vdr-fp-XzO.title">
         <source>Hide Others</source>
-        <target>Hide Others</target>
+        <target>Gjem andre</target>
         <note>Class = "NSMenuItem"; title = "Hide Others"; ObjectID = "Vdr-fp-XzO";</note>
       </trans-unit>
       <trans-unit id="W9w-mv-yJ6.headerCell.title">
@@ -172,12 +172,12 @@
       </trans-unit>
       <trans-unit id="XRT-w7-GWr.title">
         <source>New version is available, see RsyncOSX download page...</source>
-        <target>New version is available, see RsyncOSX download page...</target>
+        <target>Ny versjon tilgjengelig, se RsyncOSX side for nedlasting...</target>
         <note>Class = "NSTextFieldCell"; title = "New version is available, see RsyncOSX download page..."; ObjectID = "XRT-w7-GWr";</note>
       </trans-unit>
       <trans-unit id="Ybm-e4-iVi.title">
         <source>Working</source>
-        <target>Working</target>
+        <target>Arbeider</target>
         <note>Class = "NSTextFieldCell"; title = "Working"; ObjectID = "Ybm-e4-iVi";</note>
       </trans-unit>
       <trans-unit id="Zhf-Z3-f6P.title">
@@ -202,7 +202,7 @@
       </trans-unit>
       <trans-unit id="gdH-5D-KCh.headerCell.title">
         <source>Remote catalog</source>
-        <target>Remote catalog</target>
+        <target>Ekstern katalog</target>
         <note>Class = "NSTableColumn"; headerCell.title = "Remote catalog"; ObjectID = "gdH-5D-KCh";</note>
       </trans-unit>
       <trans-unit id="gkG-rF-JAe.title">
@@ -217,17 +217,17 @@
       </trans-unit>
       <trans-unit id="ifM-NK-It0.headerCell.title">
         <source>Log</source>
-        <target>Log</target>
+        <target>Logg</target>
         <note>Class = "NSTableColumn"; headerCell.title = "Log"; ObjectID = "ifM-NK-It0";</note>
       </trans-unit>
       <trans-unit id="kwV-jU-Gsi.headerCell.title">
         <source>In time</source>
-        <target>In time</target>
+        <target>I tid</target>
         <note>Class = "NSTableColumn"; headerCell.title = "In time"; ObjectID = "kwV-jU-Gsi";</note>
       </trans-unit>
       <trans-unit id="l2d-BZ-Xq3.headerCell.title">
         <source>Local catalog</source>
-        <target>Local catalog</target>
+        <target>Lokal katalog</target>
         <note>Class = "NSTableColumn"; headerCell.title = "Local catalog"; ObjectID = "l2d-BZ-Xq3";</note>
       </trans-unit>
       <trans-unit id="lnW-x5-dek.title">
@@ -242,7 +242,7 @@
       </trans-unit>
       <trans-unit id="p1x-0f-6rG.title">
         <source>Log</source>
-        <target>Log</target>
+        <target>Logg</target>
         <note>Class = "NSButtonCell"; title = "Log"; ObjectID = "p1x-0f-6rG";</note>
       </trans-unit>
       <trans-unit id="qyk-58-p0P.title">
@@ -252,12 +252,12 @@
       </trans-unit>
       <trans-unit id="tub-al-k7W.title">
         <source>Write</source>
-        <target>Write</target>
+        <target>Skriv</target>
         <note>Class = "NSButtonCell"; title = "Write"; ObjectID = "tub-al-k7W";</note>
       </trans-unit>
       <trans-unit id="uBp-4W-BLA.title">
         <source>Abort</source>
-        <target>Abort</target>
+        <target>Avslutt</target>
         <note>Class = "NSButtonCell"; title = "Abort"; ObjectID = "uBp-4W-BLA";</note>
       </trans-unit>
       <trans-unit id="uQy-DD-JDr.title">
@@ -277,7 +277,7 @@
       </trans-unit>
       <trans-unit id="xUm-lB-wAP.title">
         <source>Profile : default</source>
-        <target>Profile : default</target>
+        <target>Profil : default</target>
         <note>Class = "NSTextFieldCell"; title = "Profile : default"; ObjectID = "xUm-lB-wAP";</note>
       </trans-unit>
     </body>
@@ -293,7 +293,7 @@
       </trans-unit>
       <trans-unit id="NSHumanReadableCopyright">
         <source>Copyright © 2019 Thomas Evensen. All rights reserved.</source>
-        <note>Copyright (human-readable)</note>
+        <note>Copyright (human-readable)</note><target>Alle rettigheter © 2019 Thomas Evensen"</target>
       </trans-unit>
     </body>
   </file>
@@ -304,51 +304,51 @@
     <body>
       <trans-unit id=" in: ">
         <source> in: </source>
-        <note>Mount</note>
+        <note>Mount</note><target> I: </target>
       </trans-unit>
       <trans-unit id="Activating schedules again after sleeping...">
         <source>Activating schedules again after sleeping...</source>
-        <note>onwake</note>
+        <note>onwake</note><target>Aktiverer oppgaver igjen etter aktivering...</target>
       </trans-unit>
       <trans-unit id="Executing scheduled tasks is not enabled in RsyncOSX....">
         <source>Executing scheduled tasks is not enabled in RsyncOSX....</source>
-        <note>info2</note>
+        <note>info2</note><target>Kjøring av schedulerte oppgaver ikke satt i RsyncOSX</target>
       </trans-unit>
       <trans-unit id="Got notification for reload">
         <source>Got notification for reload</source>
-        <note>addobserverforreload</note>
+        <note>addobserverforreload</note><target>Fikk melding om reload</target>
       </trans-unit>
       <trans-unit id="Invalidating tasks and going to sleep...">
         <source>Invalidating tasks and going to sleep...</source>
-        <note>onsleep</note>
+        <note>onsleep</note><target>Stoppet oppgaver og stenger ned...</target>
       </trans-unit>
       <trans-unit id="Mounted Volume discovered">
         <source>Mounted Volume discovered</source>
-        <note>Mount</note>
+        <note>Mount</note><target>Montert disk oppdaget</target>
       </trans-unit>
       <trans-unit id="Mounting volumes: ">
         <source>Mounting volumes: </source>
-        <note>didmount</note>
+        <note>didmount</note><target>Monterer katalog:</target>
       </trans-unit>
       <trans-unit id="Profile: default loaded.">
         <source>Profile: default loaded.</source>
-        <note>reloadinfo</note>
+        <note>reloadinfo</note><target>Profile: default lastet</target>
       </trans-unit>
       <trans-unit id="Reading configurations for current profile">
         <source>Reading configurations for current profile</source>
-        <note>createandreloadconfigurations</note>
+        <note>createandreloadconfigurations</note><target>Leser konfigurasjon for gjeldende profil</target>
       </trans-unit>
       <trans-unit id="Reading schedules for current profile">
         <source>Reading schedules for current profile</source>
-        <note>createandreloadschedules</note>
+        <note>createandreloadschedules</note><target>Leser schedule for gjeldende profil</target>
       </trans-unit>
       <trans-unit id="Some remote sites not avaliable, see log ....">
         <source>Some remote sites not avaliable, see log ....</source>
-        <note>info1</note>
+        <note>info1</note><target>Noen eksterne tjenere ikke tilgjengelig, se logg...</target>
       </trans-unit>
       <trans-unit id="Unmounting volumes: ">
         <source>Unmounting volumes: </source>
-        <note>didunmount</note>
+        <note>didunmount</note><target>Deaktiverer katalog:</target>
       </trans-unit>
     </body>
   </file>

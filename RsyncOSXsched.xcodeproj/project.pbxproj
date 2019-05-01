@@ -69,6 +69,8 @@
 		E9A63066202B4DE900F1FFF1 /* Running.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A63065202B4DE900F1FFF1 /* Running.swift */; };
 		E9B5B4602133F2DB004B7041 /* Checkfornewversion.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9B5B45F2133F2DB004B7041 /* Checkfornewversion.swift */; };
 		E9B96299203802EF00EA6D5A /* Logg.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9B96298203802EF00EA6D5A /* Logg.swift */; };
+		E9C2CD5A2279D80300CF69AF /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = E9C2CD582279D80300CF69AF /* InfoPlist.strings */; };
+		E9C2CD5D2279D80300CF69AF /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = E9C2CD5B2279D80300CF69AF /* Localizable.strings */; };
 		E9E6A7C7213278C300342168 /* Dateandtime.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E6A7C4213278C200342168 /* Dateandtime.swift */; };
 		E9E6A7C8213278C300342168 /* Verifyrsyncpath.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E6A7C5213278C200342168 /* Verifyrsyncpath.swift */; };
 		E9E6A7C9213278C300342168 /* Macserialnumber.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E6A7C6213278C300342168 /* Macserialnumber.swift */; };
@@ -137,6 +139,8 @@
 		E9A63065202B4DE900F1FFF1 /* Running.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Running.swift; sourceTree = "<group>"; };
 		E9B5B45F2133F2DB004B7041 /* Checkfornewversion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Checkfornewversion.swift; sourceTree = "<group>"; };
 		E9B96298203802EF00EA6D5A /* Logg.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logg.swift; sourceTree = "<group>"; };
+		E9C2CD592279D80300CF69AF /* nb */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nb; path = nb.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		E9C2CD5C2279D80300CF69AF /* nb */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nb; path = nb.lproj/Localizable.strings; sourceTree = "<group>"; };
 		E9E6A7C4213278C200342168 /* Dateandtime.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Dateandtime.swift; sourceTree = "<group>"; };
 		E9E6A7C5213278C200342168 /* Verifyrsyncpath.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Verifyrsyncpath.swift; sourceTree = "<group>"; };
 		E9E6A7C6213278C300342168 /* Macserialnumber.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Macserialnumber.swift; sourceTree = "<group>"; };
@@ -319,6 +323,8 @@
 			children = (
 				E91D535F217F72ED001B7A6A /* RsyncOSXsched.entitlements */,
 				94E0FC471BD7FC3600A3C537 /* Info.plist */,
+				E9C2CD5B2279D80300CF69AF /* Localizable.strings */,
+				E9C2CD582279D80300CF69AF /* InfoPlist.strings */,
 				94E0FC441BD7FC3600A3C537 /* Main.storyboard */,
 				94E0FC421BD7FC3600A3C537 /* Assets.xcassets */,
 			);
@@ -451,6 +457,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				94E0FC431BD7FC3600A3C537 /* Assets.xcassets in Resources */,
+				E9C2CD5D2279D80300CF69AF /* Localizable.strings in Resources */,
+				E9C2CD5A2279D80300CF69AF /* InfoPlist.strings in Resources */,
 				94E0FC461BD7FC3600A3C537 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -574,6 +582,22 @@
 				E9FA8C072279BF0100B28803 /* nb */,
 			);
 			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		E9C2CD582279D80300CF69AF /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				E9C2CD592279D80300CF69AF /* nb */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		E9C2CD5B2279D80300CF69AF /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				E9C2CD5C2279D80300CF69AF /* nb */,
+			);
+			name = Localizable.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
