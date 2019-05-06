@@ -4,6 +4,9 @@
 /* Logg */
 "Adding result to log:" = "Legger til resultat til logg:";
 
+/* main */
+"default" = "standard";
+
 /* default profile */
 "Default profile" = "Standard profil";
 
@@ -15,6 +18,9 @@
 
 /* addobserverforreload */
 "Got notification for reload" = "Fikk melding om relast";
+
+/* Mount */
+"in:" = "";
 
 /* main */
 "Invalidating tasks and going to sleep..." = "Stopper schedulerte oppgaver og går i dvale";
