@@ -12,7 +12,7 @@ class Notifications {
 
     func showNotification(message: String) {
         let notification = NSUserNotification()
-        notification.title = "Message from scheduled backup..."
+        notification.title = NSLocalizedString("Message from scheduled backup...", comment: "Notification")
         notification.subtitle = message
         notification.soundName = NSUserNotificationDefaultSoundName
         NSUserNotificationCenter.default.delegate = self as? NSUserNotificationCenterDelegate

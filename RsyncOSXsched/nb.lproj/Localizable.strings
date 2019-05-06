@@ -5,10 +5,10 @@
 "Adding result to log:" = "Legger til resultat til logg:";
 
 /* main */
-"default" = "standard";
+"default" = "default";
 
 /* default profile */
-"Default profile" = "Standard profil";
+"Default profile" = "Default profil";
 
 /* main */
 "Executing scheduled tasks is not enabled in RsyncOSX...." = "Schedulerte oppgaver ikke gjort tilgjengelig i RsyncOSX";
@@ -41,7 +41,7 @@
 "Profile:" = "Profil:";
 
 /* reloadinfo */
-"Profile: default loaded." = "Profil: standard lastet";
+"Profile: default loaded." = "Profil: default lastet";
 
 /* main */
 "Reading configurations for current profile" = "Leser konfigurasjon for gjeldende profil";

@@ -316,7 +316,7 @@
       </trans-unit>
       <trans-unit id="Default profile">
         <source>Default profile</source>
-        <target>Standard profil</target>
+        <target>Default profil</target>
         <note>default profile</note>
       </trans-unit>
       <trans-unit id="Executing scheduled tasks is not enabled in RsyncOSX....">
@@ -344,6 +344,10 @@
         <target>Laster profil:</target>
         <note>schedule</note>
       </trans-unit>
+      <trans-unit id="Message from scheduled backup...">
+        <source>Message from scheduled backup...</source>
+        <note>Notification</note>
+      </trans-unit>
       <trans-unit id="Mounted Volume discovered">
         <source>Mounted Volume discovered</source>
         <target>Montering av kataloger oppdaget</target>
@@ -359,6 +363,10 @@
         <target>Ingen hiddenID I katalog</target>
         <note>Execute</note>
       </trans-unit>
+      <trans-unit id="Profile">
+        <source>Profile</source>
+        <note>default profile</note>
+      </trans-unit>
       <trans-unit id="Profile:">
         <source>Profile:</source>
         <target>Profil:</target>
@@ -366,7 +374,7 @@
       </trans-unit>
       <trans-unit id="Profile: default loaded.">
         <source>Profile: default loaded.</source>
-        <target>Profil: standard lastet</target>
+        <target>Profil: default lastet</target>
         <note>reloadinfo</note>
       </trans-unit>
       <trans-unit id="Reading configurations for current profile">
@@ -431,7 +439,7 @@
       </trans-unit>
       <trans-unit id="default">
         <source>default</source>
-        <target>standard</target>
+        <target>default</target>
         <note>main</note>
       </trans-unit>
       <trans-unit id="in:">
