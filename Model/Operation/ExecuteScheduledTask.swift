@@ -49,7 +49,7 @@ final class ExecuteScheduledTask: SetSchedules, SetConfigurations, SetScheduledT
                     // Setting reference to finalize the job, finalize job is done when rsynctask ends (in process termination)
                     ViewControllerReference.shared.completeoperation = CompleteScheduledOperation(dict: dict)
                     if arguments != nil {
-                        self.logDelegate?.addlog(logrecord: "Executing task in profile " + profilename! + " with ID " + config!.backupID)
+                        self.logDelegate?.addlog(logrecord: NSLocalizedString("Executing task in profile", comment: "Execute") + " " + profilename! + " with ID " + config!.backupID)
                         weak var sendprocess: Sendprocessreference?
                         sendprocess = ViewControllerReference.shared.viewControllermain as? ViewControllerMain
                         let process = RsyncScheduled(arguments: arguments)
@@ -62,13 +62,13 @@ final class ExecuteScheduledTask: SetSchedules, SetConfigurations, SetScheduledT
                 }
             } else {
                 updatestatuslightDelegate?.updatestatuslight(color: .red)
-                self.logDelegate?.addlog(logrecord: "No hiddenID in dictionary")
-                _ = Notifications().showNotification(message: "Scheduled backup did not execute")
+                self.logDelegate?.addlog(logrecord: NSLocalizedString("No hiddenID in dictionary", comment: "Execute"))
+                _ = Notifications().showNotification(message: NSLocalizedString("Scheduled backup did not execute", comment: "Execute"))
             }
         } else {
             updatestatuslightDelegate?.updatestatuslight(color: .red)
-            self.logDelegate?.addlog(logrecord: "No record for scheduled task: ViewControllerReference.shared.scheduledTask")
-            _ = Notifications().showNotification(message: "Scheduled backup did not execute")
+            self.logDelegate?.addlog(logrecord: NSLocalizedString("No record for scheduled task: ViewControllerReference.shared.scheduledTask", comment: "Execute"))
+            _ = Notifications().showNotification(message: NSLocalizedString("Scheduled backup did not execute", comment: "Execute"))
         }
     }
 

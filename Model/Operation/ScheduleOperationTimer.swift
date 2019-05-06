@@ -38,12 +38,12 @@ final class ScheduleOperationTimer: SecondsBeforeStart, SetSortedAndExpanded, Se
         updatestatuslightDelegate = ViewControllerReference.shared.viewControllermain as? ViewControllerMain
         let seconds = self.secondsbeforestart()
         guard seconds > 0 else {
-            self.logDelegate?.addlog(logrecord: "Schedule timer: no more scheduled task in queue")
+            self.logDelegate?.addlog(logrecord: NSLocalizedString("Schedule timer: no more scheduled task in queue", comment: "Timer"))
             updatestatuslightDelegate?.updatestatuslight(color: .red)
             return
         }
         let timestring = Dateandtime().timeString(seconds)
-        self.logDelegate?.addlog(logrecord: "Schedule timer: setting next scheduled task in: " + timestring)
+        self.logDelegate?.addlog(logrecord: NSLocalizedString("Schedule timer: setting next scheduled task in:", comment: "Timer") + " " + timestring)
         self.timerTaskWaiting = Timer.scheduledTimer(timeInterval: seconds, target: self, selector: #selector(executetask), userInfo: nil, repeats: false)
         ViewControllerReference.shared.scheduledTask = self.sortedandexpanded?.getfirstscheduledtask()
         ViewControllerReference.shared.timerTaskWaiting = self.timerTaskWaiting

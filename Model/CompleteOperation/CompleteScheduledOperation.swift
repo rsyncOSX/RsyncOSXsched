@@ -29,7 +29,7 @@ final class CompleteScheduledOperation: SetScheduledTask, SetConfigurations, Set
         let dateStartstring = self.dateformatter!.string(from: dateStart ?? Date())
         let number = Numbers(outputprocess: outputprocess)
         let numberstring = number.stats(numberOfFiles: nil, sizeOfFiles: nil)
-        self.logDelegate?.addlog(logrecord: "Adding result to log: " + numberstring)
+        self.logDelegate?.addlog(logrecord: NSLocalizedString("Adding result to log:", comment: "Logg") + " " + numberstring)
         self.schedules!.addresultschedule(self.hiddenID!, dateStart: dateStartstring, result: numberstring, date: datestring, schedule: schedule ?? "Once")
         _ = Notifications().showNotification(message: datestring + " " + numberstring)
         self.configurations!.setCurrentDateonConfigurationQuickbackup(self.index!, outputprocess: outputprocess)

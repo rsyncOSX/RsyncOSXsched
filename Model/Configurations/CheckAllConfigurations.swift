@@ -57,8 +57,8 @@ class CheckAllConfigurations: Delay, Setlog {
                     if offsitepath.contains(mountedpath) && self.allconfigurations![j].offsiteServer.isEmpty {
                         let profile = self.allconfigurations![j].profilename ?? "Default profile"
                         let mountedvolume: String = NSLocalizedString("Mounted Volume discovered", comment: "Mount")
-                        let mountedvolumein: String = NSLocalizedString(" in: ", comment: "Mount")
-                        self.logDelegate?.addlog(logrecord: mountedvolume + mountedpath + mountedvolumein + profile)
+                        let mountedvolumein: String = NSLocalizedString("in:", comment: "Mount")
+                        self.logDelegate?.addlog(logrecord: mountedvolume + mountedpath + " " + mountedvolumein + " " + profile)
 
                         if self.automaticexecution == nil { self.automaticexecution = [NSDictionary]()}
                         let dict: NSDictionary = [
