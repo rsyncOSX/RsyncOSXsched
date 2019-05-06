@@ -64,3 +64,12 @@
 /* main */
 "Some remote sites not avaliable, see log ...." = "Noen eksterne servere er ikke tilgjengelig...";
 
+/* main */
+"Unmounting volumes: " = "Avmontering katalog:";
+
+/* Storage */
+"Write and reload configurations" = "Skriver og leser konfigurasjoner";
+
+/* Storage */
+"Write and reload schedules" = "Skriver og leser oppgaver";
+
