@@ -23,7 +23,7 @@ final class ExecuteTaskNow: SetSchedules, SetConfigurations, SetScheduledTask, S
         var config: Configuration?
 
         let profilename = dict.value(forKey: "profilename") as? String
-        if profilename!.isEmpty || profilename! == "Default profile" {
+        if profilename!.isEmpty || profilename! == NSLocalizedString("Default profile", comment: "default profile") {
             reloaddataDelegate?.reloaddata(profilename: nil)
         } else {
             reloaddataDelegate?.reloaddata(profilename: profilename)
@@ -44,7 +44,7 @@ final class ExecuteTaskNow: SetSchedules, SetConfigurations, SetScheduledTask, S
                 // Setting reference to finalize the job, finalize job is done when rsynctask ends (in process termination)
                 ViewControllerReference.shared.completeoperation = CompleteScheduledOperation(dict: dict)
                 if arguments != nil {
-                    self.logDelegate?.addlog(logrecord: "Executing task in profile " + profilename! + " with ID " + config!.backupID)
+                    self.logDelegate?.addlog(logrecord: NSLocalizedString("Executing task in profile", comment: "Execute") + " " + profilename! + " with ID " + config!.backupID)
                     weak var sendprocess: Sendprocessreference?
                     sendprocess = ViewControllerReference.shared.viewControllermain as? ViewControllerMain
                     let process = RsyncScheduled(arguments: arguments)
@@ -57,8 +57,8 @@ final class ExecuteTaskNow: SetSchedules, SetConfigurations, SetScheduledTask, S
             }
         } else {
             updatestatuslightDelegate?.updatestatuslight(color: .red)
-            self.logDelegate?.addlog(logrecord: "No hiddenID in dictionary")
-            _ = Notifications().showNotification(message: "Scheduled backup did not execute")
+            self.logDelegate?.addlog(logrecord: NSLocalizedString("No hiddenID in dictionary", comment: "Execute"))
+            _ = Notifications().showNotification(message: NSLocalizedString("Scheduled backup did not execute", comment: "Execute"))
         }
     }
 

@@ -70,7 +70,7 @@ class ViewControllerMain: NSViewController, Delay, Setlog {
         self.setprofiles()
         self.checkforrunning()
         self.info(num: -1)
-        self.profilescombobox.stringValue = "Default profile"
+        self.profilescombobox.stringValue = NSLocalizedString("Default profile", comment: "default profile")
         globalMainQueue.async(execute: { () -> Void in
             self.mainTableView.reloadData()
         })
@@ -154,7 +154,7 @@ class ViewControllerMain: NSViewController, Delay, Setlog {
     }
 
     func createandreloadschedules() {
-        let readingschedule: String = NSLocalizedString("Reading schedules for current profile", comment: "createandreloadschedules")
+        let readingschedule: String = NSLocalizedString("Reading schedules for current profile", comment: "main")
         self.addlog(logrecord: readingschedule)
         guard self.configurations != nil else {
             self.schedules = Schedules(profile: nil)
@@ -170,7 +170,7 @@ class ViewControllerMain: NSViewController, Delay, Setlog {
     }
 
     func createandreloadconfigurations() {
-        let readingconfig: String = NSLocalizedString( "Reading configurations for current profile", comment: "createandreloadconfigurations")
+        let readingconfig: String = NSLocalizedString( "Reading configurations for current profile", comment: "main")
         self.addlog(logrecord: readingconfig)
         guard self.configurations != nil else {
             self.configurations = Configurations(profile: nil)
@@ -201,10 +201,10 @@ class ViewControllerMain: NSViewController, Delay, Setlog {
         globalMainQueue.async(execute: { () -> Void in
             switch num {
             case 1:
-                let info1: String = NSLocalizedString("Some remote sites not avaliable, see log ....", comment: "info1")
+                let info1: String = NSLocalizedString("Some remote sites not avaliable, see log ....", comment: "main")
                 self.info.stringValue = info1
             case 2:
-                let info2: String = NSLocalizedString("Executing scheduled tasks is not enabled in RsyncOSX....", comment: "info2")
+                let info2: String = NSLocalizedString("Executing scheduled tasks is not enabled in RsyncOSX....", comment: "main")
                 self.info.stringValue = info2
             default:
                 self.info.stringValue = ""
@@ -231,14 +231,14 @@ class ViewControllerMain: NSViewController, Delay, Setlog {
     }
 
     @objc func onWakeNote(note: NSNotification) {
-        let onwake: String = NSLocalizedString("Activating schedules again after sleeping...", comment: "onwake")
+        let onwake: String = NSLocalizedString("Activating schedules again after sleeping...", comment: "main")
         self.logDelegate?.addlog(logrecord: onwake)
         self.schedulesortedandexpanded = ScheduleSortedAndExpand()
         self.startfirstscheduledtask()
     }
 
     @objc func onSleepNote(note: NSNotification) {
-        let onsleep: String = NSLocalizedString("Invalidating tasks and going to sleep...", comment: "onsleep")
+        let onsleep: String = NSLocalizedString("Invalidating tasks and going to sleep...", comment: "main")
         self.logDelegate?.addlog(logrecord: onsleep)
         ViewControllerReference.shared.dispatchTaskWaiting?.cancel()
         ViewControllerReference.shared.timerTaskWaiting?.invalidate()
@@ -246,7 +246,7 @@ class ViewControllerMain: NSViewController, Delay, Setlog {
 
     @objc func didMount(_ notification: NSNotification) {
         if let devicePath = notification.userInfo!["NSDevicePath"] as? String {
-            let mount: String = NSLocalizedString("Mounting volumes: ", comment: "didmount")
+            let mount: String = NSLocalizedString("Mounting volumes: ", comment: "main")
             self.logDelegate?.addlog(logrecord: mount + devicePath)
             if self.checkallconfiguration == nil {
                 self.checkallconfiguration = CheckAllConfigurations(path: devicePath)
@@ -258,7 +258,7 @@ class ViewControllerMain: NSViewController, Delay, Setlog {
 
     @objc func didUnMount(_ notification: NSNotification) {
         if let devicePath = notification.userInfo!["NSDevicePath"] as? String {
-            let unmount: String = NSLocalizedString("Unmounting volumes: ", comment: "didunmount")
+            let unmount: String = NSLocalizedString("Unmounting volumes: ", comment: "main")
             self.logDelegate?.addlog(logrecord: unmount + devicePath)
             self.checkallconfiguration = nil
             self.automaticexecution = nil
@@ -291,7 +291,7 @@ extension ViewControllerMain: NSTableViewDelegate, Attributedestring {
         guard row < self.configurations!.getConfigurationsDataSourcecountBackup()!.count  else { return nil }
         let object: NSDictionary = self.configurations!.getConfigurationsDataSourcecountBackup()![row]
         let hiddenID = object.value(forKey: "hiddenID") as? Int ?? -1
-        let profilename = object.value(forKey: "profilename") as? String ?? "Default profile"
+        let profilename = object.value(forKey: "profilename") as? String ?? NSLocalizedString("Default profile", comment: "default profile")
         switch tableColumn!.identifier.rawValue {
         case "scheduleID" :
             if self.schedulesortedandexpanded != nil {
@@ -484,12 +484,12 @@ extension ViewControllerMain: ReloadData {
         guard profilename != nil else {
             if self.profilename == nil {
                 globalMainQueue.async(execute: { () -> Void in
-                     self.profileinfo.stringValue = "Profile: default"
+                    self.profileinfo.stringValue = NSLocalizedString("Profile:", comment: "main") + " " + NSLocalizedString("default", comment: "main")
                 })
                 return
             }
             self.profilename = nil
-            self.profilescombobox.stringValue = "Default profile"
+            self.profilescombobox.stringValue = NSLocalizedString("Default profile", comment: "default profile")
             self.createandreloadconfigurations()
             self.createandreloadschedules()
             return
@@ -497,7 +497,7 @@ extension ViewControllerMain: ReloadData {
         guard profilename == self.profilename else {
             self.profilename = profilename
             globalMainQueue.async(execute: { () -> Void in
-                self.profileinfo.stringValue = "Profile: " + self.profilename!
+                self.profileinfo.stringValue = NSLocalizedString("Profile:", comment: "main") + " " + self.profilename!
                 self.profilescombobox.stringValue = self.profilename!
             })
             self.createandreloadconfigurations()
@@ -522,7 +522,7 @@ extension ViewControllerMain: GetTCPconnections {
 extension ViewControllerMain: RsyncOSXschedversion {
     func currentversion(version: String) {
          globalMainQueue.async(execute: { () -> Void in
-            self.rsyncosxschedversion.stringValue = "RsyncOSXsched version: " + version
+            self.rsyncosxschedversion.stringValue = NSLocalizedString("RsyncOSXsched version:", comment: "main") + " " + version
          })
     }
 

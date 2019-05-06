@@ -5,6 +5,7 @@
 //  Created by Thomas Evensen on 05/09/2016.
 //  Copyright © 2016 Thomas Evensen. All rights reserved.
 //
+// swiftlint:disable line_length
 
 import Foundation
 import Cocoa
@@ -38,7 +39,7 @@ class ScheduleSortedAndExpand: Setlog {
         if let start: Date = cal.date(byAdding: dateComponent, to: dateStart) {
             if start.timeIntervalSinceNow > 0 {
                 let hiddenID = (dict.value(forKey: "hiddenID") as? Int)!
-                let profilename = dict.value(forKey: "profilename") ?? "Default profile"
+                let profilename = dict.value(forKey: "profilename") ?? NSLocalizedString("Default profile", comment: "default profile")
                 let time = start.timeIntervalSinceNow
                 let dictSchedule: NSDictionary = [
                     "start": start,
@@ -62,7 +63,7 @@ class ScheduleSortedAndExpand: Setlog {
         if let start: Date = cal.date(byAdding: dateComponent, to: dateStart) {
             if start.timeIntervalSinceNow > 0 {
                 let hiddenID = (dict.value(forKey: "hiddenID") as? Int)!
-                let profilename = dict.value(forKey: "profilename") ?? "Default profile"
+                let profilename = dict.value(forKey: "profilename") ?? NSLocalizedString("Default profile", comment: "default profile")
                 let time = start.timeIntervalSinceNow
                 let dictSchedule: NSDictionary = [
                     "start": start,
@@ -112,7 +113,7 @@ class ScheduleSortedAndExpand: Setlog {
                 switch schedule {
                 case "once" :
                     let hiddenID = (dict.value(forKey: "hiddenID") as? Int)!
-                    let profilename = dict.value(forKey: "profilename") ?? "Default profile"
+                    let profilename = dict.value(forKey: "profilename") ?? NSLocalizedString("Default profile", comment: "default profile")
                     let time = seconds
                     let dict: NSDictionary = [
                         "start": dateStart,
@@ -183,7 +184,7 @@ class ScheduleSortedAndExpand: Setlog {
                     "dateStop": self.scheduleConfiguration![i].dateStop!,
                     "hiddenID": self.scheduleConfiguration![i].hiddenID,
                     "schedule": self.scheduleConfiguration![i].schedule,
-                    "profilename": self.scheduleConfiguration![i].profilename ?? "Default profile"
+                    "profilename": self.scheduleConfiguration![i].profilename ?? NSLocalizedString("Default profile", comment: "default profile")
                 ]
                 data.append(dict as NSDictionary)
         }

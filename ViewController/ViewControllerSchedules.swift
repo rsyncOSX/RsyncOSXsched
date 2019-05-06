@@ -36,8 +36,8 @@ class ViewControllerSchedules: NSViewController, SetDismisser, GetAllSchedules, 
     }
 
     @objc(tableViewDoubleClick:) func tableViewDoubleClick(sender: AnyObject) {
-        self.logDelegate?.addlog(logrecord: "Loading profile: " + self.profilname!)
-        if self.profilname == "Default profile" { self.profilname = nil }
+        self.logDelegate?.addlog(logrecord: NSLocalizedString("Loading profile:", comment: "schedule") + " " + self.profilname!)
+        if self.profilname == NSLocalizedString("Default profile", comment: "default profile") { self.profilname = nil }
         self.loadProfileDelegate?.reloaddata(profilename: self.profilname)
         self.dismissview(viewcontroller: self)
     }
@@ -57,7 +57,7 @@ extension ViewControllerSchedules: NSTableViewDelegate {
         let object: NSDictionary = self.schedulessortedandexpanded!.sortedschedules![row]
         if tableColumn!.identifier.rawValue == "intime" {
             let hiddenID = object.value(forKey: "hiddenID") as? Int ?? -1
-            let profilename = object.value(forKey: "profilename") as? String ?? "Default profile"
+            let profilename = object.value(forKey: "profilename") as? String ?? NSLocalizedString("Default profile", comment: "default profile")
             let dateStart = object.value(forKey: "dateStart") as? Date
             let taskintime: String? = self.schedulessortedandexpanded!.sortandcountscheduledonetask(hiddenID: hiddenID, profilename: profilename, dateStart: dateStart, number: true)
             return taskintime ?? ""
@@ -71,7 +71,7 @@ extension ViewControllerSchedules: NSTableViewDelegate {
         let indexes = myTableViewFromNotification.selectedRowIndexes
         if let index = indexes.first {
             let dict = self.schedulessortedandexpanded!.sortedschedules![index]
-            self.profilname = dict.value(forKey: "profilename") as? String ?? "Default profile"
+            self.profilname = dict.value(forKey: "profilename") as? String ?? NSLocalizedString("Default profile", comment: "default profile")
         }
     }
 }

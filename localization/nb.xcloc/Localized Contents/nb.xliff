@@ -282,73 +282,162 @@
       </trans-unit>
     </body>
   </file>
-  <file original="RsyncOSXsched/en.lproj/InfoPlist.strings" datatype="plaintext" source-language="en" target-language="nb">
+  <file original="RsyncOSXsched/en.lproj/InfoPlist.strings" source-language="en" target-language="nb" datatype="plaintext">
     <header>
       <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="10.2.1" build-num="10E1001"/>
     </header>
     <body>
       <trans-unit id="CFBundleName">
         <source>RsyncOSXsched</source>
+        <target>RsyncOSXsched</target>
         <note>Bundle name</note>
       </trans-unit>
       <trans-unit id="NSHumanReadableCopyright">
         <source>Copyright © 2019 Thomas Evensen. All rights reserved.</source>
-        <note>Copyright (human-readable)</note><target>Alle rettigheter © 2019 Thomas Evensen"</target>
+        <target>Alle rettigheter © 2019 Thomas Evensen</target>
+        <note>Copyright (human-readable)</note>
       </trans-unit>
     </body>
   </file>
-  <file original="RsyncOSXsched/en.lproj/Localizable.strings" datatype="plaintext" source-language="en" target-language="nb">
+  <file original="RsyncOSXsched/en.lproj/Localizable.strings" source-language="en" target-language="nb" datatype="plaintext">
     <header>
       <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="10.2.1" build-num="10E1001"/>
     </header>
     <body>
-      <trans-unit id=" in: ">
-        <source> in: </source>
-        <note>Mount</note><target> I: </target>
-      </trans-unit>
       <trans-unit id="Activating schedules again after sleeping...">
         <source>Activating schedules again after sleeping...</source>
-        <note>onwake</note><target>Aktiverer oppgaver igjen etter aktivering...</target>
+        <target>Aktiverer oppgaver etter søvn...</target>
+        <note>main</note>
+      </trans-unit>
+      <trans-unit id="Adding result to log:">
+        <source>Adding result to log:</source>
+        <target>Legger til resultat til logg:</target>
+        <note>Logg</note>
+      </trans-unit>
+      <trans-unit id="Default profile">
+        <source>Default profile</source>
+        <target>Standard profil</target>
+        <note>default profile</note>
       </trans-unit>
       <trans-unit id="Executing scheduled tasks is not enabled in RsyncOSX....">
         <source>Executing scheduled tasks is not enabled in RsyncOSX....</source>
-        <note>info2</note><target>Kjøring av schedulerte oppgaver ikke satt i RsyncOSX</target>
+        <target>Schedulerte oppgaver ikke gjort tilgjengelig i RsyncOSX</target>
+        <note>main</note>
+      </trans-unit>
+      <trans-unit id="Executing task in profile">
+        <source>Executing task in profile</source>
+        <target>Utfører oppgave i profil</target>
+        <note>Execute</note>
       </trans-unit>
       <trans-unit id="Got notification for reload">
         <source>Got notification for reload</source>
-        <note>addobserverforreload</note><target>Fikk melding om reload</target>
+        <target>Fikk melding om relast</target>
+        <note>addobserverforreload</note>
       </trans-unit>
       <trans-unit id="Invalidating tasks and going to sleep...">
         <source>Invalidating tasks and going to sleep...</source>
-        <note>onsleep</note><target>Stoppet oppgaver og stenger ned...</target>
+        <target>Stopper schedulerte oppgaver og går i dvale</target>
+        <note>main</note>
+      </trans-unit>
+      <trans-unit id="Loading profile:">
+        <source>Loading profile:</source>
+        <target>Laster profil:</target>
+        <note>schedule</note>
       </trans-unit>
       <trans-unit id="Mounted Volume discovered">
         <source>Mounted Volume discovered</source>
-        <note>Mount</note><target>Montert disk oppdaget</target>
+        <target>Montering av kataloger oppdaget</target>
+        <note>Mount</note>
       </trans-unit>
       <trans-unit id="Mounting volumes: ">
         <source>Mounting volumes: </source>
-        <note>didmount</note><target>Monterer katalog:</target>
+        <target>Monterer katalog:</target>
+        <note>main</note>
+      </trans-unit>
+      <trans-unit id="No hiddenID in dictionary">
+        <source>No hiddenID in dictionary</source>
+        <target>Ingen hiddenID I katalog</target>
+        <note>Execute</note>
+      </trans-unit>
+      <trans-unit id="Profile:">
+        <source>Profile:</source>
+        <target>Profil:</target>
+        <note>main</note>
       </trans-unit>
       <trans-unit id="Profile: default loaded.">
         <source>Profile: default loaded.</source>
-        <note>reloadinfo</note><target>Profile: default lastet</target>
+        <target>Profil: standard lastet</target>
+        <note>reloadinfo</note>
       </trans-unit>
       <trans-unit id="Reading configurations for current profile">
         <source>Reading configurations for current profile</source>
-        <note>createandreloadconfigurations</note><target>Leser konfigurasjon for gjeldende profil</target>
+        <target>Leser konfigurasjon for gjeldende profil</target>
+        <note>main</note>
       </trans-unit>
       <trans-unit id="Reading schedules for current profile">
         <source>Reading schedules for current profile</source>
-        <note>createandreloadschedules</note><target>Leser schedule for gjeldende profil</target>
+        <target>Leser oppgaver for gjeldende profil</target>
+        <note>main</note>
+      </trans-unit>
+      <trans-unit id="RsyncOSXsched version:">
+        <source>RsyncOSXsched version:</source>
+        <target>RsyncOSXsched versjon:</target>
+        <note>main</note>
+      </trans-unit>
+      <trans-unit id="Schedule dispatch: no more scheduled task in queue">
+        <source>Schedule dispatch: no more scheduled task in queue</source>
+        <target>Schedule dispatch: ingen flere oppgaver i kø.</target>
+        <note>Dispatch</note>
+      </trans-unit>
+      <trans-unit id="Schedule dispatch: setting next scheduled task in:">
+        <source>Schedule dispatch: setting next scheduled task in:</source>
+        <target>Schedule dispatch: neste oppgave om:</target>
+        <note>Dispatch</note>
+      </trans-unit>
+      <trans-unit id="Schedule timer: no more scheduled task in queue">
+        <source>Schedule timer: no more scheduled task in queue</source>
+        <target>Schedule timer: ingen flere oppgaver i kø.</target>
+        <note>Timer</note>
+      </trans-unit>
+      <trans-unit id="Schedule timer: setting next scheduled task in:">
+        <source>Schedule timer: setting next scheduled task in:</source>
+        <target>Schedule timer: neste oppgave om:</target>
+        <note>Timer</note>
+      </trans-unit>
+      <trans-unit id="Scheduled backup did not execute">
+        <source>Scheduled backup did not execute</source>
+        <target>Schedulert oppgave ikke utført</target>
+        <note>Execute</note>
       </trans-unit>
       <trans-unit id="Some remote sites not avaliable, see log ....">
         <source>Some remote sites not avaliable, see log ....</source>
-        <note>info1</note><target>Noen eksterne tjenere ikke tilgjengelig, se logg...</target>
+        <target>Noen eksterne servere er ikke tilgjengelig...</target>
+        <note>main</note>
       </trans-unit>
       <trans-unit id="Unmounting volumes: ">
         <source>Unmounting volumes: </source>
-        <note>didunmount</note><target>Deaktiverer katalog:</target>
+        <target>Avmontering katalog:</target>
+        <note>main</note>
+      </trans-unit>
+      <trans-unit id="Write and reload configurations">
+        <source>Write and reload configurations</source>
+        <target>Skriver og leser konfigurasjoner</target>
+        <note>Storage</note>
+      </trans-unit>
+      <trans-unit id="Write and reload schedules">
+        <source>Write and reload schedules</source>
+        <target>Skriver og leser oppgaver</target>
+        <note>Storage</note>
+      </trans-unit>
+      <trans-unit id="default">
+        <source>default</source>
+        <target>standard</target>
+        <note>main</note>
+      </trans-unit>
+      <trans-unit id="in:">
+        <source>in:</source>
+        <target/>
+        <note>Mount</note>
       </trans-unit>
     </body>
   </file>

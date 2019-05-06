@@ -1,36 +1,81 @@
-/* Mount */
-" in: " = " I: ";
+/* main */
+"Activating schedules again after sleeping..." = "Aktiverer oppgaver etter søvn...";
 
-/* onwake */
-"Activating schedules again after sleeping..." = "Aktiverer oppgaver igjen etter aktivering...";
+/* Logg */
+"Adding result to log:" = "Legger til resultat til logg:";
 
-/* info2 */
-"Executing scheduled tasks is not enabled in RsyncOSX...." = "Kjøring av schedulerte oppgaver ikke satt i RsyncOSX";
+/* main */
+"default" = "standard";
+
+/* default profile */
+"Default profile" = "Standard profil";
+
+/* main */
+"Executing scheduled tasks is not enabled in RsyncOSX...." = "Schedulerte oppgaver ikke gjort tilgjengelig i RsyncOSX";
+
+/* Execute */
+"Executing task in profile" = "Utfører oppgave i profil";
 
 /* addobserverforreload */
-"Got notification for reload" = "Fikk melding om reload";
-
-/* onsleep */
-"Invalidating tasks and going to sleep..." = "Stoppet oppgaver og stenger ned...";
+"Got notification for reload" = "Fikk melding om relast";
 
 /* Mount */
-"Mounted Volume discovered" = "Montert disk oppdaget";
+"in:" = "";
 
-/* didmount */
+/* main */
+"Invalidating tasks and going to sleep..." = "Stopper schedulerte oppgaver og går i dvale";
+
+/* schedule */
+"Loading profile:" = "Laster profil:";
+
+/* Mount */
+"Mounted Volume discovered" = "Montering av kataloger oppdaget";
+
+/* main */
 "Mounting volumes: " = "Monterer katalog:";
 
-/* reloadinfo */
-"Profile: default loaded." = "Profile: default lastet";
+/* Execute */
+"No hiddenID in dictionary" = "Ingen hiddenID I katalog";
 
-/* createandreloadconfigurations */
+/* main */
+"Profile:" = "Profil:";
+
+/* reloadinfo */
+"Profile: default loaded." = "Profil: standard lastet";
+
+/* main */
 "Reading configurations for current profile" = "Leser konfigurasjon for gjeldende profil";
 
-/* createandreloadschedules */
-"Reading schedules for current profile" = "Leser schedule for gjeldende profil";
+/* main */
+"Reading schedules for current profile" = "Leser oppgaver for gjeldende profil";
 
-/* info1 */
-"Some remote sites not avaliable, see log ...." = "Noen eksterne tjenere ikke tilgjengelig, se logg...";
+/* main */
+"RsyncOSXsched version:" = "RsyncOSXsched versjon:";
 
-/* didunmount */
-"Unmounting volumes: " = "Deaktiverer katalog:";
+/* Dispatch */
+"Schedule dispatch: no more scheduled task in queue" = "Schedule dispatch: ingen flere oppgaver i kø.";
+
+/* Dispatch */
+"Schedule dispatch: setting next scheduled task in:" = "Schedule dispatch: neste oppgave om:";
+
+/* Timer */
+"Schedule timer: no more scheduled task in queue" = "Schedule timer: ingen flere oppgaver i kø.";
+
+/* Timer */
+"Schedule timer: setting next scheduled task in:" = "Schedule timer: neste oppgave om:";
+
+/* Execute */
+"Scheduled backup did not execute" = "Schedulert oppgave ikke utført";
+
+/* main */
+"Some remote sites not avaliable, see log ...." = "Noen eksterne servere er ikke tilgjengelig...";
+
+/* main */
+"Unmounting volumes: " = "Avmontering katalog:";
+
+/* Storage */
+"Write and reload configurations" = "Skriver og leser konfigurasjoner";
+
+/* Storage */
+"Write and reload schedules" = "Skriver og leser oppgaver";
 
