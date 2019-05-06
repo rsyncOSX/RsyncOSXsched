@@ -1,1 +1,48 @@
+/* main */
+"Activating schedules again after sleeping..." = "Aktiverer oppgaver etter søvn...";
+
+/* Logg */
+"Adding result to log:" = "Legger til resultat til logg:";
+
+/* default profile */
+"Default profile" = "Standard profil";
+
+/* main */
+"Executing scheduled tasks is not enabled in RsyncOSX...." = "Schedulerte oppgaver ikke gjort tilgjengelig i RsyncOSX";
+
+/* Execute */
+"Executing task in profile" = "Utfører oppgave i profil";
+
+/* addobserverforreload */
+"Got notification for reload" = "Fikk melding om relast";
+
+/* main */
+"Invalidating tasks and going to sleep..." = "Stopper schedulerte oppgaver og går i dvale";
+
+/* schedule */
+"Loading profile:" = "Laster profil:";
+
+/* Mount */
+"Mounted Volume discovered" = "Montering av kataloger oppdaget";
+
+/* main */
+"Mounting volumes: " = "Monterer katalog:";
+
+/* Execute */
+"No hiddenID in dictionary" = "Ingen hiddenID I katalog";
+
+/* main */
+"Profile:" = "Profil:";
+
+/* reloadinfo */
+"Profile: default loaded." = "Profil: standard lastet";
+
+/* main */
+"Reading configurations for current profile" = "Leser konfigurasjon for gjeldende profil";
+
+/* main */
+"Reading schedules for current profile" = "Leser oppgaver for gjeldende profil";
+
+/* main */
+"RsyncOSXsched version:" = "RsyncOSXsched versjon:";
 
