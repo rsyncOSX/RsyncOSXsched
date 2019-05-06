@@ -28,7 +28,7 @@ final class ExecuteScheduledTask: SetSchedules, SetConfigurations, SetScheduledT
         // Get the first job of the queue
         if let dict: NSDictionary = ViewControllerReference.shared.scheduledTask {
             let profilename = dict.value(forKey: "profilename") as? String
-            if profilename!.isEmpty || profilename! == "Default profile" {
+            if profilename!.isEmpty || profilename! == NSLocalizedString("Default profile", comment: "default profile") {
                 reloaddataDelegate?.reloaddata(profilename: nil)
             } else {
                 reloaddataDelegate?.reloaddata(profilename: profilename)
@@ -67,7 +67,7 @@ final class ExecuteScheduledTask: SetSchedules, SetConfigurations, SetScheduledT
             }
         } else {
             updatestatuslightDelegate?.updatestatuslight(color: .red)
-            self.logDelegate?.addlog(logrecord: NSLocalizedString("No record for scheduled task: ViewControllerReference.shared.scheduledTask", comment: "Execute"))
+            self.logDelegate?.addlog(logrecord: "No record for scheduled task")
             _ = Notifications().showNotification(message: NSLocalizedString("Scheduled backup did not execute", comment: "Execute"))
         }
     }

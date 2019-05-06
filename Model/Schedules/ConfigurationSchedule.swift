@@ -5,6 +5,7 @@
 //  Created by Thomas Evensen on 02/05/16.
 //  Copyright © 2016 Thomas Evensen. All rights reserved.
 //
+// swiftlint:disable line_length
 
 import Foundation
 
@@ -22,7 +23,7 @@ struct ConfigurationSchedule {
         self.hiddenID = dictionary.object(forKey: "hiddenID") as? Int ?? -1
         self.dateStart = dictionary.object(forKey: "dateStart") as? String ?? ""
         self.schedule = dictionary.object(forKey: "schedule") as? String ?? ""
-        self.profilename = dictionary.object(forKey: "profilename") as? String ?? "Default profile"
+        self.profilename = dictionary.object(forKey: "profilename") as? String ?? NSLocalizedString("Default profile", comment: "default profile")
         self.offsiteserver = dictionary.object(forKey: "offsiteserver") as? String ?? ""
         if let date = dictionary.object(forKey: "dateStop") as? String {
             self.dateStop = date

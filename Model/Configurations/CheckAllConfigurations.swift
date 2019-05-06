@@ -5,6 +5,7 @@
 //  Created by Thomas Evensen on 19/04/2019.
 //  Copyright © 2019 Maxim. All rights reserved.
 //
+// swiftlint:disable line_length
 
 import Foundation
 
@@ -32,7 +33,7 @@ class CheckAllConfigurations: Delay, Setlog {
         for i in 0 ..< self.allprofiles!.count {
             let profilename = self.allprofiles![i]
             if self.allconfigurations == nil { self.allconfigurations = [] }
-            if profilename == "Default profile" {
+            if profilename == NSLocalizedString("Default profile", comment: "default profile") {
                 configurations = PersistentStorageAPI(profile: nil).getConfigurations()
             } else {
                 configurations = PersistentStorageAPI(profile: profilename).getConfigurations()
@@ -55,7 +56,7 @@ class CheckAllConfigurations: Delay, Setlog {
                 for j in 0 ..< self.allconfigurations!.count {
                     let offsitepath = self.allconfigurations![j].offsiteCatalog
                     if offsitepath.contains(mountedpath) && self.allconfigurations![j].offsiteServer.isEmpty {
-                        let profile = self.allconfigurations![j].profilename ?? "Default profile"
+                        let profile = self.allconfigurations![j].profilename ?? NSLocalizedString("Default profile", comment: "default profile")
                         let mountedvolume: String = NSLocalizedString("Mounted Volume discovered", comment: "Mount")
                         let mountedvolumein: String = NSLocalizedString("in:", comment: "Mount")
                         self.logDelegate?.addlog(logrecord: mountedvolume + mountedpath + " " + mountedvolumein + " " + profile)

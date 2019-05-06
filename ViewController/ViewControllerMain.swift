@@ -70,7 +70,7 @@ class ViewControllerMain: NSViewController, Delay, Setlog {
         self.setprofiles()
         self.checkforrunning()
         self.info(num: -1)
-        self.profilescombobox.stringValue = "Default profile"
+        self.profilescombobox.stringValue = NSLocalizedString("Default profile", comment: "default profile")
         globalMainQueue.async(execute: { () -> Void in
             self.mainTableView.reloadData()
         })
@@ -291,7 +291,7 @@ extension ViewControllerMain: NSTableViewDelegate, Attributedestring {
         guard row < self.configurations!.getConfigurationsDataSourcecountBackup()!.count  else { return nil }
         let object: NSDictionary = self.configurations!.getConfigurationsDataSourcecountBackup()![row]
         let hiddenID = object.value(forKey: "hiddenID") as? Int ?? -1
-        let profilename = object.value(forKey: "profilename") as? String ?? "Default profile"
+        let profilename = object.value(forKey: "profilename") as? String ?? NSLocalizedString("Default profile", comment: "default profile")
         switch tableColumn!.identifier.rawValue {
         case "scheduleID" :
             if self.schedulesortedandexpanded != nil {
@@ -489,7 +489,7 @@ extension ViewControllerMain: ReloadData {
                 return
             }
             self.profilename = nil
-            self.profilescombobox.stringValue = "Default profile"
+            self.profilescombobox.stringValue = NSLocalizedString("Default profile", comment: "default profile")
             self.createandreloadconfigurations()
             self.createandreloadschedules()
             return

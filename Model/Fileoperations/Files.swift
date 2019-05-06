@@ -62,7 +62,7 @@ class Files: Reportfileerror {
     // Function for returning profiles as array of Strings
     func getDirectorysStrings() -> [String] {
         var array = [String]()
-        array.append("Default profile")
+        array.append(NSLocalizedString("Default profile", comment: "default profile"))
         if let filePath = self.rootpath {
             if let fileURLs = self.getfileURLs(path: filePath) {
                 for i in 0 ..< fileURLs.count where fileURLs[i].hasDirectoryPath {

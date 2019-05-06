@@ -23,7 +23,7 @@ final class ExecuteTaskNow: SetSchedules, SetConfigurations, SetScheduledTask, S
         var config: Configuration?
 
         let profilename = dict.value(forKey: "profilename") as? String
-        if profilename!.isEmpty || profilename! == "Default profile" {
+        if profilename!.isEmpty || profilename! == NSLocalizedString("Default profile", comment: "default profile") {
             reloaddataDelegate?.reloaddata(profilename: nil)
         } else {
             reloaddataDelegate?.reloaddata(profilename: profilename)
