@@ -28,6 +28,9 @@
 /* schedule */
 "Loading profile:" = "Laster profil:";
 
+/* Notification */
+"Message from scheduled backup..." = "Informasjon fra schedulert backup";
+
 /* Mount */
 "Mounted Volume discovered" = "Montering av kataloger oppdaget";
 
@@ -36,6 +39,9 @@
 
 /* Execute */
 "No hiddenID in dictionary" = "Ingen hiddenID I katalog";
+
+/* default profile */
+"Profile" = "Profil";
 
 /* main */
 "Profile:" = "Profil:";
@@ -48,6 +54,9 @@
 
 /* main */
 "Reading schedules for current profile" = "Leser oppgaver for gjeldende profil";
+
+/* Sorted */
+"Reloading all schedules..." = "Laster oppgaver på nytt...";
 
 /* main */
 "RsyncOSXsched version:" = "RsyncOSXsched versjon:";
