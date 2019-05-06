@@ -36,7 +36,7 @@ class ViewControllerSchedules: NSViewController, SetDismisser, GetAllSchedules, 
     }
 
     @objc(tableViewDoubleClick:) func tableViewDoubleClick(sender: AnyObject) {
-        self.logDelegate?.addlog(logrecord: "Loading profile: " + self.profilname!)
+        self.logDelegate?.addlog(logrecord: NSLocalizedString("Loading profile:", comment: "schedule") + " " + self.profilname!)
         if self.profilname == "Default profile" { self.profilname = nil }
         self.loadProfileDelegate?.reloaddata(profilename: self.profilname)
         self.dismissview(viewcontroller: self)
