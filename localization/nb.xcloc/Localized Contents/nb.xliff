@@ -257,7 +257,7 @@
       </trans-unit>
       <trans-unit id="uBp-4W-BLA.title">
         <source>Abort</source>
-        <target>Avslutt</target>
+        <target>Stopp</target>
         <note>Class = "NSButtonCell"; title = "Abort"; ObjectID = "uBp-4W-BLA";</note>
       </trans-unit>
       <trans-unit id="uQy-DD-JDr.title">
@@ -346,6 +346,7 @@
       </trans-unit>
       <trans-unit id="Message from scheduled backup...">
         <source>Message from scheduled backup...</source>
+        <target>Informasjon fra schedulert backup</target>
         <note>Notification</note>
       </trans-unit>
       <trans-unit id="Mounted Volume discovered">
@@ -365,6 +366,7 @@
       </trans-unit>
       <trans-unit id="Profile">
         <source>Profile</source>
+        <target>Profil</target>
         <note>default profile</note>
       </trans-unit>
       <trans-unit id="Profile:">
@@ -386,6 +388,11 @@
         <source>Reading schedules for current profile</source>
         <target>Leser oppgaver for gjeldende profil</target>
         <note>main</note>
+      </trans-unit>
+      <trans-unit id="Reloading all schedules...">
+        <source>Reloading all schedules...</source>
+        <target>Laster oppgaver på nytt...</target>
+        <note>Sorted</note>
       </trans-unit>
       <trans-unit id="RsyncOSXsched version:">
         <source>RsyncOSXsched version:</source>
