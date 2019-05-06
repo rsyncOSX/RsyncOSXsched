@@ -131,7 +131,7 @@
 "tub-al-k7W.title" = "Skriv";
 
 /* Class = "NSButtonCell"; title = "Abort"; ObjectID = "uBp-4W-BLA"; */
-"uBp-4W-BLA.title" = "Avslutt";
+"uBp-4W-BLA.title" = "Stopp";
 
 /* Class = "NSMenu"; title = "RsyncOSXsched"; ObjectID = "uQy-DD-JDr"; */
 "uQy-DD-JDr.title" = "RsyncOSXsched";
