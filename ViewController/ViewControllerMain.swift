@@ -489,7 +489,7 @@ extension ViewControllerMain: ReloadData {
                 return
             }
             self.profilename = nil
-            self.profilescombobox.stringValue = NSLocalizedString("Default profile", comment: "default profile")
+            self.profilescombobox.stringValue = NSLocalizedString("Profile", comment: "default profile") + " default"
             self.createandreloadconfigurations()
             self.createandreloadschedules()
             return

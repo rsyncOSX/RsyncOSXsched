@@ -192,7 +192,7 @@ class ScheduleSortedAndExpand: Setlog {
     }
 
     init () {
-        self.logDelegate?.addlog(logrecord: "Reloading all schedules ...")
+        self.logDelegate?.addlog(logrecord: NSLocalizedString("Reloading all schedules...", comment: "Sorted"))
         let allschedules = Allschedules()
         self.scheduleConfiguration = allschedules.allschedules
         self.setallscheduledtasksNSDictionary()

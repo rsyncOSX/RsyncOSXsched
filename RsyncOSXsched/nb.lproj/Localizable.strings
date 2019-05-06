@@ -5,10 +5,10 @@
 "Adding result to log:" = "Legger til resultat til logg:";
 
 /* main */
-"default" = "standard";
+"default" = "default";
 
 /* default profile */
-"Default profile" = "Standard profil";
+"Default profile" = "Default profil";
 
 /* main */
 "Executing scheduled tasks is not enabled in RsyncOSX...." = "Schedulerte oppgaver ikke gjort tilgjengelig i RsyncOSX";
@@ -28,6 +28,9 @@
 /* schedule */
 "Loading profile:" = "Laster profil:";
 
+/* Notification */
+"Message from scheduled backup..." = "Informasjon fra schedulert backup";
+
 /* Mount */
 "Mounted Volume discovered" = "Montering av kataloger oppdaget";
 
@@ -37,17 +40,23 @@
 /* Execute */
 "No hiddenID in dictionary" = "Ingen hiddenID I katalog";
 
+/* default profile */
+"Profile" = "Profil";
+
 /* main */
 "Profile:" = "Profil:";
 
 /* reloadinfo */
-"Profile: default loaded." = "Profil: standard lastet";
+"Profile: default loaded." = "Profil: default lastet";
 
 /* main */
 "Reading configurations for current profile" = "Leser konfigurasjon for gjeldende profil";
 
 /* main */
 "Reading schedules for current profile" = "Leser oppgaver for gjeldende profil";
+
+/* Sorted */
+"Reloading all schedules..." = "Laster oppgaver på nytt...";
 
 /* main */
 "RsyncOSXsched version:" = "RsyncOSXsched versjon:";
