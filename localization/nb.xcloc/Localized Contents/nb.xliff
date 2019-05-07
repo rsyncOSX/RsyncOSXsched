@@ -444,6 +444,10 @@
         <target>Skriver og leser oppgaver</target>
         <note>Storage</note>
       </trans-unit>
+      <trans-unit id="Writing:">
+        <source>Writing:</source>
+        <note>ReadWrite</note><target>Skriver:</target>
+      </trans-unit>
       <trans-unit id="default">
         <source>default</source>
         <target>default</target>
@@ -453,6 +457,10 @@
         <source>in:</source>
         <target/>
         <note>Mount</note>
+      </trans-unit>
+      <trans-unit id="to disk">
+        <source>to disk</source>
+        <note>ReadWrite</note><target>Til disk</target>
       </trans-unit>
     </body>
   </file>

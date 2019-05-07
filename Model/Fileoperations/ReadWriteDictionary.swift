@@ -82,7 +82,7 @@ class ReadWriteDictionary: SetConfigurations, Setlog {
     func writeNSDictionaryToPersistentStorage (_ array: [NSDictionary]) -> Bool {
         let dictionary = NSDictionary(object: array, forKey: self.key! as NSCopying)
         guard self.filename != nil else { return false }
-        self.logDelegate?.addlog(logrecord: "Writing: " + self.filename! + " to disk.")
+        self.logDelegate?.addlog(logrecord: NSLocalizedString("Writing:", comment: "ReadWrite") + " " + self.filename! + " " + NSLocalizedString("to disk", comment: "ReadWrite"))
         return  dictionary.write(toFile: self.filename!, atomically: true)
     }
 
