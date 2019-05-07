@@ -20,7 +20,7 @@
 "Got notification for reload" = "Fikk melding om relast";
 
 /* Mount */
-"in:" = "";
+"in:" = "om:";
 
 /* main */
 "Invalidating tasks and going to sleep..." = "Stopper schedulerte oppgaver og går i dvale";
