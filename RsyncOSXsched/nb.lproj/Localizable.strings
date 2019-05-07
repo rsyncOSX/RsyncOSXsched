@@ -94,3 +94,12 @@
 /* ReadWrite */
 "Writing:" = "Skriver:";
 
+/* main */
+"once" = "engang";
+
+/* main */
+"daily" = "daglig";
+
+/* main */
+"weekly" = "ukentlig";
+
