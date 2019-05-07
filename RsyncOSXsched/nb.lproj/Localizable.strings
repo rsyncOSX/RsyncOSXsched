@@ -79,6 +79,9 @@
 /* main */
 "Some remote sites not avaliable, see log ...." = "Noen eksterne servere er ikke tilgjengelig...";
 
+/* ReadWrite */
+"to disk" = "Til disk";
+
 /* main */
 "Unmounting volumes: " = "Avmontering katalog:";
 
@@ -87,4 +90,7 @@
 
 /* Storage */
 "Write and reload schedules" = "Skriver og leser oppgaver";
+
+/* ReadWrite */
+"Writing:" = "Skriver:";
 
