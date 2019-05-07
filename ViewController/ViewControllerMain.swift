@@ -296,7 +296,20 @@ extension ViewControllerMain: NSTableViewDelegate, Attributedestring {
         case "scheduleID" :
             if self.schedulesortedandexpanded != nil {
                 let schedule: String? = self.schedulesortedandexpanded!.sortandcountscheduledonetask(hiddenID: hiddenID, profilename: profilename, dateStart: nil, number: false)
-                return schedule ?? ""
+                if schedule?.isEmpty == false {
+                    switch schedule {
+                    case "once":
+                        return NSLocalizedString("once", comment: "main")
+                    case "daily":
+                        return NSLocalizedString("daily", comment: "main")
+                    case "weekly":
+                        return NSLocalizedString("weekly", comment: "main")
+                    default:
+                        return ""
+                    }
+                } else {
+                    return ""
+                }
             }
         case "batchCellID" :
             return object[tableColumn!.identifier]

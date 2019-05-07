@@ -61,6 +61,17 @@ extension ViewControllerSchedules: NSTableViewDelegate {
             let dateStart = object.value(forKey: "dateStart") as? Date
             let taskintime: String? = self.schedulessortedandexpanded!.sortandcountscheduledonetask(hiddenID: hiddenID, profilename: profilename, dateStart: dateStart, number: true)
             return taskintime ?? ""
+        } else if tableColumn!.identifier.rawValue == "schedule"{
+            switch object[tableColumn!.identifier] as? String {
+            case "once":
+                return NSLocalizedString("once", comment: "main")
+            case "daily":
+                return NSLocalizedString("daily", comment: "main")
+            case "weekly":
+                return NSLocalizedString("weekly", comment: "main")
+            default:
+                return ""
+            }
         } else {
             return object[tableColumn!.identifier]
         }
