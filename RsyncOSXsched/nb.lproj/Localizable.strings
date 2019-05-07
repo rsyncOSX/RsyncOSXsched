@@ -103,3 +103,17 @@
 /* main */
 "weekly" = "ukentlig";
 
+/* datetime */
+"mins" = "min";
+
+/* datetime */
+"secs" = "sek";
+
+/* datetime */
+"hours" = "timer";
+
+/* datetime */
+"days" = "dager";
+
+/* datetime */
+"h" = "t";
