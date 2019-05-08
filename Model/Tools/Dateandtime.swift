@@ -41,7 +41,8 @@ final class Dateandtime {
             result = String(format: "%.0f", min) + " " + NSLocalizedString("mins", comment: "datetime")
                 + String(format: "%.0f", 60 * secf) + " " + "secs"
         } else if hr < 25 {
-            result = String(format: "%.0f", hr) + " " +  NSLocalizedString("hours", comment: "datetime") + String(format: "%.0f", min) + " " + "mins"
+            result = String(format: "%.0f", hr) + " " +  NSLocalizedString("hours", comment: "datetime")
+                + String(format: "%.0f", min) + " " + "mins"
         } else {
             result = String(format: "%.0f", hr/24) + " " + NSLocalizedString("days", comment: "datetime")
         }
@@ -50,7 +51,7 @@ final class Dateandtime {
         }
         return result!
     }
-    
+
     // Calculation of time to a spesific date
     // Used in view of all tasks
     func timeString (_ seconds: Double) -> String {

@@ -50,7 +50,7 @@
 "Mounted Volume discovered" = "Montering av kataloger oppdaget";
 
 /* main */
-"Mounting volumes: " = "Monterer katalog:";
+"Mounting volumes:" = "Monterer katalog:";
 
 /* Execute */
 "No hiddenID in dictionary" = "Ingen hiddenID I katalog";
@@ -101,10 +101,10 @@
 "Some remote sites not avaliable, see log ...." = "Noen eksterne servere er ikke tilgjengelig...";
 
 /* ReadWrite */
-"to disk" = "Til disk";
+"to disk" = "til disk";
 
 /* main */
-"Unmounting volumes: " = "Avmontering katalog:";
+"Unmounting volumes:" = "Avmontering katalog:";
 
 /* main */
 "weekly" = "ukentlig";
