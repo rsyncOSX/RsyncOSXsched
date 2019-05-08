@@ -5,6 +5,12 @@
 "Adding result to log:" = "Legger til resultat til logg:";
 
 /* main */
+"daily" = "daglig";
+
+/* datetime */
+"days" = "dager";
+
+/* main */
 "default" = "default";
 
 /* default profile */
@@ -19,6 +25,12 @@
 /* addobserverforreload */
 "Got notification for reload" = "Fikk melding om relast";
 
+/* datetime */
+"h" = "t";
+
+/* datetime */
+"hours" = "timer";
+
 /* Mount */
 "in:" = "om:";
 
@@ -31,6 +43,9 @@
 /* Notification */
 "Message from scheduled backup..." = "Informasjon fra schedulert backup";
 
+/* datetime */
+"mins" = "min";
+
 /* Mount */
 "Mounted Volume discovered" = "Montering av kataloger oppdaget";
 
@@ -39,6 +54,9 @@
 
 /* Execute */
 "No hiddenID in dictionary" = "Ingen hiddenID I katalog";
+
+/* main */
+"once" = "engang";
 
 /* default profile */
 "Profile" = "Profil";
@@ -76,6 +94,9 @@
 /* Execute */
 "Scheduled backup did not execute" = "Schedulert oppgave ikke utført";
 
+/* datetime */
+"secs" = "sek";
+
 /* main */
 "Some remote sites not avaliable, see log ...." = "Noen eksterne servere er ikke tilgjengelig...";
 
@@ -84,6 +105,9 @@
 
 /* main */
 "Unmounting volumes: " = "Avmontering katalog:";
+
+/* main */
+"weekly" = "ukentlig";
 
 /* Storage */
 "Write and reload configurations" = "Skriver og leser konfigurasjoner";
@@ -94,26 +118,3 @@
 /* ReadWrite */
 "Writing:" = "Skriver:";
 
-/* main */
-"once" = "engang";
-
-/* main */
-"daily" = "daglig";
-
-/* main */
-"weekly" = "ukentlig";
-
-/* datetime */
-"mins" = "min";
-
-/* datetime */
-"secs" = "sek";
-
-/* datetime */
-"hours" = "timer";
-
-/* datetime */
-"days" = "dager";
-
-/* datetime */
-"h" = "t";

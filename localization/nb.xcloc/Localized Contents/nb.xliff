@@ -446,21 +446,63 @@
       </trans-unit>
       <trans-unit id="Writing:">
         <source>Writing:</source>
-        <note>ReadWrite</note><target>Skriver:</target>
+        <target>Skriver:</target>
+        <note>ReadWrite</note>
+      </trans-unit>
+      <trans-unit id="daily">
+        <source>daily</source>
+        <target>daglig</target>
+        <note>main</note>
+      </trans-unit>
+      <trans-unit id="days">
+        <source>days</source>
+        <target>dager</target>
+        <note>datetime</note>
       </trans-unit>
       <trans-unit id="default">
         <source>default</source>
         <target>default</target>
         <note>main</note>
       </trans-unit>
+      <trans-unit id="h">
+        <source>h</source>
+        <target>t</target>
+        <note>datetime</note>
+      </trans-unit>
+      <trans-unit id="hours">
+        <source>hours</source>
+        <target>timer</target>
+        <note>datetime</note>
+      </trans-unit>
       <trans-unit id="in:">
         <source>in:</source>
-        <target/>
+        <target></target>
         <note>Mount</note>
+      </trans-unit>
+      <trans-unit id="mins">
+        <source>mins</source>
+        <target>min</target>
+        <note>datetime</note>
+      </trans-unit>
+      <trans-unit id="once">
+        <source>once</source>
+        <target>engang</target>
+        <note>main</note>
+      </trans-unit>
+      <trans-unit id="secs">
+        <source>secs</source>
+        <target>sek</target>
+        <note>datetime</note>
       </trans-unit>
       <trans-unit id="to disk">
         <source>to disk</source>
-        <note>ReadWrite</note><target>Til disk</target>
+        <target>Til disk</target>
+        <note>ReadWrite</note>
+      </trans-unit>
+      <trans-unit id="weekly">
+        <source>weekly</source>
+        <target>ukentlig</target>
+        <note>main</note>
       </trans-unit>
     </body>
   </file>
