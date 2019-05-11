@@ -35,11 +35,9 @@ class Logg: Reportfileerror {
     }
 
     private func logg() {
-        let currendate = Date()
-        let dateformatter = Dateandtime().setDateformat()
-        let date = dateformatter.string(from: currendate)
+        let now = Date()
         self.read()
-        let tmplogg: String = "\n" + "-------------------------------------------\n" + date + "\n"
+        let tmplogg: String = "\n" + "-------------------------------------------\n" + now.localizeDate() + "\n"
             + "-------------------------------------------\n"
         if self.log == nil {
             self.log = tmplogg + (self.array?.joined(separator: "\n"))!

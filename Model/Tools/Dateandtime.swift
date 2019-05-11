@@ -84,3 +84,13 @@ final class Dateandtime {
     }
 
 }
+
+extension Date {
+    func localizeDate() -> String {
+        let formatter = DateFormatter()
+        formatter.formatterBehavior = .behavior10_4
+        formatter.dateStyle = .medium
+        formatter.timeStyle = .short
+        return formatter.string(from: self)
+    }
+}
