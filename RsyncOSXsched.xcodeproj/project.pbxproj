@@ -38,6 +38,7 @@
 		94E0FC431BD7FC3600A3C537 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 94E0FC421BD7FC3600A3C537 /* Assets.xcassets */; };
 		94E0FC461BD7FC3600A3C537 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 94E0FC441BD7FC3600A3C537 /* Main.storyboard */; };
 		94E0FC4E1BD7FCBE00A3C537 /* EventMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94E0FC4D1BD7FCBE00A3C537 /* EventMonitor.swift */; };
+		E833D53E22999A2500C92FDE /* ConvertOneConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = E833D53D22999A2500C92FDE /* ConvertOneConfig.swift */; };
 		E906BF6D20F1DB2200238E6A /* ScheduleOperationDispatch.swift in Sources */ = {isa = PBXBuildFile; fileRef = E906BF6B20F1DB2200238E6A /* ScheduleOperationDispatch.swift */; };
 		E906BF6E20F1DB2200238E6A /* ExecuteScheduledTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = E906BF6C20F1DB2200238E6A /* ExecuteScheduledTask.swift */; };
 		E90BFDC8202D989D004AE4EC /* ytcpsocket.c in Sources */ = {isa = PBXBuildFile; fileRef = E90BFDC3202D989D004AE4EC /* ytcpsocket.c */; };
@@ -106,6 +107,7 @@
 		94E0FC451BD7FC3600A3C537 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		94E0FC471BD7FC3600A3C537 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		94E0FC4D1BD7FCBE00A3C537 /* EventMonitor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventMonitor.swift; sourceTree = "<group>"; };
+		E833D53D22999A2500C92FDE /* ConvertOneConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConvertOneConfig.swift; sourceTree = "<group>"; };
 		E906BF6B20F1DB2200238E6A /* ScheduleOperationDispatch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScheduleOperationDispatch.swift; sourceTree = "<group>"; };
 		E906BF6C20F1DB2200238E6A /* ExecuteScheduledTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExecuteScheduledTask.swift; sourceTree = "<group>"; };
 		E90BFDC2202D989C004AE4EC /* RsyncOSXsched-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "RsyncOSXsched-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -344,6 +346,7 @@
 			children = (
 				E973F0EE227305E100412F60 /* ConvertConfigurations.swift */,
 				E973F0ED227305E100412F60 /* ConvertSchedules.swift */,
+				E833D53D22999A2500C92FDE /* ConvertOneConfig.swift */,
 			);
 			path = Conversions;
 			sourceTree = "<group>";
@@ -526,6 +529,7 @@
 				E9B5B4602133F2DB004B7041 /* Checkfornewversion.swift in Sources */,
 				E91C5DC12026F8FA00FE7E76 /* ScheduleWriteLoggData.swift in Sources */,
 				E9A63066202B4DE900F1FFF1 /* Running.swift in Sources */,
+				E833D53E22999A2500C92FDE /* ConvertOneConfig.swift in Sources */,
 				E965E1AB20A17BF9004F42DC /* Extensions.swift in Sources */,
 				E973F0F0227305E100412F60 /* ConvertConfigurations.swift in Sources */,
 				E9E6A7C9213278C300342168 /* Macserialnumber.swift in Sources */,

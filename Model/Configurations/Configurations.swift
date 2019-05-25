@@ -100,23 +100,11 @@ class Configurations {
     /// - parameter none: none
     /// - returns : Array of NSDictionary
     func getConfigurationsDataSourcecountBackup() -> [NSMutableDictionary]? {
-        let configurations: [Configuration] = self.configurations!.filter({return ($0.task == ViewControllerReference.shared.synchronize || $0.task == ViewControllerReference.shared.snapshot)})
-        var row =  NSMutableDictionary()
+        let configurations: [Configuration] = self.configurations!.filter({return ($0.task == ViewControllerReference.shared.synchronize ||
+            $0.task == ViewControllerReference.shared.snapshot)})
         var data = [NSMutableDictionary]()
         for i in 0 ..< configurations.count {
-            row = [
-                "taskCellID": configurations[i].task,
-                "hiddenID": configurations[i].hiddenID,
-                "localCatalogCellID": configurations[i].localCatalog,
-                "offsiteCatalogCellID": configurations[i].offsiteCatalog,
-                "offsiteServerCellID": configurations[i].offsiteServer,
-                "backupIDCellID": configurations[i].backupID,
-                "runDateCellID": configurations[i].dateRun ?? "",
-                "daysID": configurations[i].dayssincelastbackup ?? "",
-                "markdays": configurations[i].markdays,
-                "selectCellID": 0,
-                "profilename": self.profile ?? NSLocalizedString("Default profile", comment: "default profile")
-            ]
+            let row: NSMutableDictionary = ConvertOneConfig(config: self.configurations![i]).dict
             if (row.value(forKey: "offsiteServerCellID") as? String)?.isEmpty == true {
                 row.setValue("localhost", forKey: "offsiteServerCellID")
             }
@@ -125,44 +113,27 @@ class Configurations {
         return data
     }
 
-    /// Function is reading all Configurations into memory from permanent store and
-    /// prepare all arguments for rsync. All configurations are stored in the private
-    /// variable within object.
-    /// Function is destroying any previous Configurations before loading new and computing new arguments.
-    /// - parameter none: none
     private func readconfigurations() {
         self.configurations = [Configuration]()
         self.argumentAllConfigurations = [ArgumentsOneConfiguration]()
         var store: [Configuration]? = self.storageapi!.getConfigurations()
         guard store != nil else { return }
         for i in 0 ..< store!.count {
-            self.configurations!.append(store![i])
-            let rsyncArgumentsOneConfig = ArgumentsOneConfiguration(config: store![i])
-            self.argumentAllConfigurations!.append(rsyncArgumentsOneConfig)
+            if store![i].task == ViewControllerReference.shared.synchronize ||
+                store![i].task == ViewControllerReference.shared.snapshot {
+                self.configurations!.append(store![i])
+                let rsyncArgumentsOneConfig = ArgumentsOneConfiguration(config: store![i])
+                self.argumentAllConfigurations!.append(rsyncArgumentsOneConfig)
+            }
         }
         // Then prepare the datasource for use in tableviews as Dictionarys
-        //var row =  NSMutableDictionary()
         var data = [NSMutableDictionary]()
         self.configurationsDataSource = nil
-        var batch: Int = 0
         for i in 0 ..< self.configurations!.count {
-            if self.configurations![i].batch == "yes" {
-                batch = 1
-            } else {
-                batch = 0
+            if self.configurations![i].task == ViewControllerReference.shared.synchronize ||
+                self.configurations![i].task == ViewControllerReference.shared.snapshot {
+                data.append(ConvertOneConfig(config: self.configurations![i]).dict3)
             }
-            let row: NSMutableDictionary = [
-                "taskCellID": self.configurations![i].task,
-                "batchCellID": batch,
-                "localCatalogCellID": self.configurations![i].localCatalog,
-                "offsiteCatalogCellID": self.configurations![i].offsiteCatalog,
-                "offsiteServerCellID": self.configurations![i].offsiteServer,
-                "backupIDCellID": self.configurations![i].backupID,
-                "runDateCellID": self.configurations![i].dateRun ?? "",
-                "daysID": self.configurations![i].dayssincelastbackup ?? "",
-                "profilename": self.profile ?? NSLocalizedString("Default profile", comment: "default profile")
-            ]
-            data.append(row)
         }
         self.configurationsDataSource = data
     }
