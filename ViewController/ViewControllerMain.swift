@@ -5,7 +5,7 @@
 //  Created by Maxim on 10/21/15.
 //  Copyright © 2015 Maxim. All rights reserved.
 //
-//  swiftlint:disable line_length file_length
+//  swiftlint:disable line_length file_length cyclomatic_complexity
 
 import Cocoa
 import Foundation
@@ -369,8 +369,7 @@ extension ViewControllerMain: Addlog {
         if self.log == nil {
             self.log = [String]()
         }
-        let dateformatter = Dateandtime().setDateformat()
-        let logtime = dateformatter.string(from: Date())
+        let logtime = Date().localizeDate()
         self.log!.append(logtime + ": " + logrecord)
     }
 }
