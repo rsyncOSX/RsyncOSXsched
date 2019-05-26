@@ -10,9 +10,11 @@ import Foundation
 
 struct ConvertOneConfig {
     var config: Configuration?
+    var profile: String?
 
     var dict: NSMutableDictionary {
         let row: NSMutableDictionary = [
+            "profilename": self.profile ?? NSLocalizedString("Default profile", comment: "default profile"),
             "taskCellID": self.config!.task,
             "hiddenID": self.config!.hiddenID,
             "localCatalogCellID": self.config!.localCatalog,
@@ -32,6 +34,7 @@ struct ConvertOneConfig {
             batch = 1
         }
         let row: NSMutableDictionary = [
+            "profilename": self.profile ?? NSLocalizedString("Default profile", comment: "default profile"),
             "taskCellID": self.config!.task,
             "batchCellID": batch,
             "localCatalogCellID": self.config!.localCatalog,
@@ -44,7 +47,8 @@ struct ConvertOneConfig {
         return row
     }
 
-    init(config: Configuration) {
+    init(config: Configuration, profile: String?) {
         self.config = config
+        self.profile = profile
     }
 }

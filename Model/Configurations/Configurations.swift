@@ -33,9 +33,6 @@ class Configurations {
     private var profile: String?
     // The main structure storing all Configurations for tasks
     private var configurations: [Configuration]?
-    // Array to store argumenst for all tasks.
-    // Initialized during startup
-    private var argumentAllConfigurations: [ArgumentsOneConfiguration]?
     // Datasource for NSTableViews
     private var configurationsDataSource: [NSMutableDictionary]?
 
@@ -104,7 +101,7 @@ class Configurations {
             $0.task == ViewControllerReference.shared.snapshot)})
         var data = [NSMutableDictionary]()
         for i in 0 ..< configurations.count {
-            let row: NSMutableDictionary = ConvertOneConfig(config: self.configurations![i]).dict
+            let row: NSMutableDictionary = ConvertOneConfig(config: self.configurations![i], profile: self.profile).dict
             if (row.value(forKey: "offsiteServerCellID") as? String)?.isEmpty == true {
                 row.setValue("localhost", forKey: "offsiteServerCellID")
             }
@@ -114,33 +111,27 @@ class Configurations {
     }
 
     private func readconfigurations() {
-        self.configurations = [Configuration]()
-        self.argumentAllConfigurations = [ArgumentsOneConfiguration]()
         var store: [Configuration]? = self.storageapi!.getConfigurations()
         guard store != nil else { return }
         for i in 0 ..< store!.count {
             if store![i].task == ViewControllerReference.shared.synchronize ||
                 store![i].task == ViewControllerReference.shared.snapshot {
                 self.configurations!.append(store![i])
-                let rsyncArgumentsOneConfig = ArgumentsOneConfiguration(config: store![i])
-                self.argumentAllConfigurations!.append(rsyncArgumentsOneConfig)
             }
         }
         // Then prepare the datasource for use in tableviews as Dictionarys
         var data = [NSMutableDictionary]()
-        self.configurationsDataSource = nil
         for i in 0 ..< self.configurations!.count {
             if self.configurations![i].task == ViewControllerReference.shared.synchronize ||
                 self.configurations![i].task == ViewControllerReference.shared.snapshot {
-                data.append(ConvertOneConfig(config: self.configurations![i]).dict3)
+                data.append(ConvertOneConfig(config: self.configurations![i], profile: self.profile).dict3)
             }
         }
         self.configurationsDataSource = data
     }
 
     init(profile: String?) {
-        self.configurations = nil
-        self.argumentAllConfigurations = nil
+        self.configurations = [Configuration]()
         self.configurationsDataSource = nil
         self.profile = profile
         self.storageapi = PersistentStorageAPI(profile: self.profile)
