@@ -38,6 +38,7 @@
 		94E0FC431BD7FC3600A3C537 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 94E0FC421BD7FC3600A3C537 /* Assets.xcassets */; };
 		94E0FC461BD7FC3600A3C537 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 94E0FC441BD7FC3600A3C537 /* Main.storyboard */; };
 		94E0FC4E1BD7FCBE00A3C537 /* EventMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94E0FC4D1BD7FCBE00A3C537 /* EventMonitor.swift */; };
+		E807E0AE22A41C8E009847A9 /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = E807E0AD22A41C8E009847A9 /* Environment.swift */; };
 		E833D53E22999A2500C92FDE /* ConvertOneConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = E833D53D22999A2500C92FDE /* ConvertOneConfig.swift */; };
 		E906BF6D20F1DB2200238E6A /* ScheduleOperationDispatch.swift in Sources */ = {isa = PBXBuildFile; fileRef = E906BF6B20F1DB2200238E6A /* ScheduleOperationDispatch.swift */; };
 		E906BF6E20F1DB2200238E6A /* ExecuteScheduledTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = E906BF6C20F1DB2200238E6A /* ExecuteScheduledTask.swift */; };
@@ -106,6 +107,7 @@
 		94E0FC451BD7FC3600A3C537 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		94E0FC471BD7FC3600A3C537 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		94E0FC4D1BD7FCBE00A3C537 /* EventMonitor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventMonitor.swift; sourceTree = "<group>"; };
+		E807E0AD22A41C8E009847A9 /* Environment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Environment.swift; sourceTree = "<group>"; };
 		E833D53D22999A2500C92FDE /* ConvertOneConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConvertOneConfig.swift; sourceTree = "<group>"; };
 		E906BF6B20F1DB2200238E6A /* ScheduleOperationDispatch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScheduleOperationDispatch.swift; sourceTree = "<group>"; };
 		E906BF6C20F1DB2200238E6A /* ExecuteScheduledTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExecuteScheduledTask.swift; sourceTree = "<group>"; };
@@ -280,6 +282,7 @@
 				E9A63065202B4DE900F1FFF1 /* Running.swift */,
 				E9B96298203802EF00EA6D5A /* Logg.swift */,
 				E90CAC5E203D7409004BA7C6 /* Notifications.swift */,
+				E807E0AD22A41C8E009847A9 /* Environment.swift */,
 			);
 			path = Tools;
 			sourceTree = "<group>";
@@ -531,6 +534,7 @@
 				E973F0F0227305E100412F60 /* ConvertConfigurations.swift in Sources */,
 				E9E6A7C9213278C300342168 /* Macserialnumber.swift in Sources */,
 				E906BF6E20F1DB2200238E6A /* ExecuteScheduledTask.swift in Sources */,
+				E807E0AE22A41C8E009847A9 /* Environment.swift in Sources */,
 				E9F54D852026DC5D00A664CF /* ReadWriteDictionary.swift in Sources */,
 				E9E6A7C8213278C300342168 /* Verifyrsyncpath.swift in Sources */,
 				E91C5DCF202705E800FE7E76 /* RsyncScheduled.swift in Sources */,
