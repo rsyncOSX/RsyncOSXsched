@@ -33,7 +33,9 @@ class ProcessCmd: Delay, SetConfigurations {
     // Variable for reference to Process
     var processReference: Process?
     // Observer
-    weak var notifications: NSObjectProtocol?
+    // Observers
+    weak var notifications_datahandle: NSObjectProtocol?
+    weak var notifications_termination: NSObjectProtocol?
     // Command to be executed, normally rsync
     var command: String?
     // Arguments to command
@@ -68,7 +70,7 @@ class ProcessCmd: Delay, SetConfigurations {
         let outHandle = pipe.fileHandleForReading
         outHandle.waitForDataInBackgroundAndNotify()
         // Observator for reading data from pipe, observer is removed when Process terminates
-        self.notifications = NotificationCenter.default.addObserver(forName: NSNotification.Name.NSFileHandleDataAvailable,
+        self.notifications_datahandle = NotificationCenter.default.addObserver(forName: NSNotification.Name.NSFileHandleDataAvailable,
                             object: nil, queue: nil) { _ -> Void in
             let data = outHandle.availableData
             if data.count > 0 {
@@ -87,13 +89,14 @@ class ProcessCmd: Delay, SetConfigurations {
             }
         }
         // Observator Process termination, observer is removed when Process terminates
-        self.notifications = NotificationCenter.default.addObserver(forName: Process.didTerminateNotification,
+        self.notifications_termination = NotificationCenter.default.addObserver(forName: Process.didTerminateNotification,
                             object: task, queue: nil) { _ -> Void in
             self.delayWithSeconds(0.5) {
                 self.termination = true
                 self.updateDelegate?.processTermination()
+                NotificationCenter.default.removeObserver(self.notifications_datahandle as Any)
+                NotificationCenter.default.removeObserver(self.notifications_termination as Any)
             }
-            NotificationCenter.default.removeObserver(self.notifications as Any)
         }
         self.processReference = task
         task.launch()
