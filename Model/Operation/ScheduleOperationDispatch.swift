@@ -14,7 +14,7 @@ class ScheduleOperationDispatch: SetSchedules, SecondsBeforeStart, Setlog {
     private var workitem: DispatchWorkItem?
 
     private func dispatchtask(_ seconds: Int) {
-        let scheduledtask = DispatchWorkItem { [weak self] in
+        let scheduledtask = DispatchWorkItem { () -> Void in
             _ = ExecuteScheduledTask()
         }
         self.workitem = scheduledtask
