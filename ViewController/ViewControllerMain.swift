@@ -103,7 +103,7 @@ class ViewControllerMain: NSViewController, Delay, Setlog {
         guard self.configurations!.getConfigurationsDataSourcecountBackup() != nil  else { return  }
         self.backupnowbutton.isEnabled = false
         let dict: NSDictionary = self.configurations!.getConfigurationsDataSourcecountBackup()![self.index!]
-        _ = ExecuteTaskNow(dict: dict)
+        _ = ExecuteScheduledTask(dict: dict)
     }
 
     @IBAction func abort(_ sender: NSButton) {
@@ -445,7 +445,7 @@ extension ViewControllerMain: UpdateProgress {
             }
             self.delayWithSeconds(1) {
                 let dict: NSDictionary = self.automaticexecution!.removeFirst()
-                _ = ExecuteTaskNow(dict: dict)
+                _ = ExecuteScheduledTask(dict: dict)
             }
         }
     }
@@ -554,6 +554,6 @@ extension ViewControllerMain: Startautomaticexecution {
             return
         }
         let dict: NSDictionary = self.automaticexecution!.removeFirst()
-        _ = ExecuteTaskNow(dict: dict)
+        _ = ExecuteScheduledTask(dict: dict)
     }
 }

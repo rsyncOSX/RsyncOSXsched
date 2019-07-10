@@ -75,4 +75,11 @@ final class ExecuteScheduledTask: SetSchedules, SetConfigurations, SetScheduledT
     init() {
        self.executetask()
     }
+
+    init(dict: NSDictionary) {
+        ViewControllerReference.shared.dispatchTaskWaiting?.cancel()
+        ViewControllerReference.shared.dispatchTaskWaiting = nil
+        ViewControllerReference.shared.scheduledTask = dict
+        self.executetask()
+    }
 }
