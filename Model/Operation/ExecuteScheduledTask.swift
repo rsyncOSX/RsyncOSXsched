@@ -52,7 +52,7 @@ final class ExecuteScheduledTask: SetSchedules, SetConfigurations, SetScheduledT
                         self.logDelegate?.addlog(logrecord: NSLocalizedString("Executing task in profile", comment: "Execute") + " " + profilename! + " with ID " + config!.backupID)
                         weak var sendprocess: Sendprocessreference?
                         sendprocess = ViewControllerReference.shared.viewControllermain as? ViewControllerMain
-                        let process = RsyncScheduled(arguments: arguments)
+                        let process = ProcessCmd(command: nil, arguments: arguments)
                         globalMainQueue.async(execute: {
                             process.executeProcess(outputprocess: outputprocess)
                             sendprocess?.sendprocessreference(process: process.getProcess())
