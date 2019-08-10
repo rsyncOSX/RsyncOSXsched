@@ -30,21 +30,6 @@ struct ConvertOneConfig {
         return row
     }
 
-    var dict3: NSMutableDictionary {
-        let row: NSMutableDictionary = [
-            "profilename": self.profile ?? NSLocalizedString("Default profile", comment: "default profile"),
-            "taskCellID": self.config!.task,
-            "batchCellID": self.config!.batch,
-            "localCatalogCellID": self.config!.localCatalog,
-            "offsiteCatalogCellID": self.config!.offsiteCatalog,
-            "offsiteServerCellID": self.config!.offsiteServer,
-            "backupIDCellID": self.config!.backupID,
-            "runDateCellID": self.config!.dateRun ?? "",
-            "daysID": self.config!.dayssincelastbackup ?? "",
-            "snapCellID": self.config!.snapshotnum ?? ""]
-        return row
-    }
-
     init(config: Configuration, profile: String?) {
         self.config = config
         self.profile = profile
