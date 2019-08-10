@@ -34,7 +34,7 @@ class Configurations {
     // The main structure storing all Configurations for tasks
     private var configurations: [Configuration]?
     // Datasource for NSTableViews
-    private var configurationsDataSource: [NSMutableDictionary]?
+    private var configurationsDataSource: [NSDictionary]?
 
     /// Function for getting Configurations read into memory
     /// - parameter none: none
@@ -96,15 +96,15 @@ class Configurations {
     /// Function for getting all Configurations marked as backup
     /// - parameter none: none
     /// - returns : Array of NSDictionary
-    func getConfigurationsDataSourcecountBackup() -> [NSMutableDictionary]? {
-        let configurations: [Configuration] = self.configurations!.filter({return ($0.task == ViewControllerReference.shared.synchronize ||
+    func getConfigurationsDataSourceSynchronize() -> [NSDictionary]? {
+        var configurations: [Configuration] = self.configurations!.filter({return ($0.task == ViewControllerReference.shared.synchronize ||
             $0.task == ViewControllerReference.shared.snapshot)})
-        var data = [NSMutableDictionary]()
+        var data = [NSDictionary]()
         for i in 0 ..< configurations.count {
-            let row: NSMutableDictionary = ConvertOneConfig(config: self.configurations![i], profile: self.profile).dict
-            if (row.value(forKey: "offsiteServerCellID") as? String)?.isEmpty == true {
-                row.setValue("localhost", forKey: "offsiteServerCellID")
+            if configurations[i].offsiteServer.isEmpty == true {
+                configurations[i].offsiteServer = "localhost"
             }
+            let row: NSDictionary = ConvertOneConfig(config: self.configurations![i], profile: self.profile).dict
             data.append(row)
         }
         return data
@@ -120,11 +120,11 @@ class Configurations {
             }
         }
         // Then prepare the datasource for use in tableviews as Dictionarys
-        var data = [NSMutableDictionary]()
+        var data = [NSDictionary]()
         for i in 0 ..< self.configurations!.count {
             if self.configurations![i].task == ViewControllerReference.shared.synchronize ||
                 self.configurations![i].task == ViewControllerReference.shared.snapshot {
-                data.append(ConvertOneConfig(config: self.configurations![i], profile: self.profile).dict3)
+                data.append(ConvertOneConfig(config: self.configurations![i], profile: self.profile).dict)
             }
         }
         self.configurationsDataSource = data
