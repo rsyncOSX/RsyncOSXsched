@@ -96,15 +96,15 @@ class Configurations {
     /// Function for getting all Configurations marked as backup
     /// - parameter none: none
     /// - returns : Array of NSDictionary
-    func getConfigurationsDataSourcecountBackup() -> [NSMutableDictionary]? {
-        let configurations: [Configuration] = self.configurations!.filter({return ($0.task == ViewControllerReference.shared.synchronize ||
+    func getConfigurationsDataSourceSynchronize() -> [NSDictionary]? {
+        var configurations: [Configuration] = self.configurations!.filter({return ($0.task == ViewControllerReference.shared.synchronize ||
             $0.task == ViewControllerReference.shared.snapshot)})
-        var data = [NSMutableDictionary]()
+        var data = [NSDictionary]()
         for i in 0 ..< configurations.count {
-            let row: NSMutableDictionary = ConvertOneConfig(config: self.configurations![i], profile: self.profile).dict
-            if (row.value(forKey: "offsiteServerCellID") as? String)?.isEmpty == true {
-                row.setValue("localhost", forKey: "offsiteServerCellID")
+            if configurations[i].offsiteServer.isEmpty == true {
+                configurations[i].offsiteServer = "localhost"
             }
+            let row: NSDictionary = ConvertOneConfig(config: self.configurations![i], profile: self.profile).dict
             data.append(row)
         }
         return data

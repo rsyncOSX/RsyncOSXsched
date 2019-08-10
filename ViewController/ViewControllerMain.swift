@@ -100,9 +100,9 @@ class ViewControllerMain: NSViewController, Delay, Setlog {
 
     @IBAction func backupnow(_ sender: NSButton) {
         guard self.index != nil else { return  }
-        guard self.configurations!.getConfigurationsDataSourcecountBackup() != nil  else { return  }
+        guard self.configurations!.getConfigurationsDataSourceSynchronize() != nil  else { return  }
         self.backupnowbutton.isEnabled = false
-        let dict: NSDictionary = self.configurations!.getConfigurationsDataSourcecountBackup()![self.index!]
+        let dict: NSDictionary = self.configurations!.getConfigurationsDataSourceSynchronize()![self.index!]
         _ = ExecuteScheduledTask(dict: dict)
     }
 
@@ -282,14 +282,14 @@ class ViewControllerMain: NSViewController, Delay, Setlog {
 extension ViewControllerMain: NSTableViewDataSource {
     // Delegate for size of table
     func numberOfRows(in tableView: NSTableView) -> Int {
-        return self.configurations?.getConfigurationsDataSourcecountBackup()?.count ?? 0
+        return self.configurations?.getConfigurationsDataSourceSynchronize()?.count ?? 0
     }
 }
 
 extension ViewControllerMain: NSTableViewDelegate, Attributedestring {
     func tableView(_ tableView: NSTableView, objectValueFor tableColumn: NSTableColumn?, row: Int) -> Any? {
-        guard row < self.configurations!.getConfigurationsDataSourcecountBackup()!.count  else { return nil }
-        let object: NSDictionary = self.configurations!.getConfigurationsDataSourcecountBackup()![row]
+        guard row < self.configurations!.getConfigurationsDataSourceSynchronize()!.count  else { return nil }
+        let object: NSDictionary = self.configurations!.getConfigurationsDataSourceSynchronize()![row]
         let hiddenID = object.value(forKey: "hiddenID") as? Int ?? -1
         let profilename = object.value(forKey: "profilename") as? String ?? NSLocalizedString("Default profile", comment: "default profile")
         switch tableColumn!.identifier.rawValue {
