@@ -19,20 +19,18 @@ var globalBackgroundQueue: DispatchQueue {
 class TCPconnections: SetConfigurations, Delay, Setlog {
 
     var noconnections: [String]?
+    var client: TCPClient?
 
     // Test for TCP connection
-    private func testTCPconnection (_ addr: String, port: Int, timeout: Int) -> (Bool, String) {
-        var connectionOK: Bool = false
-        var str: String = ""
-        let client: TCPClient = TCPClient(addr: addr, port: port)
-        let (success, errmsg) = client.connect(timeout: timeout)
-        connectionOK = success
-        if connectionOK {
-            str = "connection OK"
-        } else {
-            str = errmsg
+    func testTCPconnection (_ host: String, port: Int, timeout: Int) -> Bool {
+        self.client = TCPClient(address: host, port: Int32(port))
+        guard let client = client else { return true }
+        switch client.connect(timeout: timeout) {
+        case .success:
+            return true
+        default:
+            return false
         }
-        return (connectionOK, str)
     }
 
     // Testing all remote servers.
@@ -45,7 +43,7 @@ class TCPconnections: SetConfigurations, Delay, Setlog {
             probablynoconnectionsDelegate = ViewControllerReference.shared.viewControllermain as? ViewControllerMain
             let port: Int = 22
             for i in 0 ..< offsiteservers!.count where offsiteservers![i].isEmpty == false {
-                let (success, _) = self.testTCPconnection(offsiteservers![i], port: port, timeout: 1)
+                let success = self.testTCPconnection(offsiteservers![i], port: port, timeout: 1)
                 if success == false {
                     probablynoconnectionsDelegate?.updatestatustcpconnections()
                     self.logDelegate?.addlog(logrecord: "No connection with server: " + offsiteservers![i])
