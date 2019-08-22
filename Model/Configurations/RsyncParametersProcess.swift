@@ -35,7 +35,9 @@ final class RsyncParametersProcess {
                 self.arguments!.append(parameter3)
             }
         }
-        self.arguments!.append(parameter4)
+        if parameter4.isEmpty == false {
+            self.arguments!.append(parameter4)
+        }
         if offsiteServer.isEmpty {
             // nothing
         } else {
