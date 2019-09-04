@@ -8,7 +8,7 @@
 
 import Foundation
 
-protocol RsyncOSXschedversion: class {
+protocol NewVersionDiscovered: class {
     func notifyNewVersion()
     func currentversion(version: String)
 }
@@ -19,20 +19,16 @@ final class Checkfornewversion {
     private var urlPlist: String?
     private var urlNewVersion: String?
 
-    // External resources
-    // private var resource: Resources?
-
-    weak var newversionDelegate: RsyncOSXschedversion?
+    weak var newversionDelegate: NewVersionDiscovered?
 
     //If new version set URL for download link and notify caller
     private func urlnewVersion () {
         self.newversionDelegate?.currentversion(version: self.runningVersion ?? "")
         globalBackgroundQueue.async(execute: { () -> Void in
-            if let url = URL(string: self.urlPlist!) {
+            if let url = URL(string: self.urlPlist ?? "") {
                 do {
                     let contents = NSDictionary (contentsOf: url)
-                    guard self.runningVersion != nil else { return }
-                    if let url = contents?.object(forKey: self.runningVersion!) {
+                    if let url = contents?.object(forKey: self.runningVersion ?? "") {
                         self.urlNewVersion = url as? String
                         self.newversionDelegate?.notifyNewVersion()
                         ViewControllerReference.shared.URLnewVersion = self.urlNewVersion
@@ -44,13 +40,11 @@ final class Checkfornewversion {
 
     init () {
         let infoPlist = Bundle.main.infoDictionary
-        let version = infoPlist?["CFBundleShortVersionString"]
-        self.newversionDelegate = ViewControllerReference.shared.viewControllermain as? ViewControllerMain
-        if version != nil {
+        if let version = infoPlist?["CFBundleShortVersionString"] {
             self.runningVersion = version as? String
+            self.newversionDelegate = ViewControllerReference.shared.viewControllermain as? ViewControllerMain
+            self.urlPlist = Resources().getResource()
+            self.urlnewVersion()
         }
-        self.urlPlist = Resources().getResource()
-        self.urlnewVersion()
     }
-
 }

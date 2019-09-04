@@ -531,7 +531,7 @@ extension ViewControllerMain: GetTCPconnections {
     }
 }
 
-extension ViewControllerMain: RsyncOSXschedversion {
+extension ViewControllerMain: NewVersionDiscovered {
     func currentversion(version: String) {
          globalMainQueue.async(execute: { () -> Void in
             self.rsyncosxschedversion.stringValue = NSLocalizedString("RsyncOSXsched version:", comment: "main") + " " + version
