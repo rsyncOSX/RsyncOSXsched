@@ -75,7 +75,7 @@ class Configurations {
     }
 
     func getResourceConfiguration(_ hiddenID: Int, resource: ResourceInConfiguration) -> String {
-        var result = self.configurations!.filter({return ($0.hiddenID == hiddenID)})
+        let result = self.configurations!.filter({return ($0.hiddenID == hiddenID)})
         guard result.count > 0 else { return "" }
         switch resource {
         case .localCatalog:
@@ -111,7 +111,7 @@ class Configurations {
     }
 
     private func readconfigurations() {
-        var store: [Configuration]? = self.storageapi!.getConfigurations()
+        let store: [Configuration]? = self.storageapi!.getConfigurations()
         guard store != nil else { return }
         for i in 0 ..< store!.count {
             if store![i].task == ViewControllerReference.shared.synchronize ||
