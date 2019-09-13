@@ -71,6 +71,7 @@ class ViewControllerMain: NSViewController, Delay, Setlog {
         self.checkforrunning()
         self.info(num: -1)
         self.profilescombobox.stringValue = NSLocalizedString("Default profile", comment: "default profile")
+        self.info.stringValue = FirsScheduledTask().taskintime ?? ""
         globalMainQueue.async(execute: { () -> Void in
             self.mainTableView.reloadData()
         })
