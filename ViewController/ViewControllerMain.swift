@@ -69,9 +69,8 @@ class ViewControllerMain: NSViewController, Delay, Setlog {
         super.viewDidAppear()
         self.setprofiles()
         self.checkforrunning()
-        self.info(num: -1)
+        self.info(num: 3)
         self.profilescombobox.stringValue = NSLocalizedString("Default profile", comment: "default profile")
-        self.info.stringValue = FirsScheduledTask().taskintime ?? ""
         globalMainQueue.async(execute: { () -> Void in
             self.mainTableView.reloadData()
         })
@@ -207,6 +206,8 @@ class ViewControllerMain: NSViewController, Delay, Setlog {
             case 2:
                 let info2: String = NSLocalizedString("Executing scheduled tasks is not enabled in RsyncOSX....", comment: "main")
                 self.info.stringValue = info2
+            case 3:
+                self.info.stringValue = FirsScheduledTask().taskintime ?? ""
             default:
                 self.info.stringValue = ""
             }

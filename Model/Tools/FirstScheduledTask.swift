@@ -17,7 +17,7 @@ struct FirsScheduledTask: GetAllSchedules {
             let profilename = dict.value(forKey: "profilename") as? String ?? NSLocalizedString("Default profile", comment: "default profile")
             let dateStart = dict.value(forKey: "dateStart") as? Date
             let time = self.schedulessortedandexpanded!.sortandcountscheduledonetask(hiddenID: hiddenID, profilename: profilename, dateStart: dateStart, number: true)
-            self.taskintime = NSLocalizedString("First schedule", comment: "firstask") + " " + profilename  + " " + NSLocalizedString("in", comment: "firstask") + " " + time
+            self.taskintime = NSLocalizedString("First scheduled task:", comment: "firstask") + " " + profilename  + " " + NSLocalizedString("in", comment: "firstask") + " " + time
         }
     }
 }
