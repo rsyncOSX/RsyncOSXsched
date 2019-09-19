@@ -111,9 +111,8 @@ class Configurations {
     }
 
     private func readconfigurations() {
-        let store: [Configuration]? = self.storageapi!.getConfigurations()
-        guard store != nil else { return }
-        for i in 0 ..< store!.count {
+        let store: [Configuration]? = self.storageapi?.getConfigurations()
+        for i in 0 ..< ( store?.count ?? 0 ) {
             if store![i].task == ViewControllerReference.shared.synchronize ||
                 store![i].task == ViewControllerReference.shared.snapshot {
                 self.configurations!.append(store![i])
@@ -121,9 +120,9 @@ class Configurations {
         }
         // Then prepare the datasource for use in tableviews as Dictionarys
         var data = [NSDictionary]()
-        for i in 0 ..< self.configurations!.count {
-            if self.configurations![i].task == ViewControllerReference.shared.synchronize ||
-                self.configurations![i].task == ViewControllerReference.shared.snapshot {
+        for i in 0 ..< ( self.configurations?.count ?? 0 ) {
+            if self.configurations?[i].task == ViewControllerReference.shared.synchronize ||
+                self.configurations?[i].task == ViewControllerReference.shared.snapshot {
                 data.append(ConvertOneConfig(config: self.configurations![i], profile: self.profile).dict)
             }
         }
