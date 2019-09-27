@@ -58,6 +58,12 @@
 /* main */
 "Mounting volumes:" = "Monterer katalog:";
 
+/* loginfo */
+"No connection with server:" = "Ingen kontakt med server:";
+
+/* loginfo */
+"No connection, bailed out..." = "Ingen kontakt, avslutter...";
+
 /* Execute */
 "No hiddenID in dictionary" = "Ingen hiddenID I katalog";
 
@@ -97,7 +103,8 @@
 /* Timer */
 "Schedule timer: setting next scheduled task in:" = "Schedule timer: neste oppgave om:";
 
-/* Execute */
+/* Execute
+   loginfo */
 "Scheduled backup did not execute" = "Schedulert oppgave ikke utført";
 
 /* datetime */

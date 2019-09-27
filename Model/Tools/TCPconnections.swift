@@ -46,7 +46,8 @@ class TCPconnections: SetConfigurations, Delay, Setlog {
                 let success = self.testTCPconnection(offsiteservers![i], port: port, timeout: 1)
                 if success == false {
                     probablynoconnectionsDelegate?.updatestatustcpconnections()
-                    self.logDelegate?.addlog(logrecord: "No connection with server: " + offsiteservers![i])
+                    let loginfo = NSLocalizedString("No connection with server:", comment: "loginfo")
+                    self.logDelegate?.addlog(logrecord: loginfo + " " + offsiteservers![i])
                     if self.noconnections == nil {
                         self.noconnections = [String]()
                         self.noconnections?.append(offsiteservers![i])
@@ -62,8 +63,10 @@ class TCPconnections: SetConfigurations, Delay, Setlog {
         guard self.noconnections != nil else { return true}
         self.logDelegate?.addlog(logrecord: "Checking for connection to remote server")
         guard noconnections!.filter({return ($0 == remoteserver)}).count < 1 else {
-            self.logDelegate?.addlog(logrecord: "No connection, bailed out...")
-            _ = Notifications().showNotification(message: "Scheduled backup did not execute")
+            let loginfo = NSLocalizedString("No connection, bailed out...", comment: "loginfo")
+            let noexecuteinfo = NSLocalizedString("Scheduled backup did not execute", comment: "loginfo")
+            self.logDelegate?.addlog(logrecord: loginfo)
+            _ = Notifications().showNotification(message: noexecuteinfo)
             weak var processTerminationDelegate: UpdateProgress?
             processTerminationDelegate = ViewControllerReference.shared.viewControllermain as? ViewControllerMain
             processTerminationDelegate?.processTermination()
@@ -72,6 +75,4 @@ class TCPconnections: SetConfigurations, Delay, Setlog {
         return true
     }
 
-    init() {
-    }
 }
