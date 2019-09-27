@@ -451,10 +451,6 @@ extension ViewControllerMain: UpdateProgress {
             }
         }
     }
-
-    func fileHandler() {
-        //
-    }
 }
 
 extension ViewControllerMain: GetConfigurationsObject {
@@ -475,15 +471,10 @@ extension ViewControllerMain: GetSortedandExpandedObject {
     }
 }
 
-extension ViewControllerMain: ErrorOutput {
-    func erroroutput() {
-        //
-    }
-}
-
 extension ViewControllerMain: RsyncError {
     func rsyncerror() {
-        //
+        let errorinfo: String = NSLocalizedString("There was a rsync error", comment: "rsyncerror")
+        self.addlog(logrecord: errorinfo)
     }
 }
 

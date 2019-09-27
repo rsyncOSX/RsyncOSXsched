@@ -22,6 +22,9 @@
 /* Execute */
 "Executing task in profile" = "Utfører oppgave i profil";
 
+/* firstask */
+"First scheduled task:" = "Første oppgave:";
+
 /* addobserverforreload */
 "Got notification for reload" = "Fikk melding om relast";
 
@@ -30,6 +33,9 @@
 
 /* datetime */
 "hours" = "timer";
+
+/* firstask */
+"in" = "om";
 
 /* Mount */
 "in:" = "om:";
@@ -99,6 +105,9 @@
 
 /* main */
 "Some remote sites not avaliable, see log ...." = "Noen eksterne servere er ikke tilgjengelig...";
+
+/* rsyncerror */
+"There was a rsync error" = "En rsync feil er oppstått";
 
 /* ReadWrite */
 "to disk" = "til disk";

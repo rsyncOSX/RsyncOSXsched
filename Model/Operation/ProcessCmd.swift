@@ -14,7 +14,6 @@ protocol Delay {
 }
 
 extension Delay {
-
     func delayWithSeconds(_ seconds: Double, completion: @escaping () -> Void) {
         DispatchQueue.main.asyncAfter(deadline: .now() + seconds) {
             completion()
@@ -22,17 +21,10 @@ extension Delay {
     }
 }
 
-protocol ErrorOutput: class {
-    func erroroutput()
-}
-
 class ProcessCmd: Delay, SetConfigurations {
 
-    // Number of calculated files to be copied
-    var calculatedNumberOfFiles: Int = 0
     // Variable for reference to Process
     var processReference: Process?
-    // Observer
     // Observers
     weak var notifications_datahandle: NSObjectProtocol?
     weak var notifications_termination: NSObjectProtocol?
@@ -40,10 +32,6 @@ class ProcessCmd: Delay, SetConfigurations {
     var command: String?
     // Arguments to command
     var arguments: [String]?
-    // true if processtermination
-    var termination: Bool = false
-    // possible error ouput
-    weak var possibleerrorDelegate: ErrorOutput?
     // Message to calling class
     weak var updateDelegate: UpdateProgress?
 
@@ -77,12 +65,6 @@ class ProcessCmd: Delay, SetConfigurations {
                 if let str = NSString(data: data, encoding: String.Encoding.utf8.rawValue) {
                     if outputprocess != nil {
                         outputprocess!.addlinefromoutput(str as String)
-                        self.calculatedNumberOfFiles = outputprocess!.count()
-                        // Send message about files
-                        self.updateDelegate?.fileHandler()
-                        if self.termination {
-                            self.possibleerrorDelegate?.erroroutput()
-                        }
                     }
                 }
                 outHandle.waitForDataInBackgroundAndNotify()
@@ -92,7 +74,6 @@ class ProcessCmd: Delay, SetConfigurations {
         self.notifications_termination = NotificationCenter.default.addObserver(forName: Process.didTerminateNotification,
                             object: task, queue: nil) { _ -> Void in
             self.delayWithSeconds(0.5) {
-                self.termination = true
                 self.updateDelegate?.processTermination()
                 NotificationCenter.default.removeObserver(self.notifications_datahandle as Any)
                 NotificationCenter.default.removeObserver(self.notifications_termination as Any)
@@ -110,7 +91,6 @@ class ProcessCmd: Delay, SetConfigurations {
     init(command: String?, arguments: [String]?) {
         self.command = command
         self.arguments = arguments
-        self.possibleerrorDelegate = ViewControllerReference.shared.viewControllermain as? ViewControllerMain
         self.updateDelegate = ViewControllerReference.shared.viewControllermain as? ViewControllerMain
     }
 }
