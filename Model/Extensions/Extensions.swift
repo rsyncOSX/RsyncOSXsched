@@ -151,7 +151,6 @@ extension Attributedestring {
 // process termination and when filehandler discover data
 protocol UpdateProgress: class {
     func processTermination()
-    func fileHandler()
 }
 
 // Protocol for returning object Configurations
