@@ -46,9 +46,9 @@ final class ExecuteScheduledTask: SetSchedules, SetConfigurations, SetScheduledT
                         guard tcpconnectionsDelegate?.gettcpconnections()?.checkremoteconnection(remoteserver: remoteserver) == true else { return }
                     }
                     arguments = RsyncParametersProcess().argumentsRsync(config!)
-                    // Setting reference to finalize the job, finalize job is done when rsynctask ends (in process termination)
-                    ViewControllerReference.shared.completeoperation = CompleteScheduledOperation(dict: dict)
-                    if arguments != nil {
+                    if let arguments = arguments {
+                        // Setting reference to finalize the job, finalize job is done when rsynctask ends (in process termination)
+                        ViewControllerReference.shared.completeoperation = CompleteScheduledOperation(dict: dict)
                         self.logDelegate?.addlog(logrecord: NSLocalizedString("Executing task in profile", comment: "Execute") + " " + profilename! + " with ID " + config!.backupID)
                         weak var sendprocess: Sendprocessreference?
                         sendprocess = ViewControllerReference.shared.viewControllermain as? ViewControllerMain
