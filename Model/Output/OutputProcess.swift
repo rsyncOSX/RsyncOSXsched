@@ -6,8 +6,6 @@
 //
 //  swiftlint:disable  cyclomatic_complexity
 
-import Foundation
-
 protocol RsyncError: class {
     func rsyncerror()
 }
@@ -22,24 +20,42 @@ final class OutputProcess {
 
     private var output: [String]?
     private var trimmedoutput: [String]?
-    private var startIndex: Int?
-    private var endIndex: Int?
-    private var maxNumber: Int = 0
+    private var startindex: Int?
+    private var maxnumber: Int = 0
     weak var errorDelegate: RsyncError?
+    var error: Bool = false
+
+    func getMaxcount() -> Int {
+        if self.trimmedoutput == nil {
+            _ = self.trimoutput(trim: .two)
+        }
+        return self.maxnumber
+    }
 
     func count() -> Int {
         return self.output?.count ?? 0
     }
 
-    // Add line from output
-    func addlinefromoutput (_ str: String) {
-        if self.startIndex == nil {
-            self.startIndex = 0
+    func getrawOutput() -> [String]? {
+        return self.output
+    }
+
+    func getOutput() -> [String]? {
+        if self.trimmedoutput != nil {
+            return self.trimmedoutput
         } else {
-            self.startIndex = self.output!.count + 1
+            return self.output
+        }
+    }
+
+    func addlinefromoutput (str: String) {
+        if self.startindex == nil {
+            self.startindex = 0
+        } else {
+            self.startindex = self.output?.count ?? 0 + 1
         }
         str.enumerateLines { (line, _) in
-            self.output!.append(line)
+            self.output?.append(line)
         }
     }
 
@@ -50,7 +66,6 @@ final class OutputProcess {
         case .one:
             for i in 0 ..< self.output!.count {
                 let substr = self.output![i].dropFirst(10).trimmingCharacters(in: .whitespacesAndNewlines)
-                // let str = substr.components(separatedBy: " ").dropFirst(3).joined()
                 let str = substr.components(separatedBy: " ").dropFirst(3).joined(separator: " ")
                 if str.isEmpty == false && str.contains(".DS_Store") == false {
                     out.append("./" + str)
@@ -59,14 +74,13 @@ final class OutputProcess {
         case .two:
             for i in 0 ..< self.output!.count where self.output![i].last != "/" {
                 out.append(self.output![i])
-                let error = self.output![i].contains("rsync error:")
-                if error {
+                self.error = self.output![i].contains("rsync error:")
+                if self.error {
                     self.errorDelegate = ViewControllerReference.shared.viewControllermain as? ViewControllerMain
                     self.errorDelegate?.rsyncerror()
                 }
             }
-            self.endIndex = out.count
-            self.maxNumber = self.endIndex!
+            self.maxnumber = out.count
         case .three:
             for i in 0 ..< self.output!.count {
                 let substr = self.output![i].dropFirst(10).trimmingCharacters(in: .whitespacesAndNewlines)

@@ -59,13 +59,11 @@ class ProcessCmd: Delay, SetConfigurations {
         outHandle.waitForDataInBackgroundAndNotify()
         // Observator for reading data from pipe, observer is removed when Process terminates
         self.notifications_datahandle = NotificationCenter.default.addObserver(forName: NSNotification.Name.NSFileHandleDataAvailable,
-                            object: nil, queue: nil) { _ -> Void in
+                            object: nil, queue: nil) { [weak self] _ in
             let data = outHandle.availableData
             if data.count > 0 {
                 if let str = NSString(data: data, encoding: String.Encoding.utf8.rawValue) {
-                    if outputprocess != nil {
-                        outputprocess!.addlinefromoutput(str as String)
-                    }
+                    outputprocess?.addlinefromoutput(str: str as String)
                 }
                 outHandle.waitForDataInBackgroundAndNotify()
             }
