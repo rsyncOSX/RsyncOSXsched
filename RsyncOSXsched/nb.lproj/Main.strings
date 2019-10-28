@@ -8,7 +8,7 @@
 "4sb-4s-VLi.title" = "Avslutt RsyncOSXsched";
 
 /* Class = "NSViewController"; title = "All schedules"; ObjectID = "5c9-F6-lv3"; */
-"5c9-F6-lv3.title" = "Alle scheduler";
+"5c9-F6-lv3.title" = "Alle oppgaver";
 
 /* Class = "NSMenuItem"; title = "About RsyncOSXsched"; ObjectID = "5kV-Vb-QxS"; */
 "5kV-Vb-QxS.title" = "Om RsyncOSXsched";
@@ -83,7 +83,7 @@
 "l2d-BZ-Xq3.headerCell.title" = "Lokal katalog";
 
 /* Class = "NSButtonCell"; title = "Schedules"; ObjectID = "L8l-lJ-lKA"; */
-"L8l-lJ-lKA.title" = "Schedules";
+"L8l-lJ-lKA.title" = "Oppgaver";
 
 /* Class = "NSTextFieldCell"; title = "Text Cell"; ObjectID = "LbP-5c-NYf"; */
 "LbP-5c-NYf.title" = "Text Cell";
