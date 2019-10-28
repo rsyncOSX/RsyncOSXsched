@@ -17,7 +17,7 @@
 "Default profile" = "Default profil";
 
 /* main */
-"Executing scheduled tasks is not enabled in RsyncOSX...." = "Schedulerte oppgaver ikke gjort tilgjengelig i RsyncOSX";
+"Executing scheduled tasks is not enabled in RsyncOSX...." = "Planlagte oppgaver ikke gjort tilgjengelig i RsyncOSX";
 
 /* Execute */
 "Executing task in profile" = "Utfører oppgave i profil";
@@ -41,13 +41,13 @@
 "in:" = "om:";
 
 /* main */
-"Invalidating tasks and going to sleep..." = "Stopper schedulerte oppgaver og går i dvale";
+"Invalidating tasks and going to sleep..." = "Stopper planlagte oppgaver og går i dvale";
 
 /* schedule */
 "Loading profile:" = "Laster profil:";
 
 /* Notification */
-"Message from scheduled backup..." = "Informasjon fra schedulert backup";
+"Message from scheduled backup..." = "Informasjon fra oppgaver";
 
 /* datetime */
 "mins" = "min";
@@ -92,20 +92,20 @@
 "RsyncOSXsched version:" = "RsyncOSXsched versjon:";
 
 /* Dispatch */
-"Schedule dispatch: no more scheduled task in queue" = "Schedule dispatch: ingen flere oppgaver i kø.";
+"Schedule dispatch: no more scheduled task in queue" = "Oppgave dispatch: ingen flere oppgaver i kø.";
 
 /* Dispatch */
-"Schedule dispatch: setting next scheduled task in:" = "Schedule dispatch: neste oppgave om:";
+"Schedule dispatch: setting next scheduled task in:" = "Oppgave dispatch: neste oppgave om:";
 
 /* Timer */
-"Schedule timer: no more scheduled task in queue" = "Schedule timer: ingen flere oppgaver i kø.";
+"Schedule timer: no more scheduled task in queue" = "Oppgave timer: ingen flere oppgaver i kø.";
 
 /* Timer */
-"Schedule timer: setting next scheduled task in:" = "Schedule timer: neste oppgave om:";
+"Schedule timer: setting next scheduled task in:" = "Oppgave timer: neste oppgave om:";
 
 /* Execute
    loginfo */
-"Scheduled backup did not execute" = "Schedulert oppgave ikke utført";
+"Scheduled backup did not execute" = "Planlagt oppgave ikke utført";
 
 /* datetime */
 "secs" = "sek";
