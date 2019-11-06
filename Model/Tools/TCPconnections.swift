@@ -74,5 +74,4 @@ class TCPconnections: SetConfigurations, Delay, Setlog {
         }
         return true
     }
-
 }
