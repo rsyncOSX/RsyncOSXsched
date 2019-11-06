@@ -198,6 +198,6 @@ class ScheduleSortedAndExpand: Setlog {
         self.setallscheduledtasksNSDictionary()
         self.sortAndExpandScheduleTasks()
         self.tcpconnections = TCPconnections()
-        self.tcpconnections!.testAllremoteserverConnections(offsiteservers: allschedules.alloffsiteservers)
+        self.tcpconnections?.testAllremoteserverConnections(offsiteservers: allschedules.alloffsiteservers)
     }
 }

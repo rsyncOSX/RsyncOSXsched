@@ -5,13 +5,26 @@
 //  Created by Thomas Evensen on 09/12/15.
 //  Copyright © 2015 Thomas Evensen. All rights reserved.
 //
+// swiftlint:disable line_length
 
 import Foundation
 
-final class PersistentStorageConfiguration: ReadWriteDictionary {
+final class PersistentStorageConfiguration: ReadWriteDictionary, SetConfigurations {
 
     /// Variable holds all configuration data from persisten storage
     var configurationsasdictionary: [NSDictionary]?
+
+    // Read configurations from persisten store
+      func getConfigurations() -> [Configuration]? {
+          let read = PersistentStorageConfiguration(profile: self.profile)
+          guard read.configurationsasdictionary != nil else { return nil}
+          var Configurations = [Configuration]()
+          for dict in read.configurationsasdictionary! {
+              let conf = Configuration(dictionary: dict)
+              Configurations.append(conf)
+          }
+          return Configurations
+      }
 
     // Saving Configuration from MEMORY to persistent store
     // Reads Configurations from MEMORY and saves to persistent Store
@@ -36,7 +49,7 @@ final class PersistentStorageConfiguration: ReadWriteDictionary {
     }
 
     init (profile: String?) {
-        super.init(whattoreadwrite: .configuration, profile: profile)
+        super.init(whattoreadwrite: .configuration, profile: profile, configpath: ViewControllerReference.shared.configpath)
         self.configurationsasdictionary = self.readNSDictionaryFromPersistentStore()
     }
 }

@@ -21,7 +21,7 @@ enum WhatToReadWrite {
     case none
 }
 
-class ReadWriteDictionary: SetConfigurations, Setlog {
+class ReadWriteDictionary: Setlog {
 
     // Name set for schedule, configuration or config
     private var name: String?
@@ -29,14 +29,15 @@ class ReadWriteDictionary: SetConfigurations, Setlog {
     private var key: String?
     // Which profile to read
     var profile: String?
-    // If to use profile, only configurations and schedules to read from profile
-    private var useProfile: Bool = false
     // task to do
     private var task: WhatToReadWrite?
     // Path for configuration files
     private var filepath: String?
     // Set which file to read
     private var filename: String?
+    // config path either
+    // ViewControllerReference.shared.configpath or RcloneReference.shared.configpath
+    private var configpath: String?
 
     private func setnameandpath() {
         let paths = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true) as NSArray
@@ -45,19 +46,14 @@ class ReadWriteDictionary: SetConfigurations, Setlog {
             ViewControllerReference.shared.macserialnumber = Macserialnumber().getMacSerialNumber() ?? ""
         }
         let macserialnumber = ViewControllerReference.shared.macserialnumber
-        if self.useProfile {
-            if let profile = self.profile {
-                guard profile.isEmpty == false else { return }
-                self.filepath = ViewControllerReference.shared.configpath + macserialnumber! + "/" + profile + "/"
-                self.filename = docuDir + ViewControllerReference.shared.configpath + macserialnumber! + "/" + profile + self.name!
-            } else {
-                // If profile not set use no profile
-                self.filename = docuDir +  ViewControllerReference.shared.configpath + macserialnumber! + self.name!
-            }
+        if let profile = self.profile {
+            guard profile.isEmpty == false else { return }
+            self.filepath = self.configpath! + macserialnumber! + "/" + profile + "/"
+            self.filename = docuDir + self.configpath! + macserialnumber! + "/" + profile + self.name!
         } else {
             // no profile
-            self.filename = docuDir + ViewControllerReference.shared.configpath + macserialnumber! + self.name!
-            self.filepath = ViewControllerReference.shared.configpath + macserialnumber! + "/"
+            self.filename = docuDir + self.configpath! + macserialnumber! + self.name!
+            self.filepath = self.configpath! + macserialnumber! + "/"
         }
     }
 
@@ -87,7 +83,7 @@ class ReadWriteDictionary: SetConfigurations, Setlog {
     }
 
     // Set preferences for which data to read or write
-    private func setpreferences (_ task: WhatToReadWrite) {
+    private func setpreferences (task: WhatToReadWrite) {
         self.task = task
         switch self.task! {
         case .schedule:
@@ -104,12 +100,10 @@ class ReadWriteDictionary: SetConfigurations, Setlog {
         }
     }
 
-    init(whattoreadwrite: WhatToReadWrite, profile: String?) {
-        if profile != nil {
-            self.profile = profile
-            self.useProfile = true
-        }
-        self.setpreferences(whattoreadwrite)
+    init(whattoreadwrite: WhatToReadWrite, profile: String?, configpath: String) {
+        self.configpath = configpath
+        self.profile = profile
+        self.setpreferences(task: whattoreadwrite)
         self.setnameandpath()
     }
 

@@ -31,9 +31,9 @@ class ViewControllerReference {
     // Temporary storage of the first scheduled task
     var scheduledTask: NSDictionary?
     // True if version 3.2.1 of rsync in /usr/local/bin
-    var rsyncVer3: Bool = false
+    var rsyncversion3: Bool = false
     // Optional path to rsync
-    var rsyncPath: String?
+    var localrsyncpath: String?
     // Detailed logging
     var detailedlogging: Bool = true
     // Reference to the Operation object

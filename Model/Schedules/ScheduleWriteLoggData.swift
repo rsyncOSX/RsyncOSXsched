@@ -12,8 +12,8 @@ import Cocoa
 
 class ScheduleWriteLoggData: SetConfigurations {
 
-    var storageapi: PersistentStorageAPI?
     var schedules: [ConfigurationSchedule]?
+    var profile: String?
 
     /// Function adds results of task to file (via memory). Memory are
     /// saved after changed. Used in either single tasks or batch.
@@ -40,7 +40,7 @@ class ScheduleWriteLoggData: SetConfigurations {
                 inserted = self.addloggtaskmanulnew(hiddenID, result: resultannotaded ?? "", date: date)
             }
             if inserted {
-                self.storageapi!.saveScheduleFromMemory()
+                _ = PersistentStorageScheduling(profile: self.profile).savescheduleInMemoryToPersistentStore()
             }
         }
     }
@@ -111,7 +111,7 @@ class ScheduleWriteLoggData: SetConfigurations {
                         dict.setObject(date, forKey: "dateExecuted" as NSCopying)
                         dict.setObject(resultannotaded ?? "", forKey: "resultExecuted" as NSCopying)
                         self.schedules![i].logrecords.append(dict)
-                        self.storageapi!.saveScheduleFromMemory()
+                        _ = PersistentStorageScheduling(profile: self.profile).savescheduleInMemoryToPersistentStore()
                     }
             }
             // This might happen if a task is executed by schedule and there are no previous logged run
@@ -126,7 +126,8 @@ class ScheduleWriteLoggData: SetConfigurations {
         return self.configurations!.getConfigurations()[index]
     }
 
-    init() {
+    init(profile: String?) {
+        self.profile = profile
         self.schedules = [ConfigurationSchedule]()
     }
 }

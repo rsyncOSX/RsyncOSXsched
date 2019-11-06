@@ -197,7 +197,7 @@ class ViewControllerMain: NSViewController, Delay, Setlog {
         self.profilescombobox.addItems(withObjectValues: (self.profilesArray!))
     }
 
-    private func info (num: Int) {
+    private func info(num: Int) {
         globalMainQueue.async(execute: { () -> Void in
             switch num {
             case 1:
@@ -342,7 +342,6 @@ extension ViewControllerMain: NSTableViewDelegate, Attributedestring {
             self.index = nil
         }
     }
-
 }
 
 extension ViewControllerMain: Updatestatuslight {
@@ -361,8 +360,9 @@ extension ViewControllerMain: Updatestatuslight {
 }
 
 extension ViewControllerMain: Updatestatustcpconnections {
+
     func updatestatustcpconnections() {
-        self.info(num: 1)
+       self.info(num: 1)
     }
 }
 

@@ -12,11 +12,11 @@ final class Verifyrsyncpath: SetConfigurations {
 
     // Function returns the correct path for rsync according to configuration set by user or
     func rsyncpath() -> String {
-        if ViewControllerReference.shared.rsyncVer3 {
-            if ViewControllerReference.shared.rsyncPath == nil {
+        if ViewControllerReference.shared.rsyncversion3 {
+            if ViewControllerReference.shared.localrsyncpath == nil {
                 return ViewControllerReference.shared.usrlocalbinrsync
             } else {
-                return ViewControllerReference.shared.rsyncPath! + ViewControllerReference.shared.rsync
+                return ViewControllerReference.shared.localrsyncpath! + ViewControllerReference.shared.rsync
             }
         } else {
             return ViewControllerReference.shared.usrbinrsync

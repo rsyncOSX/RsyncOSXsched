@@ -34,9 +34,9 @@ class CheckAllConfigurations: Delay, Setlog {
             let profilename = self.allprofiles![i]
             if self.allconfigurations == nil { self.allconfigurations = [] }
             if profilename == NSLocalizedString("Default profile", comment: "default profile") {
-                configurations = PersistentStorageAPI(profile: nil).getConfigurations()
+                configurations = PersistentStorageConfiguration(profile: nil).getConfigurations()
             } else {
-                configurations = PersistentStorageAPI(profile: profilename).getConfigurations()
+                configurations = PersistentStorageConfiguration(profile: profilename).getConfigurations()
             }
             if configurations != nil {
                 for j in 0 ..< configurations!.count {
