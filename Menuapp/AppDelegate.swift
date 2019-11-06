@@ -22,11 +22,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
 
 	func applicationDidFinishLaunching(_ aNotification: Notification) {
-        var storage: PersistentStorageAPI?
-        // Read user configuration
-        storage = PersistentStorageAPI(profile: nil)
-        if let userConfiguration =  storage?.getUserconfiguration(readfromstorage: true) {
-            _ = Userconfiguration(userconfigRsyncOSX: userConfiguration)
+         // Read user configuration
+        if let userconfiguration =  PersistentStorageUserconfiguration().readuserconfiguration() {
+            _ = Userconfiguration(userconfigRsyncOSX: userconfiguration)
         }
 		if let button = self.statusItem.button {
 			button.image = NSImage(named: "MenubarButton")

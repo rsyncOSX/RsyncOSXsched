@@ -35,15 +35,14 @@ class ProcessCmd: Delay, SetConfigurations {
     // Message to calling class
     weak var updateDelegate: UpdateProgress?
 
-    func executeProcess (outputprocess: OutputProcess?) {
+    func executeProcess(outputprocess: OutputProcess?) {
+        // Process
         let task = Process()
-        // Setting the correct path for rsync
-        // If self.command != nil other command than rsync to be executed
-        // Other commands are either ssh or scp (from CopyFiles)
+        // If self.command != nil either alternativ path for rsync or other command than rsync to be executed
         if let command = self.command {
             task.launchPath = command
         } else {
-            task.launchPath = Verifyrsyncpath().rsyncpath()
+            task.launchPath = Getrsyncpath().rsyncpath
         }
         task.arguments = self.arguments
         // If there are any Environmentvariables like
@@ -59,23 +58,24 @@ class ProcessCmd: Delay, SetConfigurations {
         outHandle.waitForDataInBackgroundAndNotify()
         // Observator for reading data from pipe, observer is removed when Process terminates
         self.notifications_datahandle = NotificationCenter.default.addObserver(forName: NSNotification.Name.NSFileHandleDataAvailable,
-                            object: nil, queue: nil) { [weak self] _ in
+                                object: nil, queue: nil) { [weak self] _ in
             let data = outHandle.availableData
             if data.count > 0 {
                 if let str = NSString(data: data, encoding: String.Encoding.utf8.rawValue) {
                     outputprocess?.addlinefromoutput(str: str as String)
                 }
-                outHandle.waitForDataInBackgroundAndNotify()
+            outHandle.waitForDataInBackgroundAndNotify()
             }
         }
         // Observator Process termination, observer is removed when Process terminates
         self.notifications_termination = NotificationCenter.default.addObserver(forName: Process.didTerminateNotification,
-                            object: task, queue: nil) { _ -> Void in
-            self.delayWithSeconds(0.5) {
-                self.updateDelegate?.processTermination()
-                NotificationCenter.default.removeObserver(self.notifications_datahandle as Any)
-                NotificationCenter.default.removeObserver(self.notifications_termination as Any)
-            }
+                                object: nil, queue: nil) { _ in
+                self.delayWithSeconds(0.5) {
+                    self.updateDelegate?.processTermination()
+                    // Must remove for deallocation
+                    NotificationCenter.default.removeObserver(self.notifications_datahandle as Any)
+                    NotificationCenter.default.removeObserver(self.notifications_termination as Any)
+                }
         }
         self.processReference = task
         task.launch()

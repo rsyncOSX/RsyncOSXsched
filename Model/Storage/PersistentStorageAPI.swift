@@ -57,13 +57,6 @@ final class PersistentStorageAPI: SetConfigurations, SetSchedules {
         return schedule
     }
 
-    // USERCONFIG
-
-    func getUserconfiguration (readfromstorage: Bool) -> [NSDictionary]? {
-        let store = PersistentStorageUserconfiguration(readfromstorage: readfromstorage)
-        return store.readUserconfigurationsFromPermanentStore()
-    }
-
     init(profile: String?) {
         self.profile = profile
     }

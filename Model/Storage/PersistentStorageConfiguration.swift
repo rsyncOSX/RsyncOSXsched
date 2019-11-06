@@ -12,7 +12,7 @@ final class PersistentStorageConfiguration: ReadWriteDictionary {
 
     /// Variable holds all configuration data from persisten storage
     var configurationsasdictionary: [NSDictionary]?
-    
+
     // Read configurations from persisten store
       func getConfigurations() -> [Configuration]? {
           let read = PersistentStorageConfiguration(profile: self.profile)

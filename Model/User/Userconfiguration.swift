@@ -16,9 +16,9 @@ final class Userconfiguration {
         // Another version of rsync
         if let version3rsync = dict.value(forKey: "version3Rsync") as? Int {
             if version3rsync == 1 {
-                ViewControllerReference.shared.rsyncVer3 = true
+                ViewControllerReference.shared.rsyncversion3 = true
             } else {
-                ViewControllerReference.shared.rsyncVer3 = false
+                ViewControllerReference.shared.rsyncversion3 = false
             }
         }
         // Detailed logging
@@ -31,7 +31,7 @@ final class Userconfiguration {
         }
         // Optional path for rsync
         if let rsyncPath = dict.value(forKey: "rsyncPath") as? String {
-            ViewControllerReference.shared.rsyncPath = rsyncPath
+            ViewControllerReference.shared.localrsyncpath = rsyncPath
         }
         // Paths rsyncOSX and RsyncOSXsched
         if let pathrsyncosx = dict.value(forKey: "pathrsyncosx") as? String {

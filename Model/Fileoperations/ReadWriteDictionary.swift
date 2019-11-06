@@ -56,7 +56,6 @@ class ReadWriteDictionary: SetConfigurations, Setlog {
             self.filepath = self.configpath! + macserialnumber! + "/"
         }
     }
-    
 
     // Function for reading data from persistent store
     func readNSDictionaryFromPersistentStore() -> [NSDictionary]? {
@@ -102,6 +101,7 @@ class ReadWriteDictionary: SetConfigurations, Setlog {
     }
 
     init(whattoreadwrite: WhatToReadWrite, profile: String?, configpath: String) {
+        self.configpath = configpath
         self.profile = profile
         self.setpreferences(task: whattoreadwrite)
         self.setnameandpath()
