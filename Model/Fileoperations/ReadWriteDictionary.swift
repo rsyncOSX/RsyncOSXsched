@@ -21,7 +21,7 @@ enum WhatToReadWrite {
     case none
 }
 
-class ReadWriteDictionary: SetConfigurations, Setlog {
+class ReadWriteDictionary: Setlog {
 
     // Name set for schedule, configuration or config
     private var name: String?

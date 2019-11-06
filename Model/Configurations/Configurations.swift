@@ -26,8 +26,6 @@ enum ResourceInConfiguration {
 
 class Configurations {
 
-    // Storage API
-    var storageapi: PersistentStorageAPI?
     // reference to Process, used for kill in executing task
     var process: Process?
     private var profile: String?
@@ -56,7 +54,7 @@ class Configurations {
         let dateformatter = Dateandtime().setDateformat()
         self.configurations![index].dateRun = dateformatter.string(from: currendate)
         // Saving updated configuration in memory to persistent store
-        self.storageapi!.saveConfigFromMemory()
+        _ = PersistentStorageConfiguration(profile: self.profile).saveconfigInMemoryToPersistentStore()
     }
 
     func getIndex(_ hiddenID: Int) -> Int {
@@ -111,7 +109,7 @@ class Configurations {
     }
 
     private func readconfigurations() {
-        let store: [Configuration]? = self.storageapi?.getConfigurations()
+        let store: [Configuration]? = PersistentStorageConfiguration(profile: self.profile).getConfigurations()
         for i in 0 ..< ( store?.count ?? 0 ) {
             if store![i].task == ViewControllerReference.shared.synchronize ||
                 store![i].task == ViewControllerReference.shared.snapshot {
@@ -133,7 +131,6 @@ class Configurations {
         self.configurations = [Configuration]()
         self.configurationsDataSource = nil
         self.profile = profile
-        self.storageapi = PersistentStorageAPI(profile: self.profile)
         self.readconfigurations()
     }
 }

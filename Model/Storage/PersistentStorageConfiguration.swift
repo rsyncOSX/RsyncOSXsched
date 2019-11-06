@@ -5,10 +5,11 @@
 //  Created by Thomas Evensen on 09/12/15.
 //  Copyright © 2015 Thomas Evensen. All rights reserved.
 //
+// swiftlint:disable line_length
 
 import Foundation
 
-final class PersistentStorageConfiguration: ReadWriteDictionary {
+final class PersistentStorageConfiguration: ReadWriteDictionary, SetConfigurations {
 
     /// Variable holds all configuration data from persisten storage
     var configurationsasdictionary: [NSDictionary]?

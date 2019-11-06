@@ -12,7 +12,6 @@ import Cocoa
 
 class ScheduleWriteLoggData: SetConfigurations {
 
-    var storageapi: PersistentStorageAPI?
     var schedules: [ConfigurationSchedule]?
     var profile: String?
 
