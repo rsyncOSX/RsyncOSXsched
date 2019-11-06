@@ -16,6 +16,24 @@ final class PersistentStorageScheduling: ReadWriteDictionary, SetSchedules {
 
     var schedulesasdictionary: [NSDictionary]?
 
+    // Read schedules and history
+    // If no Schedule from persistent store return nil
+    func getScheduleandhistory(nolog: Bool) -> [ConfigurationSchedule]? {
+        let read = PersistentStorageScheduling(profile: self.profile)
+        var schedule = [ConfigurationSchedule]()
+        guard read.schedulesasdictionary != nil else { return nil }
+        for dict in read.schedulesasdictionary! {
+            if let log = dict.value(forKey: "executed") {
+                let conf = ConfigurationSchedule(dictionary: dict, log: log as? NSArray, nolog: nolog)
+                schedule.append(conf)
+            } else {
+                let conf = ConfigurationSchedule(dictionary: dict, log: nil, nolog: nolog)
+                schedule.append(conf)
+            }
+        }
+        return schedule
+    }
+
     // Saving Schedules from MEMORY to persistent store
     func savescheduleInMemoryToPersistentStore() {
         if let dicts: [NSDictionary] = ConvertSchedules().schedules {
@@ -33,7 +51,7 @@ final class PersistentStorageScheduling: ReadWriteDictionary, SetSchedules {
     }
 
     init (profile: String?) {
-        super.init(whattoreadwrite: .schedule, profile: profile)
+        super.init(whattoreadwrite: .schedule, profile: profile, configpath: ViewControllerReference.shared.configpath)
         self.schedulesasdictionary = self.readNSDictionaryFromPersistentStore()
     }
 }
