@@ -12,7 +12,7 @@ import Cocoa
 
 class Schedules: ScheduleWriteLoggData {
 
-    var profilename: String?
+    var profile: String?
 
     // Return reference to Schedule data
     // self.Schedule is privat data
@@ -23,7 +23,7 @@ class Schedules: ScheduleWriteLoggData {
     // Function for reading all jobs for schedule and all history of past executions.
     // Schedules are stored in self.schedules. Schedules are sorted after hiddenID.
     private func readschedules() {
-        let store: [ConfigurationSchedule]? = self.storageapi!.getScheduleandhistory(nolog: false)
+        let store: [ConfigurationSchedule]? = PersistentStorageScheduling(profile: self.profile).getScheduleandhistory(nolog: false)
         guard store != nil else { return }
         var data = [ConfigurationSchedule]()
         for i in 0 ..< store!.count where ( store![i].logrecords.isEmpty == false || store![i].dateStop != nil ) {
@@ -43,8 +43,8 @@ class Schedules: ScheduleWriteLoggData {
 
     init(profile: String?) {
         super.init()
-        self.profilename = profile
-        self.storageapi = PersistentStorageAPI(profile: self.profilename)
+        self.profile = profile
+        self.storageapi = PersistentStorageAPI(profile: self.profile)
         self.readschedules()
     }
 }

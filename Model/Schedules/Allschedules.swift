@@ -47,9 +47,9 @@ class Allschedules {
             let profilename = self.allprofiles![i]
             if self.allschedules == nil { self.allschedules = [] }
             if profilename == NSLocalizedString("Default profile", comment: "default profile") {
-                configurationschedule = PersistentStorageAPI(profile: nil).getScheduleandhistory(nolog: true)
+                configurationschedule = PersistentStorageScheduling(profile: nil).getScheduleandhistory(nolog: true)
             } else {
-                configurationschedule = PersistentStorageAPI(profile: profilename).getScheduleandhistory(nolog: true)
+                configurationschedule = PersistentStorageScheduling(profile: profilename).getScheduleandhistory(nolog: true)
             }
             if configurationschedule != nil {
                 for j in 0 ..< configurationschedule!.count {

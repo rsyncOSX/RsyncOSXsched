@@ -19,10 +19,9 @@ final class PersistentStorageScheduling: ReadWriteDictionary, SetSchedules {
     // Read schedules and history
     // If no Schedule from persistent store return nil
     func getScheduleandhistory(nolog: Bool) -> [ConfigurationSchedule]? {
-        let read = PersistentStorageScheduling(profile: self.profile)
         var schedule = [ConfigurationSchedule]()
-        guard read.schedulesasdictionary != nil else { return nil }
-        for dict in read.schedulesasdictionary! {
+        guard self.schedulesasdictionary != nil else { return nil }
+        for dict in self.schedulesasdictionary! {
             if let log = dict.value(forKey: "executed") {
                 let conf = ConfigurationSchedule(dictionary: dict, log: log as? NSArray, nolog: nolog)
                 schedule.append(conf)
