@@ -12,8 +12,6 @@ import Cocoa
 
 class Schedules: ScheduleWriteLoggData {
 
-    var profile: String?
-
     // Return reference to Schedule data
     // self.Schedule is privat data
     func getSchedule() -> [ConfigurationSchedule] {
@@ -41,10 +39,9 @@ class Schedules: ScheduleWriteLoggData {
         self.schedules = data
     }
 
-    init(profile: String?) {
-        super.init()
+    override init(profile: String?) {
+        super.init(profile: profile)
         self.profile = profile
-        self.storageapi = PersistentStorageAPI(profile: self.profile)
         self.readschedules()
     }
 }

@@ -31,14 +31,6 @@ final class PersistentStorageAPI: SetConfigurations, SetSchedules {
         save.saveconfigInMemoryToPersistentStore()
     }
 
-    // SCHEDULE
-
-    // Saving Schedules from memory to persistent store
-    func saveScheduleFromMemory() {
-        let store = PersistentStorageScheduling(profile: self.profile)
-        store.savescheduleInMemoryToPersistentStore()
-    }
-
     init(profile: String?) {
         self.profile = profile
     }
