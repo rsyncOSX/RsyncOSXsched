@@ -46,8 +46,8 @@ class ViewControllerMain: NSViewController, Delay, Setlog {
     var checkallconfiguration: CheckAllConfigurations?
     var automaticexecution: [NSDictionary]?
 
-    private var profilesArray: [String]?
-    private var profile: Files?
+    var profilesArray: [String]?
+    var profile: Files?
     var allschedules: [ConfigurationSchedule]?
     var index: Int?
 
