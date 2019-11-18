@@ -86,11 +86,66 @@ final class Dateandtime {
 }
 
 extension Date {
+
+    func dateByAddingDays(_ days: Int ) -> Date {
+        let calendar = Calendar.current
+        var dateComponent = DateComponents()
+        dateComponent.day = days
+        return (calendar as NSCalendar).date(byAdding: dateComponent,
+                                             to: self, options: NSCalendar.Options.matchNextTime)!
+    }
+
     func localizeDate() -> String {
         let formatter = DateFormatter()
         formatter.formatterBehavior = .behavior10_4
         formatter.dateStyle = .medium
         formatter.timeStyle = .short
         return formatter.string(from: self)
+    }
+
+    // Returns a DateComponent value with number of days away from a specified date
+    var dayssincenow: DateComponents {
+        let now = Date()
+        let dateformatter = DateFormatter()
+        dateformatter.locale = Locale(identifier: "en_US")
+        dateformatter.dateStyle = .medium
+        dateformatter.timeStyle = .short
+        dateformatter.dateFormat = "dd MMM yyyy HH:mm"
+        return Calendar.current.dateComponents([.day], from: self, to: now)
+    }
+
+    var weekssincenowplusoneweek: DateComponents {
+        let now = Date()
+        let dateformatter = DateFormatter()
+        dateformatter.locale = Locale(identifier: "en_US")
+        dateformatter.dateStyle = .medium
+        dateformatter.timeStyle = .short
+        dateformatter.dateFormat = "dd MMM yyyy HH:mm"
+        return Calendar.current.dateComponents([.weekOfYear], from: self, to: now.dateByAddingDays(7))
+    }
+}
+
+extension String {
+    var en_us_date_from_string: Date {
+        let dateformatter = DateFormatter()
+        dateformatter.locale = Locale(identifier: "en_US")
+        dateformatter.dateStyle = .medium
+        dateformatter.timeStyle = .short
+        dateformatter.dateFormat = "dd MMM yyyy HH:mm"
+        return dateformatter.date(from: self) ?? Date()
+    }
+
+    var localized_date_from_string: Date {
+        let dateformatter = DateFormatter()
+        dateformatter.formatterBehavior = .behavior10_4
+        dateformatter.dateStyle = .medium
+        dateformatter.timeStyle = .short
+        return dateformatter.date(from: self) ?? Date()
+    }
+    
+    var setdatesuffixbackupstring: String {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "-yyyy-MM-dd"
+        return  self + formatter.string(from: Date())
     }
 }
