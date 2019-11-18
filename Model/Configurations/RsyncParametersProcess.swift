@@ -5,6 +5,7 @@
 //  Created by Thomas Evensen on 08/02/16.
 //  Copyright © 2016 Thomas Evensen. All rights reserved.
 //
+// swiftlint:disable cyclomatic_complexity
 
 import Foundation
 
@@ -82,7 +83,14 @@ final class RsyncParametersProcess {
             self.appendParameter(parameter: config.parameter12!)
         }
         if config.parameter13 != nil {
-            self.appendParameter(parameter: config.parameter13!)
+            let split = config.parameter13!.components(separatedBy: "+$")
+            if split.count == 2 {
+                if split[1] == "date" {
+                     self.appendParameter(parameter: split[0].setdatesuffixbackupstring)
+                }
+            } else {
+                self.appendParameter(parameter: config.parameter13!)
+            }
         }
         if config.parameter14 != nil {
             if config.offsiteServer.isEmpty == true {
