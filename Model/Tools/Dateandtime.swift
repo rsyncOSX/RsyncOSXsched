@@ -142,7 +142,7 @@ extension String {
         dateformatter.timeStyle = .short
         return dateformatter.date(from: self) ?? Date()
     }
-    
+
     var setdatesuffixbackupstring: String {
         let formatter = DateFormatter()
         formatter.dateFormat = "-yyyy-MM-dd"
