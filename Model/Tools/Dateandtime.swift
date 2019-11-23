@@ -95,14 +95,6 @@ extension Date {
                                              to: self, options: NSCalendar.Options.matchNextTime)!
     }
 
-    func localizeDate() -> String {
-        let formatter = DateFormatter()
-        formatter.formatterBehavior = .behavior10_4
-        formatter.dateStyle = .medium
-        formatter.timeStyle = .short
-        return formatter.string(from: self)
-    }
-
     // Returns a DateComponent value with number of days away from a specified date
     var dayssincenow: DateComponents {
         let now = Date()
@@ -122,6 +114,23 @@ extension Date {
         dateformatter.timeStyle = .short
         dateformatter.dateFormat = "dd MMM yyyy HH:mm"
         return Calendar.current.dateComponents([.weekOfYear], from: self, to: now.dateByAddingDays(7))
+    }
+
+    func localized_string_from_date() -> String {
+           let dateformatter = DateFormatter()
+           dateformatter.formatterBehavior = .behavior10_4
+           dateformatter.dateStyle = .medium
+           dateformatter.timeStyle = .short
+           return dateformatter.string(from: self)
+       }
+
+    func en_us_string_from_date() -> String {
+        let dateformatter = DateFormatter()
+        dateformatter.locale = Locale(identifier: "en_US")
+        dateformatter.dateStyle = .medium
+        dateformatter.timeStyle = .short
+        dateformatter.dateFormat = "dd MMM yyyy HH:mm"
+        return dateformatter.string(from: self)
     }
 }
 
