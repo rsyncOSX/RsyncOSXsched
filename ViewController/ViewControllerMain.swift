@@ -371,7 +371,7 @@ extension ViewControllerMain: Addlog {
         if self.log == nil {
             self.log = [String]()
         }
-        let logtime = Date().localizeDate()
+        let logtime = Date().localized_string_from_date()
         self.log!.append(logtime + ": " + logrecord)
     }
 }

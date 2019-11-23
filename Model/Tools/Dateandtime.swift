@@ -71,18 +71,6 @@ final class Dateandtime {
         }
         return result ?? ""
     }
-
-    // Setting date format
-    func setDateformat() -> DateFormatter {
-        let dateformatter = DateFormatter()
-        // We are forcing en_US format of date strings
-        dateformatter.locale = Locale(identifier: "en_US")
-        dateformatter.dateStyle = .medium
-        dateformatter.timeStyle = .short
-        dateformatter.dateFormat = "dd MMM yyyy HH:mm"
-        return dateformatter
-    }
-
 }
 
 extension Date {
@@ -93,14 +81,6 @@ extension Date {
         dateComponent.day = days
         return (calendar as NSCalendar).date(byAdding: dateComponent,
                                              to: self, options: NSCalendar.Options.matchNextTime)!
-    }
-
-    func localizeDate() -> String {
-        let formatter = DateFormatter()
-        formatter.formatterBehavior = .behavior10_4
-        formatter.dateStyle = .medium
-        formatter.timeStyle = .short
-        return formatter.string(from: self)
     }
 
     // Returns a DateComponent value with number of days away from a specified date
@@ -123,10 +103,27 @@ extension Date {
         dateformatter.dateFormat = "dd MMM yyyy HH:mm"
         return Calendar.current.dateComponents([.weekOfYear], from: self, to: now.dateByAddingDays(7))
     }
+
+    func localized_string_from_date() -> String {
+           let dateformatter = DateFormatter()
+           dateformatter.formatterBehavior = .behavior10_4
+           dateformatter.dateStyle = .medium
+           dateformatter.timeStyle = .short
+           return dateformatter.string(from: self)
+       }
+
+    func en_us_string_from_date() -> String {
+        let dateformatter = DateFormatter()
+        dateformatter.locale = Locale(identifier: "en_US")
+        dateformatter.dateStyle = .medium
+        dateformatter.timeStyle = .short
+        dateformatter.dateFormat = "dd MMM yyyy HH:mm"
+        return dateformatter.string(from: self)
+    }
 }
 
 extension String {
-    var en_us_date_from_string: Date {
+    func en_us_date_from_string() -> Date {
         let dateformatter = DateFormatter()
         dateformatter.locale = Locale(identifier: "en_US")
         dateformatter.dateStyle = .medium
@@ -135,7 +132,7 @@ extension String {
         return dateformatter.date(from: self) ?? Date()
     }
 
-    var localized_date_from_string: Date {
+    func localized_date_from_string() -> Date {
         let dateformatter = DateFormatter()
         dateformatter.formatterBehavior = .behavior10_4
         dateformatter.dateStyle = .medium
@@ -146,6 +143,6 @@ extension String {
     var setdatesuffixbackupstring: String {
         let formatter = DateFormatter()
         formatter.dateFormat = "-yyyy-MM-dd"
-        return  self + formatter.string(from: Date())
+        return self + formatter.string(from: Date())
     }
 }

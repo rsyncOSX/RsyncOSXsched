@@ -50,9 +50,8 @@ class Configurations {
         if self.configurations![index].task == ViewControllerReference.shared.snapshot {
             self.increasesnapshotnum(index: index)
         }
-        let currendate = Date()
-        let dateformatter = Dateandtime().setDateformat()
-        self.configurations![index].dateRun = dateformatter.string(from: currendate)
+        let currendate = Date().en_us_string_from_date()
+        self.configurations![index].dateRun = currendate
         // Saving updated configuration in memory to persistent store
         _ = PersistentStorageConfiguration(profile: self.profile).saveconfigInMemoryToPersistentStore()
     }

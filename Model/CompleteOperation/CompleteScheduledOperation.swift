@@ -15,7 +15,6 @@ final class CompleteScheduledOperation: SetScheduledTask, SetConfigurations, Set
 
     private var date: Date?
     private var dateStart: Date?
-    private var dateformatter: DateFormatter?
     private var hiddenID: Int?
     private var schedule: String?
     private var index: Int?
@@ -25,20 +24,19 @@ final class CompleteScheduledOperation: SetScheduledTask, SetConfigurations, Set
     // This function is executed when rsyn process terminates
     func finalizeScheduledJob(outputprocess: OutputProcess?) {
         // Write result to Schedule
-        let datestring = self.dateformatter!.string(from: date ?? Date())
-        let dateStartstring = self.dateformatter!.string(from: dateStart ?? Date())
+        let datestring = date?.en_us_string_from_date()
+        let dateStartstring = dateStart?.en_us_string_from_date()
         let number = Numbers(outputprocess: outputprocess)
         let numberstring = number.stats(numberOfFiles: nil, sizeOfFiles: nil)
         self.logDelegate?.addlog(logrecord: NSLocalizedString("Adding result to log:", comment: "Logg") + " " + numberstring)
-        self.schedules!.addresultschedule(hiddenID: self.hiddenID!, dateStart: dateStartstring, result: numberstring, date: datestring, schedule: schedule ?? "Once")
-        _ = Notifications().showNotification(message: datestring + " " + numberstring)
+        self.schedules!.addresultschedule(hiddenID: self.hiddenID!, dateStart: dateStartstring ?? "", result: numberstring, date: datestring ?? "", schedule: schedule ?? "Once")
+        _ = Notifications().showNotification(message: datestring ?? "" + " " + numberstring)
         self.configurations!.setCurrentDateonConfigurationQuickbackup(self.index!, outputprocess: outputprocess)
     }
 
     init (dict: NSDictionary) {
         self.date = dict.value(forKey: "start") as? Date
         self.dateStart = dict.value(forKey: "dateStart") as? Date
-        self.dateformatter = Dateandtime().setDateformat()
         self.hiddenID = (dict.value(forKey: "hiddenID") as? Int)!
         self.schedule = dict.value(forKey: "schedule") as? String
         self.index = self.configurations!.getIndex(hiddenID!)
