@@ -82,14 +82,14 @@
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <scrollView fixedFrame="YES" borderType="groove" autohidesScrollers="YES" horizontalLineScroll="19" horizontalPageScroll="10" verticalLineScroll="19" verticalPageScroll="10" usesPredominantAxisScrolling="NO" scrollerKnobStyle="dark" translatesAutoresizingMaskIntoConstraints="NO" id="JH9-xF-5Du">
-                                <rect key="frame" x="8" y="60" width="669" height="178"/>
+                                <rect key="frame" x="8" y="45" width="669" height="193"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <clipView key="contentView" ambiguous="YES" id="Rph-Qa-2ob">
-                                    <rect key="frame" x="2" y="2" width="665" height="174"/>
+                                    <rect key="frame" x="2" y="2" width="665" height="189"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <tableView verticalHuggingPriority="750" ambiguous="YES" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnSelection="YES" multipleSelection="NO" autosaveColumns="NO" headerView="EMc-mu-O8N" id="MTy-21-e8o">
-                                            <rect key="frame" x="0.0" y="0.0" width="665" height="151"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="665" height="166"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <size key="intercellSpacing" width="3" height="2"/>
                                             <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -204,18 +204,18 @@
                                 </tableHeaderView>
                             </scrollView>
                             <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5nF-vB-oIM">
-                                <rect key="frame" x="8" y="-2" width="71" height="32"/>
+                                <rect key="frame" x="2" y="-2" width="85" height="32"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <buttonCell key="cell" type="push" title="RsyncOSX" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="gkG-rF-JAe">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" metaFont="message"/>
+                                    <font key="font" size="11" name="HelveticaNeue"/>
                                 </buttonCell>
                                 <connections>
                                     <action selector="openRsyncOSX:" target="XfG-lQ-9wD" id="89Z-4V-B8Q"/>
                                 </connections>
                             </button>
                             <comboBox verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1fS-UE-vUd">
-                                <rect key="frame" x="84" y="3" width="120" height="23"/>
+                                <rect key="frame" x="147" y="3" width="120" height="23"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <comboBoxCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" completes="NO" numberOfVisibleItems="5" id="D5A-Hv-N0n">
                                     <font key="font" metaFont="menu" size="11"/>
@@ -236,22 +236,22 @@
                                 </textFieldCell>
                             </textField>
                             <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="epW-W3-lUk">
-                                <rect key="frame" x="615" y="-2" width="62" height="32"/>
+                                <rect key="frame" x="611" y="-2" width="72" height="32"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <buttonCell key="cell" type="push" title="Quit" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="QPq-ff-gA2">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" metaFont="message"/>
+                                    <font key="font" size="11" name="HelveticaNeue"/>
                                 </buttonCell>
                                 <connections>
                                     <action selector="closeButtonAction:" target="XfG-lQ-9wD" id="Hgf-Ia-P2i"/>
                                 </connections>
                             </button>
                             <progressIndicator wantsLayer="YES" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" maxValue="100" displayedWhenStopped="NO" bezeled="NO" indeterminate="YES" controlSize="small" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="OyE-6j-Ril">
-                                <rect key="frame" x="134" y="33" width="16" height="16"/>
+                                <rect key="frame" x="351" y="8" width="16" height="16"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                             </progressIndicator>
                             <textField hidden="YES" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="HG6-YM-Pq9">
-                                <rect key="frame" x="85" y="33" width="48" height="15"/>
+                                <rect key="frame" x="302" y="8" width="48" height="15"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Working" id="Ybm-e4-iVi">
                                     <font key="font" metaFont="menu" size="11"/>
@@ -260,22 +260,22 @@
                                 </textFieldCell>
                             </textField>
                             <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XMI-Ue-7zn">
-                                <rect key="frame" x="563" y="-2" width="63" height="32"/>
+                                <rect key="frame" x="499" y="-3" width="59" height="32"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <buttonCell key="cell" type="push" title="Log" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="p1x-0f-6rG">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" metaFont="message"/>
+                                    <font key="font" size="11" name="HelveticaNeue"/>
                                 </buttonCell>
                                 <connections>
                                     <action selector="viewlogg:" target="XfG-lQ-9wD" id="JG8-BC-shq"/>
                                 </connections>
                             </button>
                             <button horizontalHuggingPriority="249" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Qa3-Mx-RTB">
-                                <rect key="frame" x="483" y="-3" width="91" height="32"/>
+                                <rect key="frame" x="417" y="-3" width="91" height="32"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <buttonCell key="cell" type="push" title="Schedules" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="L8l-lJ-lKA">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" metaFont="message"/>
+                                    <font key="font" size="11" name="HelveticaNeue"/>
                                 </buttonCell>
                                 <connections>
                                     <action selector="viewallschedules:" target="XfG-lQ-9wD" id="Exh-qr-gVF"/>
@@ -290,35 +290,24 @@
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
-                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kai-9c-NNV">
-                                <rect key="frame" x="8" y="23" width="71" height="32"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <buttonCell key="cell" type="push" title="Now" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="9lr-pg-w2Y">
-                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" metaFont="message"/>
-                                </buttonCell>
-                                <connections>
-                                    <action selector="backupnow:" target="XfG-lQ-9wD" id="rRE-ro-RLi"/>
-                                </connections>
-                            </button>
                             <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="OEc-vd-ADi">
-                                <rect key="frame" x="615" y="18" width="62" height="43"/>
+                                <rect key="frame" x="549" y="-2" width="72" height="32"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <buttonCell key="cell" type="push" title="Abort" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="uBp-4W-BLA">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" size="13" name="HelveticaNeue"/>
+                                    <font key="font" size="11" name="HelveticaNeue"/>
                                 </buttonCell>
                                 <connections>
                                     <action selector="abort:" target="XfG-lQ-9wD" id="Y4S-o8-dEq"/>
                                 </connections>
                             </button>
                             <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="QZT-xW-DCA">
-                                <rect key="frame" x="464" y="9" width="11" height="12"/>
+                                <rect key="frame" x="390" y="9" width="11" height="12"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="red" id="hvR-qc-H5B"/>
                             </imageView>
                             <textField hidden="YES" horizontalHuggingPriority="251" verticalHuggingPriority="249" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Nk7-2U-cOh">
-                                <rect key="frame" x="156" y="36" width="333" height="18"/>
+                                <rect key="frame" x="6" y="25" width="673" height="18"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" enabled="NO" sendsActionOnEndEditing="YES" alignment="center" title="New version is available, see RsyncOSX download page..." id="XRT-w7-GWr">
                                     <font key="font" metaFont="menu" size="11"/>
@@ -335,6 +324,17 @@
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
+                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kai-9c-NNV">
+                                <rect key="frame" x="77" y="-2" width="71" height="32"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <buttonCell key="cell" type="push" title="Now" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="9lr-pg-w2Y">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" size="11" name="HelveticaNeue"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="backupnow:" target="XfG-lQ-9wD" id="rRE-ro-RLi"/>
+                                </connections>
+                            </button>
                         </subviews>
                     </view>
                     <connections>
@@ -436,7 +436,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <buttonCell key="cell" type="push" title="Close" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="NAt-yd-56N">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" metaFont="message"/>
+                                    <font key="font" size="11" name="HelveticaNeue"/>
                                     <string key="keyEquivalent" base64-UTF8="YES">
 DQ
 </string>
@@ -446,11 +446,11 @@ DQ
                                 </connections>
                             </button>
                             <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Pke-1b-da9">
-                                <rect key="frame" x="555" y="-2" width="61" height="32"/>
+                                <rect key="frame" x="556" y="-2" width="61" height="32"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <buttonCell key="cell" type="push" title="Write" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="tub-al-k7W">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" metaFont="message"/>
+                                    <font key="font" size="11" name="HelveticaNeue"/>
                                 </buttonCell>
                                 <connections>
                                     <action selector="writelogg:" target="SMW-uL-v3k" id="8YT-PY-XnJ"/>
@@ -559,7 +559,7 @@ DQ
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <buttonCell key="cell" type="push" title="Close" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="ae6-sg-TdC">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" metaFont="message"/>
+                                    <font key="font" size="11" name="HelveticaNeue"/>
                                     <string key="keyEquivalent" base64-UTF8="YES">
 DQ
 </string>
