@@ -70,7 +70,9 @@ class ViewControllerMain: NSViewController, Delay, Setlog {
         self.setprofiles()
         self.checkforrunning()
         self.info(num: 3)
-        self.profilescombobox.stringValue = NSLocalizedString("Default profile", comment: "default profile")
+        if self.profilename == nil {
+            self.profilescombobox.stringValue = NSLocalizedString("Default profile", comment: "default profile")
+        }
         globalMainQueue.async(execute: { () -> Void in
             self.mainTableView.reloadData()
         })
