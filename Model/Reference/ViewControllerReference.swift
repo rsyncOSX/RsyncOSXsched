@@ -56,6 +56,8 @@ class ViewControllerReference {
     // String tasks
     var synchronize: String = "synchronize"
     var snapshot: String = "snapshot"
+    var syncremote: String = "syncremote"
+    var synctasks: Set<String>
     // Mac serialnumer
     var macserialnumber: String?
     // Operation
@@ -69,4 +71,9 @@ class ViewControllerReference {
     // Setting environmentvariable for Process object
     var environment: String?
     var environmentvalue: String?
+
+    init() {
+        self.synctasks = Set<String>()
+        self.synctasks = [self.synchronize, self.snapshot, self.syncremote]
+    }
 }
