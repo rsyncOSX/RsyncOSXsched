@@ -34,19 +34,19 @@ class Configurations {
     // Datasource for NSTableViews
     private var configurationsDataSource: [NSDictionary]?
 
-    /// Function for getting Configurations read into memory
-    /// - parameter none: none
-    /// - returns : Array of configurations
+    // Function for getting Configurations read into memory
+    // - parameter none: none
+    // - returns : Array of configurations
     func getConfigurations() -> [Configuration] {
         return self.configurations ?? []
     }
 
-    /// Function sets currentDate on Configuration when executed on task
-    /// stored in memory and then saves updated configuration from memory to persistent store.
-    /// Function also notifies Execute view to refresh data
-    /// in tableView.
-    /// - parameter index: index of Configuration to update
-    func setCurrentDateonConfigurationQuickbackup (_ index: Int, outputprocess: OutputProcess?) {
+    // Function sets currentDate on Configuration when executed on task
+    // stored in memory and then saves updated configuration from memory to persistent store.
+    // Function also notifies Execute view to refresh data
+    // in tableView.
+    // - parameter index: index of Configuration to update
+    func setCurrentDateonConfigurationQuickbackup (index: Int) {
         if self.configurations![index].task == ViewControllerReference.shared.snapshot {
             self.increasesnapshotnum(index: index)
         }
@@ -56,7 +56,7 @@ class Configurations {
         _ = PersistentStorageConfiguration(profile: self.profile).saveconfigInMemoryToPersistentStore()
     }
 
-    func getIndex(_ hiddenID: Int) -> Int {
+    func getIndex(hiddenID: Int) -> Int {
         var index: Int = -1
         loop: for i in 0 ..< self.configurations!.count where self.configurations![i].hiddenID == hiddenID {
             index = i

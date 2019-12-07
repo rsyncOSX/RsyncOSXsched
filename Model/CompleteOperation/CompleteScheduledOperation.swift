@@ -32,14 +32,14 @@ final class CompleteScheduledOperation: SetScheduledTask, SetConfigurations, Set
         self.schedules!.addresultschedule(hiddenID: self.hiddenID!, dateStart: dateStartstring ?? "", result: numberstring, date: datestring ?? "", schedule: schedule ?? "Once")
         let message = (datestring ?? "") + " " + numberstring
         _ = Notifications().showNotification(message: message)
-        self.configurations!.setCurrentDateonConfigurationQuickbackup(self.index!, outputprocess: outputprocess)
+        self.configurations!.setCurrentDateonConfigurationQuickbackup(index: self.index!)
     }
 
     init (dict: NSDictionary) {
         self.date = dict.value(forKey: "start") as? Date
         self.dateStart = dict.value(forKey: "dateStart") as? Date
-        self.hiddenID = (dict.value(forKey: "hiddenID") as? Int)!
+        self.hiddenID = dict.value(forKey: "hiddenID") as? Int ?? -1
         self.schedule = dict.value(forKey: "schedule") as? String
-        self.index = self.configurations!.getIndex(hiddenID!)
+        self.index = self.configurations!.getIndex(hiddenID: hiddenID!)
     }
 }

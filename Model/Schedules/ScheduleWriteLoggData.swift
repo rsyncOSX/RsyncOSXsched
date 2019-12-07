@@ -126,7 +126,7 @@ class ScheduleWriteLoggData: SetConfigurations {
     }
 
     private func getconfig(hiddenID: Int) -> Configuration {
-        let index = self.configurations?.getIndex(hiddenID) ?? 0
+        let index = self.configurations?.getIndex(hiddenID: hiddenID) ?? 0
         return self.configurations!.getConfigurations()[index]
     }
 
