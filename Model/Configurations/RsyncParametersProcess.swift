@@ -135,6 +135,8 @@ final class RsyncParametersProcess {
         case ViewControllerReference.shared.snapshot:
             self.linkdestparameter(config, verify: false)
             self.argumentsforsynchronizesnapshot()
+        case ViewControllerReference.shared.syncremote:
+            return []
         default:
             break
         }

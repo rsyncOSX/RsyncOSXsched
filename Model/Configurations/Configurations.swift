@@ -95,7 +95,8 @@ class Configurations {
     /// - returns : Array of NSDictionary
     func getConfigurationsDataSourceSynchronize() -> [NSDictionary]? {
         var configurations: [Configuration] = self.configurations!.filter({return ($0.task == ViewControllerReference.shared.synchronize ||
-            $0.task == ViewControllerReference.shared.snapshot)})
+            $0.task == ViewControllerReference.shared.snapshot ||
+            $0.task == ViewControllerReference.shared.syncremote)})
         var data = [NSDictionary]()
         for i in 0 ..< configurations.count {
             if configurations[i].offsiteServer.isEmpty == true {
@@ -110,17 +111,16 @@ class Configurations {
     private func readconfigurations() {
         let store: [Configuration]? = PersistentStorageConfiguration(profile: self.profile).getConfigurations()
         for i in 0 ..< ( store?.count ?? 0 ) {
-            if store![i].task == ViewControllerReference.shared.synchronize ||
-                store![i].task == ViewControllerReference.shared.snapshot {
-                self.configurations!.append(store![i])
+            if ViewControllerReference.shared.synctasks.contains(store![i].task) {
+                self.configurations?.append(store![i])
             }
         }
         // Then prepare the datasource for use in tableviews as Dictionarys
         var data = [NSDictionary]()
         for i in 0 ..< ( self.configurations?.count ?? 0 ) {
-            if self.configurations?[i].task == ViewControllerReference.shared.synchronize ||
-                self.configurations?[i].task == ViewControllerReference.shared.snapshot {
-                data.append(ConvertOneConfig(config: self.configurations![i], profile: self.profile).dict)
+            let task = self.configurations?[i].task
+            if ViewControllerReference.shared.synctasks.contains(task ?? "") {
+               data.append(ConvertOneConfig(config: self.configurations![i], profile: self.profile).dict)
             }
         }
         self.configurationsDataSource = data
