@@ -126,7 +126,11 @@ final class RsyncParameters {
     // Function for initialize arguments array.
     func argumentsRsync(config: Configuration) -> [String] {
         self.localCatalog = config.localCatalog
-        self.remoteargs(config: config)
+        if config.task == ViewControllerReference.shared.syncremote {
+            self.remoteargssyncremote(config: config)
+        } else {
+            self.remoteargs(config: config)
+        }
         self.setParameters1To6(config: config)
         self.setParameters8To14(config: config)
         switch config.task {
@@ -136,7 +140,7 @@ final class RsyncParameters {
             self.linkdestparameter(config: config, verify: false)
             self.argumentsforsynchronizesnapshot()
         case ViewControllerReference.shared.syncremote:
-            return []
+            self.argumentsforsynchronizeremote()
         default:
             break
         }
@@ -204,6 +208,11 @@ final class RsyncParameters {
         } else {
             self.arguments!.append(remoteargs!)
         }
+    }
+
+    private func argumentsforsynchronizeremote() {
+        self.arguments!.append(remoteargs!)
+        self.arguments!.append(self.offsiteCatalog!)
     }
 
     private func argumentsforsynchronizesnapshot() {
