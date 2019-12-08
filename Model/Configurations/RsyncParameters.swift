@@ -9,7 +9,7 @@
 
 import Foundation
 
-final class RsyncParametersProcess {
+final class RsyncParameters {
 
     private var stats: Bool?
     private var arguments: [String]?
@@ -22,7 +22,7 @@ final class RsyncParametersProcess {
     private let suffixString = "--suffix=_`date +'%Y-%m-%d.%H.%M'`"
     private let suffixString2 = "--suffix=_$(date +%Y-%m-%d.%H.%M)"
 
-    private func setParameters1To6(_ config: Configuration) {
+    private func setParameters1To6(config: Configuration) {
         let parameter1: String = config.parameter1
         let parameter2: String = config.parameter2
         let parameter3: String = config.parameter3
@@ -43,12 +43,12 @@ final class RsyncParametersProcess {
             // nothing
         } else {
             if parameter5.isEmpty == false {
-                self.sshportparameter(config)
+                self.sshportparameter(config: config)
             }
         }
     }
 
-    private func sshportparameter(_ config: Configuration) {
+    private func sshportparameter(config: Configuration) {
         let parameter5: String = config.parameter5
         let parameter6: String = config.parameter6
         // -e
@@ -65,7 +65,7 @@ final class RsyncParametersProcess {
     // Compute user selected parameters parameter8 ... parameter14
     // Brute force, check every parameter, not special elegant, but it works
 
-    private func setParameters8To14(_ config: Configuration) {
+    private func setParameters8To14(config: Configuration) {
         self.stats = false
         if config.parameter8 != nil {
             self.appendParameter(parameter: config.parameter8!)
@@ -124,16 +124,16 @@ final class RsyncParametersProcess {
     }
 
     // Function for initialize arguments array.
-    func argumentsRsync(_ config: Configuration) -> [String] {
+    func argumentsRsync(config: Configuration) -> [String] {
         self.localCatalog = config.localCatalog
-        self.remoteargs(config)
-        self.setParameters1To6(config)
-        self.setParameters8To14(config)
+        self.remoteargs(config: config)
+        self.setParameters1To6(config: config)
+        self.setParameters8To14(config: config)
         switch config.task {
         case ViewControllerReference.shared.synchronize:
             self.argumentsforsynchronize()
         case ViewControllerReference.shared.snapshot:
-            self.linkdestparameter(config, verify: false)
+            self.linkdestparameter(config: config, verify: false)
             self.argumentsforsynchronizesnapshot()
         case ViewControllerReference.shared.syncremote:
             return []
@@ -143,7 +143,7 @@ final class RsyncParametersProcess {
         return self.arguments!
     }
 
-    private func remoteargs(_ config: Configuration) {
+    private func remoteargs(config: Configuration) {
         self.offsiteCatalog = config.offsiteCatalog
         self.offsiteUsername = config.offsiteUsername
         self.offsiteServer = config.offsiteServer
@@ -160,8 +160,26 @@ final class RsyncParametersProcess {
         }
     }
 
+    func remoteargssyncremote(config: Configuration) {
+        self.offsiteCatalog = config.offsiteCatalog
+        self.localCatalog = config.localCatalog
+        self.offsiteUsername = config.offsiteUsername
+        self.offsiteServer = config.offsiteServer
+        if self.offsiteServer!.isEmpty == false {
+            if config.rsyncdaemon != nil {
+                if config.rsyncdaemon == 1 {
+                    self.remoteargs = self.offsiteUsername! + "@" + self.offsiteServer! + "::" + self.localCatalog!
+                } else {
+                    self.remoteargs = self.offsiteUsername! + "@" + self.offsiteServer! + ":" + self.localCatalog!
+                }
+            } else {
+                self.remoteargs = self.offsiteUsername! + "@" + self.offsiteServer! + ":" + self.localCatalog!
+            }
+        }
+    }
+
     // Additional parameters if snapshot
-    private func linkdestparameter(_ config: Configuration, verify: Bool) {
+    private func linkdestparameter(config: Configuration, verify: Bool) {
         let snapshotnum = config.snapshotnum ?? 1
         self.linkdestparam =  "--link-dest=" + config.offsiteCatalog + String(snapshotnum - 1)
         if self.remoteargs != nil {

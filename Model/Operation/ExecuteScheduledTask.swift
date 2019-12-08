@@ -45,7 +45,7 @@ final class ExecuteScheduledTask: SetSchedules, SetConfigurations, SetScheduledT
                     if let remoteserver = config?.offsiteServer {
                         guard tcpconnectionsDelegate?.gettcpconnections()?.checkremoteconnection(remoteserver: remoteserver) == true else { return }
                     }
-                    arguments = RsyncParametersProcess().argumentsRsync(config!)
+                    arguments = RsyncParameters().argumentsRsync(config: config!)
                     if let arguments = arguments {
                         // Setting reference to finalize the job, finalize job is done when rsynctask ends (in process termination)
                         ViewControllerReference.shared.completeoperation = CompleteScheduledOperation(dict: dict)
