@@ -34,19 +34,19 @@ class Configurations {
     // Datasource for NSTableViews
     private var configurationsDataSource: [NSDictionary]?
 
-    /// Function for getting Configurations read into memory
-    /// - parameter none: none
-    /// - returns : Array of configurations
+    // Function for getting Configurations read into memory
+    // - parameter none: none
+    // - returns : Array of configurations
     func getConfigurations() -> [Configuration] {
         return self.configurations ?? []
     }
 
-    /// Function sets currentDate on Configuration when executed on task
-    /// stored in memory and then saves updated configuration from memory to persistent store.
-    /// Function also notifies Execute view to refresh data
-    /// in tableView.
-    /// - parameter index: index of Configuration to update
-    func setCurrentDateonConfigurationQuickbackup (_ index: Int, outputprocess: OutputProcess?) {
+    // Function sets currentDate on Configuration when executed on task
+    // stored in memory and then saves updated configuration from memory to persistent store.
+    // Function also notifies Execute view to refresh data
+    // in tableView.
+    // - parameter index: index of Configuration to update
+    func setCurrentDateonConfigurationQuickbackup (index: Int) {
         if self.configurations![index].task == ViewControllerReference.shared.snapshot {
             self.increasesnapshotnum(index: index)
         }
@@ -56,7 +56,7 @@ class Configurations {
         _ = PersistentStorageConfiguration(profile: self.profile).saveconfigInMemoryToPersistentStore()
     }
 
-    func getIndex(_ hiddenID: Int) -> Int {
+    func getIndex(hiddenID: Int) -> Int {
         var index: Int = -1
         loop: for i in 0 ..< self.configurations!.count where self.configurations![i].hiddenID == hiddenID {
             index = i
@@ -95,7 +95,8 @@ class Configurations {
     /// - returns : Array of NSDictionary
     func getConfigurationsDataSourceSynchronize() -> [NSDictionary]? {
         var configurations: [Configuration] = self.configurations!.filter({return ($0.task == ViewControllerReference.shared.synchronize ||
-            $0.task == ViewControllerReference.shared.snapshot)})
+            $0.task == ViewControllerReference.shared.snapshot ||
+            $0.task == ViewControllerReference.shared.syncremote)})
         var data = [NSDictionary]()
         for i in 0 ..< configurations.count {
             if configurations[i].offsiteServer.isEmpty == true {
@@ -110,17 +111,16 @@ class Configurations {
     private func readconfigurations() {
         let store: [Configuration]? = PersistentStorageConfiguration(profile: self.profile).getConfigurations()
         for i in 0 ..< ( store?.count ?? 0 ) {
-            if store![i].task == ViewControllerReference.shared.synchronize ||
-                store![i].task == ViewControllerReference.shared.snapshot {
-                self.configurations!.append(store![i])
+            if ViewControllerReference.shared.synctasks.contains(store![i].task) {
+                self.configurations?.append(store![i])
             }
         }
         // Then prepare the datasource for use in tableviews as Dictionarys
         var data = [NSDictionary]()
         for i in 0 ..< ( self.configurations?.count ?? 0 ) {
-            if self.configurations?[i].task == ViewControllerReference.shared.synchronize ||
-                self.configurations?[i].task == ViewControllerReference.shared.snapshot {
-                data.append(ConvertOneConfig(config: self.configurations![i], profile: self.profile).dict)
+            let task = self.configurations?[i].task
+            if ViewControllerReference.shared.synctasks.contains(task ?? "") {
+               data.append(ConvertOneConfig(config: self.configurations![i], profile: self.profile).dict)
             }
         }
         self.configurationsDataSource = data
