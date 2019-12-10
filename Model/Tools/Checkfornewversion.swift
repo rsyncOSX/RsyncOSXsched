@@ -14,17 +14,16 @@ protocol NewVersionDiscovered: class {
 }
 
 final class Checkfornewversion {
-
     private var runningVersion: String?
     private var urlPlist: String?
     private var urlNewVersion: String?
 
     weak var newversionDelegate: NewVersionDiscovered?
 
-    //If new version set URL for download link and notify caller
-    private func urlnewVersion () {
+    // If new version set URL for download link and notify caller
+    private func urlnewVersion() {
         self.newversionDelegate?.currentversion(version: self.runningVersion ?? "")
-        globalBackgroundQueue.async(execute: { () -> Void in
+        globalBackgroundQueue.async { () -> Void in
             if let url = URL(string: self.urlPlist ?? "") {
                 do {
                     let contents = NSDictionary(contentsOf: url)
@@ -35,10 +34,10 @@ final class Checkfornewversion {
                     }
                 }
             }
-        })
+        }
     }
 
-    init () {
+    init() {
         let infoPlist = Bundle.main.infoDictionary
         if let version = infoPlist?["CFBundleShortVersionString"] {
             self.runningVersion = version as? String

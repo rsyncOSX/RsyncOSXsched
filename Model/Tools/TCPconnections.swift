@@ -17,12 +17,11 @@ var globalBackgroundQueue: DispatchQueue {
 }
 
 class TCPconnections: SetConfigurations, Delay, Setlog {
-
     var noconnections: [String]?
     var client: TCPClient?
 
     // Test for TCP connection
-    func testTCPconnection (_ host: String, port: Int, timeout: Int) -> Bool {
+    func testTCPconnection(_ host: String, port: Int, timeout: Int) -> Bool {
         self.client = TCPClient(address: host, port: Int32(port))
         guard let client = client else { return true }
         switch client.connect(timeout: timeout) {
@@ -38,7 +37,7 @@ class TCPconnections: SetConfigurations, Delay, Setlog {
     // Do the check in background que, reload table in global main queue
     func testAllremoteserverConnections(offsiteservers: [String]?) {
         guard offsiteservers != nil else { return }
-        globalBackgroundQueue.async(execute: { () -> Void in
+        globalBackgroundQueue.async { () -> Void in
             weak var probablynoconnectionsDelegate: Updatestatustcpconnections?
             probablynoconnectionsDelegate = ViewControllerReference.shared.viewControllermain as? ViewControllerMain
             let port: Int = 22
@@ -56,13 +55,13 @@ class TCPconnections: SetConfigurations, Delay, Setlog {
                     }
                 }
             }
-        })
+        }
     }
 
     func checkremoteconnection(remoteserver: String) -> Bool {
-        guard self.noconnections != nil else { return true}
+        guard self.noconnections != nil else { return true }
         self.logDelegate?.addlog(logrecord: "Checking for connection to remote server")
-        guard noconnections!.filter({return ($0 == remoteserver)}).count < 1 else {
+        guard noconnections!.filter({ ($0 == remoteserver) }).count < 1 else {
             let loginfo = NSLocalizedString("No connection, bailed out...", comment: "loginfo")
             let noexecuteinfo = NSLocalizedString("Scheduled backup did not execute", comment: "loginfo")
             self.logDelegate?.addlog(logrecord: loginfo)

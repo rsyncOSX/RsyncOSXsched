@@ -7,11 +7,10 @@
 //
 // swiftlint:disable line_length
 
-import Foundation
 import Cocoa
+import Foundation
 
 class ScheduleWriteLoggData: SetConfigurations {
-
     var schedules: [ConfigurationSchedule]?
     var profile: String?
 
@@ -29,7 +28,7 @@ class ScheduleWriteLoggData: SetConfigurations {
             var resultannotaded: String?
             if config.task == ViewControllerReference.shared.snapshot {
                 let snapshotnum = String(config.snapshotnum!)
-                resultannotaded = "(" +  snapshotnum + ") " + result
+                resultannotaded = "(" + snapshotnum + ") " + result
             } else {
                 resultannotaded = result
             }
@@ -50,17 +49,17 @@ class ScheduleWriteLoggData: SetConfigurations {
             self.configurations!.getResourceConfiguration(hiddenID, resource: .task) == ViewControllerReference.shared.synchronize ||
             self.configurations!.getResourceConfiguration(hiddenID, resource: .task) == ViewControllerReference.shared.snapshot ||
             self.configurations!.getResourceConfiguration(hiddenID, resource: .task) == ViewControllerReference.shared.syncremote {
-                if self.schedules![i].hiddenID == hiddenID  &&
-                    self.schedules![i].schedule == "manuel" &&
-                    self.schedules![i].dateStop == nil {
-                    let dict = NSMutableDictionary()
-                    dict.setObject(date, forKey: "dateExecuted" as NSCopying)
-                    dict.setObject(result, forKey: "resultExecuted" as NSCopying)
-                    self.schedules![i].logrecords.append(dict)
-                    loggadded = true
-                    break loop
-                }
+            if self.schedules![i].hiddenID == hiddenID,
+                self.schedules![i].schedule == "manuel",
+                self.schedules![i].dateStop == nil {
+                let dict = NSMutableDictionary()
+                dict.setObject(date, forKey: "dateExecuted" as NSCopying)
+                dict.setObject(result, forKey: "resultExecuted" as NSCopying)
+                self.schedules![i].logrecords.append(dict)
+                loggadded = true
+                break loop
             }
+        }
         return loggadded
     }
 
@@ -69,19 +68,19 @@ class ScheduleWriteLoggData: SetConfigurations {
         if self.configurations!.getResourceConfiguration(hiddenID, resource: .task) == ViewControllerReference.shared.synchronize ||
             self.configurations!.getResourceConfiguration(hiddenID, resource: .task) == ViewControllerReference.shared.snapshot ||
             self.configurations!.getResourceConfiguration(hiddenID, resource: .task) == ViewControllerReference.shared.syncremote {
-                    let masterdict = NSMutableDictionary()
-                    masterdict.setObject(hiddenID, forKey: "hiddenID" as NSCopying)
-                    masterdict.setObject("01 Jan 1900 00:00", forKey: "dateStart" as NSCopying)
-                    masterdict.setObject("manuel", forKey: "schedule" as NSCopying)
-                    let dict = NSMutableDictionary()
-                    dict.setObject(date, forKey: "dateExecuted" as NSCopying)
-                    dict.setObject(result, forKey: "resultExecuted" as NSCopying)
-                    let executed = NSMutableArray()
-                    executed.add(dict)
-                    let newSchedule = ConfigurationSchedule(dictionary: masterdict, log: executed, nolog: false)
-                       self.schedules!.append(newSchedule)
-                       loggadded = true
-                }
+            let masterdict = NSMutableDictionary()
+            masterdict.setObject(hiddenID, forKey: "hiddenID" as NSCopying)
+            masterdict.setObject("01 Jan 1900 00:00", forKey: "dateStart" as NSCopying)
+            masterdict.setObject("manuel", forKey: "schedule" as NSCopying)
+            let dict = NSMutableDictionary()
+            dict.setObject(date, forKey: "dateExecuted" as NSCopying)
+            dict.setObject(result, forKey: "resultExecuted" as NSCopying)
+            let executed = NSMutableArray()
+            executed.add(dict)
+            let newSchedule = ConfigurationSchedule(dictionary: masterdict, log: executed, nolog: false)
+            self.schedules!.append(newSchedule)
+            loggadded = true
+        }
         return loggadded
     }
 
@@ -96,10 +95,10 @@ class ScheduleWriteLoggData: SetConfigurations {
         if ViewControllerReference.shared.detailedlogging {
             var logged: Bool = false
             for i in 0 ..< self.schedules!.count where
-                self.schedules![i].hiddenID == hiddenID  &&
+                self.schedules![i].hiddenID == hiddenID &&
                 self.schedules![i].schedule == schedule &&
                 self.schedules![i].dateStart == dateStart {
-                    if self.configurations!.getResourceConfiguration(hiddenID, resource: .task) == ViewControllerReference.shared.synchronize ||
+                if self.configurations!.getResourceConfiguration(hiddenID, resource: .task) == ViewControllerReference.shared.synchronize ||
                     self.configurations!.getResourceConfiguration(hiddenID, resource: .task) == ViewControllerReference.shared.snapshot ||
                     self.configurations!.getResourceConfiguration(hiddenID, resource: .task) == ViewControllerReference.shared.syncremote {
                     logged = true
@@ -108,7 +107,7 @@ class ScheduleWriteLoggData: SetConfigurations {
                     let config = self.getconfig(hiddenID: hiddenID)
                     if config.task == ViewControllerReference.shared.snapshot {
                         let snapshotnum = String(config.snapshotnum!)
-                        resultannotaded = "(" +  snapshotnum + ") " + result
+                        resultannotaded = "(" + snapshotnum + ") " + result
                     } else {
                         resultannotaded = result
                     }

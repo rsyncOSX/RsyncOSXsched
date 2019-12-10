@@ -8,11 +8,10 @@
 //
 // swiftlint:disable line_length
 
-import Foundation
 import Cocoa
+import Foundation
 
 class Schedules: ScheduleWriteLoggData {
-
     // Return reference to Schedule data
     // self.Schedule is privat data
     func getSchedule() -> [ConfigurationSchedule] {
@@ -25,7 +24,7 @@ class Schedules: ScheduleWriteLoggData {
         let store: [ConfigurationSchedule]? = PersistentStorageScheduling(profile: self.profile).getScheduleandhistory(nolog: false)
         guard store != nil else { return }
         var data = [ConfigurationSchedule]()
-        for i in 0 ..< store!.count where ( store![i].logrecords.isEmpty == false || store![i].dateStop != nil ) {
+        for i in 0 ..< store!.count where store![i].logrecords.isEmpty == false || store![i].dateStop != nil {
             data.append(store![i])
         }
         // Sorting schedule after hiddenID

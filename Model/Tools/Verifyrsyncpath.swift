@@ -9,7 +9,6 @@
 import Foundation
 
 final class Verifyrsyncpath: SetConfigurations {
-
     // Function returns the correct path for rsync according to configuration set by user or
     func rsyncpath() -> String {
         if ViewControllerReference.shared.rsyncversion3 {
@@ -23,6 +22,5 @@ final class Verifyrsyncpath: SetConfigurations {
         }
     }
 
-    init() {
-    }
+    init() {}
 }

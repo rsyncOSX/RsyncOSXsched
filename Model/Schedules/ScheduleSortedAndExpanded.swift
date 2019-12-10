@@ -7,11 +7,10 @@
 //
 // swiftlint:disable line_length
 
-import Foundation
 import Cocoa
+import Foundation
 
 class ScheduleSortedAndExpand: Setlog {
-
     // Reference to main View
     private var schedulesNSDictionary: [NSDictionary]?
     private var scheduleConfiguration: [ConfigurationSchedule]?
@@ -21,7 +20,7 @@ class ScheduleSortedAndExpand: Setlog {
 
     // First job to execute. Job is first element in
     func getfirstscheduledtask() -> NSDictionary? {
-        guard self.sortedschedules != nil else { return nil}
+        guard self.sortedschedules != nil else { return nil }
         guard self.sortedschedules!.count > 0 else {
             ViewControllerReference.shared.scheduledTask = nil
             return nil
@@ -29,47 +28,49 @@ class ScheduleSortedAndExpand: Setlog {
         return self.sortedschedules![0]
     }
 
-     // Calculate daily schedules
-       private func daily(dateStart: Date, schedule: String, dict: NSDictionary) {
-           let cal = Calendar.current
-           if let start: Date = cal.date(byAdding: dateStart.dayssincenow, to: dateStart) {
-               if start.timeIntervalSinceNow > 0 {
-                   let hiddenID = (dict.value(forKey: "hiddenID") as? Int)!
-                   let profilename = dict.value(forKey: "profilename") ?? NSLocalizedString("Default profile", comment: "default profile")
-                   let time = start.timeIntervalSinceNow
-                   let dictSchedule: NSDictionary = [
-                       "start": start,
-                       "hiddenID": hiddenID,
-                       "dateStart": dateStart,
-                       "schedule": schedule,
-                       "timetostart": time,
-                       "profilename": profilename]
-                   self.expandedData.append(dictSchedule)
-               }
-           }
-       }
-
-       // Calculate weekly schedules
-       private func weekly(dateStart: Date, schedule: String, dict: NSDictionary) {
-           let cal = Calendar.current
-           if let start: Date = cal.date(byAdding: dateStart.weekssincenowplusoneweek, to: dateStart) {
-               if start.timeIntervalSinceNow > 0 {
-                   let hiddenID = (dict.value(forKey: "hiddenID") as? Int)!
-                   let profilename = dict.value(forKey: "profilename") ?? NSLocalizedString("Default profile", comment: "default profile")
-                   let time = start.timeIntervalSinceNow
-                   let dictSchedule: NSDictionary = [
-                       "start": start,
-                       "hiddenID": hiddenID,
-                       "dateStart": dateStart,
-                       "schedule": schedule,
-                       "timetostart": time,
-                       "profilename": profilename]
+    // Calculate daily schedules
+    private func daily(dateStart: Date, schedule: String, dict: NSDictionary) {
+        let cal = Calendar.current
+        if let start: Date = cal.date(byAdding: dateStart.dayssincenow, to: dateStart) {
+            if start.timeIntervalSinceNow > 0 {
+                let hiddenID = (dict.value(forKey: "hiddenID") as? Int)!
+                let profilename = dict.value(forKey: "profilename") ?? NSLocalizedString("Default profile", comment: "default profile")
+                let time = start.timeIntervalSinceNow
+                let dictSchedule: NSDictionary = [
+                    "start": start,
+                    "hiddenID": hiddenID,
+                    "dateStart": dateStart,
+                    "schedule": schedule,
+                    "timetostart": time,
+                    "profilename": profilename,
+                ]
                 self.expandedData.append(dictSchedule)
             }
         }
     }
 
-   // Expanding and sorting Scheduledata
+    // Calculate weekly schedules
+    private func weekly(dateStart: Date, schedule: String, dict: NSDictionary) {
+        let cal = Calendar.current
+        if let start: Date = cal.date(byAdding: dateStart.weekssincenowplusoneweek, to: dateStart) {
+            if start.timeIntervalSinceNow > 0 {
+                let hiddenID = (dict.value(forKey: "hiddenID") as? Int)!
+                let profilename = dict.value(forKey: "profilename") ?? NSLocalizedString("Default profile", comment: "default profile")
+                let time = start.timeIntervalSinceNow
+                let dictSchedule: NSDictionary = [
+                    "start": start,
+                    "hiddenID": hiddenID,
+                    "dateStart": dateStart,
+                    "schedule": schedule,
+                    "timetostart": time,
+                    "profilename": profilename,
+                ]
+                self.expandedData.append(dictSchedule)
+            }
+        }
+    }
+
+    // Expanding and sorting Scheduledata
     private func sortAndExpandScheduleTasks() {
         for i in 0 ..< self.schedulesNSDictionary!.count {
             let dict = self.schedulesNSDictionary![i]
@@ -81,7 +82,7 @@ class ScheduleSortedAndExpand: Setlog {
             // Get all jobs which are not executed
             if seconds > 0 {
                 switch schedule {
-                case "once" :
+                case "once":
                     let hiddenID = (dict.value(forKey: "hiddenID") as? Int)!
                     let profilename = dict.value(forKey: "profilename") ?? NSLocalizedString("Default profile", comment: "default profile")
                     let time = seconds
@@ -91,7 +92,8 @@ class ScheduleSortedAndExpand: Setlog {
                         "dateStart": dateStart,
                         "schedule": schedule,
                         "timetostart": time,
-                        "profilename": profilename]
+                        "profilename": profilename,
+                    ]
                     self.expandedData.append(dict)
                 case "daily":
                     self.daily(dateStart: dateStart, schedule: schedule, dict: dict)
@@ -102,7 +104,7 @@ class ScheduleSortedAndExpand: Setlog {
                 }
             }
             self.sortedschedules = self.expandedData.sorted { (di1, di2) -> Bool in
-                if (di1.value(forKey: "start") as? Date)!.timeIntervalSince((di2.value(forKey: "start") as? Date)!)>0 {
+                if (di1.value(forKey: "start") as? Date)!.timeIntervalSince((di2.value(forKey: "start") as? Date)!) > 0 {
                     return false
                 } else {
                     return true
@@ -114,18 +116,20 @@ class ScheduleSortedAndExpand: Setlog {
     func sortandcountscheduledonetask(hiddenID: Int, profilename: String, dateStart: Date?, number: Bool) -> String {
         var result: [NSDictionary]?
         if dateStart != nil {
-            result = self.sortedschedules?.filter({return (($0.value(forKey: "hiddenID") as? Int)! == hiddenID
-                && ($0.value(forKey: "start") as? Date)!.timeIntervalSinceNow > 0 )
+            result = self.sortedschedules?.filter { (($0.value(forKey: "hiddenID") as? Int)! == hiddenID
+                    && ($0.value(forKey: "start") as? Date)!.timeIntervalSinceNow > 0)
                 && ($0.value(forKey: "profilename") as? String)! == profilename
-                && ($0.value(forKey: "dateStart") as? Date)! == dateStart})
+                && ($0.value(forKey: "dateStart") as? Date)! == dateStart
+            }
         } else {
-            result = self.sortedschedules?.filter({return (($0.value(forKey: "hiddenID") as? Int)! == hiddenID
-                && ($0.value(forKey: "start") as? Date)!.timeIntervalSinceNow > 0 )
-                && ($0.value(forKey: "profilename") as? String)! == profilename })
+            result = self.sortedschedules?.filter { (($0.value(forKey: "hiddenID") as? Int)! == hiddenID
+                    && ($0.value(forKey: "start") as? Date)!.timeIntervalSinceNow > 0)
+                && ($0.value(forKey: "profilename") as? String)! == profilename
+            }
         }
         guard result != nil else { return "" }
-        let sorted = result!.sorted {(di1, di2) -> Bool in
-            if (di1.value(forKey: "start") as? Date)!.timeIntervalSince((di2.value(forKey: "start") as? Date)!)>0 {
+        let sorted = result!.sorted { (di1, di2) -> Bool in
+            if (di1.value(forKey: "start") as? Date)!.timeIntervalSince((di2.value(forKey: "start") as? Date)!) > 0 {
                 return false
             } else {
                 return true
@@ -149,19 +153,19 @@ class ScheduleSortedAndExpand: Setlog {
         var data = [NSDictionary]()
         for i in 0 ..< self.scheduleConfiguration!.count where
             self.scheduleConfiguration![i].dateStop != nil && self.scheduleConfiguration![i].schedule != "stopped" {
-                let dict: NSDictionary = [
-                    "dateStart": self.scheduleConfiguration![i].dateStart,
-                    "dateStop": self.scheduleConfiguration![i].dateStop!,
-                    "hiddenID": self.scheduleConfiguration![i].hiddenID,
-                    "schedule": self.scheduleConfiguration![i].schedule,
-                    "profilename": self.scheduleConfiguration![i].profilename ?? NSLocalizedString("Default profile", comment: "default profile")
-                ]
-                data.append(dict as NSDictionary)
+            let dict: NSDictionary = [
+                "dateStart": self.scheduleConfiguration![i].dateStart,
+                "dateStop": self.scheduleConfiguration![i].dateStop!,
+                "hiddenID": self.scheduleConfiguration![i].hiddenID,
+                "schedule": self.scheduleConfiguration![i].schedule,
+                "profilename": self.scheduleConfiguration![i].profilename ?? NSLocalizedString("Default profile", comment: "default profile"),
+            ]
+            data.append(dict as NSDictionary)
         }
         self.schedulesNSDictionary = data
     }
 
-    init () {
+    init() {
         self.logDelegate?.addlog(logrecord: NSLocalizedString("Reloading all schedules...", comment: "Sorted"))
         let allschedules = Allschedules()
         self.scheduleConfiguration = allschedules.allschedules

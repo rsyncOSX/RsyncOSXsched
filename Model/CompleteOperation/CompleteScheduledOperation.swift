@@ -12,7 +12,6 @@ import Foundation
 // Class for completion of Operation objects when Process object termination.
 // The object does also kicks of next scheduled job by setting new waiter time.
 final class CompleteScheduledOperation: SetScheduledTask, SetConfigurations, SetSchedules, Setlog {
-
     private var date: Date?
     private var dateStart: Date?
     private var hiddenID: Int?
@@ -35,7 +34,7 @@ final class CompleteScheduledOperation: SetScheduledTask, SetConfigurations, Set
         self.configurations!.setCurrentDateonConfigurationQuickbackup(index: self.index!)
     }
 
-    init (dict: NSDictionary) {
+    init(dict: NSDictionary) {
         self.date = dict.value(forKey: "start") as? Date
         self.dateStart = dict.value(forKey: "dateStart") as? Date
         self.hiddenID = dict.value(forKey: "hiddenID") as? Int ?? -1

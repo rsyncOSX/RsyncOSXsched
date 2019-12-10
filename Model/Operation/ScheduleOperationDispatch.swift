@@ -10,7 +10,6 @@
 import Foundation
 
 class ScheduleOperationDispatch: SetSchedules, SecondsBeforeStart, Setlog {
-
     private var workitem: DispatchWorkItem?
 
     private func dispatchtask(_ seconds: Int) {

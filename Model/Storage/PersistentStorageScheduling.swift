@@ -13,7 +13,6 @@
 import Foundation
 
 final class PersistentStorageScheduling: ReadWriteDictionary, SetSchedules {
-
     var schedulesasdictionary: [NSDictionary]?
 
     // Read schedules and history
@@ -36,20 +35,20 @@ final class PersistentStorageScheduling: ReadWriteDictionary, SetSchedules {
     // Saving Schedules from MEMORY to persistent store
     func savescheduleInMemoryToPersistentStore() {
         if let dicts: [NSDictionary] = ConvertSchedules().schedules {
-             self.writeToStore(array: dicts)
+            self.writeToStore(array: dicts)
         }
     }
 
     // Writing schedules to persistent store
     // Schedule is [NSDictionary]
-    private func writeToStore (array: [NSDictionary]) {
+    private func writeToStore(array: [NSDictionary]) {
         self.logDelegate?.addlog(logrecord: NSLocalizedString("Write and reload schedules", comment: "Storage"))
         if self.writeNSDictionaryToPersistentStorage(array) {
             self.schedulesDelegate?.createandreloadschedules()
         }
     }
 
-    init (profile: String?) {
+    init(profile: String?) {
         super.init(whattoreadwrite: .schedule, profile: profile, configpath: ViewControllerReference.shared.configpath)
         self.schedulesasdictionary = self.readNSDictionaryFromPersistentStore()
     }

@@ -7,13 +7,12 @@
 //
 //  swiftlint:disable line_length
 
-import Foundation
 import Cocoa
+import Foundation
 
 class ViewControllerLog: NSViewController, SetDismisser, GetInformation {
-
-    @IBOutlet weak var detailsTable: NSTableView!
-    @IBOutlet weak var writeloggbutton: NSButton!
+    @IBOutlet var detailsTable: NSTableView!
+    @IBOutlet var writeloggbutton: NSButton!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,33 +22,31 @@ class ViewControllerLog: NSViewController, SetDismisser, GetInformation {
 
     override func viewDidAppear() {
         super.viewDidAppear()
-        globalMainQueue.async(execute: { () -> Void in
+        globalMainQueue.async { () -> Void in
             self.detailsTable.reloadData()
-        })
+        }
     }
 
-    @IBAction func close(_ sender: NSButton) {
+    @IBAction func close(_: NSButton) {
         self.dismissview(viewcontroller: self)
     }
 
-    @IBAction func writelogg(_ sender: NSButton) {
+    @IBAction func writelogg(_: NSButton) {
         _ = Logg(array: self.getinfo())
         self.dismissview(viewcontroller: self)
     }
 }
 
 extension ViewControllerLog: NSTableViewDataSource {
-
-    func numberOfRows(in aTableView: NSTableView) -> Int {
+    func numberOfRows(in _: NSTableView) -> Int {
         return self.getinfo().count
     }
 }
 
 extension ViewControllerLog: NSTableViewDelegate {
-
-    func tableView(_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView? {
+    func tableView(_ tableView: NSTableView, viewFor _: NSTableColumn?, row: Int) -> NSView? {
         if let cell = tableView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: "outputID"), owner: nil) as? NSTableCellView {
-            cell.textField?.stringValue =  self.getinfo()[row]
+            cell.textField?.stringValue = self.getinfo()[row]
             return cell
         } else {
             return nil

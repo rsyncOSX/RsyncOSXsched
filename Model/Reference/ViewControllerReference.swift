@@ -6,8 +6,8 @@
 //  Copyright © 2017 Thomas Evensen. All rights reserved.
 //
 
-import Foundation
 import Cocoa
+import Foundation
 
 enum OperationObject {
     case timer
@@ -15,14 +15,14 @@ enum OperationObject {
 }
 
 class ViewControllerReference {
-
     // Creates a singelton of this class
-    class var  shared: ViewControllerReference {
+    class var shared: ViewControllerReference {
         struct Singleton {
             static let instance = ViewControllerReference()
         }
         return Singleton.instance
     }
+
     // Proess reference
     var process: Process?
     // Reference to waiting tasks, required for cancel task

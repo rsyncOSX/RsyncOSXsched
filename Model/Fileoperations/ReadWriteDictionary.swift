@@ -11,8 +11,8 @@
 //
 //  swiftlint:disable line_length
 
-import Foundation
 import Cocoa
+import Foundation
 
 enum WhatToReadWrite {
     case schedule
@@ -22,7 +22,6 @@ enum WhatToReadWrite {
 }
 
 class ReadWriteDictionary: Setlog {
-
     // Name set for schedule, configuration or config
     private var plistname: String?
     // key in objectForKey, e.g key for reading what
@@ -60,7 +59,7 @@ class ReadWriteDictionary: Setlog {
     // Function for reading data from persistent store
     func readNSDictionaryFromPersistentStore() -> [NSDictionary]? {
         var data = [NSDictionary]()
-        guard self.filename != nil && self.key != nil else { return nil }
+        guard self.filename != nil, self.key != nil else { return nil }
         let dictionary = NSDictionary(contentsOfFile: self.filename!)
         let items: Any? = dictionary?.object(forKey: self.key!)
         guard items != nil else { return nil }
@@ -75,15 +74,15 @@ class ReadWriteDictionary: Setlog {
     }
 
     // Function for write data to persistent store
-    func writeNSDictionaryToPersistentStorage (_ array: [NSDictionary]) -> Bool {
+    func writeNSDictionaryToPersistentStorage(_ array: [NSDictionary]) -> Bool {
         let dictionary = NSDictionary(object: array, forKey: self.key! as NSCopying)
         guard self.filename != nil else { return false }
         self.logDelegate?.addlog(logrecord: NSLocalizedString("Writing:", comment: "ReadWrite") + " " + self.filename! + " " + NSLocalizedString("to disk", comment: "ReadWrite"))
-        return  dictionary.write(toFile: self.filename!, atomically: true)
+        return dictionary.write(toFile: self.filename!, atomically: true)
     }
 
     // Set preferences for which data to read or write
-    private func setpreferences (task: WhatToReadWrite) {
+    private func setpreferences(task: WhatToReadWrite) {
         self.task = task
         switch self.task! {
         case .schedule:
@@ -106,5 +105,4 @@ class ReadWriteDictionary: Setlog {
         self.setpreferences(task: whattoreadwrite)
         self.setnameandpath()
     }
-
 }

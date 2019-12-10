@@ -10,7 +10,6 @@
 import Foundation
 
 struct ConvertConfigurations: SetConfigurations {
-
     var configuration: NSMutableDictionary?
 
     private func checkparameter(param: String?) -> String? {
@@ -40,7 +39,8 @@ struct ConvertConfigurations: SetConfigurations {
             "parameter6": config.parameter6,
             "dryrun": config.dryrun,
             "dateRun": config.dateRun!,
-            "hiddenID": config.hiddenID]
+            "hiddenID": config.hiddenID,
+        ]
         // All parameters parameter8 - parameter14 are set
         config.parameter8 = self.checkparameter(param: config.parameter8)
         if config.parameter8 != nil {

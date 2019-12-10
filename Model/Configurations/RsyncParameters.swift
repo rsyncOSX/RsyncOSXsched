@@ -10,7 +10,6 @@
 import Foundation
 
 final class RsyncParameters {
-
     private var stats: Bool?
     private var arguments: [String]?
     var localCatalog: String?
@@ -31,7 +30,7 @@ final class RsyncParameters {
         let offsiteServer: String = config.offsiteServer
         self.arguments!.append(parameter1)
         self.arguments!.append(parameter2)
-        if offsiteServer.isEmpty  == false {
+        if offsiteServer.isEmpty == false {
             if parameter3.isEmpty == false {
                 self.arguments!.append(parameter3)
             }
@@ -86,7 +85,7 @@ final class RsyncParameters {
             let split = config.parameter13!.components(separatedBy: "+$")
             if split.count == 2 {
                 if split[1] == "date" {
-                     self.appendParameter(parameter: split[0].setdatesuffixbackupstring)
+                    self.appendParameter(parameter: split[0].setdatesuffixbackupstring)
                 }
             } else {
                 self.appendParameter(parameter: config.parameter13!)
@@ -109,12 +108,12 @@ final class RsyncParameters {
     private func setdatesuffixlocalhost() -> String {
         let formatter = DateFormatter()
         formatter.dateFormat = "-yyyy-MM-dd"
-        return  "--suffix=" + formatter.string(from: Date())
+        return "--suffix=" + formatter.string(from: Date())
     }
 
     // Check userselected parameter and append it to arguments array passed to rsync or displayed
     // on screen.
-    private func appendParameter (parameter: String) {
+    private func appendParameter(parameter: String) {
         if parameter.count > 1 {
             if parameter == "--stats" {
                 self.stats = true
@@ -185,7 +184,7 @@ final class RsyncParameters {
     // Additional parameters if snapshot
     private func linkdestparameter(config: Configuration, verify: Bool) {
         let snapshotnum = config.snapshotnum ?? 1
-        self.linkdestparam =  "--link-dest=" + config.offsiteCatalog + String(snapshotnum - 1)
+        self.linkdestparam = "--link-dest=" + config.offsiteCatalog + String(snapshotnum - 1)
         if self.remoteargs != nil {
             if verify {
                 self.remoteargs! += String(snapshotnum - 1)
@@ -229,7 +228,7 @@ final class RsyncParameters {
         }
     }
 
-    init () {
+    init() {
         self.arguments = [String]()
     }
 }

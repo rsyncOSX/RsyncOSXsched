@@ -15,7 +15,6 @@ enum Root {
 }
 
 class Files: Reportfileerror {
-
     var root: Root?
     var rootpath: String?
 
@@ -39,7 +38,7 @@ class Files: Reportfileerror {
                 for i in 0 ..< fileURLs.count where fileURLs[i].hasDirectoryPath {
                     let path = fileURLs[i].pathComponents
                     let i = path.count
-                    array.append(path[i-1])
+                    array.append(path[i - 1])
                 }
                 return array
             }
@@ -64,9 +63,9 @@ class Files: Reportfileerror {
     }
 
     // Function for getting fileURLs for a given path
-    func getfileURLs (path: String) -> [URL]? {
+    func getfileURLs(path: String) -> [URL]? {
         let fileManager = FileManager.default
-        if let filepath = URL.init(string: path) {
+        if let filepath = URL(string: path) {
             do {
                 let files = try fileManager.contentsOfDirectory(at: filepath, includingPropertiesForKeys: nil, options: .skipsHiddenFiles)
                 return files
@@ -80,9 +79,8 @@ class Files: Reportfileerror {
         }
     }
 
-    init (root: Root) {
+    init(root: Root) {
         self.root = root
         self.setrootpath()
     }
-
 }
