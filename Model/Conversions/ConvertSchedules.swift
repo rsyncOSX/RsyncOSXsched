@@ -9,11 +9,10 @@
 import Foundation
 
 struct ConvertSchedules: SetSchedules {
-
     var schedules: [NSDictionary]?
 
     init() {
-         var array = [NSDictionary]()
+        var array = [NSDictionary]()
         // Reading Schedules from memory
         if let schedules = self.schedules?.getSchedule() {
             for i in 0 ..< schedules.count {
@@ -22,7 +21,8 @@ struct ConvertSchedules: SetSchedules {
                     "dateStart": schedules[i].dateStart,
                     "schedule": schedules[i].schedule,
                     "executed": schedules[i].logrecords,
-                    "offsiteserver": schedules[i].offsiteserver ?? "localhost"]
+                    "offsiteserver": schedules[i].offsiteserver ?? "localhost",
+                ]
                 if schedules[i].dateStop != nil {
                     dict.setValue(schedules[i].dateStop, forKey: "dateStop")
                 }

@@ -83,8 +83,8 @@ struct Configuration {
         if let dateRun = dictionary.object(forKey: "dateRun") {
             self.dateRun = dateRun as? String
             if let secondssince = self.calculatedays(date: self.dateRun!) {
-                self.dayssincelastbackup = String(format: "%.2f", secondssince/(60*60*24))
-                if secondssince/(60*60*24) > ViewControllerReference.shared.marknumberofdayssince {
+                self.dayssincelastbackup = String(format: "%.2f", secondssince / (60 * 60 * 24))
+                if secondssince / (60 * 60 * 24) > ViewControllerReference.shared.marknumberofdayssince {
                     self.markdays = true
                 }
             }

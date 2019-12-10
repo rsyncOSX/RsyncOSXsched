@@ -26,7 +26,8 @@ struct ConvertOneConfig {
             "daysID": self.config!.dayssincelastbackup ?? "",
             "markdays": self.config!.markdays,
             "snapCellID": self.config!.snapshotnum ?? "",
-            "selectCellID": 0]
+            "selectCellID": 0,
+        ]
         return row
     }
 

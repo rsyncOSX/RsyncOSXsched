@@ -9,9 +9,8 @@
 import Foundation
 
 final class Dateandtime {
-
     // Calculate seconds from now to startdate
-    private func seconds (_ startdate: Date, enddate: Date?) -> Double {
+    private func seconds(_ startdate: Date, enddate: Date?) -> Double {
         if enddate == nil {
             return startdate.timeIntervalSinceNow
         } else {
@@ -22,29 +21,29 @@ final class Dateandtime {
     // Calculation of time to a spesific date
     // Used in view of all tasks
     // Returns time in seconds
-    func timeDoubleSeconds (_ startdate: Date, enddate: Date?) -> Double {
+    func timeDoubleSeconds(_ startdate: Date, enddate: Date?) -> Double {
         let seconds: Double = self.seconds(startdate, enddate: enddate)
         return seconds
     }
 
     // Calculation of time to a spesific date
     // Used in view of all tasks
-    func timeString (_ startdate: Date, enddate: Date?) -> String {
+    func timeString(_ startdate: Date, enddate: Date?) -> String {
         var result: String?
         let seconds: Double = self.seconds(startdate, enddate: enddate)
         let (hr, minf) = modf(seconds / 3600)
         let (min, secf) = modf(60 * minf)
         // hr, min, 60 * secf
-        if hr == 0 && min == 0 {
+        if hr == 0, min == 0 {
             result = String(format: "%.0f", 60 * secf) + " " + NSLocalizedString("secs", comment: "datetime")
-        } else if hr == 0 && min < 60 {
+        } else if hr == 0, min < 60 {
             result = String(format: "%.0f", min) + " " + NSLocalizedString("mins", comment: "datetime")
                 + String(format: "%.0f", 60 * secf) + " " + "secs"
         } else if hr < 25 {
-            result = String(format: "%.0f", hr) + " " +  NSLocalizedString("hours", comment: "datetime")
+            result = String(format: "%.0f", hr) + " " + NSLocalizedString("hours", comment: "datetime")
                 + String(format: "%.0f", min) + " " + "mins"
         } else {
-            result = String(format: "%.0f", hr/24) + " " + NSLocalizedString("days", comment: "datetime")
+            result = String(format: "%.0f", hr / 24) + " " + NSLocalizedString("days", comment: "datetime")
         }
         if secf <= 0 {
             result = "... working ..."
@@ -54,28 +53,27 @@ final class Dateandtime {
 
     // Calculation of time to a spesific date
     // Used in view of all tasks
-    func timeString (_ seconds: Double) -> String {
+    func timeString(_ seconds: Double) -> String {
         var result: String?
         let (hr, minf) = modf(seconds / 3600)
         let (min, secf) = modf(60 * minf)
         // hr, min, 60 * secf
-        if hr == 0 && min == 0 {
+        if hr == 0, min == 0 {
             result = String(format: "%.0f", 60 * secf) + "s"
-        } else if hr == 0 && min < 60 {
+        } else if hr == 0, min < 60 {
             result = String(format: "%.0f", min) + "m " + String(format: "%.0f", 60 * secf) + "s"
         } else if hr < 25 {
-            result = String(format: "%.0f", hr) + NSLocalizedString("h", comment: "datetime")  + " "
+            result = String(format: "%.0f", hr) + NSLocalizedString("h", comment: "datetime") + " "
                 + String(format: "%.0f", min) + "m"
         } else {
-            result = String(format: "%.0f", hr/24) + "d"
+            result = String(format: "%.0f", hr / 24) + "d"
         }
         return result ?? ""
     }
 }
 
 extension Date {
-
-    func dateByAddingDays(_ days: Int ) -> Date {
+    func dateByAddingDays(_ days: Int) -> Date {
         let calendar = Calendar.current
         var dateComponent = DateComponents()
         dateComponent.day = days
@@ -95,12 +93,12 @@ extension Date {
     }
 
     func localized_string_from_date() -> String {
-           let dateformatter = DateFormatter()
-           dateformatter.formatterBehavior = .behavior10_4
-           dateformatter.dateStyle = .medium
-           dateformatter.timeStyle = .short
-           return dateformatter.string(from: self)
-       }
+        let dateformatter = DateFormatter()
+        dateformatter.formatterBehavior = .behavior10_4
+        dateformatter.dateStyle = .medium
+        dateformatter.timeStyle = .short
+        return dateformatter.string(from: self)
+    }
 
     func en_us_string_from_date() -> String {
         let dateformatter = DateFormatter()

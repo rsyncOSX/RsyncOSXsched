@@ -10,7 +10,6 @@
 import Foundation
 
 class Logg: Reportfileerror {
-
     var array: [String]?
     var log: String?
     var filename: String?
@@ -42,7 +41,7 @@ class Logg: Reportfileerror {
         if self.log == nil {
             self.log = tmplogg + (self.array?.joined(separator: "\n"))!
         } else {
-            self.log = self.log! + tmplogg  + (self.array?.joined(separator: "\n"))!
+            self.log = self.log! + tmplogg + (self.array?.joined(separator: "\n"))!
         }
         self.write()
     }

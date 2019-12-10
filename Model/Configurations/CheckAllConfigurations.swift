@@ -14,7 +14,6 @@ protocol Startautomaticexecution: class {
 }
 
 class CheckAllConfigurations: Delay, Setlog {
-
     var allprofiles: [String]?
     var allconfigurations: [Configuration]?
     var allpaths: [String]?
@@ -55,16 +54,17 @@ class CheckAllConfigurations: Delay, Setlog {
                 let mountedpath = self.allpaths![i]
                 for j in 0 ..< self.allconfigurations!.count {
                     let offsitepath = self.allconfigurations![j].offsiteCatalog
-                    if offsitepath.contains(mountedpath) && self.allconfigurations![j].offsiteServer.isEmpty {
+                    if offsitepath.contains(mountedpath), self.allconfigurations![j].offsiteServer.isEmpty {
                         let profile = self.allconfigurations![j].profilename ?? NSLocalizedString("Default profile", comment: "default profile")
                         let mountedvolume: String = NSLocalizedString("Mounted Volume discovered", comment: "Mount")
                         let mountedvolumein: String = NSLocalizedString("in:", comment: "Mount")
                         self.logDelegate?.addlog(logrecord: mountedvolume + mountedpath + " " + mountedvolumein + " " + profile)
 
-                        if self.automaticexecution == nil { self.automaticexecution = [NSDictionary]()}
+                        if self.automaticexecution == nil { self.automaticexecution = [NSDictionary]() }
                         let dict: NSDictionary = [
                             "profilename": self.allconfigurations![j].profilename!,
-                            "hiddenID": self.allconfigurations![j].hiddenID ]
+                            "hiddenID": self.allconfigurations![j].hiddenID,
+                        ]
                         self.automaticexecution?.append(dict)
                     }
                 }

@@ -41,7 +41,6 @@ enum WhichRoot {
 }
 
 class Files: Reportfileerror {
-
     var whichroot: WhichRoot?
     var rootpath: String?
     // ViewControllerReference.shared.configpath or RcloneReference.shared.configpath
@@ -68,7 +67,7 @@ class Files: Reportfileerror {
                 for i in 0 ..< fileURLs.count where fileURLs[i].hasDirectoryPath {
                     let path = fileURLs[i].pathComponents
                     let i = path.count
-                    array.append(path[i-1])
+                    array.append(path[i - 1])
                 }
                 return array
             }
@@ -77,9 +76,9 @@ class Files: Reportfileerror {
     }
 
     // Function for getting fileURLs for a given path
-    func getfileURLs (path: String) -> [URL]? {
+    func getfileURLs(path: String) -> [URL]? {
         let fileManager = FileManager.default
-        if let filepath = URL.init(string: path) {
+        if let filepath = URL(string: path) {
             do {
                 let files = try fileManager.contentsOfDirectory(at: filepath, includingPropertiesForKeys: nil, options: .skipsHiddenFiles)
                 return files
@@ -93,10 +92,9 @@ class Files: Reportfileerror {
         }
     }
 
-    init (whichroot: WhichRoot, configpath: String) {
+    init(whichroot: WhichRoot, configpath: String) {
         self.configpath = configpath
         self.whichroot = whichroot
         self.setrootpath()
     }
-
 }

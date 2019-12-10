@@ -9,7 +9,6 @@
 import Foundation
 
 class Notifications {
-
     func showNotification(message: String) {
         let notification = NSUserNotification()
         notification.title = NSLocalizedString("Message from scheduled backup...", comment: "Notification")

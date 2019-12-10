@@ -6,8 +6,8 @@
 //  Copyright © 2018 Maxim. All rights reserved.
 //
 
-import Foundation
 import Cocoa
+import Foundation
 
 enum Status {
     case red
@@ -24,7 +24,7 @@ protocol Updatestatustcpconnections: class {
 }
 
 protocol Addlog: class {
-    func addlog( logrecord: String)
+    func addlog(logrecord: String)
 }
 
 protocol Setlog {
@@ -38,11 +38,11 @@ extension Setlog {
 }
 
 protocol Information: class {
-    func getInformation () -> [String]
+    func getInformation() -> [String]
 }
 
 protocol GetInformation {
-    var informationDelegateMain: Information? {get}
+    var informationDelegateMain: Information? { get }
 }
 
 extension GetInformation {
@@ -59,8 +59,9 @@ extension GetInformation {
 protocol DismissViewController: class {
     func dismiss_view(viewcontroller: NSViewController)
 }
+
 protocol SetDismisser {
-    var dismissDelegateMain: DismissViewController? {get}
+    var dismissDelegateMain: DismissViewController? { get }
     func dismissview(viewcontroller: NSViewController)
 }
 
@@ -69,7 +70,7 @@ extension SetDismisser {
         return ViewControllerReference.shared.viewControllermain as? ViewControllerMain
     }
 
-    func dismissview(viewcontroller: NSViewController) {
+    func dismissview(viewcontroller _: NSViewController) {
         self.dismissDelegateMain?.dismiss_view(viewcontroller: (self as? NSViewController)!)
     }
 }
@@ -107,12 +108,12 @@ protocol SecondsBeforeStart {
 
 extension SecondsBeforeStart {
     // Calculation of time to a spesific date
-    private func timeDoubleSeconds (_ startdate: Date, enddate: Date?) -> Double {
+    private func timeDoubleSeconds(_ startdate: Date, enddate: Date?) -> Double {
         let seconds: Double = self.seconds(startdate, enddate: enddate)
         return seconds
     }
 
-    private func seconds (_ startdate: Date, enddate: Date?) -> Double {
+    private func seconds(_ startdate: Date, enddate: Date?) -> Double {
         if enddate == nil {
             return startdate.timeIntervalSinceNow
         } else {
@@ -168,6 +169,7 @@ extension SetConfigurations {
     var configurationsDelegate: GetConfigurationsObject? {
         return ViewControllerReference.shared.viewControllermain as? ViewControllerMain
     }
+
     var configurations: Configurations? {
         return self.configurationsDelegate?.getconfigurationsobject()
     }
@@ -188,6 +190,7 @@ extension SetSchedules {
     var schedulesDelegate: GetSchedulesObject? {
         return ViewControllerReference.shared.viewControllermain as? ViewControllerMain
     }
+
     var schedules: Schedules? {
         return self.schedulesDelegate?.getschedulesobject()
     }
@@ -207,6 +210,7 @@ extension SetSortedAndExpanded {
     var sortedandexpandedDelegate: GetSortedandExpandedObject? {
         return ViewControllerReference.shared.viewControllermain as? ViewControllerMain
     }
+
     var sortedandexpanded: ScheduleSortedAndExpand? {
         return self.sortedandexpandedDelegate?.getsortedandexpandeobject()
     }

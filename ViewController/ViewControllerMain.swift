@@ -11,7 +11,6 @@ import Cocoa
 import Foundation
 
 class ViewControllerMain: NSViewController, Delay, Setlog {
-
     // Information about logs
     var viewControllerInformation: NSViewController? {
         return (self.storyboard!.instantiateController(withIdentifier: "StoryboardInformationID")
@@ -24,17 +23,17 @@ class ViewControllerMain: NSViewController, Delay, Setlog {
             as? NSViewController)!
     }
 
-    @IBOutlet weak var mainTableView: NSTableView!
-    @IBOutlet weak var progress: NSProgressIndicator!
-    @IBOutlet weak var profilescombobox: NSComboBox!
-    @IBOutlet weak var profileinfo: NSTextField!
-    @IBOutlet weak var rsyncosxbutton: NSButton!
-    @IBOutlet weak var statuslight: NSImageView!
-    @IBOutlet weak var info: NSTextField!
-    @IBOutlet weak var progresslabel: NSTextField!
-    @IBOutlet weak var newversion: NSTextField!
-    @IBOutlet weak var rsyncosxschedversion: NSTextField!
-    @IBOutlet weak var backupnowbutton: NSButton!
+    @IBOutlet var mainTableView: NSTableView!
+    @IBOutlet var progress: NSProgressIndicator!
+    @IBOutlet var profilescombobox: NSComboBox!
+    @IBOutlet var profileinfo: NSTextField!
+    @IBOutlet var rsyncosxbutton: NSButton!
+    @IBOutlet var statuslight: NSImageView!
+    @IBOutlet var info: NSTextField!
+    @IBOutlet var progresslabel: NSTextField!
+    @IBOutlet var newversion: NSTextField!
+    @IBOutlet var rsyncosxschedversion: NSTextField!
+    @IBOutlet var backupnowbutton: NSButton!
 
     var configurations: Configurations?
     var schedules: Schedules?
@@ -51,8 +50,8 @@ class ViewControllerMain: NSViewController, Delay, Setlog {
     var allschedules: [ConfigurationSchedule]?
     var index: Int?
 
-	override func viewDidLoad() {
-		super.viewDidLoad()
+    override func viewDidLoad() {
+        super.viewDidLoad()
         self.addobservers()
         self.mainTableView.delegate = self
         self.mainTableView.dataSource = self
@@ -63,7 +62,7 @@ class ViewControllerMain: NSViewController, Delay, Setlog {
         self.addobserverforreload()
         self.schedulesortedandexpanded = ScheduleSortedAndExpand()
         self.startfirstscheduledtask()
-	}
+    }
 
     override func viewDidAppear() {
         super.viewDidAppear()
@@ -100,39 +99,39 @@ class ViewControllerMain: NSViewController, Delay, Setlog {
         }
     }
 
-    @IBAction func backupnow(_ sender: NSButton) {
-        guard self.index != nil else { return  }
-        guard self.configurations!.getConfigurationsDataSourceSynchronize() != nil  else { return  }
+    @IBAction func backupnow(_: NSButton) {
+        guard self.index != nil else { return }
+        guard self.configurations!.getConfigurationsDataSourceSynchronize() != nil else { return }
         self.backupnowbutton.isEnabled = false
         let dict: NSDictionary = self.configurations!.getConfigurationsDataSourceSynchronize()![self.index!]
         _ = ExecuteScheduledTask(dict: dict)
     }
 
-    @IBAction func abort(_ sender: NSButton) {
+    @IBAction func abort(_: NSButton) {
         ViewControllerReference.shared.process?.terminate()
         self.progress.stopAnimation(nil)
         self.reloadselectedprofile()
     }
 
-	@IBAction func closeButtonAction(_ sender: NSButton) {
-		NSApp.terminate(self)
-	}
+    @IBAction func closeButtonAction(_: NSButton) {
+        NSApp.terminate(self)
+    }
 
-    @IBAction func openRsyncOSX(_ sender: NSButton) {
+    @IBAction func openRsyncOSX(_: NSButton) {
         let pathtorsyncosxapp: String = ViewControllerReference.shared.pathrsyncosx! + ViewControllerReference.shared.namersyncosx
         NSWorkspace.shared.open(URL(fileURLWithPath: pathtorsyncosxapp))
         NSApp.terminate(self)
     }
 
-    @IBAction func selectprofile(_ sender: NSComboBox) {
+    @IBAction func selectprofile(_: NSComboBox) {
         self.reloadselectedprofile()
     }
 
-    @IBAction func viewlogg(_ sender: NSButton) {
+    @IBAction func viewlogg(_: NSButton) {
         self.presentAsSheet(self.viewControllerInformation!)
     }
 
-    @IBAction func viewallschedules(_ sender: NSButton) {
+    @IBAction func viewallschedules(_: NSButton) {
         self.presentAsSheet(self.viewControllerAllschedules!)
     }
 
@@ -172,7 +171,7 @@ class ViewControllerMain: NSViewController, Delay, Setlog {
     }
 
     func createandreloadconfigurations() {
-        let readingconfig: String = NSLocalizedString( "Reading configurations for current profile", comment: "main")
+        let readingconfig: String = NSLocalizedString("Reading configurations for current profile", comment: "main")
         self.addlog(logrecord: readingconfig)
         guard self.configurations != nil else {
             self.configurations = Configurations(profile: nil)
@@ -185,9 +184,9 @@ class ViewControllerMain: NSViewController, Delay, Setlog {
             self.configurations = nil
             self.configurations = Configurations(profile: nil)
         }
-        globalMainQueue.async(execute: { () -> Void in
+        globalMainQueue.async { () -> Void in
             self.mainTableView.reloadData()
-        })
+        }
     }
 
     private func setprofiles() {
@@ -196,11 +195,11 @@ class ViewControllerMain: NSViewController, Delay, Setlog {
         self.profilesArray = self.profile!.getDirectorysStrings()
         self.profilescombobox.removeAllItems()
         guard self.profilesArray != nil else { return }
-        self.profilescombobox.addItems(withObjectValues: (self.profilesArray!))
+        self.profilescombobox.addItems(withObjectValues: self.profilesArray!)
     }
 
     private func info(num: Int) {
-        globalMainQueue.async(execute: { () -> Void in
+        globalMainQueue.async { () -> Void in
             switch num {
             case 1:
                 let info1: String = NSLocalizedString("Some remote sites not avaliable, see log ....", comment: "main")
@@ -213,7 +212,7 @@ class ViewControllerMain: NSViewController, Delay, Setlog {
             default:
                 self.info.stringValue = ""
             }
-        })
+        }
     }
 
     private func startfirstscheduledtask() {
@@ -234,14 +233,14 @@ class ViewControllerMain: NSViewController, Delay, Setlog {
         }
     }
 
-    @objc func onWakeNote(note: NSNotification) {
+    @objc func onWakeNote(note _: NSNotification) {
         let onwake: String = NSLocalizedString("Activating schedules again after sleeping...", comment: "main")
         self.logDelegate?.addlog(logrecord: onwake)
         self.schedulesortedandexpanded = ScheduleSortedAndExpand()
         self.startfirstscheduledtask()
     }
 
-    @objc func onSleepNote(note: NSNotification) {
+    @objc func onSleepNote(note _: NSNotification) {
         let onsleep: String = NSLocalizedString("Invalidating tasks and going to sleep...", comment: "main")
         self.logDelegate?.addlog(logrecord: onsleep)
         ViewControllerReference.shared.dispatchTaskWaiting?.cancel()
@@ -270,10 +269,10 @@ class ViewControllerMain: NSViewController, Delay, Setlog {
     }
 
     private func addobservers() {
-        NSWorkspace.shared.notificationCenter.addObserver( self, selector: #selector(onWakeNote(note:)),
-                                                           name: NSWorkspace.didWakeNotification, object: nil)
-        NSWorkspace.shared.notificationCenter.addObserver( self, selector: #selector(onSleepNote(note:)),
-                                                           name: NSWorkspace.willSleepNotification, object: nil)
+        NSWorkspace.shared.notificationCenter.addObserver(self, selector: #selector(onWakeNote(note:)),
+                                                          name: NSWorkspace.didWakeNotification, object: nil)
+        NSWorkspace.shared.notificationCenter.addObserver(self, selector: #selector(onSleepNote(note:)),
+                                                          name: NSWorkspace.willSleepNotification, object: nil)
         if ViewControllerReference.shared.automaticexecutelocalvolumes {
             NSWorkspace.shared.notificationCenter.addObserver(self, selector: #selector(didMount(_:)),
                                                               name: NSWorkspace.didMountNotification, object: nil)
@@ -285,19 +284,19 @@ class ViewControllerMain: NSViewController, Delay, Setlog {
 
 extension ViewControllerMain: NSTableViewDataSource {
     // Delegate for size of table
-    func numberOfRows(in tableView: NSTableView) -> Int {
+    func numberOfRows(in _: NSTableView) -> Int {
         return self.configurations?.getConfigurationsDataSourceSynchronize()?.count ?? 0
     }
 }
 
 extension ViewControllerMain: NSTableViewDelegate, Attributedestring {
-    func tableView(_ tableView: NSTableView, objectValueFor tableColumn: NSTableColumn?, row: Int) -> Any? {
-        guard row < self.configurations!.getConfigurationsDataSourceSynchronize()!.count  else { return nil }
+    func tableView(_: NSTableView, objectValueFor tableColumn: NSTableColumn?, row: Int) -> Any? {
+        guard row < self.configurations!.getConfigurationsDataSourceSynchronize()!.count else { return nil }
         let object: NSDictionary = self.configurations!.getConfigurationsDataSourceSynchronize()![row]
         let hiddenID = object.value(forKey: "hiddenID") as? Int ?? -1
         let profilename = object.value(forKey: "profilename") as? String ?? NSLocalizedString("Default profile", comment: "default profile")
         switch tableColumn!.identifier.rawValue {
-        case "scheduleID" :
+        case "scheduleID":
             if self.schedulesortedandexpanded != nil {
                 let schedule: String? = self.schedulesortedandexpanded!.sortandcountscheduledonetask(hiddenID: hiddenID, profilename: profilename, dateStart: nil, number: false)
                 if schedule?.isEmpty == false {
@@ -315,7 +314,7 @@ extension ViewControllerMain: NSTableViewDelegate, Attributedestring {
                     return ""
                 }
             }
-        case "batchCellID" :
+        case "batchCellID":
             return object[tableColumn!.identifier]
         case "offsiteServerCellID":
             if (object[tableColumn!.identifier] as? String)!.isEmpty {
@@ -348,7 +347,7 @@ extension ViewControllerMain: NSTableViewDelegate, Attributedestring {
 
 extension ViewControllerMain: Updatestatuslight {
     func updatestatuslight(color: Status) {
-        globalMainQueue.async(execute: { () -> Void in
+        globalMainQueue.async { () -> Void in
             switch color {
             case .red:
                 self.statuslight.image = #imageLiteral(resourceName: "red")
@@ -357,14 +356,13 @@ extension ViewControllerMain: Updatestatuslight {
             case .yellow:
                 self.statuslight.image = #imageLiteral(resourceName: "yellow")
             }
-        })
+        }
     }
 }
 
 extension ViewControllerMain: Updatestatustcpconnections {
-
     func updatestatustcpconnections() {
-       self.info(num: 1)
+        self.info(num: 1)
     }
 }
 
@@ -394,19 +392,19 @@ extension ViewControllerMain: Reloadsortedandrefresh {
     func reloadsortedandrefreshtabledata() {
         self.schedulesortedandexpanded = ScheduleSortedAndExpand()
         self.startfirstscheduledtask()
-        globalMainQueue.async(execute: { () -> Void in
+        globalMainQueue.async { () -> Void in
             self.mainTableView.reloadData()
-        })
+        }
     }
 }
 
 extension ViewControllerMain: ScheduledTaskWorking {
     func start() {
-        globalMainQueue.async(execute: { () -> Void in
+        globalMainQueue.async { () -> Void in
             self.progress.startAnimation(nil)
             self.progresslabel.isHidden = false
             self.statuslight.image = #imageLiteral(resourceName: "green")
-        })
+        }
     }
 }
 
@@ -422,10 +420,10 @@ extension ViewControllerMain: Sendprocessreference {
 
 extension ViewControllerMain: UpdateProgress {
     func processTermination() {
-        globalMainQueue.async(execute: { () -> Void in
+        globalMainQueue.async { () -> Void in
             self.progress.stopAnimation(nil)
             self.progresslabel.isHidden = true
-        })
+        }
         if self.automaticexecution == nil {
             guard ViewControllerReference.shared.completeoperation != nil else {
                 self.delayWithSeconds(5) {
@@ -481,7 +479,7 @@ extension ViewControllerMain: RsyncError {
 }
 
 extension ViewControllerMain: Fileerror {
-    func errormessage(errorstr: String, errortype: Fileerrortype) {
+    func errormessage(errorstr: String, errortype _: Fileerrortype) {
         self.logDelegate?.addlog(logrecord: errorstr)
     }
 }
@@ -490,9 +488,9 @@ extension ViewControllerMain: ReloadData {
     func reloaddata(profilename: String?) {
         guard profilename != nil else {
             if self.profilename == nil {
-                globalMainQueue.async(execute: { () -> Void in
+                globalMainQueue.async { () -> Void in
                     self.profileinfo.stringValue = NSLocalizedString("Profile:", comment: "main") + " " + NSLocalizedString("default", comment: "main")
-                })
+                }
                 return
             }
             self.profilename = nil
@@ -503,10 +501,10 @@ extension ViewControllerMain: ReloadData {
         }
         guard profilename == self.profilename else {
             self.profilename = profilename
-            globalMainQueue.async(execute: { () -> Void in
+            globalMainQueue.async { () -> Void in
                 self.profileinfo.stringValue = NSLocalizedString("Profile:", comment: "main") + " " + self.profilename!
                 self.profilescombobox.stringValue = self.profilename!
-            })
+            }
             self.createandreloadconfigurations()
             self.createandreloadschedules()
             return
@@ -528,22 +526,22 @@ extension ViewControllerMain: GetTCPconnections {
 
 extension ViewControllerMain: NewVersionDiscovered {
     func currentversion(version: String) {
-         globalMainQueue.async(execute: { () -> Void in
+        globalMainQueue.async { () -> Void in
             self.rsyncosxschedversion.stringValue = NSLocalizedString("RsyncOSXsched version:", comment: "main") + " " + version
-         })
+        }
     }
 
     func notifyNewVersion() {
-        globalMainQueue.async(execute: { () -> Void in
+        globalMainQueue.async { () -> Void in
             self.newversion.isHidden = false
-        })
+        }
     }
 }
 
 extension ViewControllerMain: Startautomaticexecution {
     func startautomaticexecution() {
         self.automaticexecution = self.checkallconfiguration?.automaticexecution
-        guard  self.automaticexecution != nil else { return }
+        guard self.automaticexecution != nil else { return }
         guard self.automaticexecution!.count > 0 else {
             self.automaticexecution = nil
             return

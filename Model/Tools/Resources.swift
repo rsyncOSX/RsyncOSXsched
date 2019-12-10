@@ -13,7 +13,7 @@ import Foundation
 struct Resources {
     private var urlPlist: String = "https://raw.githubusercontent.com/rsyncOSX/RsyncOSX/master/versionRsyncOSX/versionRsyncOSX.plist"
     // Get the resource.
-    func getResource () -> String {
+    func getResource() -> String {
         return self.urlPlist
     }
 }

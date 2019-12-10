@@ -14,7 +14,6 @@ import Foundation
 // when the job discover (observs) the termination of the process.
 
 final class ExecuteScheduledTask: SetSchedules, SetConfigurations, SetScheduledTask, Setlog {
-
     private func executetask() {
         let outputprocess = OutputProcess()
         var arguments: [String]?
@@ -23,7 +22,7 @@ final class ExecuteScheduledTask: SetSchedules, SetConfigurations, SetScheduledT
         weak var reloaddataDelegate: ReloadData?
         updatestatuslightDelegate = ViewControllerReference.shared.viewControllermain as? ViewControllerMain
         reloaddataDelegate = ViewControllerReference.shared.viewControllermain as? ViewControllerMain
-        tcpconnectionsDelegate =  ViewControllerReference.shared.viewControllermain as? ViewControllerMain
+        tcpconnectionsDelegate = ViewControllerReference.shared.viewControllermain as? ViewControllerMain
         var config: Configuration?
         // Get the first job of the queue
         if let dict: NSDictionary = ViewControllerReference.shared.scheduledTask {
@@ -36,12 +35,12 @@ final class ExecuteScheduledTask: SetSchedules, SetConfigurations, SetScheduledT
             if let hiddenID: Int = dict.value(forKey: "hiddenID") as? Int {
                 let getconfigurations: [Configuration]? = configurations?.getConfigurations()
                 guard getconfigurations != nil else { return }
-                let configArray = getconfigurations!.filter({return ($0.hiddenID == hiddenID)})
+                let configArray = getconfigurations!.filter { ($0.hiddenID == hiddenID) }
                 guard configArray.count > 0 else { return }
                 config = configArray[0]
                 // Inform and notify
                 self.scheduleJob?.start()
-                if hiddenID >= 0 && config != nil {
+                if hiddenID >= 0, config != nil {
                     if let remoteserver = config?.offsiteServer {
                         guard tcpconnectionsDelegate?.gettcpconnections()?.checkremoteconnection(remoteserver: remoteserver) == true else { return }
                     }
@@ -53,11 +52,11 @@ final class ExecuteScheduledTask: SetSchedules, SetConfigurations, SetScheduledT
                         weak var sendprocess: Sendprocessreference?
                         sendprocess = ViewControllerReference.shared.viewControllermain as? ViewControllerMain
                         let process = ProcessCmd(command: nil, arguments: arguments)
-                        globalMainQueue.async(execute: {
+                        globalMainQueue.async {
                             process.executeProcess(outputprocess: outputprocess)
                             sendprocess?.sendprocessreference(process: process.getProcess())
                             sendprocess?.sendoutputprocessreference(outputprocess: outputprocess)
-                        })
+                        }
                     }
                 }
             } else {
@@ -73,7 +72,7 @@ final class ExecuteScheduledTask: SetSchedules, SetConfigurations, SetScheduledT
     }
 
     init() {
-       self.executetask()
+        self.executetask()
     }
 
     init(dict: NSDictionary) {

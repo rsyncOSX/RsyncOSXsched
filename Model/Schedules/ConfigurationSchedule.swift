@@ -28,7 +28,7 @@ struct ConfigurationSchedule {
         if let date = dictionary.object(forKey: "dateStop") as? String {
             self.dateStop = date
         }
-        if log != nil && nolog == false {
+        if log != nil, nolog == false {
             for i in 0 ..< log!.count {
                 self.logrecords.append((log![i] as? NSMutableDictionary)!)
             }

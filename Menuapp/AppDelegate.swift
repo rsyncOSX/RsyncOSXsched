@@ -7,10 +7,9 @@ import Cocoa
 
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
-
-	let statusItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.squareLength)
-	let popover = NSPopover()
-	var eventMonitor: EventMonitor?
+    let statusItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.squareLength)
+    let popover = NSPopover()
+    var eventMonitor: EventMonitor?
 
     var storyboard: NSStoryboard? {
         return NSStoryboard(name: "Main", bundle: nil)
@@ -21,47 +20,46 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             as? NSViewController)!
     }
 
-	func applicationDidFinishLaunching(_ aNotification: Notification) {
-         // Read user configuration
-        if let userconfiguration =  PersistentStorageUserconfiguration().readuserconfiguration() {
+    func applicationDidFinishLaunching(_: Notification) {
+        // Read user configuration
+        if let userconfiguration = PersistentStorageUserconfiguration().readuserconfiguration() {
             _ = Userconfiguration(userconfigRsyncOSX: userconfiguration)
         }
-		if let button = self.statusItem.button {
-			button.image = NSImage(named: "MenubarButton")
-			button.action = #selector(AppDelegate.togglePopover(_:))
-		}
-		self.popover.contentViewController = self.mainViewController
-		self.eventMonitor = EventMonitor(mask: [NSEvent.EventTypeMask.leftMouseDown, NSEvent.EventTypeMask.rightMouseDown]) { [weak self] event in
+        if let button = self.statusItem.button {
+            button.image = NSImage(named: "MenubarButton")
+            button.action = #selector(AppDelegate.togglePopover(_:))
+        }
+        self.popover.contentViewController = self.mainViewController
+        self.eventMonitor = EventMonitor(mask: [NSEvent.EventTypeMask.leftMouseDown, NSEvent.EventTypeMask.rightMouseDown]) { [weak self] event in
             if let popover = self?.popover {
-				if popover.isShown {
-					self?.closePopover(event)
-				}
-			}
-		}
-		self.eventMonitor?.start()
+                if popover.isShown {
+                    self?.closePopover(event)
+                }
+            }
+        }
+        self.eventMonitor?.start()
         self.togglePopover(nil)
-	}
+    }
 
-	func applicationWillTerminate(_ aNotification: Notification) {
-	}
+    func applicationWillTerminate(_: Notification) {}
 
-	@objc func togglePopover(_ sender: AnyObject?) {
-		if self.popover.isShown {
-			self.closePopover(sender)
-		} else {
-			self.showPopover(sender)
-		}
-	}
+    @objc func togglePopover(_ sender: AnyObject?) {
+        if self.popover.isShown {
+            self.closePopover(sender)
+        } else {
+            self.showPopover(sender)
+        }
+    }
 
-	func showPopover(_ sender: AnyObject?) {
-		if let button = self.statusItem.button {
-			self.popover.show(relativeTo: button.bounds, of: button, preferredEdge: NSRectEdge.minY)
-			self.eventMonitor?.start()
-		}
-	}
+    func showPopover(_: AnyObject?) {
+        if let button = self.statusItem.button {
+            self.popover.show(relativeTo: button.bounds, of: button, preferredEdge: NSRectEdge.minY)
+            self.eventMonitor?.start()
+        }
+    }
 
-	func closePopover(_ sender: AnyObject?) {
-		self.popover.performClose(sender)
-		self.eventMonitor?.stop()
-	}
+    func closePopover(_ sender: AnyObject?) {
+        self.popover.performClose(sender)
+        self.eventMonitor?.stop()
+    }
 }

@@ -7,8 +7,8 @@
 //
 // swiftlint:disable line_length
 
-import Foundation
 import Cocoa
+import Foundation
 
 // Protocol for returning object configurations data
 protocol GetSchedulesSortedAndExpanded: class {
@@ -24,13 +24,13 @@ extension GetAllSchedules {
     var allschedulesDelegate: GetSchedulesSortedAndExpanded? {
         return ViewControllerReference.shared.viewControllermain as? ViewControllerMain
     }
+
     var schedulessortedandexpanded: ScheduleSortedAndExpand? {
         return allschedulesDelegate?.getschedulessortedandexpanded()
     }
 }
 
 class Allschedules {
-
     // Configurations object
     var allschedules: [ConfigurationSchedule]?
     var allprofiles: [String]?
@@ -56,7 +56,7 @@ class Allschedules {
                 for j in 0 ..< configurationschedule!.count {
                     configurationschedule![j].profilename = profilename
                     let offsiteserver = configurationschedule![j].offsiteserver ?? ""
-                    let ifadded = self.alloffsiteservers!.filter({return $0 == offsiteserver})
+                    let ifadded = self.alloffsiteservers!.filter { $0 == offsiteserver }
                     if ifadded.count == 0 {
                         if offsiteserver.isEmpty == true || offsiteserver != "localhost" {
                             self.alloffsiteservers?.append(offsiteserver)
