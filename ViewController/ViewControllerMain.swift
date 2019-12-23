@@ -72,9 +72,9 @@ class ViewControllerMain: NSViewController, Delay, Setlog {
         if self.profilename == nil {
             self.profilescombobox.stringValue = NSLocalizedString("Default profile", comment: "default profile")
         }
-        globalMainQueue.async(execute: { () -> Void in
+        globalMainQueue.async { () -> Void in
             self.mainTableView.reloadData()
-        })
+        }
     }
 
     private func addobserverforreload() {
