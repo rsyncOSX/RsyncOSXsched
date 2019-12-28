@@ -9,7 +9,7 @@
 
 import Foundation
 
-protocol Startautomaticexecution: class {
+protocol Startautomaticexecution: AnyObject {
     func startautomaticexecution()
 }
 

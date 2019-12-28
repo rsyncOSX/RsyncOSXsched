@@ -8,7 +8,7 @@
 
 import Foundation
 
-protocol NewVersionDiscovered: class {
+protocol NewVersionDiscovered: AnyObject {
     func notifyNewVersion()
     func currentversion(version: String)
 }

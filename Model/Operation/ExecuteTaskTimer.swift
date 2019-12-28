@@ -12,11 +12,11 @@ import Foundation
 // is set in the static object. The finalize object is invoked
 // when the job discover (observs) the termination of the process.
 
-protocol ReloadData: class {
+protocol ReloadData: AnyObject {
     func reloaddata(profilename: String?)
 }
 
-protocol GetTCPconnections: class {
+protocol GetTCPconnections: AnyObject {
     func gettcpconnections() -> TCPconnections?
 }
 

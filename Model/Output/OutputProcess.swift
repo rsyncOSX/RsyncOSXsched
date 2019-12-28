@@ -6,7 +6,7 @@
 //
 //  swiftlint:disable  cyclomatic_complexity
 
-protocol RsyncError: class {
+protocol RsyncError: AnyObject {
     func rsyncerror()
 }
 
