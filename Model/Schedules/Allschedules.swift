@@ -11,7 +11,7 @@ import Cocoa
 import Foundation
 
 // Protocol for returning object configurations data
-protocol GetSchedulesSortedAndExpanded: class {
+protocol GetSchedulesSortedAndExpanded: AnyObject {
     func getschedulessortedandexpanded() -> ScheduleSortedAndExpand?
 }
 

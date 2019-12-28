@@ -17,7 +17,7 @@ enum Fileerrortype {
 }
 
 // Protocol for reporting file errors
-protocol Fileerror: class {
+protocol Fileerror: AnyObject {
     func errormessage(errorstr: String, errortype: Fileerrortype)
 }
 

@@ -15,15 +15,15 @@ enum Status {
     case yellow
 }
 
-protocol Updatestatuslight: class {
+protocol Updatestatuslight: AnyObject {
     func updatestatuslight(color: Status)
 }
 
-protocol Updatestatustcpconnections: class {
+protocol Updatestatustcpconnections: AnyObject {
     func updatestatustcpconnections()
 }
 
-protocol Addlog: class {
+protocol Addlog: AnyObject {
     func addlog(logrecord: String)
 }
 
@@ -37,7 +37,7 @@ extension Setlog {
     }
 }
 
-protocol Information: class {
+protocol Information: AnyObject {
     func getInformation() -> [String]
 }
 
@@ -56,7 +56,7 @@ extension GetInformation {
 }
 
 // Protocol for dismissing a viewcontroller
-protocol DismissViewController: class {
+protocol DismissViewController: AnyObject {
     func dismiss_view(viewcontroller: NSViewController)
 }
 
@@ -76,14 +76,14 @@ extension SetDismisser {
 }
 
 // Protocol for doing a refresh of tabledata
-protocol Reloadsortedandrefresh: class {
+protocol Reloadsortedandrefresh: AnyObject {
     func reloadsortedandrefreshtabledata()
 }
 
 // Protocol when a Scehduled job is starting and stopping
 // Used to informed the presenting viewcontroller about what
 // is going on
-protocol ScheduledTaskWorking: class {
+protocol ScheduledTaskWorking: AnyObject {
     func start()
 }
 
@@ -97,7 +97,7 @@ extension SetScheduledTask {
     }
 }
 
-protocol Sendprocessreference: class {
+protocol Sendprocessreference: AnyObject {
     func sendprocessreference(process: Process?)
     func sendoutputprocessreference(outputprocess: OutputProcess?)
 }
@@ -134,7 +134,7 @@ extension SecondsBeforeStart {
     }
 }
 
-protocol Attributedestring: class {
+protocol Attributedestring: AnyObject {
     func attributedstring(str: String, color: NSColor, align: NSTextAlignment) -> NSMutableAttributedString
 }
 
@@ -150,12 +150,12 @@ extension Attributedestring {
 
 // Protocol for either completion of work or update progress when Process discovers a
 // process termination and when filehandler discover data
-protocol UpdateProgress: class {
+protocol UpdateProgress: AnyObject {
     func processTermination()
 }
 
 // Protocol for returning object Configurations
-protocol GetConfigurationsObject: class {
+protocol GetConfigurationsObject: AnyObject {
     func getconfigurationsobject() -> Configurations?
     func createandreloadconfigurations()
 }
@@ -176,7 +176,7 @@ extension SetConfigurations {
 }
 
 // Protocol for returning object configurations data
-protocol GetSchedulesObject: class {
+protocol GetSchedulesObject: AnyObject {
     func getschedulesobject() -> Schedules?
     func createandreloadschedules()
 }
@@ -197,7 +197,7 @@ extension SetSchedules {
 }
 
 // Protocol for returning object sorted and expanded
-protocol GetSortedandExpandedObject: class {
+protocol GetSortedandExpandedObject: AnyObject {
     func getsortedandexpandeobject() -> ScheduleSortedAndExpand?
 }
 
