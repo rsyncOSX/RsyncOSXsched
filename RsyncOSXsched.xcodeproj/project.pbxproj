@@ -132,6 +132,9 @@
 		E95547FF2035F4CD00D2E713 /* ExecuteTaskTimer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExecuteTaskTimer.swift; sourceTree = "<group>"; };
 		E95548002035F4CD00D2E713 /* ScheduleOperationTimer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScheduleOperationTimer.swift; sourceTree = "<group>"; };
 		E95738E9232B86D2000342FE /* FirstScheduledTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstScheduledTask.swift; sourceTree = "<group>"; };
+		E9640D4723B91C2C00223912 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Main.strings; sourceTree = "<group>"; };
+		E9640D4823B91C2C00223912 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
+		E9640D4923B91C2C00223912 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		E965E1AA20A17BF9004F42DC /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		E973F0ED227305E100412F60 /* ConvertSchedules.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConvertSchedules.swift; sourceTree = "<group>"; };
 		E973F0EE227305E100412F60 /* ConvertConfigurations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConvertConfigurations.swift; sourceTree = "<group>"; };
@@ -441,6 +444,7 @@
 				Base,
 				nb,
 				en,
+				de,
 			);
 			mainGroup = 94E0FC321BD7FC3600A3C537;
 			productRefGroup = 94E0FC3C1BD7FC3600A3C537 /* Products */;
@@ -584,6 +588,7 @@
 			children = (
 				94E0FC451BD7FC3600A3C537 /* Base */,
 				E9FA8C072279BF0100B28803 /* nb */,
+				E9640D4723B91C2C00223912 /* de */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -592,6 +597,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				E9C2CD592279D80300CF69AF /* nb */,
+				E9640D4923B91C2C00223912 /* de */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
@@ -600,6 +606,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				E9C2CD5C2279D80300CF69AF /* nb */,
+				E9640D4823B91C2C00223912 /* de */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";

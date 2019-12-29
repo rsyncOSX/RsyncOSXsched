@@ -97,7 +97,7 @@
                                             <tableColumns>
                                                 <tableColumn identifier="taskCellID" width="64" minWidth="40" maxWidth="1000" id="vtz-39-lIB">
                                                     <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" title="Task">
-                                                        <font key="font" metaFont="toolTip"/>
+                                                        <font key="font" metaFont="menu" size="11"/>
                                                         <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                                         <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
                                                     </tableHeaderCell>
@@ -110,7 +110,7 @@
                                                 </tableColumn>
                                                 <tableColumn identifier="scheduleID" width="51" minWidth="40" maxWidth="1000" id="Rb9-51-nDu">
                                                     <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="center" title="Schedule">
-                                                        <font key="font" metaFont="toolTip"/>
+                                                        <font key="font" metaFont="menu" size="11"/>
                                                         <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                                         <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
                                                     </tableHeaderCell>
@@ -123,7 +123,7 @@
                                                 </tableColumn>
                                                 <tableColumn identifier="inCellID" width="47" minWidth="40" maxWidth="1000" id="4o0-3W-taC">
                                                     <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="right" title="Start in">
-                                                        <font key="font" metaFont="toolTip"/>
+                                                        <font key="font" metaFont="menu" size="11"/>
                                                         <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                                         <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
                                                     </tableHeaderCell>
@@ -136,7 +136,7 @@
                                                 </tableColumn>
                                                 <tableColumn identifier="localCatalogCellID" width="151" minWidth="40" maxWidth="1000" id="l2d-BZ-Xq3">
                                                     <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" title="Local catalog">
-                                                        <font key="font" metaFont="toolTip"/>
+                                                        <font key="font" metaFont="menu" size="11"/>
                                                         <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                                         <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
                                                     </tableHeaderCell>
@@ -149,7 +149,7 @@
                                                 </tableColumn>
                                                 <tableColumn identifier="offsiteCatalogCellID" width="152" minWidth="10" maxWidth="3.4028234663852886e+38" id="gdH-5D-KCh">
                                                     <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="Remote catalog">
-                                                        <font key="font" metaFont="toolTip"/>
+                                                        <font key="font" metaFont="menu" size="11"/>
                                                         <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                     </tableHeaderCell>
@@ -162,7 +162,7 @@
                                                 </tableColumn>
                                                 <tableColumn identifier="offsiteServerCellID" width="81" minWidth="10" maxWidth="3.4028234663852886e+38" id="Luf-WA-iep" userLabel="Offsite server">
                                                     <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="Remote server">
-                                                        <font key="font" metaFont="toolTip"/>
+                                                        <font key="font" metaFont="menu" size="11"/>
                                                         <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                     </tableHeaderCell>
@@ -175,7 +175,7 @@
                                                 </tableColumn>
                                                 <tableColumn identifier="backupIDCellID" width="98" minWidth="10" maxWidth="3.4028234663852886e+38" id="IC7-e5-YBh" userLabel="ID">
                                                     <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="ID">
-                                                        <font key="font" metaFont="toolTip"/>
+                                                        <font key="font" metaFont="menu" size="11"/>
                                                         <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                     </tableHeaderCell>
@@ -218,7 +218,7 @@
                                 <rect key="frame" x="147" y="3" width="120" height="23"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <comboBoxCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" completes="NO" numberOfVisibleItems="5" id="D5A-Hv-N0n">
-                                    <font key="font" metaFont="toolTip"/>
+                                    <font key="font" metaFont="menu" size="11"/>
                                     <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </comboBoxCell>
@@ -230,7 +230,7 @@
                                 <rect key="frame" x="6" y="238" width="146" height="17"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Profile : default" id="xUm-lB-wAP">
-                                    <font key="font" metaFont="toolTip"/>
+                                    <font key="font" metaFont="menu" size="11"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
@@ -254,13 +254,13 @@
                                 <rect key="frame" x="302" y="8" width="48" height="15"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Working" id="Ybm-e4-iVi">
-                                    <font key="font" metaFont="toolTip"/>
+                                    <font key="font" metaFont="menu" size="11"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
                             <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XMI-Ue-7zn">
-                                <rect key="frame" x="489" y="-3" width="59" height="32"/>
+                                <rect key="frame" x="499" y="-3" width="59" height="32"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <buttonCell key="cell" type="push" title="Log" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="p1x-0f-6rG">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -271,7 +271,7 @@
                                 </connections>
                             </button>
                             <button horizontalHuggingPriority="249" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Qa3-Mx-RTB">
-                                <rect key="frame" x="407" y="-3" width="91" height="32"/>
+                                <rect key="frame" x="417" y="-3" width="91" height="32"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <buttonCell key="cell" type="push" title="Schedules" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="L8l-lJ-lKA">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -291,7 +291,7 @@
                                 </textFieldCell>
                             </textField>
                             <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="OEc-vd-ADi">
-                                <rect key="frame" x="538" y="-2" width="83" height="32"/>
+                                <rect key="frame" x="549" y="-2" width="72" height="32"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <buttonCell key="cell" type="push" title="Abort" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="uBp-4W-BLA">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -310,7 +310,7 @@
                                 <rect key="frame" x="6" y="25" width="673" height="18"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" enabled="NO" sendsActionOnEndEditing="YES" alignment="center" title="New version is available, see RsyncOSX download page..." id="XRT-w7-GWr">
-                                    <font key="font" metaFont="toolTip"/>
+                                    <font key="font" metaFont="menu" size="11"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
@@ -360,17 +360,17 @@
             <objects>
                 <viewController title="Details about files" storyboardIdentifier="StoryboardInformationID" id="SMW-uL-v3k" customClass="ViewControllerLog" customModule="RsyncOSXsched" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="Imu-hs-RtL">
-                        <rect key="frame" x="0.0" y="0.0" width="440" height="224"/>
+                        <rect key="frame" x="0.0" y="0.0" width="440" height="263"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <scrollView autohidesScrollers="YES" horizontalLineScroll="20" horizontalPageScroll="10" verticalLineScroll="20" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jpZ-V5-DSC">
-                                <rect key="frame" x="9" y="43" width="423" height="168"/>
+                                <rect key="frame" x="9" y="36" width="423" height="207"/>
                                 <clipView key="contentView" id="xbj-sj-mJw">
-                                    <rect key="frame" x="1" y="0.0" width="421" height="167"/>
+                                    <rect key="frame" x="1" y="0.0" width="421" height="206"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnSelection="YES" multipleSelection="NO" autosaveColumns="NO" rowHeight="18" rowSizeStyle="automatic" headerView="mJp-Xi-fw9" viewBased="YES" id="nqz-t1-Bam">
-                                            <rect key="frame" x="0.0" y="0.0" width="421" height="144"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="421" height="183"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <size key="intercellSpacing" width="3" height="2"/>
                                             <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -378,7 +378,7 @@
                                             <tableColumns>
                                                 <tableColumn identifier="outputID" width="418" minWidth="40" maxWidth="1000" id="ifM-NK-It0">
                                                     <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" title="Log">
-                                                        <font key="font" metaFont="toolTip"/>
+                                                        <font key="font" metaFont="menu" size="11"/>
                                                         <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                                         <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
                                                     </tableHeaderCell>
@@ -396,7 +396,7 @@
                                                                 <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2Tg-IL-MR8">
                                                                     <rect key="frame" x="0.0" y="3" width="416" height="14"/>
                                                                     <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" identifier="outputID" title="output" id="lnW-x5-dek">
-                                                                        <font key="font" metaFont="toolTip"/>
+                                                                        <font key="font" metaFont="menu" size="11"/>
                                                                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                                     </textFieldCell>
@@ -431,7 +431,10 @@
                                 </tableHeaderView>
                             </scrollView>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="9b4-TI-GsS">
-                                <rect key="frame" x="369" y="5" width="69" height="32"/>
+                                <rect key="frame" x="377" y="-2" width="61" height="32"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="49" id="4at-1U-kFH"/>
+                                </constraints>
                                 <buttonCell key="cell" type="push" title="Close" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="NAt-yd-56N">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" size="11" name="HelveticaNeue"/>
@@ -444,7 +447,10 @@ DQ
                                 </connections>
                             </button>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Pke-1b-da9">
-                                <rect key="frame" x="309" y="5" width="66" height="32"/>
+                                <rect key="frame" x="323" y="-2" width="61" height="32"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="49" id="Xdt-si-cFz"/>
+                                </constraints>
                                 <buttonCell key="cell" type="push" title="Write" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="tub-al-k7W">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" size="11" name="HelveticaNeue"/>
@@ -455,16 +461,16 @@ DQ
                             </button>
                         </subviews>
                         <constraints>
-                            <constraint firstItem="jpZ-V5-DSC" firstAttribute="trailing" secondItem="9b4-TI-GsS" secondAttribute="trailing" id="ETY-ry-Xf2"/>
-                            <constraint firstItem="jpZ-V5-DSC" firstAttribute="top" secondItem="Imu-hs-RtL" secondAttribute="top" constant="13" id="H7R-fM-VSs"/>
-                            <constraint firstItem="9b4-TI-GsS" firstAttribute="top" secondItem="jpZ-V5-DSC" secondAttribute="bottom" constant="10" id="HhE-FC-28d"/>
-                            <constraint firstItem="Pke-1b-da9" firstAttribute="baseline" secondItem="9b4-TI-GsS" secondAttribute="baseline" id="O64-8U-0QM"/>
-                            <constraint firstItem="9b4-TI-GsS" firstAttribute="top" secondItem="jpZ-V5-DSC" secondAttribute="bottom" constant="10" id="WkZ-Rq-yDh"/>
-                            <constraint firstAttribute="trailing" secondItem="9b4-TI-GsS" secondAttribute="trailing" constant="8" id="YfI-gn-GY2"/>
-                            <constraint firstAttribute="trailing" secondItem="jpZ-V5-DSC" secondAttribute="trailing" constant="8" id="jAe-EZ-hrb"/>
-                            <constraint firstItem="9b4-TI-GsS" firstAttribute="leading" secondItem="Pke-1b-da9" secondAttribute="trailing" constant="6" id="pPl-Kc-J9q"/>
-                            <constraint firstItem="jpZ-V5-DSC" firstAttribute="leading" secondItem="Imu-hs-RtL" secondAttribute="leading" constant="9" id="wZT-v8-7lO"/>
-                            <constraint firstAttribute="bottom" secondItem="9b4-TI-GsS" secondAttribute="bottom" constant="12" id="zJd-4f-LUh"/>
+                            <constraint firstAttribute="bottom" secondItem="Pke-1b-da9" secondAttribute="bottom" constant="5" id="7kQ-xF-25m"/>
+                            <constraint firstItem="9b4-TI-GsS" firstAttribute="top" secondItem="jpZ-V5-DSC" secondAttribute="bottom" constant="10" id="9jH-dD-Zly"/>
+                            <constraint firstAttribute="trailing" secondItem="jpZ-V5-DSC" secondAttribute="trailing" constant="8" id="GhV-3h-QMv"/>
+                            <constraint firstAttribute="trailing" secondItem="9b4-TI-GsS" secondAttribute="trailing" constant="8" id="IDi-YP-UDn"/>
+                            <constraint firstItem="jpZ-V5-DSC" firstAttribute="top" secondItem="Imu-hs-RtL" secondAttribute="top" constant="20" id="doH-zh-qdU"/>
+                            <constraint firstItem="9b4-TI-GsS" firstAttribute="leading" secondItem="Pke-1b-da9" secondAttribute="trailing" constant="5" id="hSj-o1-OGz"/>
+                            <constraint firstItem="jpZ-V5-DSC" firstAttribute="leading" secondItem="Imu-hs-RtL" secondAttribute="leading" constant="9" id="mbv-RX-1PR"/>
+                            <constraint firstItem="Pke-1b-da9" firstAttribute="top" secondItem="jpZ-V5-DSC" secondAttribute="bottom" constant="10" id="vAz-3Y-ee5"/>
+                            <constraint firstItem="Pke-1b-da9" firstAttribute="baseline" secondItem="9b4-TI-GsS" secondAttribute="baseline" id="wzR-xd-uwG"/>
+                            <constraint firstItem="9b4-TI-GsS" firstAttribute="trailing" secondItem="jpZ-V5-DSC" secondAttribute="trailing" id="yyU-06-6Op"/>
                         </constraints>
                     </view>
                     <connections>
@@ -474,7 +480,7 @@ DQ
                 </viewController>
                 <customObject id="4WV-RV-aJL" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-34" y="171"/>
+            <point key="canvasLocation" x="-34" y="202"/>
         </scene>
         <!--All schedules-->
         <scene sceneID="gAq-6v-PXK">
@@ -499,7 +505,7 @@ DQ
                                             <tableColumns>
                                                 <tableColumn identifier="profilename" width="84" minWidth="40" maxWidth="1000" id="CCr-KQ-oF9">
                                                     <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="Profilename">
-                                                        <font key="font" metaFont="toolTip"/>
+                                                        <font key="font" metaFont="menu" size="11"/>
                                                         <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                                         <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
                                                     </tableHeaderCell>
@@ -512,7 +518,7 @@ DQ
                                                 </tableColumn>
                                                 <tableColumn identifier="schedule" width="71" minWidth="40" maxWidth="1000" id="W9w-mv-yJ6">
                                                     <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="Schedule">
-                                                        <font key="font" metaFont="toolTip"/>
+                                                        <font key="font" metaFont="menu" size="11"/>
                                                         <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                                         <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
                                                     </tableHeaderCell>
@@ -525,7 +531,7 @@ DQ
                                                 </tableColumn>
                                                 <tableColumn identifier="intime" width="67" minWidth="10" maxWidth="3.4028234663852886e+38" id="kwV-jU-Gsi">
                                                     <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="center" title="In time">
-                                                        <font key="font" metaFont="toolTip"/>
+                                                        <font key="font" metaFont="menu" size="11"/>
                                                         <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     </tableHeaderCell>
@@ -556,15 +562,15 @@ DQ
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="80t-KH-wCz">
                                 <rect key="frame" x="5" y="171" width="237" height="14"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Double click on a row to select profile..." id="6Qr-L9-cOC">
-                                    <font key="font" metaFont="toolTip"/>
+                                    <font key="font" metaFont="menu" size="11"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Jud-ph-Q9h">
-                                <rect key="frame" x="170" y="-1" width="76" height="32"/>
+                                <rect key="frame" x="180" y="-1" width="66" height="32"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="64" id="S7L-Yd-EFo"/>
+                                    <constraint firstAttribute="width" constant="54" id="S7L-Yd-EFo"/>
                                 </constraints>
                                 <buttonCell key="cell" type="push" title="Close" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="ae6-sg-TdC">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -596,7 +602,7 @@ DQ
                 </viewController>
                 <customObject id="1C2-ag-uKe" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="329.5" y="154.5"/>
+            <point key="canvasLocation" x="330" y="155"/>
         </scene>
     </scenes>
     <resources>
