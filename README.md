@@ -24,17 +24,13 @@ Active scheduled tasks.
 
 ![](screenshots/menuapp3.png)
 
-### Application icon
-
-The application icon for `RsyncOSXsched.app` (not the `menu app` icon) is created by [Zsolt Sándor](https://github.com/graphis). All rights reserved to Zsolt Sándor.
-
 ### Signing and notarizing
 
 The app is signed with my Apple ID developer certificate and [notarized](https://support.apple.com/en-us/HT202491) by Apple. See [signing and notarizing](https://rsyncosx.github.io/Notarized) for info.
 
-#### SwiftLint
+### SwiftLint and SwiftFormat
 
-I am using [SwiftLint](https://github.com/realm/SwiftLint) as tool for writing more readable code. I am also using Paul Taykalo´s [swift-scripts](https://github.com/PaulTaykalo/swift-scripts) to find and delete not used code.
+I am using [SwiftLint](https://github.com/realm/SwiftLint) as tool for writing more readable code. I am also using Paul Taykalo´s [swift-scripts](https://github.com/PaulTaykalo/swift-scripts) to find and delete not used code. Another tool is [SwiftFormat](https://github.com/nicklockwood/SwiftFormat) for formatting swift code.
 
 ### Compile
 
