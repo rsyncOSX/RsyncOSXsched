@@ -10,7 +10,18 @@ The `menu app` can be started from RsyncOSX. This require paths for both apps to
 
 The `menu app` submit a notification when a scheduled tasks is completed. A scheduled task is either of type `once`, `daily` or `weekly`.
 
-![](screenshots/notifications.png)
+### Localization
+
+[RsyncOSX speaks new languages](https://rsyncosx.github.io/Localization). RsyncOSX is localized to:
+- German - by [Crowdin](https://crowdin.com/project/rsyncosx)
+- Norwegian - by me
+- English - by me, the base language of RsyncOSX
+
+Localization is done by utilizing [Crowdin](https://crowdin.com/project/rsyncosx) to translate the xliff files which are imported into Xcode after translating. Xcode then creates the required language strings. [Crowdin is free for open source projects](https://crowdin.com/page/open-source-project-setup-request).
+
+### Screenshots
+
+The menu app is a simple app with a few screens. The one and only task for the menu app is to execute scheduled RsyncOSX tasks. Every time a task is executed a notification is submitted.
 
 If there are tasks waiting for executing the status light is green.
 
