@@ -8,8 +8,6 @@ The `menu app` can be started from RsyncOSX. This require paths for both apps to
 
 ![](screenshots/userconfig.png).
 
-The `menu app` submit a notification when a scheduled tasks is completed. A scheduled task is either of type `once`, `daily` or `weekly`.
-
 ### Localization
 
 [RsyncOSX speaks new languages](https://rsyncosx.github.io/Localization). RsyncOSX is localized to:
