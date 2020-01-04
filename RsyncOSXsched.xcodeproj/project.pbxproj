@@ -125,6 +125,9 @@
 		E91C5DCC2026FFD200FE7E76 /* ConfigurationSchedule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfigurationSchedule.swift; sourceTree = "<group>"; };
 		E91D535F217F72ED001B7A6A /* RsyncOSXsched.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = RsyncOSXsched.entitlements; sourceTree = "<group>"; };
 		E92D74E02269A3D200330BBE /* CheckAllConfigurations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckAllConfigurations.swift; sourceTree = "<group>"; };
+		E936DE0423C0832B0099720D /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Main.strings; sourceTree = "<group>"; };
+		E936DE0523C0832B0099720D /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
+		E936DE0623C0832B0099720D /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		E9415401202F6E0C00BCE8A1 /* ViewControllerLog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerLog.swift; sourceTree = "<group>"; };
 		E946CDBC20279A85005BF6E9 /* Userconfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Userconfiguration.swift; sourceTree = "<group>"; };
 		E94DDC8620A40CC90041CF53 /* ViewControllerSchedules.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerSchedules.swift; sourceTree = "<group>"; };
@@ -445,6 +448,7 @@
 				nb,
 				en,
 				de,
+				fr,
 			);
 			mainGroup = 94E0FC321BD7FC3600A3C537;
 			productRefGroup = 94E0FC3C1BD7FC3600A3C537 /* Products */;
@@ -589,6 +593,7 @@
 				94E0FC451BD7FC3600A3C537 /* Base */,
 				E9FA8C072279BF0100B28803 /* nb */,
 				E9640D4723B91C2C00223912 /* de */,
+				E936DE0423C0832B0099720D /* fr */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -598,6 +603,7 @@
 			children = (
 				E9C2CD592279D80300CF69AF /* nb */,
 				E9640D4923B91C2C00223912 /* de */,
+				E936DE0623C0832B0099720D /* fr */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
@@ -607,6 +613,7 @@
 			children = (
 				E9C2CD5C2279D80300CF69AF /* nb */,
 				E9640D4823B91C2C00223912 /* de */,
+				E936DE0523C0832B0099720D /* fr */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";
