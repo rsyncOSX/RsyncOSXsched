@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="1.2" xsi:schemaLocation="urn:oasis:names:tc:xliff:document:1.2 http://docs.oasis-open.org/xliff/v1.2/os/xliff-core-1.2-strict.xsd">
+<xliff xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2" xsi:schemaLocation="urn:oasis:names:tc:xliff:document:1.2 http://docs.oasis-open.org/xliff/v1.2/os/xliff-core-1.2-strict.xsd">
   <file original="RsyncOSXsched/Base.lproj/Main.storyboard" source-language="en" target-language="fr" datatype="plaintext">
     <header>
       <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="11.3" build-num="11C29"/>
@@ -7,262 +7,262 @@
     <body>
       <trans-unit id="1Xt-HY-uBw.title" xml:space="preserve">
         <source>RsyncOSXsched</source>
-        <target>RsyncOSXsched</target>
+        <target state="translated">RsyncOSXsched</target>
         <note>Class = "NSMenuItem"; title = "RsyncOSXsched"; ObjectID = "1Xt-HY-uBw";</note>
       </trans-unit>
       <trans-unit id="4o0-3W-taC.headerCell.title" xml:space="preserve">
         <source>Start in</source>
-        <target>Start in</target>
+        <target state="translated">Commencer dans</target>
         <note>Class = "NSTableColumn"; headerCell.title = "Start in"; ObjectID = "4o0-3W-taC";</note>
       </trans-unit>
       <trans-unit id="4sb-4s-VLi.title" xml:space="preserve">
         <source>Quit RsyncOSXsched</source>
-        <target>Quit RsyncOSXsched</target>
+        <target state="translated">Quit RsyncOSXsched</target>
         <note>Class = "NSMenuItem"; title = "Quit RsyncOSXsched"; ObjectID = "4sb-4s-VLi";</note>
       </trans-unit>
       <trans-unit id="5c9-F6-lv3.title" xml:space="preserve">
         <source>All schedules</source>
-        <target>All schedules</target>
+        <target state="translated">Tous les horaires</target>
         <note>Class = "NSViewController"; title = "All schedules"; ObjectID = "5c9-F6-lv3";</note>
       </trans-unit>
       <trans-unit id="5kV-Vb-QxS.title" xml:space="preserve">
         <source>About RsyncOSXsched</source>
-        <target>About RsyncOSXsched</target>
+        <target state="translated">À propos de RsyncOSXsched</target>
         <note>Class = "NSMenuItem"; title = "About RsyncOSXsched"; ObjectID = "5kV-Vb-QxS";</note>
       </trans-unit>
       <trans-unit id="6Qr-L9-cOC.title" xml:space="preserve">
         <source>Double click on a row to select profile...</source>
-        <target>Double click on a row to select profile...</target>
+        <target state="translated">Double-cliquez sur une ligne pour sélectionner le profil...</target>
         <note>Class = "NSTextFieldCell"; title = "Double click on a row to select profile..."; ObjectID = "6Qr-L9-cOC";</note>
       </trans-unit>
       <trans-unit id="9Oe-pz-ahe.title" xml:space="preserve">
         <source>info</source>
-        <target>info</target>
+        <target state="translated">Infos</target>
         <note>Class = "NSTextFieldCell"; title = "info"; ObjectID = "9Oe-pz-ahe";</note>
       </trans-unit>
       <trans-unit id="9lr-pg-w2Y.title" xml:space="preserve">
         <source>Now</source>
-        <target>Now</target>
+        <target state="translated">Maintenant</target>
         <note>Class = "NSButtonCell"; title = "Now"; ObjectID = "9lr-pg-w2Y";</note>
       </trans-unit>
       <trans-unit id="AYu-sK-qS6.title" xml:space="preserve">
         <source>Main Menu</source>
-        <target>Main Menu</target>
+        <target state="translated">Menu principal</target>
         <note>Class = "NSMenu"; title = "Main Menu"; ObjectID = "AYu-sK-qS6";</note>
       </trans-unit>
       <trans-unit id="Apg-mF-s7e.title" xml:space="preserve">
         <source>Text Cell</source>
-        <target>Text Cell</target>
+        <target state="translated">Cellule de texte</target>
         <note>Class = "NSTextFieldCell"; title = "Text Cell"; ObjectID = "Apg-mF-s7e";</note>
       </trans-unit>
       <trans-unit id="BOF-NM-1cW.title" xml:space="preserve">
         <source>Preferences…</source>
-        <target>Preferences…</target>
+        <target state="translated">Préférences…</target>
         <note>Class = "NSMenuItem"; title = "Preferences…"; ObjectID = "BOF-NM-1cW";</note>
       </trans-unit>
       <trans-unit id="CCr-KQ-oF9.headerCell.title" xml:space="preserve">
         <source>Profilename</source>
-        <target>Profilename</target>
+        <target state="translated">Profilename</target>
         <note>Class = "NSTableColumn"; headerCell.title = "Profilename"; ObjectID = "CCr-KQ-oF9";</note>
       </trans-unit>
       <trans-unit id="CQC-uM-hG0.title" xml:space="preserve">
         <source>Text Cell</source>
-        <target>Text Cell</target>
+        <target state="translated">Cellule de texte</target>
         <note>Class = "NSTextFieldCell"; title = "Text Cell"; ObjectID = "CQC-uM-hG0";</note>
       </trans-unit>
       <trans-unit id="GMe-Tg-hJO.title" xml:space="preserve">
         <source>Text Cell</source>
-        <target>Text Cell</target>
+        <target state="translated">Cellule de texte</target>
         <note>Class = "NSTextFieldCell"; title = "Text Cell"; ObjectID = "GMe-Tg-hJO";</note>
       </trans-unit>
       <trans-unit id="IC7-e5-YBh.headerCell.title" xml:space="preserve">
         <source>ID</source>
-        <target>ID</target>
+        <target state="translated">ID</target>
         <note>Class = "NSTableColumn"; headerCell.title = "ID"; ObjectID = "IC7-e5-YBh";</note>
       </trans-unit>
       <trans-unit id="Kd2-mp-pUS.title" xml:space="preserve">
         <source>Show All</source>
-        <target>Show All</target>
+        <target state="translated">Tout afficher</target>
         <note>Class = "NSMenuItem"; title = "Show All"; ObjectID = "Kd2-mp-pUS";</note>
       </trans-unit>
       <trans-unit id="L8l-lJ-lKA.title" xml:space="preserve">
         <source>Schedules</source>
-        <target>Schedules</target>
+        <target state="translated">Calendriers</target>
         <note>Class = "NSButtonCell"; title = "Schedules"; ObjectID = "L8l-lJ-lKA";</note>
       </trans-unit>
       <trans-unit id="LbP-5c-NYf.title" xml:space="preserve">
         <source>Text Cell</source>
-        <target>Text Cell</target>
+        <target state="translated">Cellule de texte</target>
         <note>Class = "NSTextFieldCell"; title = "Text Cell"; ObjectID = "LbP-5c-NYf";</note>
       </trans-unit>
       <trans-unit id="Luf-WA-iep.headerCell.title" xml:space="preserve">
         <source>Remote server</source>
-        <target>Remote server</target>
+        <target state="translated">Serveur distant</target>
         <note>Class = "NSTableColumn"; headerCell.title = "Remote server"; ObjectID = "Luf-WA-iep";</note>
       </trans-unit>
       <trans-unit id="Mtm-oR-2oz.title" xml:space="preserve">
         <source>Text Cell</source>
-        <target>Text Cell</target>
+        <target state="translated">Cellule de texte</target>
         <note>Class = "NSTextFieldCell"; title = "Text Cell"; ObjectID = "Mtm-oR-2oz";</note>
       </trans-unit>
       <trans-unit id="NAt-yd-56N.title" xml:space="preserve">
         <source>Close</source>
-        <target>Close</target>
+        <target state="translated">Fermer</target>
         <note>Class = "NSButtonCell"; title = "Close"; ObjectID = "NAt-yd-56N";</note>
       </trans-unit>
       <trans-unit id="NMo-om-nkz.title" xml:space="preserve">
         <source>Services</source>
-        <target>Services</target>
+        <target state="translated">Services</target>
         <note>Class = "NSMenuItem"; title = "Services"; ObjectID = "NMo-om-nkz";</note>
       </trans-unit>
       <trans-unit id="OEe-RI-leW.title" xml:space="preserve">
         <source>RsyncOSXsched version : </source>
-        <target>RsyncOSXsched version : </target>
+        <target state="translated">Version de RsyncOSXsched : </target>
         <note>Class = "NSTextFieldCell"; title = "RsyncOSXsched version : "; ObjectID = "OEe-RI-leW";</note>
       </trans-unit>
       <trans-unit id="Olw-nP-bQN.title" xml:space="preserve">
         <source>Hide RsyncOSXsched</source>
-        <target>Hide RsyncOSXsched</target>
+        <target state="translated">Hide RsyncOSXsched</target>
         <note>Class = "NSMenuItem"; title = "Hide RsyncOSXsched"; ObjectID = "Olw-nP-bQN";</note>
       </trans-unit>
       <trans-unit id="QPq-ff-gA2.title" xml:space="preserve">
         <source>Quit</source>
-        <target>Quit</target>
+        <target state="translated">Quitter</target>
         <note>Class = "NSButtonCell"; title = "Quit"; ObjectID = "QPq-ff-gA2";</note>
       </trans-unit>
       <trans-unit id="Rb9-51-nDu.headerCell.title" xml:space="preserve">
         <source>Schedule</source>
-        <target>Schedule</target>
+        <target state="translated">Planifier</target>
         <note>Class = "NSTableColumn"; headerCell.title = "Schedule"; ObjectID = "Rb9-51-nDu";</note>
       </trans-unit>
       <trans-unit id="SMW-uL-v3k.title" xml:space="preserve">
         <source>Details about files</source>
-        <target>Details about files</target>
+        <target state="translated">Détails sur les fichiers</target>
         <note>Class = "NSViewController"; title = "Details about files"; ObjectID = "SMW-uL-v3k";</note>
       </trans-unit>
       <trans-unit id="Vdr-fp-XzO.title" xml:space="preserve">
         <source>Hide Others</source>
-        <target>Hide Others</target>
+        <target state="translated">Cacher les autres</target>
         <note>Class = "NSMenuItem"; title = "Hide Others"; ObjectID = "Vdr-fp-XzO";</note>
       </trans-unit>
       <trans-unit id="W9w-mv-yJ6.headerCell.title" xml:space="preserve">
         <source>Schedule</source>
-        <target>Schedule</target>
+        <target state="translated">Planifier</target>
         <note>Class = "NSTableColumn"; headerCell.title = "Schedule"; ObjectID = "W9w-mv-yJ6";</note>
       </trans-unit>
       <trans-unit id="WRj-Ji-Dme.title" xml:space="preserve">
         <source>Text Cell</source>
-        <target>Text Cell</target>
+        <target state="translated">Cellule de texte</target>
         <note>Class = "NSTextFieldCell"; title = "Text Cell"; ObjectID = "WRj-Ji-Dme";</note>
       </trans-unit>
       <trans-unit id="XRT-w7-GWr.title" xml:space="preserve">
         <source>New version is available, see RsyncOSX download page...</source>
-        <target>New version is available, see RsyncOSX download page...</target>
+        <target state="translated">Une nouvelle version est disponible, voir la page de téléchargement de RsyncOSX...</target>
         <note>Class = "NSTextFieldCell"; title = "New version is available, see RsyncOSX download page..."; ObjectID = "XRT-w7-GWr";</note>
       </trans-unit>
       <trans-unit id="Ybm-e4-iVi.title" xml:space="preserve">
         <source>Working</source>
-        <target>Working</target>
+        <target state="translated">Travailler</target>
         <note>Class = "NSTextFieldCell"; title = "Working"; ObjectID = "Ybm-e4-iVi";</note>
       </trans-unit>
       <trans-unit id="Zhf-Z3-f6P.title" xml:space="preserve">
         <source>Mocup</source>
-        <target>Mocup</target>
+        <target state="translated">Bouteille</target>
         <note>Class = "NSMenuItem"; title = "Mocup"; ObjectID = "Zhf-Z3-f6P";</note>
       </trans-unit>
       <trans-unit id="ae6-sg-TdC.title" xml:space="preserve">
         <source>Close</source>
-        <target>Close</target>
+        <target state="translated">Fermer</target>
         <note>Class = "NSButtonCell"; title = "Close"; ObjectID = "ae6-sg-TdC";</note>
       </trans-unit>
       <trans-unit id="bVy-VF-Maa.title" xml:space="preserve">
         <source>Text Cell</source>
-        <target>Text Cell</target>
+        <target state="translated">Cellule de texte</target>
         <note>Class = "NSTextFieldCell"; title = "Text Cell"; ObjectID = "bVy-VF-Maa";</note>
       </trans-unit>
       <trans-unit id="eNw-gw-gOP.title" xml:space="preserve">
         <source>Text Cell</source>
-        <target>Text Cell</target>
+        <target state="translated">Cellule de texte</target>
         <note>Class = "NSTextFieldCell"; title = "Text Cell"; ObjectID = "eNw-gw-gOP";</note>
       </trans-unit>
       <trans-unit id="gdH-5D-KCh.headerCell.title" xml:space="preserve">
         <source>Remote catalog</source>
-        <target>Remote catalog</target>
+        <target state="translated">Catalogue distant</target>
         <note>Class = "NSTableColumn"; headerCell.title = "Remote catalog"; ObjectID = "gdH-5D-KCh";</note>
       </trans-unit>
       <trans-unit id="gkG-rF-JAe.title" xml:space="preserve">
         <source>RsyncOSX</source>
-        <target>RsyncOSX</target>
+        <target state="translated">RsyncOSX</target>
         <note>Class = "NSButtonCell"; title = "RsyncOSX"; ObjectID = "gkG-rF-JAe";</note>
       </trans-unit>
       <trans-unit id="hz9-B4-Xy5.title" xml:space="preserve">
         <source>Services</source>
-        <target>Services</target>
+        <target state="translated">Services</target>
         <note>Class = "NSMenu"; title = "Services"; ObjectID = "hz9-B4-Xy5";</note>
       </trans-unit>
       <trans-unit id="ifM-NK-It0.headerCell.title" xml:space="preserve">
         <source>Log</source>
-        <target>Log</target>
+        <target state="translated">Logs</target>
         <note>Class = "NSTableColumn"; headerCell.title = "Log"; ObjectID = "ifM-NK-It0";</note>
       </trans-unit>
       <trans-unit id="kwV-jU-Gsi.headerCell.title" xml:space="preserve">
         <source>In time</source>
-        <target>In time</target>
+        <target state="translated">Dans le temps</target>
         <note>Class = "NSTableColumn"; headerCell.title = "In time"; ObjectID = "kwV-jU-Gsi";</note>
       </trans-unit>
       <trans-unit id="l2d-BZ-Xq3.headerCell.title" xml:space="preserve">
         <source>Local catalog</source>
-        <target>Local catalog</target>
+        <target state="translated">Catalogue local</target>
         <note>Class = "NSTableColumn"; headerCell.title = "Local catalog"; ObjectID = "l2d-BZ-Xq3";</note>
       </trans-unit>
       <trans-unit id="lnW-x5-dek.title" xml:space="preserve">
         <source>output</source>
-        <target>output</target>
+        <target state="translated">Sortie</target>
         <note>Class = "NSTextFieldCell"; title = "output"; ObjectID = "lnW-x5-dek";</note>
       </trans-unit>
       <trans-unit id="mYk-p2-itH.title" xml:space="preserve">
         <source>Text Cell</source>
-        <target>Text Cell</target>
+        <target state="translated">Cellule de texte</target>
         <note>Class = "NSTextFieldCell"; title = "Text Cell"; ObjectID = "mYk-p2-itH";</note>
       </trans-unit>
       <trans-unit id="p1x-0f-6rG.title" xml:space="preserve">
         <source>Log</source>
-        <target>Log</target>
+        <target state="translated">Logs</target>
         <note>Class = "NSButtonCell"; title = "Log"; ObjectID = "p1x-0f-6rG";</note>
       </trans-unit>
       <trans-unit id="qyk-58-p0P.title" xml:space="preserve">
         <source>Text Cell</source>
-        <target>Text Cell</target>
+        <target state="translated">Cellule de texte</target>
         <note>Class = "NSTextFieldCell"; title = "Text Cell"; ObjectID = "qyk-58-p0P";</note>
       </trans-unit>
       <trans-unit id="tub-al-k7W.title" xml:space="preserve">
         <source>Write</source>
-        <target>Write</target>
+        <target state="translated">Écrire</target>
         <note>Class = "NSButtonCell"; title = "Write"; ObjectID = "tub-al-k7W";</note>
       </trans-unit>
       <trans-unit id="uBp-4W-BLA.title" xml:space="preserve">
         <source>Abort</source>
-        <target>Abort</target>
+        <target state="translated">Abandonner</target>
         <note>Class = "NSButtonCell"; title = "Abort"; ObjectID = "uBp-4W-BLA";</note>
       </trans-unit>
       <trans-unit id="uQy-DD-JDr.title" xml:space="preserve">
         <source>RsyncOSXsched</source>
-        <target>RsyncOSXsched</target>
+        <target state="translated">RsyncOSXsched</target>
         <note>Class = "NSMenu"; title = "RsyncOSXsched"; ObjectID = "uQy-DD-JDr";</note>
       </trans-unit>
       <trans-unit id="vtz-39-lIB.headerCell.title" xml:space="preserve">
         <source>Task</source>
-        <target>Task</target>
+        <target state="translated">Tâche</target>
         <note>Class = "NSTableColumn"; headerCell.title = "Task"; ObjectID = "vtz-39-lIB";</note>
       </trans-unit>
       <trans-unit id="wN8-MI-RRk.title" xml:space="preserve">
         <source>Text Cell</source>
-        <target>Text Cell</target>
+        <target state="translated">Cellule de texte</target>
         <note>Class = "NSTextFieldCell"; title = "Text Cell"; ObjectID = "wN8-MI-RRk";</note>
       </trans-unit>
       <trans-unit id="xUm-lB-wAP.title" xml:space="preserve">
         <source>Profile : default</source>
-        <target>Profile : default</target>
+        <target state="translated">Profil : par défaut</target>
         <note>Class = "NSTextFieldCell"; title = "Profile : default"; ObjectID = "xUm-lB-wAP";</note>
       </trans-unit>
     </body>
@@ -274,12 +274,12 @@
     <body>
       <trans-unit id="CFBundleName" xml:space="preserve">
         <source>RsyncOSXsched</source>
-        <target>RsyncOSXsched</target>
+        <target state="translated">RsyncOSXsched</target>
         <note>Bundle name</note>
       </trans-unit>
       <trans-unit id="NSHumanReadableCopyright" xml:space="preserve">
         <source>Copyright © 2019 Thomas Evensen. All rights reserved.</source>
-        <target>Alle rettigheter © 2019 Thomas Evensen</target>
+        <target state="translated">Copyright © 2019 Thomas Evensen. Tous droits réservés.</target>
         <note>Copyright (human-readable)</note>
       </trans-unit>
     </body>
@@ -291,228 +291,228 @@
     <body>
       <trans-unit id="Activating schedules again after sleeping..." xml:space="preserve">
         <source>Activating schedules again after sleeping...</source>
-        <target>Aktiverer oppgaver etter søvn...</target>
+        <target state="translated">Activation des horaires après la mise en veille...</target>
         <note>main</note>
       </trans-unit>
       <trans-unit id="Adding result to log:" xml:space="preserve">
         <source>Adding result to log:</source>
-        <target>Legger til resultat til logg:</target>
+        <target state="translated">Ajout du résultat au log:</target>
         <note>Logg</note>
       </trans-unit>
       <trans-unit id="Default profile" xml:space="preserve">
         <source>Default profile</source>
-        <target>Default profil</target>
+        <target state="translated">Profil par défaut</target>
         <note>default profile</note>
       </trans-unit>
       <trans-unit id="Executing scheduled tasks is not enabled in RsyncOSX...." xml:space="preserve">
         <source>Executing scheduled tasks is not enabled in RsyncOSX....</source>
-        <target>Planlagte oppgaver ikke gjort tilgjengelig i RsyncOSX</target>
+        <target state="translated">L'exécution des tâches planifiées n'est pas activée dans RsyncOSX....</target>
         <note>main</note>
       </trans-unit>
       <trans-unit id="Executing task in profile" xml:space="preserve">
         <source>Executing task in profile</source>
-        <target>Utfører oppgave i profil</target>
+        <target state="translated">Exécution de la tâche dans le profil</target>
         <note>Execute</note>
       </trans-unit>
       <trans-unit id="First scheduled task:" xml:space="preserve">
         <source>First scheduled task:</source>
-        <target>Første oppgave:</target>
+        <target state="translated">Première tâche planifiée :</target>
         <note>firstask</note>
       </trans-unit>
       <trans-unit id="Got notification for reload" xml:space="preserve">
         <source>Got notification for reload</source>
-        <target>Fikk melding om relast</target>
+        <target state="translated">Notification reçue pour rechargement</target>
         <note>addobserverforreload</note>
       </trans-unit>
       <trans-unit id="Invalidating tasks and going to sleep..." xml:space="preserve">
         <source>Invalidating tasks and going to sleep...</source>
-        <target>Stopper planlagte oppgaver og går i dvale</target>
+        <target state="translated">Invalidation des tâches et mise en veille...</target>
         <note>main</note>
       </trans-unit>
       <trans-unit id="Loading profile:" xml:space="preserve">
         <source>Loading profile:</source>
-        <target>Laster profil:</target>
+        <target state="translated">Chargement du profil :</target>
         <note>schedule</note>
       </trans-unit>
       <trans-unit id="Message from scheduled backup..." xml:space="preserve">
         <source>Message from scheduled backup...</source>
-        <target>Informasjon fra oppgaver</target>
+        <target state="translated">Message de sauvegarde planifiée...</target>
         <note>Notification</note>
       </trans-unit>
       <trans-unit id="Mounted Volume discovered" xml:space="preserve">
         <source>Mounted Volume discovered</source>
-        <target>Montering av kataloger oppdaget</target>
+        <target state="translated">Volume monté découvert</target>
         <note>Mount</note>
       </trans-unit>
       <trans-unit id="Mounting volumes:" xml:space="preserve">
         <source>Mounting volumes:</source>
-        <target>Monterer katalog:</target>
+        <target state="translated">Montage des volumes:</target>
         <note>main</note>
       </trans-unit>
       <trans-unit id="No connection with server:" xml:space="preserve">
         <source>No connection with server:</source>
-        <target>Ingen kontakt med server:</target>
+        <target state="translated">Aucune connexion avec le serveur:</target>
         <note>loginfo</note>
       </trans-unit>
       <trans-unit id="No connection, bailed out..." xml:space="preserve">
         <source>No connection, bailed out...</source>
-        <target>Ingen kontakt, avslutter...</target>
+        <target state="translated">Aucune connexion, renflouée ...</target>
         <note>loginfo</note>
       </trans-unit>
       <trans-unit id="No hiddenID in dictionary" xml:space="preserve">
         <source>No hiddenID in dictionary</source>
-        <target>Ingen hiddenID I katalog</target>
+        <target state="translated">Aucun ID caché dans le dictionnaire</target>
         <note>Execute</note>
       </trans-unit>
       <trans-unit id="Profile" xml:space="preserve">
         <source>Profile</source>
-        <target>Profil</target>
+        <target state="translated">Profil</target>
         <note>default profile</note>
       </trans-unit>
       <trans-unit id="Profile:" xml:space="preserve">
         <source>Profile:</source>
-        <target>Profil:</target>
+        <target state="translated">Profil:</target>
         <note>main</note>
       </trans-unit>
       <trans-unit id="Profile: default loaded." xml:space="preserve">
         <source>Profile: default loaded.</source>
-        <target>Profil: default lastet</target>
+        <target state="translated">Profil: par défaut chargé.</target>
         <note>reloadinfo</note>
       </trans-unit>
       <trans-unit id="Reading configurations for current profile" xml:space="preserve">
         <source>Reading configurations for current profile</source>
-        <target>Leser konfigurasjon for gjeldende profil</target>
+        <target state="translated">Lecture des configurations pour le profil actuel</target>
         <note>main</note>
       </trans-unit>
       <trans-unit id="Reading schedules for current profile" xml:space="preserve">
         <source>Reading schedules for current profile</source>
-        <target>Leser oppgaver for gjeldende profil</target>
+        <target state="translated">Planification de lecture pour le profil actuel</target>
         <note>main</note>
       </trans-unit>
       <trans-unit id="Reloading all schedules..." xml:space="preserve">
         <source>Reloading all schedules...</source>
-        <target>Laster oppgaver på nytt...</target>
+        <target state="translated">Rechargement de tous les horaires...</target>
         <note>Sorted</note>
       </trans-unit>
       <trans-unit id="RsyncOSXsched version:" xml:space="preserve">
         <source>RsyncOSXsched version:</source>
-        <target>RsyncOSXsched versjon:</target>
+        <target state="translated">Version de RsyncOSXsched :</target>
         <note>main</note>
       </trans-unit>
       <trans-unit id="Schedule dispatch: no more scheduled task in queue" xml:space="preserve">
         <source>Schedule dispatch: no more scheduled task in queue</source>
-        <target>Oppgave dispatch: ingen flere oppgaver i kø.</target>
+        <target state="translated">Planifier l'envoi : plus de tâche planifiée en file d'attente</target>
         <note>Dispatch</note>
       </trans-unit>
       <trans-unit id="Schedule dispatch: setting next scheduled task in:" xml:space="preserve">
         <source>Schedule dispatch: setting next scheduled task in:</source>
-        <target>Oppgave dispatch: neste oppgave om:</target>
+        <target state="translated">Planifier l'envoi : définir la prochaine tâche planifiée dans:</target>
         <note>Dispatch</note>
       </trans-unit>
       <trans-unit id="Schedule timer: no more scheduled task in queue" xml:space="preserve">
         <source>Schedule timer: no more scheduled task in queue</source>
-        <target>Oppgave timer: ingen flere oppgaver i kø.</target>
+        <target state="translated">Planifier le minuteur : plus de tâche planifiée en file d'attente</target>
         <note>Timer</note>
       </trans-unit>
       <trans-unit id="Schedule timer: setting next scheduled task in:" xml:space="preserve">
         <source>Schedule timer: setting next scheduled task in:</source>
-        <target>Oppgave timer: neste oppgave om:</target>
+        <target state="translated">Planifier le chronomètre: définir la prochaine tâche planifiée dans:</target>
         <note>Timer</note>
       </trans-unit>
       <trans-unit id="Scheduled backup did not execute" xml:space="preserve">
         <source>Scheduled backup did not execute</source>
-        <target>Planlagt oppgave ikke utført</target>
+        <target state="translated">La sauvegarde planifiée n'a pas été exécutée</target>
         <note>Execute
    loginfo</note>
       </trans-unit>
       <trans-unit id="Some remote sites not avaliable, see log ...." xml:space="preserve">
         <source>Some remote sites not avaliable, see log ....</source>
-        <target>Noen eksterne servere er ikke tilgjengelig...</target>
+        <target state="translated">Quelques sites distants non disponibles, voir le journal ....</target>
         <note>main</note>
       </trans-unit>
       <trans-unit id="There was a rsync error" xml:space="preserve">
         <source>There was a rsync error</source>
-        <target>En rsync feil er oppstått</target>
+        <target state="translated">Il y a eu une erreur rsync</target>
         <note>rsyncerror</note>
       </trans-unit>
       <trans-unit id="Unmounting volumes:" xml:space="preserve">
         <source>Unmounting volumes:</source>
-        <target>Avmontering katalog:</target>
+        <target state="translated">Démontage des volumes :</target>
         <note>main</note>
       </trans-unit>
       <trans-unit id="Write and reload configurations" xml:space="preserve">
         <source>Write and reload configurations</source>
-        <target>Skriver og leser konfigurasjoner</target>
+        <target state="translated">Écrire et recharger les configurations</target>
         <note>Storage</note>
       </trans-unit>
       <trans-unit id="Write and reload schedules" xml:space="preserve">
         <source>Write and reload schedules</source>
-        <target>Skriver og leser oppgaver</target>
+        <target state="translated">Écrire et recharger les horaires</target>
         <note>Storage</note>
       </trans-unit>
       <trans-unit id="Writing:" xml:space="preserve">
         <source>Writing:</source>
-        <target>Skriver:</target>
+        <target state="translated">Écriture :</target>
         <note>ReadWrite</note>
       </trans-unit>
       <trans-unit id="daily" xml:space="preserve">
         <source>daily</source>
-        <target>daglig</target>
+        <target state="translated">tous les jours</target>
         <note>main</note>
       </trans-unit>
       <trans-unit id="days" xml:space="preserve">
         <source>days</source>
-        <target>dager</target>
+        <target state="translated">Jours</target>
         <note>datetime</note>
       </trans-unit>
       <trans-unit id="default" xml:space="preserve">
         <source>default</source>
-        <target>default</target>
+        <target state="translated">par défaut</target>
         <note>main</note>
       </trans-unit>
       <trans-unit id="h" xml:space="preserve">
         <source>h</source>
-        <target>t</target>
+        <target state="translated">h</target>
         <note>datetime</note>
       </trans-unit>
       <trans-unit id="hours" xml:space="preserve">
         <source>hours</source>
-        <target>timer</target>
+        <target state="translated">heures</target>
         <note>datetime</note>
       </trans-unit>
       <trans-unit id="in" xml:space="preserve">
         <source>in</source>
-        <target>om</target>
+        <target state="translated">dans</target>
         <note>firstask</note>
       </trans-unit>
       <trans-unit id="in:" xml:space="preserve">
         <source>in:</source>
-        <target>om:</target>
+        <target state="translated">dans:</target>
         <note>Mount</note>
       </trans-unit>
       <trans-unit id="mins" xml:space="preserve">
         <source>mins</source>
-        <target>min</target>
+        <target state="translated">minutes</target>
         <note>datetime</note>
       </trans-unit>
       <trans-unit id="once" xml:space="preserve">
         <source>once</source>
-        <target>engang</target>
+        <target state="translated">une fois</target>
         <note>main</note>
       </trans-unit>
       <trans-unit id="secs" xml:space="preserve">
         <source>secs</source>
-        <target>sek</target>
+        <target state="translated">secondes</target>
         <note>datetime</note>
       </trans-unit>
       <trans-unit id="to disk" xml:space="preserve">
         <source>to disk</source>
-        <target>til disk</target>
+        <target state="translated">sur le disque</target>
         <note>ReadWrite</note>
       </trans-unit>
       <trans-unit id="weekly" xml:space="preserve">
         <source>weekly</source>
-        <target>ukentlig</target>
+        <target state="translated">hebdomadaire</target>
         <note>main</note>
       </trans-unit>
     </body>

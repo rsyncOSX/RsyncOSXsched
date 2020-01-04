@@ -1,156 +1,156 @@
-
 /* Class = "NSMenuItem"; title = "RsyncOSXsched"; ObjectID = "1Xt-HY-uBw"; */
 "1Xt-HY-uBw.title" = "RsyncOSXsched";
 
 /* Class = "NSTableColumn"; headerCell.title = "Start in"; ObjectID = "4o0-3W-taC"; */
-"4o0-3W-taC.headerCell.title" = "Start in";
+"4o0-3W-taC.headerCell.title" = "Commencer dans";
 
 /* Class = "NSMenuItem"; title = "Quit RsyncOSXsched"; ObjectID = "4sb-4s-VLi"; */
 "4sb-4s-VLi.title" = "Quit RsyncOSXsched";
 
 /* Class = "NSViewController"; title = "All schedules"; ObjectID = "5c9-F6-lv3"; */
-"5c9-F6-lv3.title" = "All schedules";
+"5c9-F6-lv3.title" = "Tous les horaires";
 
 /* Class = "NSMenuItem"; title = "About RsyncOSXsched"; ObjectID = "5kV-Vb-QxS"; */
-"5kV-Vb-QxS.title" = "About RsyncOSXsched";
+"5kV-Vb-QxS.title" = "À propos de RsyncOSXsched";
 
 /* Class = "NSTextFieldCell"; title = "Double click on a row to select profile..."; ObjectID = "6Qr-L9-cOC"; */
-"6Qr-L9-cOC.title" = "Double click on a row to select profile...";
-
-/* Class = "NSTextFieldCell"; title = "info"; ObjectID = "9Oe-pz-ahe"; */
-"9Oe-pz-ahe.title" = "info";
+"6Qr-L9-cOC.title" = "Double-cliquez sur une ligne pour sélectionner le profil...";
 
 /* Class = "NSButtonCell"; title = "Now"; ObjectID = "9lr-pg-w2Y"; */
-"9lr-pg-w2Y.title" = "Now";
+"9lr-pg-w2Y.title" = "Maintenant";
 
-/* Class = "NSMenu"; title = "Main Menu"; ObjectID = "AYu-sK-qS6"; */
-"AYu-sK-qS6.title" = "Main Menu";
+/* Class = "NSTextFieldCell"; title = "info"; ObjectID = "9Oe-pz-ahe"; */
+"9Oe-pz-ahe.title" = "Infos";
+
+/* Class = "NSButtonCell"; title = "Close"; ObjectID = "ae6-sg-TdC"; */
+"ae6-sg-TdC.title" = "Fermer";
 
 /* Class = "NSTextFieldCell"; title = "Text Cell"; ObjectID = "Apg-mF-s7e"; */
-"Apg-mF-s7e.title" = "Text Cell";
+"Apg-mF-s7e.title" = "Cellule de texte";
+
+/* Class = "NSMenu"; title = "Main Menu"; ObjectID = "AYu-sK-qS6"; */
+"AYu-sK-qS6.title" = "Menu principal";
 
 /* Class = "NSMenuItem"; title = "Preferences…"; ObjectID = "BOF-NM-1cW"; */
-"BOF-NM-1cW.title" = "Preferences…";
+"BOF-NM-1cW.title" = "Préférences…";
+
+/* Class = "NSTextFieldCell"; title = "Text Cell"; ObjectID = "bVy-VF-Maa"; */
+"bVy-VF-Maa.title" = "Cellule de texte";
 
 /* Class = "NSTableColumn"; headerCell.title = "Profilename"; ObjectID = "CCr-KQ-oF9"; */
 "CCr-KQ-oF9.headerCell.title" = "Profilename";
 
 /* Class = "NSTextFieldCell"; title = "Text Cell"; ObjectID = "CQC-uM-hG0"; */
-"CQC-uM-hG0.title" = "Text Cell";
+"CQC-uM-hG0.title" = "Cellule de texte";
+
+/* Class = "NSTextFieldCell"; title = "Text Cell"; ObjectID = "eNw-gw-gOP"; */
+"eNw-gw-gOP.title" = "Cellule de texte";
+
+/* Class = "NSTableColumn"; headerCell.title = "Remote catalog"; ObjectID = "gdH-5D-KCh"; */
+"gdH-5D-KCh.headerCell.title" = "Catalogue distant";
+
+/* Class = "NSButtonCell"; title = "RsyncOSX"; ObjectID = "gkG-rF-JAe"; */
+"gkG-rF-JAe.title" = "RsyncOSX";
 
 /* Class = "NSTextFieldCell"; title = "Text Cell"; ObjectID = "GMe-Tg-hJO"; */
-"GMe-Tg-hJO.title" = "Text Cell";
+"GMe-Tg-hJO.title" = "Cellule de texte";
+
+/* Class = "NSMenu"; title = "Services"; ObjectID = "hz9-B4-Xy5"; */
+"hz9-B4-Xy5.title" = "Services";
 
 /* Class = "NSTableColumn"; headerCell.title = "ID"; ObjectID = "IC7-e5-YBh"; */
 "IC7-e5-YBh.headerCell.title" = "ID";
 
+/* Class = "NSTableColumn"; headerCell.title = "Log"; ObjectID = "ifM-NK-It0"; */
+"ifM-NK-It0.headerCell.title" = "Logs";
+
 /* Class = "NSMenuItem"; title = "Show All"; ObjectID = "Kd2-mp-pUS"; */
-"Kd2-mp-pUS.title" = "Show All";
+"Kd2-mp-pUS.title" = "Tout afficher";
+
+/* Class = "NSTableColumn"; headerCell.title = "In time"; ObjectID = "kwV-jU-Gsi"; */
+"kwV-jU-Gsi.headerCell.title" = "Dans le temps";
+
+/* Class = "NSTableColumn"; headerCell.title = "Local catalog"; ObjectID = "l2d-BZ-Xq3"; */
+"l2d-BZ-Xq3.headerCell.title" = "Catalogue local";
 
 /* Class = "NSButtonCell"; title = "Schedules"; ObjectID = "L8l-lJ-lKA"; */
-"L8l-lJ-lKA.title" = "Schedules";
+"L8l-lJ-lKA.title" = "Calendriers";
 
 /* Class = "NSTextFieldCell"; title = "Text Cell"; ObjectID = "LbP-5c-NYf"; */
-"LbP-5c-NYf.title" = "Text Cell";
+"LbP-5c-NYf.title" = "Cellule de texte";
+
+/* Class = "NSTextFieldCell"; title = "output"; ObjectID = "lnW-x5-dek"; */
+"lnW-x5-dek.title" = "Sortie";
 
 /* Class = "NSTableColumn"; headerCell.title = "Remote server"; ObjectID = "Luf-WA-iep"; */
-"Luf-WA-iep.headerCell.title" = "Remote server";
+"Luf-WA-iep.headerCell.title" = "Serveur distant";
 
 /* Class = "NSTextFieldCell"; title = "Text Cell"; ObjectID = "Mtm-oR-2oz"; */
-"Mtm-oR-2oz.title" = "Text Cell";
+"Mtm-oR-2oz.title" = "Cellule de texte";
+
+/* Class = "NSTextFieldCell"; title = "Text Cell"; ObjectID = "mYk-p2-itH"; */
+"mYk-p2-itH.title" = "Cellule de texte";
 
 /* Class = "NSButtonCell"; title = "Close"; ObjectID = "NAt-yd-56N"; */
-"NAt-yd-56N.title" = "Close";
+"NAt-yd-56N.title" = "Fermer";
 
 /* Class = "NSMenuItem"; title = "Services"; ObjectID = "NMo-om-nkz"; */
 "NMo-om-nkz.title" = "Services";
 
 /* Class = "NSTextFieldCell"; title = "RsyncOSXsched version : "; ObjectID = "OEe-RI-leW"; */
-"OEe-RI-leW.title" = "RsyncOSXsched version : ";
+"OEe-RI-leW.title" = "Version de RsyncOSXsched : ";
 
 /* Class = "NSMenuItem"; title = "Hide RsyncOSXsched"; ObjectID = "Olw-nP-bQN"; */
 "Olw-nP-bQN.title" = "Hide RsyncOSXsched";
 
-/* Class = "NSButtonCell"; title = "Quit"; ObjectID = "QPq-ff-gA2"; */
-"QPq-ff-gA2.title" = "Quit";
-
-/* Class = "NSTableColumn"; headerCell.title = "Schedule"; ObjectID = "Rb9-51-nDu"; */
-"Rb9-51-nDu.headerCell.title" = "Schedule";
-
-/* Class = "NSViewController"; title = "Details about files"; ObjectID = "SMW-uL-v3k"; */
-"SMW-uL-v3k.title" = "Details about files";
-
-/* Class = "NSMenuItem"; title = "Hide Others"; ObjectID = "Vdr-fp-XzO"; */
-"Vdr-fp-XzO.title" = "Hide Others";
-
-/* Class = "NSTableColumn"; headerCell.title = "Schedule"; ObjectID = "W9w-mv-yJ6"; */
-"W9w-mv-yJ6.headerCell.title" = "Schedule";
-
-/* Class = "NSTextFieldCell"; title = "Text Cell"; ObjectID = "WRj-Ji-Dme"; */
-"WRj-Ji-Dme.title" = "Text Cell";
-
-/* Class = "NSTextFieldCell"; title = "New version is available, see RsyncOSX download page..."; ObjectID = "XRT-w7-GWr"; */
-"XRT-w7-GWr.title" = "New version is available, see RsyncOSX download page...";
-
-/* Class = "NSTextFieldCell"; title = "Working"; ObjectID = "Ybm-e4-iVi"; */
-"Ybm-e4-iVi.title" = "Working";
-
-/* Class = "NSMenuItem"; title = "Mocup"; ObjectID = "Zhf-Z3-f6P"; */
-"Zhf-Z3-f6P.title" = "Mocup";
-
-/* Class = "NSButtonCell"; title = "Close"; ObjectID = "ae6-sg-TdC"; */
-"ae6-sg-TdC.title" = "Close";
-
-/* Class = "NSTextFieldCell"; title = "Text Cell"; ObjectID = "bVy-VF-Maa"; */
-"bVy-VF-Maa.title" = "Text Cell";
-
-/* Class = "NSTextFieldCell"; title = "Text Cell"; ObjectID = "eNw-gw-gOP"; */
-"eNw-gw-gOP.title" = "Text Cell";
-
-/* Class = "NSTableColumn"; headerCell.title = "Remote catalog"; ObjectID = "gdH-5D-KCh"; */
-"gdH-5D-KCh.headerCell.title" = "Remote catalog";
-
-/* Class = "NSButtonCell"; title = "RsyncOSX"; ObjectID = "gkG-rF-JAe"; */
-"gkG-rF-JAe.title" = "RsyncOSX";
-
-/* Class = "NSMenu"; title = "Services"; ObjectID = "hz9-B4-Xy5"; */
-"hz9-B4-Xy5.title" = "Services";
-
-/* Class = "NSTableColumn"; headerCell.title = "Log"; ObjectID = "ifM-NK-It0"; */
-"ifM-NK-It0.headerCell.title" = "Log";
-
-/* Class = "NSTableColumn"; headerCell.title = "In time"; ObjectID = "kwV-jU-Gsi"; */
-"kwV-jU-Gsi.headerCell.title" = "In time";
-
-/* Class = "NSTableColumn"; headerCell.title = "Local catalog"; ObjectID = "l2d-BZ-Xq3"; */
-"l2d-BZ-Xq3.headerCell.title" = "Local catalog";
-
-/* Class = "NSTextFieldCell"; title = "output"; ObjectID = "lnW-x5-dek"; */
-"lnW-x5-dek.title" = "output";
-
-/* Class = "NSTextFieldCell"; title = "Text Cell"; ObjectID = "mYk-p2-itH"; */
-"mYk-p2-itH.title" = "Text Cell";
-
 /* Class = "NSButtonCell"; title = "Log"; ObjectID = "p1x-0f-6rG"; */
-"p1x-0f-6rG.title" = "Log";
+"p1x-0f-6rG.title" = "Logs";
+
+/* Class = "NSButtonCell"; title = "Quit"; ObjectID = "QPq-ff-gA2"; */
+"QPq-ff-gA2.title" = "Quitter";
 
 /* Class = "NSTextFieldCell"; title = "Text Cell"; ObjectID = "qyk-58-p0P"; */
-"qyk-58-p0P.title" = "Text Cell";
+"qyk-58-p0P.title" = "Cellule de texte";
+
+/* Class = "NSTableColumn"; headerCell.title = "Schedule"; ObjectID = "Rb9-51-nDu"; */
+"Rb9-51-nDu.headerCell.title" = "Planifier";
+
+/* Class = "NSViewController"; title = "Details about files"; ObjectID = "SMW-uL-v3k"; */
+"SMW-uL-v3k.title" = "Détails sur les fichiers";
 
 /* Class = "NSButtonCell"; title = "Write"; ObjectID = "tub-al-k7W"; */
-"tub-al-k7W.title" = "Write";
+"tub-al-k7W.title" = "Écrire";
 
 /* Class = "NSButtonCell"; title = "Abort"; ObjectID = "uBp-4W-BLA"; */
-"uBp-4W-BLA.title" = "Abort";
+"uBp-4W-BLA.title" = "Abandonner";
 
 /* Class = "NSMenu"; title = "RsyncOSXsched"; ObjectID = "uQy-DD-JDr"; */
 "uQy-DD-JDr.title" = "RsyncOSXsched";
 
+/* Class = "NSMenuItem"; title = "Hide Others"; ObjectID = "Vdr-fp-XzO"; */
+"Vdr-fp-XzO.title" = "Cacher les autres";
+
 /* Class = "NSTableColumn"; headerCell.title = "Task"; ObjectID = "vtz-39-lIB"; */
-"vtz-39-lIB.headerCell.title" = "Task";
+"vtz-39-lIB.headerCell.title" = "Tâche";
+
+/* Class = "NSTableColumn"; headerCell.title = "Schedule"; ObjectID = "W9w-mv-yJ6"; */
+"W9w-mv-yJ6.headerCell.title" = "Planifier";
 
 /* Class = "NSTextFieldCell"; title = "Text Cell"; ObjectID = "wN8-MI-RRk"; */
-"wN8-MI-RRk.title" = "Text Cell";
+"wN8-MI-RRk.title" = "Cellule de texte";
+
+/* Class = "NSTextFieldCell"; title = "Text Cell"; ObjectID = "WRj-Ji-Dme"; */
+"WRj-Ji-Dme.title" = "Cellule de texte";
+
+/* Class = "NSTextFieldCell"; title = "New version is available, see RsyncOSX download page..."; ObjectID = "XRT-w7-GWr"; */
+"XRT-w7-GWr.title" = "Une nouvelle version est disponible, voir la page de téléchargement de RsyncOSX...";
 
 /* Class = "NSTextFieldCell"; title = "Profile : default"; ObjectID = "xUm-lB-wAP"; */
-"xUm-lB-wAP.title" = "Profile : default";
+"xUm-lB-wAP.title" = "Profil : par défaut";
+
+/* Class = "NSTextFieldCell"; title = "Working"; ObjectID = "Ybm-e4-iVi"; */
+"Ybm-e4-iVi.title" = "Travailler";
+
+/* Class = "NSMenuItem"; title = "Mocup"; ObjectID = "Zhf-Z3-f6P"; */
+"Zhf-Z3-f6P.title" = "Bouteille";
+
