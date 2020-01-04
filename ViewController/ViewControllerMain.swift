@@ -67,7 +67,9 @@ class ViewControllerMain: NSViewController, Delay, Setlog {
     override func viewDidAppear() {
         super.viewDidAppear()
         self.setprofiles()
-        self.checkforrunning()
+        if Running().rsyncOSXisrunning == true {
+            self.rsyncosxbutton.isEnabled = false
+        }
         self.info(num: 3)
         if self.profilename == nil {
             self.profilescombobox.stringValue = NSLocalizedString("Default profile", comment: "default profile")
@@ -84,18 +86,6 @@ class ViewControllerMain: NSViewController, Delay, Setlog {
             self.reloadselectedprofile()
             self.schedulesortedandexpanded = ScheduleSortedAndExpand()
             self.startfirstscheduledtask()
-        }
-    }
-
-    private func checkforrunning() {
-        guard Running().rsyncOSXisrunning == false else {
-            self.rsyncosxbutton.isEnabled = false
-            return
-        }
-        if ViewControllerReference.shared.pathrsyncosx != nil {
-            self.rsyncosxbutton.isEnabled = true
-        } else {
-            self.rsyncosxbutton.isEnabled = false
         }
     }
 
