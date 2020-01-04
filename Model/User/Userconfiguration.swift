@@ -32,7 +32,7 @@ struct Userconfiguration {
         if let rsyncPath = dict.value(forKey: "rsyncPath") as? String {
             ViewControllerReference.shared.localrsyncpath = rsyncPath
         }
-       // Paths rsyncOSX and RsyncOSXsched
+        // Paths rsyncOSX and RsyncOSXsched
         if let pathrsyncosx = dict.value(forKey: "pathrsyncosx") as? String {
             if pathrsyncosx.isEmpty == true {
                 ViewControllerReference.shared.pathrsyncosx = nil
