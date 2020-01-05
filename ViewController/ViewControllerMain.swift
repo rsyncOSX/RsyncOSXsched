@@ -67,9 +67,6 @@ class ViewControllerMain: NSViewController, Delay, Setlog {
     override func viewDidAppear() {
         super.viewDidAppear()
         self.setprofiles()
-        if Running().rsyncOSXisrunning == true {
-            self.rsyncosxbutton.isEnabled = false
-        }
         self.info(num: 3)
         if self.profilename == nil {
             self.profilescombobox.stringValue = NSLocalizedString("Default profile", comment: "default profile")
@@ -108,7 +105,10 @@ class ViewControllerMain: NSViewController, Delay, Setlog {
     }
 
     @IBAction func openRsyncOSX(_: NSButton) {
-        let pathtorsyncosxapp: String = ViewControllerReference.shared.pathrsyncosx ?? "/Applications/" + ViewControllerReference.shared.namersyncosx
+        let running = Running()
+        guard running.rsyncOSXisrunning == false else { return }
+        let pathtorsyncosxapp: String = (ViewControllerReference.shared.pathrsyncosx ?? "/Applications/") + ViewControllerReference.shared.namersyncosx
+        guard running.verifypatexists(pathorfilename: pathtorsyncosxapp) == true else { return }
         NSWorkspace.shared.open(URL(fileURLWithPath: pathtorsyncosxapp))
         NSApp.terminate(self)
     }

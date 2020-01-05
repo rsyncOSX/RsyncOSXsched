@@ -15,6 +15,12 @@ class Running {
     var rsyncOSXisrunning: Bool = false
     var rsyncOSXschedisrunning: Bool = false
 
+    func verifypatexists(pathorfilename: String) -> Bool {
+        let fileManager = FileManager.default
+        guard fileManager.fileExists(atPath: pathorfilename) else { return false }
+        return true
+    }
+
     func checkforrunningapps() {
         // Get all running applications
         let workspace = NSWorkspace.shared
