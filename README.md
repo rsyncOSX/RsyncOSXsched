@@ -10,8 +10,9 @@ The `menu app` can be started from RsyncOSX. This require paths for both apps to
 
 ### Localization
 
-[RsyncOSX speaks new languages](https://rsyncosx.github.io/Localization). RsyncOSX is localized to:
-- German - by [Crowdin](https://crowdin.com/project/rsyncosx)
+[RsyncOSX speaks new languages](https://rsyncosx.github.io/Localization). RsyncOSXsched is localized to:
+- German - by [Andre](https://github.com/andre68723), is completed and released as **release candidate**
+- French - translated by [crowdin](https://crowdin.com/project/rsyncosx), is completed and released as **release candidate**
 - Norwegian - by me
 - English - by me, the base language of RsyncOSX
 
