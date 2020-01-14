@@ -11,10 +11,10 @@ The `menu app` can be started from RsyncOSX. This require paths for both apps to
 ### Localization
 
 [RsyncOSX speaks new languages](https://rsyncosx.github.io/Localization). RsyncOSXsched is localized to:
-- German - by [Andre](https://github.com/andre68723), is completed and released as **release candidate**
-- French - translated by [crowdin](https://crowdin.com/project/rsyncosx), is completed and released as **release candidate**
+- German - by [Andre](https://github.com/andre68723)
+- French - translated by [crowdin](https://crowdin.com/project/rsyncosx)
 - Norwegian - by me
-- English - by me, the base language of RsyncOSX
+- English - by me and the base language of RsyncOSXsched
 
 Localization is done by utilizing [Crowdin](https://crowdin.com/project/rsyncosx) to translate the xliff files which are imported into Xcode after translating. Xcode then creates the required language strings. [Crowdin is free for open source projects](https://crowdin.com/page/open-source-project-setup-request).
 
