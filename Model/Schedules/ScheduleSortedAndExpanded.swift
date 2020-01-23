@@ -14,7 +14,7 @@ class ScheduleSortedAndExpand: Setlog {
     // Reference to main View
     private var schedulesNSDictionary: [NSDictionary]?
     private var scheduleConfiguration: [ConfigurationSchedule]?
-    private var expandedData = [NSDictionary]()
+    private var expandedData: [NSDictionary]?
     var sortedschedules: [NSDictionary]?
     var tcpconnections: TCPconnections?
 
@@ -44,7 +44,7 @@ class ScheduleSortedAndExpand: Setlog {
                     "timetostart": time,
                     "profilename": profilename,
                 ]
-                self.expandedData.append(dictSchedule)
+                self.expandedData!.append(dictSchedule)
             }
         }
     }
@@ -65,7 +65,7 @@ class ScheduleSortedAndExpand: Setlog {
                     "timetostart": time,
                     "profilename": profilename,
                 ]
-                self.expandedData.append(dictSchedule)
+                self.expandedData!.append(dictSchedule)
             }
         }
     }
@@ -94,7 +94,7 @@ class ScheduleSortedAndExpand: Setlog {
                         "timetostart": time,
                         "profilename": profilename,
                     ]
-                    self.expandedData.append(dict)
+                    self.expandedData!.append(dict)
                 case "daily":
                     self.daily(dateStart: dateStart, schedule: schedule, dict: dict)
                 case "weekly":
@@ -103,7 +103,7 @@ class ScheduleSortedAndExpand: Setlog {
                     break
                 }
             }
-            self.sortedschedules = self.expandedData.sorted { (di1, di2) -> Bool in
+            self.sortedschedules = self.expandedData!.sorted { (di1, di2) -> Bool in
                 if (di1.value(forKey: "start") as? Date)!.timeIntervalSince((di2.value(forKey: "start") as? Date)!) > 0 {
                     return false
                 } else {
@@ -167,6 +167,7 @@ class ScheduleSortedAndExpand: Setlog {
 
     init() {
         self.logDelegate?.addlog(logrecord: NSLocalizedString("Reloading all schedules...", comment: "Sorted"))
+        self.expandedData = [NSDictionary]()
         let allschedules = Allschedules()
         self.scheduleConfiguration = allschedules.allschedules
         self.setallscheduledtasksNSDictionary()
