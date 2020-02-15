@@ -14,6 +14,8 @@ class ScheduleWriteLoggData: SetConfigurations {
     var schedules: [ConfigurationSchedule]?
     var profile: String?
 
+    typealias Row = (Int, Int)
+
     // Function adds results of task to file (via memory). Memory are
     // saved after changed. Used in either single tasks or batch.
     // - parameter hiddenID : hiddenID for task
@@ -48,7 +50,8 @@ class ScheduleWriteLoggData: SetConfigurations {
         loop: for i in 0 ..< self.schedules!.count where
             self.configurations!.getResourceConfiguration(hiddenID, resource: .task) == ViewControllerReference.shared.synchronize ||
             self.configurations!.getResourceConfiguration(hiddenID, resource: .task) == ViewControllerReference.shared.snapshot ||
-            self.configurations!.getResourceConfiguration(hiddenID, resource: .task) == ViewControllerReference.shared.syncremote {
+            self.configurations!.getResourceConfiguration(hiddenID, resource: .task) ==
+            ViewControllerReference.shared.syncremote {
             if self.schedules![i].hiddenID == hiddenID,
                 self.schedules![i].schedule == "manuel",
                 self.schedules![i].dateStop == nil {
@@ -65,9 +68,7 @@ class ScheduleWriteLoggData: SetConfigurations {
 
     private func addlognew(hiddenID: Int, result: String, date: String) -> Bool {
         var loggadded: Bool = false
-        if self.configurations!.getResourceConfiguration(hiddenID, resource: .task) == ViewControllerReference.shared.synchronize ||
-            self.configurations!.getResourceConfiguration(hiddenID, resource: .task) == ViewControllerReference.shared.snapshot ||
-            self.configurations!.getResourceConfiguration(hiddenID, resource: .task) == ViewControllerReference.shared.syncremote {
+        if ViewControllerReference.shared.synctasks.contains(self.configurations!.getResourceConfiguration(hiddenID, resource: .task)) {
             let masterdict = NSMutableDictionary()
             masterdict.setObject(hiddenID, forKey: "hiddenID" as NSCopying)
             masterdict.setObject("01 Jan 1900 00:00", forKey: "dateStart" as NSCopying)
@@ -84,48 +85,8 @@ class ScheduleWriteLoggData: SetConfigurations {
         return loggadded
     }
 
-    /// Function adds results of task to file (via memory). Memory are
-    /// saved after changed. Used in either single tasks or batch.
-    /// - parameter hiddenID : hiddenID for task
-    /// - parameter dateStart : String representation of date and time stamp start schedule
-    /// - parameter result : String representation of result
-    /// - parameter date : String representation of date and time stamp for task executed
-    /// - parameter schedule : schedule of task
-    func addresultschedule(hiddenID: Int, dateStart: String, result: String, date: String, schedule: String) {
-        if ViewControllerReference.shared.detailedlogging {
-            var logged: Bool = false
-            for i in 0 ..< self.schedules!.count where
-                self.schedules![i].hiddenID == hiddenID &&
-                self.schedules![i].schedule == schedule &&
-                self.schedules![i].dateStart == dateStart {
-                if self.configurations!.getResourceConfiguration(hiddenID, resource: .task) == ViewControllerReference.shared.synchronize ||
-                    self.configurations!.getResourceConfiguration(hiddenID, resource: .task) == ViewControllerReference.shared.snapshot ||
-                    self.configurations!.getResourceConfiguration(hiddenID, resource: .task) == ViewControllerReference.shared.syncremote {
-                    logged = true
-                    let dict = NSMutableDictionary()
-                    var resultannotaded: String?
-                    let config = self.getconfig(hiddenID: hiddenID)
-                    if config.task == ViewControllerReference.shared.snapshot {
-                        let snapshotnum = String(config.snapshotnum!)
-                        resultannotaded = "(" + snapshotnum + ") " + result
-                    } else {
-                        resultannotaded = result
-                    }
-                    dict.setObject(date, forKey: "dateExecuted" as NSCopying)
-                    dict.setObject(resultannotaded ?? "", forKey: "resultExecuted" as NSCopying)
-                    self.schedules![i].logrecords.append(dict)
-                    _ = PersistentStorageScheduling(profile: self.profile).savescheduleInMemoryToPersistentStore()
-                }
-            }
-            // This might happen if a task is executed by schedule and there are no previous logged run
-            if logged == false {
-                self.addlog(hiddenID: hiddenID, result: result)
-            }
-        }
-    }
-
     private func getconfig(hiddenID: Int) -> Configuration {
-        let index = self.configurations?.getIndex(hiddenID: hiddenID) ?? 0
+        let index = self.configurations?.getIndex(hiddenID) ?? 0
         return self.configurations!.getConfigurations()[index]
     }
 

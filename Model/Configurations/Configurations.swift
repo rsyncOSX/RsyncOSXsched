@@ -24,7 +24,7 @@ enum ResourceInConfiguration {
     case task
 }
 
-class Configurations {
+class Configurations: SetSchedules {
     // reference to Process, used for kill in executing task
     var process: Process?
     private var profile: String?
@@ -40,22 +40,26 @@ class Configurations {
         return self.configurations ?? []
     }
 
-    // Function sets currentDate on Configuration when executed on task
-    // stored in memory and then saves updated configuration from memory to persistent store.
-    // Function also notifies Execute view to refresh data
-    // in tableView.
-    // - parameter index: index of Configuration to update
-    func setCurrentDateonConfigurationQuickbackup(index: Int) {
+    func gethiddenID(index: Int) -> Int {
+        guard index != -1, index < (self.configurations?.count ?? -1) else { return -1 }
+        return self.configurations![index].hiddenID
+    }
+
+    func setCurrentDateonConfiguration(index: Int, outputprocess: OutputProcess?) {
+        let number = Numbers(outputprocess: outputprocess)
+        let hiddenID = self.gethiddenID(index: index)
+        let numbers = number.stats()
+        self.schedules!.addlog(hiddenID: hiddenID, result: numbers)
         if self.configurations![index].task == ViewControllerReference.shared.snapshot {
             self.increasesnapshotnum(index: index)
         }
-        let currendate = Date().en_us_string_from_date()
-        self.configurations![index].dateRun = currendate
+        let currendate = Date()
+        self.configurations![index].dateRun = currendate.en_us_string_from_date()
         // Saving updated configuration in memory to persistent store
         _ = PersistentStorageConfiguration(profile: self.profile).saveconfigInMemoryToPersistentStore()
     }
 
-    func getIndex(hiddenID: Int) -> Int {
+    func getIndex(_ hiddenID: Int) -> Int {
         var index: Int = -1
         loop: for i in 0 ..< self.configurations!.count where self.configurations![i].hiddenID == hiddenID {
             index = i

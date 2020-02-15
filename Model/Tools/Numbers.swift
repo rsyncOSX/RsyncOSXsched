@@ -108,17 +108,14 @@ final class Numbers: SetConfigurations {
         self.deletefiles = 0
     }
 
-    // Collecting statistics about job
-    func stats(numberOfFiles: String?, sizeOfFiles: String?) -> String {
+    func stats() -> String {
+        let numberOfFiles = String(self.transferNum ?? 0)
+        let sizeOfFiles = String(self.transferNumSize ?? 0)
         var numbers: String?
         var parts: [String]?
         guard self.resultRsync != nil else {
-            if numberOfFiles == nil || sizeOfFiles == nil {
-                return "0"
-            } else {
-                let size = numberOfFiles! + " files :" + sizeOfFiles! + " KB" + " in just a few seconds"
-                return size
-            }
+            let size = numberOfFiles + " files :" + sizeOfFiles + " KB" + " in just a few seconds"
+            return size
         }
         if ViewControllerReference.shared.rsyncversion3 {
             // ["sent", "409687", "bytes", "", "received", "5331", "bytes", "", "830036.00", "bytes/sec"]
@@ -168,6 +165,7 @@ final class Numbers: SetConfigurations {
     }
 
     init(outputprocess: OutputProcess?) {
+        guard outputprocess != nil else { return }
         self.output = outputprocess!.trimoutput(trim: .two)
         // Getting the summarized output from output.
         if self.output!.count > 2 {

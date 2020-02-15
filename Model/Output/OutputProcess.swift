@@ -24,27 +24,8 @@ final class OutputProcess {
     weak var errorDelegate: RsyncError?
     var error: Bool = false
 
-    func getMaxcount() -> Int {
-        if self.trimmedoutput == nil {
-            _ = self.trimoutput(trim: .two)
-        }
-        return self.maxnumber
-    }
-
     func count() -> Int {
         return self.output?.count ?? 0
-    }
-
-    func getrawOutput() -> [String]? {
-        return self.output
-    }
-
-    func getOutput() -> [String]? {
-        if self.trimmedoutput != nil {
-            return self.trimmedoutput
-        } else {
-            return self.output
-        }
     }
 
     func addlinefromoutput(str: String) {
