@@ -12,6 +12,17 @@
 
 import Foundation
 
+// enum for returning what is asked for
+enum EnumNumbers {
+    case totalNumber
+    case totalDirs
+    case totalNumberSizebytes
+    case transferredNumber
+    case transferredNumberSizebytes
+    case new
+    case delete
+}
+
 final class Numbers: SetConfigurations {
     // Second last String in Array rsync output of how much in what time
     private var resultRsync: String?
@@ -43,6 +54,30 @@ final class Numbers: SetConfigurations {
     var new: [String]?
     // Delete files
     var delete: [String]?
+
+    // Get numbers from rsync (dry run)
+    func getTransferredNumbers(numbers: EnumNumbers) -> Int {
+        switch numbers {
+        case .totalDirs:
+            return self.totDir ?? 0
+        case .totalNumber:
+            return self.totNum ?? 0
+        case .transferredNumber:
+            return self.transferNum ?? 0
+        case .totalNumberSizebytes:
+            let size = self.totNumSize ?? 0
+            return Int(size / 1024)
+        case .transferredNumberSizebytes:
+            let size = self.transferNumSize ?? 0
+            return Int(size / 1024)
+        case .new:
+            let num = self.newfiles ?? 0
+            return Int(num)
+        case .delete:
+            let num = self.deletefiles ?? 0
+            return Int(num)
+        }
+    }
 
     private func checandadjustknumbers() {
         guard self.transferNum != nil else { return }
@@ -108,17 +143,14 @@ final class Numbers: SetConfigurations {
         self.deletefiles = 0
     }
 
-    // Collecting statistics about job
-    func stats(numberOfFiles: String?, sizeOfFiles: String?) -> String {
+    func stats() -> String {
+        let numberOfFiles = String(self.transferNum ?? 0)
+        let sizeOfFiles = String(self.transferNumSize ?? 0)
         var numbers: String?
         var parts: [String]?
         guard self.resultRsync != nil else {
-            if numberOfFiles == nil || sizeOfFiles == nil {
-                return "0"
-            } else {
-                let size = numberOfFiles! + " files :" + sizeOfFiles! + " KB" + " in just a few seconds"
-                return size
-            }
+            let size = numberOfFiles + " files :" + sizeOfFiles + " KB" + " in just a few seconds"
+            return size
         }
         if ViewControllerReference.shared.rsyncversion3 {
             // ["sent", "409687", "bytes", "", "received", "5331", "bytes", "", "830036.00", "bytes/sec"]
@@ -168,6 +200,7 @@ final class Numbers: SetConfigurations {
     }
 
     init(outputprocess: OutputProcess?) {
+        guard outputprocess != nil else { return }
         self.output = outputprocess!.trimoutput(trim: .two)
         // Getting the summarized output from output.
         if self.output!.count > 2 {
