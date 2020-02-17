@@ -56,8 +56,7 @@ class ProcessCmd: Delay, SetConfigurations {
         let outHandle = pipe.fileHandleForReading
         outHandle.waitForDataInBackgroundAndNotify()
         // Observator for reading data from pipe, observer is removed when Process terminates
-        self.notifications_datahandle = NotificationCenter.default.addObserver(forName: NSNotification.Name.NSFileHandleDataAvailable,
-                                                                               object: nil, queue: nil) { [weak self] _ in
+        self.notifications_datahandle = NotificationCenter.default.addObserver(forName: NSNotification.Name.NSFileHandleDataAvailable, object: nil, queue: nil) { [weak self] _ in
             let data = outHandle.availableData
             if data.count > 0 {
                 if let str = NSString(data: data, encoding: String.Encoding.utf8.rawValue) {
@@ -67,8 +66,7 @@ class ProcessCmd: Delay, SetConfigurations {
             }
         }
         // Observator Process termination, observer is removed when Process terminates
-        self.notifications_termination = NotificationCenter.default.addObserver(forName: Process.didTerminateNotification,
-                                                                                object: nil, queue: nil) { _ in
+        self.notifications_termination = NotificationCenter.default.addObserver(forName: Process.didTerminateNotification, object: nil, queue: nil) { _ in
             self.delayWithSeconds(0.5) {
                 self.updateDelegate?.processTermination()
                 // Must remove for deallocation

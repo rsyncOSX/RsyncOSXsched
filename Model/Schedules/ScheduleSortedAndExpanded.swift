@@ -145,9 +145,7 @@ class ScheduleSortedAndExpand: Setlog {
         }
     }
 
-    /// Function is reading Schedule plans and transform plans to
-    /// array of NSDictionary.
-    /// - returns : none
+    // Function is reading Schedule plans and transform plans to array of NSDictionary.
     private func setallscheduledtasksNSDictionary() {
         guard self.scheduleConfiguration != nil else { return }
         var data = [NSDictionary]()
