@@ -198,7 +198,7 @@ class ViewControllerMain: NSViewController, Delay, Setlog {
                 let info2: String = NSLocalizedString("Executing scheduled tasks is not enabled in RsyncOSX....", comment: "main")
                 self.info.stringValue = info2
             case 3:
-                self.info.stringValue = FirsScheduledTask().taskintime ?? ""
+                self.info.stringValue = FirsScheduledTask().firsscheduledtaskintime ?? ""
             default:
                 self.info.stringValue = ""
             }
