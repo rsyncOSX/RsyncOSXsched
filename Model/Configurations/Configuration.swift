@@ -12,7 +12,6 @@ struct Configuration {
     var localCatalog: String
     var offsiteCatalog: String
     var offsiteUsername: String
-    var batch: Int
     var dryrun: String
     var parameter1: String
     var parameter2: String
@@ -55,16 +54,6 @@ struct Configuration {
         self.localCatalog = dictionary.object(forKey: "localCatalog") as? String ?? ""
         self.offsiteCatalog = dictionary.object(forKey: "offsiteCatalog") as? String ?? ""
         self.offsiteUsername = dictionary.object(forKey: "offsiteUsername") as? String ?? ""
-        // Convert string batch to Int
-        if let batch = dictionary.object(forKey: "batch") as? String {
-            if batch == "yes" {
-                self.batch = 1
-            } else {
-                self.batch = 0
-            }
-        } else {
-            self.batch = dictionary.object(forKey: "batch") as? Int ?? 0
-        }
         self.dryrun = dictionary.object(forKey: "dryrun") as? String ?? ""
         self.parameter1 = dictionary.object(forKey: "parameter1") as? String ?? ""
         self.parameter2 = dictionary.object(forKey: "parameter2") as? String ?? ""

@@ -304,8 +304,6 @@ extension ViewControllerMain: NSTableViewDelegate, Attributedestring {
                     return ""
                 }
             }
-        case "batchCellID":
-            return object[tableColumn!.identifier]
         case "offsiteServerCellID":
             if (object[tableColumn!.identifier] as? String)!.isEmpty {
                 return "localhost"

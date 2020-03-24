@@ -17,7 +17,6 @@ struct ConvertOneConfig {
         let row: NSDictionary = [
             "profilename": self.profile ?? NSLocalizedString("Default profile", comment: "default profile"),
             "taskCellID": self.config!.task,
-            "batchCellID": self.config!.batch,
             "hiddenID": self.config!.hiddenID,
             "localCatalogCellID": self.config!.localCatalog,
             "offsiteCatalogCellID": self.config!.offsiteCatalog,
