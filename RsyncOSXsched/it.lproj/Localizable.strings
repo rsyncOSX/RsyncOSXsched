@@ -1,136 +1,136 @@
 /* main */
-"Activating schedules again after sleeping..." = "Aktiverer oppgaver etter søvn...";
+"Activating schedules again after sleeping..." = "Attivazione dei programmi dopo la sospensione...";
 
 /* Logg */
-"Adding result to log:" = "Legger til resultat til logg:";
+"Adding result to log:" = "Aggiunta del risultato al registro:";
 
 /* main */
-"daily" = "daglig";
+"daily" = "ogni giorno";
 
 /* datetime */
-"days" = "dager";
+"days" = "giorni";
 
 /* main */
-"default" = "default";
+"default" = "predefinito";
 
 /* default profile */
-"Default profile" = "Default profil";
+"Default profile" = "Profilo standard";
 
 /* main */
-"Executing scheduled tasks is not enabled in RsyncOSX...." = "Planlagte oppgaver ikke gjort tilgjengelig i RsyncOSX";
+"Executing scheduled tasks is not enabled in RsyncOSX...." = "L'esecuzione delle attività pianificate non è abilitata in RsyncOSX....";
 
 /* Execute */
-"Executing task in profile" = "Utfører oppgave i profil";
+"Executing task in profile" = "Esecuzione del task nel profilo";
 
 /* firstask */
-"First scheduled task:" = "Første oppgave:";
+"First scheduled task:" = "Modificare attività pianificata:";
 
 /* addobserverforreload */
-"Got notification for reload" = "Fikk melding om relast";
+"Got notification for reload" = "Ricevuta notifica per ricaricare";
 
 /* datetime */
-"h" = "t";
+"h" = "h";
 
 /* datetime */
-"hours" = "timer";
+"hours" = "ore";
 
 /* firstask */
-"in" = "om";
+"in" = "in";
 
 /* Mount */
-"in:" = "om:";
+"in:" = "in:";
 
 /* main */
-"Invalidating tasks and going to sleep..." = "Stopper planlagte oppgaver og går i dvale";
+"Invalidating tasks and going to sleep..." = "Invalidare i compiti e andare a dormire...";
 
 /* schedule */
-"Loading profile:" = "Laster profil:";
+"Loading profile:" = "Carica il Profilo:";
 
 /* Notification */
-"Message from scheduled backup..." = "Informasjon fra oppgaver";
+"Message from scheduled synchronizing..." = "Messaggio dalla sincronizzazione programmata...";
 
 /* datetime */
-"mins" = "min";
+"mins" = "minuti";
 
 /* Mount */
-"Mounted Volume discovered" = "Montering av kataloger oppdaget";
+"Mounted Volume discovered" = "Volume montaggio scoperto";
 
 /* main */
-"Mounting volumes:" = "Monterer katalog:";
+"Mounting volumes:" = "Volume di montaggio:";
 
 /* loginfo */
-"No connection with server:" = "Ingen kontakt med server:";
+"No connection with server:" = "No connection with server:";
 
 /* loginfo */
-"No connection, bailed out..." = "Ingen kontakt, avslutter...";
+"No connection, bailed out..." = "Nessuna connessione, salvata...";
 
 /* Execute */
-"No hiddenID in dictionary" = "Ingen hiddenID I katalog";
+"No hiddenID in dictionary" = "Nessun hiddenID nel dizionario";
 
 /* main */
-"once" = "engang";
+"once" = "una sola volta";
 
 /* default profile */
-"Profile" = "Profil";
+"Profile" = "Profilo";
 
 /* main */
-"Profile:" = "Profil:";
+"Profile:" = "Profilo:";
 
 /* reloadinfo */
-"Profile: default loaded." = "Profil: default lastet";
+"Profile: default loaded." = "Profilo: predefinito caricato.";
 
 /* main */
-"Reading configurations for current profile" = "Leser konfigurasjon for gjeldende profil";
+"Reading configurations for current profile" = "Lettura configurazioni per il profilo corrente";
 
 /* main */
-"Reading schedules for current profile" = "Leser oppgaver for gjeldende profil";
+"Reading schedules for current profile" = "Lettura configurazioni per il profilo corrente";
 
 /* Sorted */
-"Reloading all schedules..." = "Laster oppgaver på nytt...";
+"Reloading all schedules..." = "Ricaricando tutte le programmazioni...";
 
 /* main */
-"RsyncOSXsched version:" = "RsyncOSXsched versjon:";
+"RsyncOSXsched version:" = "Versione RsyncOSXsched:";
 
 /* Dispatch */
-"Schedule dispatch: no more scheduled task in queue" = "Oppgave dispatch: ingen flere oppgaver i kø.";
+"Schedule dispatch: no more scheduled task in queue" = "Pianifica l'invio: nessuna attività pianificata in coda";
 
 /* Dispatch */
-"Schedule dispatch: setting next scheduled task in:" = "Oppgave dispatch: neste oppgave om:";
+"Schedule dispatch: setting next scheduled task in:" = "Pianifica spedizione: impostare la prossima operazione pianificata in:";
 
 /* Timer */
-"Schedule timer: no more scheduled task in queue" = "Oppgave timer: ingen flere oppgaver i kø.";
+"Schedule timer: no more scheduled task in queue" = "Pianifica l'invio: nessuna attività pianificata in coda";
 
 /* Timer */
-"Schedule timer: setting next scheduled task in:" = "Oppgave timer: neste oppgave om:";
+"Schedule timer: setting next scheduled task in:" = "Pianifica spedizione: impostare la prossima operazione pianificata in:";
 
 /* Execute
    loginfo */
-"Scheduled backup did not execute" = "Planlagt oppgave ikke utført";
+"Scheduled backup did not execute" = "Il backup programmato non è stato eseguito";
 
 /* datetime */
-"secs" = "sek";
+"secs" = "secondi";
 
 /* main */
-"Some remote sites not avaliable, see log ...." = "Noen eksterne servere er ikke tilgjengelig...";
+"Some remote sites not avaliable, see log ...." = "Alcuni siti remoti non sono disponibili, vedi log ....";
 
 /* rsyncerror */
-"There was a rsync error" = "En rsync feil er oppstått";
+"There was a rsync error" = "Si è verificato un errore";
 
 /* ReadWrite */
-"to disk" = "til disk";
+"to disk" = "su disco";
 
 /* main */
-"Unmounting volumes:" = "Avmontering katalog:";
+"Unmounting volumes:" = "Volume di montaggio:";
 
 /* main */
-"weekly" = "ukentlig";
+"weekly" = "settimanale";
 
 /* Storage */
-"Write and reload configurations" = "Skriver og leser konfigurasjoner";
+"Write and reload configurations" = "Scrivi e ricarica le configurazioni";
 
 /* Storage */
-"Write and reload schedules" = "Skriver og leser oppgaver";
+"Write and reload schedules" = "Scrivere e ricaricare le pianificazioni";
 
 /* ReadWrite */
-"Writing:" = "Skriver:";
+"Writing:" = "Scrittura:";
 

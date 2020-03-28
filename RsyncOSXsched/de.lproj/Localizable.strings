@@ -29,16 +29,16 @@
 "Got notification for reload" = "Benachrichtigung beim Neuladen erhalten";
 
 /* datetime */
-"h" = "h";
+"h" = "s";
 
 /* datetime */
 "hours" = "std";
 
 /* firstask */
-"in" = "in";
+"in" = "an";
 
 /* Mount */
-"in:" = "in:";
+"in:" = "an:";
 
 /* main */
 "Invalidating tasks and going to sleep..." = "Aufgaben ungültig werden und schlafen...";
@@ -47,7 +47,7 @@
 "Loading profile:" = "Lade Profil:";
 
 /* Notification */
-"Message from scheduled backup..." = "Nachricht von geplanter Sicherung...";
+"Message from scheduled synchronizing..." = "Nachricht von geplanter Synchronisierung...";
 
 /* datetime */
 "mins" = "min";

@@ -101,7 +101,7 @@
 "OEe-RI-leW.title" = "Version de RsyncOSXsched : ";
 
 /* Class = "NSMenuItem"; title = "Hide RsyncOSXsched"; ObjectID = "Olw-nP-bQN"; */
-"Olw-nP-bQN.title" = "Hide RsyncOSXsched";
+"Olw-nP-bQN.title" = "Chemin RsyncOSXsched";
 
 /* Class = "NSButtonCell"; title = "Log"; ObjectID = "p1x-0f-6rG"; */
 "p1x-0f-6rG.title" = "Logs";
