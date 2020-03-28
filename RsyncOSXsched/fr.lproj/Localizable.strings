@@ -47,7 +47,7 @@
 "Loading profile:" = "Chargement du profil :";
 
 /* Notification */
-"Message from scheduled backup..." = "Message de sauvegarde planifiée...";
+"Message from scheduled synchronizing..." = "Message de la synchronisation programmée...";
 
 /* datetime */
 "mins" = "minutes";

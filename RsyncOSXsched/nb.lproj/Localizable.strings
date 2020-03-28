@@ -11,7 +11,7 @@
 "days" = "dager";
 
 /* main */
-"default" = "default";
+"default" = "standard";
 
 /* default profile */
 "Default profile" = "Default profil";
@@ -47,7 +47,7 @@
 "Loading profile:" = "Laster profil:";
 
 /* Notification */
-"Message from scheduled backup..." = "Informasjon fra oppgaver";
+"Message from scheduled synchronizing..." = "Beskjed fra planlagt synkronisering...";
 
 /* datetime */
 "mins" = "min";

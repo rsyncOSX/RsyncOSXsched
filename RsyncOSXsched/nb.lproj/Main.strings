@@ -16,11 +16,11 @@
 /* Class = "NSTextFieldCell"; title = "Double click on a row to select profile..."; ObjectID = "6Qr-L9-cOC"; */
 "6Qr-L9-cOC.title" = "Dobbel klikk på en rad for å velge profil...";
 
-/* Class = "NSTextFieldCell"; title = "Status next task:"; ObjectID = "7YM-08-OZC"; */
-"7YM-08-OZC.title" = "Status neste oppgave:";
-
 /* Class = "NSButtonCell"; title = "Now"; ObjectID = "9lr-pg-w2Y"; */
 "9lr-pg-w2Y.title" = "Nå";
+
+/* Class = "NSTextFieldCell"; title = "info"; ObjectID = "9Oe-pz-ahe"; */
+"9Oe-pz-ahe.title" = "info";
 
 /* Class = "NSButtonCell"; title = "Close"; ObjectID = "ae6-sg-TdC"; */
 "ae6-sg-TdC.title" = "Lukk";
@@ -43,15 +43,6 @@
 /* Class = "NSTextFieldCell"; title = "Text Cell"; ObjectID = "CQC-uM-hG0"; */
 "CQC-uM-hG0.title" = "Text Cell";
 
-/* Class = "NSComboBoxCell"; D5A-Hv-N0n.ibShadowedObjectValues[0] = "Item 1"; ObjectID = "D5A-Hv-N0n"; */
-"D5A-Hv-N0n.ibShadowedObjectValues[0]" = "Item 1";
-
-/* Class = "NSComboBoxCell"; D5A-Hv-N0n.ibShadowedObjectValues[1] = "Item 2"; ObjectID = "D5A-Hv-N0n"; */
-"D5A-Hv-N0n.ibShadowedObjectValues[1]" = "Item 2";
-
-/* Class = "NSComboBoxCell"; D5A-Hv-N0n.ibShadowedObjectValues[2] = "Item 3"; ObjectID = "D5A-Hv-N0n"; */
-"D5A-Hv-N0n.ibShadowedObjectValues[2]" = "Item 3";
-
 /* Class = "NSTextFieldCell"; title = "Text Cell"; ObjectID = "eNw-gw-gOP"; */
 "eNw-gw-gOP.title" = "Text Cell";
 
@@ -65,7 +56,7 @@
 "GMe-Tg-hJO.title" = "Text Cell";
 
 /* Class = "NSMenu"; title = "Services"; ObjectID = "hz9-B4-Xy5"; */
-"hz9-B4-Xy5.title" = "Services";
+"hz9-B4-Xy5.title" = "Tjenester";
 
 /* Class = "NSTableColumn"; headerCell.title = "ID"; ObjectID = "IC7-e5-YBh"; */
 "IC7-e5-YBh.headerCell.title" = "ID";
@@ -92,7 +83,7 @@
 "lnW-x5-dek.title" = "output";
 
 /* Class = "NSTableColumn"; headerCell.title = "Remote server"; ObjectID = "Luf-WA-iep"; */
-"Luf-WA-iep.headerCell.title" = "Ekstern server";
+"Luf-WA-iep.headerCell.title" = "Ekstern tjener";
 
 /* Class = "NSTextFieldCell"; title = "Text Cell"; ObjectID = "Mtm-oR-2oz"; */
 "Mtm-oR-2oz.title" = "Text Cell";
@@ -104,7 +95,7 @@
 "NAt-yd-56N.title" = "Lukk";
 
 /* Class = "NSMenuItem"; title = "Services"; ObjectID = "NMo-om-nkz"; */
-"NMo-om-nkz.title" = "Services";
+"NMo-om-nkz.title" = "Tjenester";
 
 /* Class = "NSTextFieldCell"; title = "RsyncOSXsched version : "; ObjectID = "OEe-RI-leW"; */
 "OEe-RI-leW.title" = "RsyncOSXsched versjon : ";
@@ -140,7 +131,7 @@
 "Vdr-fp-XzO.title" = "Gjem andre";
 
 /* Class = "NSTableColumn"; headerCell.title = "Task"; ObjectID = "vtz-39-lIB"; */
-"vtz-39-lIB.headerCell.title" = "Task";
+"vtz-39-lIB.headerCell.title" = "Oppgave";
 
 /* Class = "NSTableColumn"; headerCell.title = "Schedule"; ObjectID = "W9w-mv-yJ6"; */
 "W9w-mv-yJ6.headerCell.title" = "Oppgave";

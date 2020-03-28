@@ -38,7 +38,7 @@
 "bVy-VF-Maa.title" = "Textzelle";
 
 /* Class = "NSTableColumn"; headerCell.title = "Profilename"; ObjectID = "CCr-KQ-oF9"; */
-"CCr-KQ-oF9.headerCell.title" = "Profilename";
+"CCr-KQ-oF9.headerCell.title" = "Profilname";
 
 /* Class = "NSTextFieldCell"; title = "Text Cell"; ObjectID = "CQC-uM-hG0"; */
 "CQC-uM-hG0.title" = "Textzelle";
@@ -62,7 +62,7 @@
 "IC7-e5-YBh.headerCell.title" = "ID";
 
 /* Class = "NSTableColumn"; headerCell.title = "Log"; ObjectID = "ifM-NK-It0"; */
-"ifM-NK-It0.headerCell.title" = "Log";
+"ifM-NK-It0.headerCell.title" = "Loggen";
 
 /* Class = "NSMenuItem"; title = "Show All"; ObjectID = "Kd2-mp-pUS"; */
 "Kd2-mp-pUS.title" = "Alle anzeigen";
@@ -104,7 +104,7 @@
 "Olw-nP-bQN.title" = "RsyncOSXsched ausblenden";
 
 /* Class = "NSButtonCell"; title = "Log"; ObjectID = "p1x-0f-6rG"; */
-"p1x-0f-6rG.title" = "Log";
+"p1x-0f-6rG.title" = "Loggen";
 
 /* Class = "NSButtonCell"; title = "Quit"; ObjectID = "QPq-ff-gA2"; */
 "QPq-ff-gA2.title" = "Beenden";
