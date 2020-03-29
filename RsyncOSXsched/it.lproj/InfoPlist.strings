@@ -1,5 +1,5 @@
 /* Bundle name */
-"CFBundleName" = "RsyncOSXsched";
+"CFBundleName" = "RsyncOSXsched App";
 
 /* Copyright (human-readable) */
 "NSHumanReadableCopyright" = "Copyright © 2020 Thomas Evensen. Tutti i diritti riservati.";
