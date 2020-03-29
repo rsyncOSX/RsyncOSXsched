@@ -1,17 +1,17 @@
 /* Class = "NSMenuItem"; title = "RsyncOSXsched"; ObjectID = "1Xt-HY-uBw"; */
-"1Xt-HY-uBw.title" = "RsyncOSX schedulato";
+"1Xt-HY-uBw.title" = "RsyncOSXsched App";
 
 /* Class = "NSTableColumn"; headerCell.title = "Start in"; ObjectID = "4o0-3W-taC"; */
 "4o0-3W-taC.headerCell.title" = "Avvia in";
 
 /* Class = "NSMenuItem"; title = "Quit RsyncOSXsched"; ObjectID = "4sb-4s-VLi"; */
-"4sb-4s-VLi.title" = "Esci da RsyncOSX schedulato";
+"4sb-4s-VLi.title" = "Esci da RsyncOSXsched App";
 
 /* Class = "NSViewController"; title = "All schedules"; ObjectID = "5c9-F6-lv3"; */
 "5c9-F6-lv3.title" = "Tutti gli Schedules";
 
 /* Class = "NSMenuItem"; title = "About RsyncOSXsched"; ObjectID = "5kV-Vb-QxS"; */
-"5kV-Vb-QxS.title" = "Informazioni su RsyncOSX Schedulato";
+"5kV-Vb-QxS.title" = "Informazioni su RsyncOSXsched App";
 
 /* Class = "NSTextFieldCell"; title = "Double click on a row to select profile..."; ObjectID = "6Qr-L9-cOC"; */
 "6Qr-L9-cOC.title" = "Doppio clic su una riga per selezionare il profilo...";
@@ -98,10 +98,10 @@
 "NMo-om-nkz.title" = "Servizi";
 
 /* Class = "NSTextFieldCell"; title = "RsyncOSXsched version : "; ObjectID = "OEe-RI-leW"; */
-"OEe-RI-leW.title" = "Versione RsyncOSX schedulato: ";
+"OEe-RI-leW.title" = "Versione RsyncOSXsched App: ";
 
 /* Class = "NSMenuItem"; title = "Hide RsyncOSXsched"; ObjectID = "Olw-nP-bQN"; */
-"Olw-nP-bQN.title" = "Nascondi RsyncOSX Schedulato";
+"Olw-nP-bQN.title" = "Nascondi RsyncOSXsched App";
 
 /* Class = "NSButtonCell"; title = "Log"; ObjectID = "p1x-0f-6rG"; */
 "p1x-0f-6rG.title" = "Log";
@@ -113,7 +113,7 @@
 "qyk-58-p0P.title" = "Text Cell";
 
 /* Class = "NSTableColumn"; headerCell.title = "Schedule"; ObjectID = "Rb9-51-nDu"; */
-"Rb9-51-nDu.headerCell.title" = "Schedulato";
+"Rb9-51-nDu.headerCell.title" = "Schedule";
 
 /* Class = "NSViewController"; title = "Details about files"; ObjectID = "SMW-uL-v3k"; */
 "SMW-uL-v3k.title" = "Dettagli sui file";
@@ -125,7 +125,7 @@
 "uBp-4W-BLA.title" = "Interrompi";
 
 /* Class = "NSMenu"; title = "RsyncOSXsched"; ObjectID = "uQy-DD-JDr"; */
-"uQy-DD-JDr.title" = "RsyncOSX schedulato";
+"uQy-DD-JDr.title" = "RsyncOSXsched App";
 
 /* Class = "NSMenuItem"; title = "Hide Others"; ObjectID = "Vdr-fp-XzO"; */
 "Vdr-fp-XzO.title" = "Nascondi altri";
@@ -134,7 +134,7 @@
 "vtz-39-lIB.headerCell.title" = "Attività";
 
 /* Class = "NSTableColumn"; headerCell.title = "Schedule"; ObjectID = "W9w-mv-yJ6"; */
-"W9w-mv-yJ6.headerCell.title" = "Schedulato";
+"W9w-mv-yJ6.headerCell.title" = "Schedule";
 
 /* Class = "NSTextFieldCell"; title = "Text Cell"; ObjectID = "wN8-MI-RRk"; */
 "wN8-MI-RRk.title" = "Text Cell";

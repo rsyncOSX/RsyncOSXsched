@@ -2,19 +2,19 @@
 "Activating schedules again after sleeping..." = "Attivazione dei programmi dopo la sospensione...";
 
 /* Logg */
-"Adding result to log:" = "Aggiunta del risultato al registro:";
+"Adding result to log:" = "Aggiunta del risultato al Log:";
 
 /* main */
-"daily" = "ogni giorno";
+"daily" = "giornaliero";
 
 /* datetime */
 "days" = "giorni";
 
 /* main */
-"default" = "predefinito";
+"default" = "default";
 
 /* default profile */
-"Default profile" = "Profilo standard";
+"Default profile" = "Profilo Default";
 
 /* main */
 "Executing scheduled tasks is not enabled in RsyncOSX...." = "L'esecuzione delle attività pianificate non è abilitata in RsyncOSX....";
@@ -23,7 +23,7 @@
 "Executing task in profile" = "Esecuzione del task nel profilo";
 
 /* firstask */
-"First scheduled task:" = "Modificare attività pianificata:";
+"First scheduled task:" = "Modificare scheduled pianificata:";
 
 /* addobserverforreload */
 "Got notification for reload" = "Ricevuta notifica per ricaricare";
@@ -47,19 +47,19 @@
 "Loading profile:" = "Carica il Profilo:";
 
 /* Notification */
-"Message from scheduled synchronizing..." = "Messaggio dalla sincronizzazione programmata...";
+"Message from scheduled synchronizing..." = "Messaggio dalla sincronizzazione del scheduled...";
 
 /* datetime */
 "mins" = "minuti";
 
 /* Mount */
-"Mounted Volume discovered" = "Volume montaggio scoperto";
+"Mounted Volume discovered" = "Volume montato rilevato";
 
 /* main */
 "Mounting volumes:" = "Volume di montaggio:";
 
 /* loginfo */
-"No connection with server:" = "No connection with server:";
+"No connection with server:" = "Nessuna connessione con il server:";
 
 /* loginfo */
 "No connection, bailed out..." = "Nessuna connessione, salvata...";
@@ -86,26 +86,26 @@
 "Reading schedules for current profile" = "Lettura configurazioni per il profilo corrente";
 
 /* Sorted */
-"Reloading all schedules..." = "Ricaricando tutte le programmazioni...";
+"Reloading all schedules..." = "Ricaricando tutte le schedules...";
 
 /* main */
-"RsyncOSXsched version:" = "Versione RsyncOSXsched:";
+"RsyncOSXsched version:" = "Versione RsyncOSXsched App:";
 
 /* Dispatch */
-"Schedule dispatch: no more scheduled task in queue" = "Pianifica l'invio: nessuna attività pianificata in coda";
+"Schedule dispatch: no more scheduled task in queue" = "Invio Schedule: nessuna attività pianificata in coda";
 
 /* Dispatch */
-"Schedule dispatch: setting next scheduled task in:" = "Pianifica spedizione: impostare la prossima operazione pianificata in:";
+"Schedule dispatch: setting next scheduled task in:" = "Invio Schedule: impostare la prossima operazione pianificata in:";
 
 /* Timer */
-"Schedule timer: no more scheduled task in queue" = "Pianifica l'invio: nessuna attività pianificata in coda";
+"Schedule timer: no more scheduled task in queue" = "Schedule timer: nessuna attività pianificata in coda";
 
 /* Timer */
-"Schedule timer: setting next scheduled task in:" = "Pianifica spedizione: impostare la prossima operazione pianificata in:";
+"Schedule timer: setting next scheduled task in:" = "Schedule timer: impostare la prossima operazione pianificata in:";
 
 /* Execute
    loginfo */
-"Scheduled backup did not execute" = "Il backup programmato non è stato eseguito";
+"Scheduled backup did not execute" = "Scheduled backup non è stato eseguito";
 
 /* datetime */
 "secs" = "secondi";
@@ -114,13 +114,13 @@
 "Some remote sites not avaliable, see log ...." = "Alcuni siti remoti non sono disponibili, vedi log ....";
 
 /* rsyncerror */
-"There was a rsync error" = "Si è verificato un errore";
+"There was a rsync error" = "Si è verificato un errore rsync";
 
 /* ReadWrite */
 "to disk" = "su disco";
 
 /* main */
-"Unmounting volumes:" = "Volume di montaggio:";
+"Unmounting volumes:" = "Smontaggio Volumi:";
 
 /* main */
 "weekly" = "settimanale";
@@ -129,7 +129,7 @@
 "Write and reload configurations" = "Scrivi e ricarica le configurazioni";
 
 /* Storage */
-"Write and reload schedules" = "Scrivere e ricaricare le pianificazioni";
+"Write and reload schedules" = "Scrivere e ricaricare le schedules";
 
 /* ReadWrite */
 "Writing:" = "Scrittura:";
