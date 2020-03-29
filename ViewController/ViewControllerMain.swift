@@ -25,7 +25,6 @@ class ViewControllerMain: NSViewController, Delay, Setlog {
 
     @IBOutlet var mainTableView: NSTableView!
     @IBOutlet var progress: NSProgressIndicator!
-    @IBOutlet var profilescombobox: NSComboBox!
     @IBOutlet var profileinfo: NSTextField!
     @IBOutlet var rsyncosxbutton: NSButton!
     @IBOutlet var statuslight: NSImageView!
@@ -34,6 +33,7 @@ class ViewControllerMain: NSViewController, Delay, Setlog {
     @IBOutlet var newversion: NSTextField!
     @IBOutlet var rsyncosxschedversion: NSTextField!
     @IBOutlet var backupnowbutton: NSButton!
+    @IBOutlet var profilepopupbutton: NSPopUpButton!
 
     var configurations: Configurations?
     var schedules: Schedules?
@@ -66,11 +66,8 @@ class ViewControllerMain: NSViewController, Delay, Setlog {
 
     override func viewDidAppear() {
         super.viewDidAppear()
-        self.setprofiles()
+        self.initpopupbutton()
         self.info(num: 3)
-        if self.profilename == nil {
-            self.profilescombobox.stringValue = NSLocalizedString("Default profile", comment: "default profile")
-        }
         globalMainQueue.async { () -> Void in
             self.mainTableView.reloadData()
         }
@@ -80,7 +77,7 @@ class ViewControllerMain: NSViewController, Delay, Setlog {
         self.reloadnotification = DistributedNotificationCenter.default().addObserver(forName: NSNotification.Name("no.blogspot.RsyncOSX.reload"), object: nil, queue: nil) { _ -> Void in
             let notification: String = NSLocalizedString("Got notification for reload", comment: "addobserverforreload")
             self.addlog(logrecord: notification)
-            self.reloadselectedprofile()
+            self.initpopupbutton()
             self.schedulesortedandexpanded = ScheduleSortedAndExpand()
             self.startfirstscheduledtask()
         }
@@ -97,7 +94,7 @@ class ViewControllerMain: NSViewController, Delay, Setlog {
     @IBAction func abort(_: NSButton) {
         ViewControllerReference.shared.process?.terminate()
         self.progress.stopAnimation(nil)
-        self.reloadselectedprofile()
+        self.initpopupbutton()
     }
 
     @IBAction func closeButtonAction(_: NSButton) {
@@ -113,35 +110,12 @@ class ViewControllerMain: NSViewController, Delay, Setlog {
         NSApp.terminate(self)
     }
 
-    @IBAction func selectprofile(_: NSComboBox) {
-        self.reloadselectedprofile()
-    }
-
     @IBAction func viewlogg(_: NSButton) {
         self.presentAsSheet(self.viewControllerInformation!)
     }
 
     @IBAction func viewallschedules(_: NSButton) {
         self.presentAsSheet(self.viewControllerAllschedules!)
-    }
-
-    private func reloadselectedprofile() {
-        self.info(num: -1)
-        guard self.profilesArray != nil else { return }
-        guard self.profilescombobox.indexOfSelectedItem > 0 else {
-            let reloadinfo: String = NSLocalizedString("Profile: default loaded.", comment: "reloadinfo")
-            self.addlog(logrecord: reloadinfo)
-            self.profileinfo.stringValue = "Profile: default"
-            self.profilename = nil
-            self.createandreloadconfigurations()
-            self.createandreloadschedules()
-            return
-        }
-        self.profilename = self.profilesArray![self.profilescombobox.indexOfSelectedItem]
-        self.profileinfo.stringValue = "Profile: " + self.profilename!
-        self.addlog(logrecord: "Profile: " + self.profilename! + " loaded.")
-        self.createandreloadconfigurations()
-        self.createandreloadschedules()
     }
 
     func createandreloadschedules() {
@@ -177,15 +151,6 @@ class ViewControllerMain: NSViewController, Delay, Setlog {
         globalMainQueue.async { () -> Void in
             self.mainTableView.reloadData()
         }
-    }
-
-    private func setprofiles() {
-        self.profile = nil
-        self.profile = Files(whichroot: .profileRoot, configpath: ViewControllerReference.shared.configpath)
-        self.profilesArray = self.profile!.getDirectorysStrings()
-        self.profilescombobox.removeAllItems()
-        guard self.profilesArray != nil else { return }
-        self.profilescombobox.addItems(withObjectValues: self.profilesArray!)
     }
 
     private func info(num: Int) {
@@ -269,6 +234,28 @@ class ViewControllerMain: NSViewController, Delay, Setlog {
             NSWorkspace.shared.notificationCenter.addObserver(self, selector: #selector(didUnMount(_:)),
                                                               name: NSWorkspace.didUnmountNotification, object: nil)
         }
+    }
+
+    func initpopupbutton() {
+        var profilestrings: [String]?
+        profilestrings = Files(whichroot: .profileRoot, configpath: ViewControllerReference.shared.configpath).getDirectorysStrings()
+        profilestrings?.insert(NSLocalizedString("Default profile", comment: "default profile"), at: 0)
+        self.profilepopupbutton.removeAllItems()
+        self.profilepopupbutton.addItems(withTitles: profilestrings ?? [])
+        self.profilepopupbutton.selectItem(at: 0)
+    }
+
+    @IBAction func selectprofile(_: NSButton) {
+        let selectedindex = self.profilepopupbutton.indexOfSelectedItem
+        self.info(num: -1)
+        self.profilename = self.profilepopupbutton.titleOfSelectedItem
+        self.profileinfo.stringValue = "Profile: " + (self.profilename ?? NSLocalizedString("Profile: default loaded.", comment: "reloadinfo"))
+        self.addlog(logrecord: "Profile: " + (self.profilename ?? NSLocalizedString("Profile: default loaded.", comment: "reloadinfo") + " loaded."))
+        if selectedindex == 0 {
+            self.profilename = nil
+        }
+        self.createandreloadconfigurations()
+        self.createandreloadschedules()
     }
 }
 
@@ -482,7 +469,6 @@ extension ViewControllerMain: ReloadData {
                 return
             }
             self.profilename = nil
-            self.profilescombobox.stringValue = NSLocalizedString("Profile", comment: "default profile") + " default"
             self.createandreloadconfigurations()
             self.createandreloadschedules()
             return
@@ -491,7 +477,6 @@ extension ViewControllerMain: ReloadData {
             self.profilename = profilename
             globalMainQueue.async { () -> Void in
                 self.profileinfo.stringValue = NSLocalizedString("Profile:", comment: "main") + " " + self.profilename!
-                self.profilescombobox.stringValue = self.profilename!
             }
             self.createandreloadconfigurations()
             self.createandreloadschedules()
