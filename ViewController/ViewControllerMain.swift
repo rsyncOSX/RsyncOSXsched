@@ -256,6 +256,7 @@ class ViewControllerMain: NSViewController, Delay, Setlog {
         }
         self.createandreloadconfigurations()
         self.createandreloadschedules()
+        self.info(num: 3)
     }
 }
 
