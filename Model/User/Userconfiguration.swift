@@ -47,18 +47,6 @@ struct Userconfiguration {
                 ViewControllerReference.shared.pathrsyncosxsched = pathrsyncosxsched
             }
         }
-        // Operation object
-        // Default is dispatch
-        if let operation = dict.value(forKey: "operation") as? String {
-            switch operation {
-            case "dispatch":
-                ViewControllerReference.shared.operation = .dispatch
-            case "timer":
-                ViewControllerReference.shared.operation = .timer
-            default:
-                ViewControllerReference.shared.operation = .dispatch
-            }
-        }
         if let automaticexecutelocalvolumes = dict.value(forKey: "automaticexecutelocalvolumes") as? Int {
             if automaticexecutelocalvolumes == 1 {
                 ViewControllerReference.shared.automaticexecutelocalvolumes = true

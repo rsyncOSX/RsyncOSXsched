@@ -9,11 +9,6 @@
 import Cocoa
 import Foundation
 
-enum OperationObject {
-    case timer
-    case dispatch
-}
-
 class ViewControllerReference {
     // Creates a singelton of this class
     class var shared: ViewControllerReference {
@@ -60,8 +55,6 @@ class ViewControllerReference {
     var synctasks: Set<String>
     // Mac serialnumer
     var macserialnumber: String?
-    // Operation
-    var operation: OperationObject?
     // String for new version
     var URLnewVersion: String?
     // Mark number of days since last backup

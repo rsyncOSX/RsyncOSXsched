@@ -85,7 +85,7 @@ class ViewControllerMain: NSViewController, Delay, Setlog {
 
     @IBAction func backupnow(_: NSButton) {
         guard self.index != nil else { return }
-        guard self.configurations!.getConfigurationsDataSourceSynchronize() != nil else { return }
+        guard self.configurations?.getConfigurationsDataSourceSynchronize() != nil else { return }
         self.backupnowbutton.isEnabled = false
         let dict: NSDictionary = self.configurations!.getConfigurationsDataSourceSynchronize()![self.index!]
         _ = ExecuteScheduledTask(dict: dict)
@@ -176,16 +176,9 @@ class ViewControllerMain: NSViewController, Delay, Setlog {
         ViewControllerReference.shared.dispatchTaskWaiting = nil
         ViewControllerReference.shared.timerTaskWaiting = nil
         ViewControllerReference.shared.scheduledTask = self.schedulesortedandexpanded?.getfirstscheduledtask()
-        if let operation = ViewControllerReference.shared.operation {
-            switch operation {
-            case .dispatch:
-                _ = ScheduleOperationDispatch()
-            case .timer:
-                _ = ScheduleOperationTimer()
-            }
-        } else {
-            _ = ScheduleOperationDispatch()
-        }
+        _ = ScheduleOperationDispatch()
+        // We use Dispatch not Timer
+        // _ = ScheduleOperationTimer()
     }
 
     @objc func onWakeNote(note _: NSNotification) {
