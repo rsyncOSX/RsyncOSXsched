@@ -14,6 +14,8 @@ The `menu app` can be started from RsyncOSX. This require paths for both apps to
 - French - translated by [crowdin](https://crowdin.com/project/rsyncosx)
 - Norwegian - by me
 - English - by me and the base language of RsyncOSXsched
+- Italian - by [Stefano Steve Cutelle'](https://github.com/stefanocutelle)
+  - Italian localization is released in version 6.2.5 release candidate
 
 Localization is done by utilizing [Crowdin](https://crowdin.com/project/rsyncosx) to translate the xliff files which are imported into Xcode after translating. Xcode then creates the required language strings. [Crowdin is free for open source projects](https://crowdin.com/page/open-source-project-setup-request).
 
