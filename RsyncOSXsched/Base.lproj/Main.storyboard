@@ -283,7 +283,7 @@
                             <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kai-9c-NNV">
                                 <rect key="frame" x="35" y="2" width="39" height="32"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <buttonCell key="cell" type="square" title="Now" bezelStyle="shadowlessSquare" image="NSTouchBarFastForwardTemplate" imagePosition="overlaps" alignment="center" transparent="YES" imageScaling="proportionallyDown" inset="2" id="9lr-pg-w2Y">
+                                <buttonCell key="cell" type="square" title="Now" bezelStyle="shadowlessSquare" image="NSTouchBarPlayTemplate" imagePosition="overlaps" alignment="center" transparent="YES" imageScaling="proportionallyDown" inset="2" id="9lr-pg-w2Y">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="message"/>
                                 </buttonCell>
@@ -594,11 +594,11 @@ DQ
         </scene>
     </scenes>
     <resources>
-        <image name="MenubarButton" width="20" height="20"/>
+        <image name="MenubarButton" width="16" height="16"/>
         <image name="NSHomeTemplate" width="14" height="14"/>
         <image name="NSInfo" width="32" height="32"/>
         <image name="NSStopProgressTemplate" width="11" height="11"/>
-        <image name="NSTouchBarFastForwardTemplate" width="22" height="30"/>
+        <image name="NSTouchBarPlayTemplate" width="14" height="30"/>
         <image name="NSTouchBarRecordStopTemplate" width="12" height="30"/>
         <image name="red" width="512" height="512"/>
     </resources>
