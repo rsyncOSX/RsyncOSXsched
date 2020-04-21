@@ -84,6 +84,9 @@ struct ConvertConfigurations: SetConfigurations {
                 dict.setObject(config.snapdayoffweek!, forKey: "snapdayoffweek" as NSCopying)
             }
         }
+        if config.sshidentityfile != nil {
+            dict.setObject(config.sshidentityfile!, forKey: "sshidentityfile" as NSCopying)
+        }
         self.configuration = dict
     }
 }

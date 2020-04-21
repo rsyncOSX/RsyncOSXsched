@@ -47,18 +47,45 @@ final class RsyncParameters {
         }
     }
 
-    private func sshportparameter(config: Configuration) {
+    func sshportparameter(config: Configuration) {
+        // -e "ssh  -i ~/.ssh/id_myserver -p 22"
+        // ssh identityfile and ssh port
         let parameter5: String = config.parameter5
         let parameter6: String = config.parameter6
+        var sshportadded: Bool = false
+        var sshidentityfileadded: Bool = false
         // -e
-        self.arguments!.append(parameter5)
+        self.arguments?.append(parameter5)
+        if let sshidentityfile = config.sshidentityfile {
+            sshidentityfileadded = true
+            let identifyfile = ViewControllerReference.shared.sshidentityfilecatalog + sshidentityfile
+            // "ssh -i ~/.ssh/identifyfile"
+            // Then check if ssh port is set also
+            if let sshport = config.sshport {
+                sshportadded = true
+                self.arguments?.append("ssh -i " + identifyfile + " " + "-p " + String(sshport))
+            } else {
+                self.arguments?.append("ssh -i " + identifyfile)
+            }
+        }
         if let sshport = config.sshport {
             // "ssh -p xxx"
-            self.arguments!.append("ssh -p " + String(sshport))
+            if sshportadded == false {
+                sshportadded = true
+                self.arguments?.append("ssh -p " + String(sshport))
+            }
         } else {
             // ssh
-            self.arguments!.append(parameter6)
+            if sshportadded == false, sshidentityfileadded == false {
+                self.arguments?.append(parameter6)
+            }
         }
+    }
+
+    func setdatesuffixlocalhost() -> String {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "-yyyy-MM-dd"
+        return "--suffix=" + formatter.string(from: Date())
     }
 
     // Compute user selected parameters parameter8 ... parameter14
@@ -103,12 +130,6 @@ final class RsyncParameters {
         if self.stats == false {
             self.appendParameter(parameter: "--stats")
         }
-    }
-
-    private func setdatesuffixlocalhost() -> String {
-        let formatter = DateFormatter()
-        formatter.dateFormat = "-yyyy-MM-dd"
-        return "--suffix=" + formatter.string(from: Date())
     }
 
     // Check userselected parameter and append it to arguments array passed to rsync or displayed

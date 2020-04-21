@@ -64,6 +64,8 @@ class ViewControllerReference {
     // Setting environmentvariable for Process object
     var environment: String?
     var environmentvalue: String?
+    // catalog for ssh identityfile if used
+    var sshidentityfilecatalog: String = "~/.ssh/"
 
     init() {
         self.synctasks = Set<String>()
