@@ -33,6 +33,7 @@ struct Configuration {
     var parameter14: String?
     var rsyncdaemon: Int?
     var sshport: Int?
+    var sshidentityfile: String?
     var dayssincelastbackup: String?
     var markdays: Bool = false
     var profilename: String?
@@ -105,6 +106,9 @@ struct Configuration {
         }
         if let sshport = dictionary.object(forKey: "sshport") {
             self.sshport = sshport as? Int
+        }
+        if let sshidentityfile = dictionary.object(forKey: "sshidentityfile") {
+            self.sshidentityfile = sshidentityfile as? String
         }
     }
 }
