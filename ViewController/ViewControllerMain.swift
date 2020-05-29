@@ -52,6 +52,10 @@ class ViewControllerMain: NSViewController, Delay, Setlog {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        // Read user configuration
+        if let userconfiguration = PersistentStorageUserconfiguration().readuserconfiguration() {
+            _ = Userconfiguration(userconfigRsyncOSX: userconfiguration)
+        }
         self.addobservers()
         self.mainTableView.delegate = self
         self.mainTableView.dataSource = self

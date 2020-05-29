@@ -60,6 +60,13 @@ struct Userconfiguration {
         if let environmentvalue = dict.value(forKey: "environmentvalue") as? String {
             ViewControllerReference.shared.environmentvalue = environmentvalue
         }
+
+        if let sshkeypathandidentityfile = dict.value(forKey: "sshkeypathandidentityfile") as? String {
+            ViewControllerReference.shared.sshkeypathandidentityfile = sshkeypathandidentityfile
+        }
+        if let sshport = dict.value(forKey: "sshport") as? Int {
+            ViewControllerReference.shared.sshport = sshport
+        }
     }
 
     init(userconfigRsyncOSX: [NSDictionary]) {

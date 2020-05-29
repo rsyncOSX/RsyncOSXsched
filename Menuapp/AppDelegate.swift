@@ -21,10 +21,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
 
     func applicationDidFinishLaunching(_: Notification) {
-        // Read user configuration
-        if let userconfiguration = PersistentStorageUserconfiguration().readuserconfiguration() {
-            _ = Userconfiguration(userconfigRsyncOSX: userconfiguration)
-        }
         if let button = self.statusItem.button {
             button.image = NSImage(named: "MenubarButton")
             button.action = #selector(AppDelegate.togglePopover(_:))
