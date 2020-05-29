@@ -3,7 +3,6 @@
 //  Copyright © 2016 Thomas Evensen. All rights reserved.
 //
 // swiftlint:disable cyclomatic_complexity function_body_length
-// TODO: update files sshkeypath and identityfile
 
 import Foundation
 
@@ -33,8 +32,9 @@ struct Configuration {
     var parameter13: String?
     var parameter14: String?
     var rsyncdaemon: Int?
+    // SSH parameters
     var sshport: Int?
-    var sshidentityfile: String?
+    var sshkeypathandidentityfile: String?
     var dayssincelastbackup: String?
     var markdays: Bool = false
     var profilename: String?
@@ -108,8 +108,15 @@ struct Configuration {
         if let sshport = dictionary.object(forKey: "sshport") {
             self.sshport = sshport as? Int
         }
+        if let sshport = dictionary.object(forKey: "sshport") {
+            self.sshport = sshport as? Int
+        }
+        if let sshidentityfile = dictionary.object(forKey: "sshkeypathandidentityfile") {
+            self.sshkeypathandidentityfile = sshidentityfile as? String
+        }
+        // From version 6.3.0, must convert "sshidentityfile" to keypath + identityfile
         if let sshidentityfile = dictionary.object(forKey: "sshidentityfile") {
-            self.sshidentityfile = sshidentityfile as? String
+            self.sshkeypathandidentityfile = "~/.ssh/" + (sshidentityfile as? String ?? "")
         }
     }
 }

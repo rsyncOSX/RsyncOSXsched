@@ -5,7 +5,7 @@
 //  Created by Thomas Evensen on 26/04/2019.
 //  Copyright © 2019 Thomas Evensen. All rights reserved.
 //
-// swiftlint:disable function_body_length cyclomatic_complexity trailing_comma
+// swiftlint:disable cyclomatic_complexity function_body_length trailing_comma
 
 import Foundation
 
@@ -36,7 +36,6 @@ struct ConvertConfigurations: SetConfigurations {
             "parameter4": config.parameter4,
             "parameter5": config.parameter5,
             "parameter6": config.parameter6,
-            "dryrun": config.dryrun,
             "dateRun": config.dateRun!,
             "hiddenID": config.hiddenID,
         ]
@@ -84,8 +83,8 @@ struct ConvertConfigurations: SetConfigurations {
                 dict.setObject(config.snapdayoffweek!, forKey: "snapdayoffweek" as NSCopying)
             }
         }
-        if config.sshidentityfile != nil {
-            dict.setObject(config.sshidentityfile!, forKey: "sshidentityfile" as NSCopying)
+        if config.sshkeypathandidentityfile != nil {
+            dict.setObject(config.sshkeypathandidentityfile!, forKey: "sshkeypathandidentityfile" as NSCopying)
         }
         self.configuration = dict
     }
