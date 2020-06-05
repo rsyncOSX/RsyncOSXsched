@@ -42,27 +42,26 @@ class Allschedules {
     }
 
     private func readallschedules() {
-        guard self.allprofiles != nil else { return }
         var configurationschedule: [ConfigurationSchedule]?
-        for i in 0 ..< self.allprofiles!.count {
-            let profilename = self.allprofiles![i]
+        for i in 0 ..< (self.allprofiles?.count ?? 0) {
+            let profilename = self.allprofiles?[i]
             if self.allschedules == nil { self.allschedules = [] }
             if profilename == NSLocalizedString("Default profile", comment: "default profile") {
                 configurationschedule = PersistentStorageScheduling(profile: nil).getScheduleandhistory(nolog: true)
             } else {
                 configurationschedule = PersistentStorageScheduling(profile: profilename).getScheduleandhistory(nolog: true)
             }
-            if configurationschedule != nil {
-                for j in 0 ..< configurationschedule!.count {
-                    configurationschedule![j].profilename = profilename
-                    let offsiteserver = configurationschedule![j].offsiteserver ?? ""
-                    let ifadded = self.alloffsiteservers!.filter { $0 == offsiteserver }
-                    if ifadded.count == 0 {
-                        if offsiteserver.isEmpty == true || offsiteserver != "localhost" {
-                            self.alloffsiteservers?.append(offsiteserver)
-                        }
+            for j in 0 ..< (configurationschedule?.count ?? 0) {
+                configurationschedule?[j].profilename = profilename
+                let offsiteserver = configurationschedule?[j].offsiteserver ?? ""
+                let ifadded = self.alloffsiteservers?.filter { $0 == offsiteserver }
+                if ifadded!.count == 0 {
+                    if offsiteserver.isEmpty == true || offsiteserver != "localhost" {
+                        self.alloffsiteservers?.append(offsiteserver)
                     }
-                    self.allschedules!.append(configurationschedule![j])
+                }
+                if let configurationschedule = configurationschedule?[j] {
+                    self.allschedules?.append(configurationschedule)
                 }
             }
         }
