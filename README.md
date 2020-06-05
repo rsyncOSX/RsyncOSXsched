@@ -26,9 +26,13 @@ The menu app is a simple app with a few screens. The one and only task for the m
 If there are tasks waiting for executing the status light is green.
 
 ![](screenshots/menuapp1.png)
+
 There is a minimal logging in the menu app. The menu app logs the major actions within the menu app.
+
 ![](screenshots/menuapp2.png)
+
 Active scheduled tasks.
+
 ![](screenshots/menuapp3.png)
 
 ### Signing and notarizing
