@@ -60,12 +60,12 @@ extension ViewControllerSchedules: NSTableViewDelegate {
             return taskintime ?? ""
         } else if tableColumn!.identifier.rawValue == "schedule" {
             switch object[tableColumn!.identifier] as? String {
-            case "once":
-                return NSLocalizedString("once", comment: "main")
-            case "daily":
-                return NSLocalizedString("daily", comment: "main")
-            case "weekly":
-                return NSLocalizedString("weekly", comment: "main")
+            case Scheduletype.once.rawValue:
+                return NSLocalizedString(Scheduletype.once.rawValue, comment: "main")
+            case Scheduletype.daily.rawValue:
+                return NSLocalizedString(Scheduletype.daily.rawValue, comment: "main")
+            case Scheduletype.weekly.rawValue:
+                return NSLocalizedString(Scheduletype.weekly.rawValue, comment: "main")
             default:
                 return ""
             }
