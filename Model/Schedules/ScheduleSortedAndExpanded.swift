@@ -152,7 +152,7 @@ class ScheduleSortedAndExpand: Setlog {
             let dict: NSDictionary = [
                 "dateStart": self.scheduleConfiguration?[i].dateStart ?? "",
                 "dateStop": self.scheduleConfiguration?[i].dateStop ?? "",
-                "hiddenID": self.scheduleConfiguration?[i].hiddenID ?? "",
+                "hiddenID": self.scheduleConfiguration?[i].hiddenID ?? -1,
                 "schedule": self.scheduleConfiguration?[i].schedule ?? "",
                 "profilename": self.scheduleConfiguration?[i].profilename ?? NSLocalizedString("Default profile", comment: "default profile"),
             ]
