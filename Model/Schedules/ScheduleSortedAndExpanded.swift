@@ -20,8 +20,7 @@ class ScheduleSortedAndExpand: Setlog {
 
     // First job to execute. Job is first element in
     func getfirstscheduledtask() -> NSDictionary? {
-        guard self.sortedschedules != nil else { return nil }
-        guard self.sortedschedules!.count > 0 else {
+        guard (self.sortedschedules?.count ?? 0) > 0 else {
             ViewControllerReference.shared.scheduledTask = nil
             return nil
         }
@@ -72,7 +71,7 @@ class ScheduleSortedAndExpand: Setlog {
 
     // Expanding and sorting Scheduledata
     private func sortAndExpandScheduleTasks() {
-        for i in 0 ..< self.schedulesNSDictionary!.count {
+        for i in 0 ..< (self.schedulesNSDictionary?.count ?? 0) {
             let dict = self.schedulesNSDictionary![i]
             let dateStop: Date = (dict.value(forKey: "dateStop") as? String)!.en_us_date_from_string()
             let dateStart: Date = (dict.value(forKey: "dateStart") as? String)!.en_us_date_from_string()
@@ -82,7 +81,7 @@ class ScheduleSortedAndExpand: Setlog {
             // Get all jobs which are not executed
             if seconds > 0 {
                 switch schedule {
-                case "once":
+                case Scheduletype.once.rawValue:
                     let hiddenID = (dict.value(forKey: "hiddenID") as? Int)!
                     let profilename = dict.value(forKey: "profilename") ?? NSLocalizedString("Default profile", comment: "default profile")
                     let time = seconds
@@ -95,15 +94,15 @@ class ScheduleSortedAndExpand: Setlog {
                         "profilename": profilename,
                     ]
                     self.expandedData!.append(dict)
-                case "daily":
+                case Scheduletype.daily.rawValue:
                     self.daily(dateStart: dateStart, schedule: schedule, dict: dict)
-                case "weekly":
+                case Scheduletype.weekly.rawValue:
                     self.weekly(dateStart: dateStart, schedule: schedule, dict: dict)
                 default:
                     break
                 }
             }
-            self.sortedschedules = self.expandedData!.sorted { (di1, di2) -> Bool in
+            self.sortedschedules = self.expandedData?.sorted { (di1, di2) -> Bool in
                 if (di1.value(forKey: "start") as? Date)!.timeIntervalSince((di2.value(forKey: "start") as? Date)!) > 0 {
                     return false
                 } else {
@@ -147,16 +146,15 @@ class ScheduleSortedAndExpand: Setlog {
 
     // Function is reading Schedule plans and transform plans to array of NSDictionary.
     private func setallscheduledtasksNSDictionary() {
-        guard self.scheduleConfiguration != nil else { return }
         var data = [NSDictionary]()
-        for i in 0 ..< self.scheduleConfiguration!.count where
-            self.scheduleConfiguration![i].dateStop != nil && self.scheduleConfiguration![i].schedule != "stopped" {
+        for i in 0 ..< (self.scheduleConfiguration?.count ?? 0) where
+            self.scheduleConfiguration?[i].dateStop != nil && self.scheduleConfiguration?[i].schedule != "stopped" {
             let dict: NSDictionary = [
-                "dateStart": self.scheduleConfiguration![i].dateStart,
-                "dateStop": self.scheduleConfiguration![i].dateStop!,
-                "hiddenID": self.scheduleConfiguration![i].hiddenID,
-                "schedule": self.scheduleConfiguration![i].schedule,
-                "profilename": self.scheduleConfiguration![i].profilename ?? NSLocalizedString("Default profile", comment: "default profile"),
+                "dateStart": self.scheduleConfiguration?[i].dateStart ?? "",
+                "dateStop": self.scheduleConfiguration?[i].dateStop ?? "",
+                "hiddenID": self.scheduleConfiguration?[i].hiddenID ?? -1,
+                "schedule": self.scheduleConfiguration?[i].schedule ?? "",
+                "profilename": self.scheduleConfiguration?[i].profilename ?? NSLocalizedString("Default profile", comment: "default profile"),
             ]
             data.append(dict as NSDictionary)
         }

@@ -11,6 +11,12 @@
 import Cocoa
 import Foundation
 
+enum Scheduletype: String {
+    case once
+    case daily
+    case weekly
+}
+
 class Schedules: ScheduleWriteLoggData {
     // Return reference to Schedule data
     // self.Schedule is privat data

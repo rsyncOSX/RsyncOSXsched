@@ -276,12 +276,12 @@ extension ViewControllerMain: NSTableViewDelegate, Attributedestring {
                 let schedule: String? = self.schedulesortedandexpanded!.sortandcountscheduledonetask(hiddenID: hiddenID, profilename: profilename, dateStart: nil, number: false)
                 if schedule?.isEmpty == false {
                     switch schedule {
-                    case "once":
-                        return NSLocalizedString("once", comment: "main")
-                    case "daily":
-                        return NSLocalizedString("daily", comment: "main")
-                    case "weekly":
-                        return NSLocalizedString("weekly", comment: "main")
+                    case Scheduletype.once.rawValue:
+                        return NSLocalizedString(Scheduletype.once.rawValue, comment: "main")
+                    case Scheduletype.daily.rawValue:
+                        return NSLocalizedString(Scheduletype.daily.rawValue, comment: "main")
+                    case Scheduletype.weekly.rawValue:
+                        return NSLocalizedString(Scheduletype.weekly.rawValue, comment: "main")
                     default:
                         return ""
                     }
