@@ -2,10 +2,7 @@
 
 ![](icon/menuapp.png)
 
-This is the `menu app` (RsyncOSXsched.app) for executing scheduled tasks in RsyncOSX. Scheduled tasks are added in RsyncOSX. Quit RsyncOSX and let the menu app take care of executing the scheduled tasks. RsyncOSX does **not** execute scheduled tasks. Scheduled tasks are only added and deleted in RsyncOSX.
-
-The `menu app` is started from RsyncOSX.
-
+This is the `menu app` (RsyncOSXsched.app). The menu app is an helper application for executing scheduled tasks in RsyncOSX. Scheduled tasks are added in RsyncOSX. Quit RsyncOSX and let the menu app take care of executing the scheduled tasks. RsyncOSX does **not** execute scheduled tasks. Scheduled tasks are only added and deleted in RsyncOSX. The `menu app` is started from RsyncOSX.
 
 ### Localization
 
@@ -32,11 +29,3 @@ There is a minimal logging in the menu app. The menu app logs the major actions 
 Active scheduled tasks.
 
 ![](screenshots/menuapp3.png)
-
-### Signing and notarizing
-
-The app is signed with my Apple ID developer certificate and [notarized](https://support.apple.com/en-us/HT202491) by Apple. See [signing and notarizing](https://rsyncosx.netlify.app/post/notarized/) for info.
-
-### SwiftLint and SwiftFormat
-
-I am using [SwiftLint](https://github.com/realm/SwiftLint) as tool for writing more readable code. Another tool is [SwiftFormat](https://github.com/nicklockwood/SwiftFormat) for formatting swift code.
