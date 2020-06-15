@@ -2,7 +2,7 @@
 
 ![](icon/menuapp.png)
 
-This is the `menu app` (RsyncOSXsched.app). The menu app is an helper application for executing scheduled tasks in RsyncOSX. Scheduled tasks are added in RsyncOSX. Quit RsyncOSX and let the menu app take care of executing the scheduled tasks. RsyncOSX does **not** execute scheduled tasks. Scheduled tasks are only added and deleted in RsyncOSX. The `menu app` is started from RsyncOSX.
+This is the `menu app` (RsyncOSXsched.app). The menu app is a helper application for executing scheduled tasks in RsyncOSX. Scheduled tasks are added in RsyncOSX. Quit RsyncOSX and let the menu app take care of executing the scheduled tasks. RsyncOSX does **not** execute scheduled tasks. Scheduled tasks are only added and deleted in RsyncOSX. The `menu app` is started from RsyncOSX.
 
 ### Localization
 
