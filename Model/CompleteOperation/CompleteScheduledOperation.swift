@@ -26,7 +26,7 @@ final class CompleteScheduledOperation: SetScheduledTask, SetConfigurations, Set
         self.logDelegate?.addlog(logrecord: NSLocalizedString("Adding result to log:", comment: "Logg")
             + " " + numberstring)
         self.configurations?.setCurrentDateonConfiguration(index: self.index!, outputprocess: outputprocess)
-        _ = Notifications().showNotification(message: message)
+        Notifications().showNotification(message: message)
     }
 
     init(dict: NSDictionary) {
