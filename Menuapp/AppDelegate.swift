@@ -34,7 +34,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             }
         }
         self.eventMonitor?.start()
-        self.togglePopover(nil)
     }
 
     func applicationWillTerminate(_: Notification) {}
