@@ -388,7 +388,7 @@
                                                     <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                                     <prototypeCellViews>
                                                         <tableCellView id="3dl-a8-ssG">
-                                                            <rect key="frame" x="1" y="1" width="419" height="18"/>
+                                                            <rect key="frame" x="11" y="1" width="419" height="18"/>
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                             <subviews>
                                                                 <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2Tg-IL-MR8">
@@ -535,7 +535,7 @@ DQ
                                     </subviews>
                                 </clipView>
                                 <scroller key="horizontalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="YES" id="FYR-zS-YPV">
-                                    <rect key="frame" x="1" y="188" width="231" height="16"/>
+                                    <rect key="frame" x="1" y="189" width="231" height="16"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
                                 <scroller key="verticalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="nMZ-yr-Y9Q">
