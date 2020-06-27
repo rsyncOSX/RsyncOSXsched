@@ -13,14 +13,14 @@ import Foundation
 class ViewControllerMain: NSViewController, Delay, Setlog {
     // Information about logs
     var viewControllerInformation: NSViewController? {
-        return (self.storyboard!.instantiateController(withIdentifier: "StoryboardInformationID")
-            as? NSViewController)!
+        return (self.storyboard?.instantiateController(withIdentifier: "StoryboardInformationID")
+            as? NSViewController)
     }
 
     // All schedules
     var viewControllerAllschedules: NSViewController? {
-        return (self.storyboard!.instantiateController(withIdentifier: "StoryboardAllschedulesID")
-            as? NSViewController)!
+        return (self.storyboard?.instantiateController(withIdentifier: "StoryboardAllschedulesID")
+            as? NSViewController)
     }
 
     @IBOutlet var mainTableView: NSTableView!
