@@ -17,8 +17,8 @@ class CheckAllConfigurations: Delay, Setlog {
     var allprofiles: [String]?
     var allconfigurations: [Configuration]?
     var allpaths: [String]?
-    var automaticexecution: [NSDictionary]?
-    weak var start: Startautomaticexecution?
+    var listofautomaticexecutions: [NSDictionary]?
+    weak var startautomaticexecution: Startautomaticexecution?
 
     private func getprofilenames() {
         let profile = Files(whichroot: .profileRoot, configpath: ViewControllerReference.shared.configpath)
@@ -46,31 +46,30 @@ class CheckAllConfigurations: Delay, Setlog {
         }
     }
 
-    func check() {
+    func checkforautomaticexecution() {
         self.delayWithSeconds(10) {
-            guard self.allconfigurations != nil else { return }
-            guard self.allpaths != nil else { return }
-            for i in 0 ..< self.allpaths!.count {
-                let mountedpath = self.allpaths![i]
-                for j in 0 ..< self.allconfigurations!.count {
-                    let offsitepath = self.allconfigurations![j].offsiteCatalog
-                    if offsitepath.contains(mountedpath), self.allconfigurations![j].offsiteServer.isEmpty {
-                        let profile = self.allconfigurations![j].profilename ?? NSLocalizedString("Default profile", comment: "default profile")
-                        let mountedvolume: String = NSLocalizedString("Mounted Volume discovered", comment: "Mount")
-                        let mountedvolumein: String = NSLocalizedString("in:", comment: "Mount")
-                        self.logDelegate?.addlog(logrecord: mountedvolume + mountedpath + " " + mountedvolumein + " " + profile)
-
-                        if self.automaticexecution == nil { self.automaticexecution = [NSDictionary]() }
-                        let dict: NSDictionary = [
-                            "profilename": self.allconfigurations![j].profilename!,
-                            "hiddenID": self.allconfigurations![j].hiddenID,
-                        ]
-                        self.automaticexecution?.append(dict)
+            for i in 0 ..< (self.allpaths?.count ?? 0) {
+                if let mountedpath = self.allpaths?[i] {
+                    for j in 0 ..< (self.allconfigurations?.count ?? 0) {
+                        let offsitepath = self.allconfigurations![j].offsiteCatalog
+                        if offsitepath.contains(mountedpath), self.allconfigurations![j].offsiteServer.isEmpty {
+                            let profile = self.allconfigurations![j].profilename ?? NSLocalizedString("Default profile", comment: "default profile")
+                            let mountedvolume: String = NSLocalizedString("Mounted Volume discovered", comment: "Mount")
+                            let mountedvolumein: String = NSLocalizedString("in:", comment: "Mount")
+                            self.logDelegate?.addlog(logrecord: mountedvolume + mountedpath + " " + mountedvolumein + " " + profile)
+                            if self.listofautomaticexecutions == nil { self.listofautomaticexecutions = [NSDictionary]() }
+                            let dict: NSDictionary = [
+                                "profilename": self.allconfigurations![j].profilename!,
+                                "hiddenID": self.allconfigurations![j].hiddenID,
+                            ]
+                            self.listofautomaticexecutions?.append(dict)
+                        }
                     }
                 }
+                // Kick off automatic backup
+                self.startautomaticexecution = ViewControllerReference.shared.viewControllermain as? ViewControllerMain
+                self.startautomaticexecution?.startautomaticexecution()
             }
-            // Kick off automatic backup
-            self.start?.startautomaticexecution()
         }
     }
 
@@ -78,7 +77,6 @@ class CheckAllConfigurations: Delay, Setlog {
         self.allpaths = [String]()
         self.allpaths?.append(path)
         self.readallconfigurations()
-        self.start = ViewControllerReference.shared.viewControllermain as? ViewControllerMain
-        self.check()
+        self.checkforautomaticexecution()
     }
 }

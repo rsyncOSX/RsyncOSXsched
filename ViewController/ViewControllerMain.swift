@@ -511,9 +511,8 @@ extension ViewControllerMain: NewVersionDiscovered {
 
 extension ViewControllerMain: Startautomaticexecution {
     func startautomaticexecution() {
-        self.automaticexecution = self.checkallconfiguration?.automaticexecution
-        guard self.automaticexecution != nil else { return }
-        guard self.automaticexecution!.count > 0 else {
+        self.automaticexecution = self.checkallconfiguration?.listofautomaticexecutions
+        guard self.automaticexecution?.count ?? 0 > 0 else {
             self.automaticexecution = nil
             return
         }
