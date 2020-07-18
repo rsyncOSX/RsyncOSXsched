@@ -51,35 +51,40 @@ extension ViewControllerSchedules: NSTableViewDataSource {
 extension ViewControllerSchedules: NSTableViewDelegate {
     func tableView(_: NSTableView, objectValueFor tableColumn: NSTableColumn?, row: Int) -> Any? {
         guard row < self.schedulessortedandexpanded?.sortedschedules?.count ?? -1 else { return nil }
-        let object: NSDictionary = self.schedulessortedandexpanded!.sortedschedules![row]
-        if tableColumn!.identifier.rawValue == "intime" {
-            let hiddenID = object.value(forKey: "hiddenID") as? Int ?? -1
-            let profilename = object.value(forKey: "profilename") as? String ?? NSLocalizedString("Default profile", comment: "default profile")
-            let dateStart = object.value(forKey: "dateStart") as? Date
-            let taskintime: String? = self.schedulessortedandexpanded!.sortandcountscheduledonetask(hiddenID: hiddenID, profilename: profilename, dateStart: dateStart, number: true)
-            return taskintime ?? ""
-        } else if tableColumn!.identifier.rawValue == "schedule" {
-            switch object[tableColumn!.identifier] as? String {
-            case Scheduletype.once.rawValue:
-                return NSLocalizedString(Scheduletype.once.rawValue, comment: "main")
-            case Scheduletype.daily.rawValue:
-                return NSLocalizedString(Scheduletype.daily.rawValue, comment: "main")
-            case Scheduletype.weekly.rawValue:
-                return NSLocalizedString(Scheduletype.weekly.rawValue, comment: "main")
-            default:
-                return ""
+        if let object: NSDictionary = self.schedulessortedandexpanded?.sortedschedules?[row] {
+            if tableColumn!.identifier.rawValue == "intime" {
+                let hiddenID = object.value(forKey: "hiddenID") as? Int ?? -1
+                let profilename = object.value(forKey: "profilename") as? String ?? NSLocalizedString("Default profile", comment: "default profile")
+                let dateStart = object.value(forKey: "dateStart") as? Date
+                let taskintime: String? = self.schedulessortedandexpanded!.sortandcountscheduledonetask(hiddenID: hiddenID, profilename: profilename, dateStart: dateStart, number: true)
+                return taskintime ?? ""
+            } else if tableColumn!.identifier.rawValue == "schedule" {
+                switch object[tableColumn!.identifier] as? String {
+                case Scheduletype.once.rawValue:
+                    return NSLocalizedString(Scheduletype.once.rawValue, comment: "main")
+                case Scheduletype.daily.rawValue:
+                    return NSLocalizedString(Scheduletype.daily.rawValue, comment: "main")
+                case Scheduletype.weekly.rawValue:
+                    return NSLocalizedString(Scheduletype.weekly.rawValue, comment: "main")
+                default:
+                    return ""
+                }
+            } else if tableColumn!.identifier.rawValue == "delta" {
+                return self.schedulessortedandexpanded?.delta?[row]
+            } else {
+                return object[tableColumn?.identifier ?? ""]
             }
-        } else {
-            return object[tableColumn!.identifier]
         }
+        return nil
     }
 
     func tableViewSelectionDidChange(_ notification: Notification) {
         let myTableViewFromNotification = (notification.object as? NSTableView)!
         let indexes = myTableViewFromNotification.selectedRowIndexes
         if let index = indexes.first {
-            let dict = self.schedulessortedandexpanded!.sortedschedules![index]
-            self.profilname = dict.value(forKey: "profilename") as? String ?? NSLocalizedString("Default profile", comment: "default profile")
+            if let dict = self.schedulessortedandexpanded?.sortedschedules?[index] {
+                self.profilname = dict.value(forKey: "profilename") as? String ?? NSLocalizedString("Default profile", comment: "default profile")
+            }
         }
     }
 }

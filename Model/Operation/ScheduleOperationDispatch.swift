@@ -9,7 +9,7 @@
 
 import Foundation
 
-class ScheduleOperationDispatch: SetSchedules, SecondsBeforeStart, Setlog {
+class ScheduleOperationDispatch: SetSchedules, SecondstoStart, Setlog {
     private var workitem: DispatchWorkItem?
 
     private func dispatchtask(_ seconds: Int) {
@@ -23,7 +23,7 @@ class ScheduleOperationDispatch: SetSchedules, SecondsBeforeStart, Setlog {
     init() {
         weak var updatestatuslightDelegate: Updatestatuslight?
         updatestatuslightDelegate = ViewControllerReference.shared.viewControllermain as? ViewControllerMain
-        let seconds = self.secondsbeforestart()
+        let seconds = self.secondstostart()
         guard seconds > 0 else {
             self.logDelegate?.addlog(logrecord: NSLocalizedString("Schedule dispatch: no more scheduled task in queue", comment: "Dispatch"))
             updatestatuslightDelegate?.updatestatuslight(color: .red)

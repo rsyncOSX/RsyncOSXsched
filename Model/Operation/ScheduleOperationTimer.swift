@@ -16,7 +16,7 @@ import Foundation
 // time is due it create a Operation object and dump the object onto the
 // OperationQueue for imidiate execution.
 
-final class ScheduleOperationTimer: SecondsBeforeStart, SetSortedAndExpanded, Setlog {
+final class ScheduleOperationTimer: SecondstoStart, SetSortedAndExpanded, Setlog {
     private var timerTaskWaiting: Timer?
 
     @objc private func executetask() {
@@ -35,7 +35,7 @@ final class ScheduleOperationTimer: SecondsBeforeStart, SetSortedAndExpanded, Se
     init() {
         weak var updatestatuslightDelegate: Updatestatuslight?
         updatestatuslightDelegate = ViewControllerReference.shared.viewControllermain as? ViewControllerMain
-        let seconds = self.secondsbeforestart()
+        let seconds = self.secondstostart()
         guard seconds > 0 else {
             self.logDelegate?.addlog(logrecord: NSLocalizedString("Schedule timer: no more scheduled task in queue", comment: "Timer"))
             updatestatuslightDelegate?.updatestatuslight(color: .red)

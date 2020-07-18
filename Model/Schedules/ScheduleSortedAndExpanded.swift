@@ -16,6 +16,7 @@ class ScheduleSortedAndExpand: Setlog {
     private var scheduleConfiguration: [ConfigurationSchedule]?
     private var expandedData: [NSDictionary]?
     var sortedschedules: [NSDictionary]?
+    var delta: [String]?
     var tcpconnections: TCPconnections?
 
     // First job to execute. Job is first element in
@@ -24,7 +25,12 @@ class ScheduleSortedAndExpand: Setlog {
             ViewControllerReference.shared.scheduledTask = nil
             return nil
         }
-        return self.sortedschedules![0]
+        return self.sortedschedules?[0]
+    }
+
+    func getsecondscheduledtask() -> NSDictionary? {
+        guard (self.sortedschedules?.count ?? 0) > 1 else { return nil }
+        return self.sortedschedules?[1]
     }
 
     // Calculate daily schedules
@@ -43,7 +49,7 @@ class ScheduleSortedAndExpand: Setlog {
                     "timetostart": time,
                     "profilename": profilename,
                 ]
-                self.expandedData!.append(dictSchedule)
+                self.expandedData?.append(dictSchedule)
             }
         }
     }
@@ -64,7 +70,7 @@ class ScheduleSortedAndExpand: Setlog {
                     "timetostart": time,
                     "profilename": profilename,
                 ]
-                self.expandedData!.append(dictSchedule)
+                self.expandedData?.append(dictSchedule)
             }
         }
     }
@@ -77,7 +83,6 @@ class ScheduleSortedAndExpand: Setlog {
             let dateStart: Date = (dict.value(forKey: "dateStart") as? String)!.en_us_date_from_string()
             let schedule: String = (dict.value(forKey: "schedule") as? String)!
             let seconds: Double = dateStop.timeIntervalSinceNow
-            print(seconds)
             // Get all jobs which are not executed
             if seconds > 0 {
                 switch schedule {
@@ -92,8 +97,9 @@ class ScheduleSortedAndExpand: Setlog {
                         "schedule": schedule,
                         "timetostart": time,
                         "profilename": profilename,
+                        "delta": 0,
                     ]
-                    self.expandedData!.append(dict)
+                    self.expandedData?.append(dict)
                 case Scheduletype.daily.rawValue:
                     self.daily(dateStart: dateStart, schedule: schedule, dict: dict)
                 case Scheduletype.weekly.rawValue:
@@ -102,11 +108,27 @@ class ScheduleSortedAndExpand: Setlog {
                     break
                 }
             }
-            self.sortedschedules = self.expandedData?.sorted { (di1, di2) -> Bool in
-                if (di1.value(forKey: "start") as? Date)!.timeIntervalSince((di2.value(forKey: "start") as? Date)!) > 0 {
-                    return false
-                } else {
-                    return true
+            self.sortedschedules = self.expandedData?.sorted { (date1, date2) -> Bool in
+                if let date1 = date1.value(forKey: "start") as? Date {
+                    if let date2 = date2.value(forKey: "start") as? Date {
+                        if date1.timeIntervalSince(date2) > 0 {
+                            return false
+                        } else {
+                            return true
+                        }
+                    }
+                }
+                return false
+            }
+        }
+        // calculate delta time
+        self.delta = [String]()
+        self.delta?.append("0")
+        let timestring = Dateandtime()
+        for i in 1 ..< (self.sortedschedules?.count ?? 0) {
+            if let t1 = self.sortedschedules?[i - 1].value(forKey: "timetostart") as? Double {
+                if let t2 = self.sortedschedules?[i].value(forKey: "timetostart") as? Double {
+                    self.delta?.append(timestring.timeString(t2 - t1))
                 }
             }
         }
