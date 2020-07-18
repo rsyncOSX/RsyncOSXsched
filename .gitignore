@@ -75,3 +75,4 @@ fastlane/test_output
 *.xcbkptlist
 
 .DS_Store
+SourcePackages
