@@ -27,6 +27,7 @@
 		E91C5DC72026FB3500FE7E76 /* ProcessCmd.swift in Sources */ = {isa = PBXBuildFile; fileRef = E91C5DC62026FB3500FE7E76 /* ProcessCmd.swift */; };
 		E91C5DCB2026FE4200FE7E76 /* PersistentStorageScheduling.swift in Sources */ = {isa = PBXBuildFile; fileRef = E91C5DCA2026FE4200FE7E76 /* PersistentStorageScheduling.swift */; };
 		E91C5DCD2026FFD200FE7E76 /* ConfigurationSchedule.swift in Sources */ = {isa = PBXBuildFile; fileRef = E91C5DCC2026FFD200FE7E76 /* ConfigurationSchedule.swift */; };
+		E923AE5E24C2E710001601D4 /* InterruptProcess.swift in Sources */ = {isa = PBXBuildFile; fileRef = E923AE5D24C2E710001601D4 /* InterruptProcess.swift */; };
 		E92D57E92480E32500116E3D /* Keypathidentityfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = E92D57E82480E32500116E3D /* Keypathidentityfile.swift */; };
 		E92D74E12269A3D200330BBE /* CheckAllConfigurations.swift in Sources */ = {isa = PBXBuildFile; fileRef = E92D74E02269A3D200330BBE /* CheckAllConfigurations.swift */; };
 		E9415402202F6E0C00BCE8A1 /* ViewControllerLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9415401202F6E0C00BCE8A1 /* ViewControllerLog.swift */; };
@@ -45,6 +46,7 @@
 		E9A63066202B4DE900F1FFF1 /* Running.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A63065202B4DE900F1FFF1 /* Running.swift */; };
 		E9B5B4602133F2DB004B7041 /* Checkfornewversion.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9B5B45F2133F2DB004B7041 /* Checkfornewversion.swift */; };
 		E9B96299203802EF00EA6D5A /* Logg.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9B96298203802EF00EA6D5A /* Logg.swift */; };
+		E9C2C5B224C2D9B9002E86DA /* ShellOut in Frameworks */ = {isa = PBXBuildFile; productRef = E9C2C5B124C2D9B9002E86DA /* ShellOut */; };
 		E9C2CD5A2279D80300CF69AF /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = E9C2CD582279D80300CF69AF /* InfoPlist.strings */; };
 		E9C2CD5D2279D80300CF69AF /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = E9C2CD5B2279D80300CF69AF /* Localizable.strings */; };
 		E9C6BFC32308317C0052A336 /* Socket.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9C6BFC22308317C0052A336 /* Socket.swift */; };
@@ -88,6 +90,7 @@
 		E91C5DCA2026FE4200FE7E76 /* PersistentStorageScheduling.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersistentStorageScheduling.swift; sourceTree = "<group>"; };
 		E91C5DCC2026FFD200FE7E76 /* ConfigurationSchedule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfigurationSchedule.swift; sourceTree = "<group>"; };
 		E91D535F217F72ED001B7A6A /* RsyncOSXsched.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = RsyncOSXsched.entitlements; sourceTree = "<group>"; };
+		E923AE5D24C2E710001601D4 /* InterruptProcess.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterruptProcess.swift; sourceTree = "<group>"; };
 		E92D57E82480E32500116E3D /* Keypathidentityfile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Keypathidentityfile.swift; sourceTree = "<group>"; };
 		E92D74E02269A3D200330BBE /* CheckAllConfigurations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckAllConfigurations.swift; sourceTree = "<group>"; };
 		E936DE0423C0832B0099720D /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Main.strings; sourceTree = "<group>"; };
@@ -142,6 +145,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E9C2C5B224C2D9B9002E86DA /* ShellOut in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -201,6 +205,7 @@
 				E95547FF2035F4CD00D2E713 /* ExecuteTaskTimer.swift */,
 				E95548002035F4CD00D2E713 /* ScheduleOperationTimer.swift */,
 				E91C5DC62026FB3500FE7E76 /* ProcessCmd.swift */,
+				E923AE5D24C2E710001601D4 /* InterruptProcess.swift */,
 			);
 			path = Operation;
 			sourceTree = "<group>";
@@ -374,6 +379,9 @@
 			dependencies = (
 			);
 			name = RsyncOSXsched;
+			packageProductDependencies = (
+				E9C2C5B124C2D9B9002E86DA /* ShellOut */,
+			);
 			productName = Popup;
 			productReference = 94E0FC3B1BD7FC3600A3C537 /* RsyncOSXsched.app */;
 			productType = "com.apple.product-type.application";
@@ -414,6 +422,9 @@
 				"zh-Hans",
 			);
 			mainGroup = 94E0FC321BD7FC3600A3C537;
+			packageReferences = (
+				E9C2C5B024C2D9B9002E86DA /* XCRemoteSwiftPackageReference "ShellOut" */,
+			);
 			productRefGroup = 94E0FC3C1BD7FC3600A3C537 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -459,6 +470,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E906BF6D20F1DB2200238E6A /* ScheduleOperationDispatch.swift in Sources */,
+				E923AE5E24C2E710001601D4 /* InterruptProcess.swift in Sources */,
 				E90CAC5F203D7409004BA7C6 /* Notifications.swift in Sources */,
 				E94DDC8720A40CC90041CF53 /* ViewControllerSchedules.swift in Sources */,
 				E91C5DBF2026F8FA00FE7E76 /* ScheduleSortedAndExpanded.swift in Sources */,
@@ -729,6 +741,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		E9C2C5B024C2D9B9002E86DA /* XCRemoteSwiftPackageReference "ShellOut" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/rsyncOSX/ShellOut.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.3.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		E9C2C5B124C2D9B9002E86DA /* ShellOut */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E9C2C5B024C2D9B9002E86DA /* XCRemoteSwiftPackageReference "ShellOut" */;
+			productName = ShellOut;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 94E0FC331BD7FC3600A3C537 /* Project object */;
 }

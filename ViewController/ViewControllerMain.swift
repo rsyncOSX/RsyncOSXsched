@@ -96,7 +96,7 @@ class ViewControllerMain: NSViewController, Delay, Setlog {
     }
 
     @IBAction func abort(_: NSButton) {
-        ViewControllerReference.shared.process?.terminate()
+        _ = InterruptProcess()
         self.progress.stopAnimation(nil)
         self.initpopupbutton()
     }
@@ -371,8 +371,8 @@ extension ViewControllerMain: Reloadsortedandrefresh {
     }
 }
 
-extension ViewControllerMain: ScheduledTaskWorking {
-    func start() {
+extension ViewControllerMain: ScheduledTaskStartanimation {
+    func startanimation() {
         globalMainQueue.async { () -> Void in
             self.progress.startAnimation(nil)
             self.progresslabel.isHidden = false
@@ -381,11 +381,7 @@ extension ViewControllerMain: ScheduledTaskWorking {
     }
 }
 
-extension ViewControllerMain: Sendprocessreference {
-    func sendprocessreference(process: Process?) {
-        ViewControllerReference.shared.process = process
-    }
-
+extension ViewControllerMain: SendOutputProcessreference {
     func sendoutputprocessreference(outputprocess: OutputProcess?) {
         self.outputprocess = outputprocess
     }

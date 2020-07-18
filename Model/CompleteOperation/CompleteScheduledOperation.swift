@@ -10,7 +10,7 @@ import Foundation
 
 // Class for completion of Operation objects when Process object termination.
 // The object does also kicks of next scheduled job by setting new waiter time.
-final class CompleteScheduledOperation: SetScheduledTask, SetConfigurations, SetSchedules, Setlog {
+final class CompleteScheduledOperation: ScheduledTaskAnimation, SetConfigurations, SetSchedules, Setlog {
     private var date: Date?
     private var hiddenID: Int?
     private var index: Int?

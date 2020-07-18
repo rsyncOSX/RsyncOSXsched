@@ -83,22 +83,21 @@ protocol Reloadsortedandrefresh: AnyObject {
 // Protocol when a Scehduled job is starting and stopping
 // Used to informed the presenting viewcontroller about what
 // is going on
-protocol ScheduledTaskWorking: AnyObject {
-    func start()
+protocol ScheduledTaskStartanimation: AnyObject {
+    func startanimation()
 }
 
-protocol SetScheduledTask {
-    var scheduleJob: ScheduledTaskWorking? { get }
+protocol ScheduledTaskAnimation {
+    var scheduletaskanimation: ScheduledTaskStartanimation? { get }
 }
 
-extension SetScheduledTask {
-    var scheduleJob: ScheduledTaskWorking? {
+extension ScheduledTaskAnimation {
+    var scheduletaskanimation: ScheduledTaskStartanimation? {
         return ViewControllerReference.shared.viewControllermain as? ViewControllerMain
     }
 }
 
-protocol Sendprocessreference: AnyObject {
-    func sendprocessreference(process: Process?)
+protocol SendOutputProcessreference: AnyObject {
     func sendoutputprocessreference(outputprocess: OutputProcess?)
 }
 

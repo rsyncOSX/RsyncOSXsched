@@ -13,7 +13,7 @@ import Foundation
 // is set in the static object. The finalize object is invoked
 // when the job discover (observs) the termination of the process.
 
-final class ExecuteScheduledTask: SetSchedules, SetConfigurations, SetScheduledTask, Setlog {
+final class ExecuteScheduledTask: SetSchedules, SetConfigurations, ScheduledTaskAnimation, Setlog {
     private func executetask() {
         let outputprocess = OutputProcess()
         var arguments: [String]?
@@ -39,7 +39,7 @@ final class ExecuteScheduledTask: SetSchedules, SetConfigurations, SetScheduledT
                 guard configArray.count > 0 else { return }
                 config = configArray[0]
                 // Inform and notify
-                self.scheduleJob?.start()
+                self.scheduletaskanimation?.startanimation()
                 if hiddenID >= 0, config != nil {
                     if let remoteserver = config?.offsiteServer {
                         guard tcpconnectionsDelegate?.gettcpconnections()?.checkremoteconnection(remoteserver: remoteserver) == true else { return }
@@ -49,13 +49,12 @@ final class ExecuteScheduledTask: SetSchedules, SetConfigurations, SetScheduledT
                         // Setting reference to finalize the job, finalize job is done when rsynctask ends (in process termination)
                         ViewControllerReference.shared.completeoperation = CompleteScheduledOperation(dict: dict)
                         self.logDelegate?.addlog(logrecord: NSLocalizedString("Executing task in profile", comment: "Execute") + " " + profilename! + " with ID " + config!.backupID)
-                        weak var sendprocess: Sendprocessreference?
-                        sendprocess = ViewControllerReference.shared.viewControllermain as? ViewControllerMain
+                        weak var sendoutputprocess: SendOutputProcessreference?
+                        sendoutputprocess = ViewControllerReference.shared.viewControllermain as? ViewControllerMain
                         let process = ProcessCmd(command: nil, arguments: arguments)
                         globalMainQueue.async {
                             process.executeProcess(outputprocess: outputprocess)
-                            sendprocess?.sendprocessreference(process: process.getProcess())
-                            sendprocess?.sendoutputprocessreference(outputprocess: outputprocess)
+                            sendoutputprocess?.sendoutputprocessreference(outputprocess: outputprocess)
                         }
                     }
                 }
