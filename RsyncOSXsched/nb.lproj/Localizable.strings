@@ -4,9 +4,6 @@
 /* Logg */
 "Adding result to log:" = "Legger til resultat til logg:";
 
-/* main */
-"daily" = "daglig";
-
 /* datetime */
 "days" = "dager";
 
@@ -68,12 +65,6 @@
 "No hiddenID in dictionary" = "Ingen hiddenID I katalog";
 
 /* main */
-"once" = "engang";
-
-/* default profile */
-"Profile" = "Profil";
-
-/* main */
 "Profile:" = "Profil:";
 
 /* reloadinfo */
@@ -93,6 +84,9 @@
 
 /* Dispatch */
 "Schedule dispatch: no more scheduled task in queue" = "Oppgave dispatch: ingen flere oppgaver i kø.";
+
+/* Dispatch */
+"Schedule dispatch: seconds between tasks:" = "Oppgave dispatch: sekunder mellom oppgaver:";
 
 /* Dispatch */
 "Schedule dispatch: setting next scheduled task in:" = "Oppgave dispatch: neste oppgave om:";
@@ -121,9 +115,6 @@
 
 /* main */
 "Unmounting volumes:" = "Avmontering katalog:";
-
-/* main */
-"weekly" = "ukentlig";
 
 /* Storage */
 "Write and reload configurations" = "Skriver og leser konfigurasjoner";
