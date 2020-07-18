@@ -101,35 +101,45 @@ protocol SendOutputProcessreference: AnyObject {
     func sendoutputprocessreference(outputprocess: OutputProcess?)
 }
 
-protocol SecondsBeforeStart {
-    func secondsbeforestart() -> Double
+protocol SecondstoStart {
+    func secondstostart() -> Double
+    func secondsbetweenfirstandsecondtask() -> Double?
 }
 
-extension SecondsBeforeStart {
+extension SecondstoStart {
     // Calculation of time to a spesific date
-    private func timeDoubleSeconds(_ startdate: Date, enddate: Date?) -> Double {
+    private func timeindoubleseconds(_ startdate: Date, enddate: Date?) -> Double {
         let seconds: Double = self.seconds(startdate, enddate: enddate)
         return seconds
     }
 
     private func seconds(_ startdate: Date, enddate: Date?) -> Double {
-        if enddate == nil {
-            return startdate.timeIntervalSinceNow
-        } else {
-            return enddate!.timeIntervalSince(startdate)
-        }
+        return enddate?.timeIntervalSince(startdate) ?? startdate.timeIntervalSinceNow
     }
 
-    func secondsbeforestart() -> Double {
-        var secondsToWait: Double?
+    func secondstostart() -> Double {
+        var seconds: Double?
         weak var schedulesDelegate: GetSortedandExpandedObject?
         schedulesDelegate = ViewControllerReference.shared.viewControllermain as? ViewControllerMain
-        let scheduledJobs = schedulesDelegate?.getsortedandexpandeobject()
-        if let dict = scheduledJobs?.getfirstscheduledtask() {
+        let scheduledjobs = schedulesDelegate?.getsortedandexpandeobject()
+        if let dict = scheduledjobs?.getfirstscheduledtask() {
             let dateStart: Date = (dict.value(forKey: "start") as? Date)!
-            secondsToWait = self.timeDoubleSeconds(dateStart, enddate: nil)
+            seconds = self.timeindoubleseconds(dateStart, enddate: nil)
         }
-        return secondsToWait ?? 0
+        return seconds ?? 0
+    }
+
+    func secondsbetweenfirstandsecondtask() -> Double? {
+        var seconds: Double?
+        weak var schedulesDelegate: GetSortedandExpandedObject?
+        schedulesDelegate = ViewControllerReference.shared.viewControllermain as? ViewControllerMain
+        let scheduledjobs = schedulesDelegate?.getsortedandexpandeobject()
+        if let dict = scheduledjobs?.getsecondscheduledtask() {
+            let dateStart: Date = (dict.value(forKey: "start") as? Date)!
+            seconds = self.timeindoubleseconds(dateStart, enddate: nil)
+            return (seconds ?? 0) - self.secondstostart()
+        }
+        return nil
     }
 }
 

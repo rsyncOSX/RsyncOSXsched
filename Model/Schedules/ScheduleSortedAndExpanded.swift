@@ -24,7 +24,12 @@ class ScheduleSortedAndExpand: Setlog {
             ViewControllerReference.shared.scheduledTask = nil
             return nil
         }
-        return self.sortedschedules![0]
+        return self.sortedschedules?[0]
+    }
+
+    func getsecondscheduledtask() -> NSDictionary? {
+        guard (self.sortedschedules?.count ?? 0) > 1 else { return nil }
+        return self.sortedschedules?[1]
     }
 
     // Calculate daily schedules
