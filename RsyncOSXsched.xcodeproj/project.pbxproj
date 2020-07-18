@@ -38,6 +38,7 @@
 		E95548022035F4CD00D2E713 /* ScheduleOperationTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E95548002035F4CD00D2E713 /* ScheduleOperationTimer.swift */; };
 		E95738EA232B86D2000342FE /* FirstScheduledTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = E95738E9232B86D2000342FE /* FirstScheduledTask.swift */; };
 		E965E1AB20A17BF9004F42DC /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E965E1AA20A17BF9004F42DC /* Extensions.swift */; };
+		E970252124C350B30031EA54 /* ExecuteScheduledTaskShellOut.swift in Sources */ = {isa = PBXBuildFile; fileRef = E970252024C350B30031EA54 /* ExecuteScheduledTaskShellOut.swift */; };
 		E973F0EF227305E100412F60 /* ConvertSchedules.swift in Sources */ = {isa = PBXBuildFile; fileRef = E973F0ED227305E100412F60 /* ConvertSchedules.swift */; };
 		E973F0F0227305E100412F60 /* ConvertConfigurations.swift in Sources */ = {isa = PBXBuildFile; fileRef = E973F0EE227305E100412F60 /* ConvertConfigurations.swift */; };
 		E98398AE20260E9D00C977C3 /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = E98398AC20260E9D00C977C3 /* Configuration.swift */; };
@@ -107,6 +108,7 @@
 		E9640D4823B91C2C00223912 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
 		E9640D4923B91C2C00223912 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		E965E1AA20A17BF9004F42DC /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		E970252024C350B30031EA54 /* ExecuteScheduledTaskShellOut.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExecuteScheduledTaskShellOut.swift; sourceTree = "<group>"; };
 		E973F0ED227305E100412F60 /* ConvertSchedules.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConvertSchedules.swift; sourceTree = "<group>"; };
 		E973F0EE227305E100412F60 /* ConvertConfigurations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConvertConfigurations.swift; sourceTree = "<group>"; };
 		E97974312427372C00F298E0 /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/Main.strings; sourceTree = "<group>"; };
@@ -201,6 +203,7 @@
 			isa = PBXGroup;
 			children = (
 				E906BF6C20F1DB2200238E6A /* ExecuteScheduledTask.swift */,
+				E970252024C350B30031EA54 /* ExecuteScheduledTaskShellOut.swift */,
 				E906BF6B20F1DB2200238E6A /* ScheduleOperationDispatch.swift */,
 				E95547FF2035F4CD00D2E713 /* ExecuteTaskTimer.swift */,
 				E95548002035F4CD00D2E713 /* ScheduleOperationTimer.swift */,
@@ -469,6 +472,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E970252124C350B30031EA54 /* ExecuteScheduledTaskShellOut.swift in Sources */,
 				E906BF6D20F1DB2200238E6A /* ScheduleOperationDispatch.swift in Sources */,
 				E923AE5E24C2E710001601D4 /* InterruptProcess.swift in Sources */,
 				E90CAC5F203D7409004BA7C6 /* Notifications.swift in Sources */,

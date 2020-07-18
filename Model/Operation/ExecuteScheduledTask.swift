@@ -13,7 +13,9 @@ import Foundation
 // is set in the static object. The finalize object is invoked
 // when the job discover (observs) the termination of the process.
 
-final class ExecuteScheduledTask: SetSchedules, SetConfigurations, ScheduledTaskAnimation, Setlog {
+class ExecuteScheduledTask: SetSchedules, SetConfigurations, ScheduledTaskAnimation, Setlog {
+    var config: Configuration?
+
     private func executetask() {
         let outputprocess = OutputProcess()
         var arguments: [String]?
@@ -38,6 +40,7 @@ final class ExecuteScheduledTask: SetSchedules, SetConfigurations, ScheduledTask
                 let configArray = getconfigurations!.filter { ($0.hiddenID == hiddenID) }
                 guard configArray.count > 0 else { return }
                 config = configArray[0]
+                self.config = config
                 // Inform and notify
                 self.scheduletaskanimation?.startanimation()
                 if hiddenID >= 0, config != nil {
