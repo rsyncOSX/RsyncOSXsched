@@ -14,7 +14,7 @@
 "5kV-Vb-QxS.title" = "À propos de RsyncOSXsched";
 
 /* Class = "NSTableColumn"; headerCell.title = "In time"; ObjectID = "5YC-cO-W1E"; */
-"5YC-cO-W1E.headerCell.title" = "In time";
+"5YC-cO-W1E.headerCell.title" = "Dans le temps";
 
 /* Class = "NSTextFieldCell"; title = "Double click on a row to select profile..."; ObjectID = "6Qr-L9-cOC"; */
 "6Qr-L9-cOC.title" = "Double-cliquez sur une ligne pour sélectionner le profil...";
