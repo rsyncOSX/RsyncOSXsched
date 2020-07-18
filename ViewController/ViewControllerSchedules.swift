@@ -69,6 +69,8 @@ extension ViewControllerSchedules: NSTableViewDelegate {
                 default:
                     return ""
                 }
+            } else if tableColumn!.identifier.rawValue == "delta" {
+                return self.schedulessortedandexpanded?.delta?[row]
             } else {
                 return object[tableColumn?.identifier ?? ""]
             }
