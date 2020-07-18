@@ -103,7 +103,6 @@ protocol SendOutputProcessreference: AnyObject {
 
 protocol SecondstoStart {
     func secondstostart() -> Double
-    func secondsbetweenfirstandsecondtask() -> Double?
 }
 
 extension SecondstoStart {
@@ -127,19 +126,6 @@ extension SecondstoStart {
             seconds = self.timeindoubleseconds(dateStart, enddate: nil)
         }
         return seconds ?? 0
-    }
-
-    func secondsbetweenfirstandsecondtask() -> Double? {
-        var seconds: Double?
-        weak var schedulesDelegate: GetSortedandExpandedObject?
-        schedulesDelegate = ViewControllerReference.shared.viewControllermain as? ViewControllerMain
-        let scheduledjobs = schedulesDelegate?.getsortedandexpandeobject()
-        if let dict = scheduledjobs?.getsecondscheduledtask() {
-            let dateStart: Date = (dict.value(forKey: "start") as? Date)!
-            seconds = self.timeindoubleseconds(dateStart, enddate: nil)
-            return (seconds ?? 0) - self.secondstostart()
-        }
-        return nil
     }
 }
 

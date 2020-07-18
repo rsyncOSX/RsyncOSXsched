@@ -35,10 +35,5 @@ class ScheduleOperationDispatch: SetSchedules, SecondstoStart, Setlog {
         // Set reference to schedule for later cancel if any
         ViewControllerReference.shared.dispatchTaskWaiting = self.workitem
         updatestatuslightDelegate?.updatestatuslight(color: .green)
-        // Info about seconds between first and second task (if any)
-        if let secondsbetweenfirstandnext = self.secondsbetweenfirstandsecondtask() {
-            let timestring = Dateandtime().timeString(secondsbetweenfirstandnext)
-            self.logDelegate?.addlog(logrecord: NSLocalizedString("Schedule dispatch: seconds between tasks:", comment: "Dispatch") + " " + timestring)
-        }
     }
 }

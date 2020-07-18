@@ -61,7 +61,15 @@ final class Dateandtime {
         if hr == 0, min == 0 {
             result = String(format: "%.0f", 60 * secf) + "s"
         } else if hr == 0, min < 60 {
-            result = String(format: "%.0f", min) + "m " + String(format: "%.0f", 60 * secf) + "s"
+            if secf > 0.9 {
+                result = String(format: "%.0f", min + 1) + "m "
+            } else {
+                if (60 * secf) > 15 {
+                    result = String(format: "%.0f", min) + "m " + String(format: "%.0f", 60 * secf) + "s"
+                } else {
+                    result = String(format: "%.0f", min) + "m "
+                }
+            }
         } else if hr < 25 {
             result = String(format: "%.0f", hr) + NSLocalizedString("h", comment: "datetime") + " "
                 + String(format: "%.0f", min) + "m"
