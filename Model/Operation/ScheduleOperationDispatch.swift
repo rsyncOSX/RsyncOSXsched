@@ -25,12 +25,12 @@ class ScheduleOperationDispatch: SetSchedules, SecondstoStart, Setlog {
         updatestatuslightDelegate = ViewControllerReference.shared.viewControllermain as? ViewControllerMain
         let seconds = self.secondstostart()
         guard seconds > 0 else {
-            self.logDelegate?.addlog(logrecord: NSLocalizedString("Schedule dispatch: no more scheduled task in queue", comment: "Dispatch"))
+            self.logDelegate?.addlog(logrecord: NSLocalizedString("Dispatch: no more scheduled task in queue", comment: "Dispatch"))
             updatestatuslightDelegate?.updatestatuslight(color: .red)
             return
         }
         let timestring = Dateandtime().timeString(seconds)
-        self.logDelegate?.addlog(logrecord: NSLocalizedString("Schedule dispatch: setting next scheduled task in:", comment: "Dispatch") + " " + timestring)
+        self.logDelegate?.addlog(logrecord: NSLocalizedString("Dispatch: setting next scheduled task in:", comment: "Dispatch") + " " + timestring)
         self.dispatchtask(Int(seconds))
         // Set reference to schedule for later cancel if any
         ViewControllerReference.shared.dispatchTaskWaiting = self.workitem

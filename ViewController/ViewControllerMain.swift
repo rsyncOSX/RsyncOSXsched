@@ -277,11 +277,11 @@ extension ViewControllerMain: NSTableViewDelegate, Attributedestring {
                 if schedule?.isEmpty == false {
                     switch schedule {
                     case Scheduletype.once.rawValue:
-                        return NSLocalizedString(Scheduletype.once.rawValue, comment: "main")
+                        return NSLocalizedString("once", comment: "main")
                     case Scheduletype.daily.rawValue:
-                        return NSLocalizedString(Scheduletype.daily.rawValue, comment: "main")
+                        return NSLocalizedString("daily", comment: "main")
                     case Scheduletype.weekly.rawValue:
-                        return NSLocalizedString(Scheduletype.weekly.rawValue, comment: "main")
+                        return NSLocalizedString("weekly", comment: "main")
                     default:
                         return ""
                     }
