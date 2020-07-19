@@ -88,11 +88,19 @@ class ViewControllerMain: NSViewController, Delay, Setlog {
     }
 
     @IBAction func backupnow(_: NSButton) {
-        guard self.index != nil else { return }
-        guard self.configurations?.getConfigurationsDataSourceSynchronize() != nil else { return }
-        self.backupnowbutton.isEnabled = false
-        let dict: NSDictionary = self.configurations!.getConfigurationsDataSourceSynchronize()![self.index!]
-        _ = ExecuteScheduledTask(dict: dict)
+        if let index = self.index {
+            guard self.configurations?.getConfigurationsDataSourceSynchronize() != nil else { return }
+            self.backupnowbutton.isEnabled = false
+            if let dict: NSDictionary = self.configurations?.getConfigurationsDataSourceSynchronize()![index] {
+                if let executepretask = dict.value(forKey: "executepretask") as? Int {
+                    if executepretask == 1 {
+                        _ = ExecuteScheduledTaskShellOut(dict: dict)
+                    } else {
+                        _ = ExecuteScheduledTask(dict: dict)
+                    }
+                }
+            }
+        }
     }
 
     @IBAction func abort(_: NSButton) {
@@ -415,8 +423,15 @@ extension ViewControllerMain: UpdateProgress {
                 return
             }
             self.delayWithSeconds(1) {
-                let dict: NSDictionary = self.automaticexecution!.removeFirst()
-                _ = ExecuteScheduledTask(dict: dict)
+                if let dict: NSDictionary = self.automaticexecution?.removeFirst() {
+                    if let executepretask = dict.value(forKey: "executepretask") as? Int {
+                        if executepretask == 1 {
+                            _ = ExecuteScheduledTaskShellOut(dict: dict)
+                        } else {
+                            _ = ExecuteScheduledTask(dict: dict)
+                        }
+                    }
+                }
             }
         }
     }
@@ -512,7 +527,14 @@ extension ViewControllerMain: Startautomaticexecution {
             self.automaticexecution = nil
             return
         }
-        let dict: NSDictionary = self.automaticexecution!.removeFirst()
-        _ = ExecuteScheduledTask(dict: dict)
+        if let dict: NSDictionary = self.automaticexecution?.removeFirst() {
+            if let executepretask = dict.value(forKey: "executepretask") as? Int {
+                if executepretask == 1 {
+                    _ = ExecuteScheduledTaskShellOut(dict: dict)
+                } else {
+                    _ = ExecuteScheduledTask(dict: dict)
+                }
+            }
+        }
     }
 }
