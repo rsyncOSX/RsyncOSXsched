@@ -16,7 +16,7 @@ struct GetConfig: SetSchedules, SetConfigurations {
 
     init() {
         self.reloaddataDelegate = ViewControllerReference.shared.viewControllermain as? ViewControllerMain
-        if let dict: NSDictionary = ViewControllerReference.shared.scheduledTask {
+        if let dict = ViewControllerReference.shared.scheduledTask {
             self.dict = dict
             if let profilename = dict.value(forKey: "profilename") as? String {
                 if profilename.isEmpty == true {
@@ -32,13 +32,13 @@ struct GetConfig: SetSchedules, SetConfigurations {
                     self.config = nil
                     return
                 }
-                let getconfigurations: [Configuration]? = configurations?.getConfigurations()
-                guard getconfigurations != nil else { return }
-                let configArray = getconfigurations!.filter { ($0.hiddenID == hiddenID) }
-                guard configArray.count > 0 else { return }
-                self.config = configArray[0]
-                if (self.config?.pretask ?? "").isEmpty == false, self.config?.executepretask ?? 0 == 1 {
-                    self.shellout = true
+                if let getconfigurations = configurations?.getConfigurations() {
+                    let configArray = getconfigurations.filter { ($0.hiddenID == hiddenID) }
+                    guard configArray.count > 0 else { return }
+                    self.config = configArray[0]
+                    if (self.config?.pretask ?? "").isEmpty == false, self.config?.executepretask ?? 0 == 1 {
+                        self.shellout = true
+                    }
                 }
             }
         } else {
