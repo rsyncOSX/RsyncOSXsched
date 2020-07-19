@@ -485,7 +485,7 @@ extension ViewControllerMain: ReloadData {
         guard profilename == self.profilename else {
             self.profilename = profilename
             globalMainQueue.async { () -> Void in
-                self.profileinfo.stringValue = NSLocalizedString("Profile:", comment: "main") + " " + self.profilename!
+                self.profileinfo.stringValue = NSLocalizedString("Profile:", comment: "main") + " " + (self.profilename ?? "Default profile")
             }
             self.createandreloadconfigurations()
             self.createandreloadschedules()
