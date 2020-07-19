@@ -29,6 +29,7 @@ struct ConvertOneConfig {
             "selectCellID": 0,
             "executepretask": self.config?.executepretask ?? 0,
             "executeposttask": self.config?.executeposttask ?? 0,
+            "profilename": self.profile ?? "",
         ]
         return row
     }
