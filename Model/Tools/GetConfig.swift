@@ -19,11 +19,13 @@ struct GetConfig: SetSchedules, SetConfigurations {
         if let dict: NSDictionary = ViewControllerReference.shared.scheduledTask {
             self.dict = dict
             if let profilename = dict.value(forKey: "profilename") as? String {
-                self.reloaddataDelegate?.reloaddata(profilename: profilename)
-                self.profilename = profilename
-            } else {
-                self.reloaddataDelegate?.reloaddata(profilename: nil)
-                self.profilename = nil
+                if profilename.isEmpty == true {
+                    self.reloaddataDelegate?.reloaddata(profilename: nil)
+                    self.profilename = nil
+                } else {
+                    self.reloaddataDelegate?.reloaddata(profilename: profilename)
+                    self.profilename = profilename
+                }
             }
             if let hiddenID: Int = dict.value(forKey: "hiddenID") as? Int {
                 guard hiddenID >= 0 else {

@@ -12,19 +12,15 @@ import ShellOut
 
 final class ExecuteScheduledTaskShellOut: ExecuteScheduledTask {
     var error: Bool = false
+    var config: Configuration?
 
     func executepretask() throws {
         if let config = self.config {
             if let pretask = config.pretask {
                 let task = try shellOut(to: pretask)
-                // let outputprocess = OutputProcess()
-                // outputprocess.addlinefromoutput(str: "ShellOut: execute pretask")
-                // outputprocess.addlinefromoutput(str: task.self)
-                // _ = Logging(outputprocess, true)
+                self.logDelegate?.addlog(logrecord: "ShellOut: execute pretask")
                 if task.self.contains("error"), (config.haltshelltasksonerror ?? 0) == 1 {
-                    let outputprocess = OutputProcess()
-                    outputprocess.addlinefromoutput(str: "ShellOut: pretask containes error, aborting")
-                    // _ = Logging(outputprocess, true)
+                    self.logDelegate?.addlog(logrecord: "ShellOut: pretask containes error, aborting")
                     self.error = true
                 }
             }
@@ -35,14 +31,9 @@ final class ExecuteScheduledTaskShellOut: ExecuteScheduledTask {
         if let config = self.config {
             if let posttask = config.posttask {
                 let task = try shellOut(to: posttask)
-                // let outputprocess = OutputProcess()
-                // outputprocess.addlinefromoutput(str: "ShellOut: execute posttask")
-                // outputprocess.addlinefromoutput(str: task.self)
-                // _ = Logging(outputprocess, true)
+                self.logDelegate?.addlog(logrecord: "ShellOut: execute posttak")
                 if task.self.contains("error"), (config.haltshelltasksonerror ?? 0) == 1 {
-                    let outputprocess = OutputProcess()
-                    outputprocess.addlinefromoutput(str: "ShellOut: posstak containes error")
-                    // _ = Logging(outputprocess, true)
+                    self.logDelegate?.addlog(logrecord: "ShellOut: posstak containes error, aborting")
                 }
             }
         }
@@ -57,16 +48,15 @@ final class ExecuteScheduledTaskShellOut: ExecuteScheduledTask {
         tcpconnectionsDelegate = ViewControllerReference.shared.viewControllermain as? ViewControllerMain
 
         if let config = GetConfig().config, let dict = GetConfig().dict {
+            self.config = config
             // Execute pretask
             if config.executepretask == 1 {
                 do {
                     try self.executepretask()
                 } catch let e {
                     let error = e as? ShellOutError
-                    let outputprocess = OutputProcess()
-                    outputprocess.addlinefromoutput(str: "ShellOut: pretask fault, aborting")
-                    outputprocess.addlinefromoutput(str: error?.message ?? "")
-                    // _ = Logging(outputprocess, true)
+                    self.logDelegate?.addlog(logrecord: "ShellOut: pretask fault, aborting")
+                    self.logDelegate?.addlog(logrecord: error?.description ?? "")
                     self.error = true
                 }
             }
@@ -108,10 +98,9 @@ final class ExecuteScheduledTaskShellOut: ExecuteScheduledTask {
                     try self.executeposttask()
                 } catch let e {
                     let error = e as? ShellOutError
-                    let outputprocess = OutputProcess()
-                    outputprocess.addlinefromoutput(str: "ShellOut: posttask fault")
-                    outputprocess.addlinefromoutput(str: error?.message ?? "")
-                    // _ = Logging(outputprocess, true)
+                    self.logDelegate?.addlog(logrecord: "ShellOut: posttask fault")
+                    self.logDelegate?.addlog(logrecord: error?.description ?? "")
+                    self.error = true
                 }
             }
         }

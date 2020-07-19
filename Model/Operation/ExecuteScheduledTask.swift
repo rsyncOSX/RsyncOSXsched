@@ -14,8 +14,6 @@ import Foundation
 // when the job discover (observs) the termination of the process.
 
 class ExecuteScheduledTask: SetSchedules, SetConfigurations, ScheduledTaskAnimation, Setlog {
-    var config: Configuration?
-
     func executetask() {
         let outputprocess = OutputProcess()
         var arguments: [String]?
