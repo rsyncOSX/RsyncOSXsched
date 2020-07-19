@@ -5,7 +5,7 @@
 //  Created by Thomas Evensen on 05/09/2016.
 //  Copyright © 2016 Thomas Evensen. All rights reserved.
 //
-// swiftlint:disable line_length trailing_comma
+// swiftlint:disable line_length trailing_comma cyclomatic_complexity function_body_length
 
 import Cocoa
 import Foundation
@@ -108,6 +108,7 @@ class ScheduleSortedAndExpand: Setlog {
                     break
                 }
             }
+            guard (self.expandedData?.count ?? 0) > 0 else { return }
             self.sortedschedules = self.expandedData?.sorted { (date1, date2) -> Bool in
                 if let date1 = date1.value(forKey: "start") as? Date {
                     if let date2 = date2.value(forKey: "start") as? Date {
