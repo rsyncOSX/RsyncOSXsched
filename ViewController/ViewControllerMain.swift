@@ -323,6 +323,7 @@ extension ViewControllerMain: NSTableViewDelegate, Attributedestring {
         } else {
             self.index = nil
         }
+        self.backupnowbutton.isEnabled = true
     }
 }
 
