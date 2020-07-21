@@ -204,11 +204,10 @@
 		E91C5DC32026FACF00FE7E76 /* Operation */ = {
 			isa = PBXGroup;
 			children = (
+				E98448A524C6C914005F6E0A /* Timer */,
+				E98448A424C6C8CA005F6E0A /* Dispatch */,
 				E906BF6C20F1DB2200238E6A /* ExecuteScheduledTask.swift */,
 				E970252024C350B30031EA54 /* ExecuteScheduledTaskShellOut.swift */,
-				E906BF6B20F1DB2200238E6A /* ScheduleOperationDispatch.swift */,
-				E95547FF2035F4CD00D2E713 /* ExecuteTaskTimer.swift */,
-				E95548002035F4CD00D2E713 /* ScheduleOperationTimer.swift */,
 				E91C5DC62026FB3500FE7E76 /* ProcessCmd.swift */,
 				E923AE5D24C2E710001601D4 /* InterruptProcess.swift */,
 			);
@@ -366,6 +365,23 @@
 				E93A7EF92026EA5300D61258 /* Configurations */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		E98448A424C6C8CA005F6E0A /* Dispatch */ = {
+			isa = PBXGroup;
+			children = (
+				E906BF6B20F1DB2200238E6A /* ScheduleOperationDispatch.swift */,
+			);
+			path = Dispatch;
+			sourceTree = "<group>";
+		};
+		E98448A524C6C914005F6E0A /* Timer */ = {
+			isa = PBXGroup;
+			children = (
+				E95548002035F4CD00D2E713 /* ScheduleOperationTimer.swift */,
+				E95547FF2035F4CD00D2E713 /* ExecuteTaskTimer.swift */,
+			);
+			path = Timer;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

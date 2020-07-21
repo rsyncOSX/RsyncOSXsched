@@ -9,6 +9,14 @@
 
 import Foundation
 
+protocol ReloadData: AnyObject {
+    func reloaddata(profilename: String?)
+}
+
+protocol GetTCPconnections: AnyObject {
+    func gettcpconnections() -> TCPconnections?
+}
+
 class ScheduleOperationDispatch: SetSchedules, SecondstoStart, Setlog {
     private var workitem: DispatchWorkItem?
 

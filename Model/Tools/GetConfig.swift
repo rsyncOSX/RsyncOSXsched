@@ -33,9 +33,9 @@ struct GetConfig: SetSchedules, SetConfigurations {
                     return
                 }
                 if let getconfigurations = configurations?.getConfigurations() {
-                    let configArray = getconfigurations.filter { ($0.hiddenID == hiddenID) }
-                    guard configArray.count > 0 else { return }
-                    self.config = configArray[0]
+                    let configurations = getconfigurations.filter { ($0.hiddenID == hiddenID) }
+                    guard configurations.count > 0 else { return }
+                    self.config = configurations[0]
                     if (self.config?.pretask ?? "").isEmpty == false, self.config?.executepretask ?? 0 == 1 {
                         self.shellout = true
                     }
