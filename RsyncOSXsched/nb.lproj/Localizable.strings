@@ -11,7 +11,7 @@
 "days" = "dager";
 
 /* main */
-"default" = "standard";
+"default" = "default";
 
 /* default profile */
 "Default profile" = "Default profil";
