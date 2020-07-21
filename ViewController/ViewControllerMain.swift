@@ -88,15 +88,23 @@ class ViewControllerMain: NSViewController, Delay, Setlog {
     }
 
     @IBAction func backupnow(_: NSButton) {
-        guard self.index != nil else { return }
-        guard self.configurations?.getConfigurationsDataSourceSynchronize() != nil else { return }
-        self.backupnowbutton.isEnabled = false
-        let dict: NSDictionary = self.configurations!.getConfigurationsDataSourceSynchronize()![self.index!]
-        _ = ExecuteScheduledTask(dict: dict)
+        if let index = self.index {
+            guard self.configurations?.getConfigurationsDataSourceSynchronize() != nil else { return }
+            self.backupnowbutton.isEnabled = false
+            if let dict: NSDictionary = self.configurations?.getConfigurationsDataSourceSynchronize()![index] {
+                if let executepretask = dict.value(forKey: "executepretask") as? Int {
+                    if executepretask == 1 {
+                        _ = ExecuteScheduledTaskShellOut(dict: dict)
+                    } else {
+                        _ = ExecuteScheduledTask(dict: dict)
+                    }
+                }
+            }
+        }
     }
 
     @IBAction func abort(_: NSButton) {
-        ViewControllerReference.shared.process?.terminate()
+        _ = InterruptProcess()
         self.progress.stopAnimation(nil)
         self.initpopupbutton()
     }
@@ -239,7 +247,7 @@ class ViewControllerMain: NSViewController, Delay, Setlog {
         profilestrings?.insert(NSLocalizedString("Default profile", comment: "default profile"), at: 0)
         self.profilepopupbutton.removeAllItems()
         self.profilepopupbutton.addItems(withTitles: profilestrings ?? [])
-        self.profilepopupbutton.selectItem(at: 0)
+        // self.profilepopupbutton.selectItem(at: 0)
     }
 
     @IBAction func selectprofile(_: NSButton) {
@@ -277,11 +285,11 @@ extension ViewControllerMain: NSTableViewDelegate, Attributedestring {
                 if schedule?.isEmpty == false {
                     switch schedule {
                     case Scheduletype.once.rawValue:
-                        return NSLocalizedString(Scheduletype.once.rawValue, comment: "main")
+                        return NSLocalizedString("once", comment: "main")
                     case Scheduletype.daily.rawValue:
-                        return NSLocalizedString(Scheduletype.daily.rawValue, comment: "main")
+                        return NSLocalizedString("daily", comment: "main")
                     case Scheduletype.weekly.rawValue:
-                        return NSLocalizedString(Scheduletype.weekly.rawValue, comment: "main")
+                        return NSLocalizedString("weekly", comment: "main")
                     default:
                         return ""
                     }
@@ -315,6 +323,7 @@ extension ViewControllerMain: NSTableViewDelegate, Attributedestring {
         } else {
             self.index = nil
         }
+        self.backupnowbutton.isEnabled = true
     }
 }
 
@@ -371,8 +380,8 @@ extension ViewControllerMain: Reloadsortedandrefresh {
     }
 }
 
-extension ViewControllerMain: ScheduledTaskWorking {
-    func start() {
+extension ViewControllerMain: ScheduledTaskStartanimation {
+    func startanimation() {
         globalMainQueue.async { () -> Void in
             self.progress.startAnimation(nil)
             self.progresslabel.isHidden = false
@@ -381,11 +390,7 @@ extension ViewControllerMain: ScheduledTaskWorking {
     }
 }
 
-extension ViewControllerMain: Sendprocessreference {
-    func sendprocessreference(process: Process?) {
-        ViewControllerReference.shared.process = process
-    }
-
+extension ViewControllerMain: SendOutputProcessreference {
     func sendoutputprocessreference(outputprocess: OutputProcess?) {
         self.outputprocess = outputprocess
     }
@@ -407,10 +412,10 @@ extension ViewControllerMain: UpdateProgress {
             }
             self.schedulesortedandexpanded = ScheduleSortedAndExpand()
             self.startfirstscheduledtask()
-            ViewControllerReference.shared.completeoperation!.finalizeScheduledJob(outputprocess: self.outputprocess)
+            ViewControllerReference.shared.completeoperation?.finalizeScheduledJob(outputprocess: self.outputprocess)
             self.backupnowbutton.isEnabled = true
         } else {
-            ViewControllerReference.shared.completeoperation!.finalizeScheduledJob(outputprocess: self.outputprocess)
+            ViewControllerReference.shared.completeoperation?.finalizeScheduledJob(outputprocess: self.outputprocess)
             guard self.automaticexecution != nil else { return }
             guard self.automaticexecution!.count > 0 else {
                 self.automaticexecution = nil
@@ -419,8 +424,15 @@ extension ViewControllerMain: UpdateProgress {
                 return
             }
             self.delayWithSeconds(1) {
-                let dict: NSDictionary = self.automaticexecution!.removeFirst()
-                _ = ExecuteScheduledTask(dict: dict)
+                if let dict: NSDictionary = self.automaticexecution?.removeFirst() {
+                    if let executepretask = dict.value(forKey: "executepretask") as? Int {
+                        if executepretask == 1 {
+                            _ = ExecuteScheduledTaskShellOut(dict: dict)
+                        } else {
+                            _ = ExecuteScheduledTask(dict: dict)
+                        }
+                    }
+                }
             }
         }
     }
@@ -474,7 +486,7 @@ extension ViewControllerMain: ReloadData {
         guard profilename == self.profilename else {
             self.profilename = profilename
             globalMainQueue.async { () -> Void in
-                self.profileinfo.stringValue = NSLocalizedString("Profile:", comment: "main") + " " + self.profilename!
+                self.profileinfo.stringValue = NSLocalizedString("Profile:", comment: "main") + " " + (self.profilename ?? "Default profile")
             }
             self.createandreloadconfigurations()
             self.createandreloadschedules()
@@ -516,7 +528,14 @@ extension ViewControllerMain: Startautomaticexecution {
             self.automaticexecution = nil
             return
         }
-        let dict: NSDictionary = self.automaticexecution!.removeFirst()
-        _ = ExecuteScheduledTask(dict: dict)
+        if let dict: NSDictionary = self.automaticexecution?.removeFirst() {
+            if let executepretask = dict.value(forKey: "executepretask") as? Int {
+                if executepretask == 1 {
+                    _ = ExecuteScheduledTaskShellOut(dict: dict)
+                } else {
+                    _ = ExecuteScheduledTask(dict: dict)
+                }
+            }
+        }
     }
 }

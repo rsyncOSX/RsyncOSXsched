@@ -11,10 +11,16 @@
 "days" = "dager";
 
 /* main */
-"default" = "standard";
+"default" = "default";
 
 /* default profile */
 "Default profile" = "Default profil";
+
+/* Dispatch */
+"Dispatch: no more scheduled task in queue" = "Dispatch: ingen flere oppgaver i kø";
+
+/* Dispatch */
+"Dispatch: setting next scheduled task in:" = "Dispatch: neste oppgave om:";
 
 /* main */
 "Executing scheduled tasks is not enabled in RsyncOSX...." = "Planlagte oppgaver ikke gjort tilgjengelig i RsyncOSX";
@@ -70,9 +76,6 @@
 /* main */
 "once" = "engang";
 
-/* default profile */
-"Profile" = "Profil";
-
 /* main */
 "Profile:" = "Profil:";
 
@@ -90,12 +93,6 @@
 
 /* main */
 "RsyncOSXsched version:" = "RsyncOSXsched versjon:";
-
-/* Dispatch */
-"Schedule dispatch: no more scheduled task in queue" = "Oppgave dispatch: ingen flere oppgaver i kø.";
-
-/* Dispatch */
-"Schedule dispatch: setting next scheduled task in:" = "Oppgave dispatch: neste oppgave om:";
 
 /* Timer */
 "Schedule timer: no more scheduled task in queue" = "Oppgave timer: ingen flere oppgaver i kø.";

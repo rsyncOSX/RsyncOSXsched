@@ -13,6 +13,9 @@
 /* Class = "NSMenuItem"; title = "About RsyncOSXsched"; ObjectID = "5kV-Vb-QxS"; */
 "5kV-Vb-QxS.title" = "Informazioni su RsyncOSXsched App";
 
+/* Class = "NSTableColumn"; headerCell.title = "In time"; ObjectID = "5YC-cO-W1E"; */
+"5YC-cO-W1E.headerCell.title" = "In tempo";
+
 /* Class = "NSTextFieldCell"; title = "Double click on a row to select profile..."; ObjectID = "6Qr-L9-cOC"; */
 "6Qr-L9-cOC.title" = "Doppio clic su una riga per selezionare il profilo...";
 
@@ -21,6 +24,9 @@
 
 /* Class = "NSTextFieldCell"; title = "info"; ObjectID = "9Oe-pz-ahe"; */
 "9Oe-pz-ahe.title" = "informazioni";
+
+/* Class = "NSTextFieldCell"; title = "Text Cell"; ObjectID = "aE6-b1-DAB"; */
+"aE6-b1-DAB.title" = "Text Cell";
 
 /* Class = "NSButtonCell"; title = "Close"; ObjectID = "ae6-sg-TdC"; */
 "ae6-sg-TdC.title" = "Chiudi";
@@ -46,6 +52,9 @@
 /* Class = "NSTextFieldCell"; title = "Text Cell"; ObjectID = "eNw-gw-gOP"; */
 "eNw-gw-gOP.title" = "Text Cell";
 
+/* Class = "NSMenuItem"; title = "Item 2"; ObjectID = "F0O-VO-DW3"; */
+"F0O-VO-DW3.title" = "Item 2";
+
 /* Class = "NSTableColumn"; headerCell.title = "Remote catalog"; ObjectID = "gdH-5D-KCh"; */
 "gdH-5D-KCh.headerCell.title" = "Percorso remoto";
 
@@ -67,8 +76,8 @@
 /* Class = "NSMenuItem"; title = "Show All"; ObjectID = "Kd2-mp-pUS"; */
 "Kd2-mp-pUS.title" = "Visualizza tutti";
 
-/* Class = "NSTableColumn"; headerCell.title = "In time"; ObjectID = "kwV-jU-Gsi"; */
-"kwV-jU-Gsi.headerCell.title" = "In tempo";
+/* Class = "NSTableColumn"; headerCell.title = "Delta"; ObjectID = "kwV-jU-Gsi"; */
+"kwV-jU-Gsi.headerCell.title" = "Delta";
 
 /* Class = "NSTableColumn"; headerCell.title = "Local catalog"; ObjectID = "l2d-BZ-Xq3"; */
 "l2d-BZ-Xq3.headerCell.title" = "Percorso locale";
@@ -115,8 +124,14 @@
 /* Class = "NSTableColumn"; headerCell.title = "Schedule"; ObjectID = "Rb9-51-nDu"; */
 "Rb9-51-nDu.headerCell.title" = "Schedule";
 
+/* Class = "NSMenuItem"; title = "Item 1"; ObjectID = "rIf-tW-aL8"; */
+"rIf-tW-aL8.title" = "Item 1";
+
 /* Class = "NSViewController"; title = "Details about files"; ObjectID = "SMW-uL-v3k"; */
 "SMW-uL-v3k.title" = "Dettagli sui file";
+
+/* Class = "NSMenuItem"; title = "Item 3"; ObjectID = "syM-SK-UNr"; */
+"syM-SK-UNr.title" = "Item 3";
 
 /* Class = "NSButtonCell"; title = "Write"; ObjectID = "tub-al-k7W"; */
 "tub-al-k7W.title" = "Scrivi";

@@ -16,6 +16,12 @@
 /* default profile */
 "Default profile" = "Standardprofil";
 
+/* Dispatch */
+"Dispatch: no more scheduled task in queue" = "Versand planen: keine geplante Aufgabe mehr in der Warteschlange";
+
+/* Dispatch */
+"Dispatch: setting next scheduled task in:" = "Versandplan: Setze die nächste geplante Aufgabe in:";
+
 /* main */
 "Executing scheduled tasks is not enabled in RsyncOSX...." = "Das Ausführen von geplanten Aufgaben ist in RsyncOSX nicht aktiviert...";
 
@@ -70,9 +76,6 @@
 /* main */
 "once" = "einmal";
 
-/* default profile */
-"Profile" = "Profil";
-
 /* main */
 "Profile:" = "Profil:";
 
@@ -90,12 +93,6 @@
 
 /* main */
 "RsyncOSXsched version:" = "RsyncOSXsched Version:";
-
-/* Dispatch */
-"Schedule dispatch: no more scheduled task in queue" = "Versand planen: keine geplante Aufgabe mehr in der Warteschlange";
-
-/* Dispatch */
-"Schedule dispatch: setting next scheduled task in:" = "Versandplan: Setze die nächste geplante Aufgabe in:";
 
 /* Timer */
 "Schedule timer: no more scheduled task in queue" = "Zeitplan: keine geplante Aufgabe mehr in der Warteschlange";

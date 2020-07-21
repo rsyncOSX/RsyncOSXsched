@@ -16,6 +16,12 @@
 /* default profile */
 "Default profile" = "Profilo Default";
 
+/* Dispatch */
+"Dispatch: no more scheduled task in queue" = "Invio Schedule: nessuna attività pianificata in coda";
+
+/* Dispatch */
+"Dispatch: setting next scheduled task in:" = "Invio Schedule: impostare la prossima operazione pianificata in:";
+
 /* main */
 "Executing scheduled tasks is not enabled in RsyncOSX...." = "L'esecuzione delle attività pianificate non è abilitata in RsyncOSX....";
 
@@ -70,9 +76,6 @@
 /* main */
 "once" = "una sola volta";
 
-/* default profile */
-"Profile" = "Profilo";
-
 /* main */
 "Profile:" = "Profilo:";
 
@@ -90,12 +93,6 @@
 
 /* main */
 "RsyncOSXsched version:" = "Versione RsyncOSXsched App:";
-
-/* Dispatch */
-"Schedule dispatch: no more scheduled task in queue" = "Invio Schedule: nessuna attività pianificata in coda";
-
-/* Dispatch */
-"Schedule dispatch: setting next scheduled task in:" = "Invio Schedule: impostare la prossima operazione pianificata in:";
 
 /* Timer */
 "Schedule timer: no more scheduled task in queue" = "Schedule timer: nessuna attività pianificata in coda";

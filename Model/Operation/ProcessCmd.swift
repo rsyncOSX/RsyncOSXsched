@@ -22,8 +22,6 @@ extension Delay {
 }
 
 class ProcessCmd: Delay, SetConfigurations {
-    // Variable for reference to Process
-    var processReference: Process?
     // Observers
     weak var notifications_datahandle: NSObjectProtocol?
     weak var notifications_termination: NSObjectProtocol?
@@ -74,13 +72,17 @@ class ProcessCmd: Delay, SetConfigurations {
                 NotificationCenter.default.removeObserver(self.notifications_termination as Any)
             }
         }
-        self.processReference = task
-        task.launch()
-    }
-
-    // Get the reference to the Process object.
-    func getProcess() -> Process? {
-        return self.processReference
+        ViewControllerReference.shared.process = task
+        if #available(OSX 10.13, *) {
+            do {
+                try task.run()
+            } catch let e {
+                let error = e as NSError
+                _ = Logg(array: [error.description])
+            }
+        } else {
+            task.launch()
+        }
     }
 
     init(command: String?, arguments: [String]?) {

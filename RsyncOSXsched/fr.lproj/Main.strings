@@ -5,13 +5,16 @@
 "4o0-3W-taC.headerCell.title" = "Commencer dans";
 
 /* Class = "NSMenuItem"; title = "Quit RsyncOSXsched"; ObjectID = "4sb-4s-VLi"; */
-"4sb-4s-VLi.title" = "Quit RsyncOSXsched";
+"4sb-4s-VLi.title" = "Quitter RsyncOSXsched";
 
 /* Class = "NSViewController"; title = "All schedules"; ObjectID = "5c9-F6-lv3"; */
 "5c9-F6-lv3.title" = "Tous les horaires";
 
 /* Class = "NSMenuItem"; title = "About RsyncOSXsched"; ObjectID = "5kV-Vb-QxS"; */
 "5kV-Vb-QxS.title" = "À propos de RsyncOSXsched";
+
+/* Class = "NSTableColumn"; headerCell.title = "In time"; ObjectID = "5YC-cO-W1E"; */
+"5YC-cO-W1E.headerCell.title" = "Dans le temps";
 
 /* Class = "NSTextFieldCell"; title = "Double click on a row to select profile..."; ObjectID = "6Qr-L9-cOC"; */
 "6Qr-L9-cOC.title" = "Double-cliquez sur une ligne pour sélectionner le profil...";
@@ -21,6 +24,9 @@
 
 /* Class = "NSTextFieldCell"; title = "info"; ObjectID = "9Oe-pz-ahe"; */
 "9Oe-pz-ahe.title" = "Infos";
+
+/* Class = "NSTextFieldCell"; title = "Text Cell"; ObjectID = "aE6-b1-DAB"; */
+"aE6-b1-DAB.title" = "Text Cell";
 
 /* Class = "NSButtonCell"; title = "Close"; ObjectID = "ae6-sg-TdC"; */
 "ae6-sg-TdC.title" = "Fermer";
@@ -38,13 +44,16 @@
 "bVy-VF-Maa.title" = "Cellule de texte";
 
 /* Class = "NSTableColumn"; headerCell.title = "Profilename"; ObjectID = "CCr-KQ-oF9"; */
-"CCr-KQ-oF9.headerCell.title" = "Profilename";
+"CCr-KQ-oF9.headerCell.title" = "Nom du profil";
 
 /* Class = "NSTextFieldCell"; title = "Text Cell"; ObjectID = "CQC-uM-hG0"; */
 "CQC-uM-hG0.title" = "Cellule de texte";
 
 /* Class = "NSTextFieldCell"; title = "Text Cell"; ObjectID = "eNw-gw-gOP"; */
 "eNw-gw-gOP.title" = "Cellule de texte";
+
+/* Class = "NSMenuItem"; title = "Item 2"; ObjectID = "F0O-VO-DW3"; */
+"F0O-VO-DW3.title" = "Item 2";
 
 /* Class = "NSTableColumn"; headerCell.title = "Remote catalog"; ObjectID = "gdH-5D-KCh"; */
 "gdH-5D-KCh.headerCell.title" = "Catalogue distant";
@@ -67,7 +76,7 @@
 /* Class = "NSMenuItem"; title = "Show All"; ObjectID = "Kd2-mp-pUS"; */
 "Kd2-mp-pUS.title" = "Tout afficher";
 
-/* Class = "NSTableColumn"; headerCell.title = "In time"; ObjectID = "kwV-jU-Gsi"; */
+/* Class = "NSTableColumn"; headerCell.title = "Delta"; ObjectID = "kwV-jU-Gsi"; */
 "kwV-jU-Gsi.headerCell.title" = "Dans le temps";
 
 /* Class = "NSTableColumn"; headerCell.title = "Local catalog"; ObjectID = "l2d-BZ-Xq3"; */
@@ -115,8 +124,14 @@
 /* Class = "NSTableColumn"; headerCell.title = "Schedule"; ObjectID = "Rb9-51-nDu"; */
 "Rb9-51-nDu.headerCell.title" = "Planifier";
 
+/* Class = "NSMenuItem"; title = "Item 1"; ObjectID = "rIf-tW-aL8"; */
+"rIf-tW-aL8.title" = "Item 1";
+
 /* Class = "NSViewController"; title = "Details about files"; ObjectID = "SMW-uL-v3k"; */
 "SMW-uL-v3k.title" = "Détails sur les fichiers";
+
+/* Class = "NSMenuItem"; title = "Item 3"; ObjectID = "syM-SK-UNr"; */
+"syM-SK-UNr.title" = "Item 3";
 
 /* Class = "NSButtonCell"; title = "Write"; ObjectID = "tub-al-k7W"; */
 "tub-al-k7W.title" = "Écrire";
