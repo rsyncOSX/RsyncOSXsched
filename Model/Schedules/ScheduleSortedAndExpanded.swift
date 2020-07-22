@@ -36,11 +36,12 @@ class ScheduleSortedAndExpand: Setlog {
     // Calculate daily schedules
     private func daily(dateStart: Date, schedule: String, dict: NSDictionary) {
         let calendar = Calendar.current
-        let days = dateStart.daystonow
+        let days = dateStart.daystonow + 1
         let components = DateComponents(day: days)
         if let start: Date = calendar.date(byAdding: components, to: dateStart) {
+            print(start.timeIntervalSinceNow)
             if start.timeIntervalSinceNow > 0 {
-                let hiddenID = (dict.value(forKey: "hiddenID") as? Int)!
+                let hiddenID = (dict.value(forKey: "hiddenID") as? Int) ?? -1
                 let profilename = dict.value(forKey: "profilename") ?? NSLocalizedString("Default profile", comment: "default profile")
                 let time = start.timeIntervalSinceNow
                 let dictSchedule: NSDictionary = [
