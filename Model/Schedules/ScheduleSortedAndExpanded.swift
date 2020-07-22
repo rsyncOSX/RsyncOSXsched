@@ -36,7 +36,7 @@ class ScheduleSortedAndExpand: Setlog {
     // Calculate daily schedules
     private func daily(dateStart: Date, schedule: String, dict: NSDictionary) {
         let calendar = Calendar.current
-        let days = dateStart.daystonow + 1
+        let days = dateStart.daystonow
         let components = DateComponents(day: days)
         if let start: Date = calendar.date(byAdding: components, to: dateStart) {
             if start.timeIntervalSinceNow > 0 {
@@ -59,7 +59,7 @@ class ScheduleSortedAndExpand: Setlog {
     // Calculate weekly schedules
     private func weekly(dateStart: Date, schedule: String, dict: NSDictionary) {
         let calendar = Calendar.current
-        let weekofyear = dateStart.weekstonow + 7
+        let weekofyear = dateStart.weekstonow + 1
         let components = DateComponents(weekOfYear: weekofyear)
         if let start: Date = calendar.date(byAdding: components, to: dateStart) {
             if start.timeIntervalSinceNow > 0 {
