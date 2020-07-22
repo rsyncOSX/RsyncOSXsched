@@ -12,6 +12,7 @@ import Foundation
 struct FirsScheduledTask: GetAllSchedules {
     var firsscheduledtaskintime: String?
     init() {
+        guard self.schedulessortedandexpanded?.sortedschedules?.count ?? 0 > 0 else { return }
         if let dict = self.schedulessortedandexpanded?.sortedschedules?[0] {
             let hiddenID = dict.value(forKey: "hiddenID") as? Int ?? -1
             let profilename = dict.value(forKey: "profilename") as? String ?? NSLocalizedString("Default profile", comment: "default profile")

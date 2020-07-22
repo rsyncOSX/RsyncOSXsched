@@ -5,7 +5,7 @@
 //  Created by Thomas Evensen on 05/09/2016.
 //  Copyright © 2016 Thomas Evensen. All rights reserved.
 //
-// swiftlint:disable line_length trailing_comma cyclomatic_complexity function_body_length
+// swiftlint:disable line_length trailing_comma
 
 import Cocoa
 import Foundation
@@ -35,8 +35,10 @@ class ScheduleSortedAndExpand: Setlog {
 
     // Calculate daily schedules
     private func daily(dateStart: Date, schedule: String, dict: NSDictionary) {
-        let cal = Calendar.current
-        if let start: Date = cal.date(byAdding: dateStart.dayssincenow, to: dateStart) {
+        let calendar = Calendar.current
+        let days = dateStart.daystonow
+        let components = DateComponents(day: days)
+        if let start: Date = calendar.date(byAdding: components, to: dateStart) {
             if start.timeIntervalSinceNow > 0 {
                 let hiddenID = (dict.value(forKey: "hiddenID") as? Int)!
                 let profilename = dict.value(forKey: "profilename") ?? NSLocalizedString("Default profile", comment: "default profile")
@@ -56,8 +58,10 @@ class ScheduleSortedAndExpand: Setlog {
 
     // Calculate weekly schedules
     private func weekly(dateStart: Date, schedule: String, dict: NSDictionary) {
-        let cal = Calendar.current
-        if let start: Date = cal.date(byAdding: dateStart.weekssincenowplusoneweek, to: dateStart) {
+        let calendar = Calendar.current
+        let weekofyear = dateStart.weekstonow + 1
+        let components = DateComponents(weekOfYear: weekofyear)
+        if let start: Date = calendar.date(byAdding: components, to: dateStart) {
             if start.timeIntervalSinceNow > 0 {
                 let hiddenID = (dict.value(forKey: "hiddenID") as? Int)!
                 let profilename = dict.value(forKey: "profilename") ?? NSLocalizedString("Default profile", comment: "default profile")
@@ -121,6 +125,9 @@ class ScheduleSortedAndExpand: Setlog {
                 return false
             }
         }
+    }
+
+    func adddelta() {
         // calculate delta time
         self.delta = [String]()
         self.delta?.append("0")
