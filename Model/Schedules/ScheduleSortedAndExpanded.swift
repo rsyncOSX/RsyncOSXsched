@@ -36,10 +36,14 @@ class ScheduleSortedAndExpand: Setlog {
     // Calculate daily schedules
     private func daily(dateStart: Date, schedule: String, dict: NSDictionary) {
         let calendar = Calendar.current
-        let days = dateStart.daystonow + 1
+        var days: Int?
+        if dateStart.daystonow == Date().daystonow {
+            days = dateStart.daystonow
+        } else {
+            days = dateStart.daystonow + 1
+        }
         let components = DateComponents(day: days)
         if let start: Date = calendar.date(byAdding: components, to: dateStart) {
-            print(start.timeIntervalSinceNow)
             if start.timeIntervalSinceNow > 0 {
                 let hiddenID = (dict.value(forKey: "hiddenID") as? Int) ?? -1
                 let profilename = dict.value(forKey: "profilename") ?? NSLocalizedString("Default profile", comment: "default profile")
@@ -84,9 +88,9 @@ class ScheduleSortedAndExpand: Setlog {
     private func sortAndExpandScheduleTasks() {
         for i in 0 ..< (self.schedulesNSDictionary?.count ?? 0) {
             let dict = self.schedulesNSDictionary![i]
-            let dateStop: Date = (dict.value(forKey: "dateStop") as? String)!.en_us_date_from_string()
-            let dateStart: Date = (dict.value(forKey: "dateStart") as? String)!.en_us_date_from_string()
-            let schedule: String = (dict.value(forKey: "schedule") as? String)!
+            let dateStop: Date = (dict.value(forKey: "dateStop") as? String)?.en_us_date_from_string() ?? Date()
+            let dateStart: Date = (dict.value(forKey: "dateStart") as? String)?.en_us_date_from_string() ?? Date()
+            let schedule: String = (dict.value(forKey: "schedule") as? String) ?? Scheduletype.once.rawValue
             let seconds: Double = dateStop.timeIntervalSinceNow
             // Get all jobs which are not executed
             if seconds > 0 {
@@ -95,16 +99,15 @@ class ScheduleSortedAndExpand: Setlog {
                     let hiddenID = (dict.value(forKey: "hiddenID") as? Int)!
                     let profilename = dict.value(forKey: "profilename") ?? NSLocalizedString("Default profile", comment: "default profile")
                     let time = seconds
-                    let dict: NSDictionary = [
+                    let dictschedule: NSDictionary = [
                         "start": dateStart,
                         "hiddenID": hiddenID,
                         "dateStart": dateStart,
                         "schedule": schedule,
                         "timetostart": time,
                         "profilename": profilename,
-                        "delta": 0,
                     ]
-                    self.expandedData?.append(dict)
+                    self.expandedData?.append(dictschedule)
                 case Scheduletype.daily.rawValue:
                     self.daily(dateStart: dateStart, schedule: schedule, dict: dict)
                 case Scheduletype.weekly.rawValue:
