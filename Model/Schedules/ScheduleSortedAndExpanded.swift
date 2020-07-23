@@ -65,7 +65,12 @@ class ScheduleSortedAndExpand: Setlog {
     // Calculate weekly schedules
     private func weekly(dateStart: Date, schedule: String, dict: NSDictionary) {
         let calendar = Calendar.current
-        let weekofyear = dateStart.weekstonow + 1
+        var weekofyear: Int?
+        if dateStart.weekstonow == Date().weekstonow {
+            weekofyear = dateStart.weekstonow
+        } else {
+            weekofyear = dateStart.weekstonow + 1
+        }
         let components = DateComponents(weekOfYear: weekofyear)
         if let start: Date = calendar.date(byAdding: components, to: dateStart) {
             if start.timeIntervalSinceNow > 0 {
@@ -132,7 +137,7 @@ class ScheduleSortedAndExpand: Setlog {
                 return false
             }
         }
-        self.adddelta()
+        // self.adddelta()
     }
 
     func adddelta() {
