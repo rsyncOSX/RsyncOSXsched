@@ -137,7 +137,7 @@ class ScheduleSortedAndExpand: Setlog {
                 return false
             }
         }
-        // self.adddelta()
+        self.adddelta()
     }
 
     func adddelta() {
