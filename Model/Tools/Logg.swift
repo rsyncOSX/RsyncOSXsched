@@ -9,7 +9,7 @@
 
 import Foundation
 
-class Logg: Reportfileerror {
+class Logg: FileErrors {
     var array: [String]?
     var log: String?
     var filename: String?
