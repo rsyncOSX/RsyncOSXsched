@@ -5,8 +5,8 @@
 //  Created by Thomas Evensen on 26.04.2017.
 //  Copyright © 2017 Thomas Evensen. All rights reserved.
 //
-// swiftlint:disable line_length
 
+import Files
 import Foundation
 
 enum Fileerrortype {
@@ -21,11 +21,11 @@ protocol Fileerror: AnyObject {
     func errormessage(errorstr: String, errortype: Fileerrortype)
 }
 
-protocol Reportfileerror {
+protocol FileErrors {
     var errorDelegate: Fileerror? { get }
 }
 
-extension Reportfileerror {
+extension FileErrors {
     var errorDelegate: Fileerror? {
         return ViewControllerReference.shared.viewControllermain as? ViewControllerMain
     }
@@ -35,69 +35,25 @@ extension Reportfileerror {
     }
 }
 
-enum WhichRoot {
-    case profileRoot
-    case sshRoot
-}
-
-class Files: Reportfileerror {
-    var whichroot: WhichRoot?
-    var rootpath: String?
-    // ViewControllerReference.shared.configpath or RcloneReference.shared.configpath
-    private var configpath: String?
-
-    private func setrootpath() {
-        switch self.whichroot! {
-        case .profileRoot:
-            let paths = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true) as NSArray
-            let docuDir = (paths.firstObject as? String)!
-            if ViewControllerReference.shared.macserialnumber == nil {
-                ViewControllerReference.shared.macserialnumber = Macserialnumber().getMacSerialNumber() ?? ""
-            }
-            let profilePath = docuDir + self.configpath! + (ViewControllerReference.shared.macserialnumber ?? "")
-            self.rootpath = profilePath
-        case .sshRoot:
-            self.rootpath = NSHomeDirectory() + "/.ssh/"
-        }
-    }
-
+class Files: NamesandPaths, FileErrors {
     // Function for returning profiles as array of Strings
-    func getDirectorysStrings() -> [String] {
+    func getDirectorysStrings() -> [String]? {
         var array = [String]()
         array.append(NSLocalizedString("Default profile", comment: "default profile"))
-        if let filePath = self.rootpath {
-            if let fileURLs = self.getfileURLs(path: filePath) {
-                for i in 0 ..< fileURLs.count where fileURLs[i].hasDirectoryPath {
-                    let path = fileURLs[i].pathComponents
-                    let i = path.count
-                    array.append(path[i - 1])
+        if let atpath = self.rootpath {
+            do {
+                for folders in try Folder(path: atpath).subfolders {
+                    array.append(folders.name)
                 }
                 return array
-            }
-        }
-        return array
-    }
-
-    // Function for getting fileURLs for a given path
-    func getfileURLs(path: String) -> [URL]? {
-        let fileManager = FileManager.default
-        if let filepath = URL(string: path) {
-            do {
-                let files = try fileManager.contentsOfDirectory(at: filepath, includingPropertiesForKeys: nil, options: .skipsHiddenFiles)
-                return files
-            } catch let e {
-                let error = e as NSError
-                self.error(error: error.description, errortype: .profilecreatedirectory)
+            } catch {
                 return nil
             }
-        } else {
-            return nil
         }
+        return nil
     }
 
-    init(whichroot: WhichRoot, configpath: String) {
-        self.configpath = configpath
-        self.whichroot = whichroot
-        self.setrootpath()
+    override init(whichroot: WhichRoot, configpath: String?) {
+        super.init(whichroot: whichroot, configpath: configpath)
     }
 }
