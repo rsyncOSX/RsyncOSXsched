@@ -14,6 +14,8 @@
 		94E0FC4E1BD7FCBE00A3C537 /* EventMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94E0FC4D1BD7FCBE00A3C537 /* EventMonitor.swift */; };
 		E807E0AE22A41C8E009847A9 /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = E807E0AD22A41C8E009847A9 /* Environment.swift */; };
 		E833D53E22999A2500C92FDE /* ConvertOneConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = E833D53D22999A2500C92FDE /* ConvertOneConfig.swift */; };
+		E8DE5C3024D1843C00C56FEC /* NamesandPaths.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8DE5C2F24D1843C00C56FEC /* NamesandPaths.swift */; };
+		E8DE5C3324D186B500C56FEC /* Files in Frameworks */ = {isa = PBXBuildFile; productRef = E8DE5C3224D186B500C56FEC /* Files */; };
 		E90675D823729A37005B418E /* Getrsyncpath.swift in Sources */ = {isa = PBXBuildFile; fileRef = E90675D723729A37005B418E /* Getrsyncpath.swift */; };
 		E906BF6D20F1DB2200238E6A /* ScheduleOperationDispatch.swift in Sources */ = {isa = PBXBuildFile; fileRef = E906BF6B20F1DB2200238E6A /* ScheduleOperationDispatch.swift */; };
 		E906BF6E20F1DB2200238E6A /* ExecuteScheduledTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = E906BF6C20F1DB2200238E6A /* ExecuteScheduledTask.swift */; };
@@ -77,6 +79,7 @@
 		94E0FC4D1BD7FCBE00A3C537 /* EventMonitor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventMonitor.swift; sourceTree = "<group>"; };
 		E807E0AD22A41C8E009847A9 /* Environment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Environment.swift; sourceTree = "<group>"; };
 		E833D53D22999A2500C92FDE /* ConvertOneConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConvertOneConfig.swift; sourceTree = "<group>"; };
+		E8DE5C2F24D1843C00C56FEC /* NamesandPaths.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NamesandPaths.swift; sourceTree = "<group>"; };
 		E90675D723729A37005B418E /* Getrsyncpath.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Getrsyncpath.swift; sourceTree = "<group>"; };
 		E906BF6B20F1DB2200238E6A /* ScheduleOperationDispatch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScheduleOperationDispatch.swift; sourceTree = "<group>"; };
 		E906BF6C20F1DB2200238E6A /* ExecuteScheduledTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExecuteScheduledTask.swift; sourceTree = "<group>"; };
@@ -149,6 +152,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E8DE5C3324D186B500C56FEC /* Files in Frameworks */,
 				E9C2C5B224C2D9B9002E86DA /* ShellOut in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -249,6 +253,7 @@
 				E92D57E82480E32500116E3D /* Keypathidentityfile.swift */,
 				E9F54D882026DCCF00A664CF /* Files.swift */,
 				E9F54D842026DC5D00A664CF /* ReadWriteDictionary.swift */,
+				E8DE5C2F24D1843C00C56FEC /* NamesandPaths.swift */,
 			);
 			path = Fileoperations;
 			sourceTree = "<group>";
@@ -403,6 +408,7 @@
 			name = RsyncOSXsched;
 			packageProductDependencies = (
 				E9C2C5B124C2D9B9002E86DA /* ShellOut */,
+				E8DE5C3224D186B500C56FEC /* Files */,
 			);
 			productName = Popup;
 			productReference = 94E0FC3B1BD7FC3600A3C537 /* RsyncOSXsched.app */;
@@ -446,6 +452,7 @@
 			mainGroup = 94E0FC321BD7FC3600A3C537;
 			packageReferences = (
 				E9C2C5B024C2D9B9002E86DA /* XCRemoteSwiftPackageReference "ShellOut" */,
+				E8DE5C3124D186B500C56FEC /* XCRemoteSwiftPackageReference "Files" */,
 			);
 			productRefGroup = 94E0FC3C1BD7FC3600A3C537 /* Products */;
 			projectDirPath = "";
@@ -510,6 +517,7 @@
 				E9B5B4602133F2DB004B7041 /* Checkfornewversion.swift in Sources */,
 				E91C5DC12026F8FA00FE7E76 /* ScheduleWriteLoggData.swift in Sources */,
 				E9A63066202B4DE900F1FFF1 /* Running.swift in Sources */,
+				E8DE5C3024D1843C00C56FEC /* NamesandPaths.swift in Sources */,
 				E833D53E22999A2500C92FDE /* ConvertOneConfig.swift in Sources */,
 				E965E1AB20A17BF9004F42DC /* Extensions.swift in Sources */,
 				E973F0F0227305E100412F60 /* ConvertConfigurations.swift in Sources */,
@@ -769,6 +777,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		E8DE5C3124D186B500C56FEC /* XCRemoteSwiftPackageReference "Files" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/RsyncOSX/Files";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.1.1;
+			};
+		};
 		E9C2C5B024C2D9B9002E86DA /* XCRemoteSwiftPackageReference "ShellOut" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/rsyncOSX/ShellOut.git";
@@ -780,6 +796,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		E8DE5C3224D186B500C56FEC /* Files */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E8DE5C3124D186B500C56FEC /* XCRemoteSwiftPackageReference "Files" */;
+			productName = Files;
+		};
 		E9C2C5B124C2D9B9002E86DA /* ShellOut */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = E9C2C5B024C2D9B9002E86DA /* XCRemoteSwiftPackageReference "ShellOut" */;
