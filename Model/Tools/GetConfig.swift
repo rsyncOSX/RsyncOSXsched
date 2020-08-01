@@ -5,6 +5,7 @@
 //  Created by Thomas Evensen on 19/07/2020.
 //  Copyright © 2020 Thomas Evensen. All rights reserved.
 //
+// swiftlint:disable line_length
 
 import Foundation
 struct GetConfig: SetSchedules, SetConfigurations {
