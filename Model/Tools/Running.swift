@@ -17,7 +17,8 @@ class Running {
 
     func verifyrsyncosx() -> Bool {
         let fileManager = FileManager.default
-        guard fileManager.fileExists(atPath: (ViewControllerReference.shared.pathrsyncosx ?? "/Applications/") + ViewControllerReference.shared.namersyncosx) else { return false }
+        guard fileManager.fileExists(atPath: (ViewControllerReference.shared.pathrsyncosx ?? "/Applications/") +
+            ViewControllerReference.shared.namersyncosx) else { return false }
         return true
     }
 

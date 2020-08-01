@@ -67,6 +67,8 @@ class ViewControllerReference {
     // Global SSH parameters
     var sshport: Int?
     var sshkeypathandidentityfile: String?
+    // Temporary path for restore
+    var temporarypathforrestore: String?
 
     init() {
         self.synctasks = Set<String>()
