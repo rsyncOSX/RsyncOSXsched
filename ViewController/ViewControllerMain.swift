@@ -116,9 +116,8 @@ class ViewControllerMain: NSViewController, Delay, Setlog {
     @IBAction func openRsyncOSX(_: NSButton) {
         let running = Running()
         guard running.rsyncOSXisrunning == false else { return }
-        let pathtorsyncosxapp: String = (ViewControllerReference.shared.pathrsyncosx ?? "/Applications/") + ViewControllerReference.shared.namersyncosx
-        guard running.verifypathexists(pathorfilename: pathtorsyncosxapp) == true else { return }
-        NSWorkspace.shared.open(URL(fileURLWithPath: pathtorsyncosxapp))
+        guard running.verifyrsyncosx() == true else { return }
+        NSWorkspace.shared.open(URL(fileURLWithPath: (ViewControllerReference.shared.pathrsyncosx ?? "/Applications/") + ViewControllerReference.shared.namersyncosx))
         NSApp.terminate(self)
     }
 
