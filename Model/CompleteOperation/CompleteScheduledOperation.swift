@@ -39,6 +39,10 @@ final class CompleteScheduledOperation: ScheduledTaskAnimation, SetConfiguration
             self.configurations?.setCurrentDateonConfiguration(index: index, outputprocess: outputprocess)
             _ = Notifications().showNotification(message: message)
         }
+        if ViewControllerReference.shared.loaddataonstart != nil {
+            ViewControllerReference.shared.loaddataonstart = nil
+            ViewControllerReference.shared.loaddataonstart = Loaddataonstart()
+        }
     }
 
     init(dict: NSDictionary) {
