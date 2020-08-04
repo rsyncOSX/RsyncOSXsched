@@ -29,7 +29,7 @@ struct ConfigurationSchedule {
             self.dateStop = date
         }
         if log != nil, nolog == false {
-            for i in 0 ..< log!.count {
+            for i in 0 ..< (log?.count ?? 0) {
                 self.logrecords.append((log![i] as? NSMutableDictionary)!)
             }
         }
