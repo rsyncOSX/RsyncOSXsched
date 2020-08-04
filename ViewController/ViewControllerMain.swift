@@ -60,12 +60,23 @@ class ViewControllerMain: NSViewController, Delay, Setlog {
         self.mainTableView.delegate = self
         self.mainTableView.dataSource = self
         ViewControllerReference.shared.viewControllermain = self
-        self.configurations = Configurations(profile: nil)
-        self.schedules = Schedules(profile: nil)
+        if ViewControllerReference.shared.loaddataonstart == nil {
+            self.configurations = Configurations(profile: nil)
+            self.schedules = Schedules(profile: nil)
+            self.schedulesortedandexpanded = ScheduleSortedAndExpand()
+            self.startfirstscheduledtask()
+        } else {
+            self.configurations = ViewControllerReference.shared.loaddataonstart?.configurations
+            self.schedules = ViewControllerReference.shared.loaddataonstart?.schedules
+            self.schedulesortedandexpanded = ViewControllerReference.shared.loaddataonstart?.schedulesortedandexpanded
+            ViewControllerReference.shared.loaddataonstart = nil
+            if ViewControllerReference.shared.scheduledTask != nil {
+                self.updatestatuslight(color: .green)
+            }
+        }
+        // after start
         _ = Checkfornewversion()
         self.addobserverforreload()
-        self.schedulesortedandexpanded = ScheduleSortedAndExpand()
-        self.startfirstscheduledtask()
     }
 
     override func viewDidAppear() {
@@ -353,7 +364,7 @@ extension ViewControllerMain: Addlog {
             self.log = [String]()
         }
         let logtime = Date().localized_string_from_date()
-        self.log!.append(logtime + ": " + logrecord)
+        self.log?.append(logtime + ": " + logrecord)
     }
 }
 
@@ -384,7 +395,7 @@ extension ViewControllerMain: ScheduledTaskStartanimation {
         globalMainQueue.async { () -> Void in
             self.progress.startAnimation(nil)
             self.progresslabel.isHidden = false
-            self.statuslight.image = #imageLiteral(resourceName: "green")
+            self.statuslight.image = #imageLiteral(resourceName: "batch")
         }
     }
 }

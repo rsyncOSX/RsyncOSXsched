@@ -39,6 +39,11 @@ final class CompleteScheduledOperation: ScheduledTaskAnimation, SetConfiguration
             self.configurations?.setCurrentDateonConfiguration(index: index, outputprocess: outputprocess)
             _ = Notifications().showNotification(message: message)
         }
+        if ViewControllerReference.shared.loaddataonstart != nil {
+            ViewControllerReference.shared.loaddataonstart = nil
+            ViewControllerReference.shared.loaddataonstart = Loaddataonstart()
+            _ = Logg(array: ["Reloading next task"])
+        }
     }
 
     init(dict: NSDictionary) {
@@ -47,3 +52,4 @@ final class CompleteScheduledOperation: ScheduledTaskAnimation, SetConfiguration
         self.hiddenID = dict.value(forKey: "hiddenID") as? Int
     }
 }
+
