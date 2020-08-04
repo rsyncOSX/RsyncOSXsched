@@ -42,6 +42,7 @@ final class CompleteScheduledOperation: ScheduledTaskAnimation, SetConfiguration
         if ViewControllerReference.shared.loaddataonstart != nil {
             ViewControllerReference.shared.loaddataonstart = nil
             ViewControllerReference.shared.loaddataonstart = Loaddataonstart()
+            _ = Logg(array: ["Reloading next task"])
         }
     }
 
@@ -51,3 +52,4 @@ final class CompleteScheduledOperation: ScheduledTaskAnimation, SetConfiguration
         self.hiddenID = dict.value(forKey: "hiddenID") as? Int
     }
 }
+
