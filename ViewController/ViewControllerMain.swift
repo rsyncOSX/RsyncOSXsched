@@ -13,14 +13,14 @@ import Foundation
 class ViewControllerMain: NSViewController, Delay, Setlog {
     // Information about logs
     var viewControllerInformation: NSViewController? {
-        return (self.storyboard!.instantiateController(withIdentifier: "StoryboardInformationID")
-            as? NSViewController)!
+        return (self.storyboard?.instantiateController(withIdentifier: "StoryboardInformationID")
+            as? NSViewController)
     }
 
     // All schedules
     var viewControllerAllschedules: NSViewController? {
-        return (self.storyboard!.instantiateController(withIdentifier: "StoryboardAllschedulesID")
-            as? NSViewController)!
+        return (self.storyboard?.instantiateController(withIdentifier: "StoryboardAllschedulesID")
+            as? NSViewController)
     }
 
     @IBOutlet var mainTableView: NSTableView!
@@ -62,10 +62,11 @@ class ViewControllerMain: NSViewController, Delay, Setlog {
         ViewControllerReference.shared.viewControllermain = self
         self.configurations = Configurations(profile: nil)
         self.schedules = Schedules(profile: nil)
-        _ = Checkfornewversion()
-        self.addobserverforreload()
         self.schedulesortedandexpanded = ScheduleSortedAndExpand()
         self.startfirstscheduledtask()
+        // after start
+        _ = Checkfornewversion()
+        self.addobserverforreload()
     }
 
     override func viewDidAppear() {
@@ -351,7 +352,7 @@ extension ViewControllerMain: Addlog {
             self.log = [String]()
         }
         let logtime = Date().localized_string_from_date()
-        self.log!.append(logtime + ": " + logrecord)
+        self.log?.append(logtime + ": " + logrecord)
     }
 }
 
@@ -382,7 +383,7 @@ extension ViewControllerMain: ScheduledTaskStartanimation {
         globalMainQueue.async { () -> Void in
             self.progress.startAnimation(nil)
             self.progresslabel.isHidden = false
-            self.statuslight.image = #imageLiteral(resourceName: "green")
+            self.statuslight.image = #imageLiteral(resourceName: "batch")
         }
     }
 }

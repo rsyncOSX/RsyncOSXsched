@@ -16,7 +16,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
 
     var mainViewController: NSViewController? {
-        return (self.storyboard!.instantiateController(withIdentifier: "ViewControllerId")
+        return (self.storyboard?.instantiateController(withIdentifier: "ViewControllerId")
             as? NSViewController)!
     }
 
