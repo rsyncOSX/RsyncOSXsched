@@ -39,8 +39,6 @@
 		E946CDBD20279A85005BF6E9 /* Userconfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = E946CDBC20279A85005BF6E9 /* Userconfiguration.swift */; };
 		E94DDC8720A40CC90041CF53 /* ViewControllerSchedules.swift in Sources */ = {isa = PBXBuildFile; fileRef = E94DDC8620A40CC90041CF53 /* ViewControllerSchedules.swift */; };
 		E9542589209ECA900012170B /* Allschedules.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9542588209ECA900012170B /* Allschedules.swift */; };
-		E95548012035F4CD00D2E713 /* ExecuteTaskTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E95547FF2035F4CD00D2E713 /* ExecuteTaskTimer.swift */; };
-		E95548022035F4CD00D2E713 /* ScheduleOperationTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E95548002035F4CD00D2E713 /* ScheduleOperationTimer.swift */; };
 		E95738EA232B86D2000342FE /* FirstScheduledTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = E95738E9232B86D2000342FE /* FirstScheduledTask.swift */; };
 		E965E1AB20A17BF9004F42DC /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E965E1AA20A17BF9004F42DC /* Extensions.swift */; };
 		E970252124C350B30031EA54 /* ExecuteScheduledTaskShellOut.swift in Sources */ = {isa = PBXBuildFile; fileRef = E970252024C350B30031EA54 /* ExecuteScheduledTaskShellOut.swift */; };
@@ -111,8 +109,6 @@
 		E946CDBC20279A85005BF6E9 /* Userconfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Userconfiguration.swift; sourceTree = "<group>"; };
 		E94DDC8620A40CC90041CF53 /* ViewControllerSchedules.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerSchedules.swift; sourceTree = "<group>"; };
 		E9542588209ECA900012170B /* Allschedules.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Allschedules.swift; sourceTree = "<group>"; };
-		E95547FF2035F4CD00D2E713 /* ExecuteTaskTimer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExecuteTaskTimer.swift; sourceTree = "<group>"; };
-		E95548002035F4CD00D2E713 /* ScheduleOperationTimer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScheduleOperationTimer.swift; sourceTree = "<group>"; };
 		E95738E9232B86D2000342FE /* FirstScheduledTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstScheduledTask.swift; sourceTree = "<group>"; };
 		E9640D4723B91C2C00223912 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Main.strings; sourceTree = "<group>"; };
 		E9640D4823B91C2C00223912 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -214,7 +210,6 @@
 		E91C5DC32026FACF00FE7E76 /* Operation */ = {
 			isa = PBXGroup;
 			children = (
-				E98448A524C6C914005F6E0A /* Timer */,
 				E98448A424C6C8CA005F6E0A /* Dispatch */,
 				E906BF6C20F1DB2200238E6A /* ExecuteScheduledTask.swift */,
 				E970252024C350B30031EA54 /* ExecuteScheduledTaskShellOut.swift */,
@@ -389,15 +384,6 @@
 			path = Dispatch;
 			sourceTree = "<group>";
 		};
-		E98448A524C6C914005F6E0A /* Timer */ = {
-			isa = PBXGroup;
-			children = (
-				E95548002035F4CD00D2E713 /* ScheduleOperationTimer.swift */,
-				E95547FF2035F4CD00D2E713 /* ExecuteTaskTimer.swift */,
-			);
-			path = Timer;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -553,8 +539,6 @@
 				E973F0EF227305E100412F60 /* ConvertSchedules.swift in Sources */,
 				E9F54D892026DCCF00A664CF /* Files.swift in Sources */,
 				E9E6A7CB2132802500342168 /* TCPconnections.swift in Sources */,
-				E95548012035F4CD00D2E713 /* ExecuteTaskTimer.swift in Sources */,
-				E95548022035F4CD00D2E713 /* ScheduleOperationTimer.swift in Sources */,
 				E9E7A8282133FA8C00AD1C9B /* Resources.swift in Sources */,
 				E90BFDCA202D989D004AE4EC /* yudpsocket.c in Sources */,
 				E92D57E92480E32500116E3D /* Keypathidentityfile.swift in Sources */,
