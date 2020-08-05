@@ -40,7 +40,7 @@ class ScheduleWriteLoggData: SetConfigurations {
                 inserted = self.addlognew(hiddenID: hiddenID, result: resultannotaded ?? "", date: date)
             }
             if inserted {
-                _ = PersistentStorageScheduling(profile: self.profile).savescheduleInMemoryToPersistentStore()
+                PersistentStorageScheduling(profile: self.profile).savescheduleInMemoryToPersistentStore()
             }
         }
     }
