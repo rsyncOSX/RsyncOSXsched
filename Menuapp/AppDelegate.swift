@@ -31,9 +31,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                 self?.closePopover(event)
             }
         }
-        // self.showPopover(nil)
-
-        _ = Loaddataonstart()
+        self.showPopover(nil)
     }
 
     func applicationWillTerminate(_: Notification) {}

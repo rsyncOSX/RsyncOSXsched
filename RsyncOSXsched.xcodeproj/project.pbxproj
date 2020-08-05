@@ -25,7 +25,6 @@
 		E90BFDCA202D989D004AE4EC /* yudpsocket.c in Sources */ = {isa = PBXBuildFile; fileRef = E90BFDC5202D989D004AE4EC /* yudpsocket.c */; };
 		E90BFDCB202D989D004AE4EC /* ytcpsocket.swift in Sources */ = {isa = PBXBuildFile; fileRef = E90BFDC6202D989D004AE4EC /* ytcpsocket.swift */; };
 		E90CAC5F203D7409004BA7C6 /* Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = E90CAC5E203D7409004BA7C6 /* Notifications.swift */; };
-		E911173F24D9810D0077CD9E /* Loaddataonstart.swift in Sources */ = {isa = PBXBuildFile; fileRef = E911173E24D9810D0077CD9E /* Loaddataonstart.swift */; };
 		E91C5DBF2026F8FA00FE7E76 /* ScheduleSortedAndExpanded.swift in Sources */ = {isa = PBXBuildFile; fileRef = E91C5DBB2026F8F900FE7E76 /* ScheduleSortedAndExpanded.swift */; };
 		E91C5DC02026F8FA00FE7E76 /* Schedules.swift in Sources */ = {isa = PBXBuildFile; fileRef = E91C5DBC2026F8F900FE7E76 /* Schedules.swift */; };
 		E91C5DC12026F8FA00FE7E76 /* ScheduleWriteLoggData.swift in Sources */ = {isa = PBXBuildFile; fileRef = E91C5DBD2026F8F900FE7E76 /* ScheduleWriteLoggData.swift */; };
@@ -91,7 +90,6 @@
 		E90BFDC5202D989D004AE4EC /* yudpsocket.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = yudpsocket.c; path = Model/ydpsoket/yudpsocket.c; sourceTree = SOURCE_ROOT; };
 		E90BFDC6202D989D004AE4EC /* ytcpsocket.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ytcpsocket.swift; path = Model/ydpsoket/ytcpsocket.swift; sourceTree = SOURCE_ROOT; };
 		E90CAC5E203D7409004BA7C6 /* Notifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notifications.swift; sourceTree = "<group>"; };
-		E911173E24D9810D0077CD9E /* Loaddataonstart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Loaddataonstart.swift; sourceTree = "<group>"; };
 		E91C5DBB2026F8F900FE7E76 /* ScheduleSortedAndExpanded.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScheduleSortedAndExpanded.swift; sourceTree = "<group>"; };
 		E91C5DBC2026F8F900FE7E76 /* Schedules.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Schedules.swift; sourceTree = "<group>"; };
 		E91C5DBD2026F8F900FE7E76 /* ScheduleWriteLoggData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScheduleWriteLoggData.swift; sourceTree = "<group>"; };
@@ -277,7 +275,6 @@
 				E95738E9232B86D2000342FE /* FirstScheduledTask.swift */,
 				E90675D723729A37005B418E /* Getrsyncpath.swift */,
 				E9EC228724C473B6009436E3 /* GetConfig.swift */,
-				E911173E24D9810D0077CD9E /* Loaddataonstart.swift */,
 			);
 			path = Tools;
 			sourceTree = "<group>";
@@ -526,7 +523,6 @@
 				E91C5DCB2026FE4200FE7E76 /* PersistentStorageScheduling.swift in Sources */,
 				94E0FC411BD7FC3600A3C537 /* ViewControllerMain.swift in Sources */,
 				E90BFDCB202D989D004AE4EC /* ytcpsocket.swift in Sources */,
-				E911173F24D9810D0077CD9E /* Loaddataonstart.swift in Sources */,
 				E907FB2624D5EC6C0047D05B /* extensionRsyncParameters.swift in Sources */,
 				E98BB14B202763B40078DF8E /* Numbers.swift in Sources */,
 				E9E6A7C7213278C300342168 /* Dateandtime.swift in Sources */,

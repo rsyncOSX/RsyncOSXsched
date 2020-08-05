@@ -69,8 +69,6 @@ class ViewControllerReference {
     var sshkeypathandidentityfile: String?
     // Temporary path for restore
     var temporarypathforrestore: String?
-    // Loaddataonstart
-    var loaddataonstart: Loaddataonstart?
 
     init() {
         self.synctasks = Set<String>()

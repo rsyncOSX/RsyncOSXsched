@@ -60,20 +60,10 @@ class ViewControllerMain: NSViewController, Delay, Setlog {
         self.mainTableView.delegate = self
         self.mainTableView.dataSource = self
         ViewControllerReference.shared.viewControllermain = self
-        if ViewControllerReference.shared.loaddataonstart == nil {
-            self.configurations = Configurations(profile: nil)
-            self.schedules = Schedules(profile: nil)
-            self.schedulesortedandexpanded = ScheduleSortedAndExpand()
-            self.startfirstscheduledtask()
-        } else {
-            self.configurations = ViewControllerReference.shared.loaddataonstart?.configurations
-            self.schedules = ViewControllerReference.shared.loaddataonstart?.schedules
-            self.schedulesortedandexpanded = ViewControllerReference.shared.loaddataonstart?.schedulesortedandexpanded
-            ViewControllerReference.shared.loaddataonstart = nil
-            if ViewControllerReference.shared.scheduledTask != nil {
-                self.updatestatuslight(color: .green)
-            }
-        }
+        self.configurations = Configurations(profile: nil)
+        self.schedules = Schedules(profile: nil)
+        self.schedulesortedandexpanded = ScheduleSortedAndExpand()
+        self.startfirstscheduledtask()
         // after start
         _ = Checkfornewversion()
         self.addobserverforreload()
