@@ -11,7 +11,6 @@
 //  Created by Thomas Evensen on 08/02/16.
 //  Copyright © 2016 Thomas Evensen. All rights reserved.
 //
-// swiftlint:disable line_length
 
 import Cocoa
 import Foundation
@@ -60,12 +59,7 @@ class Configurations: SetSchedules {
     }
 
     func getIndex(_ hiddenID: Int) -> Int {
-        var index: Int = -1
-        loop: for i in 0 ..< (self.configurations?.count ?? 0) where self.configurations?[i].hiddenID == hiddenID {
-            index = i
-            break loop
-        }
-        return index
+        return self.configurations?.firstIndex(where: { $0.hiddenID == hiddenID }) ?? -1
     }
 
     private func increasesnapshotnum(index: Int) {
