@@ -14,6 +14,7 @@ enum Scheduletype: String {
     case once
     case daily
     case weekly
+    case manuel
 }
 
 class Schedules: ScheduleWriteLoggData {
