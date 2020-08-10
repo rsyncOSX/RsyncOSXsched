@@ -272,42 +272,44 @@ extension ViewControllerMain: NSTableViewDataSource {
 
 extension ViewControllerMain: NSTableViewDelegate, Attributedestring {
     func tableView(_: NSTableView, objectValueFor tableColumn: NSTableColumn?, row: Int) -> Any? {
-        guard row < self.configurations!.getConfigurationsDataSourceSynchronize()!.count else { return nil }
-        let object: NSDictionary = self.configurations!.getConfigurationsDataSourceSynchronize()![row]
-        let hiddenID = object.value(forKey: "hiddenID") as? Int ?? -1
-        let profilename = object.value(forKey: "profilename") as? String ?? NSLocalizedString("Default profile", comment: "default profile")
-        switch tableColumn!.identifier.rawValue {
-        case "scheduleID":
-            if self.schedulesortedandexpanded != nil {
-                let schedule: String? = self.schedulesortedandexpanded!.sortandcountscheduledonetask(hiddenID: hiddenID, profilename: profilename, dateStart: nil, number: false)
-                if schedule?.isEmpty == false {
-                    switch schedule {
-                    case Scheduletype.once.rawValue:
-                        return NSLocalizedString("once", comment: "main")
-                    case Scheduletype.daily.rawValue:
-                        return NSLocalizedString("daily", comment: "main")
-                    case Scheduletype.weekly.rawValue:
-                        return NSLocalizedString("weekly", comment: "main")
-                    default:
+        guard row < self.configurations?.getConfigurationsDataSourceSynchronize()?.count ?? -1 else { return nil }
+        if let object: NSDictionary = self.configurations?.getConfigurationsDataSourceSynchronize()?[row] {
+            let hiddenID = object.value(forKey: "hiddenID") as? Int ?? -1
+            let profilename = object.value(forKey: "profilename") as? String ?? NSLocalizedString("Default profile", comment: "default profile")
+            switch tableColumn!.identifier.rawValue {
+            case "scheduleID":
+                if self.schedulesortedandexpanded != nil {
+                    let schedule: String? = self.schedulesortedandexpanded!.sortandcountscheduledonetask(hiddenID: hiddenID, profilename: profilename, dateStart: nil, number: false)
+                    if schedule?.isEmpty == false {
+                        switch schedule {
+                        case Scheduletype.once.rawValue:
+                            return NSLocalizedString("once", comment: "main")
+                        case Scheduletype.daily.rawValue:
+                            return NSLocalizedString("daily", comment: "main")
+                        case Scheduletype.weekly.rawValue:
+                            return NSLocalizedString("weekly", comment: "main")
+                        default:
+                            return ""
+                        }
+                    } else {
                         return ""
                     }
-                } else {
-                    return ""
                 }
-            }
-        case "offsiteServerCellID":
-            if (object[tableColumn!.identifier] as? String)!.isEmpty {
-                return "localhost"
-            } else {
+            case "offsiteServerCellID":
+                if (object[tableColumn!.identifier] as? String)!.isEmpty {
+                    return "localhost"
+                } else {
+                    return object[tableColumn!.identifier] as? String
+                }
+            case "inCellID":
+                if self.schedulesortedandexpanded != nil {
+                    let taskintime: String? = self.schedulesortedandexpanded!.sortandcountscheduledonetask(hiddenID: hiddenID, profilename: profilename, dateStart: nil, number: true)
+                    return taskintime ?? ""
+                }
+            default:
                 return object[tableColumn!.identifier] as? String
             }
-        case "inCellID":
-            if self.schedulesortedandexpanded != nil {
-                let taskintime: String? = self.schedulesortedandexpanded!.sortandcountscheduledonetask(hiddenID: hiddenID, profilename: profilename, dateStart: nil, number: true)
-                return taskintime ?? ""
-            }
-        default:
-            return object[tableColumn!.identifier] as? String
+            return nil
         }
         return nil
     }
