@@ -183,7 +183,7 @@ class ScheduleSortedAndExpand: Setlog {
             } else {
                 return ""
             }
-            
+
         } else {
             let type = sorted[0].value(forKey: "schedule") as? String
             return type ?? ""

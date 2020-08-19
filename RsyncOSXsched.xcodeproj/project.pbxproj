@@ -709,6 +709,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
 				MARKETING_VERSION = 6.4.1;
 				PRODUCT_BUNDLE_IDENTIFIER = no.blogspot.RsyncOSXsched;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -734,6 +735,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
 				MARKETING_VERSION = 6.4.1;
 				PRODUCT_BUNDLE_IDENTIFIER = no.blogspot.RsyncOSXsched;
 				PRODUCT_NAME = "$(TARGET_NAME)";
