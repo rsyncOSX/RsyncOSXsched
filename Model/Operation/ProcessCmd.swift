@@ -73,15 +73,11 @@ class ProcessCmd: Delay, SetConfigurations {
             }
         }
         ViewControllerReference.shared.process = task
-        if #available(OSX 10.13, *) {
-            do {
-                try task.run()
-            } catch let e {
-                let error = e as NSError
-                _ = Logg(array: [error.description])
-            }
-        } else {
-            task.launch()
+        do {
+            try task.run()
+        } catch let e {
+            let error = e as NSError
+            _ = Logg(array: [error.description])
         }
     }
 
