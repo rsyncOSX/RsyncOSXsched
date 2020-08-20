@@ -142,7 +142,7 @@ class ScheduleSortedAndExpand: Setlog {
 
     func adddelta() {
         // calculate delta time
-        guard (self.sortedschedules?.count ?? 0) > 0 else { return }
+        guard (self.sortedschedules?.count ?? 0) > 1 else { return }
         self.delta = [String]()
         self.delta?.append("0")
         let timestring = Dateandtime()
