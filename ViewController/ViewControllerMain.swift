@@ -92,6 +92,8 @@ class ViewControllerMain: NSViewController, Delay, Setlog {
         if let index = self.index {
             guard self.configurations?.getConfigurationsDataSourceSynchronize() != nil else { return }
             self.backupnowbutton.isEnabled = false
+            ViewControllerReference.shared.dispatchTaskWaiting?.cancel()
+            ViewControllerReference.shared.dispatchTaskWaiting = nil
             if let dict: NSDictionary = self.configurations?.getConfigurationsDataSourceSynchronize()![index] {
                 if let executepretask = dict.value(forKey: "executepretask") as? Int {
                     if executepretask == 1 {
@@ -184,9 +186,7 @@ class ViewControllerMain: NSViewController, Delay, Setlog {
 
     private func startfirstscheduledtask() {
         ViewControllerReference.shared.dispatchTaskWaiting?.cancel()
-        ViewControllerReference.shared.timerTaskWaiting?.invalidate()
         ViewControllerReference.shared.dispatchTaskWaiting = nil
-        ViewControllerReference.shared.timerTaskWaiting = nil
         ViewControllerReference.shared.scheduledTask = self.schedulesortedandexpanded?.getfirstscheduledtask()
         _ = ScheduleOperationDispatch()
     }
@@ -202,7 +202,6 @@ class ViewControllerMain: NSViewController, Delay, Setlog {
         let onsleep: String = NSLocalizedString("Invalidating tasks and going to sleep...", comment: "main")
         self.logDelegate?.addlog(logrecord: onsleep)
         ViewControllerReference.shared.dispatchTaskWaiting?.cancel()
-        ViewControllerReference.shared.timerTaskWaiting?.invalidate()
     }
 
     @objc func didMount(_ notification: NSNotification) {
