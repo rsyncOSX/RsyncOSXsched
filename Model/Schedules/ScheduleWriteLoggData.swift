@@ -33,7 +33,7 @@ class ScheduleWriteLoggData: SetConfigurations {
                 }
                 if let dict = ViewControllerReference.shared.scheduledTask {
                     let schedule = dict.value(forKey: "schedule") as? String ?? ""
-                    let dateStart = dict.value(forKey: "dateStart") as? String ?? ""
+                    let dateStart = (dict.value(forKey: "dateStart") as? Date)?.en_us_string_from_date() ?? ""
                     var inserted: Bool = self.addlogexisting(hiddenID: hiddenID, result: resultannotaded ?? "", date: date, schedule: schedule, dateStart: dateStart)
                     // Record does not exist, create new Schedule (not inserted)
                     if inserted == false {
