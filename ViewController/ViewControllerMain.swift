@@ -94,12 +94,19 @@ class ViewControllerMain: NSViewController, Delay, Setlog {
             self.backupnowbutton.isEnabled = false
             ViewControllerReference.shared.dispatchTaskWaiting?.cancel()
             ViewControllerReference.shared.dispatchTaskWaiting = nil
-            if let dict: NSDictionary = self.configurations?.getConfigurationsDataSourceSynchronize()![index] {
-                if let executepretask = dict.value(forKey: "executepretask") as? Int {
-                    if executepretask == 1 {
-                        _ = ExecuteScheduledTaskShellOut(dict: dict)
-                    } else {
-                        _ = ExecuteScheduledTask(dict: dict)
+            if let hiddenID = self.configurations?.gethiddenID(index: index) {
+                let scheduledict: NSDictionary = [
+                    "hiddenID": hiddenID,
+                    "schedule": Scheduletype.manuel.rawValue,
+                    "dateStart": "01 Jan 1900 00:00".en_us_date_from_string(),
+                ]
+                if let dict: NSDictionary = self.configurations?.getConfigurationsDataSourceSynchronize()?[index] {
+                    if let executepretask = dict.value(forKey: "executepretask") as? Int {
+                        if executepretask == 1 {
+                            _ = ExecuteScheduledTaskShellOut(dict: scheduledict)
+                        } else {
+                            _ = ExecuteScheduledTask(dict: scheduledict)
+                        }
                     }
                 }
             }
@@ -409,9 +416,10 @@ extension ViewControllerMain: UpdateProgress {
                 }
                 return
             }
+            ViewControllerReference.shared.completeoperation?.finalizeScheduledJob(outputprocess: self.outputprocess)
             self.schedulesortedandexpanded = ScheduleSortedAndExpand()
             self.startfirstscheduledtask()
-            ViewControllerReference.shared.completeoperation?.finalizeScheduledJob(outputprocess: self.outputprocess)
+
             self.backupnowbutton.isEnabled = true
         } else {
             ViewControllerReference.shared.completeoperation?.finalizeScheduledJob(outputprocess: self.outputprocess)
