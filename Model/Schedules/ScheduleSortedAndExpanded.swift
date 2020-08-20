@@ -37,7 +37,7 @@ class ScheduleSortedAndExpand: Setlog {
     private func daily(dateStart: Date, schedule: String, dict: NSDictionary) {
         let calendar = Calendar.current
         var days: Int?
-        if dateStart.daystonow == Date().daystonow {
+        if dateStart.daystonow == Date().daystonow, dateStart > Date() {
             days = dateStart.daystonow
         } else {
             days = dateStart.daystonow + 1
@@ -66,7 +66,7 @@ class ScheduleSortedAndExpand: Setlog {
     private func weekly(dateStart: Date, schedule: String, dict: NSDictionary) {
         let calendar = Calendar.current
         var weekofyear: Int?
-        if dateStart.weekstonow == Date().weekstonow {
+        if dateStart.weekstonow == Date().weekstonow, dateStart > Date() {
             weekofyear = dateStart.weekstonow
         } else {
             weekofyear = dateStart.weekstonow + 1
@@ -142,6 +142,7 @@ class ScheduleSortedAndExpand: Setlog {
 
     func adddelta() {
         // calculate delta time
+        guard (self.sortedschedules?.count ?? 0) > 0 else { return }
         self.delta = [String]()
         self.delta?.append("0")
         let timestring = Dateandtime()

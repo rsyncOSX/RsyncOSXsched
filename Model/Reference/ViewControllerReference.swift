@@ -20,8 +20,6 @@ class ViewControllerReference {
 
     // Proess reference
     var process: Process?
-    // Reference to waiting tasks, required for cancel task
-    var timerTaskWaiting: Timer?
     var dispatchTaskWaiting: DispatchWorkItem?
     // Temporary storage of the first scheduled task
     var scheduledTask: NSDictionary?
