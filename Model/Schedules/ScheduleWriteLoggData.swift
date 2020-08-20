@@ -43,41 +43,39 @@ class ScheduleWriteLoggData: SetConfigurations {
         }
     }
 
-    func addlogexisting(hiddenID: Int, result: String, date: String) -> Bool {
-        var loggadded: Bool = false
-        let index = self.schedules?.firstIndex(where: { _ in ViewControllerReference.shared.synctasks.contains(self.configurations?.getResourceConfiguration(hiddenID, resource: .task) ?? "") }) ?? -1
-        guard index > -1 else { return false }
-        if self.schedules?[index].hiddenID == hiddenID,
-            self.schedules?[index].schedule == Scheduletype.manuel.rawValue,
-            self.schedules?[index].dateStop == nil
-        {
-            let dict = NSMutableDictionary()
-            dict.setObject(date, forKey: "dateExecuted" as NSCopying)
-            dict.setObject(result, forKey: "resultExecuted" as NSCopying)
-            self.schedules?[index].logrecords.append(dict)
-            loggadded = true
-        }
-        return loggadded
-    }
+       func addlogexisting(hiddenID: Int, result: String, date: String) -> Bool {
+         if ViewControllerReference.shared.synctasks.contains(self.configurations?.getResourceConfiguration(hiddenID, resource: .task) ?? "") {
+             if let index = self.schedules?.firstIndex(where: { $0.hiddenID == hiddenID
+                     && $0.schedule == Scheduletype.manuel.rawValue
+                     && $0.dateStart == "01 Jan 1900 00:00"
+             }) {
+                 let dict = NSMutableDictionary()
+                 dict.setObject(date, forKey: "dateExecuted" as NSCopying)
+                 dict.setObject(result, forKey: "resultExecuted" as NSCopying)
+                 self.schedules?[index].logrecords.append(dict)
+                 return true
+             }
+         }
+         return false
+     }
 
-    private func addlognew(hiddenID: Int, result: String, date: String) -> Bool {
-        var loggadded: Bool = false
-        if ViewControllerReference.shared.synctasks.contains(self.configurations!.getResourceConfiguration(hiddenID, resource: .task)) {
-            let masterdict = NSMutableDictionary()
-            masterdict.setObject(hiddenID, forKey: "hiddenID" as NSCopying)
-            masterdict.setObject("01 Jan 1900 00:00", forKey: "dateStart" as NSCopying)
-            masterdict.setObject("manuel", forKey: "schedule" as NSCopying)
-            let dict = NSMutableDictionary()
-            dict.setObject(date, forKey: "dateExecuted" as NSCopying)
-            dict.setObject(result, forKey: "resultExecuted" as NSCopying)
-            let executed = NSMutableArray()
-            executed.add(dict)
-            let newSchedule = ConfigurationSchedule(dictionary: masterdict, log: executed, nolog: false)
-            self.schedules?.append(newSchedule)
-            loggadded = true
-        }
-        return loggadded
-    }
+     private func addlognew(hiddenID: Int, result: String, date: String) -> Bool {
+         if ViewControllerReference.shared.synctasks.contains(self.configurations?.getResourceConfiguration(hiddenID, resource: .task) ?? "") {
+             let masterdict = NSMutableDictionary()
+             masterdict.setObject(hiddenID, forKey: "hiddenID" as NSCopying)
+             masterdict.setObject("01 Jan 1900 00:00", forKey: "dateStart" as NSCopying)
+             masterdict.setObject(Scheduletype.manuel.rawValue, forKey: "schedule" as NSCopying)
+             let dict = NSMutableDictionary()
+             dict.setObject(date, forKey: "dateExecuted" as NSCopying)
+             dict.setObject(result, forKey: "resultExecuted" as NSCopying)
+             let executed = NSMutableArray()
+             executed.add(dict)
+             let newSchedule = ConfigurationSchedule(dictionary: masterdict, log: executed, nolog: false)
+             self.schedules?.append(newSchedule)
+             return true
+         }
+         return false
+     }
 
     private func getconfig(hiddenID: Int) -> Configuration? {
         let index = self.configurations?.getIndex(hiddenID) ?? 0
