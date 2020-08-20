@@ -25,6 +25,12 @@ final class CompleteScheduledOperation: ScheduledTaskAnimation, SetConfiguration
         let datestring = date?.en_us_string_from_date()
         let numberstring = number.stats()
         let message = (datestring ?? "") + " " + numberstring
+
+        if let index = self.configurations?.getIndex(hiddenID ?? -1) {
+            self.configurations?.setCurrentDateonConfiguration(index: index, outputprocess: outputprocess)
+            _ = Notifications().showNotification(message: message)
+        }
+
         self.logDelegate?.addlog(logrecord: NSLocalizedString("Adding result to log:", comment: "Logg")
             + " " + numberstring)
         self.reloaddataDelegate = ViewControllerReference.shared.viewControllermain as? ViewControllerMain
@@ -34,10 +40,6 @@ final class CompleteScheduledOperation: ScheduledTaskAnimation, SetConfiguration
             } else {
                 self.reloaddataDelegate?.reloaddata(profilename: profilename)
             }
-        }
-        if let index = self.configurations?.getIndex(hiddenID ?? -1) {
-            self.configurations?.setCurrentDateonConfiguration(index: index, outputprocess: outputprocess)
-            _ = Notifications().showNotification(message: message)
         }
     }
 

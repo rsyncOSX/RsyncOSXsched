@@ -92,12 +92,21 @@ class ViewControllerMain: NSViewController, Delay, Setlog {
         if let index = self.index {
             guard self.configurations?.getConfigurationsDataSourceSynchronize() != nil else { return }
             self.backupnowbutton.isEnabled = false
-            if let dict: NSDictionary = self.configurations?.getConfigurationsDataSourceSynchronize()![index] {
-                if let executepretask = dict.value(forKey: "executepretask") as? Int {
-                    if executepretask == 1 {
-                        _ = ExecuteScheduledTaskShellOut(dict: dict)
-                    } else {
-                        _ = ExecuteScheduledTask(dict: dict)
+            ViewControllerReference.shared.dispatchTaskWaiting?.cancel()
+            ViewControllerReference.shared.dispatchTaskWaiting = nil
+            if let hiddenID = self.configurations?.gethiddenID(index: index) {
+                let scheduledict: NSDictionary = [
+                    "hiddenID": hiddenID,
+                    "schedule": Scheduletype.manuel.rawValue,
+                    "dateStart": "01 Jan 1900 00:00".en_us_date_from_string(),
+                ]
+                if let dict: NSDictionary = self.configurations?.getConfigurationsDataSourceSynchronize()?[index] {
+                    if let executepretask = dict.value(forKey: "executepretask") as? Int {
+                        if executepretask == 1 {
+                            _ = ExecuteScheduledTaskShellOut(dict: scheduledict)
+                        } else {
+                            _ = ExecuteScheduledTask(dict: scheduledict)
+                        }
                     }
                 }
             }
@@ -184,9 +193,7 @@ class ViewControllerMain: NSViewController, Delay, Setlog {
 
     private func startfirstscheduledtask() {
         ViewControllerReference.shared.dispatchTaskWaiting?.cancel()
-        ViewControllerReference.shared.timerTaskWaiting?.invalidate()
         ViewControllerReference.shared.dispatchTaskWaiting = nil
-        ViewControllerReference.shared.timerTaskWaiting = nil
         ViewControllerReference.shared.scheduledTask = self.schedulesortedandexpanded?.getfirstscheduledtask()
         _ = ScheduleOperationDispatch()
     }
@@ -202,7 +209,6 @@ class ViewControllerMain: NSViewController, Delay, Setlog {
         let onsleep: String = NSLocalizedString("Invalidating tasks and going to sleep...", comment: "main")
         self.logDelegate?.addlog(logrecord: onsleep)
         ViewControllerReference.shared.dispatchTaskWaiting?.cancel()
-        ViewControllerReference.shared.timerTaskWaiting?.invalidate()
     }
 
     @objc func didMount(_ notification: NSNotification) {
@@ -410,9 +416,10 @@ extension ViewControllerMain: UpdateProgress {
                 }
                 return
             }
+            ViewControllerReference.shared.completeoperation?.finalizeScheduledJob(outputprocess: self.outputprocess)
             self.schedulesortedandexpanded = ScheduleSortedAndExpand()
             self.startfirstscheduledtask()
-            ViewControllerReference.shared.completeoperation?.finalizeScheduledJob(outputprocess: self.outputprocess)
+
             self.backupnowbutton.isEnabled = true
         } else {
             ViewControllerReference.shared.completeoperation?.finalizeScheduledJob(outputprocess: self.outputprocess)

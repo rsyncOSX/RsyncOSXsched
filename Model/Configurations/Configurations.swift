@@ -48,7 +48,7 @@ class Configurations: SetSchedules {
         let number = Numbers(outputprocess: outputprocess)
         let hiddenID = self.gethiddenID(index: index)
         let numbers = number.stats()
-        self.schedules?.addlog(hiddenID: hiddenID, result: numbers)
+        self.schedules?.addlogpermanentstore(hiddenID: hiddenID, result: numbers)
         if self.configurations?[index].task == ViewControllerReference.shared.snapshot {
             self.increasesnapshotnum(index: index)
         }
@@ -89,9 +89,9 @@ class Configurations: SetSchedules {
         return ""
     }
 
-    /// Function for getting all Configurations marked as backup
-    /// - parameter none: none
-    /// - returns : Array of NSDictionary
+    // Function for getting all Configurations marked as backup
+    // - parameter none: none
+    // - returns : Array of NSDictionary
     func getConfigurationsDataSourceSynchronize() -> [NSDictionary]? {
         guard self.configurations != nil else { return nil }
         var configurations = self.configurations!.filter {
