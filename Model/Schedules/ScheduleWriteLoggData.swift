@@ -33,11 +33,11 @@ class ScheduleWriteLoggData: SetConfigurations {
                 }
                 if let dict = ViewControllerReference.shared.scheduledTask {
                     let schedule = dict.value(forKey: "schedule") as? String ?? ""
-                    let dateStart = dict.value(forKey: "dateStart") as? Date
-                    var inserted: Bool = self.addlogexisting(hiddenID: hiddenID, result: resultannotaded ?? "", date: date, schedule: schedule, dateStart: dateStart?.en_us_string_from_date() ?? "")
+                    let dateStart = dict.value(forKey: "dateStart") as? String ?? ""
+                    var inserted: Bool = self.addlogexisting(hiddenID: hiddenID, result: resultannotaded ?? "", date: date, schedule: schedule, dateStart: dateStart)
                     // Record does not exist, create new Schedule (not inserted)
                     if inserted == false {
-                        inserted = self.addlognew(hiddenID: hiddenID, result: resultannotaded ?? "", date: date, schedule: schedule, dateStart: dateStart?.en_us_string_from_date() ?? "")
+                        inserted = self.addlognew(hiddenID: hiddenID, result: resultannotaded ?? "", date: date, schedule: schedule, dateStart: dateStart)
                     }
                     if inserted {
                         PersistentStorageScheduling(profile: self.profile).savescheduleInMemoryToPersistentStore()

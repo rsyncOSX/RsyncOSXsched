@@ -98,7 +98,7 @@ class ViewControllerMain: NSViewController, Delay, Setlog {
                 let scheduledict: NSDictionary = [
                     "hiddenID": hiddenID,
                     "schedule": Scheduletype.manuel.rawValue,
-                    "dateStart": "01 Jan 1900 00:00".en_us_date_from_string(),
+                    "dateStart": "01 Jan 1900 00:00",
                 ]
                 if let dict: NSDictionary = self.configurations?.getConfigurationsDataSourceSynchronize()?[index] {
                     if let executepretask = dict.value(forKey: "executepretask") as? Int {
