@@ -5,7 +5,7 @@
 //  Created by Maxim on 10/21/15.
 //  Copyright © 2015 Maxim. All rights reserved.
 //
-//  swiftlint:disable line_length file_length cyclomatic_complexity
+//  swiftlint:disable line_length file_length cyclomatic_complexity trailing_comma
 
 import Cocoa
 import Foundation

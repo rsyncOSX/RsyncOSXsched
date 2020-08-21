@@ -30,7 +30,9 @@ struct ConfigurationSchedule {
         }
         if log != nil, nolog == false {
             for i in 0 ..< (log?.count ?? 0) {
-                self.logrecords.append((log![i] as? NSMutableDictionary)!)
+                if let dict = log?[i] as? NSMutableDictionary {
+                    self.logrecords.append(dict)
+                }
             }
         }
     }

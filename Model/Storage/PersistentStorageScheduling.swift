@@ -49,7 +49,11 @@ final class PersistentStorageScheduling: ReadWriteDictionary, SetSchedules {
     }
 
     init(profile: String?) {
-        super.init(whattoreadwrite: .schedule, profile: profile, configpath: ViewControllerReference.shared.configpath)
+        if profile == NSLocalizedString("Default profile", comment: "default profile") {
+            super.init(whattoreadwrite: .schedule, profile: nil, configpath: ViewControllerReference.shared.configpath)
+        } else {
+            super.init(whattoreadwrite: .schedule, profile: profile, configpath: ViewControllerReference.shared.configpath)
+        }
         self.schedulesasdictionary = self.readNSDictionaryFromPersistentStore()
     }
 }
