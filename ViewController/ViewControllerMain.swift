@@ -281,11 +281,12 @@ extension ViewControllerMain: NSTableViewDelegate, Attributedestring {
         guard row < self.configurations?.getConfigurationsDataSourceSynchronize()?.count ?? -1 else { return nil }
         if let object: NSDictionary = self.configurations?.getConfigurationsDataSourceSynchronize()?[row] {
             let hiddenID = object.value(forKey: "hiddenID") as? Int ?? -1
-            let profilename = object.value(forKey: "profilename") as? String ?? NSLocalizedString("Default profile", comment: "default profile")
+            var profilename = object.value(forKey: "profilename") as? String
             switch tableColumn!.identifier.rawValue {
             case "scheduleID":
                 if self.schedulesortedandexpanded != nil {
-                    let schedule: String? = self.schedulesortedandexpanded!.sortandcountscheduledonetask(hiddenID: hiddenID, profilename: profilename, dateStart: nil, number: false)
+                    if (profilename ?? "").isEmpty == true { profilename = nil }
+                    let schedule: String? = self.schedulesortedandexpanded?.sortandcountscheduledonetask(hiddenID, profilename: profilename, number: false)
                     if schedule?.isEmpty == false {
                         switch schedule {
                         case Scheduletype.once.rawValue:
@@ -309,7 +310,8 @@ extension ViewControllerMain: NSTableViewDelegate, Attributedestring {
                 }
             case "inCellID":
                 if self.schedulesortedandexpanded != nil {
-                    let taskintime: String? = self.schedulesortedandexpanded!.sortandcountscheduledonetask(hiddenID: hiddenID, profilename: profilename, dateStart: nil, number: true)
+                    if (profilename ?? "").isEmpty == true { profilename = nil }
+                    let taskintime: String? = self.schedulesortedandexpanded?.sortandcountscheduledonetask(hiddenID, profilename: profilename, number: true)
                     return taskintime ?? ""
                 }
             default:
