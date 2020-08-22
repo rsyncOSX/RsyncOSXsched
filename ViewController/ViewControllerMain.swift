@@ -281,11 +281,10 @@ extension ViewControllerMain: NSTableViewDelegate, Attributedestring {
         guard row < self.configurations?.getConfigurationsDataSourceSynchronize()?.count ?? -1 else { return nil }
         if let object: NSDictionary = self.configurations?.getConfigurationsDataSourceSynchronize()?[row] {
             let hiddenID = object.value(forKey: "hiddenID") as? Int ?? -1
-            var profilename = object.value(forKey: "profilename") as? String
+            let profilename = object.value(forKey: "profilename") as? String
             switch tableColumn!.identifier.rawValue {
             case "scheduleID":
                 if self.schedulesortedandexpanded != nil {
-                    if (profilename ?? "").isEmpty == true { profilename = nil }
                     let schedule: String? = self.schedulesortedandexpanded?.sortandcountscheduledonetask(hiddenID, profilename: profilename, number: false)
                     if schedule?.isEmpty == false {
                         switch schedule {
@@ -310,7 +309,6 @@ extension ViewControllerMain: NSTableViewDelegate, Attributedestring {
                 }
             case "inCellID":
                 if self.schedulesortedandexpanded != nil {
-                    if (profilename ?? "").isEmpty == true { profilename = nil }
                     let taskintime: String? = self.schedulesortedandexpanded?.sortandcountscheduledonetask(hiddenID, profilename: profilename, number: true)
                     return taskintime ?? ""
                 }
