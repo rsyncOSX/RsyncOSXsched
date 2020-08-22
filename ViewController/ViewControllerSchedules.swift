@@ -56,8 +56,7 @@ extension ViewControllerSchedules: NSTableViewDelegate {
                 if tableColumn.identifier.rawValue == "intime" {
                     let hiddenID = object.value(forKey: "hiddenID") as? Int ?? -1
                     let profilename = object.value(forKey: "profilename") as? String ?? NSLocalizedString("Default profile", comment: "default profile")
-                    let dateStart = object.value(forKey: "dateStart") as? Date
-                    let taskintime: String? = self.schedulessortedandexpanded!.sortandcountscheduledonetask(hiddenID: hiddenID, profilename: profilename, dateStart: dateStart, number: true)
+                    let taskintime = self.schedulessortedandexpanded?.sortandcountscheduledonetask(hiddenID, profilename: profilename, number: true)
                     return taskintime ?? ""
                 } else if tableColumn.identifier.rawValue == "schedule" {
                     switch object[tableColumn.identifier] as? String {

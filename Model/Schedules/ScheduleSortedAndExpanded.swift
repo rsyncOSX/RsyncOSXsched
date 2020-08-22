@@ -149,44 +149,43 @@ class ScheduleSortedAndExpand: Setlog {
         for i in 1 ..< (self.sortedschedules?.count ?? 0) {
             if let t1 = self.sortedschedules?[i - 1].value(forKey: "timetostart") as? Double {
                 if let t2 = self.sortedschedules?[i].value(forKey: "timetostart") as? Double {
-                    self.delta?.append(timestring.timeString(t2 - t1))
+                    self.delta?.append(timestring.timestring(seconds: t2 - t1))
                 }
             }
         }
     }
 
-    func sortandcountscheduledonetask(hiddenID: Int, profilename: String, dateStart: Date?, number: Bool) -> String {
+    func sortandcountscheduledonetask(_ hiddenID: Int, profilename: String?, number: Bool) -> String {
         var result: [NSDictionary]?
-        if dateStart != nil {
-            result = self.sortedschedules?.filter { (($0.value(forKey: "hiddenID") as? Int)! == hiddenID
-                    && ($0.value(forKey: "start") as? Date)!.timeIntervalSinceNow > 0)
-                && ($0.value(forKey: "profilename") as? String)! == profilename
-                && ($0.value(forKey: "dateStart") as? Date)! == dateStart
+        if profilename != nil {
+            result = self.sortedschedules?.filter { (($0.value(forKey: "hiddenID") as? Int) == hiddenID
+                    && ($0.value(forKey: "start") as? Date)?.timeIntervalSinceNow ?? -1 > 0)
+                && ($0.value(forKey: "profilename") as? String) == profilename ?? ""
             }
         } else {
-            result = self.sortedschedules?.filter { (($0.value(forKey: "hiddenID") as? Int)! == hiddenID
-                    && ($0.value(forKey: "start") as? Date)!.timeIntervalSinceNow > 0)
-                && ($0.value(forKey: "profilename") as? String)! == profilename
-            }
+            result = self.sortedschedules?.filter { (($0.value(forKey: "hiddenID") as? Int) == hiddenID
+                    && ($0.value(forKey: "start") as? Date)?.timeIntervalSinceNow ?? -1 > 0) }
         }
         guard result != nil else { return "" }
-        let sorted = result!.sorted { (di1, di2) -> Bool in
-            if (di1.value(forKey: "start") as? Date)!.timeIntervalSince((di2.value(forKey: "start") as? Date)!) > 0 {
-                return false
-            } else {
-                return true
+        let sorted = result?.sorted { (di1, di2) -> Bool in
+            if let d1 = di1.value(forKey: "start") as? Date, let d2 = di2.value(forKey: "start") as? Date {
+                if d1.timeIntervalSince(d2) > 0 {
+                    return false
+                } else {
+                    return true
+                }
             }
+            return false
         }
-        guard sorted.count > 0 else { return "" }
+        guard (sorted?.count ?? 0) > 0 else { return "" }
         if number {
-            if let firsttask = (sorted[0].value(forKey: "start") as? Date)?.timeIntervalSinceNow {
-                return Dateandtime().timeString(firsttask)
+            if let firsttask = (sorted?[0].value(forKey: "start") as? Date)?.timeIntervalSinceNow {
+                return Dateandtime().timestring(seconds: firsttask)
             } else {
                 return ""
             }
-
         } else {
-            let type = sorted[0].value(forKey: "schedule") as? String
+            let type = sorted?[0].value(forKey: "schedule") as? String
             return type ?? ""
         }
     }

@@ -5,7 +5,6 @@
 //  Created by Thomas Evensen on 06.05.2018.
 //  Copyright © 2018 Maxim. All rights reserved.
 //
-// swiftlint:disable line_length
 
 import Cocoa
 import Foundation
@@ -46,11 +45,7 @@ class Allschedules {
         for i in 0 ..< (self.allprofiles?.count ?? 0) {
             let profilename = self.allprofiles?[i]
             if self.allschedules == nil { self.allschedules = [] }
-            if profilename == NSLocalizedString("Default profile", comment: "default profile") {
-                configurationschedule = PersistentStorageScheduling(profile: nil).getScheduleandhistory(nolog: true)
-            } else {
-                configurationschedule = PersistentStorageScheduling(profile: profilename).getScheduleandhistory(nolog: true)
-            }
+            configurationschedule = PersistentStorageScheduling(profile: profilename).getScheduleandhistory(nolog: true)
             for j in 0 ..< (configurationschedule?.count ?? 0) {
                 configurationschedule?[j].profilename = profilename
                 let offsiteserver = configurationschedule?[j].offsiteserver ?? ""

@@ -45,7 +45,7 @@ class ScheduleOperationDispatch: SetSchedules, SecondstoStart, Setlog {
             updatestatuslightDelegate?.updatestatuslight(color: .red)
             return
         }
-        let timestring = Dateandtime().timeString(seconds)
+        let timestring = Dateandtime().timestring(seconds: seconds)
         self.logDelegate?.addlog(logrecord: NSLocalizedString("Dispatch: setting next scheduled task in:", comment: "Dispatch") + " " + timestring)
         if GetConfig().shellout {
             self.dispatchtaskshellout(Int(seconds))

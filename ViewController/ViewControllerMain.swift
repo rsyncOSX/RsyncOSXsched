@@ -5,7 +5,7 @@
 //  Created by Maxim on 10/21/15.
 //  Copyright © 2015 Maxim. All rights reserved.
 //
-//  swiftlint:disable line_length file_length cyclomatic_complexity
+//  swiftlint:disable line_length file_length cyclomatic_complexity trailing_comma
 
 import Cocoa
 import Foundation
@@ -281,11 +281,11 @@ extension ViewControllerMain: NSTableViewDelegate, Attributedestring {
         guard row < self.configurations?.getConfigurationsDataSourceSynchronize()?.count ?? -1 else { return nil }
         if let object: NSDictionary = self.configurations?.getConfigurationsDataSourceSynchronize()?[row] {
             let hiddenID = object.value(forKey: "hiddenID") as? Int ?? -1
-            let profilename = object.value(forKey: "profilename") as? String ?? NSLocalizedString("Default profile", comment: "default profile")
+            let profilename = object.value(forKey: "profilename") as? String
             switch tableColumn!.identifier.rawValue {
             case "scheduleID":
                 if self.schedulesortedandexpanded != nil {
-                    let schedule: String? = self.schedulesortedandexpanded!.sortandcountscheduledonetask(hiddenID: hiddenID, profilename: profilename, dateStart: nil, number: false)
+                    let schedule: String? = self.schedulesortedandexpanded?.sortandcountscheduledonetask(hiddenID, profilename: profilename, number: false)
                     if schedule?.isEmpty == false {
                         switch schedule {
                         case Scheduletype.once.rawValue:
@@ -309,7 +309,7 @@ extension ViewControllerMain: NSTableViewDelegate, Attributedestring {
                 }
             case "inCellID":
                 if self.schedulesortedandexpanded != nil {
-                    let taskintime: String? = self.schedulesortedandexpanded!.sortandcountscheduledonetask(hiddenID: hiddenID, profilename: profilename, dateStart: nil, number: true)
+                    let taskintime: String? = self.schedulesortedandexpanded?.sortandcountscheduledonetask(hiddenID, profilename: profilename, number: true)
                     return taskintime ?? ""
                 }
             default:
