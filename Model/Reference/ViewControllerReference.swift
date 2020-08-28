@@ -37,6 +37,9 @@ class ViewControllerReference {
     var usrbinrsync: String = "/usr/bin/rsync"
     var usrlocalbinrsync: String = "/usr/local/bin/rsync"
     var configpath: String = "/Rsync/"
+    // New RsynOSX config files and path
+    var newconfigpath: String = "./rsyncosx/"
+    var usenewconfigpath: Bool = false
     // Loggfile
     var logname: String = "schedulelogg"
     var viewControllermain: NSViewController?

@@ -9,7 +9,6 @@
 //   presistent store. Class is a interface
 //   for Schedule.
 //
-// swiftlint:disable line_length
 
 import Foundation
 
@@ -51,9 +50,9 @@ final class PersistentStorageScheduling: ReadWriteDictionary, SetSchedules {
 
     init(profile: String?) {
         if profile == NSLocalizedString("Default profile", comment: "default profile") {
-            super.init(whattoreadwrite: .schedule, profile: nil, configpath: ViewControllerReference.shared.configpath)
+            super.init(whattoreadwrite: .schedule, profile: nil, configpath: Configpath().configpath ?? "")
         } else {
-            super.init(whattoreadwrite: .schedule, profile: profile, configpath: ViewControllerReference.shared.configpath)
+            super.init(whattoreadwrite: .schedule, profile: profile, configpath: Configpath().configpath ?? "")
         }
         self.schedulesasdictionary = self.readNSDictionaryFromPersistentStore()
     }

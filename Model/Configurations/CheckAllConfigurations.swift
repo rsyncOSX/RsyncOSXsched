@@ -21,7 +21,7 @@ class CheckAllConfigurations: Delay, Setlog {
     weak var startautomaticexecution: Startautomaticexecution?
 
     private func getprofilenames() {
-        let profile = Files(whichroot: .profileRoot, configpath: ViewControllerReference.shared.configpath)
+        let profile = Files(whichroot: .profileRoot, configpath: Configpath().configpath ?? "")
         self.allprofiles = profile.getDirectorysStrings()
     }
 
