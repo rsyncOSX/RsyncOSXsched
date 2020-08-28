@@ -36,7 +36,7 @@ class Allschedules {
     var alloffsiteservers: [String]?
 
     private func getprofilenames() {
-        let profile = Files(profileorsshrootpath: .profileroot, configpath: Configpath().configpath ?? "")
+        let profile = Files(profileorsshrootpath: .profileroot)
         self.allprofiles = profile.getDirectorysStrings()
     }
 

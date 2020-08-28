@@ -21,7 +21,7 @@ class CheckAllConfigurations: Delay, Setlog {
     weak var startautomaticexecution: Startautomaticexecution?
 
     private func getprofilenames() {
-        let profile = Files(profileorsshrootpath: .profileroot, configpath: Configpath().configpath ?? "")
+        let profile = Files(profileorsshrootpath: .profileroot)
         self.allprofiles = profile.getDirectorysStrings()
     }
 

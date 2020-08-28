@@ -247,7 +247,7 @@ class ViewControllerMain: NSViewController, Delay, Setlog {
 
     func initpopupbutton() {
         var profilestrings: [String]?
-        profilestrings = Files(profileorsshrootpath: .profileroot, configpath: Configpath().configpath ?? "").getDirectorysStrings()
+        profilestrings = Files(profileorsshrootpath: .profileroot).getDirectorysStrings()
         profilestrings?.insert(NSLocalizedString("Default profile", comment: "default profile"), at: 0)
         self.profilepopupbutton.removeAllItems()
         self.profilepopupbutton.addItems(withTitles: profilestrings ?? [])
