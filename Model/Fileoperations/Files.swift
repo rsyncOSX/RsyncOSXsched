@@ -53,7 +53,7 @@ class Files: NamesandPaths, FileErrors {
         return nil
     }
 
-    override init(whichroot: WhichRoot, configpath: String?) {
-        super.init(whichroot: whichroot, configpath: configpath)
+    override init(profileorsshrootpath whichroot: Profileorsshrootpath, configpath: String?) {
+        super.init(profileorsshrootpath: whichroot, configpath: configpath)
     }
 }
