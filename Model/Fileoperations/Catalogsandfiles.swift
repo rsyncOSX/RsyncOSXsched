@@ -35,7 +35,7 @@ extension FileErrors {
     }
 }
 
-class Files: NamesandPaths, FileErrors {
+class Catalogsandfiles: NamesandPaths, FileErrors {
     // Function for returning profiles as array of Strings
     func getDirectorysStrings() -> [String]? {
         var array = [String]()
