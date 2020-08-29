@@ -46,7 +46,7 @@ class ViewControllerMain: NSViewController, Delay, Setlog {
     var automaticexecution: [NSDictionary]?
 
     var profilesArray: [String]?
-    var profile: Files?
+    var profile: Catalogsandfiles?
     var allschedules: [ConfigurationSchedule]?
     var index: Int?
 
@@ -247,7 +247,7 @@ class ViewControllerMain: NSViewController, Delay, Setlog {
 
     func initpopupbutton() {
         var profilestrings: [String]?
-        profilestrings = Files(whichroot: .profileRoot, configpath: ViewControllerReference.shared.configpath).getDirectorysStrings()
+        profilestrings = Catalogsandfiles(profileorsshrootpath: .profileroot).getDirectorysStrings()
         profilestrings?.insert(NSLocalizedString("Default profile", comment: "default profile"), at: 0)
         self.profilepopupbutton.removeAllItems()
         self.profilepopupbutton.addItems(withTitles: profilestrings ?? [])

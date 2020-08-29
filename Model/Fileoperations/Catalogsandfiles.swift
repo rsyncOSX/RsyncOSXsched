@@ -35,7 +35,7 @@ extension FileErrors {
     }
 }
 
-class Files: NamesandPaths, FileErrors {
+class Catalogsandfiles: NamesandPaths, FileErrors {
     // Function for returning profiles as array of Strings
     func getDirectorysStrings() -> [String]? {
         var array = [String]()
@@ -53,7 +53,7 @@ class Files: NamesandPaths, FileErrors {
         return nil
     }
 
-    override init(whichroot: WhichRoot, configpath: String?) {
-        super.init(whichroot: whichroot, configpath: configpath)
+    override init(profileorsshrootpath whichroot: Profileorsshrootpath) {
+        super.init(profileorsshrootpath: whichroot)
     }
 }

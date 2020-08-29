@@ -36,7 +36,7 @@ class Allschedules {
     var alloffsiteservers: [String]?
 
     private func getprofilenames() {
-        let profile = Files(whichroot: .profileRoot, configpath: ViewControllerReference.shared.configpath)
+        let profile = Catalogsandfiles(profileorsshrootpath: .profileroot)
         self.allprofiles = profile.getDirectorysStrings()
     }
 

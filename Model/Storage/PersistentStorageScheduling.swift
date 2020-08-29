@@ -50,9 +50,9 @@ final class PersistentStorageScheduling: ReadWriteDictionary, SetSchedules {
 
     init(profile: String?) {
         if profile == NSLocalizedString("Default profile", comment: "default profile") {
-            super.init(whattoreadwrite: .schedule, profile: nil, configpath: ViewControllerReference.shared.configpath)
+            super.init(whattoreadwrite: .schedule, profile: nil)
         } else {
-            super.init(whattoreadwrite: .schedule, profile: profile, configpath: ViewControllerReference.shared.configpath)
+            super.init(whattoreadwrite: .schedule, profile: profile)
         }
         self.schedulesasdictionary = self.readNSDictionaryFromPersistentStore()
     }
