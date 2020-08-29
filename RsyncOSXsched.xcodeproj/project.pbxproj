@@ -54,6 +54,7 @@
 		E9C2CD5D2279D80300CF69AF /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = E9C2CD5B2279D80300CF69AF /* Localizable.strings */; };
 		E9C6BFC32308317C0052A336 /* Socket.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9C6BFC22308317C0052A336 /* Socket.swift */; };
 		E9C6BFC5230831F00052A336 /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9C6BFC4230831F00052A336 /* Result.swift */; };
+		E9E3C81924FAB6D800FFDE00 /* Neworoldprofilepath.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E3C81824FAB6D800FFDE00 /* Neworoldprofilepath.swift */; };
 		E9E6A7C7213278C300342168 /* Dateandtime.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E6A7C4213278C200342168 /* Dateandtime.swift */; };
 		E9E6A7C9213278C300342168 /* Macserialnumber.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E6A7C6213278C300342168 /* Macserialnumber.swift */; };
 		E9E6A7CB2132802500342168 /* TCPconnections.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E6A7CA2132802500342168 /* TCPconnections.swift */; };
@@ -132,6 +133,7 @@
 		E9C2CD5C2279D80300CF69AF /* nb */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nb; path = nb.lproj/Localizable.strings; sourceTree = "<group>"; };
 		E9C6BFC22308317C0052A336 /* Socket.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Socket.swift; path = Model/ydpsoket/Socket.swift; sourceTree = SOURCE_ROOT; };
 		E9C6BFC4230831F00052A336 /* Result.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Result.swift; path = Model/ydpsoket/Result.swift; sourceTree = SOURCE_ROOT; };
+		E9E3C81824FAB6D800FFDE00 /* Neworoldprofilepath.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Neworoldprofilepath.swift; sourceTree = "<group>"; };
 		E9E6A7C4213278C200342168 /* Dateandtime.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Dateandtime.swift; sourceTree = "<group>"; };
 		E9E6A7C6213278C300342168 /* Macserialnumber.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Macserialnumber.swift; sourceTree = "<group>"; };
 		E9E6A7CA2132802500342168 /* TCPconnections.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TCPconnections.swift; sourceTree = "<group>"; };
@@ -265,6 +267,7 @@
 		E93A7EFD2026ED0000D61258 /* Tools */ = {
 			isa = PBXGroup;
 			children = (
+				E9E3C81824FAB6D800FFDE00 /* Neworoldprofilepath.swift */,
 				E9E7A8272133FA8C00AD1C9B /* Resources.swift */,
 				E9B5B45F2133F2DB004B7041 /* Checkfornewversion.swift */,
 				E9E6A7CA2132802500342168 /* TCPconnections.swift */,
@@ -497,6 +500,7 @@
 				E906BF6D20F1DB2200238E6A /* ScheduleOperationDispatch.swift in Sources */,
 				E923AE5E24C2E710001601D4 /* InterruptProcess.swift in Sources */,
 				E90CAC5F203D7409004BA7C6 /* Notifications.swift in Sources */,
+				E9E3C81924FAB6D800FFDE00 /* Neworoldprofilepath.swift in Sources */,
 				E94DDC8720A40CC90041CF53 /* ViewControllerSchedules.swift in Sources */,
 				E91C5DBF2026F8FA00FE7E76 /* ScheduleSortedAndExpanded.swift in Sources */,
 				E90675D823729A37005B418E /* Getrsyncpath.swift in Sources */,

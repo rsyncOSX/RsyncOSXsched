@@ -52,6 +52,12 @@ class ViewControllerMain: NSViewController, Delay, Setlog {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        // Decide if:
+        // 1: First time start, use new profilepath
+        // 2: Old profilepath is copied to new, use new profilepath
+        // 3: Use old profilepath
+        // ViewControllerReference.shared.usenewconfigpath = true or false (default true)
+        _ = Neworoldprofilepath()
         // Read user configuration
         if let userconfiguration = PersistentStorageUserconfiguration().readuserconfiguration() {
             _ = Userconfiguration(userconfigRsyncOSX: userconfiguration)
