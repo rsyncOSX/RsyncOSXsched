@@ -37,10 +37,10 @@ extension FileErrors {
 
 class Catalogsandfiles: NamesandPaths, FileErrors {
     // Function for returning profiles as array of Strings
-    func getDirectorysStrings() -> [String]? {
+    func getcatalogsasstringnames() -> [String]? {
         var array = [String]()
         array.append(NSLocalizedString("Default profile", comment: "default profile"))
-        if let atpath = self.rootpath {
+        if let atpath = self.fullroot {
             do {
                 for folders in try Folder(path: atpath).subfolders {
                     array.append(folders.name)

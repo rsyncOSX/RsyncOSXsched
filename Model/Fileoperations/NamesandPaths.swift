@@ -22,8 +22,12 @@ enum Profileorsshrootpath {
 }
 
 class NamesandPaths {
+    // which root to compute? either RsyncOSX profileroot or sshroot
     var profileorsshroot: Profileorsshrootpath?
-    var rootpath: String?
+    // rootpath without macserialnumber
+    var fullrootnomacserial: String?
+    // rootpath with macserianlnumer
+    var fullroot: String?
     // If global keypath and identityfile is set must split keypath and identifile
     // create a new key require full path
     var identityfile: String?
@@ -49,11 +53,19 @@ class NamesandPaths {
     }
 
     // Path to ssh keypath
-    var sshrootkeypath: String? {
+    var fullsshkeypath: String? {
         if let sshkeypathandidentityfile = ViewControllerReference.shared.sshkeypathandidentityfile {
-            return Keypathidentityfile(sshkeypathandidentityfile: sshkeypathandidentityfile).rootpath
+            return Keypathidentityfile(sshkeypathandidentityfile: sshkeypathandidentityfile).fullsshkeypath
         } else {
             return NSHomeDirectory() + "/.ssh"
+        }
+    }
+
+    var onlysshkeypath: String? {
+        if let sshkeypathandidentityfile = ViewControllerReference.shared.sshkeypathandidentityfile {
+            return Keypathidentityfile(sshkeypathandidentityfile: sshkeypathandidentityfile).onlysshkeypath
+        } else {
+            return NSHomeDirectory()
         }
     }
 
@@ -88,12 +100,14 @@ class NamesandPaths {
         switch self.profileorsshroot {
         case .profileroot:
             if ViewControllerReference.shared.usenewconfigpath == true {
-                self.rootpath = (self.userHomeDirectoryPath ?? "") + (self.configpath ?? "") + (self.macserialnumber ?? "")
+                self.fullroot = (self.userHomeDirectoryPath ?? "") + (self.configpath ?? "") + (self.macserialnumber ?? "")
+                self.fullrootnomacserial = (self.userHomeDirectoryPath ?? "") + (self.configpath ?? "")
             } else {
-                self.rootpath = (self.documentscatalog ?? "") + (self.configpath ?? "") + (self.macserialnumber ?? "")
+                self.fullroot = (self.documentscatalog ?? "") + (self.configpath ?? "") + (self.macserialnumber ?? "")
+                self.fullrootnomacserial = (self.documentscatalog ?? "") + (self.configpath ?? "")
             }
         case .sshroot:
-            self.rootpath = self.sshrootkeypath
+            self.fullroot = self.fullsshkeypath
             self.identityfile = self.sshidentityfile
         default:
             return
@@ -113,7 +127,6 @@ class NamesandPaths {
             }
             self.filepath = config + "/" + profile + "/"
         } else {
-            // no profile
             if ViewControllerReference.shared.usenewconfigpath == true {
                 self.filename = (self.userHomeDirectoryPath ?? "") + config + plist
             } else {
