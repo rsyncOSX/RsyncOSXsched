@@ -15,6 +15,6 @@ final class PersistentStorageUserconfiguration: ReadWriteDictionary {
     }
 
     init() {
-        super.init(whattoreadwrite: .userconfig, profile: nil, configpath: ViewControllerReference.shared.configpath)
+        super.init(whattoreadwrite: .userconfig, profile: nil)
     }
 }

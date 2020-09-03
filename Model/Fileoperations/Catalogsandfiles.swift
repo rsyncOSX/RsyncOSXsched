@@ -35,12 +35,12 @@ extension FileErrors {
     }
 }
 
-class Files: NamesandPaths, FileErrors {
+class Catalogsandfiles: NamesandPaths, FileErrors {
     // Function for returning profiles as array of Strings
-    func getDirectorysStrings() -> [String]? {
+    func getcatalogsasstringnames() -> [String]? {
         var array = [String]()
         array.append(NSLocalizedString("Default profile", comment: "default profile"))
-        if let atpath = self.rootpath {
+        if let atpath = self.fullroot {
             do {
                 for folders in try Folder(path: atpath).subfolders {
                     array.append(folders.name)
@@ -53,7 +53,7 @@ class Files: NamesandPaths, FileErrors {
         return nil
     }
 
-    override init(whichroot: WhichRoot, configpath: String?) {
-        super.init(whichroot: whichroot, configpath: configpath)
+    override init(profileorsshrootpath whichroot: Profileorsshrootpath) {
+        super.init(profileorsshrootpath: whichroot)
     }
 }

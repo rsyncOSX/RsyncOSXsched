@@ -40,7 +40,7 @@ class ReadWriteDictionary: NamesandPaths, Setlog {
         return dictionary.write(toFile: self.filename!, atomically: true)
     }
 
-    init(whattoreadwrite: WhatToReadWrite, profile: String?, configpath: String) {
-        super.init(whattoreadwrite: whattoreadwrite, profile: profile, configpath: configpath)
+    override init(whattoreadwrite: WhatToReadWrite, profile: String?) {
+        super.init(whattoreadwrite: whattoreadwrite, profile: profile)
     }
 }

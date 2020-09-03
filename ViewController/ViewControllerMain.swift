@@ -46,12 +46,18 @@ class ViewControllerMain: NSViewController, Delay, Setlog {
     var automaticexecution: [NSDictionary]?
 
     var profilesArray: [String]?
-    var profile: Files?
+    var profile: Catalogsandfiles?
     var allschedules: [ConfigurationSchedule]?
     var index: Int?
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        // Decide if:
+        // 1: First time start, use new profilepath
+        // 2: Old profilepath is copied to new, use new profilepath
+        // 3: Use old profilepath
+        // ViewControllerReference.shared.usenewconfigpath = true or false (default true)
+        _ = Neworoldprofilepath()
         // Read user configuration
         if let userconfiguration = PersistentStorageUserconfiguration().readuserconfiguration() {
             _ = Userconfiguration(userconfigRsyncOSX: userconfiguration)
@@ -247,7 +253,7 @@ class ViewControllerMain: NSViewController, Delay, Setlog {
 
     func initpopupbutton() {
         var profilestrings: [String]?
-        profilestrings = Files(whichroot: .profileRoot, configpath: ViewControllerReference.shared.configpath).getDirectorysStrings()
+        profilestrings = Catalogsandfiles(profileorsshrootpath: .profileroot).getcatalogsasstringnames()
         profilestrings?.insert(NSLocalizedString("Default profile", comment: "default profile"), at: 0)
         self.profilepopupbutton.removeAllItems()
         self.profilepopupbutton.addItems(withTitles: profilestrings ?? [])

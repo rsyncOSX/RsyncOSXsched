@@ -5,7 +5,7 @@
 //  Created by Thomas Evensen on 10.05.2018.
 //  Copyright © 2018 Maxim. All rights reserved.
 //
-// swiftlint:disable line_length
+// swiftlint:disable line_length cyclomatic_complexity
 
 import Cocoa
 import Foundation
@@ -51,14 +51,16 @@ extension ViewControllerSchedules: NSTableViewDataSource {
 extension ViewControllerSchedules: NSTableViewDelegate {
     func tableView(_: NSTableView, objectValueFor tableColumn: NSTableColumn?, row: Int) -> Any? {
         guard row < self.schedulessortedandexpanded?.sortedschedules?.count ?? -1 else { return nil }
-        if let object: NSDictionary = self.schedulessortedandexpanded?.sortedschedules?[row] {
+        if let object: NSDictionary = self.schedulessortedandexpanded?.sortedschedules?[row],
+            let hiddenID = object.value(forKey: "hiddenID") as? Int
+        {
             if let tableColumn = tableColumn {
-                if tableColumn.identifier.rawValue == "intime" {
-                    let hiddenID = object.value(forKey: "hiddenID") as? Int ?? -1
+                switch tableColumn.identifier.rawValue {
+                case "intime":
                     let profilename = object.value(forKey: "profilename") as? String ?? NSLocalizedString("Default profile", comment: "default profile")
                     let taskintime = self.schedulessortedandexpanded?.sortandcountscheduledonetask(hiddenID, profilename: profilename, number: true)
                     return taskintime ?? ""
-                } else if tableColumn.identifier.rawValue == "schedule" {
+                case "schedule":
                     switch object[tableColumn.identifier] as? String {
                     case Scheduletype.once.rawValue:
                         return NSLocalizedString("once", comment: "main")
@@ -69,9 +71,12 @@ extension ViewControllerSchedules: NSTableViewDelegate {
                     default:
                         return ""
                     }
-                } else if tableColumn.identifier.rawValue == "delta" {
-                    return self.schedulessortedandexpanded?.delta?[row]
-                } else {
+                case "delta":
+                    let delta = self.schedulessortedandexpanded?.sortedschedules?.filter { $0.value(forKey: "hiddenID") as? Int == hiddenID }
+                    if (delta?.count ?? 0) > 0 {
+                        return delta?[0].value(forKey: "delta") as? String
+                    }
+                default:
                     return object[tableColumn.identifier]
                 }
             }

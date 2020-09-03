@@ -54,10 +54,12 @@
 		E9C2CD5D2279D80300CF69AF /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = E9C2CD5B2279D80300CF69AF /* Localizable.strings */; };
 		E9C6BFC32308317C0052A336 /* Socket.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9C6BFC22308317C0052A336 /* Socket.swift */; };
 		E9C6BFC5230831F00052A336 /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9C6BFC4230831F00052A336 /* Result.swift */; };
+		E9E3C81924FAB6D800FFDE00 /* Neworoldprofilepath.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E3C81824FAB6D800FFDE00 /* Neworoldprofilepath.swift */; };
 		E9E6A7C7213278C300342168 /* Dateandtime.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E6A7C4213278C200342168 /* Dateandtime.swift */; };
 		E9E6A7C9213278C300342168 /* Macserialnumber.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E6A7C6213278C300342168 /* Macserialnumber.swift */; };
 		E9E6A7CB2132802500342168 /* TCPconnections.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E6A7CA2132802500342168 /* TCPconnections.swift */; };
 		E9E7A8282133FA8C00AD1C9B /* Resources.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E7A8272133FA8C00AD1C9B /* Resources.swift */; };
+		E9E8C6DD24F90A1A00845BD7 /* Configpath.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E8C6DC24F90A1A00845BD7 /* Configpath.swift */; };
 		E9EC228824C473B6009436E3 /* GetConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9EC228724C473B6009436E3 /* GetConfig.swift */; };
 		E9F54D792026D68D00A664CF /* ViewControllerReference.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9F54D782026D68D00A664CF /* ViewControllerReference.swift */; };
 		E9F54D7B2026D7D400A664CF /* RsyncParameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9F54D7A2026D7D400A664CF /* RsyncParameters.swift */; };
@@ -65,7 +67,7 @@
 		E9F54D7F2026DA8B00A664CF /* OutputProcess.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9F54D7E2026DA8A00A664CF /* OutputProcess.swift */; };
 		E9F54D832026DBD700A664CF /* PersistentStorageConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9F54D822026DBD600A664CF /* PersistentStorageConfiguration.swift */; };
 		E9F54D852026DC5D00A664CF /* ReadWriteDictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9F54D842026DC5D00A664CF /* ReadWriteDictionary.swift */; };
-		E9F54D892026DCCF00A664CF /* Files.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9F54D882026DCCF00A664CF /* Files.swift */; };
+		E9F54D892026DCCF00A664CF /* Catalogsandfiles.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9F54D882026DCCF00A664CF /* Catalogsandfiles.swift */; };
 		E9F54D8B2026DED600A664CF /* PersistentStorageUserconfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9F54D8A2026DED600A664CF /* PersistentStorageUserconfiguration.swift */; };
 /* End PBXBuildFile section */
 
@@ -131,10 +133,12 @@
 		E9C2CD5C2279D80300CF69AF /* nb */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nb; path = nb.lproj/Localizable.strings; sourceTree = "<group>"; };
 		E9C6BFC22308317C0052A336 /* Socket.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Socket.swift; path = Model/ydpsoket/Socket.swift; sourceTree = SOURCE_ROOT; };
 		E9C6BFC4230831F00052A336 /* Result.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Result.swift; path = Model/ydpsoket/Result.swift; sourceTree = SOURCE_ROOT; };
+		E9E3C81824FAB6D800FFDE00 /* Neworoldprofilepath.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Neworoldprofilepath.swift; sourceTree = "<group>"; };
 		E9E6A7C4213278C200342168 /* Dateandtime.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Dateandtime.swift; sourceTree = "<group>"; };
 		E9E6A7C6213278C300342168 /* Macserialnumber.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Macserialnumber.swift; sourceTree = "<group>"; };
 		E9E6A7CA2132802500342168 /* TCPconnections.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TCPconnections.swift; sourceTree = "<group>"; };
 		E9E7A8272133FA8C00AD1C9B /* Resources.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Resources.swift; sourceTree = "<group>"; };
+		E9E8C6DC24F90A1A00845BD7 /* Configpath.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Configpath.swift; sourceTree = "<group>"; };
 		E9EC228724C473B6009436E3 /* GetConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetConfig.swift; sourceTree = "<group>"; };
 		E9F54D782026D68D00A664CF /* ViewControllerReference.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewControllerReference.swift; sourceTree = "<group>"; };
 		E9F54D7A2026D7D400A664CF /* RsyncParameters.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RsyncParameters.swift; sourceTree = "<group>"; };
@@ -142,7 +146,7 @@
 		E9F54D7E2026DA8A00A664CF /* OutputProcess.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OutputProcess.swift; sourceTree = "<group>"; };
 		E9F54D822026DBD600A664CF /* PersistentStorageConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersistentStorageConfiguration.swift; sourceTree = "<group>"; };
 		E9F54D842026DC5D00A664CF /* ReadWriteDictionary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReadWriteDictionary.swift; sourceTree = "<group>"; };
-		E9F54D882026DCCF00A664CF /* Files.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Files.swift; sourceTree = "<group>"; };
+		E9F54D882026DCCF00A664CF /* Catalogsandfiles.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Catalogsandfiles.swift; sourceTree = "<group>"; };
 		E9F54D8A2026DED600A664CF /* PersistentStorageUserconfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersistentStorageUserconfiguration.swift; sourceTree = "<group>"; };
 		E9FA8C072279BF0100B28803 /* nb */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nb; path = nb.lproj/Main.strings; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -252,9 +256,10 @@
 			isa = PBXGroup;
 			children = (
 				E92D57E82480E32500116E3D /* Keypathidentityfile.swift */,
-				E9F54D882026DCCF00A664CF /* Files.swift */,
+				E9F54D882026DCCF00A664CF /* Catalogsandfiles.swift */,
 				E9F54D842026DC5D00A664CF /* ReadWriteDictionary.swift */,
 				E8DE5C2F24D1843C00C56FEC /* NamesandPaths.swift */,
+				E9E8C6DC24F90A1A00845BD7 /* Configpath.swift */,
 			);
 			path = Fileoperations;
 			sourceTree = "<group>";
@@ -262,6 +267,7 @@
 		E93A7EFD2026ED0000D61258 /* Tools */ = {
 			isa = PBXGroup;
 			children = (
+				E9E3C81824FAB6D800FFDE00 /* Neworoldprofilepath.swift */,
 				E9E7A8272133FA8C00AD1C9B /* Resources.swift */,
 				E9B5B45F2133F2DB004B7041 /* Checkfornewversion.swift */,
 				E9E6A7CA2132802500342168 /* TCPconnections.swift */,
@@ -494,6 +500,7 @@
 				E906BF6D20F1DB2200238E6A /* ScheduleOperationDispatch.swift in Sources */,
 				E923AE5E24C2E710001601D4 /* InterruptProcess.swift in Sources */,
 				E90CAC5F203D7409004BA7C6 /* Notifications.swift in Sources */,
+				E9E3C81924FAB6D800FFDE00 /* Neworoldprofilepath.swift in Sources */,
 				E94DDC8720A40CC90041CF53 /* ViewControllerSchedules.swift in Sources */,
 				E91C5DBF2026F8FA00FE7E76 /* ScheduleSortedAndExpanded.swift in Sources */,
 				E90675D823729A37005B418E /* Getrsyncpath.swift in Sources */,
@@ -506,6 +513,7 @@
 				E98398AF20260E9D00C977C3 /* Configurations.swift in Sources */,
 				E90BFDC8202D989D004AE4EC /* ytcpsocket.c in Sources */,
 				E9F54D7B2026D7D400A664CF /* RsyncParameters.swift in Sources */,
+				E9E8C6DD24F90A1A00845BD7 /* Configpath.swift in Sources */,
 				E9B5B4602133F2DB004B7041 /* Checkfornewversion.swift in Sources */,
 				E91C5DC12026F8FA00FE7E76 /* ScheduleWriteLoggData.swift in Sources */,
 				E9A63066202B4DE900F1FFF1 /* Running.swift in Sources */,
@@ -533,7 +541,7 @@
 				E95738EA232B86D2000342FE /* FirstScheduledTask.swift in Sources */,
 				E9EC228824C473B6009436E3 /* GetConfig.swift in Sources */,
 				E973F0EF227305E100412F60 /* ConvertSchedules.swift in Sources */,
-				E9F54D892026DCCF00A664CF /* Files.swift in Sources */,
+				E9F54D892026DCCF00A664CF /* Catalogsandfiles.swift in Sources */,
 				E9E6A7CB2132802500342168 /* TCPconnections.swift in Sources */,
 				E9E7A8282133FA8C00AD1C9B /* Resources.swift in Sources */,
 				E90BFDCA202D989D004AE4EC /* yudpsocket.c in Sources */,
