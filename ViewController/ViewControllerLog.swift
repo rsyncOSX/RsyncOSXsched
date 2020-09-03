@@ -13,6 +13,7 @@ import Foundation
 class ViewControllerLog: NSViewController, SetDismisser, GetInformation {
     @IBOutlet var detailsTable: NSTableView!
     @IBOutlet var writeloggbutton: NSButton!
+    @IBOutlet var configpath: NSTextField!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,6 +23,7 @@ class ViewControllerLog: NSViewController, SetDismisser, GetInformation {
 
     override func viewDidAppear() {
         super.viewDidAppear()
+        self.configpath.stringValue = NamesandPaths(profileorsshrootpath: .profileroot).fullroot ?? ""
         globalMainQueue.async { () -> Void in
             self.detailsTable.reloadData()
         }
