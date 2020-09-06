@@ -37,7 +37,7 @@ class Allschedules {
 
     private func getprofilenames() {
         let profile = Catalogsandfiles(profileorsshrootpath: .profileroot)
-        self.allprofiles = profile.getDirectorysStrings()
+        self.allprofiles = profile.getcatalogsasstringnames()
     }
 
     private func readallschedules() {
