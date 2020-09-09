@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="17132" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="17154" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="17132"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="17154"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -206,7 +206,7 @@
                                 </textFieldCell>
                             </textField>
                             <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="epW-W3-lUk">
-                                <rect key="frame" x="646" y="2" width="31" height="28"/>
+                                <rect key="frame" x="646" y="2.5" width="31.5" height="28"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="NSStopProgressTemplate" imagePosition="overlaps" alignment="center" imageScaling="proportionallyDown" inset="2" id="QPq-ff-gA2">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -248,7 +248,7 @@
                                 </textFieldCell>
                             </textField>
                             <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="OEc-vd-ADi">
-                                <rect key="frame" x="617" y="0.0" width="31" height="30"/>
+                                <rect key="frame" x="617" y="0.5" width="31.5" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="NSTouchBarRecordStopTemplate" imagePosition="overlaps" alignment="center" imageScaling="proportionallyDown" inset="2" id="uBp-4W-BLA">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -259,7 +259,7 @@
                                 </connections>
                             </button>
                             <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kai-9c-NNV">
-                                <rect key="frame" x="35" y="2" width="39" height="32"/>
+                                <rect key="frame" x="35" y="2" width="39.5" height="32"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="NSTouchBarPlayTemplate" imagePosition="overlaps" alignment="center" imageScaling="proportionallyDown" inset="2" id="9lr-pg-w2Y">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -293,7 +293,7 @@
                                 </connections>
                             </popUpButton>
                             <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5nF-vB-oIM">
-                                <rect key="frame" x="8" y="4" width="27" height="28"/>
+                                <rect key="frame" x="8" y="4" width="27.5" height="28"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="NSHomeTemplate" imagePosition="overlaps" alignment="center" imageScaling="proportionallyDown" inset="2" id="gkG-rF-JAe">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -429,7 +429,7 @@
                                 </tableHeaderView>
                             </scrollView>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="9b4-TI-GsS">
-                                <rect key="frame" x="364" y="5" width="75" height="32"/>
+                                <rect key="frame" x="376" y="5" width="63" height="32"/>
                                 <buttonCell key="cell" type="push" title="Close" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="NAt-yd-56N">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" size="11" name="HelveticaNeue"/>
@@ -442,7 +442,7 @@ DQ
                                 </connections>
                             </button>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Pke-1b-da9">
-                                <rect key="frame" x="300" y="5" width="72" height="32"/>
+                                <rect key="frame" x="324" y="5" width="60" height="32"/>
                                 <buttonCell key="cell" type="push" title="Write" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="tub-al-k7W">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" size="11" name="HelveticaNeue"/>
@@ -451,6 +451,15 @@ DQ
                                     <action selector="writelogg:" target="SMW-uL-v3k" id="8YT-PY-XnJ"/>
                                 </connections>
                             </button>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4Yg-uR-8my">
+                                <rect key="frame" x="8" y="12" width="317" height="16"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <textFieldCell key="cell" lineBreakMode="clipping" title="Label" id="Ud3-oP-ijM">
+                                    <font key="font" metaFont="system" size="11"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
                         </subviews>
                         <constraints>
                             <constraint firstItem="9b4-TI-GsS" firstAttribute="top" secondItem="jpZ-V5-DSC" secondAttribute="bottom" constant="12" id="51E-Fu-iBq"/>
@@ -465,6 +474,7 @@ DQ
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="configpath" destination="4Yg-uR-8my" id="UUT-yp-ny8"/>
                         <outlet property="detailsTable" destination="nqz-t1-Bam" id="zPX-gg-76T"/>
                         <outlet property="writeloggbutton" destination="Pke-1b-da9" id="Jl5-BO-LnJ"/>
                     </connections>
@@ -478,11 +488,11 @@ DQ
             <objects>
                 <viewController title="All schedules" storyboardIdentifier="StoryboardAllschedulesID" id="5c9-F6-lv3" customClass="ViewControllerSchedules" customModule="RsyncOSXsched" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="Iaq-iH-NCG">
-                        <rect key="frame" x="0.0" y="0.0" width="338" height="258"/>
+                        <rect key="frame" x="0.0" y="0.0" width="338" height="257"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="80t-KH-wCz">
-                                <rect key="frame" x="5" y="238" width="328" height="14"/>
+                                <rect key="frame" x="5" y="237" width="328" height="14"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Double click on a row to select profile..." id="6Qr-L9-cOC">
                                     <font key="font" metaFont="message" size="11"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -490,7 +500,7 @@ DQ
                                 </textFieldCell>
                             </textField>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Jud-ph-Q9h">
-                                <rect key="frame" x="261" y="0.0" width="76" height="32"/>
+                                <rect key="frame" x="260" y="0.0" width="78" height="32"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="64" id="S7L-Yd-EFo"/>
                                 </constraints>
@@ -506,19 +516,19 @@ DQ
                                 </connections>
                             </button>
                             <scrollView autohidesScrollers="YES" horizontalLineScroll="19" horizontalPageScroll="10" verticalLineScroll="19" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b8S-mq-R5E">
-                                <rect key="frame" x="7" y="33" width="324" height="205"/>
+                                <rect key="frame" x="7" y="32" width="324" height="205"/>
                                 <clipView key="contentView" id="BfB-Ze-1we">
-                                    <rect key="frame" x="1" y="0.0" width="322" height="204"/>
+                                    <rect key="frame" x="1" y="1" width="322" height="203"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnSelection="YES" multipleSelection="NO" autosaveColumns="NO" headerView="rDB-JZ-Fl5" id="xAz-Lh-jIQ">
-                                            <rect key="frame" x="0.0" y="0.0" width="322" height="181"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="322" height="180"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <size key="intercellSpacing" width="3" height="2"/>
                                             <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                             <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
                                             <tableColumns>
-                                                <tableColumn identifier="profilename" width="81" minWidth="40" maxWidth="1000" id="CCr-KQ-oF9">
+                                                <tableColumn identifier="profilename" width="80" minWidth="40" maxWidth="1000" id="CCr-KQ-oF9">
                                                     <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="Profilename">
                                                         <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                                         <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
@@ -530,7 +540,7 @@ DQ
                                                     </textFieldCell>
                                                     <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                                 </tableColumn>
-                                                <tableColumn identifier="schedule" width="68" minWidth="40" maxWidth="1000" id="W9w-mv-yJ6">
+                                                <tableColumn identifier="schedule" width="67" minWidth="40" maxWidth="1000" id="W9w-mv-yJ6">
                                                     <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="Schedule">
                                                         <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                                         <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
@@ -542,7 +552,7 @@ DQ
                                                     </textFieldCell>
                                                     <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                                 </tableColumn>
-                                                <tableColumn identifier="intime" width="89" minWidth="10" maxWidth="3.4028234663852886e+38" id="5YC-cO-W1E">
+                                                <tableColumn identifier="intime" width="88" minWidth="10" maxWidth="3.4028234663852886e+38" id="5YC-cO-W1E">
                                                     <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="center" title="In time">
                                                         <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -575,14 +585,14 @@ DQ
                                     <constraint firstAttribute="width" constant="324" id="z5V-gl-51N"/>
                                 </constraints>
                                 <scroller key="horizontalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="YES" id="FYR-zS-YPV">
-                                    <rect key="frame" x="1" y="188" width="320" height="16"/>
+                                    <rect key="frame" x="1" y="188" width="322" height="16"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
                                 <scroller key="verticalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="nMZ-yr-Y9Q">
                                     <rect key="frame" x="-15" y="23" width="16" height="0.0"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
-                                <tableHeaderView key="headerView" id="rDB-JZ-Fl5">
+                                <tableHeaderView key="headerView" wantsLayer="YES" id="rDB-JZ-Fl5">
                                     <rect key="frame" x="0.0" y="0.0" width="322" height="23"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableHeaderView>
@@ -611,11 +621,11 @@ DQ
     </scenes>
     <resources>
         <image name="MenubarButton" width="16" height="16"/>
-        <image name="NSHomeTemplate" width="20" height="14"/>
+        <image name="NSHomeTemplate" width="19" height="16"/>
         <image name="NSInfo" width="32" height="32"/>
-        <image name="NSStopProgressTemplate" width="15" height="11"/>
-        <image name="NSTouchBarPlayTemplate" width="12" height="11"/>
-        <image name="NSTouchBarRecordStopTemplate" width="15" height="11"/>
+        <image name="NSStopProgressTemplate" width="14" height="13"/>
+        <image name="NSTouchBarPlayTemplate" width="12" height="13"/>
+        <image name="NSTouchBarRecordStopTemplate" width="14" height="13"/>
         <image name="red" width="512" height="512"/>
     </resources>
 </document>
