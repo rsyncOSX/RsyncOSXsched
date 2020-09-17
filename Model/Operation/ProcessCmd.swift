@@ -25,8 +25,6 @@ class ProcessCmd: Delay, SetConfigurations {
     // Observers
     weak var notifications_datahandle: NSObjectProtocol?
     weak var notifications_termination: NSObjectProtocol?
-    // Command to be executed, normally rsync
-    var command: String?
     // Arguments to command
     var arguments: [String]?
     // Message to calling class
@@ -35,12 +33,7 @@ class ProcessCmd: Delay, SetConfigurations {
     func executeProcess(outputprocess: OutputProcess?) {
         // Process
         let task = Process()
-        // If self.command != nil either alternativ path for rsync or other command than rsync to be executed
-        if let command = self.command {
-            task.launchPath = command
-        } else {
-            task.launchPath = Getrsyncpath().rsyncpath
-        }
+        task.launchPath = Getrsyncpath().rsyncpath
         task.arguments = self.arguments
         // If there are any Environmentvariables like
         // SSH_AUTH_SOCK": "/Users/user/.gnupg/S.gpg-agent.ssh"
@@ -81,8 +74,7 @@ class ProcessCmd: Delay, SetConfigurations {
         }
     }
 
-    init(command: String?, arguments: [String]?) {
-        self.command = command
+    init(arguments: [String]?) {
         self.arguments = arguments
         self.updateDelegate = ViewControllerReference.shared.viewControllermain as? ViewControllerMain
     }

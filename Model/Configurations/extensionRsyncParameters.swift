@@ -8,7 +8,7 @@
 
 extension RsyncParameters {
     // Function for initialize arguments array.
-    func argumentsRsync(config: Configuration) -> [String] {
+    func argumentsRsync(config: Configuration) -> [String]? {
         self.localCatalog = config.localCatalog
         if config.task == ViewControllerReference.shared.syncremote {
             self.remoteargssyncremote(config: config)
@@ -28,6 +28,6 @@ extension RsyncParameters {
         default:
             break
         }
-        return self.arguments!
+        return self.arguments
     }
 }
