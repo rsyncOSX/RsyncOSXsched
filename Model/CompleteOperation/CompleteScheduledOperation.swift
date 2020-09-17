@@ -28,7 +28,7 @@ final class CompleteScheduledOperation: ScheduledTaskAnimation, SetConfiguration
 
         if let index = self.configurations?.getIndex(hiddenID ?? -1) {
             self.configurations?.setCurrentDateonConfiguration(index: index, outputprocess: outputprocess)
-            _ = Notifications().showNotification(message: message)
+            Notifications().showNotification(message: message)
         }
 
         self.logDelegate?.addlog(logrecord: NSLocalizedString("Adding result to log:", comment: "Logg")
