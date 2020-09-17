@@ -6,7 +6,7 @@
 import Cocoa
 
 @NSApplicationMain
-class AppDelegate: NSObject, NSApplicationDelegate {
+class AppDelegate: NSObject, NSApplicationDelegate, Delay {
     let statusItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.squareLength)
     let popover = NSPopover()
     var eventMonitor: EventMonitor?
@@ -31,7 +31,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                 self?.closePopover(event)
             }
         }
-        self.showPopover(nil)
+        self.delayWithSeconds(1) {
+            self.showPopover(nil)
+        }
     }
 
     func applicationWillTerminate(_: Notification) {}

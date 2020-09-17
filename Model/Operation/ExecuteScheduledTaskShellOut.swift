@@ -84,7 +84,7 @@ final class ExecuteScheduledTaskShellOut: ExecuteScheduledTask {
             } else {
                 updatestatuslightDelegate?.updatestatuslight(color: .red)
                 self.logDelegate?.addlog(logrecord: "No record for scheduled task")
-                _ = Notifications().showNotification(message: NSLocalizedString("Scheduled backup did not execute", comment: "Execute"))
+                Notifications().showNotification(message: NSLocalizedString("Scheduled backup did not execute", comment: "Execute"))
             }
         }
     }
