@@ -399,40 +399,10 @@ extension ViewControllerMain {
             self.progress.stopAnimation(nil)
             self.progresslabel.isHidden = true
         }
-        if self.automaticexecution == nil {
-            guard ViewControllerReference.shared.completeoperation != nil else {
-                self.delayWithSeconds(5) {
-                    self.schedulesortedandexpanded = ScheduleSortedAndExpand()
-                    self.startfirstscheduledtask()
-                }
-                return
-            }
-            ViewControllerReference.shared.completeoperation?.finalizeScheduledJob(outputprocess: self.outputprocess)
-            self.schedulesortedandexpanded = ScheduleSortedAndExpand()
-            self.startfirstscheduledtask()
-
-            self.backupnowbutton.isEnabled = true
-        } else {
-            ViewControllerReference.shared.completeoperation?.finalizeScheduledJob(outputprocess: self.outputprocess)
-            guard self.automaticexecution != nil else { return }
-            guard self.automaticexecution!.count > 0 else {
-                self.automaticexecution = nil
-                self.schedulesortedandexpanded = ScheduleSortedAndExpand()
-                self.startfirstscheduledtask()
-                return
-            }
-            self.delayWithSeconds(1) {
-                if let dict: NSDictionary = self.automaticexecution?.removeFirst() {
-                    if let executepretask = dict.value(forKey: "executepretask") as? Int {
-                        if executepretask == 1 {
-                            _ = ExecuteScheduledTaskShellOut(dict: dict, processtermination: self.processtermination)
-                        } else {
-                            _ = ExecuteScheduledTask(dict: dict, processtermination: self.processtermination)
-                        }
-                    }
-                }
-            }
-        }
+        ViewControllerReference.shared.completeoperation?.finalizeScheduledJob(outputprocess: self.outputprocess)
+        self.schedulesortedandexpanded = ScheduleSortedAndExpand()
+        self.startfirstscheduledtask()
+        self.backupnowbutton.isEnabled = true
     }
 }
 
@@ -529,9 +499,30 @@ extension ViewControllerMain: Startautomaticexecution {
         if let dict: NSDictionary = self.automaticexecution?.removeFirst() {
             if let executepretask = dict.value(forKey: "executepretask") as? Int {
                 if executepretask == 1 {
-                    _ = ExecuteScheduledTaskShellOut(dict: dict, processtermination: self.processtermination)
+                    _ = ExecuteScheduledTaskShellOut(dict: dict, processtermination: self.processterminationautomaticexecution)
                 } else {
-                    _ = ExecuteScheduledTask(dict: dict, processtermination: self.processtermination)
+                    _ = ExecuteScheduledTask(dict: dict, processtermination: self.processterminationautomaticexecution)
+                }
+            }
+        }
+    }
+
+    func processterminationautomaticexecution() {
+        ViewControllerReference.shared.completeoperation?.finalizeScheduledJob(outputprocess: self.outputprocess)
+        guard self.automaticexecution?.count ?? 0 > 0 else {
+            self.automaticexecution = nil
+            self.schedulesortedandexpanded = ScheduleSortedAndExpand()
+            self.startfirstscheduledtask()
+            return
+        }
+        self.delayWithSeconds(1) {
+            if let dict: NSDictionary = self.automaticexecution?.removeFirst() {
+                if let executepretask = dict.value(forKey: "executepretask") as? Int {
+                    if executepretask == 1 {
+                        _ = ExecuteScheduledTaskShellOut(dict: dict, processtermination: self.processterminationautomaticexecution)
+                    } else {
+                        _ = ExecuteScheduledTask(dict: dict, processtermination: self.processterminationautomaticexecution)
+                    }
                 }
             }
         }
