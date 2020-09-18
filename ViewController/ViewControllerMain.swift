@@ -201,7 +201,9 @@ class ViewControllerMain: NSViewController, Delay, Setlog {
         ViewControllerReference.shared.dispatchTaskWaiting?.cancel()
         ViewControllerReference.shared.dispatchTaskWaiting = nil
         ViewControllerReference.shared.scheduledTask = self.schedulesortedandexpanded?.getfirstscheduledtask()
-        _ = ScheduleOperationDispatch(processtermination: self.processtermination)
+        self.delayWithSeconds(1) {
+            _ = ScheduleOperationDispatch(processtermination: self.processtermination)
+        }
     }
 
     @objc func onWakeNote(note _: NSNotification) {
@@ -257,7 +259,6 @@ class ViewControllerMain: NSViewController, Delay, Setlog {
         profilestrings?.insert(NSLocalizedString("Default profile", comment: "default profile"), at: 0)
         self.profilepopupbutton.removeAllItems()
         self.profilepopupbutton.addItems(withTitles: profilestrings ?? [])
-        // self.profilepopupbutton.selectItem(at: 0)
     }
 
     @IBAction func selectprofile(_: NSButton) {
