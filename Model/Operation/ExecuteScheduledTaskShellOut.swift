@@ -41,7 +41,6 @@ final class ExecuteScheduledTaskShellOut: ExecuteScheduledTask {
 
     override func executetask() {
         let outputprocess = OutputProcess()
-        var arguments: [String]?
         weak var updatestatuslightDelegate: Updatestatuslight?
         weak var tcpconnectionsDelegate: GetTCPconnections?
         updatestatuslightDelegate = ViewControllerReference.shared.viewControllermain as? ViewControllerMain
@@ -66,8 +65,7 @@ final class ExecuteScheduledTaskShellOut: ExecuteScheduledTask {
             if config.offsiteServer.isEmpty == false {
                 guard tcpconnectionsDelegate?.gettcpconnections()?.checkremoteconnection(remoteserver: config.offsiteServer) == true else { return }
             }
-            arguments = RsyncParameters().argumentsRsync(config: config)
-            if let arguments = arguments {
+            if let arguments = RsyncParameters().argumentsRsync(config: config) {
                 // Setting reference to finalize the job, finalize job is done when rsynctask ends (in process termination)
                 ViewControllerReference.shared.completeoperation = CompleteScheduledOperation(dict: dict)
                 let profilename = GetConfig().profilename
@@ -75,7 +73,7 @@ final class ExecuteScheduledTaskShellOut: ExecuteScheduledTask {
                 self.logDelegate?.addlog(logrecord: message)
                 weak var sendoutputprocess: SendOutputProcessreference?
                 sendoutputprocess = ViewControllerReference.shared.viewControllermain as? ViewControllerMain
-                let process = ProcessCmd(command: nil, arguments: arguments)
+                let process = ProcessCmd(arguments: arguments)
                 globalMainQueue.async {
                     process.executeProcess(outputprocess: outputprocess)
                     sendoutputprocess?.sendoutputprocessreference(outputprocess: outputprocess)

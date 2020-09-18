@@ -16,20 +16,17 @@ import Foundation
 class ExecuteScheduledTask: SetSchedules, SetConfigurations, ScheduledTaskAnimation, Setlog {
     func executetask() {
         let outputprocess = OutputProcess()
-        var arguments: [String]?
         weak var updatestatuslightDelegate: Updatestatuslight?
         weak var tcpconnectionsDelegate: GetTCPconnections?
         updatestatuslightDelegate = ViewControllerReference.shared.viewControllermain as? ViewControllerMain
         tcpconnectionsDelegate = ViewControllerReference.shared.viewControllermain as? ViewControllerMain
-
         if let config = GetConfig().config, let dict = GetConfig().dict {
             // Inform and notify
             self.scheduletaskanimation?.startanimation()
             if config.offsiteServer.isEmpty == false {
                 guard tcpconnectionsDelegate?.gettcpconnections()?.checkremoteconnection(remoteserver: config.offsiteServer) == true else { return }
             }
-            arguments = RsyncParameters().argumentsRsync(config: config)
-            if let arguments = arguments {
+            if let arguments = RsyncParameters().argumentsRsync(config: config) {
                 // Setting reference to finalize the job, finalize job is done when rsynctask ends (in process termination)
                 ViewControllerReference.shared.completeoperation = CompleteScheduledOperation(dict: dict)
                 let profilename = GetConfig().profilename
@@ -37,7 +34,7 @@ class ExecuteScheduledTask: SetSchedules, SetConfigurations, ScheduledTaskAnimat
                 self.logDelegate?.addlog(logrecord: message)
                 weak var sendoutputprocess: SendOutputProcessreference?
                 sendoutputprocess = ViewControllerReference.shared.viewControllermain as? ViewControllerMain
-                let process = ProcessCmd(command: nil, arguments: arguments)
+                let process = ProcessCmd(arguments: arguments)
                 globalMainQueue.async {
                     process.executeProcess(outputprocess: outputprocess)
                     sendoutputprocess?.sendoutputprocessreference(outputprocess: outputprocess)

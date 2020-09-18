@@ -18,7 +18,7 @@ protocol GetTCPconnections: AnyObject {
 }
 
 class ScheduleOperationDispatch: SetSchedules, SecondstoStart, Setlog {
-    private var workitem: DispatchWorkItem?
+    weak var workitem: DispatchWorkItem?
 
     private func dispatchtaskshellout(_ seconds: Int) {
         let scheduledtask = DispatchWorkItem { () -> Void in
