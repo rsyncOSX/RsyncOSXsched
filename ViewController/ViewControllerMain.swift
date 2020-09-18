@@ -201,9 +201,7 @@ class ViewControllerMain: NSViewController, Delay, Setlog {
         ViewControllerReference.shared.dispatchTaskWaiting?.cancel()
         ViewControllerReference.shared.dispatchTaskWaiting = nil
         ViewControllerReference.shared.scheduledTask = self.schedulesortedandexpanded?.getfirstscheduledtask()
-        self.delayWithSeconds(0.5) {
-            _ = ScheduleOperationDispatch(processtermination: self.processtermination)
-        }
+        _ = ScheduleOperationDispatch(processtermination: self.processtermination)
     }
 
     @objc func onWakeNote(note _: NSNotification) {
