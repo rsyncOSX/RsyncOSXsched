@@ -14,6 +14,8 @@ import Foundation
 // when the job discover (observs) the termination of the process.
 
 class ExecuteScheduledTask: SetSchedules, SetConfigurations, ScheduledTaskAnimation, Setlog {
+    // Process termination and filehandler closures
+    var processtermination: () -> Void
     func executetask() {
         let outputprocess = OutputProcess()
         weak var updatestatuslightDelegate: Updatestatuslight?
@@ -34,7 +36,7 @@ class ExecuteScheduledTask: SetSchedules, SetConfigurations, ScheduledTaskAnimat
                 self.logDelegate?.addlog(logrecord: message)
                 weak var sendoutputprocess: SendOutputProcessreference?
                 sendoutputprocess = ViewControllerReference.shared.viewControllermain as? ViewControllerMain
-                let process = ProcessCmd(arguments: arguments)
+                let process = RsyncProcessCmdClosure(arguments: arguments, config: config, processtermination: self.processtermination)
                 globalMainQueue.async {
                     process.executeProcess(outputprocess: outputprocess)
                     sendoutputprocess?.sendoutputprocessreference(outputprocess: outputprocess)
@@ -48,11 +50,13 @@ class ExecuteScheduledTask: SetSchedules, SetConfigurations, ScheduledTaskAnimat
         }
     }
 
-    init() {
+    init(processtermination: @escaping () -> Void) {
+        self.processtermination = processtermination
         self.executetask()
     }
 
-    init(dict: NSDictionary) {
+    init(dict: NSDictionary, processtermination: @escaping () -> Void) {
+        self.processtermination = processtermination
         ViewControllerReference.shared.dispatchTaskWaiting?.cancel()
         ViewControllerReference.shared.dispatchTaskWaiting = nil
         ViewControllerReference.shared.scheduledTask = dict

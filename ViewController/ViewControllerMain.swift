@@ -12,16 +12,16 @@ import Foundation
 
 class ViewControllerMain: NSViewController, Delay, Setlog {
     // Information about logs
-    var viewControllerInformation: NSViewController? {
-        return (self.storyboard?.instantiateController(withIdentifier: "StoryboardInformationID")
+    lazy var viewControllerInformation: NSViewController? = {
+        (self.storyboard?.instantiateController(withIdentifier: "StoryboardInformationID")
             as? NSViewController)
-    }
+    }()
 
     // All schedules
-    var viewControllerAllschedules: NSViewController? {
-        return (self.storyboard?.instantiateController(withIdentifier: "StoryboardAllschedulesID")
+    lazy var viewControllerAllschedules: NSViewController? = {
+        (self.storyboard?.instantiateController(withIdentifier: "StoryboardAllschedulesID")
             as? NSViewController)
-    }
+    }()
 
     @IBOutlet var mainTableView: NSTableView!
     @IBOutlet var progress: NSProgressIndicator!
@@ -109,9 +109,9 @@ class ViewControllerMain: NSViewController, Delay, Setlog {
                 if let dict: NSDictionary = self.configurations?.getConfigurationsDataSourceSynchronize()?[index] {
                     if let executepretask = dict.value(forKey: "executepretask") as? Int {
                         if executepretask == 1 {
-                            _ = ExecuteScheduledTaskShellOut(dict: scheduledict)
+                            _ = ExecuteScheduledTaskShellOut(dict: scheduledict, processtermination: self.processtermination)
                         } else {
-                            _ = ExecuteScheduledTask(dict: scheduledict)
+                            _ = ExecuteScheduledTask(dict: scheduledict, processtermination: self.processtermination)
                         }
                     }
                 }
@@ -138,11 +138,11 @@ class ViewControllerMain: NSViewController, Delay, Setlog {
     }
 
     @IBAction func viewlogg(_: NSButton) {
-        self.presentAsSheet(self.viewControllerInformation!)
+        self.presentAsModalWindow(self.viewControllerInformation!)
     }
 
     @IBAction func viewallschedules(_: NSButton) {
-        self.presentAsSheet(self.viewControllerAllschedules!)
+        self.presentAsModalWindow(self.viewControllerAllschedules!)
     }
 
     func createandreloadschedules() {
@@ -201,7 +201,7 @@ class ViewControllerMain: NSViewController, Delay, Setlog {
         ViewControllerReference.shared.dispatchTaskWaiting?.cancel()
         ViewControllerReference.shared.dispatchTaskWaiting = nil
         ViewControllerReference.shared.scheduledTask = self.schedulesortedandexpanded?.getfirstscheduledtask()
-        _ = ScheduleOperationDispatch()
+        _ = ScheduleOperationDispatch(processtermination: self.processtermination)
     }
 
     @objc func onWakeNote(note _: NSNotification) {
@@ -257,7 +257,6 @@ class ViewControllerMain: NSViewController, Delay, Setlog {
         profilestrings?.insert(NSLocalizedString("Default profile", comment: "default profile"), at: 0)
         self.profilepopupbutton.removeAllItems()
         self.profilepopupbutton.addItems(withTitles: profilestrings ?? [])
-        // self.profilepopupbutton.selectItem(at: 0)
     }
 
     @IBAction func selectprofile(_: NSButton) {
@@ -376,22 +375,6 @@ extension ViewControllerMain: Information {
     }
 }
 
-extension ViewControllerMain: DismissViewController {
-    func dismiss_view(viewcontroller: NSViewController) {
-        self.dismiss(viewcontroller)
-    }
-}
-
-extension ViewControllerMain: Reloadsortedandrefresh {
-    func reloadsortedandrefreshtabledata() {
-        self.schedulesortedandexpanded = ScheduleSortedAndExpand()
-        self.startfirstscheduledtask()
-        globalMainQueue.async { () -> Void in
-            self.mainTableView.reloadData()
-        }
-    }
-}
-
 extension ViewControllerMain: ScheduledTaskStartanimation {
     func startanimation() {
         globalMainQueue.async { () -> Void in
@@ -408,46 +391,16 @@ extension ViewControllerMain: SendOutputProcessreference {
     }
 }
 
-extension ViewControllerMain: UpdateProgress {
-    func processTermination() {
+extension ViewControllerMain {
+    func processtermination() {
         globalMainQueue.async { () -> Void in
             self.progress.stopAnimation(nil)
             self.progresslabel.isHidden = true
         }
-        if self.automaticexecution == nil {
-            guard ViewControllerReference.shared.completeoperation != nil else {
-                self.delayWithSeconds(5) {
-                    self.schedulesortedandexpanded = ScheduleSortedAndExpand()
-                    self.startfirstscheduledtask()
-                }
-                return
-            }
-            ViewControllerReference.shared.completeoperation?.finalizeScheduledJob(outputprocess: self.outputprocess)
-            self.schedulesortedandexpanded = ScheduleSortedAndExpand()
-            self.startfirstscheduledtask()
-
-            self.backupnowbutton.isEnabled = true
-        } else {
-            ViewControllerReference.shared.completeoperation?.finalizeScheduledJob(outputprocess: self.outputprocess)
-            guard self.automaticexecution != nil else { return }
-            guard self.automaticexecution!.count > 0 else {
-                self.automaticexecution = nil
-                self.schedulesortedandexpanded = ScheduleSortedAndExpand()
-                self.startfirstscheduledtask()
-                return
-            }
-            self.delayWithSeconds(1) {
-                if let dict: NSDictionary = self.automaticexecution?.removeFirst() {
-                    if let executepretask = dict.value(forKey: "executepretask") as? Int {
-                        if executepretask == 1 {
-                            _ = ExecuteScheduledTaskShellOut(dict: dict)
-                        } else {
-                            _ = ExecuteScheduledTask(dict: dict)
-                        }
-                    }
-                }
-            }
-        }
+        ViewControllerReference.shared.completeoperation?.finalizeScheduledJob(outputprocess: self.outputprocess)
+        self.schedulesortedandexpanded = ScheduleSortedAndExpand()
+        self.startfirstscheduledtask()
+        self.backupnowbutton.isEnabled = true
     }
 }
 
@@ -544,9 +497,30 @@ extension ViewControllerMain: Startautomaticexecution {
         if let dict: NSDictionary = self.automaticexecution?.removeFirst() {
             if let executepretask = dict.value(forKey: "executepretask") as? Int {
                 if executepretask == 1 {
-                    _ = ExecuteScheduledTaskShellOut(dict: dict)
+                    _ = ExecuteScheduledTaskShellOut(dict: dict, processtermination: self.processterminationautomaticexecution)
                 } else {
-                    _ = ExecuteScheduledTask(dict: dict)
+                    _ = ExecuteScheduledTask(dict: dict, processtermination: self.processterminationautomaticexecution)
+                }
+            }
+        }
+    }
+
+    func processterminationautomaticexecution() {
+        ViewControllerReference.shared.completeoperation?.finalizeScheduledJob(outputprocess: self.outputprocess)
+        guard self.automaticexecution?.count ?? 0 > 0 else {
+            self.automaticexecution = nil
+            self.schedulesortedandexpanded = ScheduleSortedAndExpand()
+            self.startfirstscheduledtask()
+            return
+        }
+        self.delayWithSeconds(1) {
+            if let dict: NSDictionary = self.automaticexecution?.removeFirst() {
+                if let executepretask = dict.value(forKey: "executepretask") as? Int {
+                    if executepretask == 1 {
+                        _ = ExecuteScheduledTaskShellOut(dict: dict, processtermination: self.processterminationautomaticexecution)
+                    } else {
+                        _ = ExecuteScheduledTask(dict: dict, processtermination: self.processterminationautomaticexecution)
+                    }
                 }
             }
         }

@@ -73,7 +73,7 @@ final class ExecuteScheduledTaskShellOut: ExecuteScheduledTask {
                 self.logDelegate?.addlog(logrecord: message)
                 weak var sendoutputprocess: SendOutputProcessreference?
                 sendoutputprocess = ViewControllerReference.shared.viewControllermain as? ViewControllerMain
-                let process = ProcessCmd(arguments: arguments)
+                let process = RsyncProcessCmdClosure(arguments: arguments, config: config, processtermination: self.processtermination)
                 globalMainQueue.async {
                     process.executeProcess(outputprocess: outputprocess)
                     sendoutputprocess?.sendoutputprocessreference(outputprocess: outputprocess)

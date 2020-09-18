@@ -77,6 +77,8 @@ class ViewControllerReference {
     var sshkeypathandidentityfile: String?
     // Temporary path for restore
     var temporarypathforrestore: String?
+    // Check for network changes
+    var monitornetworkconnection: Bool = false
 
     init() {
         self.synctasks = Set<String>()

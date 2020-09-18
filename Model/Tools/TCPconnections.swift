@@ -66,9 +66,6 @@ class TCPconnections: SetConfigurations, Delay, Setlog {
             let noexecuteinfo = NSLocalizedString("Scheduled backup did not execute", comment: "loginfo")
             self.logDelegate?.addlog(logrecord: loginfo)
             Notifications().showNotification(message: noexecuteinfo)
-            weak var processTerminationDelegate: UpdateProgress?
-            processTerminationDelegate = ViewControllerReference.shared.viewControllermain as? ViewControllerMain
-            processTerminationDelegate?.processTermination()
             return false
         }
         return true

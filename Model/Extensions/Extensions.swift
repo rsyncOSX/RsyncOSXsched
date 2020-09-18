@@ -55,31 +55,6 @@ extension GetInformation {
     }
 }
 
-// Protocol for dismissing a viewcontroller
-protocol DismissViewController: AnyObject {
-    func dismiss_view(viewcontroller: NSViewController)
-}
-
-protocol SetDismisser {
-    var dismissDelegateMain: DismissViewController? { get }
-    func dismissview(viewcontroller: NSViewController)
-}
-
-extension SetDismisser {
-    var dismissDelegateMain: DismissViewController? {
-        return ViewControllerReference.shared.viewControllermain as? ViewControllerMain
-    }
-
-    func dismissview(viewcontroller _: NSViewController) {
-        self.dismissDelegateMain?.dismiss_view(viewcontroller: (self as? NSViewController)!)
-    }
-}
-
-// Protocol for doing a refresh of tabledata
-protocol Reloadsortedandrefresh: AnyObject {
-    func reloadsortedandrefreshtabledata()
-}
-
 // Protocol when a Scehduled job is starting and stopping
 // Used to informed the presenting viewcontroller about what
 // is going on
