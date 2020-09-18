@@ -10,7 +10,7 @@
 import Cocoa
 import Foundation
 
-class ViewControllerLog: NSViewController, SetDismisser, GetInformation {
+class ViewControllerLog: NSViewController, GetInformation {
     @IBOutlet var detailsTable: NSTableView!
     @IBOutlet var writeloggbutton: NSButton!
     @IBOutlet var configpath: NSTextField!
@@ -29,13 +29,9 @@ class ViewControllerLog: NSViewController, SetDismisser, GetInformation {
         }
     }
 
-    @IBAction func close(_: NSButton) {
-        self.dismissview(viewcontroller: self)
-    }
-
     @IBAction func writelogg(_: NSButton) {
         _ = Logg(array: self.getinfo())
-        self.dismissview(viewcontroller: self)
+        self.view.window?.close()
     }
 }
 

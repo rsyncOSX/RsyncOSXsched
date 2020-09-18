@@ -12,16 +12,16 @@ import Foundation
 
 class ViewControllerMain: NSViewController, Delay, Setlog {
     // Information about logs
-    var viewControllerInformation: NSViewController? {
-        return (self.storyboard?.instantiateController(withIdentifier: "StoryboardInformationID")
+    lazy var viewControllerInformation: NSViewController? = {
+        (self.storyboard?.instantiateController(withIdentifier: "StoryboardInformationID")
             as? NSViewController)
-    }
+    }()
 
     // All schedules
-    var viewControllerAllschedules: NSViewController? {
-        return (self.storyboard?.instantiateController(withIdentifier: "StoryboardAllschedulesID")
+    lazy var viewControllerAllschedules: NSViewController? = {
+        (self.storyboard?.instantiateController(withIdentifier: "StoryboardAllschedulesID")
             as? NSViewController)
-    }
+    }()
 
     @IBOutlet var mainTableView: NSTableView!
     @IBOutlet var progress: NSProgressIndicator!
@@ -138,11 +138,11 @@ class ViewControllerMain: NSViewController, Delay, Setlog {
     }
 
     @IBAction func viewlogg(_: NSButton) {
-        self.presentAsSheet(self.viewControllerInformation!)
+        self.presentAsModalWindow(self.viewControllerInformation!)
     }
 
     @IBAction func viewallschedules(_: NSButton) {
-        self.presentAsSheet(self.viewControllerAllschedules!)
+        self.presentAsModalWindow(self.viewControllerAllschedules!)
     }
 
     func createandreloadschedules() {
@@ -374,22 +374,6 @@ extension ViewControllerMain: Addlog {
 extension ViewControllerMain: Information {
     func getInformation() -> [String] {
         return self.log ?? []
-    }
-}
-
-extension ViewControllerMain: DismissViewController {
-    func dismiss_view(viewcontroller: NSViewController) {
-        self.dismiss(viewcontroller)
-    }
-}
-
-extension ViewControllerMain: Reloadsortedandrefresh {
-    func reloadsortedandrefreshtabledata() {
-        self.schedulesortedandexpanded = ScheduleSortedAndExpand()
-        self.startfirstscheduledtask()
-        globalMainQueue.async { () -> Void in
-            self.mainTableView.reloadData()
-        }
     }
 }
 

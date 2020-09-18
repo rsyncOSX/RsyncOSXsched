@@ -10,7 +10,7 @@
 import Cocoa
 import Foundation
 
-class ViewControllerSchedules: NSViewController, SetDismisser, GetAllSchedules, Setlog {
+class ViewControllerSchedules: NSViewController, GetAllSchedules, Setlog {
     @IBOutlet var allschedulestable: NSTableView!
     var profilname: String?
     weak var loadProfileDelegate: ReloadData?
@@ -30,15 +30,11 @@ class ViewControllerSchedules: NSViewController, SetDismisser, GetAllSchedules, 
         }
     }
 
-    @IBAction func close(_: NSButton) {
-        self.dismissview(viewcontroller: self)
-    }
-
     @objc(tableViewDoubleClick:) func tableViewDoubleClick(sender _: AnyObject) {
         self.logDelegate?.addlog(logrecord: NSLocalizedString("Loading profile:", comment: "schedule") + " " + self.profilname!)
         if self.profilname == NSLocalizedString("Default profile", comment: "default profile") { self.profilname = nil }
         self.loadProfileDelegate?.reloaddata(profilename: self.profilname)
-        self.dismissview(viewcontroller: self)
+        self.view.window?.close()
     }
 }
 
