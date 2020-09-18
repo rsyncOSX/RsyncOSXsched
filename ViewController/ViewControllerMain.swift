@@ -109,9 +109,9 @@ class ViewControllerMain: NSViewController, Delay, Setlog {
                 if let dict: NSDictionary = self.configurations?.getConfigurationsDataSourceSynchronize()?[index] {
                     if let executepretask = dict.value(forKey: "executepretask") as? Int {
                         if executepretask == 1 {
-                            _ = ExecuteScheduledTaskShellOut(dict: scheduledict)
+                            _ = ExecuteScheduledTaskShellOut(dict: scheduledict, processtermination: self.processtermination)
                         } else {
-                            _ = ExecuteScheduledTask(dict: scheduledict)
+                            _ = ExecuteScheduledTask(dict: scheduledict, processtermination: self.processtermination)
                         }
                     }
                 }
@@ -201,7 +201,7 @@ class ViewControllerMain: NSViewController, Delay, Setlog {
         ViewControllerReference.shared.dispatchTaskWaiting?.cancel()
         ViewControllerReference.shared.dispatchTaskWaiting = nil
         ViewControllerReference.shared.scheduledTask = self.schedulesortedandexpanded?.getfirstscheduledtask()
-        _ = ScheduleOperationDispatch()
+        _ = ScheduleOperationDispatch(processtermination: self.processtermination)
     }
 
     @objc func onWakeNote(note _: NSNotification) {
@@ -408,8 +408,8 @@ extension ViewControllerMain: SendOutputProcessreference {
     }
 }
 
-extension ViewControllerMain: UpdateProgress {
-    func processTermination() {
+extension ViewControllerMain {
+    func processtermination() {
         globalMainQueue.async { () -> Void in
             self.progress.stopAnimation(nil)
             self.progresslabel.isHidden = true
@@ -440,9 +440,9 @@ extension ViewControllerMain: UpdateProgress {
                 if let dict: NSDictionary = self.automaticexecution?.removeFirst() {
                     if let executepretask = dict.value(forKey: "executepretask") as? Int {
                         if executepretask == 1 {
-                            _ = ExecuteScheduledTaskShellOut(dict: dict)
+                            _ = ExecuteScheduledTaskShellOut(dict: dict, processtermination: self.processtermination)
                         } else {
-                            _ = ExecuteScheduledTask(dict: dict)
+                            _ = ExecuteScheduledTask(dict: dict, processtermination: self.processtermination)
                         }
                     }
                 }
@@ -544,9 +544,9 @@ extension ViewControllerMain: Startautomaticexecution {
         if let dict: NSDictionary = self.automaticexecution?.removeFirst() {
             if let executepretask = dict.value(forKey: "executepretask") as? Int {
                 if executepretask == 1 {
-                    _ = ExecuteScheduledTaskShellOut(dict: dict)
+                    _ = ExecuteScheduledTaskShellOut(dict: dict, processtermination: self.processtermination)
                 } else {
-                    _ = ExecuteScheduledTask(dict: dict)
+                    _ = ExecuteScheduledTask(dict: dict, processtermination: self.processtermination)
                 }
             }
         }

@@ -1,9 +1,9 @@
 //
-//  processCmd.swift
-//  RsyncOSX
+//  RsyncProcessCmdClosure.swift
+//  RsyncOSXsched
 //
-//  Created by Thomas Evensen on 10.03.2017.
-//  Copyright © 2017 Thomas Evensen. All rights reserved.
+//  Created by Thomas Evensen on 18/09/2020.
+//  Copyright © 2020 Thomas Evensen. All rights reserved.
 //
 //  swiftlint:disable line_length
 
@@ -21,18 +21,39 @@ extension Delay {
     }
 }
 
-class ProcessCmd: Delay, SetConfigurations {
+class RsyncProcessCmdClosure: Delay {
+    // Process termination and filehandler closures
+    var processtermination: () -> Void
+    // Verify network connection
+    var config: Configuration?
+    var monitor: NetworkMonitor?
     // Observers
     weak var notifications_datahandle: NSObjectProtocol?
     weak var notifications_termination: NSObjectProtocol?
     // Arguments to command
     var arguments: [String]?
-    // Message to calling class
-    weak var updateDelegate: UpdateProgress?
+
+    func executemonitornetworkconnection() {
+        guard self.config?.offsiteServer.isEmpty == false else { return }
+        guard ViewControllerReference.shared.monitornetworkconnection == true else { return }
+        self.monitor = NetworkMonitor()
+        self.monitor?.netStatusChangeHandler = { [unowned self] in
+            self.statusDidChange()
+        }
+    }
+
+    func statusDidChange() {
+        if self.monitor?.monitor?.currentPath.status != .satisfied {
+            let string = "Network dropped: " + Date().long_localized_string_from_date()
+            _ = Logg(array: [string])
+            _ = InterruptProcess()
+        }
+    }
 
     func executeProcess(outputprocess: OutputProcess?) {
         // Process
         let task = Process()
+        // Getting version of rsync
         task.launchPath = Getrsyncpath().rsyncpath
         task.arguments = self.arguments
         // If there are any Environmentvariables like
@@ -59,7 +80,7 @@ class ProcessCmd: Delay, SetConfigurations {
         // Observator Process termination, observer is removed when Process terminates
         self.notifications_termination = NotificationCenter.default.addObserver(forName: Process.didTerminateNotification, object: nil, queue: nil) { _ in
             self.delayWithSeconds(0.5) {
-                self.updateDelegate?.processTermination()
+                self.processtermination()
                 // Must remove for deallocation
                 NotificationCenter.default.removeObserver(self.notifications_datahandle as Any)
                 NotificationCenter.default.removeObserver(self.notifications_termination as Any)
@@ -74,8 +95,23 @@ class ProcessCmd: Delay, SetConfigurations {
         }
     }
 
-    init(arguments: [String]?) {
+    // Terminate Process, used when user Aborts task.
+    func abortProcess() {
+        _ = InterruptProcess()
+    }
+
+    init(arguments: [String]?,
+         config: Configuration?,
+         processtermination: @escaping () -> Void)
+    {
         self.arguments = arguments
-        self.updateDelegate = ViewControllerReference.shared.viewControllermain as? ViewControllerMain
+        self.processtermination = processtermination
+        self.config = config
+        self.executemonitornetworkconnection()
+    }
+
+    deinit {
+        self.monitor?.stopMonitoring()
+        self.monitor = nil
     }
 }

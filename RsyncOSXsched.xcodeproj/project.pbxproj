@@ -28,7 +28,6 @@
 		E91C5DBF2026F8FA00FE7E76 /* ScheduleSortedAndExpanded.swift in Sources */ = {isa = PBXBuildFile; fileRef = E91C5DBB2026F8F900FE7E76 /* ScheduleSortedAndExpanded.swift */; };
 		E91C5DC02026F8FA00FE7E76 /* Schedules.swift in Sources */ = {isa = PBXBuildFile; fileRef = E91C5DBC2026F8F900FE7E76 /* Schedules.swift */; };
 		E91C5DC12026F8FA00FE7E76 /* ScheduleWriteLoggData.swift in Sources */ = {isa = PBXBuildFile; fileRef = E91C5DBD2026F8F900FE7E76 /* ScheduleWriteLoggData.swift */; };
-		E91C5DC72026FB3500FE7E76 /* ProcessCmd.swift in Sources */ = {isa = PBXBuildFile; fileRef = E91C5DC62026FB3500FE7E76 /* ProcessCmd.swift */; };
 		E91C5DCB2026FE4200FE7E76 /* PersistentStorageScheduling.swift in Sources */ = {isa = PBXBuildFile; fileRef = E91C5DCA2026FE4200FE7E76 /* PersistentStorageScheduling.swift */; };
 		E91C5DCD2026FFD200FE7E76 /* ConfigurationSchedule.swift in Sources */ = {isa = PBXBuildFile; fileRef = E91C5DCC2026FFD200FE7E76 /* ConfigurationSchedule.swift */; };
 		E923AE5E24C2E710001601D4 /* InterruptProcess.swift in Sources */ = {isa = PBXBuildFile; fileRef = E923AE5D24C2E710001601D4 /* InterruptProcess.swift */; };
@@ -37,6 +36,8 @@
 		E9415402202F6E0C00BCE8A1 /* ViewControllerLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9415401202F6E0C00BCE8A1 /* ViewControllerLog.swift */; };
 		E946CDBD20279A85005BF6E9 /* Userconfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = E946CDBC20279A85005BF6E9 /* Userconfiguration.swift */; };
 		E94DDC8720A40CC90041CF53 /* ViewControllerSchedules.swift in Sources */ = {isa = PBXBuildFile; fileRef = E94DDC8620A40CC90041CF53 /* ViewControllerSchedules.swift */; };
+		E9533B33251477BD00778CFE /* RsyncProcessCmdClosure.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9533B32251477BD00778CFE /* RsyncProcessCmdClosure.swift */; };
+		E9533B362514783300778CFE /* NetworkMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9533B352514783300778CFE /* NetworkMonitor.swift */; };
 		E9542589209ECA900012170B /* Allschedules.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9542588209ECA900012170B /* Allschedules.swift */; };
 		E95738EA232B86D2000342FE /* FirstScheduledTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = E95738E9232B86D2000342FE /* FirstScheduledTask.swift */; };
 		E965E1AB20A17BF9004F42DC /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E965E1AA20A17BF9004F42DC /* Extensions.swift */; };
@@ -95,7 +96,6 @@
 		E91C5DBB2026F8F900FE7E76 /* ScheduleSortedAndExpanded.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScheduleSortedAndExpanded.swift; sourceTree = "<group>"; };
 		E91C5DBC2026F8F900FE7E76 /* Schedules.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Schedules.swift; sourceTree = "<group>"; };
 		E91C5DBD2026F8F900FE7E76 /* ScheduleWriteLoggData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScheduleWriteLoggData.swift; sourceTree = "<group>"; };
-		E91C5DC62026FB3500FE7E76 /* ProcessCmd.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProcessCmd.swift; sourceTree = "<group>"; };
 		E91C5DCA2026FE4200FE7E76 /* PersistentStorageScheduling.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersistentStorageScheduling.swift; sourceTree = "<group>"; };
 		E91C5DCC2026FFD200FE7E76 /* ConfigurationSchedule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfigurationSchedule.swift; sourceTree = "<group>"; };
 		E91D535F217F72ED001B7A6A /* RsyncOSXsched.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = RsyncOSXsched.entitlements; sourceTree = "<group>"; };
@@ -108,6 +108,8 @@
 		E9415401202F6E0C00BCE8A1 /* ViewControllerLog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerLog.swift; sourceTree = "<group>"; };
 		E946CDBC20279A85005BF6E9 /* Userconfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Userconfiguration.swift; sourceTree = "<group>"; };
 		E94DDC8620A40CC90041CF53 /* ViewControllerSchedules.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerSchedules.swift; sourceTree = "<group>"; };
+		E9533B32251477BD00778CFE /* RsyncProcessCmdClosure.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RsyncProcessCmdClosure.swift; sourceTree = "<group>"; };
+		E9533B352514783300778CFE /* NetworkMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkMonitor.swift; sourceTree = "<group>"; };
 		E9542588209ECA900012170B /* Allschedules.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Allschedules.swift; sourceTree = "<group>"; };
 		E95738E9232B86D2000342FE /* FirstScheduledTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstScheduledTask.swift; sourceTree = "<group>"; };
 		E9640D4723B91C2C00223912 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Main.strings; sourceTree = "<group>"; };
@@ -212,11 +214,11 @@
 		E91C5DC32026FACF00FE7E76 /* Operation */ = {
 			isa = PBXGroup;
 			children = (
-				E98448A424C6C8CA005F6E0A /* Dispatch */,
+				E906BF6B20F1DB2200238E6A /* ScheduleOperationDispatch.swift */,
 				E906BF6C20F1DB2200238E6A /* ExecuteScheduledTask.swift */,
 				E970252024C350B30031EA54 /* ExecuteScheduledTaskShellOut.swift */,
-				E91C5DC62026FB3500FE7E76 /* ProcessCmd.swift */,
 				E923AE5D24C2E710001601D4 /* InterruptProcess.swift */,
+				E9533B32251477BD00778CFE /* RsyncProcessCmdClosure.swift */,
 			);
 			path = Operation;
 			sourceTree = "<group>";
@@ -281,6 +283,7 @@
 				E95738E9232B86D2000342FE /* FirstScheduledTask.swift */,
 				E90675D723729A37005B418E /* Getrsyncpath.swift */,
 				E9EC228724C473B6009436E3 /* GetConfig.swift */,
+				E9533B352514783300778CFE /* NetworkMonitor.swift */,
 			);
 			path = Tools;
 			sourceTree = "<group>";
@@ -377,14 +380,6 @@
 				E93A7EF92026EA5300D61258 /* Configurations */,
 			);
 			path = Model;
-			sourceTree = "<group>";
-		};
-		E98448A424C6C8CA005F6E0A /* Dispatch */ = {
-			isa = PBXGroup;
-			children = (
-				E906BF6B20F1DB2200238E6A /* ScheduleOperationDispatch.swift */,
-			);
-			path = Dispatch;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -505,7 +500,6 @@
 				E91C5DBF2026F8FA00FE7E76 /* ScheduleSortedAndExpanded.swift in Sources */,
 				E90675D823729A37005B418E /* Getrsyncpath.swift in Sources */,
 				E9B96299203802EF00EA6D5A /* Logg.swift in Sources */,
-				E91C5DC72026FB3500FE7E76 /* ProcessCmd.swift in Sources */,
 				E9C6BFC5230831F00052A336 /* Result.swift in Sources */,
 				E91C5DC02026F8FA00FE7E76 /* Schedules.swift in Sources */,
 				94E0FC4E1BD7FCBE00A3C537 /* EventMonitor.swift in Sources */,
@@ -539,6 +533,7 @@
 				E9542589209ECA900012170B /* Allschedules.swift in Sources */,
 				E91C5DCD2026FFD200FE7E76 /* ConfigurationSchedule.swift in Sources */,
 				E95738EA232B86D2000342FE /* FirstScheduledTask.swift in Sources */,
+				E9533B362514783300778CFE /* NetworkMonitor.swift in Sources */,
 				E9EC228824C473B6009436E3 /* GetConfig.swift in Sources */,
 				E973F0EF227305E100412F60 /* ConvertSchedules.swift in Sources */,
 				E9F54D892026DCCF00A664CF /* Catalogsandfiles.swift in Sources */,
@@ -550,6 +545,7 @@
 				E98398AE20260E9D00C977C3 /* Configuration.swift in Sources */,
 				E9F54D792026D68D00A664CF /* ViewControllerReference.swift in Sources */,
 				E907FB2424D5E8940047D05B /* SuffixstringsRsyncParameters.swift in Sources */,
+				E9533B33251477BD00778CFE /* RsyncProcessCmdClosure.swift in Sources */,
 				94E0FC3F1BD7FC3600A3C537 /* AppDelegate.swift in Sources */,
 				E9F54D832026DBD700A664CF /* PersistentStorageConfiguration.swift in Sources */,
 			);

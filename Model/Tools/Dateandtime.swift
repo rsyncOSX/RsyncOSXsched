@@ -111,6 +111,14 @@ extension Date {
         dateformatter.dateFormat = "dd MMM yyyy HH:mm"
         return dateformatter.string(from: self)
     }
+
+    func long_localized_string_from_date() -> String {
+        let dateformatter = DateFormatter()
+        dateformatter.formatterBehavior = .behavior10_4
+        dateformatter.dateStyle = .medium
+        dateformatter.timeStyle = .long
+        return dateformatter.string(from: self)
+    }
 }
 
 extension String {

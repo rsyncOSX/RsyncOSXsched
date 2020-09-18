@@ -18,11 +18,13 @@ protocol GetTCPconnections: AnyObject {
 }
 
 class ScheduleOperationDispatch: SetSchedules, SecondstoStart, Setlog {
+    // Process termination and filehandler closures
+    var processtermination: () -> Void
     weak var workitem: DispatchWorkItem?
 
     private func dispatchtaskshellout(_ seconds: Int) {
         let scheduledtask = DispatchWorkItem { () -> Void in
-            _ = ExecuteScheduledTaskShellOut()
+            _ = ExecuteScheduledTaskShellOut(processtermination: self.processtermination)
         }
         self.workitem = scheduledtask
         DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(seconds), execute: scheduledtask)
@@ -30,13 +32,14 @@ class ScheduleOperationDispatch: SetSchedules, SecondstoStart, Setlog {
 
     private func dispatchtask(_ seconds: Int) {
         let scheduledtask = DispatchWorkItem { () -> Void in
-            _ = ExecuteScheduledTask()
+            _ = ExecuteScheduledTask(processtermination: self.processtermination)
         }
         self.workitem = scheduledtask
         DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(seconds), execute: scheduledtask)
     }
 
-    init() {
+    init(processtermination: @escaping () -> Void) {
+        self.processtermination = processtermination
         weak var updatestatuslightDelegate: Updatestatuslight?
         updatestatuslightDelegate = ViewControllerReference.shared.viewControllermain as? ViewControllerMain
         let seconds = self.secondstostart()
