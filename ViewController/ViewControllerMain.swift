@@ -201,7 +201,7 @@ class ViewControllerMain: NSViewController, Delay, Setlog {
         ViewControllerReference.shared.dispatchTaskWaiting?.cancel()
         ViewControllerReference.shared.dispatchTaskWaiting = nil
         ViewControllerReference.shared.scheduledTask = self.schedulesortedandexpanded?.getfirstscheduledtask()
-        self.delayWithSeconds(1) {
+        self.delayWithSeconds(0.5) {
             _ = ScheduleOperationDispatch(processtermination: self.processtermination)
         }
     }

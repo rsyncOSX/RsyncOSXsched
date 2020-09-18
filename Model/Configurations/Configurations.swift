@@ -45,6 +45,7 @@ class Configurations: SetSchedules {
     }
 
     func setCurrentDateonConfiguration(index: Int, outputprocess: OutputProcess?) {
+        guard index > -1 else { return }
         let number = Numbers(outputprocess: outputprocess)
         let hiddenID = self.gethiddenID(index: index)
         let numbers = number.stats()
