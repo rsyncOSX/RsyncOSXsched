@@ -30,17 +30,8 @@ final class CompleteScheduledOperation: ScheduledTaskAnimation, SetConfiguration
             self.configurations?.setCurrentDateonConfiguration(index: index, outputprocess: outputprocess)
             Notifications().showNotification(message: message)
         }
-
         self.logDelegate?.addlog(logrecord: NSLocalizedString("Adding result to log:", comment: "Logg")
             + " " + numberstring)
-        self.reloaddataDelegate = ViewControllerReference.shared.viewControllermain as? ViewControllerMain
-        if let profilename = self.dict?.value(forKey: "profilename") as? String {
-            if profilename.isEmpty == true {
-                self.reloaddataDelegate?.reloaddata(profilename: nil)
-            } else {
-                self.reloaddataDelegate?.reloaddata(profilename: profilename)
-            }
-        }
     }
 
     init(dict: NSDictionary) {
