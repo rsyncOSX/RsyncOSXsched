@@ -180,7 +180,7 @@ class ScheduleSortedAndExpand: Setlog {
         } else {
             result = self.sortedschedules?.filter { (($0.value(forKey: "hiddenID") as? Int) == hiddenID
                     && ($0.value(forKey: "start") as? Date)?.timeIntervalSinceNow ?? -1 > 0)
-                && ($0.value(forKey: "profilename") as? String) == "Default profile" ||
+                && ($0.value(forKey: "profilename") as? String) == NSLocalizedString("Default profile", comment: "default profile") ||
                 ($0.value(forKey: "profilename") as? String) == ""
             }
         }
