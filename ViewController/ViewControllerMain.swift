@@ -286,12 +286,15 @@ extension ViewControllerMain: NSTableViewDataSource {
 extension ViewControllerMain: NSTableViewDelegate, Attributedestring {
     func tableView(_: NSTableView, objectValueFor tableColumn: NSTableColumn?, row: Int) -> Any? {
         guard row < self.configurations?.getConfigurationsDataSourceSynchronize()?.count ?? -1 else { return nil }
-        if let object: NSDictionary = self.configurations?.getConfigurationsDataSourceSynchronize()?[row] {
+        if let object: NSDictionary = self.configurations?.getConfigurationsDataSourceSynchronize()?[row],
+            let tableColumn = tableColumn
+        {
             let hiddenID = object.value(forKey: "hiddenID") as? Int ?? -1
-            let profilename = object.value(forKey: "profilename") as? String
-            switch tableColumn!.identifier.rawValue {
+            var profilename = object.value(forKey: "profilename") as? String
+            switch tableColumn.identifier.rawValue {
             case "scheduleID":
                 if self.schedulesortedandexpanded != nil {
+                    if (profilename ?? "").isEmpty { profilename = nil }
                     let schedule: String? = self.schedulesortedandexpanded?.sortandcountscheduledonetask(hiddenID, profilename: profilename, number: false)
                     if schedule?.isEmpty == false {
                         switch schedule {
@@ -309,18 +312,19 @@ extension ViewControllerMain: NSTableViewDelegate, Attributedestring {
                     }
                 }
             case "offsiteServerCellID":
-                if (object[tableColumn!.identifier] as? String)!.isEmpty {
+                if (object[tableColumn.identifier] as? String)!.isEmpty {
                     return "localhost"
                 } else {
-                    return object[tableColumn!.identifier] as? String
+                    return object[tableColumn.identifier] as? String
                 }
             case "inCellID":
                 if self.schedulesortedandexpanded != nil {
+                    if (profilename ?? "").isEmpty { profilename = nil }
                     let taskintime: String? = self.schedulesortedandexpanded?.sortandcountscheduledonetask(hiddenID, profilename: profilename, number: true)
                     return taskintime ?? ""
                 }
             default:
-                return object[tableColumn!.identifier] as? String
+                return object[tableColumn.identifier] as? String
             }
             return nil
         }
