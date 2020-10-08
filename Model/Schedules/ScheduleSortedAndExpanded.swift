@@ -207,13 +207,14 @@ class ScheduleSortedAndExpand: Setlog {
         }
     }
 
-    /// Function is reading Schedule plans and transform plans to
-    /// array of NSDictionary.
-    /// - returns : none
+    // Function is reading Schedule plans and transform plans to
+    // array of NSDictionary.
+    // - returns : none
     private func setallscheduledtasksNSDictionary() {
         var data = [NSMutableDictionary]()
+        let scheduletypes: Set<String> = [Scheduletype.daily.rawValue, Scheduletype.weekly.rawValue, Scheduletype.once.rawValue]
         for i in 0 ..< (self.scheduleConfiguration?.count ?? 0) where
-            self.scheduleConfiguration![i].dateStop != nil && self.scheduleConfiguration![i].schedule != Scheduletype.stopped.rawValue
+            self.scheduleConfiguration?[i].dateStop != nil && scheduletypes.contains(self.scheduleConfiguration?[i].schedule ?? "")
         {
             let dict: NSMutableDictionary = [
                 "dateStart": self.scheduleConfiguration?[i].dateStart ?? "",
