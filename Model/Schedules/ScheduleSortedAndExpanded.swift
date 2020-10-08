@@ -179,7 +179,9 @@ class ScheduleSortedAndExpand: Setlog {
             }
         } else {
             result = self.sortedschedules?.filter { (($0.value(forKey: "hiddenID") as? Int) == hiddenID
-                    && ($0.value(forKey: "start") as? Date)?.timeIntervalSinceNow ?? -1 > 0) }
+                    && ($0.value(forKey: "start") as? Date)?.timeIntervalSinceNow ?? -1 > 0)
+                && ($0.value(forKey: "profilename") as? String) == ""
+            }
         }
         guard result != nil else { return "" }
         let sorted = result?.sorted { (di1, di2) -> Bool in
