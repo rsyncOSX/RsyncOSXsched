@@ -15,10 +15,10 @@ class AppDelegate: NSObject, NSApplicationDelegate, Delay {
         return NSStoryboard(name: "Main", bundle: nil)
     }
 
-    var mainViewController: NSViewController? {
-        return (self.storyboard?.instantiateController(withIdentifier: "ViewControllerId")
-            as? NSViewController)!
-    }
+    lazy var mainViewController: NSViewController? = {
+        (self.storyboard?.instantiateController(withIdentifier: "ViewControllerId")
+            as? NSViewController)
+    }()
 
     func applicationDidFinishLaunching(_: Notification) {
         if let button = self.statusItem.button {
@@ -26,7 +26,8 @@ class AppDelegate: NSObject, NSApplicationDelegate, Delay {
             button.action = #selector(AppDelegate.togglePopover(_:))
         }
         self.popover.contentViewController = self.mainViewController
-        self.eventMonitor = EventMonitor(mask: [NSEvent.EventTypeMask.leftMouseDown, NSEvent.EventTypeMask.rightMouseDown]) { [weak self] event in
+        self.eventMonitor = EventMonitor(mask: [NSEvent.EventTypeMask.leftMouseDown,
+                                                NSEvent.EventTypeMask.rightMouseDown]) { [weak self] event in
             if let popover = self?.popover, popover.isShown {
                 self?.closePopover(event)
             }
