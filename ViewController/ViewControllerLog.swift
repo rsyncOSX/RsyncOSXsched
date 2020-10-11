@@ -29,6 +29,10 @@ class ViewControllerLog: NSViewController, GetInformation {
         }
     }
 
+    override func viewDidDisappear() {
+        super.viewDidDisappear()
+    }
+
     @IBAction func writelogg(_: NSButton) {
         _ = Logg(array: self.getinfo())
         self.view.window?.close()

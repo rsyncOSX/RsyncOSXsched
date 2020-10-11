@@ -139,10 +139,12 @@ class ViewControllerMain: NSViewController, Delay, Setlog {
 
     @IBAction func viewlogg(_: NSButton) {
         self.presentAsModalWindow(self.viewControllerInformation!)
+        self.view.window?.close()
     }
 
     @IBAction func viewallschedules(_: NSButton) {
         self.presentAsModalWindow(self.viewControllerAllschedules!)
+        self.view.window?.close()
     }
 
     func createandreloadschedules() {
