@@ -30,6 +30,10 @@ class ViewControllerSchedules: NSViewController, GetAllSchedules, Setlog {
         }
     }
 
+    override func viewDidDisappear() {
+        super.viewDidDisappear()
+    }
+
     @objc(tableViewDoubleClick:) func tableViewDoubleClick(sender _: AnyObject) {
         self.logDelegate?.addlog(logrecord: NSLocalizedString("Loading profile:", comment: "schedule") + " " + self.profilname!)
         if self.profilname == NSLocalizedString("Default profile", comment: "default profile") { self.profilname = nil }
