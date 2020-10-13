@@ -1,7 +1,6 @@
 //
 //  AppDelegate.swift
 //  Popup
-// swiftlint:disable line_length
 
 import Cocoa
 
