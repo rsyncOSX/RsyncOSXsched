@@ -250,14 +250,6 @@ class ViewControllerMain: NSViewController, Delay, Setlog {
                                                           name: NSWorkspace.didWakeNotification, object: nil)
         NSWorkspace.shared.notificationCenter.addObserver(self, selector: #selector(onSleepNote(note:)),
                                                           name: NSWorkspace.willSleepNotification, object: nil)
-        /*
-         if ViewControllerReference.shared.automaticexecutelocalvolumes {
-             NSWorkspace.shared.notificationCenter.addObserver(self, selector: #selector(didMount(_:)),
-                                                               name: NSWorkspace.didMountNotification, object: nil)
-             NSWorkspace.shared.notificationCenter.addObserver(self, selector: #selector(didUnMount(_:)),
-                                                               name: NSWorkspace.didUnmountNotification, object: nil)
-         }
-          */
     }
 
     func initpopupbutton() {
@@ -501,46 +493,6 @@ extension ViewControllerMain: NewVersionDiscovered {
     func notifyNewVersion() {
         globalMainQueue.async { () -> Void in
             self.newversion.isHidden = false
-        }
-    }
-}
-
-extension ViewControllerMain: Startautomaticexecution {
-    func startautomaticexecution() {
-        self.automaticexecution = self.checkallconfiguration?.listofautomaticexecutions
-        guard (self.automaticexecution?.count ?? 0) > 0 else {
-            self.automaticexecution = nil
-            return
-        }
-        if let dict: NSDictionary = self.automaticexecution?.removeFirst() {
-            if let executepretask = dict.value(forKey: "executepretask") as? Int {
-                if executepretask == 1 {
-                    _ = ExecuteScheduledTaskShellOut(dict: dict, processtermination: self.processterminationautomaticexecution)
-                } else {
-                    _ = ExecuteScheduledTask(dict: dict, processtermination: self.processterminationautomaticexecution)
-                }
-            }
-        }
-    }
-
-    func processterminationautomaticexecution() {
-        ViewControllerReference.shared.completeoperation?.finalizeScheduledJob(outputprocess: self.outputprocess)
-        guard self.automaticexecution?.count ?? 0 > 0 else {
-            self.automaticexecution = nil
-            self.schedulesortedandexpanded = ScheduleSortedAndExpand()
-            self.startfirstscheduledtask()
-            return
-        }
-        self.delayWithSeconds(1) {
-            if let dict: NSDictionary = self.automaticexecution?.removeFirst() {
-                if let executepretask = dict.value(forKey: "executepretask") as? Int {
-                    if executepretask == 1 {
-                        _ = ExecuteScheduledTaskShellOut(dict: dict, processtermination: self.processterminationautomaticexecution)
-                    } else {
-                        _ = ExecuteScheduledTask(dict: dict, processtermination: self.processterminationautomaticexecution)
-                    }
-                }
-            }
         }
     }
 }
