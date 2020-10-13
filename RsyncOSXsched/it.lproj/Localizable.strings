@@ -70,9 +70,6 @@
 /* loginfo */
 "No connection, bailed out..." = "Nessuna connessione, salvata...";
 
-/* Execute */
-"No hiddenID in dictionary" = "Nessun hiddenID nel dizionario";
-
 /* main */
 "once" = "una sola volta";
 
@@ -93,12 +90,6 @@
 
 /* main */
 "RsyncOSXsched version:" = "Versione RsyncOSXsched App:";
-
-/* Timer */
-"Schedule timer: no more scheduled task in queue" = "Schedule timer: nessuna attività pianificata in coda";
-
-/* Timer */
-"Schedule timer: setting next scheduled task in:" = "Schedule timer: impostare la prossima operazione pianificata in:";
 
 /* Execute
    loginfo */

@@ -115,6 +115,9 @@
 /* Class = "NSButtonCell"; title = "Write"; ObjectID = "tub-al-k7W"; */
 "tub-al-k7W.title" = "Schreiben";
 
+/* Class = "NSTextFieldCell"; title = "Label"; ObjectID = "Ud3-oP-ijM"; */
+"Ud3-oP-ijM.title" = "Label";
+
 /* Class = "NSMenu"; title = "RsyncOSXsched"; ObjectID = "uQy-DD-JDr"; */
 "uQy-DD-JDr.title" = "RsyncOSXsched";
 

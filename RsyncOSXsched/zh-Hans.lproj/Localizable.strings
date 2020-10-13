@@ -70,9 +70,6 @@
 /* loginfo */
 "No connection, bailed out..." = "No connection, bailed out...";
 
-/* Execute */
-"No hiddenID in dictionary" = "No hiddenID in dictionary";
-
 /* main */
 "once" = "once";
 
@@ -93,12 +90,6 @@
 
 /* main */
 "RsyncOSXsched version:" = "RsyncOSXsched version:";
-
-/* Timer */
-"Schedule timer: no more scheduled task in queue" = "Schedule timer: no more scheduled task in queue";
-
-/* Timer */
-"Schedule timer: setting next scheduled task in:" = "Schedule timer: setting next scheduled task in:";
 
 /* Execute
    loginfo */
