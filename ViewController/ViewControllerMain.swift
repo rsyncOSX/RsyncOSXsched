@@ -223,38 +223,41 @@ class ViewControllerMain: NSViewController, Delay, Setlog {
         ViewControllerReference.shared.dispatchTaskWaiting?.cancel()
     }
 
-    @objc func didMount(_ notification: NSNotification) {
-        if let devicePath = notification.userInfo!["NSDevicePath"] as? String {
-            let mount: String = NSLocalizedString("Mounting volumes:", comment: "main")
-            self.logDelegate?.addlog(logrecord: mount + " " + devicePath)
-            if self.checkallconfiguration == nil {
-                self.checkallconfiguration = CheckAllConfigurations(path: devicePath)
-            } else {
-                self.checkallconfiguration?.allpaths?.append(devicePath)
-            }
-        }
-    }
+    /*
+     @objc func didMount(_ notification: NSNotification) {
+         if let devicePath = notification.userInfo!["NSDevicePath"] as? String {
+             let mount: String = NSLocalizedString("Mounting volumes:", comment: "main")
+             self.logDelegate?.addlog(logrecord: mount + " " + devicePath)
+             if self.checkallconfiguration == nil {
+                 self.checkallconfiguration = CheckAllConfigurations(path: devicePath)
+             } else {
+                 self.checkallconfiguration?.allpaths?.append(devicePath)
+             }
+         }
+     }
 
-    @objc func didUnMount(_ notification: NSNotification) {
-        if let devicePath = notification.userInfo!["NSDevicePath"] as? String {
-            let unmount: String = NSLocalizedString("Unmounting volumes:", comment: "main")
-            self.logDelegate?.addlog(logrecord: unmount + " " + devicePath)
-            self.checkallconfiguration = nil
-            self.automaticexecution = nil
-        }
-    }
-
+     @objc func didUnMount(_ notification: NSNotification) {
+         if let devicePath = notification.userInfo!["NSDevicePath"] as? String {
+             let unmount: String = NSLocalizedString("Unmounting volumes:", comment: "main")
+             self.logDelegate?.addlog(logrecord: unmount + " " + devicePath)
+             self.checkallconfiguration = nil
+             self.automaticexecution = nil
+         }
+     }
+     */
     private func addobservers() {
         NSWorkspace.shared.notificationCenter.addObserver(self, selector: #selector(onWakeNote(note:)),
                                                           name: NSWorkspace.didWakeNotification, object: nil)
         NSWorkspace.shared.notificationCenter.addObserver(self, selector: #selector(onSleepNote(note:)),
                                                           name: NSWorkspace.willSleepNotification, object: nil)
-        if ViewControllerReference.shared.automaticexecutelocalvolumes {
-            NSWorkspace.shared.notificationCenter.addObserver(self, selector: #selector(didMount(_:)),
-                                                              name: NSWorkspace.didMountNotification, object: nil)
-            NSWorkspace.shared.notificationCenter.addObserver(self, selector: #selector(didUnMount(_:)),
-                                                              name: NSWorkspace.didUnmountNotification, object: nil)
-        }
+        /*
+         if ViewControllerReference.shared.automaticexecutelocalvolumes {
+             NSWorkspace.shared.notificationCenter.addObserver(self, selector: #selector(didMount(_:)),
+                                                               name: NSWorkspace.didMountNotification, object: nil)
+             NSWorkspace.shared.notificationCenter.addObserver(self, selector: #selector(didUnMount(_:)),
+                                                               name: NSWorkspace.didUnmountNotification, object: nil)
+         }
+          */
     }
 
     func initpopupbutton() {
