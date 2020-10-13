@@ -147,7 +147,6 @@ class ViewControllerMain: NSViewController, Delay, Setlog {
         if let view = self.viewControllerAllschedules {
             self.presentAsModalWindow(view)
         }
-        // self.view.window?.close()
     }
 
     func createandreloadschedules() {
@@ -261,9 +260,13 @@ class ViewControllerMain: NSViewController, Delay, Setlog {
     func initpopupbutton() {
         var profilestrings: [String]?
         profilestrings = Catalogsandfiles(profileorsshrootpath: .profileroot).getcatalogsasstringnames()
-        profilestrings?.insert(NSLocalizedString("Default profile", comment: "default profile"), at: 0)
         self.profilepopupbutton.removeAllItems()
         self.profilepopupbutton.addItems(withTitles: profilestrings ?? [])
+        if self.profilename != nil {
+            if let index = profilestrings?.firstIndex(of: self.profilename ?? "") {
+                self.profilepopupbutton.selectItem(at: index)
+            }
+        }
     }
 
     @IBAction func selectprofile(_: NSButton) {
@@ -351,6 +354,7 @@ extension ViewControllerMain: NSTableViewDelegate, Attributedestring {
 
 extension ViewControllerMain: Updatestatuslight {
     func updatestatuslight(color: Status) {
+        self.initpopupbutton()
         globalMainQueue.async { () -> Void in
             switch color {
             case .red:
