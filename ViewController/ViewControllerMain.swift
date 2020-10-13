@@ -78,7 +78,7 @@ class ViewControllerMain: NSViewController, Delay, Setlog {
     override func viewDidAppear() {
         super.viewDidAppear()
         self.initpopupbutton()
-        self.info(num: 3)
+        self.info.stringValue = FirsScheduledTask().firsscheduledtaskintime ?? ""
         globalMainQueue.async { () -> Void in
             self.mainTableView.reloadData()
         }
@@ -184,23 +184,6 @@ class ViewControllerMain: NSViewController, Delay, Setlog {
         }
     }
 
-    private func info(num: Int) {
-        globalMainQueue.async { () -> Void in
-            switch num {
-            case 1:
-                let info1: String = NSLocalizedString("Some remote sites not avaliable, see log ....", comment: "main")
-                self.info.stringValue = info1
-            case 2:
-                let info2: String = NSLocalizedString("Executing scheduled tasks is not enabled in RsyncOSX....", comment: "main")
-                self.info.stringValue = info2
-            case 3:
-                self.info.stringValue = FirsScheduledTask().firsscheduledtaskintime ?? ""
-            default:
-                self.info.stringValue = ""
-            }
-        }
-    }
-
     private func startfirstscheduledtask() {
         ViewControllerReference.shared.dispatchTaskWaiting?.cancel()
         ViewControllerReference.shared.dispatchTaskWaiting = nil
@@ -223,28 +206,6 @@ class ViewControllerMain: NSViewController, Delay, Setlog {
         ViewControllerReference.shared.dispatchTaskWaiting?.cancel()
     }
 
-    /*
-     @objc func didMount(_ notification: NSNotification) {
-         if let devicePath = notification.userInfo!["NSDevicePath"] as? String {
-             let mount: String = NSLocalizedString("Mounting volumes:", comment: "main")
-             self.logDelegate?.addlog(logrecord: mount + " " + devicePath)
-             if self.checkallconfiguration == nil {
-                 self.checkallconfiguration = CheckAllConfigurations(path: devicePath)
-             } else {
-                 self.checkallconfiguration?.allpaths?.append(devicePath)
-             }
-         }
-     }
-
-     @objc func didUnMount(_ notification: NSNotification) {
-         if let devicePath = notification.userInfo!["NSDevicePath"] as? String {
-             let unmount: String = NSLocalizedString("Unmounting volumes:", comment: "main")
-             self.logDelegate?.addlog(logrecord: unmount + " " + devicePath)
-             self.checkallconfiguration = nil
-             self.automaticexecution = nil
-         }
-     }
-     */
     private func addobservers() {
         NSWorkspace.shared.notificationCenter.addObserver(self, selector: #selector(onWakeNote(note:)),
                                                           name: NSWorkspace.didWakeNotification, object: nil)
@@ -266,7 +227,6 @@ class ViewControllerMain: NSViewController, Delay, Setlog {
 
     @IBAction func selectprofile(_: NSButton) {
         let selectedindex = self.profilepopupbutton.indexOfSelectedItem
-        self.info(num: -1)
         self.profilename = self.profilepopupbutton.titleOfSelectedItem
         self.profileinfo.stringValue = "Profile: " + (self.profilename ?? NSLocalizedString("Profile: default loaded.", comment: "reloadinfo"))
         self.addlog(logrecord: "Profile: " + (self.profilename ?? NSLocalizedString("Profile: default loaded.", comment: "reloadinfo") + " loaded."))
@@ -275,7 +235,7 @@ class ViewControllerMain: NSViewController, Delay, Setlog {
         }
         self.createandreloadconfigurations()
         self.createandreloadschedules()
-        self.info(num: 3)
+        self.info.stringValue = FirsScheduledTask().firsscheduledtaskintime ?? ""
     }
 }
 
@@ -365,7 +325,7 @@ extension ViewControllerMain: Updatestatuslight {
 
 extension ViewControllerMain: Updatestatustcpconnections {
     func updatestatustcpconnections() {
-        self.info(num: 1)
+        self.info.stringValue = NSLocalizedString("Some remote sites not avaliable, see log ....", comment: "main")
     }
 }
 
