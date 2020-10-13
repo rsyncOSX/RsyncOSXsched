@@ -11,7 +11,7 @@
 "days" = "dager";
 
 /* main */
-"default" = "default";
+"default" = "standard";
 
 /* default profile */
 "Default profile" = "Default profil";
@@ -70,9 +70,6 @@
 /* loginfo */
 "No connection, bailed out..." = "Ingen kontakt, avslutter...";
 
-/* Execute */
-"No hiddenID in dictionary" = "Ingen hiddenID I katalog";
-
 /* main */
 "once" = "engang";
 
@@ -93,12 +90,6 @@
 
 /* main */
 "RsyncOSXsched version:" = "RsyncOSXsched versjon:";
-
-/* Timer */
-"Schedule timer: no more scheduled task in queue" = "Oppgave timer: ingen flere oppgaver i kø.";
-
-/* Timer */
-"Schedule timer: setting next scheduled task in:" = "Oppgave timer: neste oppgave om:";
 
 /* Execute
    loginfo */

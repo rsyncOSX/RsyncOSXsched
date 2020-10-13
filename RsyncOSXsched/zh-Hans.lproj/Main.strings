@@ -19,17 +19,11 @@
 /* Class = "NSTextFieldCell"; title = "Double click on a row to select profile..."; ObjectID = "6Qr-L9-cOC"; */
 "6Qr-L9-cOC.title" = "Double click on a row to select profile...";
 
-/* Class = "NSButtonCell"; title = "Now"; ObjectID = "9lr-pg-w2Y"; */
-"9lr-pg-w2Y.title" = "Now";
-
 /* Class = "NSTextFieldCell"; title = "info"; ObjectID = "9Oe-pz-ahe"; */
 "9Oe-pz-ahe.title" = "info";
 
 /* Class = "NSTextFieldCell"; title = "Text Cell"; ObjectID = "aE6-b1-DAB"; */
 "aE6-b1-DAB.title" = "Text Cell";
-
-/* Class = "NSButtonCell"; title = "Close"; ObjectID = "ae6-sg-TdC"; */
-"ae6-sg-TdC.title" = "Close";
 
 /* Class = "NSTextFieldCell"; title = "Text Cell"; ObjectID = "Apg-mF-s7e"; */
 "Apg-mF-s7e.title" = "Text Cell";
@@ -58,9 +52,6 @@
 /* Class = "NSTableColumn"; headerCell.title = "Remote catalog"; ObjectID = "gdH-5D-KCh"; */
 "gdH-5D-KCh.headerCell.title" = "Remote catalog";
 
-/* Class = "NSButtonCell"; title = "RsyncOSX"; ObjectID = "gkG-rF-JAe"; */
-"gkG-rF-JAe.title" = "RsyncOSX";
-
 /* Class = "NSTextFieldCell"; title = "Text Cell"; ObjectID = "GMe-Tg-hJO"; */
 "GMe-Tg-hJO.title" = "Text Cell";
 
@@ -82,9 +73,6 @@
 /* Class = "NSTableColumn"; headerCell.title = "Local catalog"; ObjectID = "l2d-BZ-Xq3"; */
 "l2d-BZ-Xq3.headerCell.title" = "Local catalog";
 
-/* Class = "NSButtonCell"; title = "Schedules"; ObjectID = "L8l-lJ-lKA"; */
-"L8l-lJ-lKA.title" = "Schedules";
-
 /* Class = "NSTextFieldCell"; title = "Text Cell"; ObjectID = "LbP-5c-NYf"; */
 "LbP-5c-NYf.title" = "Text Cell";
 
@@ -100,9 +88,6 @@
 /* Class = "NSTextFieldCell"; title = "Text Cell"; ObjectID = "mYk-p2-itH"; */
 "mYk-p2-itH.title" = "Text Cell";
 
-/* Class = "NSButtonCell"; title = "Close"; ObjectID = "NAt-yd-56N"; */
-"NAt-yd-56N.title" = "Close";
-
 /* Class = "NSMenuItem"; title = "Services"; ObjectID = "NMo-om-nkz"; */
 "NMo-om-nkz.title" = "Services";
 
@@ -111,12 +96,6 @@
 
 /* Class = "NSMenuItem"; title = "Hide RsyncOSXsched"; ObjectID = "Olw-nP-bQN"; */
 "Olw-nP-bQN.title" = "Hide RsyncOSXsched";
-
-/* Class = "NSButtonCell"; title = "Log"; ObjectID = "p1x-0f-6rG"; */
-"p1x-0f-6rG.title" = "Log";
-
-/* Class = "NSButtonCell"; title = "Quit"; ObjectID = "QPq-ff-gA2"; */
-"QPq-ff-gA2.title" = "Quit";
 
 /* Class = "NSTextFieldCell"; title = "Text Cell"; ObjectID = "qyk-58-p0P"; */
 "qyk-58-p0P.title" = "Text Cell";
@@ -136,8 +115,8 @@
 /* Class = "NSButtonCell"; title = "Write"; ObjectID = "tub-al-k7W"; */
 "tub-al-k7W.title" = "Write";
 
-/* Class = "NSButtonCell"; title = "Abort"; ObjectID = "uBp-4W-BLA"; */
-"uBp-4W-BLA.title" = "Abort";
+/* Class = "NSTextFieldCell"; title = "Label"; ObjectID = "Ud3-oP-ijM"; */
+"Ud3-oP-ijM.title" = "Label";
 
 /* Class = "NSMenu"; title = "RsyncOSXsched"; ObjectID = "uQy-DD-JDr"; */
 "uQy-DD-JDr.title" = "RsyncOSXsched";
