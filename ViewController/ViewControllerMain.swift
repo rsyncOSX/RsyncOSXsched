@@ -250,7 +250,7 @@ extension ViewControllerMain: NSTableViewDelegate, Attributedestring {
     func tableView(_: NSTableView, objectValueFor tableColumn: NSTableColumn?, row: Int) -> Any? {
         guard row < self.configurations?.getConfigurationsDataSourceSynchronize()?.count ?? -1 else { return nil }
         if let object: NSDictionary = self.configurations?.getConfigurationsDataSourceSynchronize()?[row],
-            let tableColumn = tableColumn
+           let tableColumn = tableColumn
         {
             let hiddenID = object.value(forKey: "hiddenID") as? Int ?? -1
             var profilename = object.value(forKey: "profilename") as? String
