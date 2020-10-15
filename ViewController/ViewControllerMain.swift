@@ -325,7 +325,9 @@ extension ViewControllerMain: Updatestatuslight {
 
 extension ViewControllerMain: Updatestatustcpconnections {
     func updatestatustcpconnections() {
-        self.info.stringValue = NSLocalizedString("Some remote sites not avaliable, see log ....", comment: "main")
+        globalMainQueue.async { () -> Void in
+            self.info.stringValue = NSLocalizedString("Some remote sites not avaliable, see log ....", comment: "main")
+        }
     }
 }
 
