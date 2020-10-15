@@ -52,7 +52,7 @@ extension ViewControllerSchedules: NSTableViewDelegate {
     func tableView(_: NSTableView, objectValueFor tableColumn: NSTableColumn?, row: Int) -> Any? {
         guard row < self.schedulessortedandexpanded?.sortedschedules?.count ?? -1 else { return nil }
         if let object: NSDictionary = self.schedulessortedandexpanded?.sortedschedules?[row],
-            let hiddenID = object.value(forKey: "hiddenID") as? Int
+           let hiddenID = object.value(forKey: "hiddenID") as? Int
         {
             if let tableColumn = tableColumn {
                 switch tableColumn.identifier.rawValue {
