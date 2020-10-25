@@ -1,0 +1,109 @@
+/* main */
+"Activating schedules again after sleeping..." = "Tijdschema's opnieuw activeren na slaapmodus...";
+
+/* Logg */
+"Adding result to log:" = "Resultaat toevoegen aan log:";
+
+/* main */
+"daily" = "dagelijks";
+
+/* datetime */
+"days" = "dagen";
+
+/* main */
+"default" = "standaard";
+
+/* default profile */
+"Default profile" = "Standaardprofiel";
+
+/* Dispatch */
+"Dispatch: no more scheduled task in queue" = "Meldkamer: er is geen geplande taak meer in de wachtrij";
+
+/* Dispatch */
+"Dispatch: setting next scheduled task in:" = "Meldkamer: instellen van de volgende geplande taak in:";
+
+/* Execute */
+"Executing task in profile" = "Taak uitvoeren in profiel";
+
+/* firstask */
+"First scheduled task:" = "Eerstvolgende geplande taak:";
+
+/* addobserverforreload */
+"Got notification for reload" = "Ontvang een melding bij herladen";
+
+/* datetime */
+"h" = "u";
+
+/* datetime */
+"hours" = "uren";
+
+/* firstask */
+"in" = "in";
+
+/* main */
+"Invalidating tasks and going to sleep..." = "Taken niet valideren en gaan slapen...";
+
+/* schedule */
+"Loading profile:" = "Profiel laden:";
+
+/* Notification */
+"Message from scheduled synchronizing..." = "Bericht van geplande synchronisatie...";
+
+/* datetime */
+"mins" = "minuten";
+
+/* loginfo */
+"No connection with server:" = "Geen verbinding met server:";
+
+/* loginfo */
+"No connection, bailed out..." = "Geen verbinding, afsluiten...";
+
+/* main */
+"once" = "eenmalig";
+
+/* main */
+"Profile:" = "Profiel:";
+
+/* reloadinfo */
+"Profile: default loaded." = "Profiel: standaard geladen.";
+
+/* main */
+"Reading configurations for current profile" = "Configuraties voor huidig profiel lezen";
+
+/* main */
+"Reading schedules for current profile" = "Lezen van schema's voor huidig profiel";
+
+/* Sorted */
+"Reloading all schedules..." = "Alle schema's herladen...";
+
+/* main */
+"RsyncOSXsched version:" = "RsyncOSXsched versie:";
+
+/* Execute
+   loginfo */
+"Scheduled backup did not execute" = "Geplande back-up is niet uitgevoerd";
+
+/* datetime */
+"secs" = "sconden";
+
+/* main */
+"Some remote sites not avaliable, see log ...." = "Sommige externe sites zijn niet beschikbaar, zie logboek ....";
+
+/* rsyncerror */
+"There was a rsync error" = "Er is een rsync fout opgetreden";
+
+/* ReadWrite */
+"to disk" = "naar schijf";
+
+/* main */
+"weekly" = "wekelijks";
+
+/* Storage */
+"Write and reload configurations" = "Configuratie schrijven en herladen";
+
+/* Storage */
+"Write and reload schedules" = "Geplande taken schrijven en herladen";
+
+/* ReadWrite */
+"Writing:" = "Schrijven:";
+
