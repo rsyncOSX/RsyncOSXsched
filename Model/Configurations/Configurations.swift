@@ -110,10 +110,13 @@ class Configurations: SetSchedules {
     }
 
     private func readconfigurations() {
-        let store = PersistentStorageConfiguration(profile: self.profile).readconfigurations()
+        let store = PersistentStorageConfiguration(profile: self.profile).configurationsasdictionary
         for i in 0 ..< (store?.count ?? 0) {
-            if ViewControllerReference.shared.synctasks.contains(store![i].task) {
-                self.configurations?.append(store![i])
+            if let dict = store?[i] {
+                let config = Configuration(dictionary: dict)
+                if ViewControllerReference.shared.synctasks.contains(config.task) {
+                    self.configurations?.append(config)
+                }
             }
         }
         // Then prepare the datasource for use in tableviews as Dictionarys
@@ -121,7 +124,9 @@ class Configurations: SetSchedules {
         for i in 0 ..< (self.configurations?.count ?? 0) {
             let task = self.configurations?[i].task
             if ViewControllerReference.shared.synctasks.contains(task ?? "") {
-                data.append(ConvertOneConfig(config: self.configurations![i], profile: self.profile).dict)
+                if let config = self.configurations?[i] {
+                    data.append(ConvertOneConfig(config: config, profile: self.profile).dict)
+                }
             }
         }
         self.configurationsDataSource = data

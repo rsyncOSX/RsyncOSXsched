@@ -15,7 +15,6 @@
 		E807E0AE22A41C8E009847A9 /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = E807E0AD22A41C8E009847A9 /* Environment.swift */; };
 		E833D53E22999A2500C92FDE /* ConvertOneConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = E833D53D22999A2500C92FDE /* ConvertOneConfig.swift */; };
 		E8DE5C3024D1843C00C56FEC /* NamesandPaths.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8DE5C2F24D1843C00C56FEC /* NamesandPaths.swift */; };
-		E8DE5C3324D186B500C56FEC /* Files in Frameworks */ = {isa = PBXBuildFile; productRef = E8DE5C3224D186B500C56FEC /* Files */; };
 		E90675D823729A37005B418E /* Getrsyncpath.swift in Sources */ = {isa = PBXBuildFile; fileRef = E90675D723729A37005B418E /* Getrsyncpath.swift */; };
 		E906BF6D20F1DB2200238E6A /* ScheduleOperationDispatch.swift in Sources */ = {isa = PBXBuildFile; fileRef = E906BF6B20F1DB2200238E6A /* ScheduleOperationDispatch.swift */; };
 		E906BF6E20F1DB2200238E6A /* ExecuteScheduledTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = E906BF6C20F1DB2200238E6A /* ExecuteScheduledTask.swift */; };
@@ -48,6 +47,7 @@
 		E98398AF20260E9D00C977C3 /* Configurations.swift in Sources */ = {isa = PBXBuildFile; fileRef = E98398AD20260E9D00C977C3 /* Configurations.swift */; };
 		E98BB14B202763B40078DF8E /* Numbers.swift in Sources */ = {isa = PBXBuildFile; fileRef = E98BB14A202763B40078DF8E /* Numbers.swift */; };
 		E9A63066202B4DE900F1FFF1 /* Running.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A63065202B4DE900F1FFF1 /* Running.swift */; };
+		E9AC1340254A101A00835A3F /* Files in Frameworks */ = {isa = PBXBuildFile; productRef = E9AC133F254A101A00835A3F /* Files */; };
 		E9B5B4602133F2DB004B7041 /* Checkfornewversion.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9B5B45F2133F2DB004B7041 /* Checkfornewversion.swift */; };
 		E9B96299203802EF00EA6D5A /* Logg.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9B96298203802EF00EA6D5A /* Logg.swift */; };
 		E9C2C5B224C2D9B9002E86DA /* ShellOut in Frameworks */ = {isa = PBXBuildFile; productRef = E9C2C5B124C2D9B9002E86DA /* ShellOut */; };
@@ -106,6 +106,9 @@
 		E936DE0523C0832B0099720D /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
 		E936DE0623C0832B0099720D /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		E9415401202F6E0C00BCE8A1 /* ViewControllerLog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerLog.swift; sourceTree = "<group>"; };
+		E941A42F254591880091E30A /* nl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nl; path = nl.lproj/Main.strings; sourceTree = "<group>"; };
+		E941A430254591880091E30A /* nl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nl; path = nl.lproj/Localizable.strings; sourceTree = "<group>"; };
+		E941A431254591880091E30A /* nl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nl; path = nl.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		E946CDBC20279A85005BF6E9 /* Userconfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Userconfiguration.swift; sourceTree = "<group>"; };
 		E94DDC8620A40CC90041CF53 /* ViewControllerSchedules.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerSchedules.swift; sourceTree = "<group>"; };
 		E9533B32251477BD00778CFE /* RsyncProcessCmdClosure.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RsyncProcessCmdClosure.swift; sourceTree = "<group>"; };
@@ -158,7 +161,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E8DE5C3324D186B500C56FEC /* Files in Frameworks */,
+				E9AC1340254A101A00835A3F /* Files in Frameworks */,
 				E9C2C5B224C2D9B9002E86DA /* ShellOut in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -401,7 +404,7 @@
 			name = RsyncOSXsched;
 			packageProductDependencies = (
 				E9C2C5B124C2D9B9002E86DA /* ShellOut */,
-				E8DE5C3224D186B500C56FEC /* Files */,
+				E9AC133F254A101A00835A3F /* Files */,
 			);
 			productName = Popup;
 			productReference = 94E0FC3B1BD7FC3600A3C537 /* RsyncOSXsched.app */;
@@ -441,11 +444,12 @@
 				fr,
 				it,
 				"zh-Hans",
+				nl,
 			);
 			mainGroup = 94E0FC321BD7FC3600A3C537;
 			packageReferences = (
 				E9C2C5B024C2D9B9002E86DA /* XCRemoteSwiftPackageReference "ShellOut" */,
-				E8DE5C3124D186B500C56FEC /* XCRemoteSwiftPackageReference "Files" */,
+				E9AC133E254A101A00835A3F /* XCRemoteSwiftPackageReference "Files" */,
 			);
 			productRefGroup = 94E0FC3C1BD7FC3600A3C537 /* Products */;
 			projectDirPath = "";
@@ -563,6 +567,7 @@
 				E936DE0423C0832B0099720D /* fr */,
 				E97974312427372C00F298E0 /* it */,
 				E97974342427373E00F298E0 /* zh-Hans */,
+				E941A42F254591880091E30A /* nl */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -575,6 +580,7 @@
 				E936DE0623C0832B0099720D /* fr */,
 				E97974332427372C00F298E0 /* it */,
 				E97974362427373E00F298E0 /* zh-Hans */,
+				E941A431254591880091E30A /* nl */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
@@ -587,6 +593,7 @@
 				E936DE0523C0832B0099720D /* fr */,
 				E97974322427372C00F298E0 /* it */,
 				E97974352427373E00F298E0 /* zh-Hans */,
+				E941A430254591880091E30A /* nl */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";
@@ -775,12 +782,12 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		E8DE5C3124D186B500C56FEC /* XCRemoteSwiftPackageReference "Files" */ = {
+		E9AC133E254A101A00835A3F /* XCRemoteSwiftPackageReference "Files" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/RsyncOSX/Files";
+			repositoryURL = "https://github.com/rsyncOSX/Files";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 4.1.1;
+				minimumVersion = 4.2.0;
 			};
 		};
 		E9C2C5B024C2D9B9002E86DA /* XCRemoteSwiftPackageReference "ShellOut" */ = {
@@ -794,9 +801,9 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		E8DE5C3224D186B500C56FEC /* Files */ = {
+		E9AC133F254A101A00835A3F /* Files */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = E8DE5C3124D186B500C56FEC /* XCRemoteSwiftPackageReference "Files" */;
+			package = E9AC133E254A101A00835A3F /* XCRemoteSwiftPackageReference "Files" */;
 			productName = Files;
 		};
 		E9C2C5B124C2D9B9002E86DA /* ShellOut */ = {
