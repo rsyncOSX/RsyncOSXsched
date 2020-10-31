@@ -110,10 +110,11 @@ class Configurations: SetSchedules {
     }
 
     private func readconfigurations() {
-        let store = PersistentStorageConfiguration(profile: self.profile).readconfigurations()
+        let store = PersistentStorageConfiguration(profile: self.profile).configurationsasdictionary
         for i in 0 ..< (store?.count ?? 0) {
-            if ViewControllerReference.shared.synctasks.contains(store?[i].task ?? "") {
-                if let config = store?[i] {
+            if let dict = store?[i] {
+                let config = Configuration(dictionary: dict)
+                if ViewControllerReference.shared.synctasks.contains(config.task) {
                     self.configurations?.append(config)
                 }
             }
