@@ -22,9 +22,6 @@
 /* Dispatch */
 "Dispatch: setting next scheduled task in:" = "Dispatch: neste oppgave om:";
 
-/* main */
-"Executing scheduled tasks is not enabled in RsyncOSX...." = "Planlagte oppgaver ikke gjort tilgjengelig i RsyncOSX";
-
 /* Execute */
 "Executing task in profile" = "Utfører oppgave i profil";
 
@@ -43,9 +40,6 @@
 /* firstask */
 "in" = "om";
 
-/* Mount */
-"in:" = "om:";
-
 /* main */
 "Invalidating tasks and going to sleep..." = "Stopper planlagte oppgaver og går i dvale";
 
@@ -57,12 +51,6 @@
 
 /* datetime */
 "mins" = "min";
-
-/* Mount */
-"Mounted Volume discovered" = "Montering av kataloger oppdaget";
-
-/* main */
-"Mounting volumes:" = "Monterer katalog:";
 
 /* loginfo */
 "No connection with server:" = "Ingen kontakt med server:";
@@ -106,9 +94,6 @@
 
 /* ReadWrite */
 "to disk" = "til disk";
-
-/* main */
-"Unmounting volumes:" = "Avmontering katalog:";
 
 /* main */
 "weekly" = "ukentlig";

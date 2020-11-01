@@ -22,9 +22,6 @@
 /* Dispatch */
 "Dispatch: setting next scheduled task in:" = "Dispatch: setting next scheduled task in:";
 
-/* main */
-"Executing scheduled tasks is not enabled in RsyncOSX...." = "Executing scheduled tasks is not enabled in RsyncOSX....";
-
 /* Execute */
 "Executing task in profile" = "Executing task in profile";
 
@@ -43,9 +40,6 @@
 /* firstask */
 "in" = "in";
 
-/* Mount */
-"in:" = "in:";
-
 /* main */
 "Invalidating tasks and going to sleep..." = "Invalidating tasks and going to sleep...";
 
@@ -57,12 +51,6 @@
 
 /* datetime */
 "mins" = "mins";
-
-/* Mount */
-"Mounted Volume discovered" = "Mounted Volume discovered";
-
-/* main */
-"Mounting volumes:" = "Mounting volumes:";
 
 /* loginfo */
 "No connection with server:" = "No connection with server:";
@@ -106,9 +94,6 @@
 
 /* ReadWrite */
 "to disk" = "to disk";
-
-/* main */
-"Unmounting volumes:" = "Unmounting volumes:";
 
 /* main */
 "weekly" = "weekly";
