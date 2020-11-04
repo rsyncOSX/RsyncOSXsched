@@ -31,23 +31,32 @@ class ScheduleWriteLoggData: SetConfigurations {
                 } else {
                     resultannotaded = result
                 }
-                var inserted: Bool = self.addlogexisting(hiddenID: hiddenID, result: resultannotaded ?? "", date: date)
-                // Record does not exist, create new Schedule (not inserted)
-                if inserted == false {
-                    inserted = self.addlognew(hiddenID: hiddenID, result: resultannotaded ?? "", date: date)
-                }
-                if inserted {
-                    PersistentStorageScheduling(profile: self.profile).savescheduleInMemoryToPersistentStore()
+                if let dict = ViewControllerReference.shared.scheduledTask {
+                    let schedule = dict.value(forKey: "schedule") as? String ?? ""
+                    let dateStart = (dict.value(forKey: "dateStart") as? Date)?.en_us_string_from_date() ?? ""
+                    var inserted: Bool = self.addlogexisting(hiddenID: hiddenID, result: resultannotaded ?? "",
+                                                             date: date,
+                                                             schedule: schedule,
+                                                             dateStart: dateStart)
+                    if inserted == false {
+                        inserted = self.addlognew(hiddenID: hiddenID, result: resultannotaded ?? "",
+                                                  date: date,
+                                                  schedule: schedule,
+                                                  dateStart: dateStart)
+                    }
+                    if inserted {
+                        PersistentStorageScheduling(profile: self.profile).savescheduleInMemoryToPersistentStore()
+                    }
                 }
             }
         }
     }
 
-    func addlogexisting(hiddenID: Int, result: String, date: String) -> Bool {
+    func addlogexisting(hiddenID: Int, result: String, date: String, schedule: String, dateStart: String) -> Bool {
         if ViewControllerReference.shared.synctasks.contains(self.configurations?.getResourceConfiguration(hiddenID, resource: .task) ?? "") {
             if let index = self.schedules?.firstIndex(where: { $0.hiddenID == hiddenID
-                    && $0.schedule == Scheduletype.manuel.rawValue
-                    && $0.dateStart == "01 Jan 1900 00:00"
+                    && $0.schedule == schedule
+                    && $0.dateStart == dateStart
             }) {
                 var log = Log()
                 log.dateExecuted = date
@@ -59,12 +68,12 @@ class ScheduleWriteLoggData: SetConfigurations {
         return false
     }
 
-    func addlognew(hiddenID: Int, result: String, date: String) -> Bool {
+    func addlognew(hiddenID: Int, result: String, date: String, schedule: String, dateStart: String) -> Bool {
         if ViewControllerReference.shared.synctasks.contains(self.configurations?.getResourceConfiguration(hiddenID, resource: .task) ?? "") {
             let masterdict = NSMutableDictionary()
             masterdict.setObject(hiddenID, forKey: "hiddenID" as NSCopying)
-            masterdict.setObject("01 Jan 1900 00:00", forKey: "dateStart" as NSCopying)
-            masterdict.setObject(Scheduletype.manuel.rawValue, forKey: "schedule" as NSCopying)
+            masterdict.setObject(dateStart, forKey: "dateStart" as NSCopying)
+            masterdict.setObject(schedule, forKey: "schedule" as NSCopying)
             let dict = NSMutableDictionary()
             dict.setObject(date, forKey: "dateExecuted" as NSCopying)
             dict.setObject(result, forKey: "resultExecuted" as NSCopying)
