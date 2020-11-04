@@ -58,6 +58,9 @@ class ScheduleWriteLoggData: SetConfigurations {
                     && $0.schedule == schedule
                     && $0.dateStart == dateStart
             }) {
+                if self.schedules?[index].logrecords == nil {
+                    self.schedules?[index].logrecords = [Log]()
+                }
                 var log = Log()
                 log.dateExecuted = date
                 log.resultExecuted = result
