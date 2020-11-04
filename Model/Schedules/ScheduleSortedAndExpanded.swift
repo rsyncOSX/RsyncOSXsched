@@ -11,11 +11,10 @@ import Cocoa
 import Foundation
 
 class ScheduleSortedAndExpand: Setlog {
-    var schedulesNSDictionary: [NSMutableDictionary]?
-    var scheduleConfiguration: [ConfigurationSchedule]?
     var expandedData: [NSMutableDictionary]?
     var sortedschedules: [NSMutableDictionary]?
     var tcpconnections: TCPconnections?
+    var schedulesNSDictionary: [NSMutableDictionary]?
 
     // First job to execute. Job is first element in
     func getfirstscheduledtask() -> NSMutableDictionary? {
@@ -208,33 +207,11 @@ class ScheduleSortedAndExpand: Setlog {
         }
     }
 
-    // Function is reading Schedule plans and transform plans to
-    // array of NSDictionary.
-    // - returns : none
-    private func setallscheduledtasksNSDictionary() {
-        var data = [NSMutableDictionary]()
-        let scheduletypes: Set<String> = [Scheduletype.daily.rawValue, Scheduletype.weekly.rawValue, Scheduletype.once.rawValue]
-        for i in 0 ..< (self.scheduleConfiguration?.count ?? 0) where
-            self.scheduleConfiguration?[i].dateStop != nil && scheduletypes.contains(self.scheduleConfiguration?[i].schedule ?? "")
-        {
-            let dict: NSMutableDictionary = [
-                "dateStart": self.scheduleConfiguration?[i].dateStart ?? "",
-                "dateStop": self.scheduleConfiguration?[i].dateStop ?? "",
-                "hiddenID": self.scheduleConfiguration?[i].hiddenID ?? -1,
-                "schedule": self.scheduleConfiguration?[i].schedule ?? "",
-                "profilename": self.scheduleConfiguration![i].profilename ?? NSLocalizedString("Default profile", comment: "default profile"),
-            ]
-            data.append(dict as NSMutableDictionary)
-        }
-        self.schedulesNSDictionary = data
-    }
-
     init() {
         self.logDelegate?.addlog(logrecord: NSLocalizedString("Reloading all schedules...", comment: "Sorted"))
         self.expandedData = [NSMutableDictionary]()
         let allschedules = Allschedules()
-        self.scheduleConfiguration = allschedules.allschedules
-        self.setallscheduledtasksNSDictionary()
+        self.schedulesNSDictionary = allschedules.schedulesNSDictionary
         self.sortAndExpandScheduleTasks()
         self.tcpconnections = TCPconnections()
         self.tcpconnections?.testAllremoteserverConnections(offsiteservers: allschedules.alloffsiteservers)
