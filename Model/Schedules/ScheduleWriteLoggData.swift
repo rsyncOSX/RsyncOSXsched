@@ -45,7 +45,7 @@ class ScheduleWriteLoggData: SetConfigurations {
                                                   dateStart: dateStart)
                     }
                     if inserted {
-                        PersistentStorageScheduling(profile: self.profile).savescheduleInMemoryToPersistentStore()
+                        PersistentStorageScheduling(profile: self.profile, writeonly: true).savescheduleInMemoryToPersistentStore()
                     }
                 }
             }
