@@ -173,9 +173,8 @@
 			isa = PBXGroup;
 			children = (
 				E946B4ED2030159500B929ED /* Menuapp */,
-				E95AB5602028506000D77CDE /* RsyncOSXsched */,
-				E97983B3202878B9003ADB25 /* ViewController */,
 				E98398A720260D0300C977C3 /* Model */,
+				E95AB5602028506000D77CDE /* RsyncOSXsched */,
 				94E0FC3C1BD7FC3600A3C537 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -312,6 +311,7 @@
 			children = (
 				94E0FC3E1BD7FC3600A3C537 /* AppDelegate.swift */,
 				94E0FC4D1BD7FCBE00A3C537 /* EventMonitor.swift */,
+				E97983B3202878B9003ADB25 /* ViewController */,
 			);
 			path = Menuapp;
 			sourceTree = "<group>";
