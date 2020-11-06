@@ -42,31 +42,11 @@ class PersistentStorageScheduling: ReadWriteDictionary, SetSchedules {
         }
     }
 
-    func writeschedulestostoreasplist() {
-        let root = NamesandPaths(profileorsshrootpath: .profileroot)
-        if var atpath = root.fullroot {
-            if self.profile != nil {
-                atpath += "/" + (self.profile ?? "")
-            }
-            do {
-                if try Folder(path: atpath).containsFile(named: ViewControllerReference.shared.scheduleplist) {
-                    let question: String = NSLocalizedString("PLIST file exists: ", comment: "Logg")
-                    let text: String = NSLocalizedString("Cancel or Save", comment: "Logg")
-                    let dialog: String = NSLocalizedString("Save", comment: "Logg")
-                    let answer = Alerts.dialogOrCancel(question: question + " " + ViewControllerReference.shared.scheduleplist, text: text, dialog: dialog)
-                    if answer {
-                        self.savescheduleInMemoryToPersistentStore()
-                    }
-                }
-            } catch {}
-        }
-    }
-
     // Writing schedules to persistent store
     // Schedule is [NSDictionary]
     private func writeToStore(array: [NSDictionary]) {
         if self.writeNSDictionaryToPersistentStorage(array: array) {
-            self.schedulesDelegate?.reloadschedulesobject()
+            // self.schedulesDelegate?.reloadschedulesobject()
         }
     }
 
@@ -81,8 +61,6 @@ class PersistentStorageScheduling: ReadWriteDictionary, SetSchedules {
         super.init(whattoreadwrite: .schedule, profile: profile)
         if readonly == true {
             self.schedulesasdictionary = self.readNSDictionaryFromPersistentStore()
-        } else {
-            self.writeschedulestostoreasplist()
         }
     }
 }

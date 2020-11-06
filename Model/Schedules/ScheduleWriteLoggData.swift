@@ -40,7 +40,6 @@ class ScheduleWriteLoggData: SetConfigurations {
                     } else {
                         PersistentStorageScheduling(profile: self.profile).savescheduleInMemoryToPersistentStore()
                     }
-                    self.deselectrowtable(vcontroller: .vctabmain)
                 }
             }
         }

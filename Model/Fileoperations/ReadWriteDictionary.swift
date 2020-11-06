@@ -35,10 +35,6 @@ class ReadWriteDictionary: NamesandPaths {
     func writeNSDictionaryToPersistentStorage(array: [NSDictionary]) -> Bool {
         let dictionary = NSDictionary(object: array, forKey: (self.key ?? "") as NSCopying)
         let write = dictionary.write(toFile: self.filename ?? "", atomically: true)
-        if write && ViewControllerReference.shared.menuappisrunning {
-            Notifications().showNotification(message: "Sending reload message to menu app")
-            DistributedNotificationCenter.default().postNotificationName(NSNotification.Name("no.blogspot.RsyncOSX.reload"), object: nil, deliverImmediately: true)
-        }
         return write
     }
 

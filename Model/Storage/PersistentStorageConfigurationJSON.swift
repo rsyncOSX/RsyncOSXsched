@@ -23,11 +23,6 @@ class PersistentStorageConfigurationJSON: ReadWriteJSON, SetConfigurations {
     private func writeToStore(configurations _: [Configuration]?) {
         self.createJSONfromstructs()
         self.writeJSONToPersistentStore()
-        self.configurationsDelegate?.reloadconfigurationsobject()
-        if ViewControllerReference.shared.menuappisrunning {
-            Notifications().showNotification(message: "Sending reload message to menu app")
-            DistributedNotificationCenter.default().postNotificationName(NSNotification.Name("no.blogspot.RsyncOSX.reload"), object: nil, deliverImmediately: true)
-        }
     }
 
     private func createJSONfromstructs() {
@@ -60,7 +55,7 @@ class PersistentStorageConfigurationJSON: ReadWriteJSON, SetConfigurations {
                 self.decodedjson = try decoder.decode([DecodeConfigJSON].self, from: jsonstring)
             } catch let e {
                 let error = e as NSError
-                self.error(error: error.description, errortype: .json)
+                // self.error(error: error.description, errortype: .json)
             }
         }
     }
@@ -78,12 +73,5 @@ class PersistentStorageConfigurationJSON: ReadWriteJSON, SetConfigurations {
         super.init(profile: profile, filename: ViewControllerReference.shared.fileconfigurationsjson)
         self.profile = profile
         self.JSONFromPersistentStore()
-    }
-
-    init(profile: String?, _: Bool) {
-        super.init(profile: profile, filename: ViewControllerReference.shared.fileconfigurationsjson)
-        self.profile = profile
-        self.createJSONfromstructs()
-        self.writeconvertedtostore()
     }
 }

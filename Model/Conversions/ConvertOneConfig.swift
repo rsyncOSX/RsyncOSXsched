@@ -11,9 +11,8 @@ import Foundation
 
 struct ConvertOneConfig {
     var config: Configuration?
-    var profile: String?
 
-    var dict: NSDictionary {
+    var dict: NSMutableDictionary {
         let row: NSMutableDictionary = [
             "taskCellID": self.config?.task ?? "",
             "hiddenID": self.config?.hiddenID ?? "",
@@ -29,13 +28,11 @@ struct ConvertOneConfig {
             "selectCellID": 0,
             "executepretask": self.config?.executepretask ?? 0,
             "executeposttask": self.config?.executeposttask ?? 0,
-            "profilename": self.profile ?? "",
         ]
         return row
     }
 
-    init(config: Configuration, profile: String?) {
+    init(config: Configuration) {
         self.config = config
-        self.profile = profile
     }
 }

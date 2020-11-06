@@ -26,29 +26,8 @@ class ReadWriteJSON: NamesandPaths, FileErrors {
                 }
             } catch let e {
                 let error = e as NSError
-                self.error(error: error.description, errortype: .json)
+                // self.error(error: error.description, errortype: .json)
             }
-        }
-    }
-
-    func writeconvertedtostore() {
-        if var atpath = self.fullroot {
-            if self.profile != nil {
-                atpath += "/" + (self.profile ?? "")
-            }
-            do {
-                if try Folder(path: atpath).containsFile(named: self.filename ?? "") {
-                    let question: String = NSLocalizedString("JSON file exists: ", comment: "Logg")
-                    let text: String = NSLocalizedString("Cancel or Save", comment: "Logg")
-                    let dialog: String = NSLocalizedString("Save", comment: "Logg")
-                    let answer = Alerts.dialogOrCancel(question: question + " " + (self.filename ?? ""), text: text, dialog: dialog)
-                    if answer {
-                        self.writeJSONToPersistentStore()
-                    }
-                } else {
-                    self.writeJSONToPersistentStore()
-                }
-            } catch {}
         }
     }
 
@@ -65,7 +44,7 @@ class ReadWriteJSON: NamesandPaths, FileErrors {
                 return try file.readAsString()
             } catch let e {
                 let error = e as NSError
-                self.error(error: error.description, errortype: .json)
+                // self.error(error: error.description, errortype: .json)
                 return nil
             }
         }

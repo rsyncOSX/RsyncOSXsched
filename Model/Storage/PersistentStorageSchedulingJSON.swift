@@ -25,7 +25,6 @@ class PersistentStorageSchedulingJSON: ReadWriteJSON, SetSchedules {
     private func writeToStore(schedules _: [ConfigurationSchedule]?) {
         self.createJSONfromstructs()
         self.writeJSONToPersistentStore()
-        self.schedulesDelegate?.reloadschedulesobject()
     }
 
     private func createJSONfromstructs() {
@@ -47,7 +46,7 @@ class PersistentStorageSchedulingJSON: ReadWriteJSON, SetSchedules {
             }
         } catch let e {
             let error = e as NSError
-            self.error(error: error.description, errortype: .json)
+            // self.error(error: error.description, errortype: .json)
             return nil
         }
         return nil
@@ -60,7 +59,7 @@ class PersistentStorageSchedulingJSON: ReadWriteJSON, SetSchedules {
                 self.decodedjson = try decoder.decode([DecodeScheduleJSON].self, from: jsonstring)
             } catch let e {
                 let error = e as NSError
-                self.error(error: error.description, errortype: .json)
+                // self.error(error: error.description, errortype: .json)
             }
         }
     }
@@ -78,12 +77,5 @@ class PersistentStorageSchedulingJSON: ReadWriteJSON, SetSchedules {
         super.init(profile: profile, filename: ViewControllerReference.shared.fileschedulesjson)
         self.profile = profile
         self.JSONFromPersistentStore()
-    }
-
-    init(profile: String?, _: Bool) {
-        super.init(profile: profile, filename: ViewControllerReference.shared.fileschedulesjson)
-        self.profile = profile
-        self.createJSONfromstructs()
-        self.writeconvertedtostore()
     }
 }

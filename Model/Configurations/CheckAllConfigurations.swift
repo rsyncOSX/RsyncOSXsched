@@ -39,6 +39,7 @@ class CheckAllConfigurations: Delay, Setlog {
             }
         }
     }
+
     init(path: String) {
         self.allpaths = [String]()
         self.allpaths?.append(path)

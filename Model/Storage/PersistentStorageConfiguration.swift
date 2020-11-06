@@ -28,32 +28,10 @@ class PersistentStorageConfiguration: ReadWriteDictionary, SetConfigurations {
         }
     }
 
-    func writeconfigstostoreasplist() {
-        let root = NamesandPaths(profileorsshrootpath: .profileroot)
-        if var atpath = root.fullroot {
-            if self.profile != nil {
-                atpath += "/" + (self.profile ?? "")
-            }
-            do {
-                if try Folder(path: atpath).containsFile(named: ViewControllerReference.shared.configurationsplist) {
-                    let question: String = NSLocalizedString("PLIST file exists: ", comment: "Logg")
-                    let text: String = NSLocalizedString("Cancel or Save", comment: "Logg")
-                    let dialog: String = NSLocalizedString("Save", comment: "Logg")
-                    let answer = Alerts.dialogOrCancel(question: question + " " + ViewControllerReference.shared.configurationsplist, text: text, dialog: dialog)
-                    if answer {
-                        self.saveconfigInMemoryToPersistentStore()
-                    }
-                }
-            } catch {}
-        }
-    }
-
     // Writing configuration to persistent store
     // Configuration is [NSDictionary]
     private func writeToStore(array: [NSDictionary]) {
-        if self.writeNSDictionaryToPersistentStorage(array: array) {
-            self.configurationsDelegate?.reloadconfigurationsobject()
-        }
+        if self.writeNSDictionaryToPersistentStorage(array: array) {}
     }
 
     init(profile: String?) {
@@ -67,8 +45,6 @@ class PersistentStorageConfiguration: ReadWriteDictionary, SetConfigurations {
         super.init(whattoreadwrite: .configuration, profile: profile)
         if readonly == true {
             self.configurationsasdictionary = self.readNSDictionaryFromPersistentStore()
-        } else {
-            self.writeconfigstostoreasplist()
         }
     }
 }
