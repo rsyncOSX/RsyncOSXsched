@@ -9,23 +9,21 @@
 //  let str = "/Rsync/" + serialNumber + profile? + "/configRsync.plist"
 //  let str = "/Rsync/" + serialNumber + "/config.plist"
 //
-//  swiftlint:disable line_length
+// swiftlint:disable line_length
 
 import Cocoa
 import Foundation
 
-class ReadWriteDictionary: NamesandPaths, Setlog {
+class ReadWriteDictionary: NamesandPaths {
     // Function for reading data from persistent store
     func readNSDictionaryFromPersistentStore() -> [NSDictionary]? {
-        var data = [NSDictionary]()
-        guard self.filename != nil, self.key != nil else { return nil }
-        let dictionary = NSDictionary(contentsOfFile: self.filename!)
-        let items: Any? = dictionary?.object(forKey: self.key!)
-        guard items != nil else { return nil }
-        if let arrayofitems = items as? NSArray {
-            for i in 0 ..< arrayofitems.count {
-                if let item = arrayofitems[i] as? NSDictionary {
-                    data.append(item)
+        var data: [NSDictionary]?
+        let dictionary = NSDictionary(contentsOfFile: self.filename ?? "")
+        if let items = dictionary?.object(forKey: self.key ?? "") as? NSArray {
+            data = [NSDictionary]()
+            for i in 0 ..< items.count {
+                if let item = items[i] as? NSDictionary {
+                    data?.append(item)
                 }
             }
         }
@@ -33,11 +31,15 @@ class ReadWriteDictionary: NamesandPaths, Setlog {
     }
 
     // Function for write data to persistent store
-    func writeNSDictionaryToPersistentStorage(_ array: [NSDictionary]) -> Bool {
-        let dictionary = NSDictionary(object: array, forKey: self.key! as NSCopying)
-        guard self.filename != nil else { return false }
-        self.logDelegate?.addlog(logrecord: NSLocalizedString("Writing:", comment: "ReadWrite") + " " + self.filename! + " " + NSLocalizedString("to disk", comment: "ReadWrite"))
-        return dictionary.write(toFile: self.filename!, atomically: true)
+    @discardableResult
+    func writeNSDictionaryToPersistentStorage(array: [NSDictionary]) -> Bool {
+        let dictionary = NSDictionary(object: array, forKey: (self.key ?? "") as NSCopying)
+        let write = dictionary.write(toFile: self.filename ?? "", atomically: true)
+        if write && ViewControllerReference.shared.menuappisrunning {
+            Notifications().showNotification(message: "Sending reload message to menu app")
+            DistributedNotificationCenter.default().postNotificationName(NSNotification.Name("no.blogspot.RsyncOSX.reload"), object: nil, deliverImmediately: true)
+        }
+        return write
     }
 
     override init(whattoreadwrite: WhatToReadWrite, profile: String?) {

@@ -5,22 +5,14 @@
 //  Created by Thomas Evensen on 09/12/15.
 //  Copyright © 2015 Thomas Evensen. All rights reserved.
 //
+// swiftlint:disable line_length
 
+import Files
 import Foundation
 
-final class PersistentStorageConfiguration: ReadWriteDictionary, SetConfigurations {
-    /// Variable holds all configuration data from persisten storage
+class PersistentStorageConfiguration: ReadWriteDictionary, SetConfigurations {
+    // Variable holds all configuration data from persisten storage
     var configurationsasdictionary: [NSDictionary]?
-
-    // Read configurations from persisten store
-    func readconfigurations() -> [Configuration]? {
-        guard self.configurationsasdictionary != nil else { return nil }
-        var configurations = [Configuration]()
-        for dict in self.configurationsasdictionary ?? [] {
-            configurations.append(Configuration(dictionary: dict))
-        }
-        return configurations
-    }
 
     // Saving Configuration from MEMORY to persistent store
     // Reads Configurations from MEMORY and saves to persistent Store
@@ -36,17 +28,47 @@ final class PersistentStorageConfiguration: ReadWriteDictionary, SetConfiguratio
         }
     }
 
+    func writeconfigstostoreasplist() {
+        let root = NamesandPaths(profileorsshrootpath: .profileroot)
+        if var atpath = root.fullroot {
+            if self.profile != nil {
+                atpath += "/" + (self.profile ?? "")
+            }
+            do {
+                if try Folder(path: atpath).containsFile(named: ViewControllerReference.shared.configurationsplist) {
+                    let question: String = NSLocalizedString("PLIST file exists: ", comment: "Logg")
+                    let text: String = NSLocalizedString("Cancel or Save", comment: "Logg")
+                    let dialog: String = NSLocalizedString("Save", comment: "Logg")
+                    let answer = Alerts.dialogOrCancel(question: question + " " + ViewControllerReference.shared.configurationsplist, text: text, dialog: dialog)
+                    if answer {
+                        self.saveconfigInMemoryToPersistentStore()
+                    }
+                }
+            } catch {}
+        }
+    }
+
     // Writing configuration to persistent store
     // Configuration is [NSDictionary]
     private func writeToStore(array: [NSDictionary]) {
-        self.logDelegate?.addlog(logrecord: NSLocalizedString("Write and reload configurations", comment: "Storage"))
-        if self.writeNSDictionaryToPersistentStorage(array) {
-            self.configurationsDelegate?.createandreloadconfigurations()
+        if self.writeNSDictionaryToPersistentStorage(array: array) {
+            self.configurationsDelegate?.reloadconfigurationsobject()
         }
     }
 
     init(profile: String?) {
         super.init(whattoreadwrite: .configuration, profile: profile)
-        self.configurationsasdictionary = self.readNSDictionaryFromPersistentStore()
+        if self.configurations == nil {
+            self.configurationsasdictionary = self.readNSDictionaryFromPersistentStore()
+        }
+    }
+
+    init(profile: String?, readonly: Bool) {
+        super.init(whattoreadwrite: .configuration, profile: profile)
+        if readonly == true {
+            self.configurationsasdictionary = self.readNSDictionaryFromPersistentStore()
+        } else {
+            self.writeconfigstostoreasplist()
+        }
     }
 }
