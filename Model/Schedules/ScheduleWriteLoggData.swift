@@ -16,8 +16,6 @@ class ScheduleWriteLoggData: SetConfigurations {
 
     typealias Row = (Int, Int)
 
-    // Function adds results of task to file (via memory). Memory are
-    // saved after changed. Used in single tasks
     func addlogpermanentstore(hiddenID: Int, result: String) {
         if ViewControllerReference.shared.detailedlogging {
             // Set the current date
@@ -31,36 +29,29 @@ class ScheduleWriteLoggData: SetConfigurations {
                 } else {
                     resultannotaded = result
                 }
-                if let dict = ViewControllerReference.shared.scheduledTask {
-                    let schedule = dict.value(forKey: "schedule") as? String ?? ""
-                    let dateStart = (dict.value(forKey: "dateStart") as? Date)?.en_us_string_from_date() ?? ""
-                    var inserted: Bool = self.addlogexisting(hiddenID: hiddenID, result: resultannotaded ?? "",
-                                                             date: date,
-                                                             schedule: schedule,
-                                                             dateStart: dateStart)
-                    if inserted == false {
-                        inserted = self.addlognew(hiddenID: hiddenID, result: resultannotaded ?? "",
-                                                  date: date,
-                                                  schedule: schedule,
-                                                  dateStart: dateStart)
+                var inserted: Bool = self.addlogexisting(hiddenID: hiddenID, result: resultannotaded ?? "", date: date)
+                // Record does not exist, create new Schedule (not inserted)
+                if inserted == false {
+                    inserted = self.addlognew(hiddenID: hiddenID, result: resultannotaded ?? "", date: date)
+                }
+                if inserted {
+                    if ViewControllerReference.shared.json {
+                        PersistentStorageSchedulingJSON(profile: self.profile).savescheduleInMemoryToPersistentStore()
+                    } else {
+                        PersistentStorageScheduling(profile: self.profile).savescheduleInMemoryToPersistentStore()
                     }
-                    if inserted {
-                        PersistentStorageScheduling(profile: self.profile, writeonly: true).savescheduleInMemoryToPersistentStore()
-                    }
+                    self.deselectrowtable(vcontroller: .vctabmain)
                 }
             }
         }
     }
 
-    func addlogexisting(hiddenID: Int, result: String, date: String, schedule: String, dateStart: String) -> Bool {
+    func addlogexisting(hiddenID: Int, result: String, date: String) -> Bool {
         if ViewControllerReference.shared.synctasks.contains(self.configurations?.getResourceConfiguration(hiddenID, resource: .task) ?? "") {
             if let index = self.schedules?.firstIndex(where: { $0.hiddenID == hiddenID
-                    && $0.schedule == schedule
-                    && $0.dateStart == dateStart
+                    && $0.schedule == Scheduletype.manuel.rawValue
+                    && $0.dateStart == "01 Jan 1900 00:00"
             }) {
-                if self.schedules?[index].logrecords == nil {
-                    self.schedules?[index].logrecords = [Log]()
-                }
                 var log = Log()
                 log.dateExecuted = date
                 log.resultExecuted = result
@@ -71,12 +62,12 @@ class ScheduleWriteLoggData: SetConfigurations {
         return false
     }
 
-    func addlognew(hiddenID: Int, result: String, date: String, schedule: String, dateStart: String) -> Bool {
+    func addlognew(hiddenID: Int, result: String, date: String) -> Bool {
         if ViewControllerReference.shared.synctasks.contains(self.configurations?.getResourceConfiguration(hiddenID, resource: .task) ?? "") {
             let masterdict = NSMutableDictionary()
             masterdict.setObject(hiddenID, forKey: "hiddenID" as NSCopying)
-            masterdict.setObject(dateStart, forKey: "dateStart" as NSCopying)
-            masterdict.setObject(schedule, forKey: "schedule" as NSCopying)
+            masterdict.setObject("01 Jan 1900 00:00", forKey: "dateStart" as NSCopying)
+            masterdict.setObject(Scheduletype.manuel.rawValue, forKey: "schedule" as NSCopying)
             let dict = NSMutableDictionary()
             dict.setObject(date, forKey: "dateExecuted" as NSCopying)
             dict.setObject(result, forKey: "resultExecuted" as NSCopying)
@@ -89,12 +80,9 @@ class ScheduleWriteLoggData: SetConfigurations {
         return false
     }
 
-    private func getconfig(hiddenID: Int) -> Configuration? {
-        if let index = self.configurations?.getIndex(hiddenID) {
-            guard index > -1 else { return nil }
-            return self.configurations?.getConfigurations()[index]
-        }
-        return nil
+    func getconfig(hiddenID: Int) -> Configuration? {
+        let index = self.configurations?.getIndex(hiddenID) ?? 0
+        return self.configurations?.getConfigurations()[index]
     }
 
     init(profile: String?) {

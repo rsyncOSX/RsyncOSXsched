@@ -20,23 +20,25 @@ class CheckAllConfigurations: Delay, Setlog {
     }
 
     private func readallconfigurations() {
-        self.getprofilenames()
+        guard self.allprofiles != nil else { return }
         var configurations: [Configuration]?
         for i in 0 ..< (self.allprofiles?.count ?? 0) {
-            let profilename = self.allprofiles?[i]
-            if self.allconfigurations == nil { self.allconfigurations = [] }
-            if profilename == NSLocalizedString("Default profile", comment: "default profile") {
-                configurations = PersistentStorageConfiguration(profile: nil).readconfigurations()
-            } else {
-                configurations = PersistentStorageConfiguration(profile: profilename).readconfigurations()
+            let profile = self.allprofiles![i]
+            if self.allconfigurations == nil {
+                self.allconfigurations = []
             }
+            if profile == NSLocalizedString("Default profile", comment: "default profile") {
+                configurations = PersistentStorageAllprofilesAPI(profile: nil).getConfigurations()
+            } else {
+                configurations = PersistentStorageAllprofilesAPI(profile: profile).getConfigurations()
+            }
+            guard configurations != nil else { return }
             for j in 0 ..< (configurations?.count ?? 0) {
-                configurations?[j].profilename = profilename
-                self.allconfigurations?.append(configurations![j])
+                configurations![j].profile = profile
+                self.allconfigurations!.append(configurations![j])
             }
         }
     }
-
     init(path: String) {
         self.allpaths = [String]()
         self.allpaths?.append(path)
