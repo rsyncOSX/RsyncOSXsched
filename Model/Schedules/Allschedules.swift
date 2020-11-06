@@ -46,7 +46,7 @@ class Allschedules {
         for i in 0 ..< (self.allprofiles?.count ?? 0) {
             let profilename = self.allprofiles?[i]
             if self.allschedules == nil { self.allschedules = [] }
-            configurationschedule = PersistentStorageScheduling(profile: profilename, readonly: false).getScheduleandhistory(nolog: true)
+            configurationschedule = PersistentStorageScheduling(profile: profilename, writeonly: false).getScheduleandhistory(nolog: true)
             for j in 0 ..< (configurationschedule?.count ?? 0) {
                 configurationschedule?[j].profilename = profilename
                 let offsiteserver = configurationschedule?[j].offsiteserver ?? ""

@@ -31,20 +31,13 @@ class PersistentStorageConfiguration: ReadWriteDictionary, SetConfigurations {
     // Writing configuration to persistent store
     // Configuration is [NSDictionary]
     private func writeToStore(array: [NSDictionary]) {
-        if self.writeNSDictionaryToPersistentStorage(array: array) {}
+        if self.writeNSDictionaryToPersistentStorage(array: array) {
+            self.configurationsDelegate?.createandreloadconfigurations()
+        }
     }
 
     init(profile: String?) {
         super.init(whattoreadwrite: .configuration, profile: profile)
-        if self.configurations == nil {
-            self.configurationsasdictionary = self.readNSDictionaryFromPersistentStore()
-        }
-    }
-
-    init(profile: String?, readonly: Bool) {
-        super.init(whattoreadwrite: .configuration, profile: profile)
-        if readonly == true {
-            self.configurationsasdictionary = self.readNSDictionaryFromPersistentStore()
-        }
+        self.configurationsasdictionary = self.readNSDictionaryFromPersistentStore()
     }
 }

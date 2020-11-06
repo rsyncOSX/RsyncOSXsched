@@ -43,23 +43,19 @@ class PersistentStorageScheduling: ReadWriteDictionary, SetSchedules {
     }
 
     // Writing schedules to persistent store
-    // Schedule is [NSDictionary]
     private func writeToStore(array: [NSDictionary]) {
         if self.writeNSDictionaryToPersistentStorage(array: array) {
-            // self.schedulesDelegate?.reloadschedulesobject()
+            self.schedulesDelegate?.createandreloadschedules()
         }
     }
 
-    init(profile: String?) {
-        super.init(whattoreadwrite: .schedule, profile: profile)
-        if self.schedules == nil {
-            self.schedulesasdictionary = self.readNSDictionaryFromPersistentStore()
+    init(profile: String?, writeonly: Bool) {
+        if profile == NSLocalizedString("Default profile", comment: "default profile") {
+            super.init(whattoreadwrite: .schedule, profile: nil)
+        } else {
+            super.init(whattoreadwrite: .schedule, profile: profile)
         }
-    }
-
-    init(profile: String?, readonly: Bool) {
-        super.init(whattoreadwrite: .schedule, profile: profile)
-        if readonly == true {
+        if writeonly == false {
             self.schedulesasdictionary = self.readNSDictionaryFromPersistentStore()
         }
     }

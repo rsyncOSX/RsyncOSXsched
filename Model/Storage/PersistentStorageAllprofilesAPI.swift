@@ -25,7 +25,7 @@ class PersistentStorageAllprofilesAPI: SetConfigurations, SetSchedules {
                 }
             }
         } else {
-            let read = PersistentStorageConfiguration(profile: self.profile, readonly: true)
+            let read = PersistentStorageConfiguration(profile: self.profile)
             guard read.configurationsasdictionary != nil else { return nil }
             for dict in read.configurationsasdictionary! {
                 let conf = Configuration(dictionary: dict)
@@ -48,7 +48,7 @@ class PersistentStorageAllprofilesAPI: SetConfigurations, SetSchedules {
                 }
             }
         } else {
-            let read = PersistentStorageScheduling(profile: self.profile, readonly: true)
+            let read = PersistentStorageScheduling(profile: self.profile, writeonly: false)
             guard read.schedulesasdictionary != nil else { return nil }
             for dict in read.schedulesasdictionary! {
                 if let log = dict.value(forKey: "executed") {
