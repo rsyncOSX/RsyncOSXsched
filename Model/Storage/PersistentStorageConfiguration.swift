@@ -35,8 +35,10 @@ class PersistentStorageConfiguration: ReadWriteDictionary, SetConfigurations {
         }
     }
 
-    init(profile: String?) {
+    init(profile: String?, writeonly: Bool) {
         super.init(whattoreadwrite: .configuration, profile: profile)
-        self.configurationsasdictionary = self.readNSDictionaryFromPersistentStore()
+        if writeonly == false {
+            self.configurationsasdictionary = self.readNSDictionaryFromPersistentStore()
+        }
     }
 }

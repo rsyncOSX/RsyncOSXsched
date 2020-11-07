@@ -22,7 +22,7 @@ class CheckAllConfigurations: Delay, Setlog {
     private func getconfigurations(profile: String?) -> [Configuration]? {
         var configurations = [Configuration]()
         if ViewControllerReference.shared.json {
-            let read = PersistentStorageConfigurationJSON(profile: profile)
+            let read = PersistentStorageConfigurationJSON(profile: profile, writeonly: false)
             let transform = TransformConfigfromJSON()
             for i in 0 ..< (read.decodedjson?.count ?? 0) {
                 if let configitem = read.decodedjson?[i] as? DecodeConfigJSON {
@@ -33,7 +33,7 @@ class CheckAllConfigurations: Delay, Setlog {
                 }
             }
         } else {
-            let read = PersistentStorageConfiguration(profile: profile)
+            let read = PersistentStorageConfiguration(profile: profile, writeonly: false)
             guard read.configurationsasdictionary != nil else { return nil }
             for dict in read.configurationsasdictionary! {
                 let conf = Configuration(dictionary: dict)
