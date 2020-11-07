@@ -69,7 +69,7 @@ class Allschedules {
     func getScheduleandhistory(nolog: Bool, profile: String?) -> [ConfigurationSchedule]? {
         var schedule = [ConfigurationSchedule]()
         if ViewControllerReference.shared.json {
-            let read = PersistentStorageSchedulingJSON(profile: profile)
+            let read = PersistentStorageSchedulingJSON(profile: profile, writeonly: false)
             let transform = TransformSchedulefromJSON()
             for i in 0 ..< (read.decodedjson?.count ?? 0) {
                 if let scheduleitem = (read.decodedjson?[i] as? DecodeScheduleJSON) {
