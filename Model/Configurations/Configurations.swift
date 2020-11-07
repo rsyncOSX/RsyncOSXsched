@@ -35,8 +35,8 @@ class Configurations: SetSchedules {
     // Function for getting Configurations read into memory
     // - parameter none: none
     // - returns : Array of configurations
-    func getConfigurations() -> [Configuration] {
-        return self.configurations ?? []
+    func getConfigurations() -> [Configuration]? {
+        return self.configurations
     }
 
     func gethiddenID(index: Int) -> Int {

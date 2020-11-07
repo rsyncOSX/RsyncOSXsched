@@ -80,8 +80,12 @@ class ScheduleWriteLoggData: SetConfigurations {
     }
 
     func getconfig(hiddenID: Int) -> Configuration? {
-        let index = self.configurations?.getIndex(hiddenID) ?? 0
-        return self.configurations?.getConfigurations()[index]
+        if let index = self.configurations?.getIndex(hiddenID) {
+            if let config = self.configurations?.getConfigurations()?[index] {
+                return config
+            }
+        }
+        return nil
     }
 
     init(profile: String?) {
