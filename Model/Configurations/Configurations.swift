@@ -56,7 +56,11 @@ class Configurations: SetSchedules {
         let currendate = Date()
         self.configurations?[index].dateRun = currendate.en_us_string_from_date()
         // Saving updated configuration in memory to persistent store
-        PersistentStorageConfiguration(profile: self.profile).saveconfigInMemoryToPersistentStore()
+        if ViewControllerReference.shared.json {
+            PersistentStorageConfigurationJSON(profile: self.profile).saveconfigInMemoryToPersistentStore()
+        } else {
+            PersistentStorageConfiguration(profile: self.profile).saveconfigInMemoryToPersistentStore()
+        }
     }
 
     func getIndex(_ hiddenID: Int) -> Int {
