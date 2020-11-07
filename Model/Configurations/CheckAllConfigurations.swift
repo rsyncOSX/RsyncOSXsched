@@ -19,6 +19,30 @@ class CheckAllConfigurations: Delay, Setlog {
         self.allprofiles = profile.getcatalogsasstringnames()
     }
 
+    private func getconfigurations(profile: String?) -> [Configuration]? {
+        var configurations = [Configuration]()
+        if ViewControllerReference.shared.json {
+            let read = PersistentStorageConfigurationJSON(profile: profile)
+            let transform = TransformConfigfromJSON()
+            for i in 0 ..< (read.decodedjson?.count ?? 0) {
+                if let configitem = read.decodedjson?[i] as? DecodeConfigJSON {
+                    let transformed = transform.transform(object: configitem)
+                    if ViewControllerReference.shared.synctasks.contains(transformed.task) {
+                        configurations.append(transformed)
+                    }
+                }
+            }
+        } else {
+            let read = PersistentStorageConfiguration(profile: profile)
+            guard read.configurationsasdictionary != nil else { return nil }
+            for dict in read.configurationsasdictionary! {
+                let conf = Configuration(dictionary: dict)
+                configurations.append(conf)
+            }
+        }
+        return configurations
+    }
+
     private func readallconfigurations() {
         guard self.allprofiles != nil else { return }
         var configurations: [Configuration]?
@@ -28,14 +52,13 @@ class CheckAllConfigurations: Delay, Setlog {
                 self.allconfigurations = []
             }
             if profile == NSLocalizedString("Default profile", comment: "default profile") {
-                configurations = PersistentStorageAllprofilesAPI(profile: nil).getConfigurations()
+                configurations = getconfigurations(profile: nil)
             } else {
-                configurations = PersistentStorageAllprofilesAPI(profile: profile).getConfigurations()
+                configurations = getconfigurations(profile: profile)
             }
-            guard configurations != nil else { return }
             for j in 0 ..< (configurations?.count ?? 0) {
-                configurations![j].profile = profile
-                self.allconfigurations!.append(configurations![j])
+                configurations?[j].profile = profile
+                self.allconfigurations?.append(configurations![j])
             }
         }
     }
