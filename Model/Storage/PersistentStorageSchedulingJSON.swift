@@ -74,7 +74,11 @@ class PersistentStorageSchedulingJSON: ReadWriteJSON, SetSchedules {
     }
 
     init(profile: String?, writeonly: Bool) {
-        super.init(profile: profile, filename: ViewControllerReference.shared.fileschedulesjson)
+        if profile == NSLocalizedString("Default profile", comment: "default profile") {
+            super.init(profile: nil, filename: ViewControllerReference.shared.fileschedulesjson)
+        } else {
+            super.init(profile: profile, filename: ViewControllerReference.shared.fileschedulesjson)
+        }
         self.profile = profile
         if writeonly == false {
             self.JSONFromPersistentStore()
