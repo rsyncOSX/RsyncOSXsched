@@ -46,7 +46,7 @@ class PersistentStorageSchedulingJSON: ReadWriteJSON, SetSchedules {
             }
         } catch let e {
             let error = e as NSError
-            // self.error(error: error.description, errortype: .json)
+            self.error(error: error.description, errortype: .json)
             return nil
         }
         return nil
@@ -59,7 +59,7 @@ class PersistentStorageSchedulingJSON: ReadWriteJSON, SetSchedules {
                 self.decodedjson = try decoder.decode([DecodeScheduleJSON].self, from: jsonstring)
             } catch let e {
                 let error = e as NSError
-                // self.error(error: error.description, errortype: .json)
+                self.error(error: error.description, errortype: .json)
             }
         }
     }

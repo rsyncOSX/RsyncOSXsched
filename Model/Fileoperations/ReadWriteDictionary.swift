@@ -9,7 +9,6 @@
 //  let str = "/Rsync/" + serialNumber + profile? + "/configRsync.plist"
 //  let str = "/Rsync/" + serialNumber + "/config.plist"
 //
-// swiftlint:disable line_length
 
 import Cocoa
 import Foundation

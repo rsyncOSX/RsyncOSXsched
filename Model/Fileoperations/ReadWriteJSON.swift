@@ -5,7 +5,6 @@
 //  Created by Thomas Evensen on 29/10/2020.
 //  Copyright © 2020 Thomas Evensen. All rights reserved.
 //
-// swiftlint:disable line_length
 
 import Files
 import Foundation
@@ -26,7 +25,7 @@ class ReadWriteJSON: NamesandPaths, FileErrors {
                 }
             } catch let e {
                 let error = e as NSError
-                // self.error(error: error.description, errortype: .json)
+                self.error(error: error.description, errortype: .json)
             }
         }
     }
@@ -44,7 +43,7 @@ class ReadWriteJSON: NamesandPaths, FileErrors {
                 return try file.readAsString()
             } catch let e {
                 let error = e as NSError
-                // self.error(error: error.description, errortype: .json)
+                self.error(error: error.description, errortype: .json)
                 return nil
             }
         }

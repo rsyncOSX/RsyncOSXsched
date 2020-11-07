@@ -14,6 +14,7 @@ enum Fileerrortype {
     case writelogfile
     case profilecreatedirectory
     case profiledeletedirectory
+    case json
 }
 
 // Protocol for reporting file errors

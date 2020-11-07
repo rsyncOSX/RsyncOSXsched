@@ -5,7 +5,6 @@
 //  Created by Thomas Evensen on 20/10/2020.
 //  Copyright © 2020 Thomas Evensen. All rights reserved.
 //
-// swiftlint:disable line_length
 
 import Foundation
 
@@ -55,7 +54,7 @@ class PersistentStorageConfigurationJSON: ReadWriteJSON, SetConfigurations {
                 self.decodedjson = try decoder.decode([DecodeConfigJSON].self, from: jsonstring)
             } catch let e {
                 let error = e as NSError
-                // self.error(error: error.description, errortype: .json)
+                self.error(error: error.description, errortype: .json)
             }
         }
     }
