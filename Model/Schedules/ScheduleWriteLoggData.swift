@@ -6,7 +6,6 @@
 //  Copyright © 2017 Thomas Evensen. All rights reserved.
 //
 // swiftlint:disable line_length
-
 import Cocoa
 import Foundation
 
@@ -16,8 +15,6 @@ class ScheduleWriteLoggData: SetConfigurations {
 
     typealias Row = (Int, Int)
 
-    // Function adds results of task to file (via memory). Memory are
-    // saved after changed. Used in single tasks
     func addlogpermanentstore(hiddenID: Int, result: String) {
         if ViewControllerReference.shared.detailedlogging {
             // Set the current date
@@ -92,7 +89,7 @@ class ScheduleWriteLoggData: SetConfigurations {
     private func getconfig(hiddenID: Int) -> Configuration? {
         if let index = self.configurations?.getIndex(hiddenID) {
             guard index > -1 else { return nil }
-            return self.configurations?.getConfigurations()[index]
+            return self.configurations?.getConfigurations()?[index]
         }
         return nil
     }

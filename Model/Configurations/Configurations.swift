@@ -35,8 +35,8 @@ class Configurations: SetSchedules {
     // Function for getting Configurations read into memory
     // - parameter none: none
     // - returns : Array of configurations
-    func getConfigurations() -> [Configuration] {
-        return self.configurations ?? []
+    func getConfigurations() -> [Configuration]? {
+        return self.configurations
     }
 
     func gethiddenID(index: Int) -> Int {
@@ -56,7 +56,11 @@ class Configurations: SetSchedules {
         let currendate = Date()
         self.configurations?[index].dateRun = currendate.en_us_string_from_date()
         // Saving updated configuration in memory to persistent store
-        PersistentStorageConfiguration(profile: self.profile).saveconfigInMemoryToPersistentStore()
+        if ViewControllerReference.shared.json {
+            PersistentStorageConfigurationJSON(profile: self.profile).saveconfigInMemoryToPersistentStore()
+        } else {
+            PersistentStorageConfiguration(profile: self.profile).saveconfigInMemoryToPersistentStore()
+        }
     }
 
     func getIndex(_ hiddenID: Int) -> Int {
@@ -103,13 +107,13 @@ class Configurations: SetSchedules {
             if configurations[i].offsiteServer.isEmpty == true {
                 configurations[i].offsiteServer = "localhost"
             }
-            let row: NSDictionary = ConvertOneConfig(config: self.configurations![i], profile: self.profile).dict
+            let row: NSDictionary = ConvertOneConfig(config: self.configurations![i]).dict
             data.append(row)
         }
         return data
     }
 
-    private func readconfigurations() {
+    func readconfigurationsplist() {
         let store = PersistentStorageConfiguration(profile: self.profile).configurationsasdictionary
         for i in 0 ..< (store?.count ?? 0) {
             if let dict = store?[i] {
@@ -120,12 +124,36 @@ class Configurations: SetSchedules {
             }
         }
         // Then prepare the datasource for use in tableviews as Dictionarys
-        var data = [NSDictionary]()
+        var data = [NSMutableDictionary]()
         for i in 0 ..< (self.configurations?.count ?? 0) {
             let task = self.configurations?[i].task
             if ViewControllerReference.shared.synctasks.contains(task ?? "") {
                 if let config = self.configurations?[i] {
-                    data.append(ConvertOneConfig(config: config, profile: self.profile).dict)
+                    data.append(ConvertOneConfig(config: config).dict)
+                }
+            }
+        }
+        self.configurationsDataSource = data
+    }
+
+    func readconfigurationsjson() {
+        let store = PersistentStorageConfigurationJSON(profile: self.profile).decodedjson
+        let transform = TransformConfigfromJSON()
+        for i in 0 ..< (store?.count ?? 0) {
+            if let configitem = store?[i] as? DecodeConfigJSON {
+                let transformed = transform.transform(object: configitem)
+                if ViewControllerReference.shared.synctasks.contains(transformed.task) {
+                    self.configurations?.append(transformed)
+                }
+            }
+        }
+        // Then prepare the datasource for use in tableviews as Dictionarys
+        var data = [NSMutableDictionary]()
+        for i in 0 ..< (self.configurations?.count ?? 0) {
+            let task = self.configurations?[i].task
+            if ViewControllerReference.shared.synctasks.contains(task ?? "") {
+                if let config = self.configurations?[i] {
+                    data.append(ConvertOneConfig(config: config).dict)
                 }
             }
         }
@@ -136,6 +164,10 @@ class Configurations: SetSchedules {
         self.configurations = [Configuration]()
         self.configurationsDataSource = nil
         self.profile = profile
-        self.readconfigurations()
+        if ViewControllerReference.shared.json {
+            self.readconfigurationsjson()
+        } else {
+            self.readconfigurationsplist()
+        }
     }
 }

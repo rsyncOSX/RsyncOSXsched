@@ -6,21 +6,12 @@
 //  Copyright © 2015 Thomas Evensen. All rights reserved.
 //
 
+import Files
 import Foundation
 
-final class PersistentStorageConfiguration: ReadWriteDictionary, SetConfigurations {
-    /// Variable holds all configuration data from persisten storage
+class PersistentStorageConfiguration: ReadWriteDictionary, SetConfigurations {
+    // Variable holds all configuration data from persisten storage
     var configurationsasdictionary: [NSDictionary]?
-
-    // Read configurations from persisten store
-    func readconfigurations() -> [Configuration]? {
-        guard self.configurationsasdictionary != nil else { return nil }
-        var configurations = [Configuration]()
-        for dict in self.configurationsasdictionary ?? [] {
-            configurations.append(Configuration(dictionary: dict))
-        }
-        return configurations
-    }
 
     // Saving Configuration from MEMORY to persistent store
     // Reads Configurations from MEMORY and saves to persistent Store
@@ -39,8 +30,7 @@ final class PersistentStorageConfiguration: ReadWriteDictionary, SetConfiguratio
     // Writing configuration to persistent store
     // Configuration is [NSDictionary]
     private func writeToStore(array: [NSDictionary]) {
-        self.logDelegate?.addlog(logrecord: NSLocalizedString("Write and reload configurations", comment: "Storage"))
-        if self.writeNSDictionaryToPersistentStorage(array) {
+        if self.writeNSDictionaryToPersistentStorage(array: array) {
             self.configurationsDelegate?.createandreloadconfigurations()
         }
     }

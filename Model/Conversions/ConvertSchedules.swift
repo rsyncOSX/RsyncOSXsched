@@ -11,7 +11,7 @@ import Foundation
 
 struct ConvertSchedules: SetSchedules {
     var schedules: [NSDictionary]?
-
+    var cleanedschedules: [ConfigurationSchedule]?
     init() {
         var array = [NSDictionary]()
         if let schedules = self.schedules?.getSchedule() {
@@ -48,5 +48,23 @@ struct ConvertSchedules: SetSchedules {
             }
         }
         self.schedules = array
+    }
+
+    init(schedules: [ConfigurationSchedule]?) {
+        var cleaned = [ConfigurationSchedule]()
+        for i in 0 ..< (schedules?.count ?? 0) {
+            if schedules![i].delete ?? false == false {
+                cleaned.append(schedules![i])
+            } else {
+                if schedules?[i].logrecords?.isEmpty == false {
+                    if schedules?[i].delete ?? false == false {
+                        if let schedule = schedules?[i] {
+                            cleaned.append(schedule)
+                        }
+                    }
+                }
+            }
+        }
+        self.cleanedschedules = cleaned
     }
 }

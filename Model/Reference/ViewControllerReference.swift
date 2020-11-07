@@ -77,6 +77,13 @@ class ViewControllerReference {
     var temporarypathforrestore: String?
     // Check for network changes
     var monitornetworkconnection: Bool = false
+    // Read JSON
+    var json: Bool = false
+    // Read plist, convert to JSON button enabled
+    var convertjsonbutton: Bool = false
+    // JSON names
+    var fileschedulesjson = "schedules.json"
+    var fileconfigurationsjson = "configurations.json"
 
     init() {
         self.synctasks = Set<String>()

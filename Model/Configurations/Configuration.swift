@@ -37,7 +37,7 @@ struct Configuration {
     var sshkeypathandidentityfile: String?
     var dayssincelastbackup: String?
     var markdays: Bool = false
-    var profilename: String?
+    var profile: String?
     // Snapshots, day to save and last = 1 or every last=0
     var snapdayoffweek: String?
     var snaplast: Int?

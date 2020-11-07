@@ -19,19 +19,45 @@ class CheckAllConfigurations: Delay, Setlog {
         self.allprofiles = profile.getcatalogsasstringnames()
     }
 
+    private func getconfigurations(profile: String?) -> [Configuration]? {
+        var configurations = [Configuration]()
+        if ViewControllerReference.shared.json {
+            let read = PersistentStorageConfigurationJSON(profile: profile)
+            let transform = TransformConfigfromJSON()
+            for i in 0 ..< (read.decodedjson?.count ?? 0) {
+                if let configitem = read.decodedjson?[i] as? DecodeConfigJSON {
+                    let transformed = transform.transform(object: configitem)
+                    if ViewControllerReference.shared.synctasks.contains(transformed.task) {
+                        configurations.append(transformed)
+                    }
+                }
+            }
+        } else {
+            let read = PersistentStorageConfiguration(profile: profile)
+            guard read.configurationsasdictionary != nil else { return nil }
+            for dict in read.configurationsasdictionary! {
+                let conf = Configuration(dictionary: dict)
+                configurations.append(conf)
+            }
+        }
+        return configurations
+    }
+
     private func readallconfigurations() {
-        self.getprofilenames()
+        guard self.allprofiles != nil else { return }
         var configurations: [Configuration]?
         for i in 0 ..< (self.allprofiles?.count ?? 0) {
-            let profilename = self.allprofiles?[i]
-            if self.allconfigurations == nil { self.allconfigurations = [] }
-            if profilename == NSLocalizedString("Default profile", comment: "default profile") {
-                configurations = PersistentStorageConfiguration(profile: nil).readconfigurations()
+            let profile = self.allprofiles![i]
+            if self.allconfigurations == nil {
+                self.allconfigurations = []
+            }
+            if profile == NSLocalizedString("Default profile", comment: "default profile") {
+                configurations = getconfigurations(profile: nil)
             } else {
-                configurations = PersistentStorageConfiguration(profile: profilename).readconfigurations()
+                configurations = getconfigurations(profile: profile)
             }
             for j in 0 ..< (configurations?.count ?? 0) {
-                configurations?[j].profilename = profilename
+                configurations?[j].profile = profile
                 self.allconfigurations?.append(configurations![j])
             }
         }

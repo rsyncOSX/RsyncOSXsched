@@ -5,7 +5,7 @@
 //  Created by Thomas Evensen on 24/08/2016.
 //  Copyright © 2016 Thomas Evensen. All rights reserved.
 //
-// swiftlint:disable cyclomatic_complexity
+// swiftlint:disable cyclomatic_complexity function_body_length
 
 import Foundation
 
@@ -32,6 +32,14 @@ struct Userconfiguration {
         if let rsyncPath = dict.value(forKey: "rsyncPath") as? String {
             ViewControllerReference.shared.localrsyncpath = rsyncPath
         }
+        // Temporary path for restores single files or directory
+        if let restorePath = dict.value(forKey: "restorePath") as? String {
+            if restorePath.count > 0 {
+                ViewControllerReference.shared.temporarypathforrestore = restorePath
+            } else {
+                ViewControllerReference.shared.temporarypathforrestore = nil
+            }
+        }
         // Paths rsyncOSX and RsyncOSXsched
         if let pathrsyncosx = dict.value(forKey: "pathrsyncosx") as? String {
             if pathrsyncosx.isEmpty == true {
@@ -53,7 +61,6 @@ struct Userconfiguration {
         if let environmentvalue = dict.value(forKey: "environmentvalue") as? String {
             ViewControllerReference.shared.environmentvalue = environmentvalue
         }
-
         if let sshkeypathandidentityfile = dict.value(forKey: "sshkeypathandidentityfile") as? String {
             ViewControllerReference.shared.sshkeypathandidentityfile = sshkeypathandidentityfile
         }
@@ -65,6 +72,13 @@ struct Userconfiguration {
                 ViewControllerReference.shared.monitornetworkconnection = true
             } else {
                 ViewControllerReference.shared.monitornetworkconnection = false
+            }
+        }
+        if let json = dict.value(forKey: "json") as? Int {
+            if json == 1 {
+                ViewControllerReference.shared.json = true
+            } else {
+                ViewControllerReference.shared.json = false
             }
         }
     }

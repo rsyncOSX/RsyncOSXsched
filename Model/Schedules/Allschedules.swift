@@ -5,11 +5,11 @@
 //  Created by Thomas Evensen on 06.05.2018.
 //  Copyright © 2018 Maxim. All rights reserved.
 //
+// swiftlint:disable trailing_comma line_length
 
 import Cocoa
 import Foundation
 
-// Protocol for returning object configurations data
 protocol GetSchedulesSortedAndExpanded: AnyObject {
     func getschedulessortedandexpanded() -> ScheduleSortedAndExpand?
 }
@@ -44,9 +44,12 @@ class Allschedules {
     private func readallschedules() {
         var configurationschedule: [ConfigurationSchedule]?
         for i in 0 ..< (self.allprofiles?.count ?? 0) {
-            let profilename = self.allprofiles?[i]
+            var profilename = self.allprofiles?[i]
+            if profilename == NSLocalizedString("Default profile", comment: "default profile") {
+                profilename = nil
+            }
             if self.allschedules == nil { self.allschedules = [] }
-            configurationschedule = PersistentStorageScheduling(profile: profilename, writeonly: false).getScheduleandhistory(nolog: true)
+            configurationschedule = self.getScheduleandhistory(nolog: true, profile: profilename)
             for j in 0 ..< (configurationschedule?.count ?? 0) {
                 configurationschedule?[j].profilename = profilename
                 let offsiteserver = configurationschedule?[j].offsiteserver ?? ""
@@ -61,6 +64,34 @@ class Allschedules {
                 }
             }
         }
+    }
+
+    func getScheduleandhistory(nolog: Bool, profile: String?) -> [ConfigurationSchedule]? {
+        var schedule = [ConfigurationSchedule]()
+        if ViewControllerReference.shared.json {
+            let read = PersistentStorageSchedulingJSON(profile: profile)
+            let transform = TransformSchedulefromJSON()
+            for i in 0 ..< (read.decodedjson?.count ?? 0) {
+                if let scheduleitem = (read.decodedjson?[i] as? DecodeScheduleJSON) {
+                    var transformed = transform.transform(object: scheduleitem)
+                    transformed.profilename = profile
+                    schedule.append(transformed)
+                }
+            }
+        } else {
+            let read = PersistentStorageScheduling(profile: profile, writeonly: false)
+            guard read.schedulesasdictionary != nil else { return nil }
+            for dict in read.schedulesasdictionary! {
+                if let log = dict.value(forKey: "executed") {
+                    let conf = ConfigurationSchedule(dictionary: dict, log: log as? NSArray, nolog: nolog)
+                    schedule.append(conf)
+                } else {
+                    let conf = ConfigurationSchedule(dictionary: dict, log: nil, nolog: nolog)
+                    schedule.append(conf)
+                }
+            }
+        }
+        return schedule
     }
 
     // Function is reading Schedule plans and transform plans to

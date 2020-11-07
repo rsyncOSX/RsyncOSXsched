@@ -10,9 +10,11 @@
 //   for Schedule.
 //
 
+import Files
 import Foundation
 
-final class PersistentStorageScheduling: ReadWriteDictionary, SetSchedules {
+class PersistentStorageScheduling: ReadWriteDictionary, SetSchedules {
+    // Variable holds all schedule data from persisten storage
     var schedulesasdictionary: [NSDictionary]?
 
     // Read schedules and history
@@ -41,8 +43,7 @@ final class PersistentStorageScheduling: ReadWriteDictionary, SetSchedules {
 
     // Writing schedules to persistent store
     private func writeToStore(array: [NSDictionary]) {
-        self.logDelegate?.addlog(logrecord: NSLocalizedString("Write and reload schedules", comment: "Storage"))
-        if self.writeNSDictionaryToPersistentStorage(array) {
+        if self.writeNSDictionaryToPersistentStorage(array: array) {
             self.schedulesDelegate?.createandreloadschedules()
         }
     }
