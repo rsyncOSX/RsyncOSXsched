@@ -69,7 +69,11 @@ class PersistentStorageConfigurationJSON: ReadWriteJSON, SetConfigurations {
     }
 
     init(profile: String?, writeonly: Bool) {
-        super.init(profile: profile, filename: ViewControllerReference.shared.fileconfigurationsjson)
+        if profile == NSLocalizedString("Default profile", comment: "default profile") {
+            super.init(profile: nil, filename: ViewControllerReference.shared.fileconfigurationsjson)
+        } else {
+            super.init(profile: profile, filename: ViewControllerReference.shared.fileconfigurationsjson)
+        }
         self.profile = profile
         if writeonly == false {
             self.JSONFromPersistentStore()
