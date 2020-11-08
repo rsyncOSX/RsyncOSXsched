@@ -10,6 +10,10 @@
 import Cocoa
 import Foundation
 
+protocol ClosePopover: AnyObject {
+    func close()
+}
+
 class ViewControllerMain: NSViewController, Delay, Setlog {
     // Information about logs
     lazy var viewControllerInformation: NSViewController? = {
@@ -50,6 +54,8 @@ class ViewControllerMain: NSViewController, Delay, Setlog {
     var allschedules: [ConfigurationSchedule]?
     var index: Int?
 
+    weak var closeDelegate: ClosePopover?
+
     override func viewDidLoad() {
         super.viewDidLoad()
         // Decide if:
@@ -73,6 +79,8 @@ class ViewControllerMain: NSViewController, Delay, Setlog {
         // after start
         _ = Checkfornewversion()
         self.addobserverforreload()
+        // Appdelegat
+        self.closeDelegate = ViewControllerReference.shared.appdelegate as? AppDelegate
     }
 
     override func viewDidAppear() {
@@ -142,6 +150,7 @@ class ViewControllerMain: NSViewController, Delay, Setlog {
             self.presentAsModalWindow(view)
         }
         self.view.window?.close()
+        self.closeDelegate?.close()
     }
 
     @IBAction func viewallschedules(_: NSButton) {
@@ -149,6 +158,7 @@ class ViewControllerMain: NSViewController, Delay, Setlog {
             self.presentAsModalWindow(view)
         }
         self.view.window?.close()
+        self.closeDelegate?.close()
     }
 
     func createandreloadschedules() {
