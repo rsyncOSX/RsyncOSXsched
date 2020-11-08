@@ -1,18 +1,10 @@
-//
-//  ConvertSchedules.swift
-//  RsyncOSX
-//
-//  Created by Thomas Evensen on 26/04/2019.
-//  Copyright © 2019 Thomas Evensen. All rights reserved.
-//
-// swiftlint:disable trailing_comma
-
 import Foundation
 
 struct ConvertSchedules: SetSchedules {
     var schedules: [NSDictionary]?
     var cleanedschedules: [ConfigurationSchedule]?
-    init() {
+
+    private mutating func convertNSDictionary() {
         var array = [NSDictionary]()
         if let schedules = self.schedules?.getSchedule() {
             for i in 0 ..< schedules.count {
@@ -50,21 +42,29 @@ struct ConvertSchedules: SetSchedules {
         self.schedules = array
     }
 
-    init(schedules: [ConfigurationSchedule]?) {
-        var cleaned = [ConfigurationSchedule]()
-        for i in 0 ..< (schedules?.count ?? 0) {
-            if schedules![i].delete ?? false == false {
-                cleaned.append(schedules![i])
-            } else {
-                if schedules?[i].logrecords?.isEmpty == false {
-                    if schedules?[i].delete ?? false == false {
-                        if let schedule = schedules?[i] {
-                            cleaned.append(schedule)
+    private mutating func convertJSON() {
+        if let schedules = self.schedules?.getSchedule() {
+            var cleaned = [ConfigurationSchedule]()
+            for i in 0 ..< schedules.count {
+                if schedules[i].delete ?? false == false {
+                    cleaned.append(schedules[i])
+                } else {
+                    if schedules[i].logrecords?.isEmpty == false {
+                        if schedules[i].delete ?? false == false {
+                            cleaned.append(schedules[i])
                         }
                     }
                 }
             }
+            self.cleanedschedules = cleaned
         }
-        self.cleanedschedules = cleaned
+    }
+
+    init(JSON: Bool) {
+        if JSON == false {
+            self.convertNSDictionary()
+        } else {
+            self.convertJSON()
+        }
     }
 }
