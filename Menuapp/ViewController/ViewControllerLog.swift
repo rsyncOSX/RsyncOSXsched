@@ -23,7 +23,6 @@ class ViewControllerLog: NSViewController, GetInformation {
 
     override func viewDidAppear() {
         super.viewDidAppear()
-        self.view.window?.center()
         self.configpath.stringValue = NamesandPaths(profileorsshrootpath: .profileroot).fullroot ?? ""
         globalMainQueue.async { () -> Void in
             self.detailsTable.reloadData()

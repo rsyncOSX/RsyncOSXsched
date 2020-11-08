@@ -149,7 +149,6 @@ class ViewControllerMain: NSViewController, Delay, Setlog {
         if let view = self.viewControllerInformation {
             self.presentAsModalWindow(view)
         }
-        self.view.window?.close()
         self.closeDelegate?.close()
     }
 
@@ -157,7 +156,6 @@ class ViewControllerMain: NSViewController, Delay, Setlog {
         if let view = self.viewControllerAllschedules {
             self.presentAsModalWindow(view)
         }
-        self.view.window?.close()
         self.closeDelegate?.close()
     }
 
