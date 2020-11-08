@@ -24,6 +24,7 @@ class ViewControllerSchedules: NSViewController, GetAllSchedules, Setlog {
 
     override func viewDidAppear() {
         super.viewDidAppear()
+        self.view.window?.center()
         self.loadProfileDelegate = ViewControllerReference.shared.viewControllermain as? ViewControllerMain
         globalMainQueue.async { () -> Void in
             self.allschedulestable.reloadData()
