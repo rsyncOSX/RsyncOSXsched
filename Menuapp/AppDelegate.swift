@@ -34,6 +34,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, Delay {
         self.delayWithSeconds(1) {
             self.showPopover(nil)
         }
+        ViewControllerReference.shared.appdelegate = self
     }
 
     func applicationWillTerminate(_: Notification) {}
@@ -56,5 +57,11 @@ class AppDelegate: NSObject, NSApplicationDelegate, Delay {
     func closePopover(_ sender: AnyObject?) {
         self.popover.performClose(sender)
         self.eventMonitor?.stop()
+    }
+}
+
+extension AppDelegate: ClosePopover {
+    func close() {
+        self.closePopover(nil)
     }
 }
