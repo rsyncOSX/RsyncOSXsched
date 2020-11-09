@@ -263,7 +263,6 @@ extension ViewControllerMain: NSTableViewDelegate, Attributedestring {
            let tableColumn = tableColumn
         {
             let hiddenID = object.value(forKey: "hiddenID") as? Int ?? -1
-            // var profilename = object.value(forKey: "profilename") as? String
             switch tableColumn.identifier.rawValue {
             case "scheduleID":
                 if self.schedulesortedandexpanded != nil {
