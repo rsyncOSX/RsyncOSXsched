@@ -99,16 +99,18 @@ class Configurations: SetSchedules {
     // - returns : Array of NSDictionary
     func getConfigurationsDataSourceSynchronize() -> [NSDictionary]? {
         guard self.configurations != nil else { return nil }
-        var configurations = self.configurations!.filter {
+        var configurations = self.configurations?.filter {
             ViewControllerReference.shared.synctasks.contains($0.task)
         }
         var data = [NSDictionary]()
-        for i in 0 ..< configurations.count {
-            if configurations[i].offsiteServer.isEmpty == true {
-                configurations[i].offsiteServer = "localhost"
+        for i in 0 ..< (configurations?.count ?? 0) {
+            if configurations?[i].offsiteServer.isEmpty == true {
+                configurations?[i].offsiteServer = "localhost"
             }
-            let row: NSDictionary = ConvertOneConfig(config: self.configurations![i]).dict
-            data.append(row)
+            if let config = self.configurations?[i] {
+                let row: NSDictionary = ConvertOneConfig(config: config).dict
+                data.append(row)
+            }
         }
         return data
     }
