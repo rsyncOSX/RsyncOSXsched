@@ -108,7 +108,7 @@ class Allschedules {
                 "dateStop": self.allschedules?[i].dateStop ?? "",
                 "hiddenID": self.allschedules?[i].hiddenID ?? -1,
                 "schedule": self.allschedules?[i].schedule ?? "",
-                "profilename": self.allschedules?[i].profilename ?? NSLocalizedString("Default profile", comment: "default profile"),
+                DictionaryStrings.profilename.rawValue: self.allschedules?[i].profilename ?? NSLocalizedString("Default profile", comment: "default profile"),
             ]
             data.append(dict as NSMutableDictionary)
         }

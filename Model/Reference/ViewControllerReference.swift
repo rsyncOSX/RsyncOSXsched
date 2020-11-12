@@ -188,6 +188,7 @@ enum DictionaryStrings: String {
     case delta
     case completeCellID
     case inprogressCellID
+    case profilename
 }
 
 enum NumDayofweek: Int {
