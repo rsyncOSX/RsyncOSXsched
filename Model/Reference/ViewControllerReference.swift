@@ -189,3 +189,23 @@ enum DictionaryStrings: String {
     case completeCellID
     case inprogressCellID
 }
+
+enum NumDayofweek: Int {
+    case Monday = 2
+    case Tuesday = 3
+    case Wednesday = 4
+    case Thursday = 5
+    case Friday = 6
+    case Saturday = 7
+    case Sunday = 1
+}
+
+enum StringDayofweek: String {
+    case Monday
+    case Tuesday
+    case Wednesday
+    case Thursday
+    case Friday
+    case Saturday
+    case Sunday
+}
