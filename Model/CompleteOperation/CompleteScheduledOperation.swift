@@ -36,7 +36,7 @@ final class CompleteScheduledOperation: ScheduledTaskAnimation, SetConfiguration
 
     init(dict: NSDictionary) {
         self.dict = dict
-        self.date = dict.value(forKey: "start") as? Date
-        self.hiddenID = dict.value(forKey: "hiddenID") as? Int
+        self.date = dict.value(forKey: DictionaryStrings.start.rawValue) as? Date
+        self.hiddenID = dict.value(forKey: DictionaryStrings.hiddenID.rawValue) as? Int
     }
 }

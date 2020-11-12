@@ -82,7 +82,7 @@ class Allschedules {
             let read = PersistentStorageScheduling(profile: profile, writeonly: false)
             guard read.schedulesasdictionary != nil else { return nil }
             for dict in read.schedulesasdictionary! {
-                if let log = dict.value(forKey: "executed") {
+                if let log = dict.value(forKey: DictionaryStrings.executed.rawValue) {
                     let conf = ConfigurationSchedule(dictionary: dict, log: log as? NSArray, nolog: nolog)
                     schedule.append(conf)
                 } else {
@@ -104,10 +104,10 @@ class Allschedules {
             self.allschedules?[i].dateStop != nil && scheduletypes.contains(self.allschedules?[i].schedule ?? "")
         {
             let dict: NSMutableDictionary = [
-                "dateStart": self.allschedules?[i].dateStart ?? "",
-                "dateStop": self.allschedules?[i].dateStop ?? "",
-                "hiddenID": self.allschedules?[i].hiddenID ?? -1,
-                "schedule": self.allschedules?[i].schedule ?? "",
+                DictionaryStrings.dateStart.rawValue: self.allschedules?[i].dateStart ?? "",
+                DictionaryStrings.dateStop.rawValue: self.allschedules?[i].dateStop ?? "",
+                DictionaryStrings.hiddenID.rawValue: self.allschedules?[i].hiddenID ?? -1,
+                DictionaryStrings.schedule.rawValue: self.allschedules?[i].schedule ?? "",
                 DictionaryStrings.profilename.rawValue: self.allschedules?[i].profilename ?? NSLocalizedString("Default profile", comment: "default profile"),
             ]
             data.append(dict as NSMutableDictionary)
