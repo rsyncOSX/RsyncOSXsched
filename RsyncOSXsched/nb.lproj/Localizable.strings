@@ -92,18 +92,6 @@
 /* rsyncerror */
 "There was a rsync error" = "En rsync feil er oppstått";
 
-/* ReadWrite */
-"to disk" = "til disk";
-
 /* main */
 "weekly" = "ukentlig";
-
-/* Storage */
-"Write and reload configurations" = "Skriver og leser konfigurasjoner";
-
-/* Storage */
-"Write and reload schedules" = "Skriver og leser oppgaver";
-
-/* ReadWrite */
-"Writing:" = "Skriver:";
 
