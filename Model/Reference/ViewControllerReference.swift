@@ -85,7 +85,7 @@ class ViewControllerReference {
     var fileschedulesjson = "schedules.json"
     var fileconfigurationsjson = "configurations.json"
     // reference to app delegate
-    var appdelegate: AnyObject?
+    weak var appdelegate: AnyObject?
 
     init() {
         self.synctasks = Set<String>()
