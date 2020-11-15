@@ -24,13 +24,9 @@ enum ResourceInConfiguration {
 }
 
 class Configurations: SetSchedules {
-    // reference to Process, used for kill in executing task
-    var process: Process?
     private var profile: String?
     // The main structure storing all Configurations for tasks
     private var configurations: [Configuration]?
-    // Datasource for NSTableViews
-    private var configurationsDataSource: [NSDictionary]?
 
     // Function for getting Configurations read into memory
     // - parameter none: none
@@ -135,7 +131,6 @@ class Configurations: SetSchedules {
                 }
             }
         }
-        self.configurationsDataSource = data
     }
 
     func readconfigurationsjson() {
@@ -159,12 +154,10 @@ class Configurations: SetSchedules {
                 }
             }
         }
-        self.configurationsDataSource = data
     }
 
     init(profile: String?) {
         self.configurations = [Configuration]()
-        self.configurationsDataSource = nil
         self.profile = profile
         if ViewControllerReference.shared.json {
             self.readconfigurationsjson()

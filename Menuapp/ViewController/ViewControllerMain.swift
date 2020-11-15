@@ -46,12 +46,6 @@ class ViewControllerMain: NSViewController, Delay, Setlog {
     var profilename: String?
     var log: [String]?
     var reloadnotification: NSObjectProtocol?
-    var checkallconfiguration: CheckAllConfigurations?
-    var automaticexecution: [NSDictionary]?
-
-    var profilesArray: [String]?
-    var profile: Catalogsandfiles?
-    var allschedules: [ConfigurationSchedule]?
     var index: Int?
 
     weak var closeDelegate: ClosePopover?
