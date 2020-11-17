@@ -5,6 +5,7 @@
 //  Created by Thomas Evensen on 09/12/15.
 //  Copyright © 2015 Thomas Evensen. All rights reserved.
 //
+// swiftlint:disable line_length
 
 import Files
 import Foundation
@@ -30,18 +31,19 @@ class PersistentStorageConfiguration: ReadWriteDictionary, SetConfigurations {
     // Writing configuration to persistent store
     // Configuration is [NSDictionary]
     private func writeToStore(array: [NSDictionary]) {
-        if self.writeNSDictionaryToPersistentStorage(array: array) {
-            self.configurationsDelegate?.createandreloadconfigurations()
+        self.writeNSDictionaryToPersistentStorage(array: array)
+    }
+
+    init(profile: String?) {
+        super.init(profile: profile, whattoreadwrite: .configuration)
+        if self.configurations == nil {
+            self.configurationsasdictionary = self.readNSDictionaryFromPersistentStore()
         }
     }
 
-    init(profile: String?, writeonly: Bool) {
-        if profile == NSLocalizedString("Default profile", comment: "default profile") {
-            super.init(whattoreadwrite: .configuration, profile: nil)
-        } else {
-            super.init(whattoreadwrite: .configuration, profile: profile)
-        }
-        if writeonly == false {
+    init(profile: String?, readonly: Bool) {
+        super.init(profile: profile, whattoreadwrite: .configuration)
+        if readonly == true {
             self.configurationsasdictionary = self.readNSDictionaryFromPersistentStore()
         }
     }

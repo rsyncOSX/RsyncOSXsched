@@ -26,7 +26,7 @@ class NamesandPaths {
     var profileorsshroot: Profileorsshrootpath?
     // rootpath without macserialnumber
     var fullrootnomacserial: String?
-    // rootpath with macserianlnumer
+    // rootpath with macserialnumber
     var fullroot: String?
     // If global keypath and identityfile is set must split keypath and identifile
     // create a new key require full path
@@ -42,8 +42,6 @@ class NamesandPaths {
     var profile: String?
     // task to do
     var task: WhatToReadWrite?
-    // Path for configuration files
-    var filepath: String?
     // Set which file to read
     var filename: String?
     // Documentscatalog
@@ -125,14 +123,12 @@ class NamesandPaths {
             } else {
                 self.filename = (self.documentscatalog ?? "") + config + "/" + profile + plist
             }
-            self.filepath = config + "/" + profile + "/"
         } else {
             if ViewControllerReference.shared.usenewconfigpath == true {
                 self.filename = (self.userHomeDirectoryPath ?? "") + config + plist
             } else {
                 self.filename = (self.documentscatalog ?? "") + config + plist
             }
-            self.filepath = config + "/"
         }
     }
 
@@ -161,7 +157,7 @@ class NamesandPaths {
         self.setrootpath()
     }
 
-    init(whattoreadwrite: WhatToReadWrite, profile: String?) {
+    init(profile: String?, whattoreadwrite: WhatToReadWrite) {
         self.configpath = Configpath().configpath
         self.profile = profile
         self.setpreferencesforreadingplist(whattoreadwrite: whattoreadwrite)

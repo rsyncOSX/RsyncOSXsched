@@ -20,7 +20,6 @@ class PersistentStorageSchedulingJSON: ReadWriteJSON, SetSchedules {
     }
 
     // Writing schedules to persistent store
-    // Schedule is [NSDictionary]
     private func writeToStore(schedules: [ConfigurationSchedule]?) {
         self.createJSONfromstructs(schedules: schedules)
         self.writeJSONToPersistentStore()
@@ -81,15 +80,22 @@ class PersistentStorageSchedulingJSON: ReadWriteJSON, SetSchedules {
         } catch {}
     }
 
-    init(profile: String?, writeonly: Bool) {
-        if profile == NSLocalizedString("Default profile", comment: "default profile") {
-            super.init(profile: nil, filename: ViewControllerReference.shared.fileschedulesjson)
-        } else {
-            super.init(profile: profile, filename: ViewControllerReference.shared.fileschedulesjson)
-        }
+    init(profile: String?) {
+        super.init(profile: profile, whattoreadwrite: .schedule)
         self.profile = profile
-        if writeonly == false {
+        if self.schedules == nil {
             self.JSONFromPersistentStore()
+        }
+    }
+
+    init(profile: String?, readonly: Bool) {
+        super.init(profile: profile, whattoreadwrite: .schedule)
+        self.profile = profile
+        if readonly {
+            self.JSONFromPersistentStore()
+        } else {
+            self.createJSONfromstructs(schedules: nil)
+            self.writeconvertedtostore()
         }
     }
 }

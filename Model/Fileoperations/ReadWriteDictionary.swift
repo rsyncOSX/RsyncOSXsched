@@ -5,10 +5,7 @@
 //  Created by Thomas Evensen on 25/10/2016.
 //  Copyright © 2016 Thomas Evensen. All rights reserved.
 //
-//  let str = "/Rsync/" + serialNumber + profile? + "/scheduleRsync.plist"
-//  let str = "/Rsync/" + serialNumber + profile? + "/configRsync.plist"
-//  let str = "/Rsync/" + serialNumber + "/config.plist"
-//
+// swiftlint:disable line_length
 
 import Cocoa
 import Foundation
@@ -37,7 +34,7 @@ class ReadWriteDictionary: NamesandPaths {
         return write
     }
 
-    override init(whattoreadwrite: WhatToReadWrite, profile: String?) {
-        super.init(whattoreadwrite: whattoreadwrite, profile: profile)
+    override init(profile: String?, whattoreadwrite: WhatToReadWrite) {
+        super.init(profile: profile, whattoreadwrite: whattoreadwrite)
     }
 }

@@ -5,6 +5,7 @@
 //  Created by Thomas Evensen on 29/10/2020.
 //  Copyright © 2020 Thomas Evensen. All rights reserved.
 //
+// swiftlint:disable line_length
 
 import Files
 import Foundation
@@ -30,6 +31,28 @@ class ReadWriteJSON: NamesandPaths, FileErrors {
         }
     }
 
+    func writeconvertedtostore() {
+        if var atpath = self.fullroot {
+            if self.profile != nil {
+                atpath += "/" + (self.profile ?? "")
+            }
+            do {
+                if try Folder(path: atpath).containsFile(named: self.filename ?? "") {
+                    let question: String = NSLocalizedString("JSON file exists: ", comment: "Logg")
+                    let text: String = NSLocalizedString("Cancel or Save", comment: "Logg")
+                    let dialog: String = NSLocalizedString("Save", comment: "Logg")
+                    // let answer = Alerts.dialogOrCancel(question: question + " " + (self.filename ?? ""), text: text, dialog: dialog)
+                    let answer = true
+                    if answer {
+                        self.writeJSONToPersistentStore()
+                    }
+                } else {
+                    self.writeJSONToPersistentStore()
+                }
+            } catch {}
+        }
+    }
+
     func readJSONFromPersistentStore() throws -> String? {
         if var atpath = self.fullroot {
             do {
@@ -50,9 +73,13 @@ class ReadWriteJSON: NamesandPaths, FileErrors {
         return nil
     }
 
-    init(profile: String?, filename: String?) {
+    override init(profile: String?, whattoreadwrite: WhatToReadWrite) {
         super.init(profileorsshrootpath: .profileroot)
-        self.filename = filename
+        if whattoreadwrite == .configuration {
+            self.filename = ViewControllerReference.shared.fileconfigurationsjson
+        } else {
+            self.filename = ViewControllerReference.shared.fileschedulesjson
+        }
         self.profile = profile
     }
 }

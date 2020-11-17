@@ -9,6 +9,7 @@
 //   presistent store. Class is a interface
 //   for Schedule.
 //
+// swiftlint:disable line_length
 
 import Files
 import Foundation
@@ -23,7 +24,7 @@ class PersistentStorageScheduling: ReadWriteDictionary, SetSchedules {
         var schedule = [ConfigurationSchedule]()
         guard self.schedulesasdictionary != nil else { return nil }
         for dict in self.schedulesasdictionary! {
-            if let log = dict.value(forKey: "executed") {
+            if let log = dict.value(forKey: DictionaryStrings.executed.rawValue) {
                 let conf = ConfigurationSchedule(dictionary: dict, log: log as? NSArray, nolog: nolog)
                 schedule.append(conf)
             } else {
@@ -41,21 +42,46 @@ class PersistentStorageScheduling: ReadWriteDictionary, SetSchedules {
         }
     }
 
-    // Writing schedules to persistent store
-    private func writeToStore(array: [NSDictionary]) {
-        if self.writeNSDictionaryToPersistentStorage(array: array) {
-            self.schedulesDelegate?.createandreloadschedules()
+    func writeschedulestostoreasplist() {
+        let root = NamesandPaths(profileorsshrootpath: .profileroot)
+        if var atpath = root.fullroot {
+            if self.profile != nil {
+                atpath += "/" + (self.profile ?? "")
+            }
+            do {
+                if try Folder(path: atpath).containsFile(named: ViewControllerReference.shared.scheduleplist) {
+                    let question: String = NSLocalizedString("PLIST file exists: ", comment: "Logg")
+                    let text: String = NSLocalizedString("Cancel or Save", comment: "Logg")
+                    let dialog: String = NSLocalizedString("Save", comment: "Logg")
+                    let answer = true
+                    // let answer = Alerts.dialogOrCancel(question: question + " " + ViewControllerReference.shared.scheduleplist, text: text, dialog: dialog)
+                    if answer {
+                        self.savescheduleInMemoryToPersistentStore()
+                    }
+                }
+            } catch {}
         }
     }
 
-    init(profile: String?, writeonly: Bool) {
-        if profile == NSLocalizedString("Default profile", comment: "default profile") {
-            super.init(whattoreadwrite: .schedule, profile: nil)
-        } else {
-            super.init(whattoreadwrite: .schedule, profile: profile)
-        }
-        if writeonly == false {
+    // Writing schedules to persistent store
+    // Schedule is [NSDictionary]
+    private func writeToStore(array: [NSDictionary]) {
+        self.writeNSDictionaryToPersistentStorage(array: array)
+    }
+
+    init(profile: String?) {
+        super.init(profile: profile, whattoreadwrite: .schedule)
+        if self.schedules == nil {
             self.schedulesasdictionary = self.readNSDictionaryFromPersistentStore()
+        }
+    }
+
+    init(profile: String?, readonly: Bool) {
+        super.init(profile: profile, whattoreadwrite: .schedule)
+        if readonly == true {
+            self.schedulesasdictionary = self.readNSDictionaryFromPersistentStore()
+        } else {
+            self.writeschedulestostoreasplist()
         }
     }
 }

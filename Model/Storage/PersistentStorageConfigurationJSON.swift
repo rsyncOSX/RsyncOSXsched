@@ -5,6 +5,7 @@
 //  Created by Thomas Evensen on 20/10/2020.
 //  Copyright © 2020 Thomas Evensen. All rights reserved.
 //
+// swiftlint:disable line_length
 
 import Foundation
 
@@ -68,15 +69,22 @@ class PersistentStorageConfigurationJSON: ReadWriteJSON, SetConfigurations {
         } catch {}
     }
 
-    init(profile: String?, writeonly: Bool) {
-        if profile == NSLocalizedString("Default profile", comment: "default profile") {
-            super.init(profile: nil, filename: ViewControllerReference.shared.fileconfigurationsjson)
-        } else {
-            super.init(profile: profile, filename: ViewControllerReference.shared.fileconfigurationsjson)
-        }
+    init(profile: String?) {
+        super.init(profile: profile, whattoreadwrite: .configuration)
         self.profile = profile
-        if writeonly == false {
+        if self.configurations == nil {
             self.JSONFromPersistentStore()
+        }
+    }
+
+    init(profile: String?, readonly: Bool) {
+        super.init(profile: profile, whattoreadwrite: .configuration)
+        self.profile = profile
+        if readonly {
+            self.JSONFromPersistentStore()
+        } else {
+            self.createJSONfromstructs()
+            self.writeconvertedtostore()
         }
     }
 }
