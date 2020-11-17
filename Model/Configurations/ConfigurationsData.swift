@@ -81,10 +81,5 @@ final class ConfigurationsData {
         } else {
             self.readconfigurationsplist()
         }
-        for i in 0 ..< (self.configurations?.count ?? 0) {
-            if let hiddenID = self.configurations?[i].hiddenID {
-                self.validhiddenID?.insert(hiddenID)
-            }
-        }
     }
 }
