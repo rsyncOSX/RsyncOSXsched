@@ -18,7 +18,7 @@ final class ConfigurationsData {
     var validhiddenID: Set<Int>?
 
     func readconfigurationsplist() {
-        let store = PersistentStorageConfiguration(profile: self.profile).configurationsasdictionary
+        let store = PersistentStorageConfiguration(profile: self.profile, writeonly: false).configurationsasdictionary
         for i in 0 ..< (store?.count ?? 0) {
             if let dict = store?[i] {
                 let config = Configuration(dictionary: dict)
@@ -41,7 +41,7 @@ final class ConfigurationsData {
     }
 
     func readconfigurationsjson() {
-        let store = PersistentStorageConfigurationJSON(profile: self.profile).decodedjson
+        let store = PersistentStorageConfigurationJSON(profile: self.profile, writeonly: false).decodedjson
         let transform = TransformConfigfromJSON()
         for i in 0 ..< (store?.count ?? 0) {
             if let configitem = store?[i] as? DecodeConfigJSON {

@@ -68,18 +68,14 @@ class PersistentStorageConfigurationJSON: ReadWriteJSON, SetConfigurations {
         } catch {}
     }
 
-    init(profile: String?) {
-        super.init(profile: profile, whattoreadwrite: .configuration)
-        self.profile = profile
-        if self.configurations == nil {
-            self.JSONFromPersistentStore()
+    init(profile: String?, writeonly: Bool) {
+        if profile == NSLocalizedString("Default profile", comment: "default profile") {
+            super.init(profile: nil, whattoreadwrite: .configuration)
+        } else {
+            super.init(profile: profile, whattoreadwrite: .configuration)
         }
-    }
-
-    init(profile: String?, readonly: Bool) {
-        super.init(profile: profile, whattoreadwrite: .configuration)
         self.profile = profile
-        if readonly {
+        if writeonly == false {
             self.JSONFromPersistentStore()
         }
     }

@@ -55,9 +55,9 @@ class Configurations: SetSchedules {
         self.configurations?[index].dateRun = currendate.en_us_string_from_date()
         // Saving updated configuration in memory to persistent store
         if ViewControllerReference.shared.json {
-            PersistentStorageConfigurationJSON(profile: self.profile).saveconfigInMemoryToPersistentStore()
+            PersistentStorageConfigurationJSON(profile: self.profile, writeonly: true).saveconfigInMemoryToPersistentStore()
         } else {
-            PersistentStorageConfiguration(profile: self.profile).saveconfigInMemoryToPersistentStore()
+            PersistentStorageConfiguration(profile: self.profile, writeonly: true).saveconfigInMemoryToPersistentStore()
         }
     }
 

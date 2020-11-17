@@ -43,9 +43,9 @@ class ScheduleWriteLoggData: SetConfigurations {
                     }
                     if inserted {
                         if ViewControllerReference.shared.json {
-                            PersistentStorageSchedulingJSON(profile: self.profile).savescheduleInMemoryToPersistentStore()
+                            PersistentStorageSchedulingJSON(profile: self.profile, writeonly: true).savescheduleInMemoryToPersistentStore()
                         } else {
-                            PersistentStorageScheduling(profile: self.profile).savescheduleInMemoryToPersistentStore()
+                            PersistentStorageScheduling(profile: self.profile, writeonly: true).savescheduleInMemoryToPersistentStore()
                         }
                     }
                 }
