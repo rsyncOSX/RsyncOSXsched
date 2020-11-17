@@ -5,7 +5,6 @@
 //  Created by Thomas Evensen on 29/10/2020.
 //  Copyright © 2020 Thomas Evensen. All rights reserved.
 //
-// swiftlint:disable line_length
 
 import Files
 import Foundation
@@ -28,28 +27,6 @@ class ReadWriteJSON: NamesandPaths, FileErrors {
                 let error = e as NSError
                 self.error(error: error.description, errortype: .json)
             }
-        }
-    }
-
-    func writeconvertedtostore() {
-        if var atpath = self.fullroot {
-            if self.profile != nil {
-                atpath += "/" + (self.profile ?? "")
-            }
-            do {
-                if try Folder(path: atpath).containsFile(named: self.filename ?? "") {
-                    let question: String = NSLocalizedString("JSON file exists: ", comment: "Logg")
-                    let text: String = NSLocalizedString("Cancel or Save", comment: "Logg")
-                    let dialog: String = NSLocalizedString("Save", comment: "Logg")
-                    // let answer = Alerts.dialogOrCancel(question: question + " " + (self.filename ?? ""), text: text, dialog: dialog)
-                    let answer = true
-                    if answer {
-                        self.writeJSONToPersistentStore()
-                    }
-                } else {
-                    self.writeJSONToPersistentStore()
-                }
-            } catch {}
         }
     }
 

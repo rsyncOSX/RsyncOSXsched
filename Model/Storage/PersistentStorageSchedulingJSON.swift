@@ -93,9 +93,6 @@ class PersistentStorageSchedulingJSON: ReadWriteJSON, SetSchedules {
         self.profile = profile
         if readonly {
             self.JSONFromPersistentStore()
-        } else {
-            self.createJSONfromstructs(schedules: nil)
-            self.writeconvertedtostore()
         }
     }
 }
