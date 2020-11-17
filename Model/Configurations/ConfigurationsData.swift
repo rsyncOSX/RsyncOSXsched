@@ -23,7 +23,10 @@ final class ConfigurationsData {
             if let dict = store?[i] {
                 let config = Configuration(dictionary: dict)
                 if ViewControllerReference.shared.synctasks.contains(config.task) {
-                    self.configurations?.append(config)
+                    if self.validhiddenID?.contains(config.hiddenID) == false {
+                        self.configurations?.append(config)
+                        self.validhiddenID?.insert(config.hiddenID)
+                    }
                 }
             }
         }
@@ -47,7 +50,10 @@ final class ConfigurationsData {
             if let configitem = store?[i] as? DecodeConfigJSON {
                 let transformed = transform.transform(object: configitem)
                 if ViewControllerReference.shared.synctasks.contains(transformed.task) {
-                    self.configurations?.append(transformed)
+                    if self.validhiddenID?.contains(transformed.hiddenID) == false {
+                        self.configurations?.append(transformed)
+                        self.validhiddenID?.insert(transformed.hiddenID)
+                    }
                 }
             }
         }
