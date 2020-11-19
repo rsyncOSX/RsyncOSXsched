@@ -49,7 +49,7 @@ class Allschedules {
                 profilename = nil
             }
             if self.allschedules == nil { self.allschedules = [] }
-            configurationschedule = self.getScheduleandhistory(nolog: true, profile: profilename)
+            configurationschedule = self.getScheduleandhistory(includelog: false, profile: profilename)
             for j in 0 ..< (configurationschedule?.count ?? 0) {
                 configurationschedule?[j].profilename = profilename
                 let offsiteserver = configurationschedule?[j].offsiteserver ?? ""
@@ -66,7 +66,7 @@ class Allschedules {
         }
     }
 
-    func getScheduleandhistory(nolog: Bool, profile: String?) -> [ConfigurationSchedule]? {
+    func getScheduleandhistory(includelog: Bool, profile: String?) -> [ConfigurationSchedule]? {
         var schedule = [ConfigurationSchedule]()
         if ViewControllerReference.shared.json {
             let read = PersistentStorageSchedulingJSON(profile: profile, writeonly: false)
@@ -83,10 +83,10 @@ class Allschedules {
             guard read.schedulesasdictionary != nil else { return nil }
             for dict in read.schedulesasdictionary! {
                 if let log = dict.value(forKey: DictionaryStrings.executed.rawValue) {
-                    let conf = ConfigurationSchedule(dictionary: dict, log: log as? NSArray, nolog: nolog)
+                    let conf = ConfigurationSchedule(dictionary: dict, log: log as? NSArray, includelog: includelog)
                     schedule.append(conf)
                 } else {
-                    let conf = ConfigurationSchedule(dictionary: dict, log: nil, nolog: nolog)
+                    let conf = ConfigurationSchedule(dictionary: dict, log: nil, includelog: includelog)
                     schedule.append(conf)
                 }
             }
