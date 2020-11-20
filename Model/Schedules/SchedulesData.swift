@@ -5,6 +5,7 @@
 //  Created by Thomas Evensen on 15/11/2020.
 //  Copyright © 2020 Thomas Evensen. All rights reserved.
 //
+// swiftlint:disable line_length
 
 import Foundation
 
@@ -51,7 +52,7 @@ final class SchedulesData {
         // var data = [ConfigurationSchedule]()
         let transform = TransformSchedulefromJSON()
         for i in 0 ..< (store?.count ?? 0) {
-            if let scheduleitem = (store?[i] as? DecodeScheduleJSON), let validhiddenID = self.validhiddenID {
+            if let scheduleitem = (store?[i] as? DecodeSchedule), let validhiddenID = self.validhiddenID {
                 var transformed = transform.transform(object: scheduleitem)
                 transformed.profilename = self.profile
                 if validhiddenID.contains(transformed.hiddenID) {

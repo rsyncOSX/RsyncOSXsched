@@ -15,8 +15,8 @@
 		E807E0AE22A41C8E009847A9 /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = E807E0AD22A41C8E009847A9 /* Environment.swift */; };
 		E833D53E22999A2500C92FDE /* ConvertOneConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = E833D53D22999A2500C92FDE /* ConvertOneConfig.swift */; };
 		E85DE52225558A9200E670C7 /* CodableConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = E85DE52025558A9200E670C7 /* CodableConfiguration.swift */; };
-		E85DE52325558A9200E670C7 /* DecodeConfigJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = E85DE52125558A9200E670C7 /* DecodeConfigJSON.swift */; };
-		E85DE52725558AA500E670C7 /* DecodeScheduleJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = E85DE52525558AA500E670C7 /* DecodeScheduleJSON.swift */; };
+		E85DE52325558A9200E670C7 /* DecodeConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = E85DE52125558A9200E670C7 /* DecodeConfiguration.swift */; };
+		E85DE52725558AA500E670C7 /* DecodeSchedule.swift in Sources */ = {isa = PBXBuildFile; fileRef = E85DE52525558AA500E670C7 /* DecodeSchedule.swift */; };
 		E85DE52825558AA500E670C7 /* CodableConfigurationSchedule.swift in Sources */ = {isa = PBXBuildFile; fileRef = E85DE52625558AA500E670C7 /* CodableConfigurationSchedule.swift */; };
 		E85DE52B25558B6C00E670C7 /* ReadWriteJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = E85DE52A25558B6C00E670C7 /* ReadWriteJSON.swift */; };
 		E85DE52F25558CE000E670C7 /* PersistentStorageSchedulingJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = E85DE52D25558CE000E670C7 /* PersistentStorageSchedulingJSON.swift */; };
@@ -93,8 +93,8 @@
 		E807E0AD22A41C8E009847A9 /* Environment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Environment.swift; sourceTree = "<group>"; };
 		E833D53D22999A2500C92FDE /* ConvertOneConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConvertOneConfig.swift; sourceTree = "<group>"; };
 		E85DE52025558A9200E670C7 /* CodableConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CodableConfiguration.swift; sourceTree = "<group>"; };
-		E85DE52125558A9200E670C7 /* DecodeConfigJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DecodeConfigJSON.swift; sourceTree = "<group>"; };
-		E85DE52525558AA500E670C7 /* DecodeScheduleJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DecodeScheduleJSON.swift; sourceTree = "<group>"; };
+		E85DE52125558A9200E670C7 /* DecodeConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DecodeConfiguration.swift; sourceTree = "<group>"; };
+		E85DE52525558AA500E670C7 /* DecodeSchedule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DecodeSchedule.swift; sourceTree = "<group>"; };
 		E85DE52625558AA500E670C7 /* CodableConfigurationSchedule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CodableConfigurationSchedule.swift; sourceTree = "<group>"; };
 		E85DE52A25558B6C00E670C7 /* ReadWriteJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReadWriteJSON.swift; sourceTree = "<group>"; };
 		E85DE52D25558CE000E670C7 /* PersistentStorageSchedulingJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersistentStorageSchedulingJSON.swift; sourceTree = "<group>"; };
@@ -212,7 +212,7 @@
 			children = (
 				E85DE53225558DEC00E670C7 /* TransformSchedulefromJSON.swift */,
 				E85DE52625558AA500E670C7 /* CodableConfigurationSchedule.swift */,
-				E85DE52525558AA500E670C7 /* DecodeScheduleJSON.swift */,
+				E85DE52525558AA500E670C7 /* DecodeSchedule.swift */,
 			);
 			path = JSON;
 			sourceTree = "<group>";
@@ -222,7 +222,7 @@
 			children = (
 				E85DE53525558DFF00E670C7 /* TransformConfigfromJSON.swift */,
 				E85DE52025558A9200E670C7 /* CodableConfiguration.swift */,
-				E85DE52125558A9200E670C7 /* DecodeConfigJSON.swift */,
+				E85DE52125558A9200E670C7 /* DecodeConfiguration.swift */,
 			);
 			path = JSON;
 			sourceTree = "<group>";
@@ -556,7 +556,7 @@
 				E85DE53625558DFF00E670C7 /* TransformConfigfromJSON.swift in Sources */,
 				94E0FC4E1BD7FCBE00A3C537 /* EventMonitor.swift in Sources */,
 				E9C6BFC32308317C0052A336 /* Socket.swift in Sources */,
-				E85DE52725558AA500E670C7 /* DecodeScheduleJSON.swift in Sources */,
+				E85DE52725558AA500E670C7 /* DecodeSchedule.swift in Sources */,
 				E98398AF20260E9D00C977C3 /* Configurations.swift in Sources */,
 				E90BFDC8202D989D004AE4EC /* ytcpsocket.c in Sources */,
 				E85DE52F25558CE000E670C7 /* PersistentStorageSchedulingJSON.swift in Sources */,
@@ -583,7 +583,7 @@
 				94E0FC411BD7FC3600A3C537 /* ViewControllerMain.swift in Sources */,
 				E90FC5262563B9E400C7B7A4 /* SchedulesData.swift in Sources */,
 				E90BFDCB202D989D004AE4EC /* ytcpsocket.swift in Sources */,
-				E85DE52325558A9200E670C7 /* DecodeConfigJSON.swift in Sources */,
+				E85DE52325558A9200E670C7 /* DecodeConfiguration.swift in Sources */,
 				E907FB2624D5EC6C0047D05B /* extensionRsyncParameters.swift in Sources */,
 				E98BB14B202763B40078DF8E /* Numbers.swift in Sources */,
 				E9E6A7C7213278C300342168 /* Dateandtime.swift in Sources */,

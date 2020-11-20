@@ -72,7 +72,7 @@ class Allschedules {
             let read = PersistentStorageSchedulingJSON(profile: profile, writeonly: false)
             let transform = TransformSchedulefromJSON()
             for i in 0 ..< (read.decodedjson?.count ?? 0) {
-                if let scheduleitem = (read.decodedjson?[i] as? DecodeScheduleJSON) {
+                if let scheduleitem = (read.decodedjson?[i] as? DecodeSchedule) {
                     var transformed = transform.transform(object: scheduleitem)
                     transformed.profilename = profile
                     schedule.append(transformed)

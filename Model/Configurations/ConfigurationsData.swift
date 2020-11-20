@@ -47,7 +47,7 @@ final class ConfigurationsData {
         let store = PersistentStorageConfigurationJSON(profile: self.profile, writeonly: false).decodedjson
         let transform = TransformConfigfromJSON()
         for i in 0 ..< (store?.count ?? 0) {
-            if let configitem = store?[i] as? DecodeConfigJSON {
+            if let configitem = store?[i] as? DecodeConfiguration {
                 let transformed = transform.transform(object: configitem)
                 if ViewControllerReference.shared.synctasks.contains(transformed.task) {
                     if self.validhiddenID?.contains(transformed.hiddenID) == false {
