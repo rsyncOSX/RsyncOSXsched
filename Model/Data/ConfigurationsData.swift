@@ -21,7 +21,8 @@ final class ConfigurationsData {
         let store = PersistentStorageConfiguration(profile: self.profile, writeonly: false).configurationsasdictionary
         for i in 0 ..< (store?.count ?? 0) {
             if let dict = store?[i] {
-                let config = Configuration(dictionary: dict)
+                var config = Configuration(dictionary: dict)
+                config.profile = self.profile
                 if ViewControllerReference.shared.synctasks.contains(config.task) {
                     if self.validhiddenID?.contains(config.hiddenID) == false {
                         self.configurations?.append(config)
