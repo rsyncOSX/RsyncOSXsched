@@ -207,26 +207,6 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		E85DE51E2555891600E670C7 /* JSON */ = {
-			isa = PBXGroup;
-			children = (
-				E85DE53225558DEC00E670C7 /* TransformSchedulefromJSON.swift */,
-				E85DE52625558AA500E670C7 /* CodableConfigurationSchedule.swift */,
-				E85DE52525558AA500E670C7 /* DecodeSchedule.swift */,
-			);
-			path = JSON;
-			sourceTree = "<group>";
-		};
-		E85DE51F2555893C00E670C7 /* JSON */ = {
-			isa = PBXGroup;
-			children = (
-				E85DE53525558DFF00E670C7 /* TransformConfigfromJSON.swift */,
-				E85DE52025558A9200E670C7 /* CodableConfiguration.swift */,
-				E85DE52125558A9200E670C7 /* DecodeConfiguration.swift */,
-			);
-			path = JSON;
-			sourceTree = "<group>";
-		};
 		E90BFDC1202D9858004AE4EC /* ydpsocket */ = {
 			isa = PBXGroup;
 			children = (
@@ -241,16 +221,30 @@
 			path = "New Group";
 			sourceTree = "<group>";
 		};
+		E91B85A32567A2D000219975 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				E85DE52525558AA500E670C7 /* DecodeSchedule.swift */,
+				E85DE52625558AA500E670C7 /* CodableConfigurationSchedule.swift */,
+				E85DE52125558A9200E670C7 /* DecodeConfiguration.swift */,
+				E85DE52025558A9200E670C7 /* CodableConfiguration.swift */,
+				E91C5DCC2026FFD200FE7E76 /* ConfigurationSchedule.swift */,
+				E90FC5252563B9E400C7B7A4 /* SchedulesData.swift */,
+				E98398AC20260E9D00C977C3 /* Configuration.swift */,
+				E90FC5222563B99200C7B7A4 /* ConfigurationsData.swift */,
+				E85DE53525558DFF00E670C7 /* TransformConfigfromJSON.swift */,
+				E85DE53225558DEC00E670C7 /* TransformSchedulefromJSON.swift */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
 		E91C5DBA2026F80C00FE7E76 /* Schedules */ = {
 			isa = PBXGroup;
 			children = (
-				E85DE51E2555891600E670C7 /* JSON */,
-				E91C5DCC2026FFD200FE7E76 /* ConfigurationSchedule.swift */,
 				E91C5DBC2026F8F900FE7E76 /* Schedules.swift */,
 				E91C5DBB2026F8F900FE7E76 /* ScheduleSortedAndExpanded.swift */,
 				E91C5DBD2026F8F900FE7E76 /* ScheduleWriteLoggData.swift */,
 				E9542588209ECA900012170B /* Allschedules.swift */,
-				E90FC5252563B9E400C7B7A4 /* SchedulesData.swift */,
 			);
 			path = Schedules;
 			sourceTree = "<group>";
@@ -270,13 +264,10 @@
 		E93A7EF92026EA5300D61258 /* Configurations */ = {
 			isa = PBXGroup;
 			children = (
-				E85DE51F2555893C00E670C7 /* JSON */,
 				E9F54D7A2026D7D400A664CF /* RsyncParameters.swift */,
 				E907FB2524D5EC6C0047D05B /* extensionRsyncParameters.swift */,
 				E98398AD20260E9D00C977C3 /* Configurations.swift */,
-				E98398AC20260E9D00C977C3 /* Configuration.swift */,
 				E907FB2324D5E8940047D05B /* SuffixstringsRsyncParameters.swift */,
-				E90FC5222563B99200C7B7A4 /* ConfigurationsData.swift */,
 			);
 			path = Configurations;
 			sourceTree = "<group>";
@@ -419,6 +410,7 @@
 				E90BFDC1202D9858004AE4EC /* ydpsocket */,
 				E946CDBB20279A3C005BF6E9 /* User */,
 				E91C5DC32026FACF00FE7E76 /* Operation */,
+				E91B85A32567A2D000219975 /* Data */,
 				E93A7EF92026EA5300D61258 /* Configurations */,
 				E91C5DBA2026F80C00FE7E76 /* Schedules */,
 				E93A7EFF2026ED4300D61258 /* CompleteOperation */,
