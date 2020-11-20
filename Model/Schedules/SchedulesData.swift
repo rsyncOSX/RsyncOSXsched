@@ -14,15 +14,23 @@ final class SchedulesData {
     var validhiddenID: Set<Int>?
     // Function for reading all jobs for schedule and all history of past executions.
     // Schedules are stored in self.schedules. Schedules are sorted after hiddenID.
+
     func readschedulesplist() {
-        var store = PersistentStorageScheduling(profile: self.profile, writeonly: false).getScheduleandhistory(includelog: true)
-        guard store != nil else { return }
-        // var data = [ConfigurationSchedule]()
-        for i in 0 ..< (store?.count ?? 0) where store?[i].logrecords?.isEmpty == false || store?[i].dateStop != nil {
-            store?[i].profilename = self.profile
-            if let store = store?[i], let validhiddenID = self.validhiddenID {
-                if validhiddenID.contains(store.hiddenID) {
-                    self.schedules?.append(store)
+        let schedulesfromstore = PersistentStorageScheduling(profile: self.profile, readonly: true).schedulesasdictionary
+        var schedule: ConfigurationSchedule?
+        for i in 0 ..< (schedulesfromstore?.count ?? 0) {
+            if let dict = schedulesfromstore?[i], let validhiddenID = self.validhiddenID {
+                if let hiddenID = dict.value(forKey: DictionaryStrings.hiddenID.rawValue) as? Int {
+                    if validhiddenID.contains(hiddenID) {
+                        if let log = dict.value(forKey: DictionaryStrings.executed.rawValue) {
+                            schedule = ConfigurationSchedule(dictionary: dict, log: log as? NSArray, includelog: true)
+                        } else {
+                            schedule = ConfigurationSchedule(dictionary: dict, log: nil, includelog: true)
+                        }
+                        if let schedule = schedule {
+                            self.schedules?.append(schedule)
+                        }
+                    }
                 }
             }
         }

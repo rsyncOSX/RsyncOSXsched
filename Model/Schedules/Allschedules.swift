@@ -79,7 +79,7 @@ class Allschedules {
                 }
             }
         } else {
-            let read = PersistentStorageScheduling(profile: profile, writeonly: false)
+            let read = PersistentStorageScheduling(profile: profile, readonly: true)
             guard read.schedulesasdictionary != nil else { return nil }
             for dict in read.schedulesasdictionary! {
                 if let log = dict.value(forKey: DictionaryStrings.executed.rawValue) {

@@ -47,13 +47,13 @@ class PersistentStorageScheduling: ReadWriteDictionary, SetSchedules {
         self.writeNSDictionaryToPersistentStorage(array: array)
     }
 
-    init(profile: String?, writeonly: Bool) {
+    init(profile: String?, readonly: Bool) {
         if profile == NSLocalizedString("Default profile", comment: "default profile") {
             super.init(profile: nil, whattoreadwrite: .schedule)
         } else {
             super.init(profile: profile, whattoreadwrite: .schedule)
         }
-        if writeonly == false {
+        if readonly {
             self.schedulesasdictionary = self.readNSDictionaryFromPersistentStore()
         }
     }
