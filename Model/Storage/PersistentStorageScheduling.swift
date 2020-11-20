@@ -19,15 +19,15 @@ class PersistentStorageScheduling: ReadWriteDictionary, SetSchedules {
 
     // Read schedules and history
     // If no Schedule from persistent store return nil
-    func getScheduleandhistory(nolog: Bool) -> [ConfigurationSchedule]? {
+    func getScheduleandhistory(includelog: Bool) -> [ConfigurationSchedule]? {
         var schedule = [ConfigurationSchedule]()
         guard self.schedulesasdictionary != nil else { return nil }
         for dict in self.schedulesasdictionary! {
-            if let log = dict.value(forKey: "executed") {
-                let conf = ConfigurationSchedule(dictionary: dict, log: log as? NSArray, nolog: nolog)
+            if let log = dict.value(forKey: DictionaryStrings.executed.rawValue) {
+                let conf = ConfigurationSchedule(dictionary: dict, log: log as? NSArray, includelog: includelog)
                 schedule.append(conf)
             } else {
-                let conf = ConfigurationSchedule(dictionary: dict, log: nil, nolog: nolog)
+                let conf = ConfigurationSchedule(dictionary: dict, log: nil, includelog: includelog)
                 schedule.append(conf)
             }
         }
@@ -42,19 +42,18 @@ class PersistentStorageScheduling: ReadWriteDictionary, SetSchedules {
     }
 
     // Writing schedules to persistent store
+    // Schedule is [NSDictionary]
     private func writeToStore(array: [NSDictionary]) {
-        if self.writeNSDictionaryToPersistentStorage(array: array) {
-            self.schedulesDelegate?.createandreloadschedules()
-        }
+        self.writeNSDictionaryToPersistentStorage(array: array)
     }
 
-    init(profile: String?, writeonly: Bool) {
+    init(profile: String?, readonly: Bool) {
         if profile == NSLocalizedString("Default profile", comment: "default profile") {
-            super.init(whattoreadwrite: .schedule, profile: nil)
+            super.init(profile: nil, whattoreadwrite: .schedule)
         } else {
-            super.init(whattoreadwrite: .schedule, profile: profile)
+            super.init(profile: profile, whattoreadwrite: .schedule)
         }
-        if writeonly == false {
+        if readonly {
             self.schedulesasdictionary = self.readNSDictionaryFromPersistentStore()
         }
     }

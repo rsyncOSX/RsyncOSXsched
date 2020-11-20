@@ -57,7 +57,7 @@ extension ViewControllerSchedules: NSTableViewDelegate {
             if let tableColumn = tableColumn {
                 switch tableColumn.identifier.rawValue {
                 case "intime":
-                    let profilename = object.value(forKey: "profilename") as? String ?? NSLocalizedString("Default profile", comment: "default profile")
+                    let profilename = object.value(forKey: DictionaryStrings.profilename.rawValue) as? String ?? NSLocalizedString("Default profile", comment: "default profile")
                     let taskintime = self.schedulessortedandexpanded?.sortandcountscheduledonetask(hiddenID, profilename: profilename, number: true)
                     return taskintime ?? ""
                 case "schedule":
@@ -89,7 +89,7 @@ extension ViewControllerSchedules: NSTableViewDelegate {
         let indexes = myTableViewFromNotification.selectedRowIndexes
         if let index = indexes.first {
             if let dict = self.schedulessortedandexpanded?.sortedschedules?[index] {
-                self.profilname = dict.value(forKey: "profilename") as? String ?? NSLocalizedString("Default profile", comment: "default profile")
+                self.profilname = dict.value(forKey: DictionaryStrings.profilename.rawValue) as? String ?? NSLocalizedString("Default profile", comment: "default profile")
             }
         }
     }

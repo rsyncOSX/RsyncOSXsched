@@ -11,6 +11,7 @@
 //  Created by Thomas Evensen on 08/02/16.
 //  Copyright © 2016 Thomas Evensen. All rights reserved.
 //
+// swiftlint:disable line_length
 
 import Cocoa
 import Foundation
@@ -24,13 +25,11 @@ enum ResourceInConfiguration {
 }
 
 class Configurations: SetSchedules {
-    // reference to Process, used for kill in executing task
-    var process: Process?
     private var profile: String?
     // The main structure storing all Configurations for tasks
     private var configurations: [Configuration]?
-    // Datasource for NSTableViews
-    private var configurationsDataSource: [NSDictionary]?
+    // valid hiddenIDs
+    var validhiddenID: Set<Int>?
 
     // Function for getting Configurations read into memory
     // - parameter none: none
@@ -115,61 +114,13 @@ class Configurations: SetSchedules {
         return data
     }
 
-    func readconfigurationsplist() {
-        let store = PersistentStorageConfiguration(profile: self.profile, writeonly: false).configurationsasdictionary
-        for i in 0 ..< (store?.count ?? 0) {
-            if let dict = store?[i] {
-                let config = Configuration(dictionary: dict)
-                if ViewControllerReference.shared.synctasks.contains(config.task) {
-                    self.configurations?.append(config)
-                }
-            }
-        }
-        // Then prepare the datasource for use in tableviews as Dictionarys
-        var data = [NSMutableDictionary]()
-        for i in 0 ..< (self.configurations?.count ?? 0) {
-            let task = self.configurations?[i].task
-            if ViewControllerReference.shared.synctasks.contains(task ?? "") {
-                if let config = self.configurations?[i] {
-                    data.append(ConvertOneConfig(config: config).dict)
-                }
-            }
-        }
-        self.configurationsDataSource = data
-    }
-
-    func readconfigurationsjson() {
-        let store = PersistentStorageConfigurationJSON(profile: self.profile, writeonly: false).decodedjson
-        let transform = TransformConfigfromJSON()
-        for i in 0 ..< (store?.count ?? 0) {
-            if let configitem = store?[i] as? DecodeConfigJSON {
-                let transformed = transform.transform(object: configitem)
-                if ViewControllerReference.shared.synctasks.contains(transformed.task) {
-                    self.configurations?.append(transformed)
-                }
-            }
-        }
-        // Then prepare the datasource for use in tableviews as Dictionarys
-        var data = [NSMutableDictionary]()
-        for i in 0 ..< (self.configurations?.count ?? 0) {
-            let task = self.configurations?[i].task
-            if ViewControllerReference.shared.synctasks.contains(task ?? "") {
-                if let config = self.configurations?[i] {
-                    data.append(ConvertOneConfig(config: config).dict)
-                }
-            }
-        }
-        self.configurationsDataSource = data
-    }
-
     init(profile: String?) {
-        self.configurations = [Configuration]()
-        self.configurationsDataSource = nil
         self.profile = profile
-        if ViewControllerReference.shared.json {
-            self.readconfigurationsjson()
-        } else {
-            self.readconfigurationsplist()
-        }
+        self.configurations = nil
+        // Read and prepare configurations and rsync parameters
+        let configurationsdata = ConfigurationsData(profile: profile)
+        self.configurations = configurationsdata.configurations
+        self.validhiddenID = configurationsdata.validhiddenID
+        ViewControllerReference.shared.process = nil
     }
 }

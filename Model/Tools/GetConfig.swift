@@ -19,7 +19,7 @@ struct GetConfig: SetSchedules, SetConfigurations {
         self.reloaddataDelegate = ViewControllerReference.shared.viewControllermain as? ViewControllerMain
         if let dict = ViewControllerReference.shared.scheduledTask {
             self.dict = dict
-            if let profilename = dict.value(forKey: "profilename") as? String {
+            if let profilename = dict.value(forKey: DictionaryStrings.profilename.rawValue) as? String {
                 if profilename.isEmpty == true || profilename == NSLocalizedString("Default profile", comment: "default profile") {
                     self.reloaddataDelegate?.reloaddata(profilename: nil)
                     self.profilename = nil

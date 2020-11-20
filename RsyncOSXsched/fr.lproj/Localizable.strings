@@ -92,18 +92,6 @@
 /* rsyncerror */
 "There was a rsync error" = "Il y a eu une erreur rsync";
 
-/* ReadWrite */
-"to disk" = "sur le disque";
-
 /* main */
 "weekly" = "hebdomadaire";
-
-/* Storage */
-"Write and reload configurations" = "Écrire et recharger les configurations";
-
-/* Storage */
-"Write and reload schedules" = "Écrire et recharger les horaires";
-
-/* ReadWrite */
-"Writing:" = "Écriture :";
 

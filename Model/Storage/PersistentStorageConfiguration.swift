@@ -30,16 +30,14 @@ class PersistentStorageConfiguration: ReadWriteDictionary, SetConfigurations {
     // Writing configuration to persistent store
     // Configuration is [NSDictionary]
     private func writeToStore(array: [NSDictionary]) {
-        if self.writeNSDictionaryToPersistentStorage(array: array) {
-            self.configurationsDelegate?.createandreloadconfigurations()
-        }
+        self.writeNSDictionaryToPersistentStorage(array: array)
     }
 
     init(profile: String?, writeonly: Bool) {
         if profile == NSLocalizedString("Default profile", comment: "default profile") {
-            super.init(whattoreadwrite: .configuration, profile: nil)
+            super.init(profile: nil, whattoreadwrite: .configuration)
         } else {
-            super.init(whattoreadwrite: .configuration, profile: profile)
+            super.init(profile: profile, whattoreadwrite: .configuration)
         }
         if writeonly == false {
             self.configurationsasdictionary = self.readNSDictionaryFromPersistentStore()

@@ -25,17 +25,17 @@ class PersistentStorageConfigurationJSON: ReadWriteJSON, SetConfigurations {
     }
 
     private func createJSONfromstructs() {
-        var structscodable: [ConvertOneConfigCodable]?
+        var structscodable: [CodableConfiguration]?
         if let configurations = self.configurations?.getConfigurations() {
-            structscodable = [ConvertOneConfigCodable]()
+            structscodable = [CodableConfiguration]()
             for i in 0 ..< configurations.count {
-                structscodable?.append(ConvertOneConfigCodable(config: configurations[i]))
+                structscodable?.append(CodableConfiguration(config: configurations[i]))
             }
         }
         self.jsonstring = self.encodedata(data: structscodable)
     }
 
-    private func encodedata(data: [ConvertOneConfigCodable]?) -> String? {
+    private func encodedata(data: [CodableConfiguration]?) -> String? {
         do {
             let jsonData = try JSONEncoder().encode(data)
             if let jsonString = String(data: jsonData, encoding: .utf8) {
@@ -51,7 +51,7 @@ class PersistentStorageConfigurationJSON: ReadWriteJSON, SetConfigurations {
         if let jsonstring = jsonfileasstring.data(using: .utf8) {
             do {
                 let decoder = JSONDecoder()
-                self.decodedjson = try decoder.decode([DecodeConfigJSON].self, from: jsonstring)
+                self.decodedjson = try decoder.decode([DecodeConfiguration].self, from: jsonstring)
             } catch let e {
                 let error = e as NSError
                 self.error(error: error.description, errortype: .json)
@@ -70,9 +70,9 @@ class PersistentStorageConfigurationJSON: ReadWriteJSON, SetConfigurations {
 
     init(profile: String?, writeonly: Bool) {
         if profile == NSLocalizedString("Default profile", comment: "default profile") {
-            super.init(profile: nil, filename: ViewControllerReference.shared.fileconfigurationsjson)
+            super.init(profile: nil, whattoreadwrite: .configuration)
         } else {
-            super.init(profile: profile, filename: ViewControllerReference.shared.fileconfigurationsjson)
+            super.init(profile: profile, whattoreadwrite: .configuration)
         }
         self.profile = profile
         if writeonly == false {

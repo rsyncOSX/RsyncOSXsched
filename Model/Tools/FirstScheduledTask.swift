@@ -15,7 +15,7 @@ struct FirsScheduledTask: GetAllSchedules {
         guard self.schedulessortedandexpanded?.sortedschedules?.count ?? 0 > 0 else { return }
         if let dict = self.schedulessortedandexpanded?.sortedschedules?[0] {
             let hiddenID = dict.value(forKey: "hiddenID") as? Int ?? -1
-            let profilename = dict.value(forKey: "profilename") as? String ?? NSLocalizedString("Default profile", comment: "default profile")
+            let profilename = dict.value(forKey: DictionaryStrings.profilename.rawValue) as? String ?? NSLocalizedString("Default profile", comment: "default profile")
             if let time = self.schedulessortedandexpanded?.sortandcountscheduledonetask(hiddenID, profilename: profilename, number: true) {
                 self.firsscheduledtaskintime = NSLocalizedString("First scheduled task:", comment: "firstask") + " " + profilename + " " + NSLocalizedString("in", comment: "firstask") + " " + time
             }

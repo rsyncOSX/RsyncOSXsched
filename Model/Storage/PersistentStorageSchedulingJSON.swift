@@ -20,33 +20,32 @@ class PersistentStorageSchedulingJSON: ReadWriteJSON, SetSchedules {
     }
 
     // Writing schedules to persistent store
-    // Schedule is [NSDictionary]
     private func writeToStore(schedules: [ConfigurationSchedule]?) {
         self.createJSONfromstructs(schedules: schedules)
         self.writeJSONToPersistentStore()
     }
 
     private func createJSONfromstructs(schedules: [ConfigurationSchedule]?) {
-        var structscodable: [ConvertOneScheduleCodable]?
+        var structscodable: [CodableConfigurationSchedule]?
         if schedules == nil {
             if let schedules = self.schedules?.getSchedule() {
-                structscodable = [ConvertOneScheduleCodable]()
+                structscodable = [CodableConfigurationSchedule]()
                 for i in 0 ..< schedules.count {
-                    structscodable?.append(ConvertOneScheduleCodable(schedule: schedules[i]))
+                    structscodable?.append(CodableConfigurationSchedule(schedule: schedules[i]))
                 }
             }
         } else {
             if let schedules = schedules {
-                structscodable = [ConvertOneScheduleCodable]()
+                structscodable = [CodableConfigurationSchedule]()
                 for i in 0 ..< schedules.count {
-                    structscodable?.append(ConvertOneScheduleCodable(schedule: schedules[i]))
+                    structscodable?.append(CodableConfigurationSchedule(schedule: schedules[i]))
                 }
             }
         }
         self.jsonstring = self.encodedata(data: structscodable)
     }
 
-    private func encodedata(data: [ConvertOneScheduleCodable]?) -> String? {
+    private func encodedata(data: [CodableConfigurationSchedule]?) -> String? {
         do {
             let jsonData = try JSONEncoder().encode(data)
             if let jsonString = String(data: jsonData, encoding: .utf8) {
@@ -64,7 +63,7 @@ class PersistentStorageSchedulingJSON: ReadWriteJSON, SetSchedules {
         if let jsonstring = jsonfileasstring.data(using: .utf8) {
             do {
                 let decoder = JSONDecoder()
-                self.decodedjson = try decoder.decode([DecodeScheduleJSON].self, from: jsonstring)
+                self.decodedjson = try decoder.decode([DecodeSchedule].self, from: jsonstring)
             } catch let e {
                 let error = e as NSError
                 self.error(error: error.description, errortype: .json)
@@ -83,9 +82,9 @@ class PersistentStorageSchedulingJSON: ReadWriteJSON, SetSchedules {
 
     init(profile: String?, writeonly: Bool) {
         if profile == NSLocalizedString("Default profile", comment: "default profile") {
-            super.init(profile: nil, filename: ViewControllerReference.shared.fileschedulesjson)
+            super.init(profile: nil, whattoreadwrite: .schedule)
         } else {
-            super.init(profile: profile, filename: ViewControllerReference.shared.fileschedulesjson)
+            super.init(profile: profile, whattoreadwrite: .schedule)
         }
         self.profile = profile
         if writeonly == false {
