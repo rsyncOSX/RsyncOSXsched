@@ -9,7 +9,7 @@
 import Files
 import Foundation
 
-class PersistentStorageConfiguration: ReadWriteDictionary, SetConfigurations {
+class PersistentStorageConfigurationPLIST: ReadWriteDictionary, SetConfigurations {
     // Variable holds all configuration data from persisten storage
     var configurationsasdictionary: [NSDictionary]?
 
@@ -33,13 +33,13 @@ class PersistentStorageConfiguration: ReadWriteDictionary, SetConfigurations {
         self.writeNSDictionaryToPersistentStorage(array: array)
     }
 
-    init(profile: String?, writeonly: Bool) {
+    init(profile: String?, readonly: Bool) {
         if profile == NSLocalizedString("Default profile", comment: "default profile") {
             super.init(profile: nil, whattoreadwrite: .configuration)
         } else {
             super.init(profile: profile, whattoreadwrite: .configuration)
         }
-        if writeonly == false {
+        if readonly {
             self.configurationsasdictionary = self.readNSDictionaryFromPersistentStore()
         }
     }

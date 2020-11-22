@@ -80,14 +80,14 @@ class PersistentStorageSchedulingJSON: ReadWriteJSON, SetSchedules {
         } catch {}
     }
 
-    init(profile: String?, writeonly: Bool) {
+    init(profile: String?, readonly: Bool) {
         if profile == NSLocalizedString("Default profile", comment: "default profile") {
             super.init(profile: nil, whattoreadwrite: .schedule)
         } else {
             super.init(profile: profile, whattoreadwrite: .schedule)
         }
         self.profile = profile
-        if writeonly == false {
+        if readonly {
             self.JSONFromPersistentStore()
         }
     }
