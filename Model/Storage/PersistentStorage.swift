@@ -60,30 +60,6 @@ final class PersistentStorage {
         }
     }
 
-    /*
-     init(profile: String?, whattoreadorwrite: WhatToReadWrite) {
-         self.whattoreadorwrite = whattoreadorwrite
-         if ViewControllerReference.shared.json {
-             switch whattoreadorwrite {
-             case .configuration:
-                 self.configJSON = PersistentStorageConfigurationJSON(profile: profile)
-             case .schedule:
-                 self.scheduleJSON = PersistentStorageSchedulingJSON(profile: profile)
-             default:
-                 return
-             }
-         } else {
-             switch whattoreadorwrite {
-             case .configuration:
-                 self.configPLIST = PersistentStorageConfigurationPLIST(profile: profile)
-             case .schedule:
-                 self.schedulePLIST = PersistentStorageSchedulingPLIST(profile: profile)
-             default:
-                 return
-             }
-         }
-     }
-     */
     init() {}
 
     deinit {
