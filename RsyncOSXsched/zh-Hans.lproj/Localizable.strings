@@ -1,97 +1,85 @@
 /* main */
-"Activating schedules again after sleeping..." = "Activating schedules again after sleeping...";
+"Activating schedules again after sleeping..." = "睡眠后再次激活计划...";
 
 /* Logg */
-"Adding result to log:" = "Adding result to log:";
+"Adding result to log:" = "添加结果到日志：";
 
 /* main */
-"daily" = "daily";
-
-/* datetime */
-"days" = "days";
+"daily" = "每天";
 
 /* main */
-"default" = "default";
+"default" = "默认";
 
 /* default profile */
-"Default profile" = "Default profile";
+"Default profile" = "默认配置文件";
 
 /* Dispatch */
-"Dispatch: no more scheduled task in queue" = "Dispatch: no more scheduled task in queue";
+"Dispatch: no more scheduled task in queue" = "调度：队列中没有更多计划任务";
 
 /* Dispatch */
-"Dispatch: setting next scheduled task in:" = "Dispatch: setting next scheduled task in:";
+"Dispatch: setting next scheduled task in:" = "调度：设置下一个计划任务：";
 
 /* Execute */
-"Executing task in profile" = "Executing task in profile";
+"Executing task in profile" = "正在执行配置文件中的计划任务";
 
 /* firstask */
-"First scheduled task:" = "First scheduled task:";
+"First scheduled task:" = "第一个计划任务：";
 
 /* addobserverforreload */
-"Got notification for reload" = "Got notification for reload";
+"Got notification for reload" = "获取重新加载的通知";
 
 /* datetime */
-"h" = "h";
-
-/* datetime */
-"hours" = "hours";
+"h" = "小时";
 
 /* firstask */
-"in" = "in";
+"in" = "位于";
 
 /* main */
-"Invalidating tasks and going to sleep..." = "Invalidating tasks and going to sleep...";
+"Invalidating tasks and going to sleep..." = "无效的任务并进入睡眠...";
 
 /* schedule */
-"Loading profile:" = "Loading profile:";
+"Loading profile:" = "载入配置文件：";
 
 /* Notification */
-"Message from scheduled synchronizing..." = "Message from scheduled synchronizing...";
-
-/* datetime */
-"mins" = "mins";
+"Message from scheduled synchronizing..." = "预定同步消息...";
 
 /* loginfo */
-"No connection with server:" = "No connection with server:";
+"No connection with server:" = "没有与服务器连接：";
 
 /* loginfo */
-"No connection, bailed out..." = "No connection, bailed out...";
+"No connection, bailed out..." = "没有连接，已保存在...";
 
 /* main */
-"once" = "once";
+"once" = "一次";
 
 /* main */
-"Profile:" = "Profile:";
+"Profile:" = "配置：";
 
 /* reloadinfo */
-"Profile: default loaded." = "Profile: default loaded.";
+"Profile: default loaded." = "配置文件：默认加载。";
 
 /* main */
-"Reading configurations for current profile" = "Reading configurations for current profile";
+"Reading configurations for current profile" = "正在读取当前配置方案";
 
 /* main */
-"Reading schedules for current profile" = "Reading schedules for current profile";
+"Reading schedules for current profile" = "正在读取当前配置文件的计划任务";
 
 /* Sorted */
-"Reloading all schedules..." = "Reloading all schedules...";
+"Reloading all schedules..." = "正在重新加载所有计划...";
 
 /* main */
-"RsyncOSXsched version:" = "RsyncOSXsched version:";
+"RsyncOSXsched version:" = "RsyncOSXsched 版本： ";
 
 /* Execute
    loginfo */
-"Scheduled backup did not execute" = "Scheduled backup did not execute";
-
-/* datetime */
-"secs" = "secs";
+"Scheduled backup did not execute" = "计划备份未执行";
 
 /* main */
-"Some remote sites not avaliable, see log ...." = "Some remote sites not avaliable, see log ....";
+"Some remote sites not avaliable, see log ...." = "有些远程站点不可用，请查看日志...";
 
 /* rsyncerror */
-"There was a rsync error" = "There was a rsync error";
+"There was a rsync error" = "有一些 rsync 的错误";
 
 /* main */
-"weekly" = "weekly";
+"weekly" = "周";
 
