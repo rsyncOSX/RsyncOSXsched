@@ -6,13 +6,14 @@ This is the `menu app` (RsyncOSXsched.app). The menu app is a helper application
 
 ### Localization
 
-[RsyncOSX speaks new languages](https://rsyncosx.netlify.app/post/localization/). RsyncOSXsched is localized to:
-- German - by [Andre](https://github.com/andre68723)
-- French - translated by [crowdin](https://crowdin.com/project/rsyncosx)
+RsyncOSXsched is localized to:
+
+- Chinese (Simplified) -  by [StringKe (Chen)](https://github.com/StringKe)
+- German - by [Andre Voigtmann](https://github.com/andre68723)
 - Norwegian - by me
-- English - by me and the base language of RsyncOSXsched
+- English - the base language of RsyncOSX
 - Italian - by [Stefano Steve Cutelle'](https://github.com/stefanocutelle)
-  - Italian localization is released in version 6.2.5 release candidate
+- Dutch - by [Marcellino Santoso](https://github.com/maebs), in progress
 
 ### Screenshots
 
