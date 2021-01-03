@@ -13,7 +13,7 @@ RsyncOSXsched is localized to:
 - Norwegian - by me
 - English - the base language of RsyncOSX
 - Italian - by [Stefano Steve Cutelle'](https://github.com/stefanocutelle)
-- Dutch - by [Marcellino Santoso](https://github.com/maebs), in progress
+- Dutch - by [Marcellino Santoso](https://github.com/maebs)
 
 ### Screenshots
 
